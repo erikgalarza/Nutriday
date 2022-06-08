@@ -1,0 +1,32 @@
+@media screen and (max-width: 750px) {
+    .container_buscador{
+    max-width:200px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .nombre_alimento{
+    display:none;
+    }
+
+    .table-responsive table thead tr .titulos_tabla_totales{
+       font-size:11px;
+    }
+  }
+
+
+  @media screen and (max-width: 400px) {
+    .container_buscador{
+    max-width:170px;
+    }
+  }
+
+  /* .container_buscador_desayuno{
+      width:100px;
+  } */
+
+  /* @media screen and (max-width: 670px) {
+    .container_buscador_desayuno{
+    min-width:200px;
+    }
+  } */

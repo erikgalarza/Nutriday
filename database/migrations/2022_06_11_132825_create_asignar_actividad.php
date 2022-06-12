@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medida_alimentos', function (Blueprint $table) {
+        Schema::create('asignar_actividad', function (Blueprint $table) {
             $table->id();
-            $table->string('medida')->unique();// 
-            $table->string('abreviatura')->unique()->nullable();
+            
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medida_alimentos');
+        Schema::dropIfExists('asignar_actividad');
     }
 };

@@ -30,7 +30,7 @@ class Paciente extends Authenticatable
 
     public function actividades() 
     {
-        return $this->hasMany(Actividad::class);
+        return $this->belongsToMany(Actividad::class);
     }
 
     public function estados_animo(){

@@ -48,13 +48,13 @@
                                         @endif
                                         <td>
                                             @if($paciente->estado=="activo")
-                                            <label class="badge badge-success">{{$paciente->estado}}</label>
+                                            <a class="btn btn-success" href="{{route('paciente.eliminar', $paciente->id)}}">{{$paciente->estado}}</a>
                                             @else
-                                            <label class="badge badge-danger">{{$paciente->estado}}</label>
+                                          <a class="btn btn-danger" href="{{route('paciente.eliminar', $paciente->id)}}">{{$paciente->estado}}</a>
                                             @endif
                                         </td>
                                         <td >
-                                            <a href="{{route('paciente.historial',$paciente->id)}}"  title="Progreso" class="btn btn-outline-dark"><i class="fas fa-chart-line"></i></a>
+                                         
                                         <a title="Agregar datos antropométricos" href="{{route('admin.agregarDatosAntropometricos',$paciente->id)}}" class="btn btn-outline-info"><i class="fas fa-plus"></i></a>
                                         </td>
                                         <td>
@@ -67,7 +67,7 @@
                                                     <a href="{{ route('paciente.eliminar', $paciente->id) }}"
                                                 class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
                                                         @else
-                                                        <a href="" title="Activar"
+                                                        <a href="{{ route('paciente.eliminar', $paciente->id) }}" title="Activar"
                                                             class="btn btn-outline-danger"><i class="fas fa-reply"></i></a>
                                                         @endif
                                         </td>
@@ -303,7 +303,7 @@
                                                     </style>
 
                                                     <div class="datos_extras col-12">
-                                                        <a style="min-width: 50%"href="{{route('actividad.actividadesByPaciente',$paciente->id)}}"  class="btn btn-outline-dark mb-2"><i class="fas fa-tasks mr-2"></i>Historial de actividades</a>
+                                                        <a style="min-width: 50%"href="{{route('paciente.historial',$paciente->id)}}"  class="btn btn-outline-dark mb-2"><i class="fas fa-chart-line mr-2"></i>Progreso</a>
                                                         <a style="min-width: 50%" href="{{route('paciente.estadosPaciente',$paciente->id)}}" class="btn btn-outline-dark "><i class="fas fa-smile mr-2"></i>Estados de ánimo</a>
 
                                                     </div>

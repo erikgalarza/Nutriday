@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Dieta;
+use App\Models\Video;
 use App\Models\Paciente;
 use App\Models\EstadoAnimo;
 use Illuminate\Http\Request;
@@ -15,7 +16,27 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class ClienteController extends Controller
 {
    
-    
+    public function misActividades()
+    {
+
+        $user_id = auth::id();
+        
+        $paciente = Paciente::where('user_id',$user_id)->first();
+  
+        $actividades = $paciente->actividades()->get();
+        $duraciones = $paciente->actividades()->get(['duracion']);
+        return view('client.actividades.index',compact('actividades','duraciones'));
+    }
+
+    public function videos()
+    {
+        $videos_receta = Video::where('categoria','Recetas')->get();
+        $videos_ejercicio = Video::where('categoria','Ejercicios')->get();
+         $videos_motivacion = Video::where('categoria','Motivacion')->get();
+
+       return view('client.videos.index',compact('videos_receta','videos_motivacion','videos_ejercicio'));
+    }
+
     public function detalleDieta()
     {
 

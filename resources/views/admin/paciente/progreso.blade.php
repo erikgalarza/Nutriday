@@ -55,6 +55,7 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Altura</th>
                                     <th>Peso</th>
                                     <th>Sexo</th>
@@ -65,6 +66,7 @@
                             <tbody>
                                 @foreach ($datos as $key => $dato)
                                     <tr>
+                                        <td>{{$key+1}}</td>
                                         <td>{{ $dato->altura }}</td>
                                         <td>{{ $dato->peso }}</td>
                                         <td>{{ $dato->sexo }}</td>
@@ -111,6 +113,7 @@
                     <table id="order-listing" class="table mb-5">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Nombre</th>
                                 <th>Tipo de diabetes</th>
                                 <th>Fecha de fin</th>
@@ -121,6 +124,7 @@
                         <tbody>
                             @foreach ($dietas as $key => $dieta)
                                 <tr>
+                                    <td>{{$key+1}}</td>
                                     <td>{{ $dieta->nombre }}</td>
                                     <td>{{ $dieta->tipo_diabetes }}</td>
                                     <td>{{ $dieta->fecha_fin }}</td>
@@ -131,6 +135,45 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+
+        <div class="card mt-5">
+            <div class="mb-5" style="background-color:#4eba74">
+                <h3 class="card-title text-lg-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Actividades del paciente</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Duración</th>
+                                        <th>Imagen</th>
+                                        <th>Fecha de asignación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($actividades as $key => $actividad)
+                                        <tr>
+                                            <td>{{$key+1}}</td>
+                                            <td>{{ $actividad->nombre }}</td>
+                                            <td>{{ $duraciones[$key]->duracion }}</td>
+                                            <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
+                                            <td>{{ $dato->created_at }}</td>
+                                            
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    
             </div>
         </div>
     </div>

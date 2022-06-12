@@ -81,6 +81,10 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::resource('categoriaAlimento',CategoriaAlimentoController::class);
     Route::resource('medidaAlimento', MedidaAlimentoController::class);
 
+    Route::get('/actividades/asignar/{paciente_id}',[ActividadController::class,'asignar'])->name('actividad.asignar');
+    Route::post('/actividades/asignar',[ActividadController::class,'guardarAsignacion'])->name('actividad.guardarAsignacion');
+    Route::get('/actividades/pacientes',[ActividadController::class,'pacientes'])->name('actividad.pacientes');
+
 
     Route::get('/alimento-agregar',[AlimentoController::class,'agregarAlimento'])->name('alimento.addAlimento');
     Route::get('/alimento/agregar/{dieta_id}',[AlimentoController::class,'addAlimentoDieta'])->name('alimento.addAlimentoDieta');
@@ -120,10 +124,13 @@ Route::group(['middleware'=>'paciente'], function () {
     Route::get('/dieta/{dieta_id}/detalle',[ClienteController::class,'detalleDieta'])->name('cliente.detalleDieta');
     Route::get('/dieta/{dieta_id}',[ClienteController::class,'verDieta'])->name('cliente.verDieta');
     Route::post('/editar-perfil',[ClienteController::class,'updateCuenta'])->name('cliente.updateCuenta');
-    Route::get('/estado-de-animo',[ClienteController::class,'estadoAnimo'])->name('cliente.estadoAnimo');
+    Route::get('/estadodeanimo',[ClienteController::class,'estadoAnimo'])->name('cliente.estadoAnimo');
     Route::post('/estado-de-animo',[ClienteController::class,'guardarEstadoAnimo'])->name('cliente.guardarEstadoAnimo');
     Route::post('/login-paciente',[LoginController::class,'loginPaciente'])->name('login.paciente');
     
+
+    Route::get('/videos',[ClienteController::class,'videos'])->name('cliente.videos');
+    Route::get('/actividades',[ClienteController::class,'misActividades'])->name('cliente.misActividades');
    });
 
 

@@ -11,6 +11,7 @@
         </ol>
     </nav>
 </div>
+
 <div class="row">
 
     <div class="col-md-12 grid-margin stretch-card">
@@ -34,10 +35,9 @@
                     </div>
                     <div class="form-group row mb-3">
                         <label for="exampleInputEmail2"
-                            class="col-sm-3 col-form-label"> <strong> Duración de la actividad: </strong></label>
+                            class="col-sm-3 col-form-label"> <strong> Descripción de la actividad: </strong></label>
                         <div class="col-sm-9">
-                            <input style="border-radius: 10px" name="actividad" type="number" class="form-control" id="exampleInputEmail2"
-                              >
+                            <textarea style="border-radius: 10px" name="descripcion" rows="4" class="form-control" id="exampleInputEmail2"></textarea>
                         </div>
                     </div>
 

@@ -227,70 +227,46 @@
                     </li>
                    
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false"
-                            aria-controls="ui-advanced">
+                        <a class="nav-link"  href="{{route('cliente.misDietas')}}" >
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-clipboard-list fa-2x"></i>
                             </div>
-                            <span class="menu-title">Dietas</span>
-                            <i class="menu-arrow"></i>
+                            <span class="menu-title">Mis dietas</span>
+                           
                         </a>
-                        <div class="collapse" id="ui-advanced">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('cliente.misDietas')}}"> <i class="fa-solid fa-chalkboard-user mr-3"> </i>Mis dietas</a></li>
-                              
-                            </ul>
-                        </div>
                     </li>
 
                     <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
-                            aria-controls="charts">
+                        <a class="nav-link"  href="{{route('cliente.misActividades')}}" 
+                          ">
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-dumbbell fa-2x"></i>
                             </div>
-                            <span class="menu-title">Actividades</span>
-                            <i class="menu-arrow"></i>
+                            <span class="menu-title">Mis actividades</span>
+                        
                         </a>
-                        <div class="collapse" id="charts">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href=""><i class="fa-regular fa-square-plus mr-3"></i>Mis actividades</a></li>
-                            </ul>
-                        </div>
                     </li>
 
                     <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false"
-                            aria-controls="editors">
+                        {{-- {{route('cliente.estadoAnimo')}} --}}
+                        <a class="nav-link"  href="{{route('cliente.estadoAnimo')}}" 
+                           >
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-smile fa-2x"></i>
                             </div>
                             <span class="menu-title">Estado de ánimo</span>
-                            <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse" id="editors">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('cliente.estadoAnimo')}}"><i class="fa-regular fa-square-plus mr-3"></i>Marcar</a></li>
-                            </ul>
-                        </div>
+                    
                     </li>
 
                     <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" data-toggle="collapse" href="#editors2" aria-expanded="false"
-                            aria-controls="editors2">
+                        <a class="nav-link"  href="{{route('cliente.videos')}}">
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-video fa-2x"></i>
                             </div>
-                            <span class="menu-title">Videos</span>
-                            <i class="menu-arrow"></i>
+                            <span class="menu-title">Mis videos</span>
+                         
                         </a>
-                        <div class="collapse" id="editors2">
-                            <ul class="nav flex-column sub-menu">
-                            
-                                <li class="nav-item"> <a class="nav-link" href=""><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
-
-                            </ul>
-                        </div>
                     </li>
                    
                 

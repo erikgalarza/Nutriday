@@ -43,7 +43,7 @@
                                                 <img src="{{ asset('img/logos/canasta.png') }}">
                                             @endif
                                         </td>
-                                        <td>{{$alimento->peso}}</td>
+                                        <td>{{$alimento->peso}}{{$alimento->medida->medida}}</td>
                                         <td>{{$alimento->categoria->nombre}}</td>
                                         <!-- <td>{{-- $alimento->categoria->nombre--}}</td> -->
 
@@ -186,7 +186,7 @@
                                                             <label class="col-sm-3 col-form-label"><strong>Peso:</strong>
                                                                </label>
                                                                <div class=" col-sm-9 d-flex"                           style="justify-content:space-between">
-                                                                   <input  style="border-radius:10px; width:32%;max-height:45.2px" type="number" name="peso" class="form-control" value="{{ $alimento->peso}}">
+                                                                   <input  style="border-radius:10px; width:32%;max-height:45.2px" type="number" name="peso" class="form-control" value="{{ $alimento->peso}}{{$alimento->medida}}">
                                                                    <select class="form-control" style="border-radius:10px;background-color:#F0F0F0; width:60%;min-height:45.2px" name="unidad" id="unidad">
                                                                     <option value="" selected="" disabled="">Seleccione una medida</option>
                                                                    @foreach($medidas as $medida)

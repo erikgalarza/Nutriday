@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class medidaAlimento extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    // protected $guarded = [];
+    public $fillable=[
+        "medida",
+        "abreviatura"
+    ];
 
     public function alimentos()
     {

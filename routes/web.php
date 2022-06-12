@@ -109,7 +109,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
      //RUTA CON AJAX PARA GUARDAR LA DIETA CON LOS ALIMENTOS Y DEMAS
      Route::get('/guardarDietaAsignada',[DietaController::class,'guardarDieta'])->name('dieta.guardarDieta');
     Route::get('/alimento/datos/guardar',[AlimentoController::class,'datosDietaGuardar'])->name('alimento.datosDietaGuardar');
-
+    // Route::cambios
 
 // ============================= RUTAS PARA CLIENTES ============================ //
 Route::group(['middleware'=>'paciente'], function () {

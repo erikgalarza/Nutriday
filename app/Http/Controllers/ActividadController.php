@@ -7,11 +7,44 @@ use App\Models\Actividad;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreActividadRequest;
 use App\Http\Requests\UpdateActividadRequest;
+use App\Models\Paciente;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ActividadController extends Controller
 {
    
+
+    public function pacientes()
+    {
+        $pacientes = Paciente::all();
+        // $duraciones=collect();
+        foreach($pacientes as $paciente)
+        {
+           $duraciones = $paciente->actividades()->get(['duracion']);
+        //    dd($duracion);
+        }
+        
+        return view('admin.actividades.pacientes',compact('pacientes','duraciones'));
+    }
+
+    public function guardarAsignacion(Request $request)
+    {
+        $paciente = Paciente::find($request->paciente_id);
+        foreach($request->actividad_id as $key => $actividad){
+         
+            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key]]);
+        }
+        return back();
+    }
+
+    public function asignar($paciente_id)
+    {
+        // $pacientes = Paciente::all();
+        $paciente = Paciente::find($paciente_id);
+        $actividades = Actividad::all();
+        return view('admin.actividades.asignar',compact('paciente','actividades'));
+    }
+
     public function index()
     {
         $actividades = Actividad::all();
@@ -35,7 +68,7 @@ class ActividadController extends Controller
 
         $actividad = Actividad::create([
             "nombre"=>$request->nombre,
-            "duracion"=>$request->duracion
+            "descripcion"=>$request->descripcion
         ]);
 
         if ($request->hasFile('imagen')) {
@@ -78,7 +111,8 @@ class ActividadController extends Controller
     {
         $actividad = Actividad::find($id);
         $actividad->update([
-            "nombre"=>$request->nombre
+            "nombre"=>$request->nombre,
+            "duracion"=>$request->duracion,
         ]);
 
         $file = $request->imagen;

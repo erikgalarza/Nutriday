@@ -39,7 +39,9 @@ class PacienteController extends Controller
         $paciente = Paciente::find($paciente_id);
         $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
-        return view('admin.paciente.progreso',compact('datos','dietas'));
+        $actividades = $paciente->actividades()->get();
+        $duraciones =  $paciente->actividades()->get(['duracion']);
+        return view('admin.paciente.progreso',compact('datos','dietas','actividades','duraciones'));
     }
 
     
@@ -52,7 +54,19 @@ class PacienteController extends Controller
     {
         // Paciente::destroy($id);
         $paciente = Paciente::find($id);
-        $paciente->update(["estado"=>"inactivo"]);
+        // dd($paciente);
+        if($paciente->estado=="activo")
+        {
+            // dd("1");
+            $paciente->update(
+                ["estado"=>"inactivo"]
+            );
+        }else{
+            $paciente->update([
+                "estado"=>"activo"
+            ]);
+        }
+      
             return back();
     }
 

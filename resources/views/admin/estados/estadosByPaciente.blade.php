@@ -20,7 +20,9 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Estado</th>
+                                    <th>Descripción</th>
                                     <th>Fecha</th>
                                   
                                 </tr>
@@ -28,8 +30,9 @@
                             <tbody>
                                 @foreach ($estados as $key => $estado)
                                     <tr>
-
+                                        <td>{{$key+1}}</td>
                                         <td>{{ $estado->nombre }}</td>
+                                        <td>{{$estado->descripcion}}</td>
                                         <td>{{ $estado->created_at }}</td>
                                        
                                     </tr>

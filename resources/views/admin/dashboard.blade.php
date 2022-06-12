@@ -399,6 +399,7 @@
                         <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="{{route('actividad.create')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('actividad.pacientes')}}"><i class="fa-solid fa-chalkboard-user mr-3"></i>Asignar actividad</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('actividad.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
                             </ul>
                         </div>

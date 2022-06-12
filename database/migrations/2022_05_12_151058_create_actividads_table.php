@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('actividads', function (Blueprint $table) {
             $table->id();
             $table->text('nombre');
-            $table->decimal('duracion')->default(0);
             $table->longText('descripcion')->nullable();
             $table->timestamps();
         });

@@ -12,12 +12,13 @@ class Actividad extends Model
     public $fillable=[
         "nombre",
         "duracion",
-        "descripcion"
+        "descripcion",
+        "paciente_id"
     ];
 
     public function paciente()
     {
-        return $this->belongsTo(Paciente::class);
+        return $this->belongsToMany(Paciente::class);
     }
 
     public function imagen()

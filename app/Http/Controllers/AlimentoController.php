@@ -62,8 +62,9 @@ class AlimentoController extends Controller
 
     public function alimentosByDieta($dieta_id){
         $dieta = Dieta::find($dieta_id);
+        $dias = $dieta->dias();
         $alimentos = $dieta->alimentos()->get();
-        // dd($alimentos);
+        dd($alimentos);
         return view('admin.alimentos.alimentosByDieta',compact('dieta','alimentos'));
     }
 

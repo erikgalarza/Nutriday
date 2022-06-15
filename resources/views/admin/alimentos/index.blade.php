@@ -13,7 +13,7 @@
     </div>
     <div class="card text-center ">
         <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-lg-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Alimentos</h3>
+            <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Alimentos</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -64,12 +64,19 @@
 
                                     </form>
 
+                                    <style>
+                                        @media (min-width:768px) {
+                                            .dialogoss {
+                                                min-width: 700px !important;
+                                            }
 
+                                        }
+                                    </style>
                                     {{-- MODAL DE DATOS ALIMENTO --}}
 
-                                    <div class="modal fade"style="min-width:600px !important;" id="exampleModal-3{{ $alimento->id }}" tabindex="-1"
+                                    <div class="modal fade"id="exampleModal-3{{ $alimento->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog"style="min-width:600px !important;" role="document">
+                                        <div class="modal-dialog dialogoss"role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color:#4b6ac3">
                                                     <h5 class="modal-title text-lg-center text-white" style="text-transform: uppercase; font-weight:bold; font-size:16px" id="ModalLabel">Datos alimento</h5>
@@ -132,6 +139,10 @@
                                                         <div class="form-group row mb-2 justify-content-center">
                                                             <label class="col-6 text-left"><strong>Grasas:</strong></label>
                                                             <label class="col-4 text-left">{{ $alimento->grasa }}</label>
+                                                        </div>
+                                                        <div class="form-group row mb-2 justify-content-center">
+                                                            <label class="col-6 text-left"><strong>Creado:</strong></label>
+                                                            <label class="col-4 text-left">{{ $alimento->created_at }}</label>
                                                         </div>
 
                                                     </div>

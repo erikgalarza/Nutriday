@@ -82,7 +82,7 @@
                         </div>
                     </div>
 
-
+                    @if(isset($paciente))
                     <div class="form-group row">
                         <label style="font-weight:bold; font-size:11px; text-transform:uppercase"
                             class="col-xl-4 col-lg-5   col-form-label">Fecha finalización de dieta:</label>
@@ -91,6 +91,7 @@
                             >
                         </div>
                     </div>
+                    @endif
 
                     <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">
                         <div class="col-md-8 p-0 col-xl-7 justify-content-space-around">

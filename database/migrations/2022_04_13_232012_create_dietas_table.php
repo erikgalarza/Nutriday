@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('tipo_diabetes');
             $table->decimal('imc')->default(0);
-            $table->datetime('fecha_fin');
+            $table->string('estado')->default('inactiva');
+            $table->longText('observaciones')->nullable();
             // $table->unsignedBigInteger('user_id');
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             

@@ -141,10 +141,14 @@
 
                                                             <div class="form-group row mb-1" style="">
                                                                 <label class="col-sm-5 col-form-label"><strong>Fecha
-                                                                        Consulta:</strong>
-                                                                </label>
-                                                                    <label class="col-sm-7 col-form-label">{{$paciente->user->created_at}}
-                                                                </label>
+                                                                        Consulta:</strong></label>
+
+                                                                        @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                                                        @if ($loop->last)
+                                                                        <label class="col-sm-7 col-form-label"> {{ $data->created_at }}</label>
+                                                                        @endif
+                                                                    @endforeach
+                                                               
 
                                                             </div>
                                                             <div class="form-group row mb-2">

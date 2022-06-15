@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Dia;
 use App\Models\Admin;
 use App\Models\Dieta;
@@ -116,19 +117,25 @@ class DietaController extends Controller
     {
         // $pacienteNuevo = json_decode($request->paciente);
         // $paciente = collect($pacienteNuevo);
-        // dd($paciente);
+        // dd($request);
+        $fecha= $request->fecha_fin;
         $dieta = Dieta::create([
             "nombre"=>$request->nombre,
             "tipo_diabetes"=>$request->tipo_diabetes,
-            "user_id"=>Auth::id(),
-            "fecha_fin"=>$request->fecha_fin
+            "imc"=>$request->imc,
         ]);
+        
+        // dd($dieta);
 
         $imc = $request->imc;
-        $pacienteNuevo = json_decode($request->paciente);
-        $paciente = collect($pacienteNuevo);
         $alimentos = Alimento::all();
-        return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente'));
+        if($request->paciente){
+            $pacienteNuevo = json_decode($request->paciente);
+            $paciente = collect($pacienteNuevo);
+            $dieta->pacientes()->attach($paciente['id'],["created_at"=>$fecha]);
+            return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente'));
+        }
+        return view('admin.alimentos.create',compact('alimentos','dieta','imc'));
     }
 
   
@@ -158,7 +165,10 @@ class DietaController extends Controller
         $dieta->update([
             "nombre"=>$request->nombre,
             "tipo_diabetes"=>$request->tipo_diabetes,
-            "fecha_fin"=>$request->fecha_fin,
+            "imc"=>$request->imc,
+            "observaciones"=>$request->observaciones,
+
+            // "fecha_fin"=>$request->fecha_fin,
         ]);
         return back();
     }

@@ -14,7 +14,9 @@ class Dieta extends Model
         "nombre",
         "tipo_diabetes",
         "fecha_fin",
-        "imc"
+        "imc",
+        "estado",
+        "observaciones"
         // "user_id"
     ];
 

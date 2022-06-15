@@ -40,6 +40,36 @@
                     <td>{{$dieta->tipo_diabetes}}</td>
                     <td>{{$dieta->imc}}</td>
 
+                    {{-- @if(isset($paciente))
+                    @if (isset($imc))
+                        @if ($imc <= 18.4)
+                            <label class="col-form-label col-12">(Bajo peso)</label>
+                        @endif
+                        @if ($imc >= 18.5 && $imc <= 24.9)
+                            <label class="col-form-label col-12">(Normal)</label>
+                        @endif
+                        @if ($imc >= 25 && $imc <= 29.9)
+                            <label class="col-form-label col-12">(Sobrepeso)</label>
+                        @endif
+                        @if ($imc >= 30)
+                            <label class="col-form-label col-12">(Obeso)</label>
+                        @endif
+                    @endif
+                    @else
+                    @if($imc == "1")
+                    <label class="col-form-label col-12">(Bajo peso)</label>
+                    @endif
+                    @if($imc == "2")
+                    <label class="col-form-label col-12">(Normal)</label>
+                    @endif
+                    @if($imc == "3")
+                    <label class="col-form-label col-12">(Sobrepeso)</label>
+                    @endif
+                    @if($imc == "4")
+                    <label class="col-form-label col-12">(Obeso)</label>
+                    @endif
+                    @endif --}}
+
 
                  <td>
                     <a title="Agregar alimentos a la dieta" href="{{route('alimento.addAlimentoDieta',$dieta->id)}}" class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>

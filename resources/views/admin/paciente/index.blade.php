@@ -78,7 +78,7 @@
                                             href="{{ route('admin.agregarDatosAntropometricos', $paciente->id) }}"
                                             class="btn btn-outline-success mb-1"><i class="fas fa-plus"></i></a>
 
-                                            <a title="Estados de ánimo" data-toggle="modal"
+                                            <a title="Historial antropométrico" data-toggle="modal"
                                             data-target="#exampleModal-3{{ $paciente->id }}"
                                             class="btn btn-outline-primary mb-1 color2"><i class="fa-solid fa-hospital-user"></i></a>
                                         </td>

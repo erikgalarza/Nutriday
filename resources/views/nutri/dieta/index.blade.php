@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="page-header">
     <h3 class="page-title">
-      Dietas
+      Ver dietas
     </h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -13,7 +13,7 @@
   </div>
   <div class="card">
       <div class=" mb-5" style="background-color:#4b6ac3 ">
-          <h3 class="card-title text-lg-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos dietas</h3>
+          <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos dietas</h3>
       </div>
     <div class="card-body">
       <div class="row">
@@ -22,14 +22,12 @@
             <table id="order-listing" class="table text-center">
               <thead>
                 <tr>
-                    <th>N #</th>
+                    <th>N°</th>
 
-                    <th>Nombre</th>
+                    <th>Nombre dieta</th>
                     <th>Tipo diabetes</th>
-                    <th>Fecha de fin</th>
+                    <th>IMC</th>
                     <th>Alimentos</th>
-
-
                     <th>Acciones</th>
                 </tr>
               </thead>
@@ -40,52 +38,57 @@
 
                     <td>{{$dieta->nombre}}</td>
                     <td>{{$dieta->tipo_diabetes}}</td>
-                    <td>{{$dieta->fecha_fin}}</td>
+                    <td>{{$dieta->imc}}</td>
 
-                 <td><a class="btn btn-outline-primary" title="Ver alimentos" href="{{route('alimento.alimentosByDieta',$dieta->id)}}"><i class="fas fa-eye"></i></a></td>
+
+                 <td>
+                    <a title="Agregar alimentos a la dieta" href="{{route('alimento.addAlimentoDieta',$dieta->id)}}" class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
+                     <a class="btn btn-outline-primary mb-1" title="Ver alimentos" href="{{route('alimento.alimentosByDieta',$dieta->id)}}"><i class="fa-solid fa-utensils"></i></a>
+                </td>
                     <td>
-                          <a title="Agregar alimentos" href="{{route('alimento.addAlimentoDieta',$dieta->id)}}" class="btn btn-outline-success"><i class="fa fa-plus"></i></a>
-                      {{-- <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{$dieta->id}}" class="btn btn-outline-info"><i class="fa fa-plus"></i></a> --}}
-                        <a  class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal-2{{$dieta->id}}"><i class="fa fa-edit"></i></a>
+
+                        <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{$dieta->id}}" class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                        <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1" data-toggle="modal" data-target="#exampleModal-2{{$dieta->id}}"><i class="fas fa-edit"></i></a>
 
                         <form method="post" id="deletecategoria" action="{{route('dieta.destroy',$dieta->id)}}" class="d-inline">
                             @csrf
                             {{method_field('DELETE')}}
-                      <button onclick="if(!confirm('Está seguro que desea eliminar la dieta?'))return false;" type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+                      <button title="Eliminar dieta" onclick="if(!confirm('Está seguro que desea eliminar la dieta?'))return false;" type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
 
 
-                <div class="modal fade" style="min-width:600px !important;" id="exampleModal-2{{$dieta->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                    <div class="modal-dialog" style="min-width:600px !important;" role="document">
+                <div class="modal fade"  id="exampleModal-2{{$dieta->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Editar dieta</h5>
+                        <div class="modal-header" style="background-color:#4b6ac3">
+                          <h5 class="modal-title text-white" style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">Editar dieta</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span  style="color:white;font-size:30px"  aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body py-2 px-0">
+                            <div class="col-12 row m-0 justify-content-center">
+                                <div class="col-sm-9 mt-4 col-11 text-left">
+                    <form method="POST" action="{{route('dieta.update',$dieta->id)}}">
+                    @csrf
+                    {{ method_field('PATCH') }}
 
-<form method="POST" action="{{route('dieta.update',$dieta->id)}}">
-@csrf
-{{ method_field('PATCH') }}
-                            <div class="form-group row">
+                            <div class="form-group row mb-3">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label">Nombre</label>
-                                <div class="col-sm-9">
+                                    class="col-sm-4 col-form-label"><strong>Nombre dieta:</strong></label>
+                                <div class="col-sm-8">
                                     <input  name="nombre" type="text" value="{{$dieta->nombre}}" class="form-control" id="exampleInputUsername2"
                                         required>
                                 </div>
                             </div>
-                          <br>
 
-                          <div class="form-group row">
+                          <div class="form-group row mb-3">
                         <label for="exampleInputEmail2"
-                            class="col-sm-3 col-form-label">Tipo diabetes</label>
-                        <div class="col-sm-9">
-                          <select class="form-control" name="tipo_diabetes" id="" required>
+                            class="col-sm-4 col-form-label"> <strong>Tipo diabetes:</strong></label>
+                        <div class="col-sm-8">
+                          <select class="form-control" name="tipo_diabetes" id="" style="min-height:45.2px;background-color:#F0F0F0" required >
 
                               <option value="1" {{ old('tipo_diabetes') == '1' ? 'selected' : '' }}>Tipo 1</option>
                               <option value="2" {{ old('tipo_diabetes') == '2' ? 'selected' : '' }}>Tipo 2</option>
@@ -94,27 +97,41 @@
                         </div>
                     </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row mb-3">
                         <label for="exampleInputUsername2"
-                            class="col-sm-3 col-form-label">Fecha de finalización de la dieta</label>
-                        <div class="col-sm-9">
-                            <input  name="fecha_fin" type="date" value="{{ old('fecha_fin', date('Y-m-d')) }}" class="form-control" id="exampleInputUsername2" required
+                            class="col-sm-4 col-form-label"><strong>IMC:</strong></label>
+                        <div class="col-sm-8">
+                            <select  class="form-control" name="imc"  class="form-control" id=""style="min-height:45.2px;background-color:#F0F0F0" required
                             >
+                            <option value="1" {{ old('imc') == '1' ? 'selected' : '' }}>Bajo peso</option>
+                            <option value="2" {{ old('imc') == '2' ? 'selected' : '' }}>Normal</option>
+                            <option value="3" {{ old('imc') == '3' ? 'selected' : '' }}>Sobrepeso</option>
+                            <option value="4" {{ old('imc') == '4' ? 'selected' : '' }}>Obeso</option>
+                            </select>
                         </div>
                     </div>
-
-
-
-
-
-
+                    <div class="form-group row mb-3">
+                        <label for="exampleInputUsername2"
+                            class="col-sm-4 col-form-label"><strong>Observaciones:</strong></label>
+                        <div class="col-sm-8">
+                            <textarea  name="observaciones"cols="30" rows="5" value="{{$dieta->observaciones}}" class="form-control" id="exampleInputUsername2"
+                                required>
+                            </textarea>
                         </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn btn-success">Guardar cambios</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                    </div>
+<br>
+                        </div>
+                        <div class="modal-footer mt-2 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+                              <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                              <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>
+                            </div>
                         </div>
                     </form>
                       </div>
+                    </div>
+                </div>
+
                     </div>
                   </div>
 
@@ -124,32 +141,47 @@
  <div class="modal fade" id="exampleModal-3{{$dieta->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="ModalLabel">Datos dieta</h5>
+                        <div class="modal-header" style="background-color: #4b6ac3">
+                          <h5 class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;  id="ModalLabel">Datos de la dieta</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body" style="display:flex; flex-wrap:wrap; align-content:flex-start">
+                        <div class="modal-body py-3 px-0">
 
+                            <div class="col-12 row m-0 justify-content-center">
+                                <div class="col-sm-12 pl-3 col-11 text-left justify-content-center">
 
-
-                            <div style="margin-left:20px;" >
-
-                                <div class="form-group">
-                                  <label for="recipient-name" ><strong>Nombre:</strong> {{$dieta->nombre}}</label>
-
+                                <div class="form-group row mb-2">
+                                  <label class="col-sm-4" ><strong>Nombre:</strong> </label>
+                                    <label class="col-sm-8">{{$dieta->nombre}}</label>
                                 </div>
 
-                                <div class="form-group">
-                                  <label for="recipient-name" ><strong>Tipo de diabetes:</strong> {{$dieta->tipo_diabetes}}</label>
-
+                                <div class="form-group row mb-2">
+                                  <label class="col-sm-4" ><strong>Tipo de diabetes:</strong> </label>
+                                  <label class="col-sm-8">{{$dieta->tipo_diabetes}}</label>
                                 </div>
 
-                                <div class="form-group">
-                                  <label for="recipient-name" ><strong>Fecha de finalizacion:</strong> {{$dieta->fecha_fin}}</label>
+                                <div class="form-group row mb-2">
+                                  <label class="col-sm-4" ><strong>IMC:</strong></label>
+                                  <label class="col-sm-8">{{$dieta->imc}} (Normal)</label>
 
                                 </div>
+                                <div class="form-group row mb-2">
+                                    <label class="col-sm-4" ><strong>Observaciones:</strong></label>
+                                    @if(isset($dieta->observaciones))
+                                    <label class="col-sm-8">{{$dieta->observaciones}}</label>
+                                    @else
+                                    <label class="col-sm-8">Sin observaciones</label>
+                                    @endif
+                                  </div>
+                                <div class="form-group row mb-2">
+                                    <label class="col-sm-4" ><strong>Fecha creación:</strong></label>
+                                    <label class="col-sm-8">{{$dieta->created_at}}</label>
+                                  </div>
+
+                                </div>
+                            </div>
 
 
 

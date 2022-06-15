@@ -15,13 +15,16 @@
 
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body">
+            <div class=" mb-5" style="background-color:#4b6ac3 ">
                 @if(isset($paciente))
-                <h4 class="card-title">Datos para la dieta del paciente {{$paciente['nombre']}}</h4>
+                <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente {{$paciente['nombre']}}</h3>
                 @else
-                <h4 class="card-title">Datos para la dieta del paciente</h4>
+                <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente</h3>
                 @endif
-
+            </div>
+            <div class="card-body" >
+                <div class="col-12 row justify-content-center">
+                    <div class="col-md-10 col-xl-9 col-12 text-left">
                 <form method="POST" action="{{route('dieta.store')}}" enctype="multipart/form-data" class="forms-sample">
                     @csrf
                     @if(isset($paciente))
@@ -29,27 +32,27 @@
                     @endif
 
                     <div class="form-group row">
-                        <label for="exampleInputUsername2"
-                            class="col-sm-3 col-form-label">Nombre</label>
-                        <div class="col-sm-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
+                            class="col-xl-4 col-lg-5  col-form-label">Nombre de la dieta:</label>
+                        <div class="col-xl-8 col-lg-7 ">
                             <input  name="nombre" type="text" class="form-control" id="exampleInputUsername2"
-                                placeholder="nombre">
+                                placeholder="Ingrese el nombre de la dietas">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputEmail2"
-                            class="col-sm-3 col-form-label">Tipo diabetes</label>
-                        <div class="col-sm-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
+                            class="col-xl-4 col-lg-5   col-form-label">Tipo diabetes:</label>
+                        <div class="col-xl-8 col-lg-7">
                             @if(!isset($paciente))
-                          <select class="form-control" name="tipo_diabetes" >
+                          <select style="background-color:#F0F0F0;min-height:45.2px" class="form-control" name="tipo_diabetes" >
                               <option selected disabled>Seleccione una opción</option>
                               <option value="1">Tipo 1</option>
                               <option value="2">Tipo 2</option>
                               <option value="3">Gestacional</option>
                           </select>
                           @else
-                          <select class="form-control" name="tipo_diabetes" id="" >
+                          <select style="background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="tipo_diabetes" id="" >
                             <option selected disabled>{{$paciente['tipo_diabetes']}}</option>
                         </select>
                         <input type="hidden" name="tipo_diabetes" value="{{$paciente['tipo_diabetes']}}">
@@ -58,11 +61,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputEmail2"
-                            class="col-sm-3 col-form-label">Indice de masa corporal (IMC)</label>
-                        <div class="col-sm-9">
+                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase"
+                            class="col-xl-4 col-lg-5   col-form-label">Indice masa corporal (IMC):</label>
+                        <div class="col-xl-8 col-lg-7 ">
                             @if(!isset($imc))
-                          <select class="form-control" name="imc" id="" >
+                          <select style="background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="imc" id="" >
                               <option selected disabled>Seleccione una opción</option>
                               <option value="1">Bajo peso</option>
                               <option value="2">Normal</option>
@@ -70,7 +73,7 @@
                               <option value="4">Obeso</option>
                           </select>
                           @else
-                          <select class="form-control" name="imc">
+                          <select style="background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="imc">
                             <option selected disabled>{{$imc}}</option>
 
                         </select>
@@ -81,27 +84,27 @@
 
 
                     <div class="form-group row">
-                        <label for="exampleInputUsername2"
-                            class="col-sm-3 col-form-label">Fecha de finalización de la dieta</label>
-                        <div class="col-sm-9">
+                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase"
+                            class="col-xl-4 col-lg-5   col-form-label">Fecha finalización de dieta:</label>
+                        <div class="col-xl-8 col-lg-7">
                             <input  name="fecha_fin" type="date" class="form-control" id="exampleInputUsername2"
                             >
                         </div>
                     </div>
 
-
-
-
-
-                  <div style="display:flex; justify-content:center">
-
-
-                    <button type="submit" class="btn btn-primary mr-2">Agregar alimentos</button>
-                    <button class="btn btn-light mx-2">Cancelar</button>
-                  </div>
+                    <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">
+                        <div class="col-md-8 p-0 col-xl-7 justify-content-space-around">
+                            <button type="submit" class="btn btn-success mb-2 col-sm-12 col-md-6">Agregar alimentos
+                            </button>
+                            <a class="btn btn-light mb-2 col-sm-12 col-md-5" href="{{route('dieta.index')}}">Cancelar</a>
+                        </div>
+                    </div>
 
 
                 </form>
+            </div>
+        </div>
+
 
 
                 <div class="modal fade" id="exampleModal-2" tabindex="-1"
@@ -122,8 +125,8 @@
 
                                     <div class="form-group row">
                                         <label for="exampleInputEmail2"
-                                            class="col-sm-3 col-form-label">Sexo</label>
-                                        <div class="col-sm-9">
+                                            class="col-sm-4 col-form-label">Sexo</label>
+                                        <div class="col-sm-8">
                                           <select class="form-control" name="tipo_diabetes" id="" >
                                               <option selected disabled>Seleccione una opción</option>
                                               <option value="1">Femenino</option>
@@ -134,8 +137,8 @@
 
                                     <div class="form-group row">
                                         <label for="exampleInputUsername2"
-                                            class="col-sm-3 col-form-label">Peso</label>
-                                        <div class="col-sm-9">
+                                            class="col-sm-4 col-form-label">Peso</label>
+                                        <div class="col-sm-8">
                                             <input name="peso" type="text"
                                                  class="form-control"
                                                 id="exampleInputUsername2">
@@ -143,8 +146,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputUsername2"
-                                            class="col-sm-3 col-form-label">Altura</label>
-                                        <div class="col-sm-9">
+                                            class="col-sm-4 col-form-label">Altura</label>
+                                        <div class="col-sm-8">
                                             <input name="altura" type="text"
 
                                                 class="form-control" id="exampleInputUsername2">

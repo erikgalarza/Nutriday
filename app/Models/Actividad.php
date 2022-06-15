@@ -11,7 +11,6 @@ class Actividad extends Model
 
     public $fillable=[
         "nombre",
-        "duracion",
         "descripcion",
         "paciente_id"
     ];

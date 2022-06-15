@@ -13,7 +13,7 @@ use App\Http\Requests\UpdatePacienteRequest;
 
 class PacienteController extends Controller
 {
-   
+
     public function index()
     {
         // $lastRecordDate = DatosAntropometrico::all()->sortByDesc('created_at')->take(1)->toArray();
@@ -29,7 +29,7 @@ class PacienteController extends Controller
     }
 
     public function estadosPaciente($paciente_id){
-        
+
         $estados = EstadoAnimo::where('paciente_id',$paciente_id)->get();
         $paciente = Paciente::find($paciente_id);
         return view('admin.estados.estadosByPaciente',compact('estados','paciente'));
@@ -41,10 +41,11 @@ class PacienteController extends Controller
         $dietas = $paciente->dietas()->get();
         $actividades = $paciente->actividades()->get();
         $duraciones =  $paciente->actividades()->get(['duracion']);
-        return view('admin.paciente.progreso',compact('datos','dietas','actividades','duraciones'));
+        $estados = $paciente->estados_animo()->get();
+        return view('admin.paciente.progreso',compact('datos','dietas','actividades','duraciones','estados'));
     }
 
-    
+
     public function create()
     {
         return view('admin.paciente.create');
@@ -66,7 +67,7 @@ class PacienteController extends Controller
                 "estado"=>"activo"
             ]);
         }
-      
+
             return back();
     }
 
@@ -128,25 +129,25 @@ class PacienteController extends Controller
         return redirect()->route('paciente.index');
     }
 
-    
+
     public function show(Paciente $paciente)
     {
         //
     }
 
-   
+
     public function edit(Paciente $paciente)
     {
         //
     }
 
-   
+
     public function update(UpdatePacienteRequest $request, Paciente $paciente)
     {
         //
     }
 
-    
+
     public function destroy(Paciente $paciente)
     {
         //

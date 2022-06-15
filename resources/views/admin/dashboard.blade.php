@@ -297,6 +297,26 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                            aria-controls="form-elements">
+                            <div class="mr-4" style="min-width:35px">
+                                <i class="fa-solid fa-utensils fa-2x"></i>
+                            </div>
+                            <span class="menu-title">Alimentos</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{route('alimento.addAlimento')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('alimento.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('categoriaAlimento.index')}}"><i class="fa-solid fa-file-circle-plus mr-3"></i>Categorías alimentos</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('medidaAlimento.index')}}"><i class="fa-solid fa-ruler mr-3"></i>Unidades de medida</a></li>
+
+
+                            </ul>
+                        </div>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false"
@@ -316,76 +336,7 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-advanced2" aria-expanded="false"
-                            aria-controls="ui-advanced2">
-                            <div class="mr-4" style="min-width:35px">
-                                <i class="fa-solid fa-clipboard-list fa-2x"></i>
-                            </div>
-                            <span class="menu-title">Categorías</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-advanced2">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('categoriaAlimento.create')}}"> <i class="fa-solid fa-chalkboard-user mr-3"> </i>agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('categoriaAlimento.index')}}"> <i class="fa-solid fa-list mr-3"> </i>Ver todas</a></li>
-                            </ul>
-                        </div>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-advanced3" aria-expanded="false"
-                            aria-controls="ui-advanced3">
-                            <div class="mr-4" style="min-width:35px">
-                                <i class="fa-solid fa-clipboard-list fa-2x"></i>
-                            </div>
-                            <span class="menu-title">Unidades de medida</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-advanced3">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('medidaAlimento.create')}}"> <i class="fa-solid fa-chalkboard-user mr-3"> </i>agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('medidaAlimento.index')}}"> <i class="fa-solid fa-list mr-3"> </i>Ver todas</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <div class="mr-4" style="min-width:35px">
-                                <i class="fa-solid fa-utensils fa-2x"></i>
-                            </div>
-                            <span class="menu-title">Alimentos</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('alimento.addAlimento')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('alimento.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false"
-                            aria-controls="editors">
-                            <div class="mr-4" style="min-width:35px">
-                                <i class="fa-solid fa-video fa-2x"></i>
-                            </div>
-                            <span class="menu-title">Videos</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="editors">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('video.create')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('video.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
-
-                            </ul>
-                        </div>
-                    </li>
 
                     <li class="nav-item d-none d-lg-block">
                         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
@@ -404,6 +355,25 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item d-none d-lg-block">
+                        <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false"
+                            aria-controls="editors">
+                            <div class="mr-4" style="min-width:35px">
+                                <i class="fa-solid fa-video fa-2x"></i>
+                            </div>
+                            <span class="menu-title">Videos</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="editors">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{route('video.create')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('video.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
                 </ul>
             </nav>
             @endif

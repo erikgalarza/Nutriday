@@ -13,7 +13,7 @@
   </div>
   <div class="card">
     <div class=" mb-5" style="background-color:#4b6ac3 ">
-        <h3 class="card-title text-lg-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos Nutricionistas</h3>
+        <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos Nutricionistas</h3>
     </div>
     <div class="card-body text-center">
       <div class="row">
@@ -22,14 +22,11 @@
             <table id="order-listing" class="table">
               <thead>
                 <tr>
-                    <th>N #</th>
-
+                    <th>N°</th>
                     <th>Nombre</th>
-                    <th>Apellido</th>
                     <th>Especialidad</th>
                     <th>Correo</th>
                     <th>Estado</th>
-
                     <th>Acciones</th>
                 </tr>
               </thead>
@@ -38,28 +35,28 @@
                 <tr>
                     <td>{{$key+1}}</td>
 
-                    <td>{{$nutricionista->nombre}}</td>
-                    <td>{{$nutricionista->apellido}}</td>
+                    <td>{{$nutricionista->nombre}} {{$nutricionista->apellido}}</td>
                     <td>{{$nutricionista->especialidad}}</td>
                     <td>{{$nutricionista->user->email}}</td>
                     <td>
                         <label class="badge badge-success">Activo</label>
+                        <!-- Arreglar estado de nutricionistas con un botón -->
                     </td>
                     <td>
-                      <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{$nutricionista->id}}" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                        <a  class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal-2{{$nutricionista->id}}"><i class="fas fa-edit"></i></a>
+                      <a title="Ver más" style="max-width: 50px" data-toggle="modal" data-target="#exampleModal-3{{$nutricionista->id}}" class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                        <a  title="Editar nutricionista" class="btn btn-outline-warning mb-1" data-toggle="modal" data-target="#exampleModal-2{{$nutricionista->id}}"><i class="fas fa-edit"></i></a>
 
                         <form method="post" id="deletenutri{{$nutricionista->id}}" action="{{route('nutricionista.destroy',$nutricionista->id)}}" class="d-inline">
                             @csrf
                             {{method_field('DELETE')}}
-                      <a onclick="eliminarNutri({{$nutricionista}});" type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                      <a title="Eliminar nutricionista" style="min-width: 50px" onclick="eliminarNutri({{$nutricionista}});" type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
                         </form>
                     </td>
                 </tr>
 
 
-                <div class="modal fade" style="min-width:600px !important;" id="exampleModal-2{{$nutricionista->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                    <div class="modal-dialog" style="min-width:600px !important;" role="document">
+                <div class="modal fade"  id="exampleModal-2{{$nutricionista->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog"  role="document">
                       <div class="modal-content">
                         <div class="modal-header"style="background-color:#4b6ac3">
                           <div >
@@ -69,8 +66,9 @@
                             <span  style="color:white;font-size:30px" aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body" style="padding:1.5rem 6rem">
-
+                        <div class="modal-body py-2 px-0">
+                            <div class="col-12 row m-0 justify-content-center">
+                                <div class="col-sm-9  col-11 text-left">
                         <form method="POST" action="{{route('nutricionista.update',$nutricionista->id)}}" >
                         @csrf
                         {{ method_field('PATCH') }}
@@ -116,8 +114,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-2" style="font-weight:bold">
-                                <label  for="exampleInputUsername2"
+                            <div class="form-group row mb-2">
+                                <label   style="font-weight:bold;font-size:11px"
                                     class="col-sm-3 col-form-label text-left">Contraseña:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px; background-color:#F0F0F0"  name="password" type="text" placeholder="Nueva contraseña" class="form-control" id="exampleInputUsername2"
@@ -125,71 +123,104 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer" style="justify-content: center; align-items:center">
-                                <button type="submit"class="btn btn-success">Guardar</button>
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                        <div class="modal-footer mt-2 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+
+                              <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                              <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>
+                            </div>
                         </div>
                     </form>
+                </div>
+            </div>
+
                       </div>
                     </div>
                   </div>
 
+                  <style>
+                  @media (max-width:576px){
+                         .mb-1{
+                        padding-left:5px;
+                                }
+                                .img-thumbnail{
+                          height:85%;
+                      }
+                            }
+                      @media (min-width:576px){
+                      .dialogoss{
+                        min-width:600px !important;
+                      }
+                      .img-thumbnail{
+                          height:100%;
+                          width: 100%;
+                      }
+
+                    }
+                  </style>
 
 
-
-                    <div class="modal fade"style="min-width:600px !important;" id="exampleModal-3{{$nutricionista->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog"style="min-width:600px !important;" role="document">
+                    <div class="modal fade" id="exampleModal-3{{$nutricionista->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog dialogoss"  role="document">
                       <div class="modal-content">
                         <div class="modal-header" style="background-color:#4b6ac3">
-                            <h5 class="modal-title text-lg-center text-white" style="text-transform: upperca; font-weight:bold; font-size:16px" id="ModalLabel">Datos nutricionista</h5>
+                            <h5 class="modal-title text-lg-center text-white" style="text-transform: uppercase; font-weight:bold; font-size:16px" id="ModalLabel">Datos nutricionista</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body d-flex text-center" >
+                        <div class="modal-body py-3 px-0" >
 
-                            <div class="col-5 mr-3 d-flex" style="align-items:center;justify-content:center">
-                                @if(isset($nutricionista->imagen->url)  )
-                                <img class="img-thumbnail " style="max-width:200px;" src="{{$nutricionista->imagen->url}}">
-                                @else
-                                <img class="img-thumbnail" style="width:100%; height:90%" src="{{asset('img/mujer.png')}}">
+                            <div class="col-12 row m-0 justify-content-center">
+                                <div class="col-sm-12 row col-11 text-left justify-content-center">
+
+                            <div class="col-7 col-sm-5 mr-2 row justify-content-center ">
+                                <div class="col-sm-11 p-0 col-12 d-flex text-center align-items-center justify-content-center">
+                                    @if(isset($nutricionista->imagen->url)  )
+                                    <img class="img-thumbnail p-0" src="{{$nutricionista->imagen->url}}">
+                                    @else
+                                    <img class="img-thumbnail p-0" src="{{asset('img/mujer.png')}}">
                                 @endif
+                                </div>
                             </div>
 
-                            <div class="col-7 mt-3" >
-
-                                <div class="form-group row mb-1">
-                                    <label class="col-4 text-left"><strong>Nombre:</strong></label>
-                                    <label class="col-8 text-left" >{{$nutricionista->nombre}}</label>
-
-                                </div>
-                                <div class="form-group row mb-1">
-                                    <label class="col-4 text-left" ><strong>Apellido:</strong></label>
-                                    <label class="col-8 text-left" >{{$nutricionista->apellido}}</label>
+                            <div class="col-sm-7 col-5 p-2 row justify-content-center" >
+                                <div class="col-11">
+                                <div class="form-group row mb-1 ">
+                                    <label class="col-sm-4  text-left p-0"><strong>Nombre:</strong></label>
+                                    <label class="col-sm-8  text-left p-0" >{{$nutricionista->nombre}} {{$nutricionista->apellido}}</label>
 
                                 </div>
                                 <div class="form-group row mb-1">
-                                    <label class="col-4 text-left" ><strong>Cedula:</strong></label>
-                                    <label class="col-8 text-left" > {{$nutricionista->cedula}}</label>
+                                    <label class="col-sm-4  text-left p-0" ><strong>Cedula:</strong></label>
+                                    <label class="col-sm-8  text-left p-0" > {{$nutricionista->cedula}}</label>
 
                                 </div>
                                 <div class="form-group row mb-1">
-                                    <label class="col-4 text-left" ><strong>Teléfono:</strong></label>
-                                    <label class="col-8 text-left" >{{$nutricionista->telefono}}</label>
+                                    <label class="col-sm-4  text-left  p-0" ><strong>Teléfono:</strong></label>
+                                    <label class="col-sm-8  text-left  p-0" >{{$nutricionista->telefono}}</label>
 
                                 </div>
                                 <div class="form-group row mb-1">
-                                    <label class="col-4 text-left" ><strong>Correo:</strong></label>
-                                    <label class="col-8 text-left" >{{$nutricionista->user->email}}</label>
+                                    <label class="col-sm-4  text-left  p-0" ><strong>Correo:</strong></label>
+                                    <label class="col-sm-8  text-left  p-0" >{{$nutricionista->user->email}}</label>
 
                                 </div>
 
                                 <div class="form-group row mb-1">
-                                    <label class="col-4 text-left" ><strong>Especialidad:</strong></label>
-                                    <label class="col-8 text-left" >{{$nutricionista->especialidad}}</label>
+                                    <label class="col-sm-4  text-left p-0" ><strong>Especialidad:</strong></label>
+                                    <label class="col-sm-8   text-left p-0" >{{$nutricionista->especialidad}}</label>
+                                </div>
+
+                                <div class="form-group row mb-1">
+                                    <label class="col-sm-4   text-left p-0" ><strong>Activo desde:</strong></label>
+                                    <label class="col-sm-8  text-left p-0" >{{$nutricionista->created_at}}</label>
                                 </div>
                             </div>
                         </div>
+                        </div>
+                    </div>
+                </div>
                     </div>
 
                         </div>

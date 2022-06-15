@@ -13,8 +13,8 @@
     </div>
 
     <div class="card ">
-        <div class="mb-5" style="background-color:#4b6ac3">
-            <h3 class="card-title text-lg-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Seguimiento de Progreso</h3>
+        <div class="mb-3" style="background-color:#4b6ac3">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Seguimiento de Progreso</h3>
         </div>
         <div class="row px-3" style="margin-top:10px;">
             <div class="col-md-6 grid-margin stretch-card">
@@ -45,13 +45,13 @@
     </div>
 
     <div class="card mt-5">
-        <div class="mb-5" style="background-color:#4eba74">
-            <h3 class="card-title text-lg-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Historial antropométrico del paciente</h3>
+        <div class="mb-3" style="background-color:#4eba74">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Historial antropométrico del paciente</h3>
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 text-center">
-                    <div class="table-responsive">
+                <div class="col-12 text-center justify-content-center row">
+                    <div class="table-responsive w-75">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
@@ -104,12 +104,12 @@
 
         <div class="card mt-5 text-center">
             <div class="mb-5" style="background-color:#7c7ce4">
-                <h3 class="card-title text-lg-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Dietas asignadas</h3>
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Dietas asignadas</h3>
             </div>
 
              <div class="row">
-            <div class="col-12">
-                <div class="table-responsive">
+            <div class="col-12 text-center justify-content-center row" >
+                <div class="table-responsive w-75">
                     <table id="order-listing" class="table mb-5">
                         <thead>
                             <tr>
@@ -137,17 +137,19 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div class="card mt-5">
-            <div class="mb-5" style="background-color:#4eba74">
-                <h3 class="card-title text-lg-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Actividades del paciente</h3>
+
+        <div class="card  mt-5 text-center">
+            <div class="mb-3" style="background-color:#4869c4">
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Actividades del paciente</h3>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="table-responsive">
-                            <table id="order-listing" class="table">
+                    <div class="col-12 text-center justify-content-center row">
+                        <div class="table-responsive w-75">
+                            <table id="order-listing" class="table mb-4">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -165,7 +167,7 @@
                                             <td>{{ $duraciones[$key]->duracion }}</td>
                                             <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
                                             <td>{{ $dato->created_at }}</td>
-                                            
+
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -173,17 +175,51 @@
                         </div>
                     </div>
                 </div>
-    
             </div>
+        </div>
+
+
+        <div class="card  mt-5 text-center">
+            <div class="mb-3" style="background-color:#4eba74">
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Estados de ánimo del paciente</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 text-center justify-content-center row">
+                        <div class="table-responsive w-75">
+                            <table id="order-listing" class="table mb-4">
+                                <thead>
+                                    <tr>
+                                        <th>N°</th>
+                                        <th>Estado</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($estados as $key => $estado)
+                                        <tr>
+                                            <td>{{$key+1}}</td>
+                                            <td>{{ $estado->nombre }}</td>
+                                            <td>{{ $estado->descripcion }}</td>
+                                            <td>{{ $estado->created_at}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         </div>
     </div>
 </div>
 
 
-
-
-
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -193,3 +229,5 @@
     <script src="{{ asset('administracion/js/historialPaciente.js') }}"></script>
     <script src="{{asset('administracion/js/dietasPaciente.js')}}"></script>
 @endsection
+
+

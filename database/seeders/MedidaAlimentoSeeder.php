@@ -8,14 +8,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class MedidaAlimentoSeeder extends Seeder
 {
-   
+
     public function run()
     {
-        MedidaAlimento::create(["medida"=>"gramos"]);
-        MedidaAlimento::create(["medida"=>"libras"]);
-        MedidaAlimento::create(["medida"=>"kilogramos"]);
-        MedidaAlimento::create(["medida"=>"mililitros"]);
-        MedidaAlimento::create(["medida"=>"litros"]);
+        MedidaAlimento::create(["medida"=>"gramos","abreviatura"=>"gr"]);
+        MedidaAlimento::create(["medida"=>"libras","abreviatura"=>"lb"]);
+        MedidaAlimento::create(["medida"=>"kilogramos","abreviatura"=>"kg"]);
+        MedidaAlimento::create(["medida"=>"mililitros","abreviatura"=>"ml"]);
+        MedidaAlimento::create(["medida"=>"litros","abreviatura"=>"lt"]);
 
     }
 }

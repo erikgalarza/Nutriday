@@ -12,25 +12,35 @@
     </nav>
 </div>
 <div class="row">
-    
+
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Unidades de medida </h4>
-               
+            <div class="mb-3" style="background-color:#4b6ac3">
+                <h3 class="card-title titulosa text-lg-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos de la unidad de medida</h3>
+                </div>
+            <div class="card-body" style="padding-right:13rem;padding-left:13rem">
+
+
                 <form method="POST"  class="forms-sample" action="{{route('medidaAlimento.store')}}" enctype="multipart/form-data">
                     @csrf
-                   
-                    <div class="form-group row">
-                        <label for="exampleInputUsername2"
-                            class="col-sm-3 col-form-label">Medida</label>
-                        <div class="col-sm-9">
-                            <input  name="medida" type="text" class="form-control"
-                                >
+
+                    <div class="form-group row mb-3">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
+                            class="col-sm-3 col-form-label">Nombre de la medida:</label>
+                        <div class="col-sm-9" >
+                            <input style="border-radius:10px; name="medida" type="text" class="form-control" placeholder="Ingrese el nombre">
                         </div>
                     </div>
-                  
-                    <button type="submit" class="btn btn-primary mr-2">Guardar</button>
+                    <div class="form-group row">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
+                            class="col-sm-3 col-form-label">Abreviatura de la medida:</label>
+                        <div class="col-sm-9" >
+                            <input style="border-radius:10px;" name="abreviatura" type="text" class="form-control" placeholder="Ingrese la abreviatura">
+                        </div>
+                    </div>
+                    <div class="mt-5 form-group text-center">
+                    <button type="submit" onclick="windows.location.href='{{route('medidaAlimento.index')}}'" class="btn btn-success mr-2">Guardar</button>
+                    <a type="button" class="btn btn-light" href="{{route('medidaAlimento.index')}}">Cancelar</a>
                 </form>
             </div>
         </div>

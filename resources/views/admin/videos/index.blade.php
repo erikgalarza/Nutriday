@@ -27,7 +27,6 @@
                     </div>
                     <div class="card-body text-center">
                         <div class="text-center" style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
-                            @foreach ($videos_receta as $video_receta)
                                 {{-- <div class="container_video" >
                               <div class="opciones" style="display:flex; justify-content:flex-end;">
                                   <a class="btn btn-warning" data-toggle="modal"

@@ -7,7 +7,7 @@
     <div class="page-header" style="display:flex; text-align:center; justify-content:center; align-items:center;">
         <div>
             <h3 class="page-title">
-                Dietas {{ $dieta->id }}
+              Crear dieta
             </h3>
         </div>
         @if(isset($paciente))
@@ -16,8 +16,6 @@
 
 
         <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
-
-
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -29,48 +27,81 @@
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
+                <div class=" " style="background-color:#4b6ac3 ">
+                    <h3 class="card-title text-lg-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">
+                    Agregar alimentos
+                    </h3>
+                </div>
+                <style>
+                    @media (min-width:768px){
+                        div.col-form-label{
+
+                        }  ;
+                    }
+                </style>
                 <div class="card-body">
-                    <div style="display:flex; justify-content:evenly;">
-                        <h4 class="card-title">Diabetes: Tipo
-                            @if ($dieta->tipo_diabetes == 3)
-                                (Gestacional)
-                            @else
-                                {{ number_format($dieta->tipo_diabetes, 0) }}
-                            @endif
+                    <div class=" col-md-12  row justify-content-center mt-1 mb-2 p-0 ml-0">
+                        <div class="col-md-10"  style="border:1px dashed;border-radius:8px;background-color:#F0F0F0p">
+                            <div class="col-12  row justify-content-center p-2 m-0 px-0" style="min-width: 100%">
+                                <div class="col-lg-2 col-md-3 form-group mb-1 text-center">
+                                    <label class="col-xl-4 col-md-12 col-form-label mb-0 p-2"><strong>N°</strong></label>
+                                    <label class="col-xl-4 col-md-12 col-form-label mb-0 p-2">{{ $dieta->id }}</label>
+                                </div>
+                                <div class="col-4 form-group row mb-0 text-center">
+                                    <label class="col-xxl-6 col-xl-12 col-form-label mb-0 p-2 "> <strong> Nombre de la dieta</strong></label>
+                                    <label class="col-xxl-6 col-xl-12 col-form-label mb-0 p-2">{{$dieta->nombre}}</label>
+                                 </div>
+                                <div class="col-3 form-group row mb-1 text-center">
+                                    <label class="col-xxl-6 col-xl-12 col-form-label mb-0 p-2"><strong>Tipo diabetes</strong></label>
+                                  @if ($dieta->tipo_diabetes == 3)
+                                    <label class="col-form-label col-xxl-6 col-xl-12 mb-0 p-2 ">Tipo (Gestacional)</label>
+                                    @else
+                                       <label class="col-form-label col-xxl-6 col-xl-12 mb-0 p-2">Tipo {{ number_format($dieta->tipo_diabetes, 0) }}</label>
+                                    @endif
+                                </div> <!-- div de tipo diabetes -->
+                                    <div class="col-3 form-group row mb-1 text-center">
+                                        <label class="col-form-label col-xxl-4 col-xl-12 mb-0 p-2"> <strong>IMC</strong></label>
+                                        <label class="col-form-label col-xxl-8 col-xl-12 mb-0 p-2">Bajo peso </label>
 
-                        </h4>
-                        @if (isset($imc))
-                            <h4 class="card-title mx-5">Estado del IMC: {{ $imc }}
-                                @if ($imc <= 18.4)
-                                    (Bajo peso)
-                                @endif
-                                @if ($imc >= 18.5 && $imc <= 24.9)
-                                    (Normal)
-                                @endif
-                                @if ($imc >= 25 && $imc <= 29.9)
-                                    (Sobrepeso)
-                                @endif
-                                @if ($imc >= 30)
-                                    (Obeso)
-                                @endif
+                                        @if (isset($imc))
+                                            @if ($imc <= 18.4)
+                                            <label class="col-form-label col-12">(Bajo peso)</label>
+                                            @endif
+                                            @if ($imc >= 18.5 && $imc <= 24.9)
+                                            <label class="col-form-label col-12">(Normal)</label>
+                                            @endif
+                                            @if ($imc >= 25 && $imc <= 29.9)
+                                            <label class="col-form-label col-12">(Sobrepeso)</label>
+                                            @endif
+                                            @if ($imc >= 30)
+                                            <label class="col-form-label col-12">(Obeso)</label>
+                                            @endif
+                                    @endif
+                                </div>
 
-                            </h4>
-                        @endif
+                            </div>
+                        </div>
                     </div>
+                    <style>
+                        li.navi:last-child{
+                         margin-right: 0;
+                       }
+                   </style>
                     <a onclick="guardarDieta();" class="btn btn-outline-success">Guardar dieta</a>
-                    <ul class="nav nav-pills nav-pills-success" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills nav-pills-success text-center row justify-content-center align-items-center" id="pills-tab" role="tablist">
                         @php
                             $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
                         @endphp
 
                         @for ($i = 0; $i <= 6; $i++)
-                            <li class="nav-item my-2 text-center text-center" style="min-width:123.5px;">
+                            <li class="nav-item my-2 text-center navi" style="min-width:123.5px;">
                                 <a class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-dia{{ $i }}-tab"
                                     data-toggle="pill" href="#pills-dia{{ $i }}" role="tab"
                                     aria-controls="pills-dia{{ $i }}"
                                     aria-selected="true">{{ $dias[$i] }}</a>
                             </li>
                         @endfor
+
 
                     </ul>
 

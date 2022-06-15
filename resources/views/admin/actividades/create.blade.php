@@ -50,8 +50,9 @@
                         </div>
                     </div>
 
-                  <div class="mt-5" style="display:flex; justify-content:center">
-                    <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                  <div class="mt-5 form-group text-center" style="display:flex; justify-content:center">
+                    <button type="submit"  class="btn btn-success mr-2">Guardar</button>
+                    <a type="button" class="btn btn-light" href="{{route('actividad.index')}}">Cancelar</a>
                   </div>
 
 

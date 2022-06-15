@@ -12,37 +12,41 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ActividadController extends Controller
 {
-   
+
 
     public function pacientes()
     {
         $pacientes = Paciente::all();
+
         // $duraciones=collect();
         foreach($pacientes as $paciente)
         {
            $duraciones = $paciente->actividades()->get(['duracion']);
         //    dd($duracion);
         }
-        
+
         return view('admin.actividades.pacientes',compact('pacientes','duraciones'));
     }
 
     public function guardarAsignacion(Request $request)
     {
+
         $paciente = Paciente::find($request->paciente_id);
         foreach($request->actividad_id as $key => $actividad){
-         
+
             $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key]]);
         }
-        return back();
+        return redirect()->route('actividad.pacientes');
     }
 
     public function asignar($paciente_id)
     {
-        // $pacientes = Paciente::all();
+
         $paciente = Paciente::find($paciente_id);
+        $datos = $paciente->dato_antropometrico()->get();
         $actividades = Actividad::all();
-        return view('admin.actividades.asignar',compact('paciente','actividades'));
+
+        return view('admin.actividades.asignar',compact('paciente','actividades','datos'));
     }
 
     public function index()
@@ -61,7 +65,7 @@ class ActividadController extends Controller
         return view('admin.actividades.create');
     }
 
-    
+
     public function store(Request $request)
     {
         // validacion
@@ -84,17 +88,17 @@ class ActividadController extends Controller
             ]);
         }
 
-     
+
         return redirect()->route('actividad.index');
     }
 
-  
+
     public function show(Actividad $actividad)
     {
         //
     }
 
-  
+
     public function edit(Actividad $actividad)
     {
         //
@@ -112,7 +116,7 @@ class ActividadController extends Controller
         $actividad = Actividad::find($id);
         $actividad->update([
             "nombre"=>$request->nombre,
-            "duracion"=>$request->duracion,
+            "descripcion"=>$request->descripcion,
         ]);
 
         $file = $request->imagen;
@@ -142,7 +146,7 @@ class ActividadController extends Controller
     return back();
 }
 
- 
+
     public function destroy($id)
     {
         $actividad = Actividad::find($id);

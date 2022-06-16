@@ -12,6 +12,7 @@
     <script src="{{ asset('administracion/js/todolist.js') }}"></script>
     <script src="{{asset('administracion/js/select2.js')}}"></script>
     <script src="https://kit.fontawesome.com/50e215d7ac.js" crossorigin="anonymous"></script>
+    <script src="{{asset('administracion/js/data-table.js')}}"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
     {{-- <script src="{{ asset('administracion/js/dashboard.js') }}"></script>  este carga las animaciones de graficas y demas--}}

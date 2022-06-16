@@ -465,16 +465,5 @@
             </div>
         </div>
     </div>
-
-
-    <div class="col-md-6 grid-margin stretch-card">
-
-
-        <!-- Dummy Modal Ends -->
-        <!-- Modal starts -->
-
-
-        <!-- Modal Ends -->
-
-    </div>
+    
 @endsection

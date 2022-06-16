@@ -22,28 +22,30 @@
                 <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente</h3>
                 @endif
             </div>
-            <div class="card-body" >
+            <div class="card-body">
                 <div class="col-12 row justify-content-center">
-                    <div class="col-md-10 col-xl-9 col-12 text-left">
+                    <div class="col-lg-9 col-md-8 col-12 text-left ">
+                        <div class="container">
                 <form method="POST" action="{{route('dieta.store')}}" enctype="multipart/form-data" class="forms-sample">
                     @csrf
                     @if(isset($paciente))
                     <input type="hidden" name="paciente" value="{{$paciente}}">
                     @endif
 
-                    <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5  col-form-label">Nombre de la dieta:</label>
-                        <div class="col-xl-8 col-lg-7 ">
-                            <input  name="nombre" type="text" class="form-control" id="exampleInputUsername2"
+                        <div class="form-group row no-gutters">
+                            <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
+                            class="col-xl-3 col-lg-5  col-form-label ">Nombre de la dieta:</label>
+                            <div class="col-xl-9 col-lg-7 ">
+                                <input  name="nombre" type="text" class="form-control" id="exampleInputUsername2"
                                 placeholder="Ingrese el nombre de la dietas">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
+
+                    <div class="form-group row no-gutters">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5   col-form-label">Tipo diabetes:</label>
-                        <div class="col-xl-8 col-lg-7">
+                            class="col-xl-3 col-lg-5   col-form-label">Tipo de diabetes:</label>
+                        <div class="col-xl-9 col-lg-7">
                             @if(!isset($paciente))
                           <select style="background-color:#F0F0F0;min-height:45.2px" class="form-control" name="tipo_diabetes" >
                               <option selected disabled>Seleccione una opción</option>
@@ -60,10 +62,10 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5   col-form-label">Indice masa corporal (IMC):</label>
-                        <div class="col-xl-8 col-lg-7 ">
+                    <div class="form-group row  no-gutters">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
+                            class="col-xl-3 col-lg-5 col-form-label">IMC: <button class="ml-3" disabled  title="IMC es Índice de masa corporal " style="border-radius:10px; border:1px solid grey"><i class="fas fa-info"></i></button></label>
+                        <div class="col-xl-9 col-lg-7 ">
                             @if(!isset($imc))
                           <select style="background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="imc" id="" >
                               <option selected disabled>Seleccione una opción</option>
@@ -83,10 +85,10 @@
                     </div>
 
                     @if(isset($paciente))
-                    <div class="form-group row">
+                    <div class="form-group row no-gutters">
                         <label style="font-weight:bold; font-size:11px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5   col-form-label">Fecha finalización de dieta:</label>
-                        <div class="col-xl-8 col-lg-7">
+                            class="col-xl-3 col-lg-5 col-form-label">Fecha finalización de dieta:</label>
+                        <div class="col-xl-9 col-lg-7">
                             <input  name="fecha_fin" type="date" class="form-control" id="exampleInputUsername2"
                             >
                         </div>
@@ -104,6 +106,7 @@
 
                 </form>
             </div>
+        </div>
         </div>
 
 

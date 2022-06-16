@@ -39,6 +39,9 @@
                         <div class="col-md-10" style="border:1px dashed;border-radius:8px;background-color:#F0F0F0p">
                             <div class="col-12  row justify-content-center p-2 m-0 px-0" style="min-width: 100%">
                                 <div class="col-lg-2 col-md-3 form-group mb-1 text-center">
+                                    @if(isset($paciente))
+                                    <label>{{$paciente['nombre']}} {{ $paciente['apellido'] }}</label>
+                                    @endif
                                     <label class="col-xl-4 col-md-12 col-form-label mb-0 p-2"><strong>N°</strong></label>
                                     <label class="col-xl-4 col-md-12 col-form-label mb-0 p-2">{{ $dieta->id }}</label>
                                 </div>
@@ -50,6 +53,7 @@
                                 <div class="col-3 form-group row mb-1 text-center">
                                     <label class="col-xxl-6 col-xl-12 col-form-label mb-0 p-2"><strong>Tipo
                                             diabetes</strong></label>
+                                @if(!isset($paciente))
                                     @if ($dieta->tipo_diabetes == 3)
                                         <label class="col-form-label col-xxl-6 col-xl-12 mb-0 p-2 ">Tipo
                                             (Gestacional)</label>
@@ -57,6 +61,16 @@
                                         <label class="col-form-label col-xxl-6 col-xl-12 mb-0 p-2">Tipo
                                             {{ number_format($dieta->tipo_diabetes, 0) }}</label>
                                     @endif
+                                @else
+                                    @if ($paciente['tipo_diabetes'] == 3)
+                                        <label class="col-form-label col-xxl-6 col-xl-12 mb-0 p-2 ">Tipo
+                                        (Gestacional)</label>
+                                        @else
+                                        <label class="col-form-label col-xxl-6 col-xl-12 mb-0 p-2">Tipo
+                                        {{ number_format($paciente['tipo_diabetes'], 0) }}</label>
+                                    @endif
+
+                                @endif
                                 </div> <!-- div de tipo diabetes -->
                                 <div class="col-3 form-group row mb-1 text-center">
                                     <label class="col-form-label col-xxl-4 col-xl-12 mb-0 p-2"> <strong>IMC</strong></label>

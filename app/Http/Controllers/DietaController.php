@@ -23,7 +23,24 @@ class DietaController extends Controller
     public function index()
     {
         $dietas = Dieta::all();
-       return view('nutri.dieta.index',compact('dietas'));
+        $pacientes = Paciente::all();
+        // dd($dietas[0]->pacientes()->get());
+        $dietas_predefinidas = collect();
+        $dietas_asignadas = collect();
+        $pacientesc = collect();
+        foreach($pacientes as $paciente)
+        {
+           $pacientesc->push($paciente);
+        }
+        // dd($pacientesc[0]->dietas()->get());
+                foreach($dietas as $dieta)
+                {
+            if($dieta->imc>=1 && $dieta->imc<=4){
+                $dietas_predefinidas->push($dieta);
+            }else
+                $dietas_asignadas->push($dieta);
+        }
+       return view('nutri.dieta.index',compact('dietas_predefinidas','pacientesc'));
     }
     use DiasTrait;// trait: se usan para reutilizar metodos de una clase 
     public function guardarDieta(Request $request)
@@ -82,15 +99,15 @@ class DietaController extends Controller
 
     public function guardarDietaAsignada(Request $request)
     {
-       
+     
         // $dieta = Dieta::find($request->dieta_id);
         $paciente = Paciente::find($request->paciente_id);
         $dieta = Dieta::find($request->dieta_id);
-        $dieta->update([
-            "fecha_fin"=>$request->fecha_fin
-        ]);
+        $dieta->pacientes()->attach($paciente->id, ['created_at'=>$request->fecha_fin]);
+        // $dieta->update([
+        //     "fecha_fin"=>$request->fecha_fin
+        // ]);
 
-        $paciente->dietas()->attach($request->dieta_id);
        
         return back();
         // $alimento->dietas()->attach($dieta->id);
@@ -125,9 +142,9 @@ class DietaController extends Controller
             "imc"=>$request->imc,
         ]);
         
-        // dd($dieta);
-
+        
         $imc = $request->imc;
+    
         $alimentos = Alimento::all();
         if($request->paciente){
             $pacienteNuevo = json_decode($request->paciente);

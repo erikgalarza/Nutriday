@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cedula',10);
             $table->string('telefono',10);
             $table->unsignedBigInteger('user_id');
+            $table->string('estado')->default('activo');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

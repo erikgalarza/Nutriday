@@ -17,7 +17,8 @@ class NutricionistaController extends Controller
     //listar todos los nutri
     public function index()
     {
-        $nutricionistas = Nutricionista::all();
+        // $nutricionistas = Nutricionista::all();
+        $nutricionistas = User::role('Nutricionista')->get();
     
         return view('admin.nutricionistas.index',compact('nutricionistas'));
     }
@@ -180,7 +181,19 @@ class NutricionistaController extends Controller
 
     public function destroy($id)
     {
-        Nutricionista::destroy($id);
+        // Nutricionista::destroy($id);
+        $nutri = Nutricionista::where('user_id',$id)->first();
+        // dd($nutri);
+        if($nutri->estado=="activo")
+        {
+            $nutri->update([
+                "estado"=>"inactivo"
+            ]);
+        }else{
+            $nutri->update([
+                "estado"=>"activo"
+            ]);
+        }
         return back();
     }
 }

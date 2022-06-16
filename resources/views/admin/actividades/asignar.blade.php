@@ -135,13 +135,23 @@
                                 </tbody>
                             </table>
                             <div id="contenedor" class=" col-12" style="  display:flex; justify-content:space-between;  align-items:center; flex-wrap:wrap; flex-direction:row;border-top:1px dashed">
+
                             </div>
 
+                            @if(count($actividades)>0)
                             <div class="opciones col-12 py-2 my-1" style="display:flex; position:sticky;
                             bottom: 0px; justify-content:center; align-items:center;">
                                 {{-- <label class="col-form-label">Agregar actividad</label> --}}
                                 <a id="agregar" onclick="agregar();" class="btn btn-warning my-4"><i class="fas fa-plus mr-3"></i>Agregar actividad</a>
                             </div>
+                            @else
+                            <div class="opciones col-12 py-2 my-1" style="display:flex; position:sticky;
+                            bottom: 0px; justify-content:center; align-items:center;">
+                               <label class="badge badge-danger">No hay actividades para asignar</label>
+                            </div>
+                            @endif
+
+
                         </div>
 
                         <div class=" mt-5 form-group text-center">
@@ -179,19 +189,19 @@
 
 
         var a = document.createElement("a");
+     
+
+     
            for(let j = 0; j<actividades.length; j++)
             {
                 h5.className+="text-left col-1";
                 let indice = document.createTextNode(i);
                 h5.appendChild(indice)
-
-
                 let option = document.createElement("option");
                 option.setAttribute("value", actividades[j].id);
                 let optionTexto = document.createTextNode(actividades[j].nombre);
                 option.appendChild(optionTexto);
                 select.appendChild(option);
-
 
 
             div.className+="col-sm-3";
@@ -217,7 +227,7 @@
 
             console.log(contenedor)
 
-
+        
         }
 
 

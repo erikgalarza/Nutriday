@@ -41,7 +41,10 @@
                     <td>{{$admin->administradores->telefono}}</td> --}}
                     <td>{{$admin->email}}</td>
                     <td>
-                        <label class="badge badge-success">Activo</label>
+               
+
+                        <a onclick="eliminarAdmin({{$admin}});" class="btn {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
+                      
                         <!-- Arreglar el estado de los administradores como un boton -->
                     </td>
                     <td>

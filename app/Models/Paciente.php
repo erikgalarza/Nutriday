@@ -23,7 +23,6 @@ class Paciente extends Authenticatable
         "edad",
         "user_id",
         "estado"
-
     ];
 
     public $timestamps = false;

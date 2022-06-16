@@ -19,7 +19,6 @@ class AdminController extends Controller
 
     public function listarPacientes()
     {
-       
         $pacientes = User::role('Cliente')->get();
         return view('admin.paciente.index',compact('pacientes'));
     }
@@ -34,7 +33,6 @@ class AdminController extends Controller
     {
         $hashpass = Hash::make($request->password);
        $user = User::find(Auth::id());
-       
        if($request->password!=null)
             $user->update(["password"=>$hashpass]);
 
@@ -61,7 +59,7 @@ class AdminController extends Controller
 
     public function listar(){
         $admins = User::role('Administrador')->get();
-        $administradores = collect(Admin::class);
+        // $administradores = collect(Admin::class);
         // foreach($admins as $admin){
         //     dd($admin->administradores);
         //     // $administradores->push($admin);
@@ -127,8 +125,19 @@ class AdminController extends Controller
     
     public function destroy($id)
     {
-        
-        User::destroy($id);
+        // dd($id);
+        $admin = Admin::where('user_id',$id)->first();
+
+        if($admin->estado=="activo")
+        {
+            $admin->update([
+                "estado"=>"inactivo"
+            ]);
+        }else{
+            $admin->update([
+                "estado"=>"activo"
+            ]);
+        }
         return back();
     }
 }

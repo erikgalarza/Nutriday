@@ -35,11 +35,11 @@
                 <tr>
                     <td>{{$key+1}}</td>
 
-                    <td>{{$nutricionista->nombre}} {{$nutricionista->apellido}}</td>
-                    <td>{{$nutricionista->especialidad}}</td>
-                    <td>{{$nutricionista->user->email}}</td>
+                    <td>{{$nutricionista->nutricionistas->nombre}} {{$nutricionista->nutricionistas->apellido}}</td>
+                    <td>{{$nutricionista->nutricionistas->especialidad}}</td>
+                    <td>{{$nutricionista->email}}</td>
                     <td>
-                        <label class="badge badge-success">Activo</label>
+                        <a onclick="eliminarNutri({{$nutricionista}});" class="btn {{$nutricionista->nutricionistas->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$nutricionista->nutricionistas->estado}}</a>
                         <!-- Arreglar estado de nutricionistas con un botón -->
                     </td>
                     <td>
@@ -77,7 +77,7 @@
                                 <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Nombre:</label>
                                 <div class="col-sm-9">
-                                    <input style="border-radius:10px"  name="nombre" type="text" value="{{$nutricionista->nombre}}" class="form-control" id="exampleInputUsername2"
+                                    <input style="border-radius:10px"  name="nombre" type="text" value="{{$nutricionista->nutricionistas->nombre}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                 <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Apellido:</label>
                                 <div class="col-sm-9">
-                                    <input style="border-radius:10px"  name="apellido" type="text" value="{{$nutricionista->apellido}}" class="form-control" id="exampleInputUsername2"
+                                    <input style="border-radius:10px"  name="apellido" type="text" value="{{$nutricionista->nutricionistas->apellido}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                 <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Cédula:</label>
                                 <div class="col-sm-9">
-                                    <input style="border-radius:10px"  name="cedula" type="text" value="{{$nutricionista->cedula}}" class="form-control" id="exampleInputUsername2"
+                                    <input style="border-radius:10px"  name="cedula" type="text" value="{{$nutricionista->nutricionistas->cedula}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                 <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Teléfono:</label>
                                 <div class="col-sm-9">
-                                    <input style="border-radius:10px"  name="telefono" type="text" value="{{$nutricionista->telefono}}" class="form-control" id="exampleInputUsername2"
+                                    <input style="border-radius:10px"  name="telefono" type="text" value="{{$nutricionista->nutricionistas->telefono}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                                 <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Email:</label>
                                 <div class="col-sm-9">
-                                    <input style="border-radius:10px"  name="correo" type="text" value="{{$nutricionista->user->email}}" class="form-control" id="exampleInputUsername2"
+                                    <input style="border-radius:10px"  name="correo" type="text" value="{{$nutricionista->email}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="form-group row mb-1">
                                     <label class="col-sm-4  text-left  p-0" ><strong>Correo:</strong></label>
-                                    <label class="col-sm-8  text-left  p-0" >{{$nutricionista->user->email}}</label>
+                                    <label class="col-sm-8  text-left  p-0" >{{$nutricionista->email}}</label>
 
                                 </div>
 

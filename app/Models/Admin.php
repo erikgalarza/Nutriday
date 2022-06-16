@@ -11,7 +11,7 @@ class Admin extends Authenticatable
 {
     use HasFactory, HasRoles;
     public $fillable=[
-        "nombre","cedula","telefono"
+        "nombre","cedula","telefono","estado","user_id"
     ];
    
     protected $guard_name = 'web';

@@ -72,7 +72,8 @@ class AlimentoController extends Controller
     {
         $alimentos = Alimento::all();
         $dieta = Dieta::find($dieta_id);
-        return view('admin.alimentos.create',compact('dieta','alimentos'));
+        $imc = $dieta->imc;
+        return view('admin.alimentos.create',compact('dieta','alimentos','imc'));
     }
 
     public function agregarAlimento()

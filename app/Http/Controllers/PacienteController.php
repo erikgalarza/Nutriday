@@ -10,6 +10,7 @@ use App\Models\DatosAntropometrico;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class PacienteController extends Controller
 {
@@ -115,18 +116,34 @@ class PacienteController extends Controller
 
     public function guardarDatosAntropometricos(Request $request)
     {
+        // dd($request);
         $paciente = Paciente::find($request->id_paciente);
-        $paciente->dato_antropometrico()->create([
+        // $datos = DatosAntropometrico::where('paciente_id',$paciente->id)->get();
+
+        $datosAntropometrico =  DatosAntropometrico::create([
             "altura"=>$request->altura,
             "peso"=>$request->peso,
-            "sexo"=>$request->sexo,
             "imc"=>$request->imc,
-            "observaciones"=>$request->observaciones,
             "masa_muscular"=>$request->masa_muscular,
             "grasa_corporal"=>$request->grasa_corporal,
             "paciente_id"=>$request->id_paciente,
+            "osbservaciones"=>$request->observaciones
         ]);
-        return redirect()->route('paciente.index');
+
+        if ($request->hasFile('imagen')) {
+            $url = "";
+            $file = $request->imagen;
+            $elemento = Cloudinary::upload($file->getRealPath(), ['folder' => 'dato_bioquimico']);
+            $public_id = $elemento->getPublicId();
+            $url = $elemento->getSecurePath();
+
+            $datosAntropometrico->imagen()->create([
+                "url" => $url,
+                "public_id" => $public_id
+            ]);
+        }
+
+        return redirect()->route('da.datosByPaciente',$paciente->id);
     }
 
 

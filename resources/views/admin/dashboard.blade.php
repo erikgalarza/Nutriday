@@ -297,6 +297,23 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+                            aria-controls="ui-basic2">
+                            <div class="mr-4" style="min-width:35px">
+                                <i class="fa-solid fa-user fa-2x"></i>
+                            </div>
+                            <span class="menu-title">Datos antro</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse"  id="ui-basic2">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('da.asignarDatosAntropometricos')}}"><i class="fa-solid fa-user-plus mr-3"></i>Asignar</a></li>
+                             
+                            </ul>
+                        </div>
+                    </li>
+
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
                             aria-controls="form-elements">

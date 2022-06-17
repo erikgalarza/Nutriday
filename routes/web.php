@@ -98,6 +98,16 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/asignar-dieta',[DietaController::class,'asignarDieta'])->name('dieta.asignarDieta');
     Route::post('/dieta-asignada/guardar',[DietaController::class,'guardarDietaAsignada'])->name('dieta.guardarDietaAsignada');
 
+    //rutas agregadas 16/06/2022
+    //DIETAS
+    Route::get('/asignar-dieta/paciente',[DietaController::class,'buscarPacientes'])->name('dieta.buscarPacientes');
+    Route::get('/dietas/paciente/{paciente_id}',[DietaController::class,'dietasByPaciente'])->name('dieta.dietasByPaciente');
+    //DATOS ANTROPOMETRICOS
+    Route::get('/asignar-datos-antropometricos',[DatosAntropometricoController::class,'asignarDatosAntropometricos'])->name('da.asignarDatosAntropometricos');
+    Route::get('/asignar-datos-antropometricos/paciente',[DatosAntropometricoController::class,'buscarPacientes'])->name('da.buscarPacientes');
+    Route::get('/datos-antropometricos/paciente/{paciente_id}',[DatosAntropometricoController::class,'datosByPaciente'])->name('da.datosByPaciente');
+
+    
     
     Route::get('/paciente/historial/{paciente_id}',[PacienteController::class,'historialPaciente'])->name('paciente.historial');
     Route::get('/paciente/eliminar/{id}',[PacienteController::class,'eliminarPaciente'])->name('paciente.eliminar');

@@ -11,11 +11,29 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class DatosAntropometricoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
+    public function asignarDatosAntropometricos()
+    {
+        $pacientes = Paciente::all();
+        // dd($pacientes);
+        return view('admin.datosantropometricos.asignar',compact('pacientes'));
+    }
+    public function datosByPaciente($paciente_id)
+    {
+        $paciente = Paciente::find($paciente_id);
+        $datos = $paciente->dato_antropometrico()->get();
+        return view('admin.datosantropometricos.datosByPaciente', compact('datos', 'paciente'));
+    }
+
+    public function buscarPacientes(Request $request)
+    {   
+        $nombre = $request->get('paciente');
+        $pacientes = Paciente::where('nombre','like','%'.$nombre.'%')->get();
+        return  view('admin.datosantropometricos.asignar',compact('pacientes'));
+    }
+
+
     public function index()
     {
         //
@@ -38,15 +56,11 @@ class DatosAntropometricoController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreDatosAntropometricoRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         
+     
        $datosAntropometrico =  DatosAntropometrico::create([
             "altura"=>$request->altura,
             "peso"=>$request->peso,

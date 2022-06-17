@@ -47,27 +47,27 @@
                                             <td>Tipo {{ $paciente->tipo_diabetes }}</td>
                                         @endif --}}
                                         <style>
-                                            a.color1{
-                                                border-color:#7c7ce4 !important;
-                                                color:#7c7ce4 !important;
+                                            a.color1 {
+                                                border-color: #7c7ce4 !important;
+                                                color: #7c7ce4 !important;
                                             }
 
-                                            a.color1:hover{
-                                                background-color:#7c7ce4;
+                                            a.color1:hover {
+                                                background-color: #7c7ce4;
                                                 color: white !important;
                                             }
-                                            a.color2{
-                                                color:#392C70 !important;
-                                            }
-                                            a.color2:hover{
-                                                color:white !important;
+
+                                            a.color2 {
+                                                color: #392C70 !important;
                                             }
 
-
-
+                                            a.color2:hover {
+                                                color: white !important;
+                                            }
                                         </style>
                                         <td>
-                                            <a title="Progreso de paciente" href="{{ route('paciente.historial', $paciente->id) }}"
+                                            <a title="Progreso de paciente"
+                                                href="{{ route('paciente.historial', $paciente->id) }}"
                                                 class="btn btn-outline-dark mb-1  color1"><i
                                                     class="fas fa-chart-line"></i></a>
 
@@ -75,12 +75,13 @@
                                         </td>
                                         <td>
                                             <a title="Agregar datos antropométricos"
-                                            href="{{ route('admin.agregarDatosAntropometricos', $paciente->id) }}"
-                                            class="btn btn-outline-success mb-1"><i class="fas fa-plus"></i></a>
+                                                href="{{ route('admin.agregarDatosAntropometricos', $paciente->id) }}"
+                                                class="btn btn-outline-success mb-1"><i class="fas fa-plus"></i></a>
 
                                             <a title="Historial antropométrico" data-toggle="modal"
-                                            data-target="#exampleModal-3{{ $paciente->id }}"
-                                            class="btn btn-outline-primary mb-1 color2"><i class="fa-solid fa-hospital-user"></i></a>
+                                                data-target="#exampleModal-3{{ $paciente->id }}"
+                                                class="btn btn-outline-primary mb-1 color2"><i
+                                                    class="fa-solid fa-hospital-user"></i></a>
                                         </td>
                                         <td>
                                             @if ($paciente->estado == 'activo')
@@ -93,8 +94,8 @@
                                         </td>
                                         <td>
                                             <a title="Ver más" data-toggle="modal"
-                                            data-target="#exampleModal-3{{ $paciente->id }}"
-                                            class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                                                data-target="#exampleModal-3{{ $paciente->id }}"
+                                                class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
 
                                             <a title="Editar paciente" class="btn btn-outline-warning mb-1"
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $paciente->id }}"><i
@@ -141,9 +142,9 @@
                                                                         class="col-sm-3 text-left col-form-label">Nombre:</label>
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="name"
-                                                                            type="text" value="{{ $paciente->nombre }}"
-                                                                            class="form-control"
-                                                                            id="exampleInputUsername2">
+                                                                            type="text"
+                                                                            value="{{ $paciente->nombre }}"
+                                                                            class="form-control" id="exampleInputUsername2">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mb-2">
@@ -152,9 +153,9 @@
                                                                         class="col-sm-3 text-left col-form-label">Apellido:</label>
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="apellido"
-                                                                            type="text" value="{{ $paciente->apellido }}"
-                                                                            class="form-control"
-                                                                            id="exampleInputUsername2">
+                                                                            type="text"
+                                                                            value="{{ $paciente->apellido }}"
+                                                                            class="form-control" id="exampleInputUsername2">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mb-2">
@@ -163,7 +164,8 @@
                                                                         class="col-sm-3 text-left col-form-label">Cédula:</label>
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="cedula"
-                                                                            type="text" value="{{ $paciente->cedula }}"
+                                                                            type="text"
+                                                                            value="{{ $paciente->cedula }}"
                                                                             class="form-control"
                                                                             id="exampleInputUsername2">
                                                                     </div>
@@ -176,14 +178,15 @@
                                                                     <div class="col-sm-9">
                                                                         <select
                                                                             style="border-radius:10px; background-color:#F0F0F0;min-height:45.2px"
-                                                                            class="form-control" name="sexo" id="">
+                                                                            class="form-control" name="sexo"
+                                                                            id="">
                                                                             <option selected disabled>Seleccione una opción
                                                                             </option>
                                                                             <option value="1"
-                                                                                {{ old('sexo') == '1' ? 'selected' : '' }}>
+                                                                                {{ $paciente->sexo == '1' ? 'selected' : '' }}>
                                                                                 Femenino</option>
                                                                             <option value="2"
-                                                                                {{ old('sexo') == '2' ? 'selected' : '' }}>
+                                                                                {{ $paciente->sexo == '2' ? 'selected' : '' }}>
                                                                                 Masculino</option>
                                                                         </select>
                                                                     </div>
@@ -195,7 +198,8 @@
                                                                         class="col-sm-3 text-left col-form-label">Teléfono:</label>
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="telefono"
-                                                                            type="text" value="{{ $paciente->telefono }}"
+                                                                            type="text"
+                                                                            value="{{ $paciente->telefono }}"
                                                                             class="form-control"
                                                                             id="exampleInputUsername2">
                                                                     </div>
@@ -335,11 +339,13 @@
                                                                         <div class="form-group row mb-1">
                                                                             <label class="col-5 text-left"><strong>Tipo
                                                                                     diabetes:</strong></label>
-                                                                                @if ($paciente->tipo_diabetes == 3)
-                                                                                    <label class="col-7">Tipo gestacional</label>
-                                                                                @else
-                                                                                    <label class="col-7">Tipo {{ $paciente->tipo_diabetes }}</label>
-                                                                                @endif
+                                                                            @if ($paciente->tipo_diabetes == 3)
+                                                                                <label class="col-7">Tipo
+                                                                                    gestacional</label>
+                                                                            @else
+                                                                                <label class="col-7">Tipo
+                                                                                    {{ $paciente->tipo_diabetes }}</label>
+                                                                            @endif
                                                                         </div>
 
                                                                         <div class="form-group row mb-1">
@@ -398,7 +404,8 @@
                                                                                     @if ($data->imc <= 18.4)
                                                                                         <label
                                                                                             class="col-6 col-md-7">{{ $data->imc }}
-                                                                                            (Bajo peso)</label>
+                                                                                            (Bajo peso)
+                                                                                        </label>
                                                                                     @endif
                                                                                     @if ($data->imc >= 18.5 && $data->imc <= 24.9)
                                                                                         <label
@@ -465,5 +472,4 @@
             </div>
         </div>
     </div>
-    
 @endsection

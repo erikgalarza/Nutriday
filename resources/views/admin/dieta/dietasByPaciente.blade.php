@@ -213,9 +213,9 @@
                         <div class="col-sm-8">
                           <select class="form-control" name="tipo_diabetes" id="" style="min-height:45.2px;background-color:#F0F0F0" required >
 
-                              <option value="1" {{ old('tipo_diabetes') == '1' ? 'selected' : '' }}>Tipo 1</option>
-                              <option value="2" {{ old('tipo_diabetes') == '2' ? 'selected' : '' }}>Tipo 2</option>
-                              <option value="3" {{ old('tipo_diabetes') == '3' ? 'selected' : '' }}>Gestacional</option>
+                              <option value="1" {{$dieta->tipo_diabetes == '1' ? 'selected' : '' }}>Tipo 1</option>
+                              <option value="2" {{$dieta->tipo_diabetes == '2' ? 'selected' : '' }}>Tipo 2</option>
+                              <option value="3" {{$dieta->tipo_diabetes == '3' ? 'selected' : '' }}>Gestacional</option>
                           </select>
                         </div>
                     </div>
@@ -226,10 +226,13 @@
                         <div class="col-sm-8">
                             <select  class="form-control" name="imc"  class="form-control" id=""style="min-height:45.2px;background-color:#F0F0F0" required
                             >
-                            <option value="1" {{ old('imc') == '1' ? 'selected' : '' }}>Bajo peso</option>
-                            <option value="2" {{ old('imc') == '2' ? 'selected' : '' }}>Normal</option>
-                            <option value="3" {{ old('imc') == '3' ? 'selected' : '' }}>Sobrepeso</option>
-                            <option value="4" {{ old('imc') == '4' ? 'selected' : '' }}>Obeso</option>
+                            <option value="1" {{$dieta->imc == '1' ? 'selected' : '' }}>Bajo peso</option>
+                            <option value="2" {{$dieta->imc == '2' ? 'selected' : '' }}>Normal</option>
+                            <option value="3" {{$dieta->imc == '3' ? 'selected' : '' }}>Sobrepeso</option>
+                            <option value="4" {{$dieta->imc == '4' ? 'selected' : '' }}>Obeso</option>
+                            {{-- <option value="5"
+    {{ old('categoria_id', $producto->categoria_id) == $categoria->id ? 'selected' : '' }}> --}}
+                               {{-- {{ $categoria->nombre }}</option> --}}
                             </select>
                         </div>
                     </div>

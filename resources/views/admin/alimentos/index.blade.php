@@ -187,7 +187,7 @@
                                                                 <select class="form-control" style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px" name="categoria" id="exampleInputUsername2">
                                                                     <option value="" selected="" disabled="">Seleccione una categoría</option>
                                                                     @foreach($categorias as $categoria)
-                                                                    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                                                    <option value="{{$categoria->id}}" {{ old('categoria', $alimento->categoria_id) == $categoria->id ? 'selected' : '' }} >{{$categoria->nombre}}</option>
                                                                  @endforeach
                                                                 </select>
                                                             </div>
@@ -201,7 +201,7 @@
                                                                    <select class="form-control" style="border-radius:10px;background-color:#F0F0F0; width:60%;min-height:45.2px" name="unidad" id="unidad">
                                                                     <option value="" selected="" disabled="">Seleccione una medida</option>
                                                                    @foreach($medidas as $medida)
-                                                                    <option value="{{$medida->id}}">{{$medida->medida}}</option>
+     <option value="{{$medida->id}}"  {{ old('unidad', $alimento->medida_id) == $medida->id ? 'selected' : '' }}>{{$medida->medida}}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 </div>

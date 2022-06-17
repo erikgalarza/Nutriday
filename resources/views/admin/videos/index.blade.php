@@ -27,6 +27,7 @@
                     </div>
                     <div class="card-body text-center">
                         <div class="text-center" style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
+                            @foreach ($videos_receta as $video_receta)
                                 {{-- <div class="container_video" >
                               <div class="opciones" style="display:flex; justify-content:flex-end;">
                                   <a class="btn btn-warning" data-toggle="modal"
@@ -186,8 +187,6 @@
                                     @csrf
                                     @method('DELETE')
                                 </form>
-
-
                                 {{-- MODAL DE EDITAR EJERCICIOS --}}
                                 <div class="modal fade" id="exampleModal2{{ $video_ejercicio->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

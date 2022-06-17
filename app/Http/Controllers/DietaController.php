@@ -21,6 +21,17 @@ class DietaController extends Controller
 {
 
 
+    public function traerAlimentos(Request $request)
+    {
+        $paciente_id = $request->get('pacienteid');
+        dd($paciente_id);
+        $dieta_id = $request->get('dietaid');
+        $paciente = Paciente::find($paciente_id);
+        $dieta = $paciente->dietas()->get([$dieta_id]);
+        
+        return $dieta;
+    }
+
     public function dietasByPaciente($paciente_id)
     {
         $paciente = Paciente::find($paciente_id);

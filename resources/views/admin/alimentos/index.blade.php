@@ -1,5 +1,11 @@
 @extends('admin.dashboard')
 @section('contenido')
+<style>
+    .ocultar
+    {
+        display:none;
+    }
+</style>
     <div class="page-header">
         <h3 class="page-title">
             Ver alimentos
@@ -258,7 +264,6 @@
                                                                <div class="col-md-8">
                                                                    <input style="border-radius:10px" type="number" name="grasa" class="form-control" value="{{ $alimento->grasa}}">
                                                                 </div>
-
                                                         </div>
 
                                                         <div class="form-group row mb-1">
@@ -270,16 +275,22 @@
                                                         </div>
 
                                                         <div class="form-group row mb-1">
+<<<<<<< HEAD
                                                             <label class="col-md-4 col-form-label"> <strong> Imagen actual:</strong></label>
                                                             <div class=" col-md-8 text-center mt-1">
                                                                 <button class="btn btn-outline-info" id="imagen2" type="button" style="width:100%">Ver</button></div>
+=======
+                                                            <label class="col-sm-3 col-form-label"> <strong> Imagen actual:</strong></label>
+                                                            <div class=" col-sm-9 text-center mt-1">
+                                                                <a onclick="showImage();" class="btn btn-outline-info" id="imagen2" type="button" style="width:100%">Ver</a></div>
+>>>>>>> 8ba665c7836d53d04440a1039abf454f48c2d784
                                                             <div class="text-center">
                                                                 @if (isset($alimento->imagen->url))
-                                                                    <img class="img-thumbnail"
+                                                                    <img id="imagen" class="ocultar img-thumbnail"
                                                                     style="width:95%;heigth:80%"
                                                                         src="{{ $alimento->imagen->url }}">
                                                                 @else
-                                                                    <img class="img-thumbnail"
+                                                                    <img id="imagen" class="ocultar img-thumbnail"
                                                                         style="width:95%;heigth:80%"
                                                                         src="{{ asset('img/icons/dieta48.png') }}">
                                                                 @endif
@@ -316,10 +327,23 @@
     </div>
 
 <script>
-    function ocultar(id){
-    var elemento = document.getElementById(id);
-    elemento.style.display = "none";
-}
+    var imagen = document.getElementById('imagen');
+    var estado = false;
+    function showImage()
+    {
+        if(estado)
+        {
+            imagen.className+=" ocultar";
+            estado = false;
+        } 
+        else
+        {
+            imagen.classList.remove('ocultar');
+            estado = true;
+        }
+            
+    }
+
 </script>
 
     <script>

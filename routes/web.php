@@ -107,6 +107,9 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/asignar-datos-antropometricos/paciente',[DatosAntropometricoController::class,'buscarPacientes'])->name('da.buscarPacientes');
     Route::get('/datos-antropometricos/paciente/{paciente_id}',[DatosAntropometricoController::class,'datosByPaciente'])->name('da.datosByPaciente');
 
+    //rutas agregadas 17/06/2022
+    Route::get('/dieta/alimentos',[DietaController::class,'traerAlimentos'])->name('dieta.traerAlimentos');
+
     
     
     Route::get('/paciente/historial/{paciente_id}',[PacienteController::class,'historialPaciente'])->name('paciente.historial');

@@ -17,7 +17,7 @@
         <div class="card">
             <div class=" mb-5" style="background-color:#4b6ac3 ">
                 @if(isset($paciente))
-                <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente {{$paciente['nombre']}}</h3>
+                <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente {{$paciente->nombre}}</h3>
                 @else
                 <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente</h3>
                 @endif
@@ -55,9 +55,9 @@
                           </select>
                           @else
                           <select style="background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="tipo_diabetes" id="" >
-                            <option selected disabled>{{$paciente['tipo_diabetes']}}</option>
+                            <option selected disabled>{{$paciente->tipo_diabetes}}</option>
                         </select>
-                        <input type="hidden" name="tipo_diabetes" value="{{$paciente['tipo_diabetes']}}">
+                        <input type="hidden" name="tipo_diabetes" value="{{$paciente->tipo_diabetes}}">
                           @endif
                         </div>
                     </div>
@@ -94,6 +94,16 @@
                         </div>
                     </div>
                     @endif
+
+                    <div class="form-group row no-gutters">
+                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase"
+                            class="col-xl-3 col-lg-5 col-form-label">Observaciones:</label>
+                        <div class="col-xl-9 col-lg-7">
+                          <textarea name="observaciones" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                    
 
                     <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">
                         <div class="col-md-8 p-0 col-xl-7 justify-content-space-around">

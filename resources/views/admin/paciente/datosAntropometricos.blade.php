@@ -25,7 +25,7 @@
                 <div class="col-12 row justify-content-center">
                     <div class="col-lg-9 col-md-8 col-12 text-left">
 
-                <form method="POST" action="{{route('paciente.guardarDatosAntropometricos')}}" class="forms-sample">
+                <form method="POST" action="{{route('paciente.guardarDatosAntropometricos')}}" class="forms-sample" enctype="multipart/form-data">
                     @csrf
 
                     <input type="hidden" name="id_paciente" value="{{$paciente->id}}">
@@ -107,7 +107,7 @@
                         <div class="col-md-8 p-0 col-xl-5 justify-content-space-around">
                             <button type="submit" class="btn btn-success mb-2 col-sm-12 col-md-5">Guardar
                             </button>
-                            <a class="btn btn-light mb-2 col-sm-12 col-md-5" href="{{route('paciente.index')}}">Cancelar</a>
+                            {{-- <a class="btn btn-light mb-2 col-sm-12 col-md-5" href="{{route('paciente.index')}}">Cancelar</a> --}}
                         </div>
                     </div>
 

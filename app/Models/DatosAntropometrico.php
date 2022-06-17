@@ -23,8 +23,7 @@ class DatosAntropometrico extends Model
     {
         return $this->belongsTo(Paciente::class);
     }
-    public function imagen()
-    {
+    public function imagen(){
         return $this->morphOne(Imagen::class, 'imageable');
     }
 

@@ -103,13 +103,13 @@
                                                             <div class="col-sm-9">
                                                             <select style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="categoria">
                                                                 <option value="Recetas"
-                                                                    {{ old('categoria') == 'Recetas' ? 'selected' : '' }}>
+                                                                    {{ $video_receta->categoria == 'Recetas' ? 'selected' : '' }}>
                                                                     Recetas</option>
                                                                 <option value="Ejercicios"
-                                                                    {{ old('categoria') == 'Ejercicios' ? 'selected' : '' }}>
+                                                                    {{ $video_receta->categoria == 'Ejercicios' ? 'selected' : '' }}>
                                                                     Ejercicios</option>
                                                                 <option value="Motivacion"
-                                                                    {{ old('categoria') == 'Motivacion' ? 'selected' : '' }}>
+                                                                    {{ $video_receta->categoria == 'Motivacion' ? 'selected' : '' }}>
                                                                     Motivación</option>
                                                             </select>
                                                             </div>
@@ -222,13 +222,13 @@
                                                             </label>
                                                             <select class="form-control" name="categoria">
                                                                 <option value="Recetas"
-                                                                    {{ old('categoria') == 'Recetas' ? 'selected' : '' }}>
+                                                                    {{ $video_ejercicio->categoria == 'Recetas' ? 'selected' : '' }}>
                                                                     Recetas</option>
                                                                 <option value="Ejercicios"
-                                                                    {{ old('categoria') == 'Ejercicios' ? 'selected' : '' }}>
+                                                                    {{ $video_ejercicio->categoria == 'Ejercicios' ? 'selected' : '' }}>
                                                                     Ejercicios</option>
                                                                 <option value="Motivacion"
-                                                                    {{ old('categoria') == 'Motivacion' ? 'selected' : '' }}>
+                                                                    {{ $video_ejercicio->categoria == 'Motivacion' ? 'selected' : '' }}>
                                                                     Motivación</option>
 
                                                             </select>
@@ -331,13 +331,13 @@
                                                             </label>
                                                             <select class="form-control" name="categoria">
                                                                 <option value="Recetas"
-                                                                    {{ old('categoria') == 'Recetas' ? 'selected' : '' }}>
+                                                                    {{ $video_motivacion->categoria == 'Recetas' ? 'selected' : '' }}>
                                                                     Recetas</option>
                                                                 <option value="Ejercicios"
-                                                                    {{ old('categoria') == 'Ejercicios' ? 'selected' : '' }}>
+                                                                    {{ $video_motivacion->categoria == 'Ejercicios' ? 'selected' : '' }}>
                                                                     Ejercicios</option>
                                                                 <option value="Motivacion"
-                                                                    {{ old('categoria') == 'Motivacion' ? 'selected' : '' }}>
+                                                                    {{ $video_motivacion->categoria == 'Motivacion' ? 'selected' : '' }}>
                                                                     Motivación</option>
 
                                                             </select>

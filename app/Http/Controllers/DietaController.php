@@ -20,6 +20,23 @@ use App\Http\Requests\UpdateDietaRequest;
 class DietaController extends Controller
 {
 
+
+    public function dietasByPaciente($paciente_id)
+    {
+        $paciente = Paciente::find($paciente_id);
+        $dietas = $paciente->dietas()->get();
+        $dietasDisponibles = Dieta::all();
+        return view('admin.dieta.dietasByPaciente',compact('paciente','dietas','dietasDisponibles'));
+    }
+
+    public function buscarPacientes(Request $request)
+    {
+        $nombre = $request->get('paciente');
+        $pacientes = Paciente::where('nombre','like','%'.$nombre.'%')->get();
+       $dietas = Dieta::all();
+        return view('admin.dieta.asignar',compact('pacientes','dietas'));
+    }
+
     public function index()
     {
         $dietas = Dieta::all();
@@ -40,7 +57,7 @@ class DietaController extends Controller
             }else
                 $dietas_asignadas->push($dieta);
         }
-       return view('nutri.dieta.index',compact('dietas_predefinidas','pacientesc'));
+       return view('admin.dieta.index',compact('dietas_predefinidas','pacientesc'));
     }
     use DiasTrait;// trait: se usan para reutilizar metodos de una clase 
     public function guardarDieta(Request $request)
@@ -92,9 +109,9 @@ class DietaController extends Controller
     public function crearDietaFlash(Request $request){
        
         $imc = $request->imc;
-        $pacienteNuevo = json_decode($request->paciente);
-        $paciente = collect($pacienteNuevo);
-        return view('nutri.dieta.create',compact('imc','paciente'));
+        $paciente_id = $request->paciente_id;
+        $paciente = Paciente::find($paciente_id);
+        return view('admin.dieta.create',compact('imc','paciente'));
     }
 
     public function guardarDietaAsignada(Request $request)
@@ -120,13 +137,13 @@ class DietaController extends Controller
         
         $dietas = Dieta::all();
         
-        return view('nutri.dieta.asignar',compact('pacientes','dietas'));
+        return view('admin.dieta.asignar',compact('pacientes','dietas'));
     }
 
     public function create()
     {
         $alimentos = Alimento::all();
-        return view('nutri.dieta.create');
+        return view('admin.dieta.create');
     }
 
     
@@ -140,6 +157,7 @@ class DietaController extends Controller
             "nombre"=>$request->nombre,
             "tipo_diabetes"=>$request->tipo_diabetes,
             "imc"=>$request->imc,
+            "observaciones"=>$request->observaciones
         ]);
         
         

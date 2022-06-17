@@ -43,18 +43,18 @@
                                                 <img src="{{ asset('img/logos/canasta.png') }}">
                                             @endif
                                         </td>
-                                        <td>{{$alimento->peso}}{{$alimento->medida->medida}}</td>
+                                        <td>{{$alimento->peso}} {{$alimento->medida->abreviatura}}</td>
                                         <td>{{$alimento->categoria->nombre}}</td>
                                         <!-- <td>{{-- $alimento->categoria->nombre--}}</td> -->
 
                                         <td>
                                             <a data-toggle="modal" data-target="#exampleModal-3{{ $alimento->id }}"
-                                                class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                                            <a class="btn btn-outline-warning" data-toggle="modal"
+                                                class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                                            <a class="btn btn-outline-warning mb-1" data-toggle="modal"
                                                 data-target="#exampleModal-2{{ $alimento->id }}"><i
-                                                    class="fas fa-edit"></i></a>
+                                                    class="fas fa-edit "></i></a>
 
-                                                        <a onclick="eliminarAlimento({{$alimento}});" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                            <a onclick="eliminarAlimento({{$alimento}});" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i>  </a>
 
                                                     </td>
                                     </tr>
@@ -85,70 +85,79 @@
                                                         <span style="color:white;font-size:30px"  aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body d-flex text-center col-12 mb-5"
-                                                    style=" padding:1.5rem 3rem">
+                                                <div class="modal-body py-3 px-0"  >
 
-                                                    <div class="col-6 mr-3">
+                                                    <div class="col-12 row m-0 mb-sm-4 mb-3 justify-content-center">
+                                                        <div class=" row col-12 col-md-11 p-md-0 text-left justify-content-center">
 
-                                                        <div class="form-group mb-3" style="text-transform: uppercase">
+                                                    <div class="col-11 col-md-5 text-center">
+
+                                                        <div class="form-group mb-4" style="text-transform: uppercase">
                                                             <label ><strong>{{ $alimento->nombre }}</strong></label>
                                                         </div>
                                                         @if (isset($alimento->imagen->url))
-                                                            <img class="img-thumbnail"
-                                                                style="width:100%; height:90%"
-                                                                src="{{ $alimento->imagen->url }}">
-                                                        @else
-                                                            <img class="img-thumbnail"
-                                                                style="width:100%; height:90%"
-                                                                src="{{ asset('img/icons/dieta48.png') }}">
-                                                        @endif
+                                                        <img class="img-thumbnail p-0"
+                                                        style="height: 80%"
+                                                            src="{{ $alimento->imagen->url }}">
+                                                    @else
+                                                        <img class="img-thumbnail p-0 "
+
+                                                            src="{{ asset('img/icons/dieta48.png') }}">
+                                                    @endif
                                                     </div>
 
-                                                    <div class="col-6 text-center" style="text-align: center">
-                                                        <div class="justifiy-content-center col-12" style="margin:0 auto">
-
-
-
-                                                        <div class="form-group mb-4 justify-content-center" style="text-transform: uppercase;border-bottom:1px solid">
+                                                    <div class="col-12 col-md-7 text-center">
+                                                        <div class="container ">
+                                                            <div class="row justify-content-center">
+                                                        <div class="form-group col-md-12 col-10  " style="text-transform: uppercase;border-bottom:1px solid">
                                                             <label ><strong>Información nutricional</strong></label>
                                                         </div>
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left "><strong>Categoría:</strong></label>
-                                                            <label class="col-4 text-left"> {{  $alimento->categoria->nombre }}</label>
-                                                        </div>
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left "><strong>Peso:</strong></label>
-                                                            <label class="col-4 text-left"> {{ $alimento->peso }}</label>
+                                                    </div>
+                                                </div>
+                                                        <div class="container ">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-8 col-md-10">
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5 text-left "><strong>Categoría:</strong></label>
+                                                                    <label class="col-7 text-left"> {{  $alimento->categoria->nombre }}</label>
+                                                                </div>
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5 text-left "><strong>Peso:</strong></label>
+                                                                    <label class="col-7 text-left"> {{ $alimento->peso }}</label>
+                                                                </div>
+
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5  text-left "><strong>Valor calórico:</strong></label>
+                                                                    <label class="col-7 text-left"> {{ $alimento->valor_calorico }}</label>
+                                                                </div>
+
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5 text-left"><strong>Carbohidratos:</strong></label>
+                                                                    <label class="col-7 text-left">{{ $alimento->carbohidrato }}</label>
+
+                                                                </div>
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5 text-left"><strong>Proteinas:</strong></label>
+                                                                    <label class="col-7 text-left">{{ $alimento->proteina }}</label>
+                                                                </div>
+
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5 text-left"><strong>Grasas:</strong></label>
+                                                                    <label class="col-7 text-left">{{ $alimento->grasa }}</label>
+                                                                </div>
+                                                                <div class="form-group row mb-2 no-gutters ">
+                                                                    <label class="col-5 text-left"><strong>Creado:</strong></label>
+                                                                    <label class="col-7 text-left">{{ $alimento->created_at }}</label>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
 
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left "><strong>Valor calórico:</strong></label>
-                                                            <label class="col-4 text-left"> {{ $alimento->valor_calorico }}</label>
-                                                        </div>
-
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left"><strong>Carbohidratos:</strong></label>
-                                                            <label class="col-4 text-left">{{ $alimento->carbohidrato }}</label>
-
-                                                        </div>
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left"><strong>Proteinas:</strong></label>
-                                                            <label class="col-4 text-left">{{ $alimento->proteina }}</label>
-                                                        </div>
-
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left"><strong>Grasas:</strong></label>
-                                                            <label class="col-4 text-left">{{ $alimento->grasa }}</label>
-                                                        </div>
-                                                        <div class="form-group row mb-2 justify-content-center">
-                                                            <label class="col-6 text-left"><strong>Creado:</strong></label>
-                                                            <label class="col-4 text-left">{{ $alimento->created_at }}</label>
                                                         </div>
 
                                                     </div>
-
-
-                                                    </div>
+                                                </div>
+                                            </div>
 
                                                 </div>
 
@@ -158,12 +167,19 @@
 
 
 
+                                    <style>
+                                        @media (min-width:768px) {
+                                            .dialogoss1 {
+                                                min-width: 600px !important;
+                                            }
 
+                                        }
+                                    </style>
                                       {{-- MODAL DE EDITAR ALIMENTO --}}
 
-                                      <div class="modal fade" style="min-width:600px !important;" id="exampleModal-2{{ $alimento->id }}" tabindex="-1"
+                                      <div class="modal fade" id="exampleModal-2{{ $alimento->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" style="min-width:600px !important;"  role="document">
+                                        <div class="modal-dialog dialogoss1"  role="document">
                                             <form method="POST" action="{{route('alimento.update',$alimento->id)}}" enctype="multipart/form-data" >
                                                 @method('PATCH')
                                                 @csrf
@@ -177,13 +193,13 @@
                                                     </button>
                                                 </div>
 
-                                                <div class="modal-body mb-0" style="padding:1.5rem 4rem">
-
-                                                    <div class="col-12 text-left mt-3">
+                                                <div class="modal-body py-2 px-0">
+                                                    <div class="col-12 row mt-3 mb-0 mr-0 ml-0  p-0 justify-content-center">
+                                                        <div class="col-sm-9  col-11 text-left">
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"><strong>Categoría:</strong></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="col-md-4 col-form-label"><strong>Categoría:</strong></label>
+                                                            <div class="col-md-8">
                                                                 <select class="form-control" style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px" name="categoria" id="exampleInputUsername2">
                                                                     <option value="" selected="" disabled="">Seleccione una categoría</option>
                                                                     @foreach($categorias as $categoria)
@@ -194,9 +210,9 @@
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"><strong>Peso:</strong>
+                                                            <label class="col-md-4 col-form-label"><strong>Peso:</strong>
                                                                </label>
-                                                               <div class=" col-sm-9 d-flex"                           style="justify-content:space-between">
+                                                               <div class=" col-md-8 d-flex"                           style="justify-content:space-between">
                                                                    <input  style="border-radius:10px; width:32%;max-height:45.2px" type="number" name="peso" class="form-control" value="{{ $alimento->peso}}{{$alimento->medida}}">
                                                                    <select class="form-control" style="border-radius:10px;background-color:#F0F0F0; width:60%;min-height:45.2px" name="unidad" id="unidad">
                                                                     <option value="" selected="" disabled="">Seleccione una medida</option>
@@ -208,54 +224,54 @@
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label" ><strong>Nombre:</strong></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="col-md-4 col-form-label" ><strong>Nombre:</strong></label>
+                                                            <div class="col-md-8">
                                                                 <input style="border-radius:10px"  type="text" name="nombre" class="form-control" value="{{$alimento->nombre}}">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"><strong>Valor calórico:</strong></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="col-md-4 col-form-label"><strong>Valor calórico:</strong></label>
+                                                            <div class="col-md-8">
                                                                 <input style="border-radius:10px" type="number" name="valor_calorico" class="form-control" value="{{$alimento->valor_calorico}}">
                                                             </div>
 
                                                         </div>
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"><strong>Carbohidratos:</strong></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="col-md-4 col-form-label"><strong>Carbohidratos:</strong></label>
+                                                            <div class="col-md-8">
                                                                 <input style="border-radius:10px" type="number" name="carbohidrato" class="form-control" value="{{ $alimento->carbohidrato }}">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"><strong>Proteínas:</strong>
+                                                            <label class="col-md-4 col-form-label"><strong>Proteínas:</strong>
                                                             </label>
-                                                            <div class="col-sm-9">
+                                                            <div class="col-md-8">
                                                                 <input style="border-radius:10px" type="number" name="proteina" class="form-control" value="{{ $alimento->proteina }}">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-form-label col-sm-3"><strong>Grasas:</strong>
+                                                            <label class="col-form-label col-md-4"><strong>Grasas:</strong>
                                                                </label>
-                                                               <div class="col-sm-9">
+                                                               <div class="col-md-8">
                                                                    <input style="border-radius:10px" type="number" name="grasa" class="form-control" value="{{ $alimento->grasa}}">
                                                                 </div>
 
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"><strong>Nueva imagen</strong>
+                                                            <label class="col-md-4 col-form-label"><strong>Nueva imagen</strong>
                                                             </label>
-                                                            <div class="col-sm-9">
+                                                            <div class="col-md-8">
                                                                 <input  style="border-radius:10px" type="file" name="imagen" class="form-control">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"> <strong> Imagen actual:</strong></label>
-                                                            <div class=" col-sm-9 text-center mt-1">
+                                                            <label class="col-md-4 col-form-label"> <strong> Imagen actual:</strong></label>
+                                                            <div class=" col-md-8 text-center mt-1">
                                                                 <button class="btn btn-outline-info" id="imagen2" type="button" style="width:100%">Ver</button></div>
                                                             <div class="text-center">
                                                                 @if (isset($alimento->imagen->url))
@@ -272,12 +288,18 @@
                                                     </div>
 
                                                     </div>
+                                                    <div
+                                                    class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                    <div
+                                                        class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
 
-                                            <div class="modal-footer text-center" style="justify-content: center; align-items:center">
-                                                <button type="submit" class="btn btn-success">Guardar</button>
-                                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-
-                                            </div>
+                                                        <button type="submit"
+                                                            class="btn btn-success mb-2 col-12 col-sm-5 p-2">Guardar</button>
+                                                        <button type="button"
+                                                            class="btn btn-light mb-2 col-12 col-sm-5 p-2"
+                                                            data-dismiss="modal">Cancelar</button>
+                                                    </div>
+                                                </div>
                                         </div>
 
                                             </div>

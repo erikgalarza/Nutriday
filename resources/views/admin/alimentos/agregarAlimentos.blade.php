@@ -22,6 +22,7 @@
                 <div class="card-body">
                     <div class="col-12 row justify-content-center px-0 m-0">
                         <div class="col-md-8 col-xl-9 col-11 text-left pl-md-0">
+                            <div class="container">
 
                             <form method="POST" class="forms-sample" action="{{ route('alimento.store') }}"
                             enctype="multipart/form-data">
@@ -111,6 +112,7 @@
                             </div>
 
                         </form>
+                    </div>
                 </div>
             </div>
 

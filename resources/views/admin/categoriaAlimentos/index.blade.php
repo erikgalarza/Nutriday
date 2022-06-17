@@ -13,17 +13,19 @@
     </div>
     <div class="card">
         <div class="mb-3" style="background-color:#4b6ac3">
-            <h3 class="card-title titulosa text-lg-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Categorías de alimentos</h3>
+            <h3 class="card-title titulosa text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Categorías de alimentos</h3>
             </div>
         <div class="card-body">
-
+            <div class="container ">
             <div class="row justify-content-center">
-                <div class="col-8 mb-3 text-center justify-content-center d-flex p-3" style="border:1px dashed;border-radius:10px;background-color:#F0F0F0">
-                   <h5 class=" col-3  col-form-label">Agregar Categoría:</h5>
-                   <div class="col-3 text-center align-items-center justify-content-center row">
-                       <a class="btn btn-success" href="{{route('categoriaAlimento.create')}}"><i class="fas fa-plus mr-3"></i>Agregar </a>
-                   </div>
+                    <div class="col-lg-8 col-10 d-flex justify-content-center p-2" style="border:1px dashed;border-radius:10px;background-color:#F0F0F0;flex-wrap:wrap" >
+                        <h5 class="mr-2 mr-sm-4 text-center  col-form-label">Agregar Categoría:</h5>
+                        <div class=" mr-2 ml-2 align-items-center justify-content-center row">
+                            <a class="btn btn-success" href="{{route('categoriaAlimento.create')}}"><i class="fas fa-plus mr-3"></i>Agregar </a>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-12 justify-content-center row mt-3">
                     <div class="table-responsive text-center w-50">
                         <table id="order-listing" class="table">
@@ -41,14 +43,13 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{ $categoria->nombre }}</td>
                                         <td>
-
-                                            <a class="btn btn-outline-warning" data-toggle="modal"
+                                            <a class="btn btn-outline-warning mb-1" data-toggle="modal"
                                                 data-target="#exampleModal-2{{ $categoria->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
-                                                        <a onclick="eliminarCategoria({{$categoria}});" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                            <a onclick="eliminarCategoria({{$categoria}});" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
 
-                                                    </td>
+                                        </td>
                                     </tr>
 
 
@@ -73,22 +74,31 @@
                                                         <span  style="color:white;font-size:30px" aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body d-flex text-center col-12 mt-2 justify-content-center"
-                                                    style=" padding:1.5rem 3rem">
-                                                    <div class="form-group d-flex ">
 
-                                                            <label class="col-4 col-form-label" for="recipient-name"><strong>Nombre:</strong></label>
-                                                            <div class="col-8">
+                                                <div class="modal-body py-2 px-0">
+                                                    <div class="col-12 row m-0 justify-content-center">
+                                                        <div class="col-sm-10 col-11 text-left">
+
+                                                    <div class="form-group row mb-2 mt-3">
+                                                        <label class="col-sm-4 col-form-label" ><strong>Fecha creción:</strong></label>
+                                                        <label class="col-sm-8 col-form-label" >{{$categoria->created_at}}</label>
+                                                </div>
+                                                    <div class="form-group row ">
+                                                            <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Nombre:</strong></label>
+                                                            <div class="col-sm-8">
                                                                 <input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}">
                                                             </div>
-
-
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer  text-center my-3"style="justify-content: center; align-items:center">
-                                                    <button type="submit" class="btn btn-success">Guardar</button>
-                                                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                                <div class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                    <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+
+                                                      <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                                                      <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>
+                                                    </div>
                                                 </div>
+                                            </div>
+
                                             </div>
                                         </form>
                                         </div>

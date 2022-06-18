@@ -41,10 +41,10 @@
                     <td>{{$admin->administradores->telefono}}</td> --}}
                     <td>{{$admin->email}}</td>
                     <td>
-               
+
 
                         <a onclick="eliminarAdmin({{$admin}});" class="btn {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
-                      
+
                         <!-- Arreglar el estado de los administradores como un boton -->
                     </td>
                     <td>
@@ -102,10 +102,14 @@
                                 </div>
                                 <div class="form-group row mb-2">
                                     <label class="col-sm-5"><strong>Teléfono:</strong></label>
+                                    <label class="col-sm-7">{{$admin->administradores->telefono}}</label>
+                                </div>
+                                <div class="form-group row mb-2">
+                                    <label class="col-sm-5"><strong>Email:</strong></label>
                                     <label class="col-sm-7">{{$admin->email}}</label>
                                 </div>
                                 <div class="form-group row mb-2">
-                                    <label class="col-sm-5"><strong>Admin desde:</strong></label>
+                                    <label class="col-sm-5"><strong>Activo desde:</strong></label>
                                     <label class="col-sm-7">{{$admin->administradores->created_at}}</label>
                                 </div>
 

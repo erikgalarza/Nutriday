@@ -19,74 +19,84 @@
                 <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos nutricionita</h3>
             </div>
             <div class="card-body">
-                <div class="col-12 row justify-content-center">
-                    <div class="col-md-8 col-xl-9 col-12 text-left">
+                <div class="col-12 row justify-content-center m-0 ">
+                    <div class="col-lg-9 col-12  text-left">
                 <form method="POST" action="{{route('nutricionista.store')}}" class="forms-sample" enctype="multipart/form-data">
                     @csrf
-
-                    <div class="form-group row">
+                    <div class="container p-0"  style="max-width:524px">
+                    <div class="form-group row ">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
-                            class="col-xl-2 col-lg-3 col-form-label">Nombre:</label>
-                        <div class="col-xl-10 col-lg-9">
+                            class=" col-xl-3 col-form-label">Nombre:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px"  name="nombre" type="text" class="form-control" id="exampleInputUsername2"
                                 placeholder="Ingrese el nombre">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row ">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Apellido:</label>
-                        <div class="col-xl-10 col-lg-9">
+                            class=" col-xl-3 col-form-label">Apellido:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px" name="apellido" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el apellido">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row ">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Cédula:</label>
-                        <div class="col-xl-10 col-lg-9">
+                            class=" col-xl-3 col-form-label">Cédula:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px" name="cedula" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese la cédula">
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase" for="exampleInputUsername2"
-                            class="col-xl-2 col-lg-3 col-form-label">Especialidad</label>
-                        <div class="col-xl-10 col-lg-9">
+                    <div class="form-group row ">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
+                            class=" col-xl-3 col-form-label">Sexo:</label>
+                        <div class=" col-xl-9">
+                            <select class="form-control" name="sexo" id="sexo" style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px">
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
+                            class=" col-xl-3 col-form-label">Especialidad:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px"  name="especialidad" type="text" class="form-control" id="exampleInputUsername2"
                                 placeholder="Escriba la especialidad">
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row ">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputMobile"
-                            class="col-xl-2 col-lg-3 col-form-label">Teléfono:</label>
-                        <div class="col-xl-10 col-lg-9">
+                            class=" col-xl-3 col-form-label">Teléfono:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px" name="telefono" type="text" class="form-control" id="exampleInputMobile"
                                 placeholder="Ingrese el teléfono">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row ">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Email:</label>
-                        <div class="col-xl-10 col-lg-9">
+                            class=" col-xl-3 col-form-label">Email:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px" name="correo" type="email" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el correo electrónico">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase" for="exampleInputPassword2"
-                            class="col-xl-2 col-lg-3 col-form-label">Contraseña:</label>
-                        <div class="col-xl-10 col-lg-9">
+                    <div class="form-group row ">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputPassword2"
+                            class=" col-xl-3 col-form-label">Contraseña:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px;background-color:#F0F0F0" name="password" type="password" class="form-control"
                                 id="exampleInputPassword2" placeholder="Ingrese la contraseña">
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row ">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputPassword2"
-                            class="col-xl-2 col-lg-3 col-form-label">Imagen:</label>
-                        <div class="col-xl-10 col-lg-9">
+                            class=" col-xl-3 col-form-label">Imagen:</label>
+                        <div class=" col-xl-9">
                             <input style="border-radius:10px" name="imagen" type="file" class="form-control"
                                 id="exampleInputPassword2" >
                         </div>
@@ -98,6 +108,7 @@
                             </button>
                             <a class="btn btn-light mb-2 col-sm-12 col-md-5" href="{{route('nutricionista.index')}}">Cancelar</a>
                         </div>
+                    </div>
 
                 </div>
                 </form>

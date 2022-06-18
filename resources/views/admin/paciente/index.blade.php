@@ -26,9 +26,9 @@
 
                                     <th>Nombre</th>
                                     <th>Cédula</th>
-                                    {{-- <th>Tipo diabetes</th> --}}
+                                    <th>Tipo diabetes</th>
                                     <th>Seguimiento</th>
-                                    <th>Dato antropométrico</th>
+                                    {{-- <th>Dato antropométrico</th> --}}
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -41,11 +41,11 @@
                                         <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
 
                                         <td>{{ $paciente->cedula }}</td>
-                                        {{-- @if ($paciente->tipo_diabetes == 3)
+                                        @if ($paciente->tipo_diabetes == 3)
                                             <td>Tipo gestacional</td>
                                         @else
                                             <td>Tipo {{ $paciente->tipo_diabetes }}</td>
-                                        @endif --}}
+                                        @endif
                                         <style>
                                             a.color1 {
                                                 border-color: #7c7ce4 !important;
@@ -73,7 +73,7 @@
 
 
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             <a title="Agregar datos antropométricos"
                                                 href="{{ route('admin.agregarDatosAntropometricos', $paciente->id) }}"
                                                 class="btn btn-outline-success mb-1"><i class="fas fa-plus"></i></a>
@@ -82,7 +82,7 @@
                                                 data-target="#exampleModal-3{{ $paciente->id }}"
                                                 class="btn btn-outline-primary mb-1 color2"><i
                                                     class="fa-solid fa-hospital-user"></i></a>
-                                        </td>
+                                        </td> --}}
                                         <td>
                                             @if ($paciente->estado == 'activo')
                                                 <a title="Estado del paciente" class="btn btn-success"
@@ -292,8 +292,7 @@
                                                                 src="{{ asset('img/mujer.png') }}">
                                                         @endif
                                                     </div> --}}
-                                                            <div
-                                                                class="col-12 col-md-6 row mt-md-2 mt-2 justify-content-center">
+                                                            <div class="col-12 col-md-6 row mt-md-2 mt-2 justify-content-center">
                                                                 <div class="col-md-12 col-10">
 
                                                                     <label class="col-12 text-center"> <strong>Datos
@@ -373,29 +372,28 @@
                                                                                         class="col-6 col-md-5"><strong>Altura:</strong>
                                                                                     </label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ $data->altura }}mts</label>
+                                                                                        class="col-6 col-md-7">{{ $data->altura }} (m)</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
                                                                                     <label
                                                                                         class="col-6 col-md-5"><strong>Peso:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ $data->peso }}kg</label>
+                                                                                        class="col-6 col-md-7">{{ $data->peso }} (kg)</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
                                                                                     <label class="col-6 col-md-5"><strong>Grasa
                                                                                             corporal:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ number_format($data->grasa_corporal, 0) }}%</label>
+                                                                                        class="col-6 col-md-7">{{ number_format($data->grasa_corporal, 0) }} %</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
                                                                                     <label class="col-6 col-md-5"><strong>Masa
                                                                                             muscular:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ number_format($data->masa_muscular, 0) }}
-                                                                                        %</label>
+                                                                                        class="col-6 col-md-7">{{ number_format($data->masa_muscular, 0) }} %</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">

@@ -28,8 +28,8 @@
                 </div>
             </div>
 
-                <div class="col-12 justify-content-center row mt-3">
-                    <div class="table-responsive text-left w-50">
+            <div class="col-12 justify-content-center row mt-3">
+                <div class="table-responsive text-left w-50">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>

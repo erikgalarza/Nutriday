@@ -13,13 +13,13 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class NutricionistaController extends Controller
 {
-    
+
     //listar todos los nutri
     public function index()
     {
         // $nutricionistas = Nutricionista::all();
         $nutricionistas = User::role('Nutricionista')->get();
-    
+
         return view('admin.nutricionistas.index',compact('nutricionistas'));
     }
 
@@ -49,6 +49,7 @@ class NutricionistaController extends Controller
        $nutricionista->update([
         "nombre"=>$request->nombre,
         "apellido"=>$request->apellido,
+        "sexo"=>$request->sexo,
         "especialidad"=>$request->especialidad,
         "cedula"=>$request->cedula,
         "telefono"=>$request->telefono,
@@ -90,7 +91,7 @@ class NutricionistaController extends Controller
         return view('admin.nutricionistas.create');
     }
 
-   
+
     public function store(Request $request)
     {
         // dd($request);
@@ -104,14 +105,15 @@ class NutricionistaController extends Controller
             "nombre"=>$request->nombre,
             "apellido"=>$request->apellido,
             "cedula"=>$request->cedula,
+            "sexo"=>$request->sexo,
             "telefono"=>$request->telefono,
             "correo"=>$request->correo,
-            
+
             "especialidad"=>$request->especialidad,
             "user_id"=>$user->id
         ]);
 
-        
+
         if ($request->hasFile('imagen')) {
             $url = "";
             $file = $request->imagen;
@@ -153,7 +155,7 @@ class NutricionistaController extends Controller
         //
     }
 
-   
+
     public function update(Request $request, $id)
     {
         $nutricionista = Nutricionista::find($id);
@@ -166,6 +168,7 @@ class NutricionistaController extends Controller
             "apellido"=>$request->apellido,
             "correo"=>$request->correo,
             "cedula"=>$request->cedula,
+            "sexo"=>$request->sexo,
             "telefono"=>$request->telefono,
             "password"=>$pass
         ]);

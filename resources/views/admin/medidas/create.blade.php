@@ -18,30 +18,40 @@
             <div class="mb-3" style="background-color:#4b6ac3">
                 <h3 class="card-title titulosa text-lg-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos de la unidad de medida</h3>
                 </div>
-            <div class="card-body" style="padding-right:13rem;padding-left:13rem">
-
+            <div class="card-body" >
+                <div class="col-12 row justify-content-center px-0 m-0">
+                    <div class="col-md-8 col-xl-9 col-11 text-left pl-md-0">
+                        <div class="container" >
 
                 <form method="POST"  class="forms-sample" action="{{route('medidaAlimento.store')}}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group row mb-3">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
-                            class="col-sm-3 col-form-label">Nombre de la medida:</label>
-                        <div class="col-sm-9" >
-                            <input style="border-radius:10px; name="medida" type="text" class="form-control" placeholder="Ingrese el nombre">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;max-width:207px" for="exampleInputUsername2"
+                            class="col-xl-4  col-form-label ">Nombre de la medida:</label>
+                        <div class="col-xl-8 " >
+                            <input style="border-radius:10px;" name="medida" type="text" class="form-control" placeholder="Ingrese el nombre">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
-                            class="col-sm-3 col-form-label">Abreviatura de la medida:</label>
-                        <div class="col-sm-9" >
+                    <div class="form-group row ">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;max-width:207px" for="exampleInputUsername2"
+                            class="col-xl-4 col-form-label">Abreviatura de la medida:</label>
+                        <div class="col-xl-8" >
                             <input style="border-radius:10px;" name="abreviatura" type="text" class="form-control" placeholder="Ingrese la abreviatura">
                         </div>
                     </div>
-                    <div class="mt-5 form-group text-center">
-                    <button type="submit" onclick="windows.location.href='{{route('medidaAlimento.index')}}'" class="btn btn-success mr-2">Guardar</button>
-                    <a type="button" class="btn btn-light" href="{{route('medidaAlimento.index')}}">Cancelar</a>
+                    <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">
+                        <div class="col-md-8 p-0 col-xl-5 justify-content-space-around">
+                            <button type="submit" class="btn btn-success mb-2 col-sm-12 col-md-5">Guardar
+                            </button>
+                            <a class="btn btn-light mb-2 col-sm-12 col-md-5" href="{{route('medidaAlimento.index')}}">Cancelar</a>
+                        </div>
+                    </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
             </div>
         </div>
     </div>

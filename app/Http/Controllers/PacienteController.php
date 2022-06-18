@@ -43,7 +43,7 @@ class PacienteController extends Controller
         $actividades = $paciente->actividades()->get();
         $duraciones =  $paciente->actividades()->get(['duracion']);
         $estados = $paciente->estados_animo()->get();
-        return view('admin.paciente.progreso',compact('datos','dietas','actividades','duraciones','estados'));
+        return view('admin.paciente.progreso',compact('datos','dietas','actividades','duraciones','estados','paciente'));
     }
 
 

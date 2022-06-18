@@ -14,6 +14,83 @@
 
     <div class="card ">
         <div class="mb-3" style="background-color:#4b6ac3">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Información personal</h3>
+        </div>
+        <div class="row px-3" style="margin-top:10px;">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$paciente->nombre}} {{$paciente->apellido}}</h4>
+                        <div style="width:100%;height:auto">
+                            <img src="{{isset($paciente->url) }}"   alt="Foto del paciente">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body text-center pb-3">
+                        <h4 class="card-title mb-4" style="text-transform: uppercase; font-weight:bold;font-size: 14px" >Datos paciente</h4>
+                        <div class="container" style="max-width: 300px">
+                        <div class="col-md-12 col-10 text-left ml-4 p-0">
+                                <div class="form-group row mb-1">
+                                    <label class="col-5 text-left"> <strong>
+                                            Nombre:</strong></label>
+                                    <label
+                                        class="col-7">{{ $paciente->nombre }}
+                                        {{ $paciente->apellido }}</label>
+
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <label
+                                        class="col-5 text-left"><strong>Cédula:</strong></label>
+                                    <label class="col-7">
+                                        {{ $paciente->cedula }}</label>
+
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <label
+                                        class="col-5 text-left"><strong>Sexo:</strong></label>
+                                    <label
+                                        class="col-7">{{ $paciente->sexo == 1 ? 'Femenino' : 'Masculino' }}</label>
+                                </div>
+
+                                <div class="form-group row mb-1">
+                                    <label class="col-5 text-left"><strong>Tipo
+                                            diabetes:</strong></label>
+                                    @if ($paciente->tipo_diabetes == 3)
+                                        <label class="col-7">Tipo
+                                            gestacional</label>
+                                    @else
+                                        <label class="col-7">Tipo
+                                            {{ $paciente->tipo_diabetes }}</label>
+                                    @endif
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <label
+                                        class="col-5 text-left"><strong>Teléfono:</strong>
+                                    </label>
+                                    <label
+                                        class="col-7">{{ $paciente->telefono }}</label>
+                                </div>
+
+                                <div class="form-group row mb-1">
+                                    <label
+                                        class="col-5 text-left"><strong>Email:</strong></label>
+                                    <label
+                                        class="col-7">{{ $paciente->user->email }}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-5">
+        <div class="mb-3" style="background-color:#4eba74">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Seguimiento de Progreso</h3>
         </div>
         <div class="row px-3" style="margin-top:10px;">
@@ -45,8 +122,8 @@
     </div>
 
     <div class="card mt-5">
-        <div class="mb-3" style="background-color:#4eba74">
-            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Historial antropométrico del paciente</h3>
+        <div class="mb-3" style="background-color:#7c7ce4">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Historial antropométrico</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -55,11 +132,12 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>N°</th>
                                     <th>Altura</th>
                                     <th>Peso</th>
-                                    <th>Sexo</th>
                                     <th>IMC</th>
+                                    <th>Grasa corporal</th>
+                                    <th>Masa muscular</th>
                                     <th>Fecha de visita</th>
                                 </tr>
                             </thead>
@@ -69,8 +147,9 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{ $dato->altura }}</td>
                                         <td>{{ $dato->peso }}</td>
-                                        <td>{{ $dato->sexo }}</td>
                                         <td>{{ $dato->imc }}</td>
+                                        <td>{{ $dato->grasa_corporal}}</td>
+                                        <td>{{ $dato->masa_muscular}}</td>
                                         <td>{{ $dato->created_at }}</td>
                                         <td>
                                         </td>
@@ -103,7 +182,7 @@
 
 
         <div class="card mt-5 text-center">
-            <div class="mb-5" style="background-color:#7c7ce4">
+            <div class="mb-5" style="background-color:#4869c4">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Dietas asignadas</h3>
             </div>
 
@@ -113,7 +192,7 @@
                     <table id="order-listing" class="table mb-5">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>N°</th>
                                 <th>Nombre</th>
                                 <th>Tipo de diabetes</th>
                                 <th>Fecha de fin</th>
@@ -142,8 +221,8 @@
 
 
         <div class="card  mt-5 text-center">
-            <div class="mb-3" style="background-color:#4869c4">
-                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Actividades del paciente</h3>
+            <div class="mb-3" style="background-color:#4eba74">
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Actividades asignadas </h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -152,7 +231,7 @@
                             <table id="order-listing" class="table mb-4">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>N°</th>
                                         <th>Nombre</th>
                                         <th>Duración</th>
                                         <th>Imagen</th>
@@ -180,8 +259,8 @@
 
 
         <div class="card  mt-5 text-center">
-            <div class="mb-3" style="background-color:#4eba74">
-                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Estados de ánimo del paciente</h3>
+            <div class="mb-3" style="background-color:#7c7ce4">
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Estados de ánimo</h3>
             </div>
             <div class="card-body">
                 <div class="row">

@@ -99,6 +99,19 @@
                             </div>
                             <div class="form-group row mb-2" style="font-weight:bold">
                                 <label for="exampleInputUsername2"
+                                    class="col-sm-3 col-form-label text-left">Sexo:</label>
+                                <div class="col-sm-9">
+                                    <select name="sexo" id="sexo" class="form-control" style="border-radius:10px; background-color:#F0F0F0;min-height:45.2px">
+                                            <option selected disabled>Seleccione una opción</option>
+                                            <option value="1"{{ $nutricionista->nutricionistas->sexo == '1' ? 'selected' : '' }}>Masculino</option>
+                                            <option value="2"{{ $nutricionista->nutricionistas->sexo == '2' ? 'selected' : '' }}>
+                                                Femenino</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            <div class="form-group row mb-2" style="font-weight:bold">
+                                <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Teléfono:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="telefono" type="text" value="{{$nutricionista->nutricionistas->telefono}}" class="form-control" id="exampleInputUsername2"
@@ -174,8 +187,8 @@
                             <div class="col-12 row m-0 justify-content-center">
                                 <div class="col-sm-12 row col-11 text-left justify-content-center">
 
-                            <div class="col-7 col-sm-5 mr-2 row justify-content-center ">
-                                <div class="col-sm-11 p-0 col-12 d-flex text-center align-items-center justify-content-center">
+                            <div class="col-7 col-sm-5 mr-2 row justify-content-center p-0 ">
+                                <div class="col-sm-11 p-0 col-12 d-flex text-center align-items-center justify-content-center no-gutters">
                                     @if(isset($nutricionista->imagen->url)  )
                                     <img class="img-thumbnail p-0" src="{{$nutricionista->imagen->url}}">
                                     @else
@@ -188,17 +201,22 @@
                                 <div class="col-11">
                                 <div class="form-group row mb-1 ">
                                     <label class="col-sm-4  text-left p-0"><strong>Nombre:</strong></label>
-                                    <label class="col-sm-8  text-left p-0" >{{$nutricionista->nombre}} {{$nutricionista->apellido}}</label>
+                                    <label class="col-sm-8  text-left p-0" >{{$nutricionista->nutricionistas->nombre}} {{$nutricionista->nutricionistas->apellido}}</label>
 
                                 </div>
                                 <div class="form-group row mb-1">
                                     <label class="col-sm-4  text-left p-0" ><strong>Cedula:</strong></label>
-                                    <label class="col-sm-8  text-left p-0" > {{$nutricionista->cedula}}</label>
+                                    <label class="col-sm-8  text-left p-0" > {{$nutricionista->nutricionistas->cedula}}</label>
+
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <label class="col-sm-4  text-left p-0" ><strong>Sexo:</strong></label>
+                                    <label class="col-sm-8  text-left p-0" > {{$nutricionista->nutricionistas->sexo == 1 ? 'Masculino' : 'Femenino' }}</label>
 
                                 </div>
                                 <div class="form-group row mb-1">
                                     <label class="col-sm-4  text-left  p-0" ><strong>Teléfono:</strong></label>
-                                    <label class="col-sm-8  text-left  p-0" >{{$nutricionista->telefono}}</label>
+                                    <label class="col-sm-8  text-left  p-0" >{{$nutricionista->nutricionistas->telefono}}</label>
 
                                 </div>
                                 <div class="form-group row mb-1">
@@ -209,7 +227,7 @@
 
                                 <div class="form-group row mb-1">
                                     <label class="col-sm-4  text-left p-0" ><strong>Especialidad:</strong></label>
-                                    <label class="col-sm-8   text-left p-0" >{{$nutricionista->especialidad}}</label>
+                                    <label class="col-sm-8   text-left p-0" >{{$nutricionista->nutricionistas->especialidad}}</label>
                                 </div>
 
                                 <div class="form-group row mb-1">
@@ -260,7 +278,7 @@
     function eliminarNutri(nutricionista) {
         var form = document.getElementById('deletenutri' + nutricionista.id);
         swal({
-            title: "Estas seguro que quieres al nutricionista " + nutricionista.nombre + " ?",
+            title: "Estas seguro que quieres al nutricionista " + nutricionista.nutricionistas.nombre + " " +  nutricionista.nutricionistas.apellido  + " ?",
             text: "Al confirmar, el nutricionista será eliminado permanentemente!",
             icon: "warning",
             buttons: [

@@ -294,25 +294,26 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('paciente.create')}}"><i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('paciente.index')}}"><i class="fa-solid fa-people-group mr-3"></i>Ver todos</a></li>
+                                <li class="nav-item "> <a class="nav-link" href="{{route('da.asignarDatosAntropometricos')}}"><i class="fa-solid fa-hospital-user mr-3"></i>Dato antropométrico</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
                             aria-controls="ui-basic2">
                             <div class="mr-4" style="min-width:35px">
-                                <i class="fa-solid fa-user fa-2x"></i>
+                                <i class="fa-solid fa-hospital-user fa-2x"></i>
                             </div>
-                            <span class="menu-title">Datos antro</span>
+                            <span class="menu-title">D. Antropométrico</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse"  id="ui-basic2">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('da.asignarDatosAntropometricos')}}"><i class="fa-solid fa-user-plus mr-3"></i>Asignar</a></li>
-                             
+
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"

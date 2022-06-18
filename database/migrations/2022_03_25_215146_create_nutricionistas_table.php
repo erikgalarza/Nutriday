@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('cedula');
+            $table->string('sexo');
             $table->text('especialidad');
             $table->string('telefono');
             $table->unsignedBigInteger('user_id');

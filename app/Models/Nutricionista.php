@@ -11,16 +11,17 @@ class Nutricionista extends Authenticatable
 {
     use HasFactory , HasRoles ;
     protected $guard_name = 'web';
-    
+
     public $fillable = [
         "nombre",
         "apellido",
         "cedula",
+        "sexo",
         "telefono",
         "especialidad",
         "user_id",
         "estado"
-        
+
     ];
     // nutricionista->user->name
     public function user()

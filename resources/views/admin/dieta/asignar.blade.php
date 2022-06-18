@@ -12,24 +12,38 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">
-                Asignar Dieta</h3>
+        <div class=" mb-3" style="background-color:#4b6ac3 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
+                Asignar dieta a paciente</h3>
         </div>
         <div class="card-body">
-           
-            <div class="container">
+
+            <style>
+                .sombra{
+                    -webkit-box-shadow: 20px 21px 25px -6px rgba(133,139,171,1);
+                    -moz-box-shadow: 20px 21px 25px -6px rgba(133,139,171,1);
+                    box-shadow: 20px 21px 25px -6px rgba(133,139,171,1);
+                }
+            </style>
                 <form method="GET" action="{{route('dieta.buscarPacientes')}}">
-                <div class="buscador_paciente" style="display:flex; flex-direction:row; ">
-                   
-                        <input type="text" name="paciente" class="form-control w-50 mx-2" placeholder="Nombre del paciente..."> 
-                        <button type="submit" class="btn btn-outline-success" >Buscar</button>
-                 
-                  
+                    <div class="container mb-5 sombra" style="border:2px solid #e5e5e5;border-radius:10px;background-color:#F0F0F0;max-width:832px">
+
+                        <div class="row justify-content-center">
+                        <div class="buscador_paciente justify-content-center m-md-5 my-5 mx-3  row align-items-center col-lg-8 " >
+                            <div class="col-xl-9 col-sm-9   align-items-center">
+                            <input type="search" name="paciente"  style="min-height:50px"  class="form-control " placeholder="Escriba el nombre del paciente...@Ejm: Erik Galarza">
+                             </div>
+                                    <button type="submit" class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 "style="min-height:50px;border-radius:30px;font-weight:bold" ><i class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
+                        </div>
+                    </div>
                 </div>
+
             </form>
+
+
+            <div class="container w-75 mt-5">
                 <div class="table-responsive">
-                    <table id="order-listing" class="table text-center">
+                    <table id="order-listing" class="table">
                         <thead>
                             <tr>
 
@@ -97,7 +111,7 @@
                                         </td>
                                     </tr>
                                 </form>
-                               
+
 
 
                                 <div class="modal fade" id="exampleModal-2{{ $paciente->id }}" tabindex="-1"
@@ -122,7 +136,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="modal fade" id="exampleModal-3{{ $paciente->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -212,10 +226,11 @@
                                         </div>
                                     </div>
                                 </div>
-                
+
                                 @endforeach
                         </tbody>
                     </table>
+                </div>
                 </div>
             </div>
             {{-- <div class="row">
@@ -288,7 +303,7 @@
                                             </td>
                                         </tr>
                                     </form>
-                                   
+
 
 
                                     <div class="modal fade" id="exampleModal-2{{ $paciente->id }}" tabindex="-1"
@@ -313,7 +328,7 @@
                                         </div>
                                     </div>
 
-                                    
+
                                     <div class="modal fade" id="exampleModal-3{{ $paciente->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -403,7 +418,7 @@
                                             </div>
                                         </div>
                                     </div>
-                    
+
                                     @endforeach
                             </tbody>
                         </table>
@@ -413,7 +428,8 @@
         </div>
     </div>
 
-
+</div>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -27,7 +27,7 @@ class RolesSeeder extends Seeder
             "cedula"=>"1718092065",
             "telefono"=>"0988703044"
         ]);
-        
+
 
         $user2 = User::create([
             "email"=>"alvaro@gmail.com",
@@ -38,6 +38,7 @@ class RolesSeeder extends Seeder
             "nombre"=>"Alvaro",
             "apellido"=>"Salazar",
             "cedula"=>"1234567890",
+            "sexo"=>1,
             "especialidad"=>"Terapeuta",
             "telefono"=>"0988703030",
         ]);
@@ -62,6 +63,8 @@ class RolesSeeder extends Seeder
             "altura"=>1.70,
             "peso"=>60,
             "imc"=>20,
+            "grasa_corporal"=>80,
+            "masa_muscular"=>72,
             "paciente_id"=>$paciente->id
         ]);
     }

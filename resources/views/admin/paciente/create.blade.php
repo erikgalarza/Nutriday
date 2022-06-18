@@ -20,50 +20,51 @@
             </div>
             <div class="card-body" >
 
-                <div class="col-12 row justify-content-center">
-                    <div class="col-md-9 col-xl-10 col-12 text-left">
+                <div class="col-12 row justify-content-center m-0">
+                    <div class="col-md-9 col-12 text-left">
+
 
                 <form method="POST" action="{{route('paciente.store')}}" enctype="multipart/form-data" class="forms-sample">
                     @csrf
-
+                    <div class="container" style="max-width:510px">
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
-                            class="col-xl-2 col-lg-3 col-form-label">Nombre:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputUsername2"
+                            class="col-xl-3  col-form-label">Nombre:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px"  name="nombre" type="text" class="form-control" id="exampleInputUsername2"
                                 placeholder="Ingrese el nombre">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Apellido:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
+                            class="col-xl-3  col-form-label">Apellido:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px" name="apellido" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el apellido">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Cédula:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
+                            class="col-xl-3  col-form-label">Cédula:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px" name="cedula" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese la cédula">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Edad:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
+                            class="col-xl-3  col-form-label">Edad:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px" name="edad" type="number" min="1" max="60" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese la edad">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Sexo:</label>
-                        <div class="col-xl-10 col-lg-9">
-                          <select style="border-radius:10px; background-color:#F0F0F0" class="form-control" name="sexo" id="" >
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
+                            class="col-xl-3  col-form-label">Sexo:</label>
+                        <div class="col-xl-9 ">
+                          <select style="border-radius:10px; background-color:#F0F0F0;min-height:45.2px" class="form-control" name="sexo" id="" >
                               <option selected disabled>Seleccione una opción</option>
                               <option value="1">Femenino</option>
                               <option value="2">Masculino</option>
@@ -71,10 +72,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Tipo diabetes:</label>
-                        <div class="col-xl-10 col-lg-9">
-                          <select style="border-radius:10px; background-color:#F0F0F0" class="form-control" name="tipo_diabetes" id="" >
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
+                            class="col-xl-3  col-form-label">Tipo diabetes:</label>
+                        <div class="col-xl-9 ">
+                          <select style="border-radius:10px; background-color:#F0F0F0;min-height:45.2px" class="form-control" name="tipo_diabetes" id="" >
                               <option selected disabled>Seleccione una opción</option>
                               <option value="1">Tipo 1</option>
                               <option value="2">Tipo 2</option>
@@ -85,26 +86,26 @@
 
 
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputMobile"
-                            class="col-xl-2 col-lg-3 col-form-label">Teléfono:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputMobile"
+                            class="col-xl-3  col-form-label">Teléfono:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px" name="telefono" type="text" class="form-control" id="exampleInputMobile"
                                 placeholder="Ingrese el teléfono">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
-                            class="col-xl-2 col-lg-3 col-form-label">Email:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
+                            class="col-xl-3  col-form-label">Email:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px" name="email" type="email" class="form-control" id="exampleInputEmail2"
                                 placeholder="Correo electrónico">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label style="font-weight:bold; font-size:11px; text-transform:uppercase" for="exampleInputPassword2"
-                            class="col-xl-2 col-lg-3 col-form-label">Contraseña:</label>
-                        <div class="col-xl-10 col-lg-9">
+                        <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputPassword2"
+                            class="col-xl-3  col-form-label">Contraseña:</label>
+                        <div class="col-xl-9 ">
                             <input style="border-radius:10px;background-color:#F0F0F0" name="password" type="password" class="form-control"
                                 id="exampleInputPassword2" placeholder="Ingrese la contraseña">
                         </div>
@@ -117,6 +118,7 @@
                     </div>
                     </div>
 
+                </div>
 
                 </form>
             </div>

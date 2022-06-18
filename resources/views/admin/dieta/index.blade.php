@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <div class="page-header">
         <h3 class="page-title">
             Ver dietas
@@ -13,8 +13,8 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">
+        <div class=" mb-3" style="background-color:#4b6ac3 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Dietas predefinidas</h3>
         </div>
         <div class="card-body">
@@ -62,8 +62,7 @@
                                                 href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
                                                 class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
 
-                                            <a 
-                                                class="btn btn-outline-primary mb-1" title="Ver alimentos"><i
+                                            <a class="btn btn-outline-primary mb-1" title="Ver alimentos"><i
                                                     class="fa-solid fa-utensils"></i></a>
                                         </td>
                                         <td>
@@ -95,7 +94,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color:#4b6ac3">
                                                     <h5 class="modal-title text-white"
-                                                        style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">
+                                                        style="text-transform: uppercase; font-weight:bold; font-size:16px"
+                                                        id="exampleModalLabel-2">
                                                         Editar dieta</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -118,8 +118,8 @@
                                                                     <div class="col-sm-8">
                                                                         <input name="nombre" type="text"
                                                                             value="{{ $dieta->nombre }}"
-                                                                            class="form-control" id="exampleInputUsername2"
-                                                                            required>
+                                                                            class="form-control"
+                                                                            id="exampleInputUsername2" required>
                                                                     </div>
                                                                 </div>
 
@@ -151,8 +151,8 @@
                                                                         class="col-sm-4 col-form-label"><strong>IMC:</strong></label>
                                                                     <div class="col-sm-8">
                                                                         <select class="form-control" name="imc"
-                                                                            class="form-control"
-                                                                            id=""style="min-height:45.2px;background-color:#F0F0F0"
+                                                                            class="form-control" id=""
+                                                                            style="min-height:45.2px;background-color:#F0F0F0"
                                                                             required>
                                                                             <option value="1"
                                                                                 {{ $dieta->imc == '1' ? 'selected' : '' }}>
@@ -173,9 +173,9 @@
                                                                     <label for="exampleInputUsername2"
                                                                         class="col-sm-4 col-form-label"><strong>Observaciones:</strong></label>
                                                                     <div class="col-sm-8">
-                                                                        <textarea name="observaciones"cols="30" rows="5" value="{{ $dieta->observaciones }}"
-                                                                            class="form-control" id="exampleInputUsername2" required>
-                            </textarea>
+                                                                        <textarea name="observaciones" cols="30" rows="5" value="{{ $dieta->observaciones }}" class="form-control"
+                                                                            id="exampleInputUsername2" required>
+                                                                        </textarea>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -201,15 +201,16 @@
 
 
 
-                                  
+
 
                                     <div class="modal fade" id="exampleModal-3{{ $dieta->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color: #4b6ac3">
-                                                    <h5
-                                                        class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;  id="ModalLabel">
+                                                    <h5 class="modal-title text-lg-center text-white"
+                                                        style="text-transform: uppercase; font-weight:bold;  id="
+                                                        ModalLabel">
                                                         Datos de la dieta</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -220,16 +221,18 @@
                                                 <div class="modal-body py-3 px-0">
 
                                                     <div class="col-12 row m-0 justify-content-center">
-                                                        <div
-                                                            class="col-sm-12 pl-3 col-11 text-left justify-content-center">
+                                                        <div class="col-sm-12 pl-3 col-11 text-left justify-content-center">
 
                                                             <div class="form-group row mb-2">
-                                                                <label class="col-sm-4"><strong>Nombre:</strong> </label>
-                                                                <label class="col-sm-8">{{ $dieta->nombre }}</label>
+                                                                <label class="col-sm-4"><strong>Nombre:</strong>
+                                                                </label>
+                                                                <label
+                                                                    class="col-sm-8">{{ $dieta->nombre }}</label>
                                                             </div>
 
                                                             <div class="form-group row mb-2">
-                                                                <label class="col-sm-4"><strong>Tipo de diabetes:</strong>
+                                                                <label class="col-sm-4"><strong>Tipo de
+                                                                        diabetes:</strong>
                                                                 </label>
                                                                 <label
                                                                     class="col-sm-8">{{ $dieta->tipo_diabetes }}</label>
@@ -238,7 +241,8 @@
                                                             <div class="form-group row mb-2">
                                                                 <label class="col-sm-4"><strong>IMC:</strong></label>
                                                                 <label class="col-sm-8">{{ $dieta->imc }}
-                                                                    (Normal)</label>
+                                                                    (Normal)
+                                                                </label>
 
                                                             </div>
                                                             <div class="form-group row mb-2">
@@ -254,42 +258,35 @@
                                                             <div class="form-group row mb-2">
                                                                 <label class="col-sm-4"><strong>Fecha
                                                                         creación:</strong></label>
-                                                                <label class="col-sm-8">{{ $dieta->created_at }}</label>
+                                                                <label
+                                                                    class="col-sm-8">{{ $dieta->created_at }}</label>
                                                             </div>
-
                                                         </div>
                                                     </div>
-
-
-
-
-
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
-                    </div>
-                    @endforeach
-                    </tbody>
+                                </div>
+                            @endforeach
+                        </tbody>
                     </table>
-
-
                 </div>
-
-
             </div>
         </div>
+    </div>
+</div>
 
 
-         
 
 
 
 
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">
+
+    <div class="card mt-5">
+
+        <div class=" mb-3" style="background-color: #4eba74 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Dietas Asignadas</h3>
         </div>
 
@@ -312,71 +309,82 @@
                             </thead>
                             <tbody>
                                 @foreach ($pacientesc as $key => $paciente)
+                                    {{-- MODAL PARA VER ALIMENTOS DE LA DIETA --}}
+
+                                    <div class="modal fade" id="exampleModal-4{{ $paciente->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: #4b6ac3">
+                                                    <h5 class="modal-title text-lg-center text-white"
+                                                        style="text-transform: uppercase; font-weight:bold;  id="
+                                                        ModalLabel">
+                                                        Alimentos de la dieta</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span style="color:white;font-size:30px"
+                                                            aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body py-3 px-0">
+                                                    <div class="container">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Dieta semanal</h4>
+                                                                <p class="card-description">Paciente: </p>
+
+                                                                <ul class="nav nav-tabs" role="tablist">
+                                                                    @php
+                                                                        $dias = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+                                                                    @endphp
+
+                                                                    @for ($i = 0; $i <= 6; $i++)
+                                                                        <li class="nav-item">
+                                                                            <a onclick="opcion({{ $i }});"
+                                                                                class="nav-link {{ $i == 0 ? 'active' : '' }}"
+                                                                                id="{{ $i }}-tab"
+                                                                                data-toggle="tab"
+                                                                                href="#{{ $i }}-1" role="tab"
+                                                                                aria-controls="{{ $i }}-1"
+                                                                                aria-selected="{{ $i == 0 ? 'true' : 'false' }}">{{ $dias[$i] }}</a>
+                                                                        </li>
+                                                                    @endfor
+                                                                </ul>
 
 
-                                 {{-- MODAL PARA VER ALIMENTOS DE LA DIETA --}}
+                                                                <div class="tab-content">
+                                                                    @for ($i = 0; $i <= 6; $i++)
+                                                                        <div class="tab-pane fade {{ $i == 0 ? 'show active' : '' }}"
+                                                                            id="{{ $i }}-1" role="tabpanel"
+                                                                            aria-labelledby="{{ $i }}-tab">
+                                                                            <div class="media">
+                                                                                <img class="mr-3 w-25 rounded"
+                                                                                    src="../../images/samples/300x300/13.jpg"
+                                                                                    alt="sample image">
+                                                                                <div class="media-body">
+                                                                                    <h4 class="mt-0">Why choose
+                                                                                        us?</h4>
+                                                                                    <p>
+                                                                                        {{ $i + 1 }}
+                                                                                    <h2 id="texto{{ $i }}"></h2>
+                                                                                    </p>
+                                                                                    <div class="container"
+                                                                                        id="box{{ $i }}">
 
-          <div class="modal fade" id="exampleModal-4{{ $paciente->id }}" tabindex="-1"
-            role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: #4b6ac3">
-                        <h5
-                            class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;  id="ModalLabel">
-                            Alimentos de la dieta</h5>
-                        <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                            <span style="color:white;font-size:30px"
-                                aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body py-3 px-0">
-                        <div class="container">
-                            <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">Dieta semanal</h4>
-                                  <p class="card-description">Paciente: </p>
-                                  
-                                  <ul class="nav nav-tabs" role="tablist">
-                                    @php
-                                    $dias = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-                                @endphp
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endfor
+                                                                </div>
 
-                                    @for($i = 0; $i<=6; $i++)
-                                    <li class="nav-item">
-                                      <a onclick="opcion({{$i}});" class="nav-link {{$i==0 ? 'active':''}}" id="{{$i}}-tab" data-toggle="tab" href="#{{$i}}-1" role="tab" aria-controls="{{$i}}-1" aria-selected="{{$i==0 ? 'true':'false'}}">{{$dias[$i]}}</a>
-                                    </li>
-                                    @endfor
-                                  </ul>
-                           
-                           
-                                <div class="tab-content">
-                                    @for($i = 0; $i<=6; $i++)
-                                    <div class="tab-pane fade {{ $i == 0 ? 'show active' : '' }}" id="{{$i}}-1" role="tabpanel" aria-labelledby="{{$i}}-tab">
-                                      <div class="media">
-                                        <img class="mr-3 w-25 rounded" src="../../images/samples/300x300/13.jpg" alt="sample image">
-                                        <div class="media-body">
-                                          <h4 class="mt-0">Why choose us?</h4>
-                                          <p>
-                                              {{$i+1}}
-                                              <h2 id="texto{{$i}}"></h2>
-                                          </p>
-                                          <div class="container" id="box{{$i}}">
-
-                                          </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
                                     </div>
-                                    @endfor
-                                  </div>
-                                
-                                </div>
-                              </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
                                     @foreach ($paciente->dietas()->get() as $dieta)
@@ -397,15 +405,18 @@
                                                 <td>{{ $dieta['imc'] }} (Obeso)</td>
                                             @endif
                                             <td>
-                                                {{ $paciente->nombre }}
+                                                <a href="">{{ $paciente->nombre }} {{ $paciente->apellido}}</a>
                                             </td>
 
 
                                             <td>
                                                 <a title="Agregar alimentos a la dieta"
                                                     href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
-                                                    class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
-                                                <a onclick="obtenerIdPaciente({{$paciente->id}});obtenerIdDieta({{$dieta->id}});" data-toggle="modal" data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-outline-primary mb-1" title="Ver alimentos"
+                                                    class="btn btn-outline-success mb-1"><i
+                                                        class="fa fa-plus"></i></a>
+                                                <a onclick="obtenerIdPaciente({{ $paciente->id }});obtenerIdDieta({{ $dieta->id }});"
+                                                    data-toggle="modal" data-target="#exampleModal-4{{ $paciente->id }}"
+                                                    class="btn btn-outline-primary mb-1" title="Ver alimentos"
                                                     href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
                                                         class="fa-solid fa-utensils"></i></a>
                                             </td>
@@ -417,7 +428,8 @@
                                                 {{-- <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1" data-toggle="modal" data-target="#exampleModal-2{{$dieta->id}}"><i class="fas fa-edit"></i></a> --}}
 
                                                 <form method="post" id="deletecategoria"
-                                                    action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
+                                                    action="{{ route('dieta.destroy', $dieta->id) }}"
+                                                    class="d-inline">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <button title="Eliminar dieta"
@@ -435,7 +447,8 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background-color:#4b6ac3">
                                                         <h5 class="modal-title text-white"
-                                                            style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">
+                                                            style="text-transform: uppercase; font-weight:bold; font-size:16px"
+                                                            id="exampleModalLabel-2">
                                                             Editar dieta</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -491,8 +504,8 @@
                                                                         <label for="exampleInputUsername2"
                                                                             class="col-sm-4 col-form-label"><strong>Observaciones:</strong></label>
                                                                         <div class="col-sm-8">
-                                                                            <textarea name="observaciones"cols="30" rows="5" value="{{ $dieta->observaciones }}"
-                                                                                class="form-control" id="exampleInputUsername2" required>
+                                                                            <textarea name="observaciones" cols="30" rows="5" value="{{ $dieta->observaciones }}" class="form-control"
+                                                                                id="exampleInputUsername2" required>
                               </textarea>
                                                                         </div>
                                                                     </div>
@@ -525,8 +538,9 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background-color: #4b6ac3">
-                                                        <h5
-                                                            class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;  id="ModalLabel">
+                                                        <h5 class="modal-title text-lg-center text-white"
+                                                            style="text-transform: uppercase; font-weight:bold;  id="
+                                                            ModalLabel">
                                                             Datos de la dieta</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -543,7 +557,8 @@
                                                                 <div class="form-group row mb-2">
                                                                     <label class="col-sm-4"><strong>Nombre:</strong>
                                                                     </label>
-                                                                    <label class="col-sm-8">{{ $dieta->nombre }}</label>
+                                                                    <label
+                                                                        class="col-sm-8">{{ $dieta->nombre }}</label>
                                                                 </div>
 
                                                                 <div class="form-group row mb-2">
@@ -554,9 +569,11 @@
                                                                 </div>
 
                                                                 <div class="form-group row mb-2">
-                                                                    <label class="col-sm-4"><strong>IMC:</strong></label>
+                                                                    <label
+                                                                        class="col-sm-4"><strong>IMC:</strong></label>
                                                                     <label class="col-sm-8">{{ $dieta->imc }}
-                                                                        (Normal)</label>
+                                                                        (Normal)
+                                                                    </label>
 
                                                                 </div>
                                                                 <div class="form-group row mb-2">
@@ -566,7 +583,8 @@
                                                                         <label
                                                                             class="col-sm-8">{{ $dieta->observaciones }}</label>
                                                                     @else
-                                                                        <label class="col-sm-8">Sin observaciones</label>
+                                                                        <label class="col-sm-8">Sin
+                                                                            observaciones</label>
                                                                     @endif
                                                                 </div>
                                                                 <div class="form-group row mb-2">
@@ -600,7 +618,7 @@
 
 
             </div>
-        </div>
+        </div> <!-- Fin card de arriba -->
         {{-- {{ $dietas->links() }} --}}
     </div>
     </div>
@@ -608,57 +626,48 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-    integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        var pacienteid = null, dietaid=null;
+        var pacienteid = null,
+            dietaid = null;
 
-        function opcion(id)
-        {
+        function opcion(id) {
 
             console.log('616')
-            document.getElementById('texto'+id).textContent = 'texto'+id;
+            document.getElementById('texto' + id).textContent = 'texto' + id;
             $.ajax({
-                    url: "{{ route('dieta.traerAlimentos') }}",
-                    dataType: "json",
-                    data: {
-                        dieta_id: dietaid,
-                        paciente_id: pacienteid
-                    }
-                }).done(function(res) {
-                    console.log(res)
-                })
+                url: "{{ route('dieta.traerAlimentos') }}",
+                dataType: "json",
+                data: {
+                    dieta_id: dietaid,
+                    paciente_id: pacienteid
+                }
+            }).done(function(res) {
+                console.log(res)
+            })
             // traerAlimentos(pacienteid,dietaid);
         }
 
-        function obtenerIdPaciente(idpaciente)
-        {
+        function obtenerIdPaciente(idpaciente) {
             console.log('621')
             pacienteid = idpaciente;
         }
 
-        function obtenerIdDieta(iddieta)
-        {
+        function obtenerIdDieta(iddieta) {
             console.log('626')
             dietaid = iddieta;
-            console.log('valor de dietaid:'+dietaid+' valor de pacienteid:'+pacienteid);
-          
+            console.log('valor de dietaid:' + dietaid + ' valor de pacienteid:' + pacienteid);
+
         }
 
-        function traerAlimentos(pacienteid,dietaid)
-        {
+        function traerAlimentos(pacienteid, dietaid) {
             console.log('632')
-         
+
         }
-
-
-
-
-
     </script>
-
 @endsection

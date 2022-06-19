@@ -7,12 +7,12 @@
     <body>
         <div class="page-header">
             <h3 class="page-title">
-                Videos
+                Ver actividades
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Videos</li>
+                    <li class="breadcrumb-item active" aria-current="page">Ver actividades</li>
                 </ol>
             </nav>
         </div>
@@ -23,9 +23,10 @@
                 <div class="card">
                     <div class=" mb-3" style="background-color:#4b6ac3 ">
                         <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
-                            style="text-transform: uppercase; font-weight:bold">Actividades</h3>
+                            style="text-transform: uppercase; font-weight:bold">Mis Actividades</h3>
                     </div>
                     <div class="card-body text-center">
+                        @if(count($actividades)>0)
                         <div class="text-center"
                             style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
                             @foreach ($actividades as $key => $actividad)
@@ -45,6 +46,9 @@
                               </div>
                             @endforeach
                         </div>
+                    @else
+                    <label for="">No hay actividades asignadas !</label>
+                    @endif
                     </div>
                 </div>
 

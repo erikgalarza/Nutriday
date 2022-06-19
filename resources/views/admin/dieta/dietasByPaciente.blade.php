@@ -180,6 +180,7 @@
                                             <th>Tipo diabetes</th>
                                             <th>IMC</th>
                                             <th>Alimentos</th>
+                                            <th>Fecha asignación</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -208,8 +209,6 @@
                                                     <td>(Obeso)</td>
                                                 @endif
 
-
-
                                                 <td>
                                                     <a title="Agregar alimentos a la dieta"
                                                         href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
@@ -218,12 +217,18 @@
                                                         href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
                                                             class="fa-solid fa-utensils"></i></a>
                                                 </td>
+                                                @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                                @if ($loop->last)
+                                                    <td>{{ $data->created_at }}</td>
+
+                                                @endif
+                                                @endforeach
                                                 <td>
                                                     <label for="" class="badge badge-success">Activa</label>
                                                 </td>
                                                 <td>
 
-                                                    <a title="Ver más" data-toggle="modal"
+                                                    <a title="Ver más" data-toggle="modal" style="max-width: 50px"
                                                         data-target="#exampleModal-3{{ $dieta->id }}"
                                                         class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
                                                     <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1"
@@ -231,12 +236,12 @@
                                                         data-target="#exampleModal-2{{ $dieta->id }}"><i
                                                             class="fas fa-edit"></i></a>
 
-                                                    <form method="post" id="deletecategoria"
+                                                    <form method="post" id="deletecategoria" style="min-width: 50px"
                                                         action="{{ route('dieta.destroy', $dieta->id) }}"
                                                         class="d-inline">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
-                                                        <button title="Eliminar dieta"
+                                                        <button title="Eliminar dieta" style="min-width: 50px"
                                                             onclick="if(!confirm('Está seguro que desea eliminar la dieta?'))return false;"
                                                             type="submit" class="btn btn-outline-danger mb-1"><i
                                                                 class="fas fa-trash"></i></button>
@@ -284,8 +289,6 @@
                                                                                         {{ $data->created_at }}</label>
                                                                                 @endif
                                                                             @endforeach
-
-
                                                                         </div>
                                                                         <div class="form-group row mb-2">
                                                                             <label class="col-sm-5 col-form-label"><strong>Dietas
@@ -521,7 +524,16 @@
                                                                         <label
                                                                             class="col-sm-8">{{ $dieta->created_at }}</label>
                                                                     </div>
-
+                                                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                                                    @if ($loop->last)
+                                                                    <div class="form-group row mb-2">
+                                                                        <label class="col-sm-4"><strong>Fecha
+                                                                            asignación:</strong></label>
+                                                                    <label
+                                                                        class="col-sm-8">{{ $data->created_at }}</label>
+                                                                    </div>
+                                                                    @endif
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
 

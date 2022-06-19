@@ -12,35 +12,41 @@
         </nav>
     </div>
     <div class="card">
+        <div class=" mb-2" style="background-color:#4b6ac3 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+                Dietas asignadas</h3>
+        </div>
         <div class="card-body">
-            <h4 class="card-title">Dietas</h4>
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                        <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-
+                                    <th>N°</th>
                                     <th>Nombre</th>
-                                    <th>Tipo de diabetes</th>
-                                    <th>Fecha de finalización</th>
+                                    <th>Tipo diabetes</th>
                                     <th>IMC</th>
-                                    <th>Acciones</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha finalización</th>
+                                    <th>Estado</th>
+                                    <th>Ver dieta</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @foreach ($dietas as $key => $dieta)
                                     <tr>
-
+                                        <td>{{ $key+1 }}</td>
                                         <td>{{ $dieta->nombre }}</td>
-                                      
                                         <td>{{ $dieta->tipo_diabetes }}</td>
-                                        <td>{{ $dieta->fecha_fin }}</td>
                                         <td>{{ $dieta->imc }}</td>
+                                        <td>{{ $dieta->created_at }}</td>
+                                        <td>{{ $dieta->fecha_fin }}</td>
+                                        <td><label class="badge badge-success">Activa</label></td>
                                         <td>
-                                            <a href="{{route('cliente.verDieta',$dieta->id)}}" 
-                                                class="btn btn-info"><i class="fas fa-eye"></i></a> 
+                                            <a href="{{route('cliente.verDieta',$dieta->id)}}"
+                                                class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
 
@@ -60,7 +66,7 @@
                                                 <div class="modal-body"
                                                     style="display:flex; flex-wrap:wrap; align-content:flex-start">
 
-                                                 
+
 
                                                     <div style="margin-left:20px;">
 
@@ -69,8 +75,8 @@
                                                                 {{ $dieta->nombre }}</label>
 
                                                         </div>
-                                                     
-                                                
+
+
 
 
                                                     </div>
@@ -93,7 +99,7 @@
                                                 @method('PATCH')
                                                 @csrf
                                             <div class="modal-content">
-                                               
+
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="ModalLabel">Editar dieta</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -101,12 +107,12 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                
-                                                   
+
+
                                                 <div class="modal-body"
                                                     style="display:flex; flex-wrap:wrap; align-content:flex-start">
 
-                                                   
+
 
                                                     <div style="margin-left:20px;">
 
@@ -115,10 +121,10 @@
                                                             <input type="text" name="nombre" class="form-control" value="{{$dieta->nombre}}">
 
                                                         </div>
-                                                     
-                                                    
 
-                                                      
+
+
+
                                                     </div>
                                                 </div>
                                                 <div class="botones text-center my-3">

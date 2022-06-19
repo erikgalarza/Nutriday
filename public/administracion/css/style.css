@@ -22552,16 +22552,17 @@ code {
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1400px) {
   .card.card-statistics .statistics-item:before {
     position: absolute;
     content: "";
-    right: 25%;
-    top: 15px;
-    height: calc(100% - 30px);
+    right: -25%;
+    top: 5px;
+    height: calc(100% - 10px);
     background: rgba(255, 255, 255, 0.2);
     width: 1px;
   }
+
   .rtl .card.card-statistics .statistics-item:before {
     right: auto;
     left: 25%;

@@ -13,18 +13,21 @@
 </div>
 
 <div class="row">
-    
+
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card" style="display:flex; flex-wrap:wrap;">
- 
+            <div class=" mb-3" style="background-color:#4b6ac3 ">
+                <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
+                    style="text-transform: uppercase; font-weight:bold">Estado de ánimo actual</h3>
+            </div>
             <div class="Pregunta text-center mt-4">
                 <h3>¿Cómo te sientes?</h3>
             </div>
 
-            <div  style="width:100%; margin-top:20px; display:flex; justify-content:center; align-items:center; flex-direction:row; flex-wrap:wrap;">
+            <div class="mb-3" style="width:100%; margin-top:20px; display:flex; justify-content:center; align-items:center; flex-direction:row; flex-wrap:wrap;">
                 <a onclick="seleccionar('alegre');" class="iconos" id="alegre" style="border-radius:20%;">
                     <article class="estado_animo mx-4 my-3"   >
-                        <div class="imagen">
+                        <div class="imagen mb-2">
                             <img src="{{asset('img/icons/happy.png')}}">
                         </div>
                         <div class="nombre text-center">
@@ -34,7 +37,7 @@
                 </a>
                 <a onclick="seleccionar('triste');" class="iconos"  id="triste" style="border-radius:20%;">
                   <article class="estado_animo mx-4 my-3"  >
-                    <div class="imagen">
+                    <div class="imagen mb-2">
                         <img src="{{asset('img/icons/sad.png')}}">
                     </div>
                     <div class="nombre text-center">
@@ -44,7 +47,7 @@
             </a>
             <a onclick="seleccionar('aburrido');" class="iconos" id="aburrido" style="border-radius:20%;"  >
                 <article class="estado_animo mx-4 my-3"  >
-                    <div class="imagen">
+                    <div class="imagen mb-2">
                         <img src="{{asset('img/icons/bored.png')}}">
                     </div>
                     <div class="nombre text-center">
@@ -54,7 +57,7 @@
             </a>
             <a onclick="seleccionar('enojado');" class="iconos" id="enojado" style="border-radius:20%;" >
                 <article class="estado_animo mx-4 my-3" >
-                    <div class="imagen">
+                    <div class="imagen mb-2">
                         <img src="{{asset('img/icons/angry.png')}}">
                     </div>
                     <div class="nombre text-center">
@@ -67,20 +70,22 @@
             <form method="POST" id="formEstadoAnimo" action="{{route('cliente.guardarEstadoAnimo')}}">
                 @csrf
                 <input type="hidden" name="estado_animo" id="estado_animo">
-
-                <div class="comentario" style="margin:20px 180px;" >
-                    <textarea name="descripcion" style="box-shadow: -4px 3px 5px rgb(24, 28, 34);
-                    border:3px solid #17202A" class="form-control" rows="5" cols="30" id="descripcion" placeholder="¿A que se debe tu estado de ánimo actual? nos encantaría saberlo para ayudarte mejor!"></textarea>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="comentario col-10 col-md-8"  >
+                        <textarea name="descripcion" style="box-shadow: -4px 3px 5px rgb(24, 28, 34);border:3px solid #17202A" class="form-control" rows="5" cols="30" id="descripcion" placeholder="¿A que se debe tu estado de ánimo actual? nos encantaría saberlo para ayudarte mejor!"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="botones text-center mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">
+                    <div class="col-8 col-xl-5 p-0 justify-content-space-around">
+                    <a onclick="submitFormulario();" class="btn btn-success mb-2 col-sm-12 col-md-5">Enviar</a>
+                    <a  href="{{route('cliente.dashboard')}}" class="btn btn-light mb-2 col-sm-12 col-md-5">Cancelar</a>
+                    </div>
                 </div>
 
             </form>
-            
 
-        <div class="botones my-5 text-center">
-            <a onclick="submitFormulario();" class="btn btn-success">Enviar</a>
-        </div>
-
-     
     </div>
 </div>
 
@@ -89,7 +94,7 @@
     function seleccionar(animo){
        document.querySelectorAll('.iconos').forEach(a=>{
           if(a.id==animo){
-              a.style="background-color:#28B463; border-radius:20%;";
+              a.style="background-color:#28B463; border-radius:20%;color:white";
               estadoAnimo=animo;
           }else{
               a.style="";
@@ -105,7 +110,7 @@
         }else{
             form.submit();
         }
-       
+
     }
 </script>
 @endsection

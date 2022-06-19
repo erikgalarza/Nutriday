@@ -17,9 +17,9 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
             <div class=" navbar-brand-wrapper d-flex justify-content-center">
-                <a class="navbar-brand brand-logo" href="{{route('administrador.dashboard')}}"><img style="height:50px;width:100%;align-items:flex-start"
+                <a class="navbar-brand brand-logo" href="{{route('cliente.dashboard')}}"><img style="height:50px;width:100%;align-items:flex-start"
                         src="{{ asset('img/logos/nutridayTexto.png') }}" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="{{route('home')}}"><img
+                <a class="navbar-brand brand-logo-mini" href="{{route('cliente.dashboard')}}"><img
                         src="{{asset('img/logos/logoManzana.png')}}" alt="logo"></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -46,7 +46,7 @@
                             <span class="btn btn-primary">+ Create new</span>
                         </a>
                     </li> --}}
-                  
+
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                             data-toggle="dropdown">
@@ -174,7 +174,7 @@
                                 <i class="fas fa-cog text-primary"></i>
                                 Mi perfil
                             </a>
-                            
+
                             <div class="dropdown-divider"></div>
                             <a onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();" class="dropdown-item">
@@ -202,8 +202,8 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-        
-         
+
+
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -215,9 +215,9 @@
                             </div>
                             <div class="profile-name">
                                 <p class="name">
-                                    
+
                                     Bienvenido
-                                  
+
                                 </p>
                                 <p class="designation">
                                   Paciente {{auth()->user()->pacientes->nombre}}
@@ -225,38 +225,38 @@
                             </div>
                         </div>
                     </li>
-                   
+
                     <li class="nav-item">
                         <a class="nav-link"  href="{{route('cliente.misDietas')}}" >
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-clipboard-list fa-2x"></i>
                             </div>
                             <span class="menu-title">Mis dietas</span>
-                           
+
                         </a>
                     </li>
 
                     <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link"  href="{{route('cliente.misActividades')}}" 
+                        <a class="nav-link"  href="{{route('cliente.misActividades')}}"
                           ">
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-dumbbell fa-2x"></i>
                             </div>
                             <span class="menu-title">Mis actividades</span>
-                        
+
                         </a>
                     </li>
 
                     <li class="nav-item d-none d-lg-block">
                         {{-- {{route('cliente.estadoAnimo')}} --}}
-                        <a class="nav-link"  href="{{route('cliente.estadoAnimo')}}" 
+                        <a class="nav-link"  href="{{route('cliente.estadoAnimo')}}"
                            >
                             <div class="mr-4" style="min-width:35px">
                                 <i class="fa-solid fa-smile fa-2x"></i>
                             </div>
                             <span class="menu-title">Estado de ánimo</span>
                         </a>
-                    
+
                     </li>
 
                     <li class="nav-item d-none d-lg-block">
@@ -265,12 +265,12 @@
                                 <i class="fa-solid fa-video fa-2x"></i>
                             </div>
                             <span class="menu-title">Mis videos</span>
-                         
+
                         </a>
                     </li>
-                   
-                
-                
+
+
+
                 </ul>
             </nav>
             <!-- partial -->

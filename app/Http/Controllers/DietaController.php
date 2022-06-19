@@ -179,8 +179,19 @@ class DietaController extends Controller
             $pacienteNuevo = json_decode($request->paciente);
             $paciente = collect($pacienteNuevo);
             $dieta->pacientes()->attach($paciente['id'],["created_at"=>$fecha]);
+            $pac =  Paciente::find($paciente['id']);
+            $dieta = $pac->dietas()->latest()->first();//ultima dieta
+            $dieta->update(["estado"=>"activa"]);
+            $dietas = $pac->dietas()->get();
+            $longitudDietas = count($dietas);
+            foreach($dietas as $key => $dieta){
+                if(($longitudDietas-2) == $key){
+                    $dieta->update(["estado"=>"inactiva"]);//inactivamos la penultima dieta más reciente
+                }
+            }
             return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente'));
         }
+
         return view('admin.alimentos.create',compact('alimentos','dieta','imc'));
     }
 

@@ -88,7 +88,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color: #4b6ac3">
-                                                    <h5 class="modal-title text-white" id="exampleModalLabel-2">Actividades Asignadas</h5>
+                                                    <h5 class="modal-title text-white" id="exampleModalLabel-2">Actividades Asignadas </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
@@ -96,16 +96,19 @@
                                                 </div>
                                               <div class="modal-body text-center" style=" padding:1.5rem 3rem">
                                                 <div class="row mb-5 " style="border-bottom:1px solid">
-                                                    <div class="text-left col-5 font-weight-bold mb-2" >Nombre</div>
-                                                    <div class="col-3  font-weight-bold mb-2">Duración</div>
+                                                    <div class="text-left col-3 font-weight-bold mb-2" >Nombre</div>
+                                                    <div class="text-left col-3 font-weight-bold mb-2" >Prioridad</div>
+                                                    <div class="col-2  font-weight-bold mb-2"><i class="far fa-clock" title="Duración"></i></div>
                                                     <div class="col-4  font-weight-bold text-center mb-2">Imagen</div>
                                                 </div>
 
                                                 <div class="row">
                                                 @foreach($paciente->actividades as $key => $actividad)
 
-                                                <div class="col-5 mb-2 text-left">{{$actividad->nombre}}</div>
-                                                <div class="col-3 mb-2 text-center">{{$duraciones[$key]->duracion}}</div>
+                                                <div class="col-3 mb-2 text-left">{{$actividad->nombre}}</div>
+                                                <div class="col-3 mb-2 text-center">{{$actividad->prioridad}}</div>
+                                                <div class="col-2 mb-2 text-center">{{$duraciones[$key]->duracion}}</div>
+                                            
                                                 <div class="col-4 mb-2"><img style="max-width:70px;border-radius:10px" src="{{$actividad->imagen->url}}"></div>
 
                                                      @endforeach

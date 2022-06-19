@@ -119,9 +119,12 @@ class DietaController extends Controller
 
     public function crearDietaFlash(Request $request){
        
-        $imc = $request->imc;
+        // $imc = $request->imc;
+        // dd($imc);
         $paciente_id = $request->paciente_id;
         $paciente = Paciente::find($paciente_id);
+        $datoAntropometrico = $paciente->dato_antropometrico()->latest()->first();
+        $imc = $datoAntropometrico->imc;
         return view('admin.dieta.create',compact('imc','paciente'));
     }
 

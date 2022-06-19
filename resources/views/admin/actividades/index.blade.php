@@ -106,6 +106,28 @@
                                                                 id="exampleInputUsername2">
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group row mb-2"
+                                                    style="font-weight:bold;text-transform:">
+                                                    <label for="exampleInputUsername2"
+                                                        class="col-md-4 col-form-label text-left">Prioridad:</label>
+                                                    <div class="col-md-8">
+                                                        <select
+                                                                        style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
+                                                                        class="form-control" name="prioridad">
+                                                                        <option value="1"
+                                                                            {{ $actividad->prioridad == 'Baja' ? 'selected' : '' }}>
+                                                                            Baja</option>
+                                                                        <option value="2"
+                                                                            {{ $actividad->prioridad == 'Media' ? 'selected' : '' }}>
+                                                                            Media</option>
+                                                                        <option value="3"
+                                                                            {{ $actividad->prioridad == 'Alta' ? 'selected' : '' }}>
+                                                                            Alta</option>
+                                                                    </select>
+                                                    </div>
+                                                </div>
+
                                                     <div class="form-group row mb-2" style="font-weight:bold;text-transform:">
                                                         <label for="exampleInputUsername2"
                                                             class="col-md-4 col-form-label text-left">Descripción:</label>

@@ -37,6 +37,23 @@
                         </div>
                     </div>
                     <div class="form-group row mb-2 no-gutters">
+                        <label
+                            style="font-weight:bold; font-size:12px; text-transform:uppercase"
+                            for="exampleInputUsername2" class="col-xl-5  col-form-label">Prioridad:
+                        </label>
+                        <div class="col-xl-7 ">
+                            <select class="form-control"
+                                style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
+                                name="prioridad" id="exampleInputUsername2">
+                                <option value="" selected disabled>Seleccione la prioridad</option>
+                                    <option value="1">Baja</option>
+                                    <option value="2">Media</option>
+                                    <option value="3">Alta</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2 no-gutters">
                         <label for="exampleInputEmail2" style="font-weight:bold; font-size:12px; text-transform:uppercase"
                             class="col-xl-5  col-form-label">Descripción de la actividad:</label>
                         <div class="col-xl-7 ">

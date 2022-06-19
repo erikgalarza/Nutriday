@@ -24674,9 +24674,19 @@ dl li {
   float: left;
   overflow: hidden;
   width: 100%;
-  background: #F5A623;
+  /* background: #F5A623; */
   text-align: center;
   cursor: pointer;
+}
+
+.prioridad-baja{
+  background: #82E0AA;  
+}
+.prioridad-media{
+  background: #F5A623;  
+}
+.prioridad-alta{
+  background: #F1948A;  
 }
 
 @media (max-width: 767px) {

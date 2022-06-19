@@ -11,10 +11,16 @@
         </ol>
     </nav>
 </div>
+<style>
+    .ocultar
+    {
+        display:none;
+    }
+</style>
 
 <div class="card text-center ">
-    <div class=" mb-5" style="background-color:#4b6ac3 ">
-        <h3 class="card-title text-lg-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">
+    <div class=" mb-3" style="background-color:#4b6ac3 ">
+        <h3 class="card-title text-lg-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
             Actividades</h3>
     </div>
     <div class="card-body">
@@ -24,7 +30,7 @@
                     <table id="order-listing" class="table">
                         <thead>
                             <tr>
-                                <th>N #</th>
+                                <th>N°</th>
                                 <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Acciones</th>
@@ -55,11 +61,19 @@
                                 </td>
                             </tr>
 
+                            <style>
+                                @media (min-width:768px) {
+                                    .dialogoss {
+                                        min-width: 610px !important;
+                                    }
 
-                            <div class="modal fade" style="min-width:600px !important;"
+                                }
+                            </style>
+
+                            <div class="modal fade"
                                 id="exampleModal-2{{ $actividad->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                                <div class="modal-dialog" style="min-width:600px !important;" role="document">
+                                <div class="modal-dialog dialogoss" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color:#4b6ac3">
                                             <div>
@@ -72,7 +86,9 @@
                                                     aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body" style="padding:1.5rem 4rem">
+                                        <div class="modal-body py-2 px-0">
+                                            <div class="col-12 row mt-3 mb-0 mr-0 ml-0  p-0 justify-content-center">
+                                                <div class="col-md-9  col-11 text-left">
 
                                             <form method="POST"
                                                 action="{{ route('actividad.update', $actividad->id) }}">
@@ -81,19 +97,19 @@
 
                                                 <div class="col-12  mt-2">
                                                     <div class="form-group row mb-2"
-                                                        style="font-weight:bold;font-size:12px;">
+                                                        style="font-weight:bold;text-transform:">
                                                         <label for="exampleInputUsername2"
-                                                            class="col-sm-3 col-form-label text-left">Nombre:</label>
-                                                        <div class="col-sm-9">
+                                                            class="col-md-4 col-form-label text-left">Nombre:</label>
+                                                        <div class="col-md-8">
                                                             <input style="border-radius:10px" name="nombre" type="text"
                                                                 value="{{ $actividad->nombre }}" class="form-control"
                                                                 id="exampleInputUsername2">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row mb-2" style="font-weight:bold">
+                                                    <div class="form-group row mb-2" style="font-weight:bold;text-transform:">
                                                         <label for="exampleInputUsername2"
-                                                            class="col-sm-3 col-form-label text-left">Descripción:</label>
-                                                        <div class="col-sm-9">
+                                                            class="col-md-4 col-form-label text-left">Descripción:</label>
+                                                        <div class="col-md-8">
                                                             <textarea style="border-radius:10px" rows="4"
                                                                 name="descripcion" type="text" class="form-control"
                                                                 id="exampleInputUsername2">{{ $actividad->descripcion }}</textarea>
@@ -101,92 +117,115 @@
                                                     </div>
 
                                                     <div class="form-group row mb-2"
-                                                        style="font-weight:bold;font-size:12px;">
+                                                        style="font-weight:bold;text-transform:">
                                                         <label for="exampleInputUsername2"
-                                                            class="col-sm-3 col-form-label text-left">Nueva
+                                                            class="col-md-4 col-form-label text-left">Nueva
                                                             Imagen:</label>
-                                                        <div class="col-sm-9">
+                                                        <div class="col-md-8">
                                                             <input style="border-radius:10px" name="imagen" type="file"
                                                                 class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-1">
-                                                        <label class="text-left col-sm-3 col-form-label"> <strong>
-                                                                Imagen actual:</strong></label>
-                                                        <div class=" col-sm-9 text-center mt-1">
-                                                            <button class="btn btn-outline-info" id="imagen2"
-                                                                type="button" style="width:100%">Ver</button>
+                                                        <label class="col-md-4 col-form-label"> <strong> Imagen actual:</strong></label>
+                                                        <div class=" col-md-8 text-center mt-1">
+                                                            <a onclick="showImage();" class="btn btn-warning w-100" id="imagen2" type="button">Ver Imagen</a>
                                                         </div>
-                                                        <div class="text-center col-12">
+                                                        <div class="text-center">
                                                             @if (isset($actividad->imagen->url))
-                                                            <img class="img-thumbnail" style="width:100%;heigth:80%"
-                                                                src="{{ $actividad->imagen->url }}">
+                                                                <img id="imagen" class="ocultar img-thumbnail"
+                                                                style="width:95%;heigth:80%"
+                                                                    src="{{ $actividad->imagen->url }}">
                                                             @else
-                                                            <img class="img-thumbnail" style="width:100%;heigth:80%"
-                                                                src="{{ asset('img/icons/dieta48.png') }}">
+                                                                <img id="imagen" class="ocultar img-thumbnail"
+                                                                    style="width:95%;heigth:80%"
+                                                                    src="{{ asset('img/icons/dieta48.png') }}">
                                                             @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer" style="justify-content: center; align-items:center">
-                                                <button type="submit" class="btn btn-success">Guardar</button>
-                                                <button type="button" class="btn btn-light"data-dismiss="modal">Cancelar</button>
+                                            <div
+                                            class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                            <div
+                                                class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+
+                                                <button type="submit"
+                                                    class="btn btn-success mb-2 col-12 col-sm-5 p-2">Guardar</button>
+                                                <button type="button"
+                                                    class="btn btn-light mb-2 col-12 col-sm-5 p-2"
+                                                    data-dismiss="modal">Cancelar</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
 
+                            </div>
+                        </div>
 
 
-                            <div class="modal fade" style="min-width:600px !important;"
+                            <div class="modal fade"
                                 id="exampleModal-3{{ $actividad->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="ModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" style="min-width:600px !important;" role="document">
+                                <div class="modal-dialog dialogoss"  role="document">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color:#4b6ac3">
                                             <h5 class="modal-title text-lg-center text-white"
-                                                style="text-transform: upperca; font-weight:bold; font-size:16px"
+                                                style="text-transform: uppercase; font-weight:bold; font-size:16px"
                                                 id="ModalLabel">Descripción de la actividad</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span style="color:white;font-size:30px"
                                                     aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body d-flex text-center">
+                                        <div class="modal-body py-3 px-0">
 
-                                            <div class="text-center justify-content-center row col-6">
+                                            <div class="col-12 row m-0 mb-sm-4 mb-3 justify-content-center p-0">
+                                                <div class="col-md-12 row col-11 text-left justify-content-center">
+
+                                            <div  class="col-12 col-md-5 row mt-md-2 mt-4 justify-content-center">
+                                                    <div class="col-md-12 col-10 p-0 mt-3">
                                                 @if (isset($actividad->imagen->url))
-                                                <img class="img-thumbnail" style="width:100%;heigth:80%"
+                                                <img class="img-thumbnail " style="width:100%;min-height:85%"
                                                     src="{{ $actividad->imagen->url }}">
                                                 @else
-                                                <img class="img-thumbnail" style="width:100%;heigth:80%"
+                                                <img class="img-thumbnail" style="width:100%;min-height:85%"
                                                     src="{{ asset('img/icons/dieta48.png') }}">
                                                 @endif
                                             </div>
-                                            <div class="col-6 ">
-                                                <div class="col-12 mb-3" style="border-bottom:1px solid">
-                                                    <label class="col-form-label p-2"> <strong> Información de la
-                                                            actividad </strong></label>
+                                        </div>
+
+                                            <div class="col-12 col-md-7 row mt-md-2 mt-4 justify-content-center">
+                                                <div class="col-md-12 col-10 row justify-content-center">
+                                                    <div class="col-10 mb-2 text-center" style="border-bottom:1px solid;max-height:30px">
+                                                    <label class="col-form-label py-1" style="text-transform: uppercase"><strong> Datos de la actividad </strong></label>
                                                 </div>
-                                                <div class="col-12">
-                                                    <div class="form-group row mb-0">
-                                                        <label
-                                                            class="col-5 text-left col-form-label p-2"><strong>Nombre:</strong></label>
-                                                        <label class="col-7 text-left col-form-label p-2">{{
-                                                            $actividad->nombre }}</label>
+                                                <div class="col-12 row justify-content-center p-0 m-0 mb-1">
+                                                    <div class="col-9  p-0 m-0">
+                                                        <div class="form-group row mb-0">
+                                                            <label
+                                                                class="col-6 col-md-5 text-left col-form-label px-0 mb-0" style="text-transform: uppercase"><strong>Nombre:</strong></label>
+                                                            <label class="col-6 col-md-7 text-left col-form-label mb-0">{{
+                                                                $actividad->nombre }}</label>
+                                                        </div>
+                                                        <div class="form-group row ">
+                                                            <label
+                                                                class="col-6 col-md-5 text-left col-form-label px-0 " style="text-transform: uppercase"><strong>Descripción:</strong></label>
+                                                            <label class="col-6 col-md-7 text-left col-form-label ">{{
+                                                                $actividad->descripcion }}</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group row mb-0">
-                                                        <label
-                                                            class="col-5 text-left col-form-label p-2"><strong>Descripción:</strong></label>
-                                                        <label class="col-7 text-left col-form-label p-2">{{
-                                                            $actividad->descripcion }}</label>
-                                                    </div>
+                                                </div>
+
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+
                                     </div>
 
                                 </div>
@@ -202,4 +241,23 @@
         </div>
     </div>
 </div>
+<script>
+    var imagen = document.getElementById('imagen');
+    var estado = false;
+    function showImage()
+    {
+        if(estado)
+        {
+            imagen.className+=" ocultar";
+            estado = false;
+        }
+        else
+        {
+            imagen.classList.remove('ocultar');
+            estado = true;
+        }
+
+    }
+
+</script>
 @endsection

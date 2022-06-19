@@ -22,20 +22,20 @@
 
                 <div class="card-body">
                     <div class="col-12 row justify-content-center px-0 m-0">
-                        <div class="col-md-8 col-xl-8 col-11 text-left pl-md-0">
+                        <div class="col-md-8 col-xl-9 col-11 text-left pl-md-0">
 
 
                             <form method="POST" class="forms-sample" action="{{ route('alimento.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="container" style="max-width:551px">
+                                <div class="container" style="max-width:621px">
 
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            for="exampleInputUsername2" class="col-xl-3 col-lg-4 col-form-label">Categoría:
+                                            for="exampleInputUsername2" class="col-xl-3  col-form-label">Categoría:
                                         </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                        <div class="col-xl-9 ">
                                             <select class="form-control"
                                                 style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
                                                 name="categoria" id="exampleInputUsername2">
@@ -50,9 +50,9 @@
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            for="exampleInputUsername2" class="col-xl-3 col-lg-4 col-form-label">Nombre:
+                                            for="exampleInputUsername2" class="col-xl-3  col-form-label">Nombre:
                                         </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                        <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="nombre" type="text"
                                                 class="form-control" id="exampleInputUsername2">
                                         </div>
@@ -60,10 +60,10 @@
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            for="exampleInputUsername2" class="col-xl-3 col-lg-4 col-form-label">Peso:
+                                            for="exampleInputUsername2" class="col-xl-3  col-form-label">Peso:
                                         </label>
 
-                                        <div class="col-xl-9 col-lg-8 d-flex justify-content-around">
+                                        <div class="col-xl-9  d-flex justify-content-around">
                                             <input style="border-radius:10px;min-height:45.2px" name="peso" type="number"
                                                 class="form-control" id="exampleInputUsername2">
                                             <select class="form-control"
@@ -80,9 +80,9 @@
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            for="exampleInputUsername2" class="col-xl-3 col-lg-4 col-form-label">Proteínas:
+                                            for="exampleInputUsername2" class="col-xl-3  col-form-label">Proteínas:
                                         </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                        <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="proteina" type="number"
                                                 class="form-control" id="exampleInputUsername2">
                                         </div>
@@ -90,9 +90,9 @@
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase;"
-                                            for="exampleInputUsername2" class="col-xl-3 col-lg-4 col-form-label">Valor
+                                            for="exampleInputUsername2" class="col-xl-3  col-form-label">Valor
                                             calórico: </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                        <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="valor_calorico" type="number"
                                                 class="form-control" id="exampleInputUsername2">
                                         </div>
@@ -101,9 +101,9 @@
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            for="exampleInputUsername2" class="col-xl-3 col-lg-4 col-form-label">Grasas:
+                                            for="exampleInputUsername2" class="col-xl-3  col-form-label">Grasas:
                                         </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                        <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="grasa" type="number"
                                                 class="form-control" id="exampleInputUsername2">
                                         </div>
@@ -113,8 +113,8 @@
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
                                             for="exampleInputUsername2"
-                                            class="col-xl-3 col-lg-4 col-form-label">Carbohidratos: </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                            class="col-xl-3  col-form-label">Carbohidratos: </label>
+                                        <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="carbohidrato" type="number"
                                                 class="form-control" id="exampleInputUsername2">
                                         </div>
@@ -123,9 +123,9 @@
                                     <div class="form-group row no-gutters">
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            for="exampleInputPassword2" class="col-xl-3 col-lg-4 col-form-label">Imagen:
+                                            for="exampleInputPassword2" class="col-xl-3  col-form-label">Imagen:
                                         </label>
-                                        <div class="col-xl-9 col-lg-8">
+                                        <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="imagen" type="file"
                                                 class="form-control">
                                         </div>

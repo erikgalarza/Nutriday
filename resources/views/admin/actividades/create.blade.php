@@ -16,38 +16,38 @@
 
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class=" mb-5" style="background-color:#4b6ac3 ">
-                <h3 class="card-title text-lg-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos de la actividad</h3>
+            <div class=" mb-3" style="background-color:#4b6ac3 ">
+                <h3 class="card-title text-lg-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos de la actividad</h3>
             </div>
 
             <div class="card-body"  >
                 <div class="col-12 row justify-content-center">
-                    <div class="col-md-10 col-12 px-xl-4 px-lg-2 px-md-2 text-left ">
-                        <div class="container">
+                    <div class="col-md-8 col-lg-9 px-xl-4 px-lg-2 px-md-2 text-left ">
 
-                <form method="POST" action="{{route('actividad.store')}}" enctype="multipart/form-data" class="forms-sample">
-                    @csrf
+                        <form method="POST" action="{{route('actividad.store')}}" enctype="multipart/form-data" class="forms-sample">
+                            @csrf
+                            <div class="container" style="max-width: 568px">
 
-                    <div class="form-group row mb-1 ">
+                    <div class="form-group row mb-1 no-gutters">
                         <label for="exampleInputEmail2" style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5 col-form-label">Nombre de la actividad:</label>
-                        <div class="col-xl-8 col-lg-7">
+                            class="col-xl-5  col-form-label">Nombre de la actividad:</label>
+                        <div class="col-xl-7 ">
                             <input  style="border-radius: 10px"name="nombre" type="text" class="form-control" id="exampleInputEmail2"
-                              >
+                              placeholder="Ingrese el nombre de la actividad... Ejm: Correr">
                         </div>
                     </div>
-                    <div class="form-group row mb-2 ">
-                        <label for="exampleInputEmail2" style="font-weight:bold; font-size:11px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5 col-form-label">Descripción de la actividad:</label>
-                        <div class="col-xl-8 col-lg-7">
+                    <div class="form-group row mb-2 no-gutters">
+                        <label for="exampleInputEmail2" style="font-weight:bold; font-size:12px; text-transform:uppercase"
+                            class="col-xl-5  col-form-label">Descripción de la actividad:</label>
+                        <div class="col-xl-7 ">
                             <textarea style="border-radius: 10px" name="descripcion" rows="4" class="form-control" id="exampleInputEmail2"></textarea>
                         </div>
                     </div>
 
-                     <div class="form-group row mb-3 ">
+                     <div class="form-group row mb-3  no-gutters">
                         <label for="exampleInputEmail2" style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                            class="col-xl-4 col-lg-5 col-form-label">Imagen de la actividad:</label>
-                        <div class="col-xl-8 col-lg-7">
+                            class="col-xl-5  col-form-label">Imagen de la actividad:</label>
+                        <div class="col-xl-7 ">
                             <input style="border-radius: 10px" name="imagen" type="file" class="form-control" id="exampleInputEmail2"
                                >
                         </div>
@@ -62,13 +62,12 @@
                     </div>
 
 
+                </div>
                 </form>
 
 
 
-            </div>
         </div>
     </div>
 
-</div>
 @endsection

@@ -2,7 +2,7 @@
 @section('contenido')
     <div class="page-header">
         <h3 class="page-title">
-            Alimentos
+            Agregar datos antropometricos
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">

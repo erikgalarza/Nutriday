@@ -287,7 +287,7 @@
 
         <div class=" mb-3" style="background-color: #4eba74 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
-                Dietas Asignadas</h3>
+                Dietas personalizadas asignadas</h3>
         </div>
 
         <div class="card-body">

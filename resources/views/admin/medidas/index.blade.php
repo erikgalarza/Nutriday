@@ -16,7 +16,7 @@
             <h3 class="card-title titulosa text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Unidades de medida</h3>
             </div>
         <div class="card-body">
-            <div class="container">
+            <div class="container" >
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-10 d-flex justify-content-center p-2" style="border:1px dashed;border-radius:10px;background-color:#F0F0F0;flex-wrap:wrap" >
                         <h5 class="mr-2 ml-2 text-center  col-form-label">Agregar Medida:</h5>
@@ -82,19 +82,21 @@
                                                 </div>
 
                                                 <div class="modal-body py-2 px-0">
+
                                                     <div class="col-12 row m-0 justify-content-center">
                                                         <div class="col-sm-10 col-11 text-left">
+
                                                         <div class="form-group row mb-2">
                                                             <label class="col-sm-3 col-form-label text-left" for="recipient-name"><strong>Medida:</strong></label>
                                                             <div class="col-sm-9">
-                                                            <input  type="text" name="medida" class="form-control" value="{{$medida->medida}}">
-                                                        </div>
+                                                                <input  type="text" name="medida" class="form-control" value="{{$medida->medida}}">
+                                                            </div>
                                                         </div>
                                                         <div class="form-group row mb-2">
                                                             <label class="col-sm-3 col-form-label text-left" for="recipient-name"><strong>Abreviatura:</strong></label>
                                                             <div class="col-sm-9">
-                                                            <input  type="text" name="abreviatura" class="form-control" value="{{$medida->abreviatura}}">
-                                                        </div>
+                                                                <input  type="text" name="abreviatura" class="form-control" value="{{$medida->abreviatura}}">
+                                                            </div>
                                                         </div>
 
                                                 </div>

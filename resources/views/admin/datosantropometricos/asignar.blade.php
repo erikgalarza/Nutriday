@@ -2,7 +2,7 @@
 @section('contenido')
     <div class="page-header">
         <h3 class="page-title">
-            Pacientes
+           Datos antropométricos
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -13,44 +13,75 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">
-                Registrar datos antropométricos</h3>
+        <div class=" mb-3" style="background-color:#4b6ac3 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
+                Buscar pacientes</h3>
         </div>
         <div class="card-body">
-           
-            <div class="container">
-                <form method="GET" action="{{route('da.buscarPacientes')}}">
-                <div class="buscador_paciente" style="display:flex; flex-direction:row; ">
-                   
-                        <input type="text" name="paciente" class="form-control w-50 mx-2" placeholder="Nombre del paciente..."> 
-                        <button type="submit" class="btn btn-outline-success" >Buscar</button>
-                 
-                  
+
+            <style>
+                .sombra {
+                    -webkit-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+                    -moz-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+                    box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+                }
+            </style>
+
+                <form method="GET" action="{{ route('da.buscarPacientes') }}">
+                    <div class="container mb-5 sombra"
+                        style="border:2px solid #e5e5e5;border-radius:10px;background-color:#F0F0F0;max-width:832px">
+
+                        <div class="row justify-content-center">
+                            <div
+                                class="buscador_paciente justify-content-center m-md-5 my-5 mx-3  row align-items-center col-lg-8 ">
+                                <div class="col-xl-9 col-sm-9   align-items-center">
+                                    <input type="search" name="paciente" style="min-height:50px" class="form-control "
+                                        placeholder="Escriba el nombre del paciente...Ejm: Erik Galarza" required>
+                                </div>
+                                <button title="Ingrese el nombre de un paciente para buscar" type="submit"
+                                    class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 "style="min-height:50px;border-radius:30px;font-weight:bold"><i
+                                        class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @if (count($pacientes) == 0)
+                <div class="container"style="max-width:832px">
+                    <div class="container" style="max-width:832px">
+                        <div class="row text-center justify-content-center  p-1 mb-3" style="border-radius:10px;background-color:red">
+                            <label class="text-white text-center col-form-label" style="text-transform: uppercase;font-weight:bold">No existen pacientes con ese nombre</label>
+                        </div>
                 </div>
-            </form>
-                <div class="table-responsive">
+                @endif
+            </div>
+        </div>
+
+
+      @if(count($pacientes) > 0)
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="container w-75">
+                    <div class="table-responsive">
                     <table id="order-listing" class="table text-center">
                         <thead>
                             <tr>
-
+                                <th>N°</th>
                                 <th>Paciente</th>
                                 <th>Tipo diabetes</th>
                                 <th>IMC</th>
-                                <th>Acciones</th>
+                                <th>Agregar</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($pacientes as $key => $paciente)
+
                                 <form method="POST" id="formCrearDietaFlash"
                                     action="{{ route('dieta.crearDietaFlash') }}">
                                     @csrf
                                     <input type="hidden" name="paciente" value="{{ $paciente }}">
                                     <tr>
-
+                                        <td>{{$key+1}}</td>
                                         <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
-
                                         @if ($paciente->tipo_diabetes == 3)
                                             <td>Tipo gestacional</td>
                                         @else
@@ -61,16 +92,17 @@
                                             @foreach ($paciente->dato_antropometrico as $kp => $data)
                                                 @if ($loop->last)
                                                     <td>{{ $data->imc }}</td>
-                                                    <input type="hidden" name="imc"
-                                                        id="imcAux{{ $paciente->id }}" value="{{ $data->imc }}">
+                                                    <input type="hidden" name="imc" id="imcAux{{ $paciente->id }}"
+                                                        value="{{ $data->imc }}">
                                                 @endif
                                             @endforeach
                                         @else
-                                            <td>0</td>
+                                            <td>No existe IMC</td>
                                         @endif
 
                                         <td>
-                                            <a class="btn btn-outline-info" href="{{route('da.datosByPaciente',$paciente->id)}}">Datos</a>
+                                            <a title="Agregar datos antropométricos al paciente" class="btn btn-warning"
+                                                href="{{ route('da.datosByPaciente', $paciente->id) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             {{-- <a title="Asignar dieta a paciente" data-toggle="modal"
                                                 data-target="#exampleModal-3{{ $paciente->id }}"
                                                 class="btn btn-outline-success mb-1"><i class="fas fa-plus"></i></a>
@@ -90,7 +122,7 @@
                                         </td>
                                     </tr>
                                 </form>
-                               
+
 
 
                                 <div class="modal fade" id="exampleModal-2{{ $paciente->id }}" tabindex="-1"
@@ -115,7 +147,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 {{-- <div class="modal fade" id="exampleModal-3{{ $paciente->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -205,12 +237,17 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                
-                                @endforeach
+
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
+
             </div>
+        </div>
+    </div>
+@endif
+
             {{-- <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -281,7 +318,7 @@
                                             </td>
                                         </tr>
                                     </form>
-                                   
+
 
 
                                     <div class="modal fade" id="exampleModal-2{{ $paciente->id }}" tabindex="-1"
@@ -306,7 +343,7 @@
                                         </div>
                                     </div>
 
-                                    
+
                                     <div class="modal fade" id="exampleModal-3{{ $paciente->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -396,15 +433,14 @@
                                             </div>
                                         </div>
                                     </div>
-                    
+
                                     @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div> --}}
-        </div>
-    </div>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

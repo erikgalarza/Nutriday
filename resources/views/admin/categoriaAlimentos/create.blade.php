@@ -21,9 +21,9 @@
             <div class="card-body">
                 <div class="col-12 row justify-content-center px-0 m-0">
                     <div class="col-md-8 col-xl-9 col-11 text-left pl-md-0">
-                        <div class="container">
-                <form method="POST"  class="forms-sample" action="{{route('categoriaAlimento.store')}}" enctype="multipart/form-data">
-                    @csrf
+                        <form method="POST"  class="forms-sample" action="{{route('categoriaAlimento.store')}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="container" style="max-width: 621px">
 
                     <div class="form-group row">
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
@@ -39,8 +39,8 @@
                             <a class="btn btn-light mb-2 col-sm-12 col-md-5" href="{{route('categoriaAlimento.index')}}">Cancelar</a>
                         </div>
                     </div>
+                </div>
                 </form>
-            </div>
         </div>
     </div>
 

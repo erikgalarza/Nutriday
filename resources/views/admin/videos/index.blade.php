@@ -22,26 +22,13 @@
 
                 <div class="card">
                     <div class=" mb-3" style="background-color:#4b6ac3 ">
-                        <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
+                        <h3 class="card-title text-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Recetas</h3>
                     </div>
                     <div class="card-body text-center">
-                        <div class="text-center" style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
+                        <div class="text-center"
+                            style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
                             @foreach ($videos_receta as $video_receta)
-                                {{-- <div class="container_video" >
-                              <div class="opciones" style="display:flex; justify-content:flex-end;">
-                                  <a class="btn btn-warning" data-toggle="modal"
-                                      data-target="#exampleModal{{ $video_receta->id }}"
-                                      style="border-radius:0"><i class="fas fa-edit"></i></a>
-                                  <a onclick="eliminarVideo({{$video_receta}});" class="btn btn-danger" style="border-radius:0"><i class="fas fa-times"></i></a>
-                              </div>
-                              <h5 class="my-1 text-center" style="text-transform: uppercase">{{ $video_receta->titulo }}</h5>
-                              <h5 class="my-1 text-center" style="text-transform: uppercase">{{ $video_receta->descripcion}}</h5>
-                              <iframe  src="https://youtube.com/embed/{{$video_receta->url}}"
-                                  title="YouTube video player" frameborder="0"
-                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                  allowfullscreen></iframe>
-                          </div> --}}
                                 <div class="card opciones text-center mx-3 my-3" style="width: 22rem;">
                                     {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                                     <iframe style="height:15rem" class="card-img-top p-2"
@@ -67,18 +54,18 @@
                                     @method('DELETE')
                                 </form>
 
-
-                                {{-- MODAL DE EDITAR RECETAS --}}
                                 <div class="modal fade" id="exampleModal{{ $video_receta->id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                    {{-- MODAL DE EDITAR RECETAS --}} role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header" style="background-color:#4b6ac3">
-                                                <h5 class="modal-title text-lg-center text-white" id="ModalLabel">Datos del video
-                                                    {{ $video_receta->titulo }}</h5>
+                                                <h5 class="modal-title text-lg-center text-white"
+                                                    style="text-transform: uppercase" id="ModalLabel">Editar datos de video
+                                                </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
-                                                    <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                                                    <span style="color:white;font-size:30px"
+                                                        aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <form method="POST" action="{{ route('video.update', $video_receta->id) }}"
@@ -86,71 +73,79 @@
                                                 @csrf
                                                 @method('PATCH')
 
-                                                <div class="modal-body text-left"
-                                                    style="padding:2rem 3rem">
-                                                    <div style="margin-left:20px;">
+                                                <div class="modal-body py-2 px-0">
+                                                    <div class="col-12 row  m-0 mt-3  justify-content-center">
+                                                        <div class="col-sm-10 col-11 text-left">
 
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-form-label col-sm-3"><strong>Titulo:</strong>
-                                                            </label>
-                                                            <div class="col-sm-9">
-                                                            <input style="border-radius:10px" type="text" class="form-control" name="titulo"
-                                                                value="{{ $video_receta->titulo }}" id="">
+                                                            <div class="form-group row mb-2">
+                                                                <label
+                                                                    class="col-form-label col-sm-3"><strong>Titulo:</strong>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    <input style="border-radius:10px" type="text"
+                                                                        class="form-control" name="titulo"
+                                                                        value="{{ $video_receta->titulo }}"
+                                                                        id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-2">
+                                                                <label
+                                                                    class="col-form-label col-sm-3"><strong>Categoría:</strong>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    <select
+                                                                        style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
+                                                                        class="form-control" name="categoria">
+                                                                        <option value="Recetas"
+                                                                            {{ $video_receta->categoria == 'Recetas' ? 'selected' : '' }}>
+                                                                            Recetas</option>
+                                                                        <option value="Ejercicios"
+                                                                            {{ $video_receta->categoria == 'Ejercicios' ? 'selected' : '' }}>
+                                                                            Ejercicios</option>
+                                                                        <option value="Motivacion"
+                                                                            {{ $video_receta->categoria == 'Motivacion' ? 'selected' : '' }}>
+                                                                            Motivación</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-2">
+                                                                <label class="col-form-label col-sm-3"><strong>URL:</strong>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    <input style="border-radius:10px" type="text"
+                                                                        class="form-control" name="url"
+                                                                        value="{{ $video_receta->url }}" id="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-2">
+                                                                <label
+                                                                    class="col-form-label col-sm-3"><strong>Descripción:</strong>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    <textarea style="border-radius:10px" rows="5" class="form-control" name="descripcion">{{ $video_receta->descripcion }}</textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-form-label col-sm-3"><strong>Categoría:</strong>
-                                                            </label>
-                                                            <div class="col-sm-9">
-                                                            <select style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"  class="form-control" name="categoria">
-                                                                <option value="Recetas"
-                                                                    {{ $video_receta->categoria == 'Recetas' ? 'selected' : '' }}>
-                                                                    Recetas</option>
-                                                                <option value="Ejercicios"
-                                                                    {{ $video_receta->categoria == 'Ejercicios' ? 'selected' : '' }}>
-                                                                    Ejercicios</option>
-                                                                <option value="Motivacion"
-                                                                    {{ $video_receta->categoria == 'Motivacion' ? 'selected' : '' }}>
-                                                                    Motivación</option>
-                                                            </select>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-form-label col-sm-3"><strong>URL:</strong>
-                                                            </label>
-                                                            <div class="col-sm-9">
-                                                            <input style="border-radius:10px"   type="text" class="form-control" name="url"
-                                                                value="{{ $video_receta->url }}" id="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-form-label col-sm-3"><strong>Descripción:</strong>
-                                                            </label>
-                                                            <div class="col-sm-9">
-                                                            <textarea style="border-radius:10px" rows="5"  class="form-control" name="descripcion">{{ $video_receta->descripcion }}</textarea>
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
-
-
                                                 </div>
-                                                    <div class="modal-footer mt-2" style="display:flex; justify-content:center;">
+                                                <div class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                    <div
+                                                        class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
                                                         <button type="submit"
-                                                            class="btn btn-success ">Guardar</button>
-                                                            <button type="button" class="btn btn-light"
-                                                    data-dismiss="modal">Cancelar</button>
+                                                            class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                                                        <button type="button"
+                                                            class="btn btn-light mb-2 col-12 col-sm-5"
+                                                            data-dismiss="modal">Cancelar</button>
                                                     </div>
-
+                                                </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
                             @endforeach
                         </div>
                     </div>
@@ -158,7 +153,7 @@
 
                 <div class="card mt-5">
                     <div class=" mb-3" style="background-color:#4eba74 ">
-                        <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
+                        <h3 class="card-title text-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Ejercicios</h3>
                     </div>
                     <div class="card-body">
@@ -178,10 +173,7 @@
                                         title="YouTube video player" frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen></iframe>
-
-
                                 </div>
-
                                 <form id="deletevideo{{ $video_ejercicio->id }}"
                                     action="{{ route('video.destroy', $video_ejercicio->id) }}" method="POST">
                                     @csrf
@@ -193,11 +185,13 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Datos del video
-                                                    {{ $video_ejercicio->titulo }}</h5>
+                                                <h5 class="modal-title" style="text-transform: uppercase"
+                                                    id="ModalLabel">
+                                                    Editar datos de video</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                                    <span style="font-size: 30px;color:white"
+                                                        aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <form method="POST"
@@ -206,119 +200,114 @@
                                                 @csrf
                                                 @method('PATCH')
 
-                                                <div class="modal-body"
-                                                    style="display:flex; flex-wrap:wrap; justify-content:center; align-content:flex-start">
-                                                    <div style="margin-left:20px;">
+                                                <div class="modal-body py-2 px-0">
+                                                    <div class="col-12 row  m-0 mt-3  justify-content-center">
+                                                        <div class="col-sm-10 col-11 text-left">
 
-                                                        <div class="form-group">
-                                                            <label for="recipient-name"><strong>Titulo:</strong>
-                                                            </label>
-                                                            <input type="text" class="form-control" name="titulo"
-                                                                value="{{ $video_ejercicio->titulo }}" id="">
+                                                            <div class="form-group">
+                                                                <label for="recipient-name"><strong>Titulo:</strong>
+                                                                </label>
+                                                                <input type="text" class="form-control" name="titulo"
+                                                                    value="{{ $video_ejercicio->titulo }}"
+                                                                    id="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="recipient-name"><strong>Categoría:</strong>
+                                                                </label>
+                                                                <select class="form-control" name="categoria">
+                                                                    <option value="Recetas"
+                                                                        {{ $video_ejercicio->categoria == 'Recetas' ? 'selected' : '' }}>
+                                                                        Recetas</option>
+                                                                    <option value="Ejercicios"
+                                                                        {{ $video_ejercicio->categoria == 'Ejercicios' ? 'selected' : '' }}>
+                                                                        Ejercicios</option>
+                                                                    <option value="Motivacion"
+                                                                        {{ $video_ejercicio->categoria == 'Motivacion' ? 'selected' : '' }}>
+                                                                        Motivación</option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="recipient-name"><strong>Descripción:</strong>
+                                                                </label>
+                                                                <textarea class="form-control" name="descripcion">{{ $video_ejercicio->descripcion }}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="recipient-name"><strong>URL:</strong>
+                                                                </label>
+                                                                <input type="text" class="form-control" name="url"
+                                                                    value="{{ $video_ejercicio->url }}" id="">
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name"><strong>Categoría:</strong>
-                                                            </label>
-                                                            <select class="form-control" name="categoria">
-                                                                <option value="Recetas"
-                                                                    {{ $video_ejercicio->categoria == 'Recetas' ? 'selected' : '' }}>
-                                                                    Recetas</option>
-                                                                <option value="Ejercicios"
-                                                                    {{ $video_ejercicio->categoria == 'Ejercicios' ? 'selected' : '' }}>
-                                                                    Ejercicios</option>
-                                                                <option value="Motivacion"
-                                                                    {{ $video_ejercicio->categoria == 'Motivacion' ? 'selected' : '' }}>
-                                                                    Motivación</option>
-
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="recipient-name"><strong>Descripción:</strong>
-                                                            </label>
-                                                            <textarea class="form-control" name="descripcion">{{ $video_ejercicio->descripcion }}</textarea>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="recipient-name"><strong>URL:</strong>
-                                                            </label>
-                                                            <input type="text" class="form-control" name="url"
-                                                                value="{{ $video_ejercicio->url }}" id="">
-                                                        </div>
-
-
-                                                        <div style="display:flex; justify-content:center;">
-                                                            <button type="submit" class="btn btn-success ">Guardar
-                                                                cambios</button>
-                                                        </div>
-
                                                     </div>
+                                                </div>
+                                                <div class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                    <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
 
+                                                    <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                                                    <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-
                                 </div>
+
                             @endforeach
                         </div>
                     </div>
                 </div>
 
-
-                <div class="card mt-5">
-                        <div class=" mb-3" style="background-color:#7c7ce4 ">
-                            <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
-                                style="text-transform: uppercase; font-weight:bold">Motivacion</h3>
-                        </div>
-                    <div class="card-body">
-                        <div style="display:flex; justify-content:space-evenly; flex-wrap:wrap;">
-                            @foreach ($videos_motivacion as $video_motivacion)
-                                <div class="container_video" style="background-color:rgb(91, 250, 152);">
-                                    <div class="opciones" style="display:flex; justify-content:flex-end;">
-                                        <a class="btn btn-warning" data-toggle="modal"
-                                            data-target="#exampleModal3{{ $video_motivacion->id }}" style="border-radius:0"><i
-                                                class="fas fa-edit"></i></a>
-                                        <a onclick="eliminarVideo({{ $video_motivacion }});" class="btn btn-danger"
-                                            style="border-radius:0"><i class="fas fa-times"></i></a>
-                                    </div>
-                                    <h5 class="my-1 text-center" style="text-transform: uppercase">
-                                        {{ $video_motivacion->titulo }}</h5>
-                                    <iframe src="https://youtube.com/embed/{{ $video_motivacion->url }}"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-
-
+            <div class="card mt-5">
+                <div class=" mb-3" style="background-color:#7c7ce4 ">
+                    <h3 class="card-title text-center mb-4 mt-4 text-white"
+                        style="text-transform: uppercase; font-weight:bold">Motivacion</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display:flex; justify-content:space-evenly; flex-wrap:wrap;">
+                        @foreach ($videos_motivacion as $video_motivacion)
+                            <div class="container_video" style="background-color:rgb(91, 250, 152);">
+                                <div class="opciones" style="display:flex; justify-content:flex-end;">
+                                    <a class="btn btn-warning" data-toggle="modal"
+                                        data-target="#exampleModal3{{ $video_motivacion->id }}"
+                                        style="border-radius:0"><i class="fas fa-edit"></i></a>
+                                    <a onclick="eliminarVideo({{ $video_motivacion }});" class="btn btn-danger"
+                                        style="border-radius:0"><i class="fas fa-times"></i></a>
                                 </div>
+                                <h5 class="my-1 text-center" style="text-transform: uppercase">
+                                    {{ $video_motivacion->titulo }}</h5>
+                                <iframe src="https://youtube.com/embed/{{ $video_motivacion->url }}"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
 
-                                <form id="deletevideo{{ $video_motivacion->id }}"
-                                    action="{{ route('video.destroy', $video_motivacion->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
+                            <form id="deletevideo{{ $video_motivacion->id }}"
+                                action="{{ route('video.destroy', $video_motivacion->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                            </form>
 
-                                {{-- MODAL DE EDITAR EJERCICIOS --}}
-                                <div class="modal fade" id="exampleModal3{{ $video_motivacion->id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Datos del video
-                                                    {{ $video_motivacion->titulo }}</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form method="POST" action="{{ route('video.update', $video_motivacion->id) }}"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                @method('PATCH')
-
-                                                <div class="modal-body"
-                                                    style="display:flex; flex-wrap:wrap; justify-content:center; align-content:flex-start">
-                                                    <div style="margin-left:20px;">
-
+                            {{-- MODAL DE EDITAR EJERCICIOS --}}
+                            <div class="modal fade" id="exampleModal3{{ $video_motivacion->id }}" tabindex="-1"
+                                role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="ModalLabel">Editar datos del video</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form method="POST"
+                                            action="{{ route('video.update', $video_motivacion->id) }}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="modal-body py-2 px-0">
+                                                <div class="col-12 row  m-0 mt-3  justify-content-center">
+                                                    <div class="col-sm-10 col-11 text-left">
                                                         <div class="form-group">
                                                             <label for="recipient-name"><strong>Titulo:</strong>
                                                             </label>
@@ -338,7 +327,6 @@
                                                                 <option value="Motivacion"
                                                                     {{ $video_motivacion->categoria == 'Motivacion' ? 'selected' : '' }}>
                                                                     Motivación</option>
-
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
@@ -346,38 +334,34 @@
                                                             </label>
                                                             <textarea class="form-control" name="descripcion">{{ $video_motivacion->descripcion }}</textarea>
                                                         </div>
-
                                                         <div class="form-group">
                                                             <label for="recipient-name"><strong>URL:</strong>
                                                             </label>
                                                             <input type="text" class="form-control" name="url"
                                                                 value="{{ $video_motivacion->url }}" id="">
                                                         </div>
-
-
-
-                                                        <div style="display:flex; justify-content:center;">
-                                                            <button type="submit" class="btn btn-success ">Guardar
-                                                                cambios</button>
-                                                        </div>
-
                                                     </div>
-
                                                 </div>
-
-                                            </form>
-
-                                        </div>
+                                            </div>
+                                            <div class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+                                                    <button type="submit"
+                                                        class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                                                    <button type="button" class="btn btn-light mb-2 col-12 col-sm-5"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-
             </div>
-        </div>
 
+        </div>
+    </div>
 
         <script>
             function eliminarVideo(video) {

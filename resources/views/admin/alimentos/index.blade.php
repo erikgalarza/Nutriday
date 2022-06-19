@@ -275,9 +275,10 @@
                                                         </div>
 
                                                         <div class="form-group row mb-1">
-                                                            <label class="col-sm-3 col-form-label"> <strong> Imagen actual:</strong></label>
-                                                            <div class=" col-sm-9 text-center mt-1">
-                                                                <a onclick="showImage();" class="btn btn-outline-info" id="imagen2" type="button" style="width:100%">Ver</a></div>
+                                                            <label class="col-md-4 col-form-label"> <strong> Imagen actual:</strong></label>
+                                                            <div class=" col-md-8 text-center mt-1">
+                                                                <a onclick="showImage();" class="btn btn-warning w-100" id="imagen" type="button">Ver Imagen</a>
+                                                            </div>
                                                             <div class="text-center">
                                                                 @if (isset($alimento->imagen->url))
                                                                     <img id="imagen" class="ocultar img-thumbnail"

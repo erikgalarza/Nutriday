@@ -31,8 +31,8 @@ class UpdatePacienteRequest extends FormRequest
             "sexo"=>"string",
             "cedula"=>"string|min:10|max:10",
             "edad"=>"numeric",
-            "email"=>"email:rfc,dns|unique:users,email",
-            "password"=>"string|min:8|max:40"
+            "email"=>"email:rfc,dns",
+            // "password"=>"string|min:8|max:40"
         ];
     }
 }

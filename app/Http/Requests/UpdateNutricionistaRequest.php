@@ -30,8 +30,8 @@ class UpdateNutricionistaRequest extends FormRequest
             "sexo"=>"numeric|size:1",
             "telefono"=>"numeric|size:10",
             "especialidad"=>"string|max:40",
-            "email"=>"email:rfc,dns|unique:users,email",
-            "password"=>"string|min:8|max:40"
+            "email"=>"email:rfc,dns",
+            // "password"=>"string|min:8|max:40"
         ];
     }
 }

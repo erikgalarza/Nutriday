@@ -27,8 +27,8 @@ class UpdateAdminRequest extends FormRequest
             "nombre"=>"string|min:3|max:30",
             "cedula"=>"string|min:10|max:10",
             "telefono"=>"string|min:10|max:10",
-            "email"=>"email:rfc,dns|unique:users,email",
-            "password"=>"string|min:8|max:40"
+            "email"=>"email:rfc,dns",
+            // "password"=>"string|min:8|max:40"
         ];
     }
 }

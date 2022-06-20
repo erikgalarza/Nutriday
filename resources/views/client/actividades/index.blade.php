@@ -7,20 +7,28 @@
     <body>
         <div class="page-header">
             <h3 class="page-title">
+<<<<<<< HEAD
                 Ver actividades
+=======
+                Actividades
+>>>>>>> 0956cb6f9eb6d46c207c57087327da2173d1edbb
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+<<<<<<< HEAD
                     <li class="breadcrumb-item active" aria-current="page">Ver actividades</li>
+=======
+                    <li class="breadcrumb-item active" aria-current="page">Actividades</li>
+>>>>>>> 0956cb6f9eb6d46c207c57087327da2173d1edbb
                 </ol>
             </nav>
         </div>
 
         <div class="row">
-            <div class="col-md-12 ">
-
+            <div class="col-12">
                 <div class="card">
+<<<<<<< HEAD
                     <div class=" mb-3" style="background-color:#4b6ac3 ">
                         <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Mis Actividades</h3>
@@ -35,23 +43,41 @@
                                 <div class="card-body">
                                   <h5 class="card-title">{{$actividad->nombre}}</h5>
                                   <p class="card-text">{{$actividad->descripcion}}</p>
+=======
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row portfolio-grid">
+                                    @foreach ($actividades as $key => $actividad)
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                                        {{-- @if($actividad->proridad==1)
+                                        <figure  class="effect-text-in prioridad-baja">
+                                        @endif
+                                        @if($actividad->proridad==2)
+                                        <figure  class="effect-text-in prioridad-media">
+                                        @endif
+                                        @if($actividad->proridad==3) --}}
+                                        <figure  class="effect-text-in {{$actividad->prioridad==1 ? 'prioridad-baja' : ($actividad->prioridad ==2 ? 'prioridad-media' : 'prioridad-alta') }}">
+                                        {{-- @endif --}}
+                                            <img src="{{$actividad->imagen->url}}" alt="image" />
+                                            <figcaption>
+                                                <h4>{{$actividad->nombre}}</h4>
+                                                <p>
+                                                    {{$actividad->descripcion}}
+                                                </p>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    @endforeach
+>>>>>>> 0956cb6f9eb6d46c207c57087327da2173d1edbb
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Duración: {{$duraciones[$key]->duracion}}</li>
-                                </ul>
-                                {{-- <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div> --}}
-                              </div>
-                            @endforeach
+                            </div>
                         </div>
                     @else
                     <label for="">No hay actividades asignadas !</label>
                     @endif
                     </div>
                 </div>
-
             </div>
         </div>
 

@@ -30,10 +30,13 @@ class ActividadController extends Controller
 
     public function guardarAsignacion(Request $request)
     {
-
+// dd($request);
         $paciente = Paciente::find($request->paciente_id);
         foreach($request->actividad_id as $key => $actividad){
-
+            $actividadBuscada = Actividad::find($actividad);
+            $actividadBuscada->update([
+                "prioridad"=>$request->prioridad_id[$key]
+            ]);
             $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key]]);
         }
         return redirect()->route('actividad.pacientes');
@@ -72,7 +75,8 @@ class ActividadController extends Controller
 
         $actividad = Actividad::create([
             "nombre"=>$request->nombre,
-            "descripcion"=>$request->descripcion
+            "descripcion"=>$request->descripcion,
+            // "prioridad"=>$request->prioridad
         ]);
 
         if ($request->hasFile('imagen')) {
@@ -93,30 +97,15 @@ class ActividadController extends Controller
     }
 
 
-    public function show(Actividad $actividad)
-    {
-        //
-    }
 
-
-    public function edit(Actividad $actividad)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateActividadRequest  $request
-     * @param  \App\Models\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         $actividad = Actividad::find($id);
         $actividad->update([
             "nombre"=>$request->nombre,
             "descripcion"=>$request->descripcion,
+            "prioridad"=>$request->prioridad
         ]);
 
         $file = $request->imagen;

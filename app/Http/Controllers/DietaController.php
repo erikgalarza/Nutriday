@@ -119,11 +119,12 @@ class DietaController extends Controller
 
     public function crearDietaFlash(Request $request){
 
-        $imc = $request->imc;
+        // $imc = $request->imc;
+        // dd($imc);
         $paciente_id = $request->paciente_id;
         $paciente = Paciente::find($paciente_id);
-
-
+        $datoAntropometrico = $paciente->dato_antropometrico()->latest()->first();
+        $imc = $datoAntropometrico->imc;
         return view('admin.dieta.create',compact('imc','paciente'));
     }
 
@@ -184,8 +185,19 @@ class DietaController extends Controller
             $datos = $paciente->dato_antropometrico()->get();
 
             $dieta->pacientes()->attach($paciente['id'],["created_at"=>$fecha]);
+            $pac =  Paciente::find($paciente['id']);
+            $dieta = $pac->dietas()->latest()->first();//ultima dieta
+            $dieta->update(["estado"=>"activa"]);
+            $dietas = $pac->dietas()->get();
+            $longitudDietas = count($dietas);
+            foreach($dietas as $key => $dieta){
+                if(($longitudDietas-2) == $key){
+                    $dieta->update(["estado"=>"inactiva"]);//inactivamos la penultima dieta más reciente
+                }
+            }
             return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente','datos'));
         }
+
         return view('admin.alimentos.create',compact('alimentos','dieta','imc'));
     }
 

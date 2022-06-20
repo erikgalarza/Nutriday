@@ -12,7 +12,7 @@ class Actividad extends Model
     public $fillable=[
         "nombre",
         "descripcion",
-        "paciente_id"
+        "prioridad"
     ];
 
     public function paciente()

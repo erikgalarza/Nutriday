@@ -158,19 +158,26 @@ class NutricionistaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $nutricionista = Nutricionista::find($id);
-        $pass=$nutricionista->password;
+        
+        $user = User::find($id);
+        $nutricionista = $user->nutricionistas()->first();
+        $pass=$user->password;
         if($request->password)
             $pass = Hash::make($request->password);
 
+        $user->update([
+            "email"=>$request->correo,
+            "password"=>$pass
+        ]);
+
         $nutricionista->update([
             "nombre"=>$request->nombre,
+            "sexo"=>$request->sexo,
+            "especialidad"=>$request->especialidad,
             "apellido"=>$request->apellido,
             "correo"=>$request->correo,
             "cedula"=>$request->cedula,
-            "sexo"=>$request->sexo,
             "telefono"=>$request->telefono,
-            "password"=>$pass
         ]);
         return back();
     }

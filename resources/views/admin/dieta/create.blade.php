@@ -87,12 +87,12 @@
                                                     <option value="4">Obeso</option>
                                                 </select>
                                             @else
-                                                <select style="background-color:#F0F0F0;min-height:45.2px"
+                                                {{-- <select style="background-color:#F0F0F0;min-height:45.2px"
                                                     class="form-control" name="imc">
                                                     <option selected disabled>{{ $imc }}</option>
 
-                                                </select>
-                                                <input type="hidden" name="imc" value="{{ $imc }}">
+                                                </select> --}}
+                                                <input type="number" class="form-control" name="imc" readonly="readonly" value="{{ $imc }}">
                                             @endif
                                         </div>
                                     </div>

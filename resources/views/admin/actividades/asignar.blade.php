@@ -169,7 +169,8 @@
                             <div class="row justify-content-center p-3" style="border-bottom: 1px dashed;background-color:#dce7e7">
                                 <div class="col-12 d-flex text-left" style="font-weight:bold">
                                     <label class="col-1">N°</label>
-                                    <label class="col-5 mx-1 text-center">Nombre actividad</label>
+                                    <label class="col-3 mx-1 text-center">Nombre actividad</label>
+                                    <label class="col-3 mx-1 text-center">Prioridad</label>
                                     <label class="col-3 pl-5 text-center">Duración actividad</label>
                                     <label class="col-2 pl-5 text-center">Acciones</label>
                                 </div>
@@ -218,6 +219,7 @@
                             <tr>
                                 <th style="">N°</th>
                                 <th style="">Nombre de la actividad</th>
+                                {{-- <th style="">Prioridad</th> --}}
                                 <th style="">Duración</th>
                                 <th style="">Imagen</th>
                                 <th style="">Fecha de asignación</th>
@@ -254,49 +256,72 @@
 
             var actividades = document.getElementById('actividades').value;
             actividades = JSON.parse(actividades)
-            console.log(actividades)
-            let select = document.createElement("select");
-            select.className += ` form-control js-example-basic-multiple col-md-5 my-2 mr-2`;
-            console.log(select)
-            select.name = "actividad_id[]";
+          
 
-            var div = document.createElement("div");
+            let selectActividad = document.createElement("select");
+            selectActividad.className += ` form-control js-example-basic-multiple col-md-3 my-2 mr-2`;
+
+            let selectPrioridad = document.createElement("select");
+            selectPrioridad.className += ` form-control js-example-basic-multiple col-md-3 my-2 mr-2`;
+            
+            selectActividad.name = "actividad_id[]";
+            selectPrioridad.name = "prioridad_id[]";
+
+            var div = document.createElement("div");//div que contiene a duracion
+
             var h5 = document.createElement("h5");
-
-
             var a = document.createElement("a");
 
+            //creacion del boton de eliminar
+            a.className += "btn col-md-2 my-2 ml-2 btn-danger btnEliminar";
+            a.style = "max-height:38px;"
+            let texto = document.createTextNode("Eliminar");
+            a.appendChild(texto);
+            //fin boton eliminar 
 
+            //edicion del indice de filas
+            h5.className += "text-left col-md-1";
+            let indice = document.createTextNode(i);
+            h5.appendChild(indice)
+            //fin edicion indice filas
 
             for (let j = 0; j < actividades.length; j++) {
-                h5.className += "text-left col-md-1";
-                let indice = document.createTextNode(i);
-                h5.appendChild(indice)
+                //creamos las options para el selectActividad 
                 let option = document.createElement("option");
                 option.setAttribute("value", actividades[j].id);
                 let optionTexto = document.createTextNode(actividades[j].nombre);
                 option.appendChild(optionTexto);
-                select.appendChild(option);
+                selectActividad.appendChild(option);
+                //fin options para selectActividad
+            }
 
 
-                div.className += "col-md-3";
+            const nombrePrioridad = ["Baja","Media","Alta"];
+            for(let x=0; x<3;x++){
+                //creamos las options para el selectPrioridad 
+                let option = document.createElement("option");
+                option.setAttribute("value", (x+1));
+                let optionTexto = document.createTextNode(nombrePrioridad[x]);
+                option.appendChild(optionTexto);
+                selectPrioridad.appendChild(option);
+                //fin options para selectPrioridad
+            }
+        
+            //este div es el que contiene a los inputs de duracion
+                div.className += "col-md-2";
                 let input = document.createElement("input")
                 input.className += "form-control my-2";
                 input.name = "duracion[]"
                 input.placeholder = "Duración"
                 input.style = "border-radius:10px;max-height:38px; "
-                // let input =`<input style="border-radius:10px" min="0" name="duracion[]" type="number" class="form-control"
-            //                          placeholder="Duración">`
                 div.append(input)
-                // <a  class="btn btn-danger puntero ocultar btnEliminar">Eliminar</a>
-                a.className += "btn col-md-2 my-2 ml-2 btn-danger btnEliminar";
-                a.style = "max-height:38px;"
-                let texto = document.createTextNode("Eliminar");
-                a.appendChild(texto);
-            }
-            i++;
+            //fin div inputs duracion
+
+            i++;// aumentamos el indice contador de filas
+
             contenedor.append(h5);
-            contenedor.appendChild(select)
+            contenedor.appendChild(selectActividad)
+            contenedor.appendChild(selectPrioridad)
             contenedor.append(div)
             contenedor.append(a);
 

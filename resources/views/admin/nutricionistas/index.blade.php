@@ -97,6 +97,17 @@
                                         >
                                 </div>
                             </div>
+
+                            <div class="form-group row mb-2" style="font-weight:bold">
+                                <label for="exampleInputUsername2"
+                                    class="col-sm-3 col-form-label text-left">Especialidad:</label>
+                                <div class="col-sm-9">
+                                    <input style="border-radius:10px"  name="especialidad" type="text" value="{{$nutricionista->nutricionistas->especialidad}}" class="form-control" id="exampleInputUsername2"
+                                        >
+                                </div>
+                            </div>
+
+
                             <div class="form-group row mb-2" style="font-weight:bold">
                                 <label for="exampleInputUsername2"
                                     class="col-sm-3 col-form-label text-left">Sexo:</label>

@@ -23,6 +23,20 @@
         <h3 class="card-title text-lg-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
             Actividades</h3>
     </div>
+
+    @if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    
     <div class="card-body">
         <div class="row ">
             <div class="col-12 row justify-content-center">

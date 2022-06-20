@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVideoRequest extends FormRequest
+class RegistrarAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class StoreVideoRequest extends FormRequest
     public function rules()
     {
         return [
-            "titulo"=>"required|string|min:3|max:50",
-            "categoria"=>"required|string",
-            "descripcion"=>"string|max:500",
-            "url"=>"required|url",
+            "nombre"=>"required|string|min:3|max:30",
+            "cedula"=>"required|string|min:10|max:10",
+            "telefono"=>"required|string|min:10|max:10",
+            "email"=>"required|email:rfc,dns|unique:users,email",
+            "password"=>"required|string|min:8|max:40"
         ];
     }
 }

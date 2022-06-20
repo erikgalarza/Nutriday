@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateAdminRequest;
 
 class AdminController extends Controller
 {
@@ -94,7 +95,7 @@ class AdminController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(UpdateAdminRequest $request, $id)
     {
        
         $administrador = Admin::find($id);
@@ -110,10 +111,8 @@ class AdminController extends Controller
             "password"=>$pass
         ]);
         
-      
-
+    
         $administrador->update([
-           
             "nombre"=>$request->nombre,
             "cedula"=>$request->cedula,
             "telefono"=>$request->telefono,

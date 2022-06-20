@@ -24,7 +24,15 @@ class UpdatePacienteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name"=>"string|min:3|max:30",
+            "apellido"=>"string|min:3|max:30",
+            "tipo_diabetes"=>"numeric|size:1",
+            "telefono"=>"numeric|size:10",
+            "sexo"=>"string",
+            "cedula"=>"string|min:10|max:10",
+            "edad"=>"numeric",
+            "email"=>"email:rfc,dns|unique:users,email",
+            "password"=>"string|min:8|max:40"
         ];
     }
 }

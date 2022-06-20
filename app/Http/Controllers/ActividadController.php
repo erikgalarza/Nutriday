@@ -69,7 +69,7 @@ class ActividadController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreActividadRequest $request)
     {
         // validacion
 
@@ -99,7 +99,7 @@ class ActividadController extends Controller
 
 
     
-    public function update(Request $request, $id)
+    public function update(UpdateActividadRequest $request, $id)
     {
         $actividad = Actividad::find($id);
         $actividad->update([

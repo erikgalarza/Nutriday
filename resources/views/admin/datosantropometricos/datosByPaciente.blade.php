@@ -28,7 +28,6 @@
                 .container4 {
                     min-width: 810px;
                     max-width: 1140px;
-
                 }
             }
         .btn-outline-primary:hover{
@@ -121,9 +120,9 @@
                             @endif
                         @endforeach
                     </div>
-                    </div>
                 </div>
-                </div> <!-- del contenedor -->
+            </div>
+            </div> <!-- del contenedor -->
 
                 <div class="container text-center py-3">
 

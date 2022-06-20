@@ -24,20 +24,20 @@ class DietaController extends Controller
     public function traerAlimentos(Request $request)
     {
         $paciente_id = $request->get('pacienteid');
-        dd($paciente_id);
         $dieta_id = $request->get('dietaid');
         $paciente = Paciente::find($paciente_id);
         $dieta = $paciente->dietas()->get([$dieta_id]);
-        
+
         return $dieta;
     }
 
     public function dietasByPaciente($paciente_id)
     {
         $paciente = Paciente::find($paciente_id);
+        $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
         $dietasDisponibles = Dieta::all();
-        return view('admin.dieta.dietasByPaciente',compact('paciente','dietas','dietasDisponibles'));
+        return view('admin.dieta.dietasByPaciente',compact('paciente','dietas','dietasDisponibles','datos'));
     }
 
     public function buscarPacientes(Request $request)
@@ -70,7 +70,7 @@ class DietaController extends Controller
         }
        return view('admin.dieta.index',compact('dietas_predefinidas','pacientesc'));
     }
-    use DiasTrait;// trait: se usan para reutilizar metodos de una clase 
+    use DiasTrait;// trait: se usan para reutilizar metodos de una clase
     public function guardarDieta(Request $request)
     {
         // dd($request);
@@ -79,8 +79,8 @@ class DietaController extends Controller
         $dieta_id = $request->dieta_id;
         $paciente_id = $request->paciente_id;
         $user_id = $request->user_id;
-        
-       
+
+
 
         $lunes = $semana['lunes'];//tienes los alimentos del lunes
         $martes = $semana['martes'];
@@ -89,7 +89,7 @@ class DietaController extends Controller
         $viernes = $semana['viernes'];
         $sabado = $semana['sabado'];
         $domingo = $semana['domingo'];
-        
+
         $diaLunes = Dia::find(1);//lunes
         $diaMartes = Dia::find(2);//Martes
         $diaMiercoles = Dia::find(3);//Miercoles
@@ -118,16 +118,18 @@ class DietaController extends Controller
     }
 
     public function crearDietaFlash(Request $request){
-       
+
         $imc = $request->imc;
         $paciente_id = $request->paciente_id;
         $paciente = Paciente::find($paciente_id);
+
+
         return view('admin.dieta.create',compact('imc','paciente'));
     }
 
     public function guardarDietaAsignada(Request $request)
     {
-     
+
         // $dieta = Dieta::find($request->dieta_id);
         $paciente = Paciente::find($request->paciente_id);
         $dieta = Dieta::find($request->dieta_id);
@@ -136,18 +138,18 @@ class DietaController extends Controller
         //     "fecha_fin"=>$request->fecha_fin
         // ]);
 
-       
+
         return back();
         // $alimento->dietas()->attach($dieta->id);
-       
+
     }
 
     public function asignarDieta()
     {
         $pacientes = Paciente::all();
-        
+
         $dietas = Dieta::all();
-        
+
         return view('admin.dieta.asignar',compact('pacientes','dietas'));
     }
 
@@ -157,7 +159,7 @@ class DietaController extends Controller
         return view('admin.dieta.create');
     }
 
-    
+
     public function store(Request $request)
     {
         // $pacienteNuevo = json_decode($request->paciente);
@@ -170,21 +172,24 @@ class DietaController extends Controller
             "imc"=>$request->imc,
             "observaciones"=>$request->observaciones
         ]);
-        
-        
+
+
         $imc = $request->imc;
-    
+
         $alimentos = Alimento::all();
         if($request->paciente){
             $pacienteNuevo = json_decode($request->paciente);
             $paciente = collect($pacienteNuevo);
+            $paciente = Paciente::find($paciente['id']);
+            $datos = $paciente->dato_antropometrico()->get();
+
             $dieta->pacientes()->attach($paciente['id'],["created_at"=>$fecha]);
-            return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente'));
+            return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente','datos'));
         }
         return view('admin.alimentos.create',compact('alimentos','dieta','imc'));
     }
 
-  
+
     public function show(Dieta $dieta)
     {
         //
@@ -200,14 +205,14 @@ class DietaController extends Controller
         return back();
     }
 
-  
+
     public function update(Request $request, $id)
     {
 
         //validacion campos no null
 
         $dieta = Dieta::find($id);
-        
+
         $dieta->update([
             "nombre"=>$request->nombre,
             "tipo_diabetes"=>$request->tipo_diabetes,

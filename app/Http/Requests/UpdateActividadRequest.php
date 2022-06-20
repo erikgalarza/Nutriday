@@ -24,7 +24,7 @@ class UpdateActividadRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"unique:actividads,nombre",
+            "nombre"=>"string|min:3|max:30",
             "descripcion"=>"string|max:500",
         ];
     }

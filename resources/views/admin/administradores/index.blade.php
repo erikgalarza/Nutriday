@@ -26,6 +26,7 @@
         </ul>
     </div>
     @endif
+    
     <div class="card-body text-center">
 
       <div class="row">

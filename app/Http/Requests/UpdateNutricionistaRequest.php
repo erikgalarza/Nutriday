@@ -26,9 +26,9 @@ class UpdateNutricionistaRequest extends FormRequest
         return [
             "nombre"=>"string|min:3|max:30",
             "apellido"=>"string|min:3|max:30",
-            "cedula"=>"numeric|size:10",
+            "cedula"=>"string|min:10|max:10",
             "sexo"=>"numeric|size:1",
-            "telefono"=>"numeric|size:10",
+            "telefono"=>"string|min:10|max:10",
             "especialidad"=>"string|max:40",
             "email"=>"email:rfc,dns",
             // "password"=>"string|min:8|max:40"

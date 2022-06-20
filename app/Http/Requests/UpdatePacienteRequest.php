@@ -27,7 +27,7 @@ class UpdatePacienteRequest extends FormRequest
             "name"=>"string|min:3|max:30",
             "apellido"=>"string|min:3|max:30",
             "tipo_diabetes"=>"numeric|size:1",
-            "telefono"=>"numeric|size:10",
+            "telefono"=>"string|min:10|max:10",
             "sexo"=>"string",
             "cedula"=>"string|min:10|max:10",
             "edad"=>"numeric",

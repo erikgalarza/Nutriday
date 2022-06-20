@@ -29,7 +29,7 @@
         </div>
         @endif
 
-        
+
         <div class="card-body text-center">
             <div class="row mb-2">
                 <div class="col-12">
@@ -194,13 +194,13 @@
                                                                             style="border-radius:10px; background-color:#F0F0F0;min-height:45.2px"
                                                                             class="form-control" name="sexo"
                                                                             id="">
-                                                                            <option selected disabled>Seleccione una opción
+                                                                            <option disabled>Seleccione una opción
                                                                             </option>
                                                                             <option value="1"
-                                                                                {{ $paciente->sexo == '1' ? 'selected' : '' }}>
+                                                                                {{ $paciente->sexo == "1" ? 'selected' : '' }}>
                                                                                 Femenino</option>
                                                                             <option value="2"
-                                                                                {{ $paciente->sexo == '2' ? 'selected' : '' }}>
+                                                                                {{ $paciente->sexo == "2" ? 'selected' : '' }}>
                                                                                 Masculino</option>
                                                                         </select>
                                                                     </div>
@@ -212,8 +212,8 @@
                                                                         class="col-sm-3 text-left col-form-label">Teléfono:</label>
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="telefono"
-                                                                            type="text"
-                                                                            value="{{ $paciente->telefono }}"
+                                                                            type="tel"
+                                                                            value="{{ $paciente->telefono}}"
                                                                             class="form-control"
                                                                             id="exampleInputUsername2">
                                                                     </div>

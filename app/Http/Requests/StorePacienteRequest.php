@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Cedula;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePacienteRequest extends FormRequest
@@ -29,7 +30,7 @@ class StorePacienteRequest extends FormRequest
             "tipo_diabetes"=>"required|integer",
             "telefono"=>"required|string|min:10|max:10",
             "sexo"=>"required|string",
-            "cedula"=>"required|string|min:10|max:10",
+            "cedula"=>["required", new Cedula()],
             "edad"=>"required|numeric",
             "email"=>"required|email:rfc,dns|unique:users,email",
             "password"=>"required|string|min:8|max:40"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Cedula;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreNutricionistaRequest extends FormRequest
@@ -26,7 +27,7 @@ class StoreNutricionistaRequest extends FormRequest
         return [
             "nombre"=>"required|string|min:3|max:30",
             "apellido"=>"required|string|min:3|max:30",
-            "cedula"=>"required|numeric|size:10",
+            "cedula"=>["required", new Cedula()],
             "sexo"=>"required|numeric|size:1",//
             "telefono"=>"required|numeric|phone_number|size:10",
             "especialidad"=>"required|string|max:40",

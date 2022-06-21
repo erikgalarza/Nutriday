@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Cedula;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateAdminRequest extends FormRequest
@@ -24,11 +25,11 @@ class UpdateAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"string|min:3|max:30",
-            "cedula"=>"string|min:10|max:10",
-            "telefono"=>"string|min:10|max:10",
-            "email"=>"email:rfc,dns",
-            // "password"=>"string|min:8|max:40"
+            "nombre"=>"required|string|min:3|max:30",
+            "cedula"=>["required", new Cedula()],
+            "telefono"=>"required|string|min:10|max:10",
+            "email"=>"required|email:rfc,dns",
+            "password"=>"nullable|string|min:8|max:40"
         ];
     }
 }

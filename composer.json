@@ -14,7 +14,8 @@
         "laravel/ui": "^3.4",
         "laraveles/spanish": "^1.5",
         "realrashid/sweet-alert": "^5.0",
-        "spatie/laravel-permission": "^5.5"
+        "spatie/laravel-permission": "^5.5",
+        "tavo1987/ec-validador-cedula-ruc": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

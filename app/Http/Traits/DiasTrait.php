@@ -3,7 +3,8 @@ namespace App\Http\Traits;
 
 use App\Models\Comida;
 
-trait DiasTrait {
+trait DiasTrait
+ {
     public function leerLunes($lunes, $diaLunes)
     {
         foreach($lunes as $alimento)

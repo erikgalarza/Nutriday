@@ -381,11 +381,7 @@
                                         <div class="card "style="background-color:white;color:black">
                                             <div class="card-header" role="tab" id="heading-{{ $k }}" style="border:1px solid #55558a;border-radius:10px">
                                                 <h6 class="mb-0">
-<<<<<<< HEAD
-                                                    <a class="collapsed" data-toggle="collapse"  style="font-weight: bold"
-=======
                                                     <a onclick="" data-toggle="collapse" class="collapsed" style="font-weight: bold"
->>>>>>> d8b4ed574536a1e24564aabae1490e6e229cd3b8
                                                         href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
                                                         aria-controls="collapse-{{ $k }}"><i class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}

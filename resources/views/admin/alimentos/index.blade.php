@@ -33,7 +33,7 @@
             </ul>
         </div>
         @endif
-        
+
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
@@ -290,7 +290,7 @@
                                                         <div class="form-group row mb-1">
                                                             <label class="col-md-4 col-form-label"> <strong> Imagen actual:</strong></label>
                                                             <div class=" col-md-8 text-center mt-1">
-                                                                <a onclick="showImage();" class="btn btn-warning w-100" id="imagen" type="button">Ver Imagen</a>
+                                                                <a onclick="showImage();" class="btn btn-warning w-100" id="imagen2" type="button">Ver Imagen</a>
                                                             </div>
                                                             <div class="text-center">
                                                                 @if (isset($alimento->imagen->url))

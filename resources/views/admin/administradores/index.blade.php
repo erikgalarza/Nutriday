@@ -1,6 +1,12 @@
 @extends('admin.dashboard')
 @section('contenido')
-<div class="page-header">
+<style>
+    .ocultar
+    {
+        display:none;
+    }
+</style>
+<div class="page-header mb-2">
     <h3 class="page-title">
       Administradores
     </h3>
@@ -13,7 +19,7 @@
   </div>
   <div class="card">
     <div class=" mb-5" style="background-color:#4b6ac3 ">
-        <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos administradores</h3>
+        <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos administradores</h3>
     </div>
     @if(count($errors)>0)
     <div class="alert alert-danger" role="alert">
@@ -26,7 +32,7 @@
         </ul>
     </div>
     @endif
-    
+
     <div class="card-body text-center">
 
       <div class="row">
@@ -55,7 +61,7 @@
                     <td>
 
 
-                        <a onclick="eliminarAdmin({{$admin}});" class="btn {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
+                        <a onclick="eliminarAdmin({{$admin}});" class=" btn btn-rounded {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
 
                         <!-- Arreglar el estado de los administradores como un boton -->
                     </td>
@@ -207,13 +213,13 @@
                               <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
                                   class="col-sm-4 col-form-label text-left">Imagen actual:</label>
                                   <div class="col-sm-8">
-                                  <button class="btn btn-outline-info col-12 ">Ver Imagen</button>
+                                    <a onclick="showImage();" class="btn btn-warning w-100 " id="imagen2" style="border-radius:10px;min-height:44px" type="button">Ver Imagen</a>
                                 </div>
-                              <div class="col-12 text-center mt-2">
+                              <div class="text-center col-12 p-0 m-0 mt-2">
                                     @if(isset($admin->administradores->imagen))
-                                    <img class="text-center" src="{{$admin->administradores->imagen->url}}">
+                                    <img id="imagen" class=" ocultar img-thumbnail text-center"    style="min-width:95%;min-heigth:80%" src="{{$admin->administradores->imagen->url}}">
                                     @else
-                                    <img src="" class="text-center" alt=" Foto del administrador">
+                                    <img id="imagen" src="{{ asset('img/icons/dieta48.png') }}" class=" ocultar img-thumbnail text-center"    style="min-width:95%;min-heigth:80%" alt=" Foto del administrador">
                                 @endif
                               </div>
                             </div>
@@ -245,6 +251,26 @@
       </div>
     </div>
   </div>
+
+  <script>
+    var imagen = document.getElementById('imagen');
+    var estado = false;
+    function showImage()
+    {
+        if(estado)
+        {
+            imagen.className+=" ocultar";
+            estado = false;
+        }
+        else
+        {
+            imagen.classList.remove('ocultar');
+            estado = true;
+        }
+
+    }
+
+</script>
 
   <script>
     function eliminarAdmin(admin) {

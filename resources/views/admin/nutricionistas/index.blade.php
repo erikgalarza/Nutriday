@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-<div class="page-header">
+<div class="page-header mb-2">
     <h3 class="page-title">
       Nutricionistas
     </h3>
@@ -12,8 +12,8 @@
     </nav>
   </div>
   <div class="card">
-    <div class=" mb-5" style="background-color:#4b6ac3 ">
-        <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos Nutricionistas</h3>
+    <div class=" mb-4" style="background-color:#4b6ac3 ">
+        <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos Nutricionistas</h3>
     </div>
     @if(count($errors)>0)
     <div class="alert alert-danger" role="alert">
@@ -50,7 +50,7 @@
                     <td>{{$nutricionista->nutricionistas->especialidad}}</td>
                     <td>{{$nutricionista->email}}</td>
                     <td>
-                        <a onclick="eliminarNutri({{$nutricionista}});" class="btn {{$nutricionista->nutricionistas->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$nutricionista->nutricionistas->estado}}</a>
+                        <a onclick="eliminarNutri({{$nutricionista}});" class="btn btn-rounded {{$nutricionista->nutricionistas->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$nutricionista->nutricionistas->estado}}</a>
                         <!-- Arreglar estado de nutricionistas con un botón -->
                     </td>
                     <td>
@@ -79,39 +79,39 @@
                         </div>
                         <div class="modal-body py-2 px-0">
                             <div class="col-12 row m-0 justify-content-center">
-                                <div class="col-sm-9  col-11 text-left">
+                                <div class="col-sm-9  col-11 text-left p-0">
                         <form method="POST" action="{{route('nutricionista.update',$nutricionista->id)}}" >
                         @csrf
                         {{ method_field('PATCH') }}
                         <br>
-                            <div class="form-group row mb-2" style="font-weight:bold;font-size:12px;">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold;font-size:12px;">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Nombre:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;">Nombre:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="nombre" type="text" value="{{$nutricionista->nutricionistas->nombre}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
-                            <div class="form-group row mb-2" style="font-weight:bold">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold;font-size:12px;">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Apellido:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;">Apellido:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="apellido" type="text" value="{{$nutricionista->nutricionistas->apellido}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
-                            <div class="form-group row mb-2" style="font-weight:bold">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold;font-size:12px;">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Cédula:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;">Cédula:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="cedula" type="text" value="{{$nutricionista->nutricionistas->cedula}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-2" style="font-weight:bold">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold;font-size:12px;">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Especialidad:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;">Especialidad:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="especialidad" type="text" value="{{$nutricionista->nutricionistas->especialidad}}" class="form-control" id="exampleInputUsername2"
                                         >
@@ -119,9 +119,9 @@
                             </div>
 
 
-                            <div class="form-group row mb-2" style="font-weight:bold">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Sexo:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;"> Sexo:</label>
                                 <div class="col-sm-9">
                                     <select name="sexo" id="sexo" class="form-control" style="border-radius:10px; background-color:#F0F0F0;min-height:45.2px">
                                             <option selected disabled>Seleccione una opción</option>
@@ -132,25 +132,25 @@
                                     </div>
                                 </div>
 
-                            <div class="form-group row mb-2" style="font-weight:bold">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Teléfono:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;">Teléfono:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="telefono" type="text" value="{{$nutricionista->nutricionistas->telefono}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
-                            <div class="form-group row mb-2" style="font-weight:bold">
+                            <div class="form-group row mb-2 no-gutters" style="font-weight:bold">
                                 <label for="exampleInputUsername2"
-                                    class="col-sm-3 col-form-label text-left">Email:</label>
+                                    class="col-sm-3 col-form-label text-left" style="font-size:12px;">Email:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px"  name="correo" type="text" value="{{$nutricionista->email}}" class="form-control" id="exampleInputUsername2"
                                         >
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-2">
-                                <label   style="font-weight:bold;font-size:11px"
+                            <div class="form-group row mb-2 no-gutters">
+                                <label   style="font-weight:bold;font-size:12px"
                                     class="col-sm-3 col-form-label text-left">Contraseña:</label>
                                 <div class="col-sm-9">
                                     <input style="border-radius:10px; background-color:#F0F0F0"  name="password" type="text" placeholder="Nueva contraseña" class="form-control" id="exampleInputUsername2"
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <div class="modal-footer mt-2 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
-                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around p-0" >
 
                               <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
                               <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>

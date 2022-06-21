@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-<div class="page-header">
+<div class="page-header mb-2">
     <h3 class="page-title">
        Agregar nutricionista
     </h3>
@@ -15,8 +15,8 @@
 
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class=" mb-5" style="background-color:#4b6ac3 ">
-                <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Datos nutricionita</h3>
+            <div class=" mb-4" style="background-color:#4b6ac3 ">
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos nutricionista</h3>
             </div>
 
             @if(count($errors)>0)
@@ -31,7 +31,7 @@
             </div>
             @endif
 
-            
+
             <div class="card-body">
                 <div class="col-12 row justify-content-center m-0 ">
                     <div class="col-lg-9 col-12  text-left">

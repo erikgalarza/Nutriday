@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-<div class="page-header">
+<div class="page-header mb-2">
     <h3 class="page-title">
       Agregar administrador
     </h3>
@@ -16,11 +16,11 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class=" mb-5" style="background-color:#4b6ac3 ">
-                <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">
+                <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                     Datos administrador
                 </h3>
             </div>
-            
+
             <div class="card-body ">
             <div class="col-12 row justify-content-center m-0">
                 <div class="col-md-8 col-xl-9 col-12 text-left">

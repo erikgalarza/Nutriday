@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('administracion/css/galeriaVideos.css') }}">
 
     <body>
-        <div class="page-header">
+        <div class="page-header mb-2">
             <h3 class="page-title">
                 Actividades
             </h3>
@@ -20,20 +20,17 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-<<<<<<< HEAD
-=======
-                    <div class=" mb-3" style="background-color:#4b6ac3 ">
-                        <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
+                    <div class=" mb-5" style="background-color:#4b6ac3 ">
+                        <h3 class="card-title text-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Mis Actividades</h3>
                     </div>
 
->>>>>>> d8b4ed574536a1e24564aabae1490e6e229cd3b8
                     <div class="card-body">
                         @if(count($actividades)>0)
                         <div class="row">
                             <div class="col-12">
                                 <div class="row portfolio-grid">
-                                    
+
                                     @foreach ($actividades as $key => $actividad)
                                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                                         {{-- @if($actividad->proridad==1)

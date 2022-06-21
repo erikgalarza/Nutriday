@@ -1,19 +1,19 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
-            Pacientes
+            Ver pacientes
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pacientes</li>
             </ol>
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">
+        <div class=" mb-4" style="background-color:#4b6ac3 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Datos Pacientes</h3>
         </div>
 
@@ -99,10 +99,10 @@
                                         </td> --}}
                                         <td>
                                             @if ($paciente->estado == 'activo')
-                                                <a title="Estado del paciente" class="btn btn-success"
+                                                <a title="Estado del paciente" class="btn btn-rounded btn-success"
                                                     href="{{ route('paciente.eliminar', $paciente->id) }}">{{ $paciente->estado }}</a>
                                             @else
-                                                <a class="btn btn-danger"
+                                                <a class="btn btn-rounded btn-danger"
                                                     href="{{ route('paciente.eliminar', $paciente->id) }}">{{ $paciente->estado }}</a>
                                             @endif
                                         </td>

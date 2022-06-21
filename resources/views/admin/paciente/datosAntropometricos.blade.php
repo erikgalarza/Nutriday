@@ -1,12 +1,12 @@
 @extends('admin.dashboard')
 @section('contenido')
-<div class="page-header">
+<div class="page-header mb-2">
     <h3 class="page-title">
        Agregar
     </h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
             <li class="breadcrumb-item active" aria-current="page">Datos antropométricos</li>
         </ol>
     </nav>

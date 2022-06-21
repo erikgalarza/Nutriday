@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Progreso del paciente
         </h3>
@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <div class="card mt-5">
+    <div class="card mt-4">
         <div class="mb-3" style="background-color:#4eba74">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Seguimiento de Progreso</h3>
         </div>
@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <div class="card mt-5">
+    <div class="card mt-4">
         <div class="mb-3" style="background-color:#7c7ce4">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Historial antropométrico</h3>
         </div>
@@ -181,7 +181,7 @@
 
 
 
-        <div class="card mt-5 text-center">
+        <div class="card mt-4 text-center">
             <div class="mb-5" style="background-color:#4869c4">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Dietas asignadas</h3>
             </div>
@@ -220,7 +220,7 @@
 
 
 
-        <div class="card  mt-5 text-center">
+        <div class="card  mt-4 text-center">
             <div class="mb-3" style="background-color:#4eba74">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Actividades asignadas </h3>
             </div>
@@ -258,7 +258,7 @@
         </div>
 
 
-        <div class="card  mt-5 text-center">
+        <div class="card  mt-4 text-center">
             <div class="mb-3" style="background-color:#7c7ce4">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Estados de ánimo</h3>
             </div>

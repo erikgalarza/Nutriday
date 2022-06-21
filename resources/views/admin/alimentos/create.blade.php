@@ -375,15 +375,15 @@
                                         <div class="card "style="background-color:white;color:black">
                                             <div class="card-header" role="tab" id="heading-{{ $k }}" style="border:1px solid #55558a;border-radius:10px">
                                                 <h6 class="mb-0">
-                                                    <a data-toggle="collapse" class="{{ $k == 0 ? '' : 'collapsed' }}" style="font-weight: bold"
+                                                    <a class="collapsed" data-toggle="collapse"  style="font-weight: bold"
                                                         href="#collapse-{{ $k }}"
-                                                        aria-expanded="{{ $k == 0 ? 'true' : 'false' }}"
+                                                        aria-expanded="false"
                                                         aria-controls="collapse-{{ $k }}"><i class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
                                                     </a>
                                                 </h6>
                                             </div>
                                             <div id="collapse-{{ $k }}"
-                                                class="{{ $k == 0 ? 'collapse show' : '' }}" role="tabpanel"
+                                                class="collapse" role="tabpanel"
                                                 aria-labelledby="heading-{{ $k }}"
                                                 data-parent="#accordion-{{ $j }}">
                                                 <div class="card-body pt-2">

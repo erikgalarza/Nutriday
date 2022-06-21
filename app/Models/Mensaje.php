@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Events\EventoMensaje;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Mensaje extends Model
 {
@@ -11,4 +12,8 @@ class Mensaje extends Model
     public $fillable=[
         "nombres","correo","asunto","mensaje"
     ];
+
+    public static function make_mensaje_notification($mensaje){
+        event(new EventoMensaje($mensaje));
+    }
 }

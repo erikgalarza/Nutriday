@@ -24,7 +24,7 @@ class UpdatecategoriaAlimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"required|string|min:3|max:30"
         ];
     }
 }

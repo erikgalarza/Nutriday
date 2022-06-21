@@ -24,7 +24,8 @@ class UpdatemedidaAlimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "medida"=>"required|string|min:1|max:20",
+            "abreviatura"=>"nullable|string|min:1|max:10"
         ];
     }
 }

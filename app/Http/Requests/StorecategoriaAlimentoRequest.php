@@ -24,7 +24,7 @@ class StorecategoriaAlimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"required|string|min:3|max:30|unique:categoria_alimentos,nombre"
         ];
     }
 }

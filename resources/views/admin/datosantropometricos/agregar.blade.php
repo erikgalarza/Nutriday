@@ -82,6 +82,7 @@
                                                             <div class="col-sm-9">
                                                                 <input name="altura" type="text" class="form-control"
                                                                     id="exampleInputUsername2">
+                                                                    <p class="text-danger font-weight-bold">{{$errors->first('altura')}}</p>
                                                             </div>
                                                         </div>
                                                         <br>
@@ -91,14 +92,28 @@
                                                             <div class="col-sm-9">
                                                                 <input name="peso" type="text" class="form-control"
                                                                     id="exampleInputUsername2">
+                                                                    <p class="text-danger font-weight-bold">{{$errors->first('peso')}}</p>
                                                             </div>
                                                         </div>
+
+                                                        <div class="form-group row">
+                                                            <label for="exampleInputUsername2"
+                                                                class="col-sm-3 col-form-label">Grasa corporal</label>
+                                                            <div class="col-sm-9">
+                                                                <input name="peso" type="text" class="form-control"
+                                                                    id="exampleInputUsername2">
+                                                                    <p class="text-danger font-weight-bold">{{$errors->first('peso')}}</p>
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="form-group row">
                                                             <label for="exampleInputUsername2"
                                                                 class="col-sm-3 col-form-label">Sexo</label>
                                                             <div class="col-sm-9">
                                                                 <input name="sexo" type="text" class="form-control"
                                                                     id="exampleInputUsername2">
+                                                                    <p class="text-danger font-weight-bold">{{$errors->first('sexo')}}</p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -107,6 +122,7 @@
                                                             <div class="col-sm-9">
                                                                 <input name="imc" type="text" class="form-control"
                                                                     id="exampleInputUsername2">
+                                                                    <p class="text-danger font-weight-bold">{{$errors->first('imc')}}</p>
                                                             </div>
                                                         </div>
 

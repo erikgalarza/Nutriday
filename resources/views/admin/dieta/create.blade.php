@@ -43,6 +43,7 @@
                                         <div class="col-xl-8  ">
                                             <input name="nombre" type="text" class="form-control"
                                                 id="exampleInputUsername2" placeholder="Ingrese el nombre de la dietas">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
                                         </div>
                                     </div>
 
@@ -59,6 +60,7 @@
                                                     <option value="2">Tipo 2</option>
                                                     <option value="3">Gestacional</option>
                                                 </select>
+                                                <p class="text-danger font-weight-bold">{{$errors->first('tipo_diabetes')}}</p>
                                             @else
                                                 <select style="background-color:#F0F0F0;min-height:45.2px"
                                                     class="form-control" name="tipo_diabetes" id="">
@@ -66,6 +68,7 @@
                                                 </select>
                                                 <input type="hidden" name="tipo_diabetes"
                                                     value="{{ $paciente->tipo_diabetes }}">
+                                                    <p class="text-danger font-weight-bold">{{$errors->first('tipo_diabetes')}}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -105,6 +108,7 @@
                                             <div class="col-xl-8 ">
                                                 <input name="fecha_fin" type="date" class="form-control"
                                                     id="exampleInputUsername2">
+                                                    <p class="text-danger font-weight-bold">{{$errors->first('fecha_finalizacion')}}</p>
                                             </div>
                                         </div>
                                     @endif
@@ -114,6 +118,7 @@
                                             class="col-xl-4  col-form-label">Observaciones:</label>
                                         <div class="col-xl-8 ">
                                             <textarea name="observaciones" class="form-control" rows="5"></textarea>
+                                            <p class="text-danger font-weight-bold">{{$errors->first('observaciones')}}</p>
                                         </div>
                                     </div>
 

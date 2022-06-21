@@ -23,13 +23,150 @@ class DietaController extends Controller
 
     public function traerAlimentos(Request $request)
     {
-        $paciente_id = $request->get('pacienteid');
-        $dieta_id = $request->get('dietaid');
+        // dd($request);
+        $paciente_id = $request->get('paciente_id');
+        // dd($paciente_id);
+        $dieta_id = $request->get('dieta_id');
+        $diaSeleccionado = $request->get('diaSeleccionado');
         $paciente = Paciente::find($paciente_id);
-        $dieta = $paciente->dietas()->get([$dieta_id]);
+        $dieta = $paciente->dietas()->where('dieta_id',$dieta_id)->first();
+        $dias = $dieta->dias()->get();
+   
+        $alimentosLunes = collect();
+       $alimentosMartes = collect();
+       $alimentosMiercoles = collect();
+       $alimentosJueves = collect();
+       $alimentosViernes = collect();
+       $alimentosViernes = collect();
+       $alimentosSabado = collect();
+       $alimentosDomingo = collect();
 
-        return $dieta;
+    foreach($dias as $key => $dia)
+    {
+        if($key == 0 && $diaSeleccionado==$key)//lunes
+        {
+            $alimentosLunes = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',1)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',1)->get(['cantidad']); 
+
+            $alimentosLunes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+
+        if($key == 1 && $diaSeleccionado==$key)//martes
+        {
+            $alimentosMartes = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',2)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',2)->get(['cantidad']); 
+            $alimentosMartes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+        if($key == 2 && $diaSeleccionado==$key)//miercoles
+        {
+            $alimentosMiercoles = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',3)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',3)->get(['cantidad']); 
+            $alimentosMiercoles->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+        if($key == 3 && $diaSeleccionado==$key)//jueves
+        {
+            $alimentosJueves = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',4)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',4)->get(['cantidad']); 
+            $alimentosJueves->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+
+        if($key == 4 && $diaSeleccionado==$key)//viernes
+        {
+            $alimentosViernes = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',5)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',5)->get(['cantidad']); 
+            $alimentosViernes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+
+        if($key == 5 && $diaSeleccionado==$key)//sabado
+        {
+            $alimentosSabado = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',6)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',6)->get(['cantidad']); 
+            $alimentosSabado->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+
+        if($key == 6 && $diaSeleccionado==$key)//domingo
+        {
+            $alimentosDomingo = collect();
+            foreach($dia->comidas()->get() as $horario){
+                foreach($horario->alimentos()->where('dia_id',7)->get() as $alimento){
+                    $cantidad = $horario->alimentos()->where('dia_id',7)->get(['cantidad']); 
+            $alimentosDomingo->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
+                }
+            }
+        }
+
+        
     }
+
+    if($diaSeleccionado==0)
+    {
+        return $alimentosLunes;
+    }
+    if($diaSeleccionado==1)
+    {
+        return $alimentosMartes;
+    }
+    if($diaSeleccionado==2)
+    {
+        return $alimentosMiercoles;
+    }
+    if($diaSeleccionado==3)
+    {
+        return $alimentosJueves;
+    }
+    if($diaSeleccionado==4)
+    {
+        return $alimentosViernes;
+    }
+    if($diaSeleccionado==5)
+    {
+        return $alimentosSabado;
+    }
+    if($diaSeleccionado==6)
+    {
+        return $alimentosDomingo;
+    }
+
+        return 0;
+    //   $semana = collect();
+    //   $semana->push($alimentosLunes,$alimentosMartes,$alimentosMiercoles,$alimentosJueves,$alimentosViernes, $alimentosSabado, $alimentosDomingo);
+    //   dd($semana);
+    //  dd($alimentosLunes,$alimentosMartes,$alimentosMiercoles,$alimentosJueves,$alimentosViernes, $alimentosSabado, $alimentosDomingo);
+        // return $semana;
+    }
+    // public function traerAlimentos(Request $request)
+    // {
+    //     $paciente_id = $request->get('pacienteid');
+    //     $dieta_id = $request->get('dietaid');
+    //     $paciente = Paciente::find($paciente_id);
+    //     $dieta = $paciente->dietas()->get([$dieta_id]);
+
+    //     return $dieta;
+    // }
 
     public function dietasByPaciente($paciente_id)
     {
@@ -218,11 +355,8 @@ class DietaController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateDietaRequest $request, $id)
     {
-
-        //validacion campos no null
-
         $dieta = Dieta::find($id);
 
         $dieta->update([
@@ -230,9 +364,8 @@ class DietaController extends Controller
             "tipo_diabetes"=>$request->tipo_diabetes,
             "imc"=>$request->imc,
             "observaciones"=>$request->observaciones,
-
-            // "fecha_fin"=>$request->fecha_fin,
         ]);
+
         return back();
     }
 

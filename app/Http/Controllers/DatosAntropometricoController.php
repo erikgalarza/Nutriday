@@ -57,10 +57,8 @@ class DatosAntropometricoController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(StoreDatosAntropometricoRequest $request)
     {
-        
-     
        $datosAntropometrico =  DatosAntropometrico::create([
             "altura"=>$request->altura,
             "peso"=>$request->peso,
@@ -68,7 +66,7 @@ class DatosAntropometricoController extends Controller
             "masa_muscular"=>$request->masa_muscular,
             "grasa_corporal"=>$request->grasa_corporal,
             "paciente_id"=>$request->paciente_id,
-            "osbservaciones"=>$request->observaciones
+            "observaciones"=>$request->observaciones
         ]);
 
         if ($request->hasFile('imagen')) {

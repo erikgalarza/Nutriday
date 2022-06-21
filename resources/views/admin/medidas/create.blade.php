@@ -36,6 +36,7 @@
                                         <div class="col-xl-8 ">
                                             <input style="border-radius:10px;" name="medida" type="text"
                                                 class="form-control" placeholder="Ingrese el nombre">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('medida')}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group row ">
@@ -46,6 +47,7 @@
                                         <div class="col-xl-8">
                                             <input style="border-radius:10px;" name="abreviatura" type="text"
                                                 class="form-control" placeholder="Ingrese la abreviatura">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('abreviatura')}}</p>
                                         </div>
                                     </div>
                                     <div

@@ -45,9 +45,8 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label">Altura (Mts):</label>
                         <div class="col-xl-8 ">
-                            <input style="border-radius:10px" name="altura" step="0.05" type="number" placeholder="Ingrese la altura en metros"
-
-                                class="form-control" id="altura">
+                            <input style="border-radius:10px" name="altura" step="0.05" type="number" placeholder="Ingrese la altura en metros"                             class="form-control" id="altura">
+                            <p class="text-danger font-weight-bold">{{$errors->first('altura')}}</p>
                         </div>
                     </div>
 
@@ -69,6 +68,7 @@
                             <input style="border-radius:10px" name="grasa_corporal" step="0.01" type="number" placeholder="Ingrese la grasa corporal"
                                  class="form-control"
                                 id="grasa_corporal">
+                                <p class="text-danger font-weight-bold">{{$errors->first('grasa_corporal')}}</p>
                         </div>
                     </div>
 
@@ -79,6 +79,7 @@
                             <input style="border-radius:10px" name="masa_muscular" step="0.01" type="number" placeholder="Ingrese la masa muscular"
                                  class="form-control"
                                 id="masa_muscular">
+                                <p class="text-danger font-weight-bold">{{$errors->first('masa_muscular')}}</p>
                         </div>
                     </div>
 
@@ -99,6 +100,7 @@
                             <textarea cols="30" rows="10" style="border-radius:10px" name="observaciones"type="text"
                                  class="form-control"
                                 id="observaciones">
+                                <p class="text-danger font-weight-bold">{{$errors->first('observaciones')}}</p>
                             </textarea>
                         </div>
                     </div>

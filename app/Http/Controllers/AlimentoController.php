@@ -7,6 +7,7 @@ use App\Models\Alimento;
 use Illuminate\Http\Request;
 use App\Models\MedidaAlimento;
 use App\Models\CategoriaAlimento;
+use App\Http\Requests\StoreAlimentoRequest;
 use App\Http\Requests\UpdateAlimentoRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -196,10 +197,8 @@ class AlimentoController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreAlimentoRequest $request)
     {
-        //validar
-
         $alimento = Alimento::create([
             "nombre" => $request->nombre,
             "peso" => $request->peso,
@@ -242,7 +241,7 @@ class AlimentoController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateAlimentoRequest $request, $id)
     {
         //validar 
 

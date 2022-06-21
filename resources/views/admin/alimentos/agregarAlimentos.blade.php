@@ -11,6 +11,7 @@
             </ol>
         </nav>
     </div>
+   {{-- <p>{{$errors}}</p> --}}
     <div class="row">
 
         <div class="col-12 grid-margin stretch-card">
@@ -39,11 +40,12 @@
                                             <select class="form-control"
                                                 style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
                                                 name="categoria" id="exampleInputUsername2">
-                                                <option value="" selected disabled>Seleccione una categoría</option>
+                                                <option selected disabled>Seleccione una categoría</option>
                                                 @foreach ($categorias as $categoria)
-                                                    <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                                    <option value="{{old('categoria') == $categoria->id ? 'selected' :'' }}">{{ $categoria->nombre }}</option>
                                                 @endforeach
                                             </select>
+                                            <p class="text-danger font-weight-bold">{{$errors->first('categoria')}}</p>
                                         </div>
                                     </div>
 
@@ -54,7 +56,8 @@
                                         </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="nombre" type="text"
-                                                class="form-control" id="exampleInputUsername2">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('nombre')}}">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group row no-gutters">
@@ -65,15 +68,17 @@
 
                                         <div class="col-xl-9  d-flex justify-content-around">
                                             <input style="border-radius:10px;min-height:45.2px" name="peso" type="number"
-                                                class="form-control" id="exampleInputUsername2">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('peso')}}">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('peso')}}</p>
                                             <select class="form-control"
                                                 style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px; margin-left:2rem"
                                                 name="medida" id="unidad">
                                                 <option value="" selected disabled>Seleccione una medida</option>
                                                 @foreach ($medidas as $medida)
-                                                    <option value="{{ $medida->id }}">{{ $medida->medida }}</option>
+                                                    <option value="{{old('medida') == $medida->id ? 'selected' :''}}">{{ $medida->medida }}</option>
                                                 @endforeach
                                             </select>
+                                            <p class="text-danger font-weight-bold">{{$errors->first('medida')}}</p>
                                         </div>
                                     </div>
 
@@ -84,7 +89,8 @@
                                         </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="proteina" type="number"
-                                                class="form-control" id="exampleInputUsername2">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('proteina')}}">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('proteina')}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group row no-gutters">
@@ -94,7 +100,8 @@
                                             calórico: </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="valor_calorico" type="number"
-                                                class="form-control" id="exampleInputUsername2">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('valor_calorico')}}">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('valor_calorico')}}</p>
                                         </div>
                                     </div>
 
@@ -105,7 +112,8 @@
                                         </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="grasa" type="number"
-                                                class="form-control" id="exampleInputUsername2">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('grasa')}}">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('grasa')}}</p>
                                         </div>
                                     </div>
 
@@ -113,10 +121,11 @@
                                         <label
                                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
                                             for="exampleInputUsername2"
-                                            class="col-xl-3  col-form-label">Carbohidratos: </label>
+                                            class="col-xl-3  col-form-label">Carbohidratos:</label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="carbohidrato" type="number"
-                                                class="form-control" id="exampleInputUsername2">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('carbohidrato')}}">
+                                                <p class="text-danger font-weight-bold">{{$errors->first('carbohidrato')}}</p>
                                         </div>
                                     </div>
 

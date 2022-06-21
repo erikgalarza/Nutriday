@@ -21,6 +21,19 @@
         <div class=" mb-5" style="background-color:#4b6ac3 ">
             <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Alimentos</h3>
         </div>
+
+        @if(count($errors)>0)
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>
+                    {{$error}}
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        
         <div class="card-body">
             <div class="row">
                 <div class="col-12">

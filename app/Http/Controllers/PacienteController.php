@@ -72,7 +72,7 @@ class PacienteController extends Controller
             return back();
     }
 
-    public function actualizarPaciente(Request $request){
+    public function actualizarPaciente(UpdatePacienteRequest $request){
         // dd($request);
         $paciente = Paciente::find($request->idpaciente);
         $pass=$paciente->password;
@@ -85,13 +85,14 @@ class PacienteController extends Controller
             "email"=>$request->email,
             "cedula"=>$request->cedula,
             "telefono"=>$request->telefono,
+            "sexo"=>$request->sexo,
             "password"=>$pass,
-            "tipo_diabetes"=>$request->tipo_diabetes,
+            // "tipo_diabetes"=>$request->tipo_diabetes,
         ]);
         return back();
     }
 
-    public function store(Request $request)
+    public function store(StorePacienteRequest $request)
     {
         $hashpass = Hash::make($request->password);
         $user = User::create([

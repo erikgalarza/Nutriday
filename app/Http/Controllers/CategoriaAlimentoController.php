@@ -19,26 +19,12 @@ class CategoriaAlimentoController extends Controller
         return view('admin.categoriaAlimentos.create');
     }
 
-
     public function store(StoreCategoriaAlimentoRequest $request)
     {
-        //validacion
         CategoriaAlimento::create([
             "nombre"=>$request->nombre
         ]);
         return redirect()->route('categoriaAlimento.index');
-    }
-
-  
-    public function show(CategoriaAlimento $categoriaAlimento)
-    {
-        //
-    }
-
-   
-    public function edit(CategoriaAlimento $categoriaAlimento)
-    {
-        //
     }
 
     public function update(UpdateCategoriaAlimentoRequest $request, $id)
@@ -55,4 +41,5 @@ class CategoriaAlimentoController extends Controller
         CategoriaAlimento::destroy($id);
         return back();
     }
+    
 }

@@ -27,6 +27,11 @@
     @if (isset($paciente))
         <div class="col-md-12 grid-margin stretch-card">
             <style>
+                .ocultar
+                {
+                    display:none;
+                }
+
                 @media(max-width:1199px) {
                     .container2 {
                         max-width: 420px;
@@ -372,10 +377,15 @@
                                             $id = $id + 2;
                                             $id2 = $id + 1;
                                         @endphp
+                                {{-- CREACION DE ACORDIONES EMPIEZA AQUI --}}
                                         <div class="card "style="background-color:white;color:black">
                                             <div class="card-header" role="tab" id="heading-{{ $k }}" style="border:1px solid #55558a;border-radius:10px">
                                                 <h6 class="mb-0">
+<<<<<<< HEAD
                                                     <a class="collapsed" data-toggle="collapse"  style="font-weight: bold"
+=======
+                                                    <a onclick="" data-toggle="collapse" class="collapsed" style="font-weight: bold"
+>>>>>>> d8b4ed574536a1e24564aabae1490e6e229cd3b8
                                                         href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
                                                         aria-controls="collapse-{{ $k }}"><i class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
@@ -386,7 +396,7 @@
                                                 class="collapse" role="tabpanel"
                                                 aria-labelledby="heading-{{ $k }}"
                                                 data-parent="#accordion-{{ $j }}">
-                                                <div class="card-body pt-2">
+                                                <div class="card-body pt-2" >
 
                                                     <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
                                                     <div>
@@ -403,7 +413,7 @@
                                                                        </button>
                                                                             <select id="alimentoSeleccionado{{ $k }}"
                                                                         onchange="seleccionarAlimento({{ $k }});"
-                                                                        class="js-example-basic-multiple w-100 selectDesayuno alimentoSeleccionado buscador col-10 ddd" >
+                                                                        class="w-75 js-example-basic-multiple  selectDesayuno alimentoSeleccionado buscador col-10 ddd" >
                                                                         <option selected disabled>Ingrese el nombre de un alimento o seleccione...Ejm: manzana</option>
                                                                         @foreach ($alimentos as $alimento)
                                                                             <option value="{{ $alimento->id }}">
@@ -594,6 +604,12 @@
 
 
     <script>
+
+        function esconder()
+        {
+
+        }
+
         var lunes = [],
             martes = [],
             miercoles = [],

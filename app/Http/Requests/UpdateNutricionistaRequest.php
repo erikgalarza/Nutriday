@@ -24,7 +24,14 @@ class UpdateNutricionistaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"string|min:3|max:30",
+            "apellido"=>"string|min:3|max:30",
+            "cedula"=>"string|min:10|max:10",
+            "sexo"=>"numeric|size:1",
+            "telefono"=>"string|min:10|max:10",
+            "especialidad"=>"string|max:40",
+            "email"=>"email:rfc,dns",
+            // "password"=>"string|min:8|max:40"
         ];
     }
 }

@@ -19,6 +19,19 @@
             <div class=" mb-3" style="background-color:#4b6ac3 ">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos del video</h3>
             </div>
+
+            @if(count($errors)>0)
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            
             <div class="card-body"  >
 
                 <div class="col-12 row justify-content-center px-0 m-0">

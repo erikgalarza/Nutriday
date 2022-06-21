@@ -20,6 +20,7 @@
                     Datos administrador
                 </h3>
             </div>
+            
             <div class="card-body ">
             <div class="col-12 row justify-content-center m-0">
                 <div class="col-md-8 col-xl-9 col-12 text-left">
@@ -30,8 +31,9 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
                             class="col-xl-2 col-form-label">Nombre:</label>
                         <div class="col-xl-10 ">
-                            <input style="border-radius:10px" name="nombre" type="text" class="form-control" id="exampleInputEmail2"
+                            <input style="border-radius:10px" name="nombre" type="text" class="form-control" id="exampleInputEmail2" value="{{ old('nombre') }}"
                                 placeholder="Ingrese el nombre">
+                                <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
                         </div>
                     </div>
                     <div class="form-group row no-gutters">
@@ -40,6 +42,7 @@
                         <div class="col-xl-10 ">
                             <input style="border-radius:10px" name="cedula" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese la cédula">
+                                <p class="text-danger font-weight-bold">{{$errors->first('cedula')}}</p>
                         </div>
                     </div>
                     <div class="form-group row no-gutters">
@@ -48,6 +51,7 @@
                         <div class="col-xl-10 ">
                             <input style="border-radius:10px" name="telefono" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el teléfono">
+                                <p class="text-danger font-weight-bold">{{$errors->first('telefono')}}</p>
                         </div>
                     </div>
                     <div class="form-group row no-gutters">
@@ -56,6 +60,7 @@
                         <div class="col-xl-10 ">
                             <input style="border-radius:10px" name="email" type="email" class="form-control" id="exampleInputEmail2"
                                 placeholder="Correo electrónico">
+                                <p class="text-danger font-weight-bold">{{$errors->first('email')}}</p>
                         </div>
                     </div>
                     <div class="form-group row no-gutters">
@@ -64,6 +69,7 @@
                         <div class="col-xl-10 ">
                             <input style="border-radius:10px;background-color:#F0F0F0" name="password" type="password" class="form-control"
                                 id="exampleInputPassword2" placeholder="Ingrese la contraseña">
+                                <p class="text-danger font-weight-bold">{{$errors->first('password')}}</p>
                         </div>
                     </div>
                     <div class="form-group row no-gutters">

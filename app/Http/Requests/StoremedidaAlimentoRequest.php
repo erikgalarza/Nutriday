@@ -24,7 +24,8 @@ class StoremedidaAlimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "medida"=>"required|string|min:1|max:20|unique:medida,medida",
+            "abreviatura"=>"nullable|string|min:1|max:10|unique:medida,abreviatura"
         ];
     }
 }

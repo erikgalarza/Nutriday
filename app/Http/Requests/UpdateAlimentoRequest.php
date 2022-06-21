@@ -24,7 +24,14 @@ class UpdateAlimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"string|min:3|max:30",
+            "peso"=>"numeric|between:0,1000",
+            "valor_calorico"=>"numeric|between:0,1000",
+            "carbohidrato"=>"numeric|between:0,1000",
+            "proteina"=>"numeric|between:0,1000",
+            "grasa"=>"numeric|between:0,1000",
+            "categoria"=>"integer",
+            "medida"=>"integer",
         ];
     }
 }

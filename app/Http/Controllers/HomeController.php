@@ -29,12 +29,15 @@ class HomeController extends Controller
 
     public function contactar(StoreMensajeRequest $request)
     {
-        Mensaje::create([
+       $mensaje =  Mensaje::create([
             "nombres"=>$request->nombres,
             "correo"=>$request->correo,
             "asunto"=>$request->asunto,
             "mensaje"=>$request->mensaje
         ]);
+
+        Mensaje::make_mensaje_notification($mensaje);
+
         return back();
     }
 }

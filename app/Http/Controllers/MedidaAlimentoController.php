@@ -21,25 +21,13 @@ class MedidaAlimentoController extends Controller
 
     public function store(StoreMedidaAlimentoRequest $request)
     {
-
-        //validaciones
         MedidaAlimento::create($request->all());
         return redirect()->route('medidaAlimento.index');
     }
 
-    public function show(MedidaAlimento $medidaAlimento)
-    {
-        //
-    }
-
-    public function edit(MedidaAlimento $medidaAlimento)
-    {
-        //
-    }
-
     public function update(UpdateMedidaAlimentoRequest $request, $id)
     {
-
+        dd($request);
         $medida= MedidaAlimento::find($id);
         $medida->update([
             "medida"=>$request->medida,

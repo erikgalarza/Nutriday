@@ -92,12 +92,11 @@ class NutricionistaController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreNutricionistaRequest $request)
     {
-        // dd($request);
+     
         $hashpass = Hash::make($request->password);
         $user = User::create([
-            // "name"=>$request->nombre,
             "email"=>$request->correo,
             "password"=>$hashpass,
         ]);
@@ -156,7 +155,7 @@ class NutricionistaController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateNutricionistaRequest $request, $id)
     {
         
         $user = User::find($id);

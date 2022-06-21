@@ -24,7 +24,10 @@ class UpdateVideoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "titulo"=>"string|min:3|max:50",
+            "categoria"=>"string",
+            "descripcion"=>"string|max:500",
+            "url"=>"url",
         ];
     }
 }

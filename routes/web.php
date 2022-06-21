@@ -108,8 +108,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/datos-antropometricos/paciente/{paciente_id}',[DatosAntropometricoController::class,'datosByPaciente'])->name('da.datosByPaciente');
 
     //rutas agregadas 17/06/2022
-    Route::get('/dieta/alimentos',[DietaController::class,'traerAlimentos'])->name('dieta.traerAlimentos');
-
+  
     
     
     Route::get('/paciente/historial/{paciente_id}',[PacienteController::class,'historialPaciente'])->name('paciente.historial');
@@ -127,6 +126,8 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
      Route::get('/guardarDietaAsignada',[DietaController::class,'guardarDieta'])->name('dieta.guardarDieta');
     Route::get('/alimento/datos/guardar',[AlimentoController::class,'datosDietaGuardar'])->name('alimento.datosDietaGuardar');
     // Route::cambios
+    Route::get('/dieta/alimentos',[DietaController::class,'traerAlimentos'])->name('dieta.traerAlimentos');
+
 
 // ============================= RUTAS PARA CLIENTES ============================ //
 Route::group(['middleware'=>'paciente'], function () {

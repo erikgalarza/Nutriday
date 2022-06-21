@@ -22,14 +22,13 @@ class VideoController extends Controller
         return view('admin.videos.index',compact('videos_receta','videos_motivacion','videos_ejercicio'));
     }
 
- 
+    
     public function create()
     {
         return view('admin.videos.create');
     }
-
   
-    public function store(Request $request)
+    public function store(StoreVideoRequest $request)
     {
         $url = substr($request->url, 17,strlen($request->url));
         $video = Video::create([
@@ -54,7 +53,7 @@ class VideoController extends Controller
         //
     }
 
-    public function update(Request $request , $id)
+    public function update(UpdateVideoRequest $request , $id)
     {
 
         $video = Video::find($id);

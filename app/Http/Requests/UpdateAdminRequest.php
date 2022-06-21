@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateActividadRequest extends FormRequest
+class UpdateAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,10 @@ class UpdateActividadRequest extends FormRequest
     {
         return [
             "nombre"=>"string|min:3|max:30",
-            "descripcion"=>"string|max:500",
+            "cedula"=>"string|min:10|max:10",
+            "telefono"=>"string|min:10|max:10",
+            "email"=>"email:rfc,dns",
+            // "password"=>"string|min:8|max:40"
         ];
     }
 }

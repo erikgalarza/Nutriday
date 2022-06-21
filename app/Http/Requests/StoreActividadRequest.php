@@ -24,7 +24,8 @@ class StoreActividadRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nombre"=>"required|unique:actividads,nombre",
+            "descripcion"=>"string|max:500",
         ];
     }
 }

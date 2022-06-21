@@ -30,6 +30,8 @@
                             class="col-xl-4 col-12 col-form-label text-xl-right">Nombre de la categoría:</label>
                         <div class="col-xl-8 col-12">
                             <input style="border-radius:10px;"  name="nombre" type="text" class="form-control" id="exampleInputUsername2" placeholder="Ingrese el nombre">
+                            <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
+                            
                         </div>
                     </div>
                     <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">

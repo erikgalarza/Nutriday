@@ -2382,13 +2382,11 @@ div.tagsinput div {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
     .br-theme-bars-1to10 .br-widget a.br-active,
     .br-theme-bars-1to10 .br-widget a.br-selected {
         border: 1px solid black;
         background: white;
     }
-
     .br-theme-bars-1to10 .br-widget .br-current-rating {
         color: black;
     }
@@ -2442,13 +2440,11 @@ div.tagsinput div {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
     .br-theme-bars-horizontal .br-widget a.br-active,
     .br-theme-bars-horizontal .br-widget a.br-selected {
         border: 1px solid black;
         background: white;
     }
-
     .br-theme-bars-horizontal .br-widget .br-current-rating {
         color: black;
     }
@@ -2505,13 +2501,11 @@ div.tagsinput div {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
     .br-theme-bars-movie .br-widget a.br-active,
     .br-theme-bars-movie .br-widget a.br-selected {
         border: 1px solid black;
         background: white;
     }
-
     .br-theme-bars-movie .br-widget .br-current-rating {
         color: black;
     }
@@ -2574,7 +2568,6 @@ div.tagsinput div {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
     .br-theme-bars-pill .br-widget a.br-active,
     .br-theme-bars-pill .br-widget a.br-selected {
         border: 1px solid black;
@@ -2582,7 +2575,6 @@ div.tagsinput div {
         background: white;
         color: black;
     }
-
     .br-theme-bars-pill .br-widget a:first-child {
         border-left: 1px solid black;
     }
@@ -2643,13 +2635,11 @@ div.tagsinput div {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
     .br-theme-bars-reversed .br-widget a.br-active,
     .br-theme-bars-reversed .br-widget a.br-selected {
         border: 1px solid black;
         background: white;
     }
-
     .br-theme-bars-reversed .br-widget .br-current-rating {
         color: black;
     }
@@ -2708,7 +2698,6 @@ div.tagsinput div {
         border: 2px solid #b3b3b3;
         color: #b3b3b3;
     }
-
     .br-theme-bars-square .br-widget a.br-active,
     .br-theme-bars-square .br-widget a.br-selected {
         border: 2px solid black;
@@ -2803,7 +2792,6 @@ div.tagsinput div {
         content: "\2606";
         color: black;
     }
-
     .br-theme-css-stars .br-widget a.br-active:after,
     .br-theme-css-stars .br-widget a.br-selected:after {
         content: "\2605";
@@ -3592,14 +3580,13 @@ div.tagsinput div {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    padding: 5px 5px 5px 15px
+    padding: 5px 5px 5px 15px;
 }
 
 .ajax-file-upload-filename {
     width: 300px;
     height: auto;
     margin: 0 5px 5px 0px;
-
 }
 
 .ajax-file-upload-filesize {
@@ -3767,26 +3754,22 @@ div.tagsinput div {
 .bootstrap-datetimepicker-widget {
     list-style: none;
 }
-
 .bootstrap-datetimepicker-widget.dropdown-menu {
     display: block;
     margin: 2px 0;
     padding: 4px;
     width: 12.8vw;
 }
-
 @media (min-width: 576px) {
     .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
         width: 38em;
     }
 }
-
 @media (min-width: 768px) {
     .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
         width: 38em;
     }
 }
-
 @media (min-width: 992px) {
     .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
         width: 38em;
@@ -3808,7 +3791,6 @@ div.tagsinput div {
     top: -7px;
     left: 7px;
 }
-
 .bootstrap-datetimepicker-widget.dropdown-menu.bottom:after {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -3816,7 +3798,6 @@ div.tagsinput div {
     top: -6px;
     left: 8px;
 }
-
 .bootstrap-datetimepicker-widget.dropdown-menu.top:before {
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
@@ -3825,7 +3806,6 @@ div.tagsinput div {
     bottom: -7px;
     left: 6px;
 }
-
 .bootstrap-datetimepicker-widget.dropdown-menu.top:after {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -3833,12 +3813,10 @@ div.tagsinput div {
     bottom: -6px;
     left: 7px;
 }
-
 .bootstrap-datetimepicker-widget.dropdown-menu.float-right:before {
     left: auto;
     right: 6px;
 }
-
 .bootstrap-datetimepicker-widget.dropdown-menu.float-right:after {
     left: auto;
     right: 7px;
@@ -3920,24 +3898,20 @@ div.tagsinput div {
     width: auto;
     line-height: inherit;
 }
-
 .bootstrap-datetimepicker-widget .picker-switch td span {
     line-height: 2.5;
     height: 2.5em;
     width: 100%;
 }
-
 .bootstrap-datetimepicker-widget table {
     width: 100%;
     margin: 0;
 }
-
 .bootstrap-datetimepicker-widget table td,
 .bootstrap-datetimepicker-widget table th {
     text-align: center;
     border-radius: 0.25rem;
 }
-
 .bootstrap-datetimepicker-widget table th {
     height: 20px;
     line-height: 20px;
@@ -3983,13 +3957,11 @@ div.tagsinput div {
     line-height: 20px;
     color: #868e96;
 }
-
 .bootstrap-datetimepicker-widget table td.day {
     height: 20px;
     line-height: 20px;
     width: 20px;
 }
-
 .bootstrap-datetimepicker-widget table td.day:hover,
 .bootstrap-datetimepicker-widget table td.hour:hover,
 .bootstrap-datetimepicker-widget table td.minute:hover,
@@ -3997,7 +3969,6 @@ div.tagsinput div {
     background: #e9ecef;
     cursor: pointer;
 }
-
 .bootstrap-datetimepicker-widget table td.old,
 .bootstrap-datetimepicker-widget table td.new {
     color: #868e96;
@@ -4018,7 +3989,6 @@ div.tagsinput div {
     bottom: 4px;
     right: 4px;
 }
-
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
     background-color: #007bff;
@@ -4036,7 +4006,6 @@ div.tagsinput div {
     color: #868e96;
     cursor: not-allowed;
 }
-
 .bootstrap-datetimepicker-widget table td span {
     display: inline-block;
     width: 54px;
@@ -4067,7 +4036,6 @@ div.tagsinput div {
     color: #868e96;
     cursor: not-allowed;
 }
-
 .bootstrap-datetimepicker-widget.usetwentyfour td.hour {
     height: 27px;
     line-height: 27px;
@@ -5133,7 +5101,6 @@ div.tagsinput div {
     margin-left: 1px;
 }
 
-
 /* checklist vertical alignment */
 .editable-checklist label input[type="checkbox"],
 .editable-checklist label span {
@@ -5172,7 +5139,6 @@ div.tagsinput div {
     top: 50%;
     right: 6px;
     margin-top: -6px;
-
 }
 
 .editable-clear-x:hover {
@@ -5255,7 +5221,6 @@ a.editable-click.editable-disabled:hover {
     display: inline-block;
 }
 
-
 /*!
  * Datepicker for Bootstrap
  *
@@ -5274,7 +5239,6 @@ a.editable-click.editable-disabled:hover {
     /*.dow {
 		border-top: 1px solid #ddd !important;
 	}*/
-
 }
 
 .datepicker-inline {
@@ -7080,7 +7044,8 @@ a.editable-click.editable-disabled:hover {
 }
 
 /* Can style cursor different in overwrite (non-insert) mode */
-.CodeMirror-overwrite .CodeMirror-cursor {}
+.CodeMirror-overwrite .CodeMirror-cursor {
+}
 
 .cm-tab {
     display: inline-block;
@@ -7402,7 +7367,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     /* Force widget margins to stay inside of the container */
 }
 
-.CodeMirror-widget {}
+.CodeMirror-widget {
+}
 
 .CodeMirror-rtl pre {
     direction: rtl;
@@ -7434,7 +7400,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     position: absolute;
     pointer-events: none;
 }
-
 .CodeMirror-measure pre {
     position: static;
 }
@@ -8306,19 +8271,16 @@ span.CodeMirror-selectedtext {
 }
 
 @media (pointer: coarse) {
-
     .ql-snow.ql-toolbar button:hover:not(.ql-active),
     .ql-snow .ql-toolbar button:hover:not(.ql-active) {
         color: #444;
     }
-
     .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-fill,
     .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-fill,
     .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill,
     .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill {
         fill: #444;
     }
-
     .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke,
     .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke,
     .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter,
@@ -9647,7 +9609,7 @@ svg {
 .jvectormap-tip {
     position: absolute;
     display: none;
-    border: solid 1px #CDCDCD;
+    border: solid 1px #cdcdcd;
     border-radius: 3px;
     background: #292929;
     color: white;
@@ -9697,7 +9659,8 @@ svg {
     top: 0;
     right: 0;
     bottom: 0;
-    background: center no-repeat url(data:image/gif;base64,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);
+    background: center no-repeat
+        url(data:image/gif;base64,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);
 }
 
 .jvectormap-legend-title {
@@ -9872,7 +9835,6 @@ table.dataTable thead .sorting_desc_disabled {
     cursor: pointer;
     position: relative;
 }
-
 table.dataTable thead .sorting:before,
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting_asc:before,
@@ -9948,7 +9910,6 @@ div.dataTables_scrollFoot>.dataTables_scrollFootInner>table {
 }
 
 @media screen and (max-width: 767px) {
-
     div.dataTables_wrapper div.dataTables_length,
     div.dataTables_wrapper div.dataTables_filter,
     div.dataTables_wrapper div.dataTables_info,
@@ -9978,7 +9939,6 @@ table.table-bordered.dataTable th,
 table.table-bordered.dataTable td {
     border-left-width: 0;
 }
-
 table.table-bordered.dataTable th:last-child,
 table.table-bordered.dataTable th:last-child,
 table.table-bordered.dataTable td:last-child,
@@ -11588,7 +11548,6 @@ only screen and (min-device-pixel-ratio:2) {
 .irs-with-grid .irs-grid {
     display: block;
 }
-
 .irs-grid-pol {
     position: absolute;
     top: 0;
@@ -11635,7 +11594,6 @@ only screen and (min-device-pixel-ratio:2) {
 .irs-disabled {
     opacity: 0.4;
 }
-
 
 .irs-hidden-input {
     position: absolute !important;
@@ -11685,17 +11643,14 @@ only screen and (min-device-pixel-ratio:2) {
     height: 12px;
     top: 25px;
 }
-
 .irs-line-left {
     height: 12px;
     background-position: 0 -30px;
 }
-
 .irs-line-mid {
     height: 12px;
     background-position: 0 0;
 }
-
 .irs-line-right {
     height: 12px;
     background-position: 100% -30px;
@@ -11706,7 +11661,6 @@ only screen and (min-device-pixel-ratio:2) {
     top: 25px;
     background-position: 0 -60px;
 }
-
 .irs-bar-edge {
     top: 25px;
     height: 12px;
@@ -11731,7 +11685,6 @@ only screen and (min-device-pixel-ratio:2) {
     top: 22px;
     background-position: 0 -120px;
 }
-
 .irs-slider.state_hover,
 .irs-slider:hover {
     background-position: 0 -150px;
@@ -11762,7 +11715,6 @@ only screen and (min-device-pixel-ratio:2) {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
-
 .irs-from:after,
 .irs-to:after,
 .irs-single:after {
@@ -11778,7 +11730,6 @@ only screen and (min-device-pixel-ratio:2) {
     border: 3px solid transparent;
     border-top-color: #ed5565;
 }
-
 
 .irs-grid-pol {
     background: #e1e4e9;

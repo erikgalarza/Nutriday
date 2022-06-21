@@ -23,13 +23,19 @@
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                 data-toggle="dropdown">
                 <i class="fas fa-bell mx-0"></i>
-                <span class="count">0</span>
+                <span class="count">
+                    {{ auth()->user()->unreadNotifications->count() }}
+                </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                 aria-labelledby="notificationDropdown">
                 <a class="dropdown-item">
+                    @if(auth()->user()->unreadNotifications->count() ==0)
                     <p class="mb-0 font-weight-normal float-left">Aún no tienes notificaciones
                     </p>
+                    @else
+                    <p class="mb-0 font-weight-normal float-left">Ver notificación                    </p>
+                    @endif
                     {{-- <span class="badge badge-pill badge-warning float-right">Ver todas</span> --}}
                 </a>
                 {{-- <div class="dropdown-divider"></div>

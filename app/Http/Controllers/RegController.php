@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegistrarAdminRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class RegController extends Controller
 {
-    //
+    public function registrarAdmin(RegistrarAdminRequest $request){
+        //validacion
+       
+        //fin validacion
 
-    public function registrarAdmin(Request $request){
-        // dd($request);
         $pass = Hash::make($request->password);
         $user = User::create([
             "email"=>$request->email,

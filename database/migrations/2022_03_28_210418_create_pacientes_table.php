@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('sexo');
             $table->string('apellido');
             $table->string('telefono');
-            $table->decimal('tipo_diabetes');// 1: 2 : 3:estacional 
+            $table->integer('tipo_diabetes');// 1: 2 : 3:estacional 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('estado')->default('activo');

@@ -29,6 +29,7 @@ class Alimento extends Model
         return $this->belongsToMany(Dieta::class);
     }
 
+    // =========================== d c a 
     public function comidas()
     {
         return $this->belongsToMany(Comida::class);
@@ -38,6 +39,9 @@ class Alimento extends Model
     {
         return $this->belongsToMany(Dia::class);
     }
+
+//==========================================0
+
 
     public function categoria()
     {

@@ -12,11 +12,21 @@ class Dia extends Model
         "nombre",
         "alimento_id"
     ];
-
+    // d_c_a
     public function comidas()
     {
         return $this->belongsToMany(Comida::class);
     }
+
+    public function alimentos()
+    {
+        return $this->belongsToMany(Alimento::class);
+    }
+
+    // fin d c a
+
+
+
 
     public function dietas()
     {

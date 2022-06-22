@@ -27,29 +27,43 @@ class DietaController extends Controller
     {
         // dd($request);
         $paciente_id = $request->get('paciente_id');
-        // dd($paciente_id);
         $dieta_id = $request->get('dieta_id');
         $diaSeleccionado = $request->get('diaSeleccionado');
         $paciente = Paciente::find($paciente_id);
-        $dieta = $paciente->dietas()->where('dieta_id',$dieta_id)->first();
+        $dieta = $paciente->dietas()->where('dieta_id',$dieta_id)->latest()->latest()->first();
+        // dd($dieta);
+    
+        $res =$dieta->dias['0'];// lunes
+   
+        $x = $res->comidas['0']->alimentos()->where('dia_id',1)->get();
+        // dd($x);
+
         $dias = $dieta->dias()->get();
+
+        //0 LUnes 
+        // 1 martes
+        $allComidas = $dias['1']->comidas()->get();
+        // dd($allComidas);
+        dd($allComidas[1]->alimentos()->get());
+        dd($allComidas['1']->alimentos()->where('comida_id',2)->get());
    
         $alimentosLunes = collect();
-       $alimentosMartes = collect();
-       $alimentosMiercoles = collect();
-       $alimentosJueves = collect();
-       $alimentosViernes = collect();
-       $alimentosViernes = collect();
-       $alimentosSabado = collect();
-       $alimentosDomingo = collect();
+        $alimentosMartes = collect();
+        $alimentosMiercoles = collect();
+        $alimentosJueves = collect();
+        $alimentosViernes = collect();
+        $alimentosViernes = collect();
+        $alimentosSabado = collect();
+        $alimentosDomingo = collect();
 
     foreach($dias as $key => $dia)
     {
         if($key == 0 && $diaSeleccionado==$key)//lunes
         {
             $alimentosLunes = collect();
-            foreach($dia->comidas()->get() as $horario){
+            foreach($dia->comidas()->get() as $horario){//cada comida
                 foreach($horario->alimentos()->where('dia_id',1)->get() as $alimento){
+                    dd($horario->alimentos()->where('dia_id',1)->get());
                     $cantidad = $horario->alimentos()->where('dia_id',1)->get(['cantidad']); 
 
             $alimentosLunes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
@@ -213,7 +227,7 @@ class DietaController extends Controller
     public function guardarDieta(Request $request)
     {
         // dd($request);
-        $semana = $request->semana;
+        $semana = json_decode($request->semana);
         // dd($semana);
         $dieta_id = $request->dieta_id;
         $paciente_id = $request->paciente_id;
@@ -221,13 +235,13 @@ class DietaController extends Controller
 
 
 
-        $lunes = $semana['lunes'];//tienes los alimentos del lunes
-        $martes = $semana['martes'];
-        $miercoles = $semana['miercoles'];
-        $jueves = $semana['jueves'];
-        $viernes = $semana['viernes'];
-        $sabado = $semana['sabado'];
-        $domingo = $semana['domingo'];
+        $lunes = $semana->lunes;//tienes los alimentos del lunes
+        $martes = $semana->martes;
+        $miercoles = $semana->miercoles;
+        $jueves = $semana->jueves;
+        $viernes = $semana->viernes;
+        $sabado = $semana->sabado;
+        $domingo = $semana->domingo;
 
         $diaLunes = Dia::find(1);//lunes
         $diaMartes = Dia::find(2);//Martes

@@ -44,9 +44,11 @@ class ClienteController extends Controller
 
     public function verDieta($dieta_id)
     {
+        // dd("dfdfa");
        $dieta =  Dieta::find($dieta_id);
        
        $dias = $dieta->dias()->get();
+       dd($dias);
     //    dd($dias[0]->comidas()->get());
     //    foreach($dias[0]->comidas()->get() as $horario)
     //    {
@@ -63,12 +65,15 @@ class ClienteController extends Controller
 
     foreach($dias as $key => $dia)
     {
+        // dd($dia);
         if($key == 0)//lunes
         {
             $alimentosLunes = collect();
             foreach($dia->comidas()->get() as $horario){
                 foreach($horario->alimentos()->where('dia_id',1)->get() as $alimento){
+                    dd($horario->alimentos()->where('dia_id',1)->get());
                     $cantidad = $horario->alimentos()->where('dia_id',1)->get(['cantidad']); 
+                   
 
             $alimentosLunes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
                 }

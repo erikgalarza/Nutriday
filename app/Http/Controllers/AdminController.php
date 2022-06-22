@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\Nutricionista;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateAdminRequest;
+use App\Models\Paciente;
 
 class AdminController extends Controller
 {
@@ -17,6 +19,44 @@ class AdminController extends Controller
     //     $admins = User::
     //    return view('admin.administradores.index',compact('admins'));
     // }
+
+    public function buscarPacientes(Request $request)
+    {
+        $nombre_completo = $request->get('paciente');
+        $apellido = '';
+            for($i = 0 ; $i<strlen($nombre_completo) ;$i++) 
+            {
+                if($nombre_completo[$i]==" ")
+                    $apellido = substr($nombre_completo,$i+1);
+            }
+
+            if($apellido!='')
+                $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get(); 
+            else
+                $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->get();  
+
+        return view('admin.contenidoDashboard',compact('pacientes'));
+    }
+
+
+    public function buscarNutricionistas(Request $request)
+    {
+        $nombre_completo = $request->get('nutricionista');
+        $apellido = '';
+        for($i = 0 ; $i<strlen($nombre_completo) ;$i++) 
+        {
+            if($nombre_completo[$i]==" ")
+                $apellido = substr($nombre_completo,$i+1);
+        }
+
+        if($apellido!='')
+            $nutricionistas = Nutricionista::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get();  
+        else
+            $nutricionistas = Nutricionista::where('nombre','like','%'.$nombre_completo.'%')->get(); 
+
+        return view('admin.contenidoDashboard',compact('nutricionistas'));
+    }
+ 
 
     public function listarPacientes()
     {
@@ -52,8 +92,11 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.contenidoDashboard');
     }
+
+
+
 
    
 

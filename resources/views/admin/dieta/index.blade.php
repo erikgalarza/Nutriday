@@ -598,6 +598,9 @@
             dietaid = null;
 
         function opcion(key) {
+            // console.log('valor de dieta:'+dietaid)
+            // console.log('valor de paciente:'+pacienteid)
+            
                 $.ajax({
                     url: "{{ route('dieta.traerAlimentos') }}",
                     dataType: "json",

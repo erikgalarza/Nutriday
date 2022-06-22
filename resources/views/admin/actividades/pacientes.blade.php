@@ -12,9 +12,58 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-lg-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">Asignar Actividad</h3>
+        <div class=" mb-2" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
+                Buscar pacientes</h3>
         </div>
+        <div class="card-body p-0 m-0">
+
+            <style>
+                .sombra {
+                    -webkit-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+                    -moz-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+                    box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+                }
+
+                .ddd:hover {
+                    border: 1px solid #4b6ac3 !important;
+                }
+            </style>
+
+
+            <form method="GET" action="{{ route('actividad.buscarPacientes') }}">
+
+                <div class="d-flex justify-content-center">
+                    <div
+                        class="buscador_paciente justify-content-center m-md-4 my-2 mx-2 mb-3  row align-items-center col-lg-8 ">
+                        <div class="col-xl-9 col-sm-9   align-items-center">
+                            <input type="search" name="paciente"
+                                style="min-height:60px;border:1px solid #dce7e700;background-color:#dce7e7"
+                                class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andres Morales"
+                                required>
+                        </div>
+                        <button title="Ingrese el nombre de un paciente para buscar" type="submit"
+                            class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 "style="min-height:60px;border-radius:30px;font-weight:bold"><i
+                                class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
+                    </div>
+                </div>
+            </form>
+
+            @if (count($pacientes) == 0)
+                <div class="container"style="max-width:832px">
+                    <div class="container" style="max-width:832px">
+                        <div class="row text-center justify-content-center  p-1 mb-3"
+                            style="border-radius:10px;background-color:red">
+                            <label class="text-white text-center col-form-label"
+                                style="text-transform: uppercase;font-weight:bold">No existen pacientes con ese
+                                nombre</label>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            </div>
+    </div>
+    <div class="card mt-3">
         <div class="card-body">
 
             <div class="row">
@@ -72,11 +121,6 @@
                                         <td>
                                             <a title="Asignar actividad" href="{{route('actividad.asignar',$paciente->id)}}" class="btn btn-outline-success"><i
                                                     class="fas fa-plus"></i></a>
-
-
-                                            <a title="Eliminar asignación" href="{{ route('paciente.eliminar', $paciente->id) }}"
-                                                class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-
                                         </td>
                                     </form>
                                     </tr>

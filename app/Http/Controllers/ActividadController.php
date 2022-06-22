@@ -13,6 +13,26 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ActividadController extends Controller
 {
+
+    public function buscarPacientes(Request $request)
+    {
+      
+        $nombre_completo = $request->get('paciente');
+        $apellido = '';
+        for($i = 0 ; $i<strlen($nombre_completo) ;$i++) 
+        {
+            if($nombre_completo[$i]==" ")
+                $apellido = substr($nombre_completo,$i+1);
+        }
+        if($apellido!='')
+            $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get(); 
+        else
+            $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->get(); 
+
+    return view('admin.actividades.pacientes',compact('pacientes'));
+    }
+   
+
     public function pacientes()
     {
         $pacientes = Paciente::all();

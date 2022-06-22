@@ -330,7 +330,7 @@
                         margin-right: 0;
                     }
                 </style>
-                {{-- <a onclick="guardarDieta();" class="btn btn-outline-success">Guardar dieta</a> --}}
+                <a onclick="guardarDieta();" class="btn btn-outline-success">Guardar dieta</a>
                 <ul class="nav nav-pills nav-pills-success text-center row justify-content-center align-items-center mt-2"
                     id="pills-tab" role="tablist" style="border:none;font-weight: bold">
                     @php
@@ -636,7 +636,7 @@
                 url: "{{ route('dieta.guardarDieta') }}",
                 dataType: "json",
                 data: {
-                    semana: semana,
+                    semana:JSON.stringify(semana),
                     dieta_id: dieta_id,
                     paciente_id: paciente_id,
                     user_id: user_id
@@ -681,7 +681,7 @@
                     })
                 };
                 if (id == 1) {
-                    Object.assign(data, {
+                    Object.assign(data,{
                         horario: 1
                     })
                 };
@@ -728,8 +728,8 @@
                         horario: 9
                     })
                 };
-                if (id == 10) {
-                    Object.assign(data, {
+                if (id == 10){
+                    Object.assign(data,{
                         horario: 10
                     })
                 };
@@ -919,8 +919,7 @@
                 var totalesProteina = 0;
                 var totalesValorCalorico = 0;
                 for (let j = 0; j < dia.length; j++) { // los alimentos por comida
-                    if (i == dia[j].horario) {
-
+                    if (i == dia[j].horario){
                         var todo = `<tr>
   <input type="hidden" name="alimento_id[]" value="${dia[j].id}">
   <input type="hidden" name="alimento" id="alimento_id${j}" value="${dia[j].id}">
@@ -1201,7 +1200,8 @@
             }
         }
 
-        function quitarConfirmacion(id) {
+        function quitarConfirmacion(id)
+        {
             let dia = document.getElementById('pills-dia' + id + '-tab');
             dia.style = "background-color:#5DADE2;color:white;";
         }

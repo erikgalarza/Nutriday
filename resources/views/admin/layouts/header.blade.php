@@ -2,7 +2,7 @@
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="fas fa-bars"></span>
     </button>
-    <ul class="navbar-nav">
+    {{-- <ul class="navbar-nav">
         <li class="nav-item nav-search d-none d-md-flex">
             <div class="nav-link">
                 <div class="input-group">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </li>
-    </ul>
+    </ul> --}}
     <ul class="navbar-nav navbar-nav-right">
        
       

@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h5 class="page-title">
             Asignar actividad
         </h5>
@@ -20,155 +20,140 @@
         .ocultar {
             display: none;
         }
-
-        @media(max-width:1199px) {
-            .container2 {
-                max-width: 420px;
-            }
+        @media (max-width:992px){
+        .consulta{
+            order:2;
         }
-
-        @media(min-width:1199px) {
-            .container3 {
-                max-width: 420px;
-            }
-
-        }
-
-        @media(min-width:1200px) {
-            .container4 {
-                min-width: 810px;
-                max-width: 1140px;
-            }
-        }
+    }
     </style>
 
+<div class="card ">
+    <div class="mb-2" style="background-color:#4b6ac3">
+        <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+            Actividades de {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
+    </div>
+    <div class="row px-4" style="margin-top:10px;">
 
-    <div class="card">
+        <div class="col-lg-6 grid-margin stretch-card consulta ">
+            <div class="card m">
+                <div class="card-body text-center py-2 row justify-content-lg-center">
 
-        <div class=" mb-2" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                Asignar actividades a {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
-        </div>
-        <div class="card-body">
-            <div class="container container2 container3 container4">
-                <div class="row justify-content-center mb-3 ml-0" style="border:1px dashed; border-radius:10px ">
-                    <div class="col-12 form-group text-center mb-1 row justify-content-center"
-                        style="border-bottom:1px dashed;background-color:#dce7e7;border-radius:10px 10px 0 0">
-                        <div class="col-xl-8 row justify-content-center">
-                            <div class="col-xl-3 col-5  no-gutters p-0 text-center ">
-                                <label class=" col-form-label " style="font-size:16px;font-weight:bold">Última
-                                    consulta:</label>
+                    <div class="col-12 row justify-content-center">
+                        <div class=" col-12 row justify-content-center" style="border-bottom:1px solid;max-width:345px">
+                            <div class="col-6 col-lg-12 col-xl-6  p-0 ">
+                                <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                    Última consulta:</label>
                             </div>
+                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                        @if ($loop->last)
+                                            <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
+                                                <label class="col-form-label" style=";font-size:16px">{{ $data->created_at }}
+                                                </label>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                        </div>
+                    </div>
+                    <style>
+                        @media (max-width:992px){
+                            .contenedor{
+                                max-width: 360px !important;
+                                padding-left: 2rem !important;
+                            }
+                        }
+                        @media (min-width:992px){
+                            .contenedor2{
+                                max-width: 290px !important;
+                                padding-left: 0rem !important;
+                            }
+                        }
+                    </style>
+                    <div class="container mt-3 contenedor contenedor2" style="">
+                        <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                            <div class="form-group row mb-1">
+                                <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                <label class="col-7">{{ $paciente->tipo_diabetes }}</label>
+                            </div>
+                            <div class="form-group row mb-1">
+                                <label class="col-5 text-left"> <strong>Edad:</strong></label>
+                                <label class="col-7">{{ $paciente->edad }}</label>
+                            </div>
+
                             @foreach ($paciente->dato_antropometrico as $kp => $data)
                                 @if ($loop->last)
-                                    <div class=" col-xl-4 col-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label" style=";font-size:16px">{{ $data->created_at }}
-                                        </label>
+                                <div class="form-group row mb-1">
+                                    <label class="col-5 text-left"><strong>Altura:</strong></label>
+                                    <label class="col-7">{{ $data->altura }} (m)</label>
+                                </div>
+                                    <div class="form-group row mb-1">
+                                        <label class="col-5 text-left"><strong>Peso:</strong></label>
+                                        <label class="col-7">{{ $data->peso }} (kg)</label>
                                     </div>
+
+                                    <div class="form-group row mb-1">
+                                        <label class="col-5 text-left"><strong>Grasa corporal:</strong>
+                                        </label>
+                                        <label class="col-7">{{ $data->grasa_corporal }} (%)</label>
+                                    </div>
+
+                                    <div class="form-group row mb-1">
+                                        <label class="col-5 text-left"><strong>Masa muscular:</strong></label>
+                                        <label class="col-7">{{ $data->masa_muscular }} (%) </label>
+                                    </div>
+
+                                    @if ($data->imc <= 18.4)
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                            <label class="col-7">{{ $data->imc }} (Bajo peso)</label>
+                                        </div>
+                                    @endif
+                                    @if ($data->imc >= 18.5 && $data->imc <= 24.9)
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                            <label class="col-7">{{ $data->imc }} (Normal)</label>
+                                        </div>
+                                    @endif
+                                    @if ($data->imc >= 25 && $data->imc <= 29.9)
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                            <label class="col-7">{{ $data->imc }} (Sobrepeso)</label>
+                                        </div>
+                                    @endif
+
+                                    @if ($data->imc >= 30)
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                            <label class="col-7">{{ $data->imc }} (Obeso)</label>
+                                        </div>
+                                    @endif
                                 @endif
                             @endforeach
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="col-12 ">
-                        <div class="row justify-content-center align-items-center px-2 mt-xl-2">
-                            <div class="col-9 col-xl-12 row pr-0 pl-4 pl-xl-2 justify-content-center">
-                                <div class="form-group  col-xl-2 row text-xl-center text-left mb-1 ">
-                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Edad:</strong></label>
-                                    <label class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->edad }}</label>
-                                </div>
-                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Tipo
-                                            diabetes:</strong></label>
-                                    <label
-                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->tipo_diabetes }}</label>
-                                </div>
-                                @foreach ($paciente->dato_antropometrico as $kp => $data)
-                                    @if ($loop->last)
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Peso:
-                                                </strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->peso }}</label>
-                                        </div>
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Grasa corporal:
-                                                </strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->grasa_corporal }}
-                                                (%)
-                                            </label>
-                                        </div>
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Masa muscular:
-                                                </strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->masa_muscular }}
-                                                (%)</label>
-                                        </div>
-                                        @if ($data->imc <= 18.4)
-                                            <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                <label
-                                                    class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                <label class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                    (Bajo peso)</label>
-                                            </div>
-                                        @endif
 
-                                        @if ($data->imc >= 18.5 && $data->imc <= 24.9)
-                                            <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                <label
-                                                    class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                <label class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                    (Normal)</label>
-                                            </div>
-                                        @endif
+        <div class="col-lg-6 grid-margin stretch-card ">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <img src="http://localhost:8000/img/icons/scale.png">
+                        Peso (Kg)
+                    </h4>
 
-                                        @if ($data->imc >= 25 && $data->imc <= 29.9)
-                                            <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
-                                                <label
-                                                    class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                <label class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                    (Sobrepeso)</label>
-                                            </div>
-                                        @endif
-
-                                        @if ($data->imc >= 30)
-                                            <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
-                                                <label
-                                                    class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                <label class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                    (Obeso)</label>
-                                            </div>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- del contenedor -->
+                    <canvas id="sales-chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
-
-
-    @if(count($errors)>0)
-    <div class="alert alert-danger" role="alert">
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>
-                {{$error}}
-            </li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+</div>
 
 
 
-    <div class="card mt-3">
-        <div class="card-body">
-            <div class="container mt-3">
+    <div class="card mt-3 p-0">
+        <div class="card-body p-0">
                 <form method="POST" class="forms-sample" action="{{ route('actividad.guardarAsignacion') }}"
                     enctype="multipart/form-data">
                     @csrf
@@ -177,7 +162,7 @@
 
 
 
-                        <div class="container" style="border:1px dashed;border-radius:10px">
+                        <div class="col-12 mx-0" style="border:1px dashed;border-radius:7px  ">
                             <div class="row justify-content-center p-3" style="border-bottom: 1px dashed;background-color:#dce7e7">
                                 <div class="col-12 d-flex text-left" style="font-weight:bold">
                                     <label class="col-1">N°</label>
@@ -192,7 +177,16 @@
                         <div id="contenedor" class=" col-12"
                         style="  display:flex; justify-content:space-between;  align-items:center; flex-wrap:wrap; flex-direction:row">
                     </div>
+                    @if(count($errors)>0)
+                    @foreach($errors->all() as $error)
+                    <div class=" bg-danger m-1 p-0 row justify-content-center align-items-center" style="border-radius:5px"   role="alert">
+                            <label class="col-form-label text-white" style="font-size:14px;font-weight:bold;text-transform:uppercase">
+                                {{$error}} para la actividad</label>
 
+                        </div>
+                            @endforeach
+
+                    @endif
                         @if (count($actividades) > 0)
                                     <div class="opciones col-12 py-2 my-1"
                                         style="display:flex; position:sticky;
@@ -212,13 +206,15 @@
                             </div>
             </div>
 
-            <div class=" mt-4 form-group text-center">
-                <button type="submit" class="btn btn-success mr-2">Guardar</button>
-                <a href="{{ route('actividad.index') }}" class="btn btn-light">Cancelar</a>
+                <div class="  form-group text-center my-2">
+                    <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                    <a href="{{ route('actividad.index') }}" class="btn btn-light">Cancelar</a>
 
-            </div>
-            </form>
-        </div>
+                </div>
+                </form>
+
+
+
     </div>
 
 
@@ -268,20 +264,20 @@
 
             var actividades = document.getElementById('actividades').value;
             actividades = JSON.parse(actividades)
-          
+
 
             let selectActividad = document.createElement("select");
             selectActividad.className += ` form-control js-example-basic-multiple col-md-3 my-2 mr-2`;
 
             let selectPrioridad = document.createElement("select");
             selectPrioridad.className += ` form-control js-example-basic-multiple col-md-3 my-2 mr-2`;
-            
+
             selectActividad.name = "actividad_id[]";
             selectPrioridad.name = "prioridad_id[]";
 
             var div = document.createElement("div");//div que contiene a duracion
 
-            var h5 = document.createElement("h5");
+            var label = document.createElement("label");
             var a = document.createElement("a");
 
             //creacion del boton de eliminar
@@ -289,16 +285,16 @@
             a.style = "max-height:38px;"
             let texto = document.createTextNode("Eliminar");
             a.appendChild(texto);
-            //fin boton eliminar 
+            //fin boton eliminar
 
             //edicion del indice de filas
-            h5.className += "text-left col-md-1";
+            label.className += "text-left col-md-1";
             let indice = document.createTextNode(i);
-            h5.appendChild(indice)
+            label.appendChild(indice)
             //fin edicion indice filas
 
             for (let j = 0; j < actividades.length; j++) {
-                //creamos las options para el selectActividad 
+                //creamos las options para el selectActividad
                 let option = document.createElement("option");
                 option.setAttribute("value", actividades[j].id);
                 let optionTexto = document.createTextNode(actividades[j].nombre);
@@ -310,7 +306,7 @@
 
             const nombrePrioridad = ["Baja","Media","Alta"];
             for(let x=0; x<3;x++){
-                //creamos las options para el selectPrioridad 
+                //creamos las options para el selectPrioridad
                 let option = document.createElement("option");
                 option.setAttribute("value", (x+1));
                 let optionTexto = document.createTextNode(nombrePrioridad[x]);
@@ -318,7 +314,7 @@
                 selectPrioridad.appendChild(option);
                 //fin options para selectPrioridad
             }
-        
+
             //este div es el que contiene a los inputs de duracion
                 div.className += "col-md-2";
                 let input = document.createElement("input")
@@ -331,7 +327,7 @@
 
             i++;// aumentamos el indice contador de filas
 
-            contenedor.append(h5);
+            contenedor.append(label);
             contenedor.appendChild(selectActividad)
             contenedor.appendChild(selectPrioridad)
             contenedor.append(div)

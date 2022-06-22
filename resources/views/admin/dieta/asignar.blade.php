@@ -1,58 +1,81 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Dietas
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pacientes</li>
             </ol>
         </nav>
     </div>
-    <div class="card">
-        <div class=" mb-3" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
-                Asignar dieta a paciente</h3>
-        </div>
-        <div class="card-body">
 
-            <style>
-                .sombra {
-                    -webkit-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
-                    -moz-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
-                    box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
-                }
-            </style>
-            <form method="GET" action="{{ route('dieta.buscarPacientes') }}">
-                <div class="container mb-5 sombra"
-                    style="border:2px solid #e5e5e5;border-radius:10px;background-color:#F0F0F0;max-width:832px">
+    <style>
+        .sombra {
+            -webkit-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+            -moz-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+            box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+        }
 
-                    <div class="row justify-content-center">
-                        <div
-                            class="buscador_paciente justify-content-center m-md-5 my-5 mx-3  row align-items-center col-lg-8 ">
-                            <div class="col-xl-9 col-sm-9   align-items-center">
-                                <input type="search" name="paciente" style="min-height:50px" class="form-control "
-                                    placeholder="Escriba el nombre del paciente...Ejm: Erik Galarza" required>
-                            </div>
-                            <button  title="Ingrese el nombre de un paciente para buscar" type="submit"
-                                class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 "style="min-height:50px;border-radius:30px;font-weight:bold"><i
-                                    class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
-                        </div>
+        .ddd:hover {
+            border: 1px solid #4b6ac3 !important;
+            min-height: 65px !important;
+            background-color: #f1f1f1 !important;
+            transition: min-height 200ms, background-color 1s;
+        }
+
+        @media(min-width:1200px) {
+            .busca {
+                max-width: 140px !important;
+            }
+        }
+
+        @media (min-width:480px) and (max-width:767px) {
+            .busca {
+                max-width: 140px !important;
+            }
+        }
+    </style>
+<div class="card">
+    <div class=" mb-2" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+        <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
+            Buscar pacientes</h3>
+    </div>
+    <div class="card-body p-0 m-0">
+        <form method="GET" action="{{ route('da.buscarPacientes') }}">
+
+            <div class="d-flex justify-content-center">
+                <div
+                    class="buscador_paciente justify-content-center m-md-4 my-2 mx-2 mb-3  row align-items-center col-lg-8 ">
+                    <div class="col-xl-9 col-sm-9   align-items-center">
+                        <input type="search" name="paciente"
+                            style="min-height:60px;border:1px solid #dce7e700;background-color:#dce7e7"
+                            class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Erik Galarza"
+                            required>
                     </div>
-                </div>
-
-            </form>
-            @if (count($pacientes) == 0)
-            <div class="container" style="max-width:832px">
-                <div class="row text-center justify-content-center  p-1 mb-3" style="border-radius:10px;background-color:red">
-                    <label class="text-white text-center col-form-label" style="text-transform: uppercase;font-weight:bold">No existen pacientes con ese nombre</label>
+                    <button title="Ingrese el nombre de un paciente para buscar" type="submit"
+                        class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 busca"style="min-height:60px;border-radius:30px;font-weight:bold"><i
+                            class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
                 </div>
             </div>
-            @endif
-        </div>
+        </form>
+
+        @if (count($pacientes) == 0)
+            <div class="container"style="max-width:832px">
+                <div class="container" style="max-width:832px">
+                    <div class="row text-center justify-content-center  p-1 mb-3"
+                        style="border-radius:10px;background-color:red">
+                        <label class="text-white text-center col-form-label"
+                            style="text-transform: uppercase;font-weight:bold">No existen pacientes con ese
+                            nombre</label>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
+</div>
 
         @if(count($pacientes) >  0)
         <div class="card mt-3">

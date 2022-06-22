@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('administracion/css/galeriaVideos.css') }}">
 
     <body>
-        <div class="page-header">
+        <div class="page-header mb-2">
             <h3 class="page-title">
                 Galeria
             </h3>
@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                     @endif
-                    
+
                     <div class="card-body text-center">
                         <div class="text-center"
                             style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
@@ -164,7 +164,7 @@
                     </div>
                 </div>
 
-                <div class="card mt-5">
+                <div class="card mt-4">
                     <div class=" mb-3" style="background-color:#4eba74 ">
                         <h3 class="card-title text-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Ejercicios</h3>
@@ -271,7 +271,7 @@
                     </div>
                 </div>
 
-            <div class="card mt-5">
+            <div class="card mt-4">
                 <div class=" mb-3" style="background-color:#7c7ce4 ">
                     <h3 class="card-title text-center mb-4 mt-4 text-white"
                         style="text-transform: uppercase; font-weight:bold">Motivacion</h3>

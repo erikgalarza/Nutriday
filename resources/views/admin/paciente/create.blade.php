@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="page-header mb-2">
     <h3 class="page-title">
-       Paciente
+       Agregar
     </h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -15,7 +15,7 @@
 
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class=" mb-4" style="background-color:#4b6ac3 ">
+            <div class=" mb-4" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos paciente</h3>
             </div>
 

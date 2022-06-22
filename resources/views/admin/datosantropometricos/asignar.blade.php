@@ -27,9 +27,23 @@
 
                 .ddd:hover {
                     border: 1px solid #4b6ac3 !important;
+                    min-height: 65px !important;
+                    background-color: #f1f1f1 !important;
+                    transition: min-height 200ms, background-color 1s;
+                }
+
+                @media(min-width:1200px) {
+                    .busca {
+                        max-width: 140px !important;
+                    }
+                }
+
+                @media (min-width:480px) and (max-width:767px) {
+                    .busca {
+                        max-width: 140px !important;
+                    }
                 }
             </style>
-
 
             <form method="GET" action="{{ route('da.buscarPacientes') }}">
 
@@ -43,7 +57,7 @@
                                 required>
                         </div>
                         <button title="Ingrese el nombre de un paciente para buscar" type="submit"
-                            class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 "style="min-height:60px;border-radius:30px;font-weight:bold"><i
+                            class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 busca"style="min-height:60px;border-radius:30px;font-weight:bold"><i
                                 class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
                     </div>
                 </div>
@@ -61,7 +75,7 @@
                     </div>
                 </div>
             @endif
-            </div>
+        </div>
     </div>
 
 

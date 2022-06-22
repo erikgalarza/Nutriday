@@ -1,19 +1,19 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Categorías de alimentos
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Categorías de alimentos</li>
             </ol>
         </nav>
     </div>
     <div class="card">
-        <div class="mb-3" style="background-color:#4b6ac3">
-            <h3 class="card-title titulosa text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Categorías de alimentos</h3>
+        <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
+            <h3 class="card-title titulosa text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">Categorías de alimentos</h3>
             </div>
         <div class="card-body">
             <div class="container ">

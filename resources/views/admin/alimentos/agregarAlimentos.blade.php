@@ -1,31 +1,27 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h5 class="page-title">
             Agregar alimento
         </h5>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Agregar alimento</li>
             </ol>
         </nav>
     </div>
    {{-- <p>{{$errors}}</p> --}}
-    <div class="row">
-
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="mb-3 px-3" style="background-color:#4b6ac3">
-                    <h3 class="card-title titulosa text-center mb-5 mt-5 text-white"
+                    <h3 class="card-title titulosa text-center mb-4 mt-4 text-white"
                         style="text-transform: uppercase; font-weight:bold">Información nutricional del alimento</h3>
                 </div>
 
                 <div class="card-body">
                     <div class="col-12 row justify-content-center px-0 m-0">
                         <div class="col-md-8 col-xl-9 col-11 text-left pl-md-0">
-
-
                             <form method="POST" class="forms-sample" action="{{ route('alimento.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -56,7 +52,7 @@
                                         </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="nombre" type="text"
-                                                class="form-control" id="exampleInputUsername2" value="{{old('nombre')}}">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('nombre')}}" placeholder="Ingrese el nombre del alimento...Ejm: Manzana">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
                                         </div>
                                     </div>
@@ -68,7 +64,7 @@
 
                                         <div class="col-xl-9  d-flex justify-content-around">
                                             <input style="border-radius:10px;min-height:45.2px" name="peso" type="number"
-                                                class="form-control" id="exampleInputUsername2" value="{{old('peso')}}">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('peso')}}" placeholder="Peso...Ejm: 40">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('peso')}}</p>
                                             <select class="form-control"
                                                 style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px; margin-left:2rem"
@@ -89,7 +85,7 @@
                                         </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="proteina" type="number"
-                                                class="form-control" id="exampleInputUsername2" value="{{old('proteina')}}">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('proteina')}}" placeholder="Ingrese las proteínas del alimento...Ejm: 50">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('proteina')}}</p>
                                         </div>
                                     </div>
@@ -100,7 +96,7 @@
                                             calórico: </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="valor_calorico" type="number"
-                                                class="form-control" id="exampleInputUsername2" value="{{old('valor_calorico')}}">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('valor_calorico')}}" placeholder="Ingrese el valor calórico del alimento...Ejm: 540">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('valor_calorico')}}</p>
                                         </div>
                                     </div>
@@ -112,7 +108,7 @@
                                         </label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="grasa" type="number"
-                                                class="form-control" id="exampleInputUsername2" value="{{old('grasa')}}">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('grasa')}}" placeholder="Ingrese las grasas del alimento...Ejm: 210">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('grasa')}}</p>
                                         </div>
                                     </div>
@@ -124,7 +120,7 @@
                                             class="col-xl-3  col-form-label">Carbohidratos:</label>
                                         <div class="col-xl-9 ">
                                             <input style="border-radius:10px" name="carbohidrato" type="number"
-                                                class="form-control" id="exampleInputUsername2" value="{{old('carbohidrato')}}">
+                                                class="form-control" id="exampleInputUsername2" value="{{old('carbohidrato')}}" placeholder="Ingrese los carbohidratos del alimento...Ejm: 60">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('carbohidrato')}}</p>
                                         </div>
                                     </div>
@@ -157,6 +153,5 @@
 
                 </div>
             </div>
-        </div>
     </div>
 @endsection

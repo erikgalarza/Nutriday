@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Actividades
         </h3>
@@ -11,28 +11,42 @@
             </ol>
         </nav>
     </div>
-    <div class="card">
+
+    <style>
+        .sombra {
+            -webkit-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+            -moz-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+            box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
+        }
+
+        .ddd:hover {
+            border: 1px solid #4b6ac3 !important;
+        }
+        @media(min-width:1200px){
+    .busca{
+        max-width:140px !important;
+    }
+}
+@media (min-width:480px) and (max-width:767px){
+    .busca{
+        max-width: 140px !important;
+    }
+
+}
+.ddd:hover{
+    border:1px solid #4b6ac3 !important;
+    min-height:65px !important;
+    background-color: #f1f1f1 !important;
+    transition: min-height 200ms,background-color 1s ;
+}
+    </style>
+    <div class="card sombra">
         <div class=" mb-2" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
             <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Buscar pacientes</h3>
         </div>
         <div class="card-body p-0 m-0">
-
-            <style>
-                .sombra {
-                    -webkit-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
-                    -moz-box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
-                    box-shadow: 20px 21px 25px -6px rgba(133, 139, 171, 1);
-                }
-
-                .ddd:hover {
-                    border: 1px solid #4b6ac3 !important;
-                }
-            </style>
-
-
             <form method="GET" action="{{ route('actividad.buscarPacientes') }}">
-
                 <div class="d-flex justify-content-center">
                     <div
                         class="buscador_paciente justify-content-center m-md-4 my-2 mx-2 mb-3  row align-items-center col-lg-8 ">
@@ -43,17 +57,17 @@
                                 required>
                         </div>
                         <button title="Ingrese el nombre de un paciente para buscar" type="submit"
-                            class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 "style="min-height:60px;border-radius:30px;font-weight:bold"><i
+                            class="btn btn-success   col-xl-3 col-sm-3 col-6 text-center  mt-4 mt-sm-0 busca"style="min-height:60px;border-radius:30px;font-weight:bold"><i
                                 class="fa-solid fa-magnifying-glass mr-xl-2 mr-lg-1 mr-1"></i>Buscar</button>
                     </div>
                 </div>
             </form>
 
             @if (count($pacientes) == 0)
-                <div class="container"style="max-width:832px">
-                    <div class="container" style="max-width:832px">
-                        <div class="row text-center justify-content-center  p-1 mb-3"
-                            style="border-radius:10px;background-color:red">
+                <div class="container"style="max-width:740px">
+                    <div class="container" >
+                        <div class="row text-center justify-content-center  p-1 mb-3 bg-danger"
+                            style="border-radius:10px">
                             <label class="text-white text-center col-form-label"
                                 style="text-transform: uppercase;font-weight:bold">No existen pacientes con ese
                                 nombre</label>
@@ -61,20 +75,19 @@
                     </div>
                 </div>
             @endif
-            </div>
+        </div>
+
+@if (count($pacientes) > 0)
     </div>
     <div class="card mt-3">
         <div class="card-body">
-
-            <div class="row">
-                <div class="col-12">
+            <div class="container">
                     <div class="table-responsive">
                         <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-
+                                    <th>N°</th>
                                     <th>Nombre</th>
-                                    <th>Apellido</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
                                     <th>Actividades asignadas</th>
@@ -89,8 +102,8 @@
                                    <input type="hidden" name="paciente" value="{{$paciente}}">
                                     <tr>
 
-                                        <td>{{ $paciente->nombre }}</td>
-                                        <td>{{ $paciente->apellido }}</td>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
 
                                         @if ($paciente->tipo_diabetes == 3)
                                             <td>Tipo gestacional</td>
@@ -119,7 +132,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a title="Asignar actividad" href="{{route('actividad.asignar',$paciente->id)}}" class="btn btn-outline-success"><i
+                                            <a title="Asignar actividad" href="{{route('actividad.asignar',$paciente->id)}}" class="btn btn-warning"><i
                                                     class="fas fa-plus"></i></a>
                                         </td>
                                     </form>
@@ -152,7 +165,7 @@
                                                 <div class="col-3 mb-2 text-left">{{$actividad->nombre}}</div>
                                                 <div class="col-3 mb-2 text-center">{{$actividad->prioridad}}</div>
                                                 <div class="col-2 mb-2 text-center">{{$duraciones[$key]->duracion}}</div>
-                                            
+
                                                 <div class="col-4 mb-2"><img style="max-width:70px;border-radius:10px" src="{{$actividad->imagen->url}}"></div>
 
                                                      @endforeach
@@ -166,10 +179,10 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
         </div>
     </div>
+@endif
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

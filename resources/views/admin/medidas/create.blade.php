@@ -1,22 +1,20 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
-            Agregar unidad de medida
+            Agregar medida
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Agregar unidad de medida</li>
             </ol>
         </nav>
     </div>
-    <div class="row">
-
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class="mb-3" style="background-color:#4b6ac3">
-                    <h3 class="card-title titulosa text-lg-center mb-5 mt-5 text-white"
+                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                    <h3 class="card-title titulosa text-lg-center mb-4 mt-4 text-white"
                         style="text-transform: uppercase; font-weight:bold">Datos de la unidad de medida</h3>
                 </div>
                 <div class="card-body">
@@ -35,7 +33,7 @@
                                             medida:</label>
                                         <div class="col-xl-8 ">
                                             <input style="border-radius:10px;" name="medida" type="text"
-                                                class="form-control" placeholder="Ingrese el nombre">
+                                                class="form-control" placeholder="Ingrese el nombre...Ejm: metros">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('medida')}}</p>
                                         </div>
                                     </div>
@@ -46,7 +44,7 @@
                                             medida:</label>
                                         <div class="col-xl-8">
                                             <input style="border-radius:10px;" name="abreviatura" type="text"
-                                                class="form-control" placeholder="Ingrese la abreviatura">
+                                                class="form-control" placeholder="Ingrese la abreviatura-...Ejm: m">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('abreviatura')}}</p>
                                         </div>
                                     </div>
@@ -66,6 +64,5 @@
 
             </div>
         </div>
-    </div>
     </div>
 @endsection

@@ -14,12 +14,12 @@ class Comida extends Model
 
     public function alimentos()
     {
-        return $this->belongsToMany(Alimento::class);
+        return $this->belongsToMany(Alimento::class,'alimento_comida_dias')->withTimestamps()->withPivot('dia_id');
     }
 
     public function dias()
     {
-        return $this->belongsToMany(Dia::class);
+        return $this->belongsToMany(Dia::class,'alimento_comida_dias')->withTimestamps()->withPivot('alimento_id');
     }
 
 }

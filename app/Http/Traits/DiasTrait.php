@@ -1,52 +1,77 @@
 <?php
 namespace App\Http\Traits;
 
+use App\Models\AlimentoComidaDia;
 use App\Models\Comida;
+use App\Models\Dieta_acd;
 
 trait DiasTrait
  {
-    public function leerLunes($lunes, $diaLunes)
+    public function leerLunes($lunes, $diaLunes, $dieta)
     {
+        // dd($lunes);
         foreach($lunes as $alimento)
         {
-            //RELACION DE ALIMENTO_COMIDA   BEGIN
             if($alimento->horario==0){//desayuno
                 $desayuno = Comida::find(1);
-                //RELACION COMIDA_DIA
-                $diaLunes->comidas()->attach($desayuno->id);// dia comida
-                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>1,'cantidad'=>$alimento->cantidad]);
+                
+                // $dca_id = $alimento->comidas()->attach($desayuno->id, ['dia_id'=>$diaLunes->id]);//
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::latest()->latest()->first();
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
             }
+
             if($alimento->horario==1){//colacion de la mañana
                 $colacionManana = Comida::find(2);
-                //RELACION COMIDA_DIA
-                $diaLunes->comidas()->attach($colacionManana->id);
-                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>1,'cantidad'=>$alimento->cantidad]);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id]);
+                  $dca = AlimentoComidaDia::latest()->latest()->first();
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
             }
-            if($alimento->horario==2){//almuerzo
+            if($alimento->horario==2){
                 $almuerzo = Comida::find(3);
-                //RELACION COMIDA_DIA
-                $diaLunes->comidas()->attach($almuerzo->id);
-                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>1,'cantidad'=>$alimento->cantidad]);
+               $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id]);
+                 $dca = AlimentoComidaDia::latest()->latest()->first();
+               Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
             }
-            if($alimento->horario==3){//colacion de la tarde
+            if($alimento->horario==3){
                 $colacionTarde = Comida::find(4);
-                //RELACION COMIDA_DIA
-                $diaLunes->comidas()->attach($colacionTarde->id);
-                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>1,'cantidad'=>$alimento->cantidad]);
+               $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id]);
+                 $dca = AlimentoComidaDia::latest()->latest()->first();
+               Dieta_acd::create([
+                   "dieta_id"=>$dieta->id,
+                   "acd_id" => $dca->id
+               ]);
             }
             if($alimento->horario==4){//merienda
                 $merienda = Comida::find(5);
-                //RELACION COMIDA_DIA
-                $diaLunes->comidas()->attach($merienda->id);
-                $merienda->alimentos()->attach($alimento->id,['dia_id'=>1,'cantidad'=>$alimento->cantidad]);
+               $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id]);
+                 $dca = AlimentoComidaDia::latest()->latest()->first();
+               Dieta_acd::create([
+                   "dieta_id"=>$dieta->id,
+                   "acd_id" => $dca->id
+               ]);
             }
+
             if($alimento->horario==5){//cena
                 $cena = Comida::find(6);
-                //RELACION COMIDA_DIA
-                $diaLunes->comidas()->attach($cena->id);
-                $cena->alimentos()->attach($alimento->id,['dia_id'=>1,'cantidad'=>$alimento->cantidad]);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id]);
+                  $dca = AlimentoComidaDia::latest()->latest()->first();
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
             }
-            //RELACION ALIMENTO COMIDA END
         }
     }
 

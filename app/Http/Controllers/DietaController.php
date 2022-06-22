@@ -223,50 +223,22 @@ class DietaController extends Controller
         }
        return view('admin.dieta.index',compact('dietas_predefinidas','pacientesc'));
     }
+
     use DiasTrait;// trait: se usan para reutilizar metodos de una clase
     public function guardarDieta(Request $request)
     {
-        // dd($request);
-        $semana = json_decode($request->semana);
+          $semana = json_decode($request->semana);
         // dd($semana);
         $dieta_id = $request->dieta_id;
+        $dieta = Dieta::find($dieta_id);
         $paciente_id = $request->paciente_id;
         $user_id = $request->user_id;
 
-
-
         $lunes = $semana->lunes;//tienes los alimentos del lunes
-        $martes = $semana->martes;
-        $miercoles = $semana->miercoles;
-        $jueves = $semana->jueves;
-        $viernes = $semana->viernes;
-        $sabado = $semana->sabado;
-        $domingo = $semana->domingo;
-
         $diaLunes = Dia::find(1);//lunes
-        $diaMartes = Dia::find(2);//Martes
-        $diaMiercoles = Dia::find(3);//Miercoles
-        $diaJueves = Dia::find(4);//Jueves
-        $diaViernes = Dia::find(5);//Viernes
-        $diaSabado = Dia::find(6);//Sabado
-        $diaDomingo = Dia::find(7);//Domingo
 // RELACION DE ALIMENTO COMIDA Y LA RELACION DE COMIDA_DIA
-        $this->leerLunes($lunes, $diaLunes);
-        $this->leerMartes($martes, $diaMartes);
-        $this->leerMiercoles($miercoles, $diaMiercoles);
-        $this->leerJueves($jueves, $diaJueves);
-        $this->leerViernes($viernes, $diaViernes);
-        $this->leerSabado($sabado, $diaSabado);
-        $this->leerDomingo($domingo, $diaDomingo);
-
-        //RELACION DE DIETA CON DIA
-        $dieta = Dieta::find($dieta_id);
-        for($i = 1; $i<=7 ; $i++){
-            $dieta->dias()->attach($i);
-        }
-
-        $dieta->pacientes()->attach($paciente_id,['user_id'=>$user_id]);
-
+        $this->leerLunes($lunes, $diaLunes,$dieta);
+        // $martes = $semana->martes;
         return true;
     }
 

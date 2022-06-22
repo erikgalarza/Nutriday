@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('a_c_d', function (Blueprint $table) {
+        Schema::create('alimento_comida_dias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('alimento_id');// 1
-            $table->unsignedBigInteger('comida_id');// 1
-            $table->unsignedBigInteger('dia_id');// 1          
+            $table->unsignedBigInteger('alimento_id');
+            $table->unsignedBigInteger('comida_id');
+            $table->unsignedBigInteger('dia_id');          
             $table->foreign('alimento_id')->references('id')->on('alimentos');
             $table->foreign('comida_id')->references('id')->on('comidas');
             $table->foreign('dia_id')->references('id')->on('dias');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('a_c_d');
+        Schema::dropIfExists('alimento_comida_dias');
     }
 };

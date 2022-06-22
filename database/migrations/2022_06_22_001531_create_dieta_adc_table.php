@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dieta_adc', function (Blueprint $table) {
+        Schema::create('dieta_acds', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('dieta_id');// 1
             $table->unsignedBigInteger('acd_id');// 1          
             $table->foreign('dieta_id')->references('id')->on('dietas');
-            $table->foreign('acd_id')->references('id')->on('a_c_d');
+            $table->foreign('acd_id')->references('id')->on('alimento_comida_dias');
             $table->timestamps();
         });
     }

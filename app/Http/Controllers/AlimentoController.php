@@ -244,23 +244,30 @@ class AlimentoController extends Controller
     public function update(UpdateAlimentoRequest $request, $id)
     {
         //validar 
-
       $alimento= Alimento::find($id);
       $alimento->update([
-          "nombre"=>$request->nombre,
-          "peso"=>$request->peso,
+        "nombre"=>$request->nombre,
+        "peso"=>$request->peso,
         "valor_calorico"=>$request->valor_calorico,
         "carbohidrato"=>$request->carbohidrato,
         "proteina"=>$request->proteina,
         "grasa"=>$request->grasa,
       ]);
 
-      //si hay imagen significa que quiere cambiarla
-      $file = $request->imagen;
-      $elemento= Cloudinary::upload($file->getRealPath(),['folder'=>'alimento']);
-      $public_id = $elemento->getPublicId();
-      $url = $elemento->getSecurePath();
-if(is_null($alimento->imagen)){
+   
+      $public_id = $alimento->imagen->public_id;
+      $url = $alimento->imagen->url;
+
+      if($request->hasFile('imagen'))// si viene una imagen 
+      {
+        $file = $request->imagen;
+        $elemento= Cloudinary::upload($file->getRealPath(),['folder'=>'alimento']);
+        $public_id = $elemento->getPublicId();
+        $url = $elemento->getSecurePath();
+      }
+      
+
+if(is_null($alimento->imagen)){// si existe una imagen anterior, la sobreescribe
       $alimento->imagen()->create([
           'url'=>$url,
           'public_id'=>$public_id

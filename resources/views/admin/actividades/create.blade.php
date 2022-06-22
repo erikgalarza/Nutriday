@@ -48,7 +48,7 @@
                               placeholder="Ingrese el nombre de la actividad... Ejm: Correr">
                         </div>
                     </div>
-                    <div class="form-group row mb-2 no-gutters">
+                    {{-- <div class="form-group row mb-2 no-gutters">
                         <label
                             style="font-weight:bold; font-size:12px; text-transform:uppercase"
                             for="exampleInputUsername2" class="col-xl-5  col-form-label">Prioridad:
@@ -63,7 +63,7 @@
                                     <option value="3">Alta</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group row mb-2 no-gutters">
                         <label for="exampleInputEmail2" style="font-weight:bold; font-size:12px; text-transform:uppercase"

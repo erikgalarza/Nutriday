@@ -26,7 +26,7 @@ class StoreVideoRequest extends FormRequest
         return [
             "titulo"=>"required|string|min:3|max:50",
             "categoria"=>"required|string",
-            "descripcion"=>"string|max:500",
+            "descripcion"=>"nullable|string|max:500",
             "url"=>"required|url",
         ];
     }

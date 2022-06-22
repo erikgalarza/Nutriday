@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateActividadRequest extends FormRequest
+class StoreDietaAsignada extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdateActividadRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre"=>"string|min:3|max:30",
-            "descripcion"=>"nullable|string|max:500",
+            "dieta_id"=>"required",
+            "fecha_fin"=>"required|date"
         ];
     }
 }

@@ -232,7 +232,7 @@
                                                             <label class="col-md-4 col-form-label"><strong>Peso:</strong>
                                                                </label>
                                                                <div class=" col-md-8 d-flex"                           style="justify-content:space-between">
-                                                                   <input  style="border-radius:10px; width:32%;max-height:45.2px" type="number" name="peso" class="form-control" value="{{ $alimento->peso}}{{$alimento->medida}}">
+                                                                   <input  style="border-radius:10px; width:32%;max-height:45.2px" type="number" name="peso" class="form-control" value="{{ $alimento->peso}}">
                                                                    <select class="form-control" style="border-radius:10px;background-color:#F0F0F0; width:60%;min-height:45.2px" name="unidad" id="unidad">
                                                                     <option value="" selected="" disabled="">Seleccione una medida</option>
                                                                    @foreach($medidas as $medida)

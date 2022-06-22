@@ -36,7 +36,6 @@ class AdminController extends Controller
        $user = User::find(Auth::id());
        if($request->password!=null)
             $user->update(["password"=>$hashpass]);
-
        return back();
     }
 

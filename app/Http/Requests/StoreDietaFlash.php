@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Cedula;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateNutricionistaRequest extends FormRequest
+class StoreDietaFlash extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,13 +25,9 @@ class UpdateNutricionistaRequest extends FormRequest
     {
         return [
             "nombre"=>"required|string|min:3|max:30",
-            "apellido"=>"required|string|min:3|max:30",
-            "cedula"=>["required", new Cedula()],
-            "sexo"=>"required|numeric|size:1",
-            "telefono"=>"required|string|min:10|max:10",
-            "especialidad"=>"required|string|max:40",
-            "correo"=>"required|email:rfc,dns",
-            // "password"=>"string|min:8|max:40"
+            "tipo_diabetes"=>"required|integer",
+            "fecha_fin"=>"required|date",
+            "observaciones"=>"nullable|string|max:500",
         ];
     }
 }

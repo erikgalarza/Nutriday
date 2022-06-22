@@ -168,6 +168,17 @@
 
 
 
+    @if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
     <div class="card mt-3">
         <div class="card-body">
@@ -371,7 +382,7 @@
                                                                     <input name="nombre" type="text"
                                                                         value="{{ $dieta->nombre }}"
                                                                         class="form-control" id="exampleInputUsername2"
-                                                                        required>
+                                                                        >
                                                                 </div>
                                                             </div>
 
@@ -383,7 +394,7 @@
                                                                     <select class="form-control" name="tipo_diabetes"
                                                                         id=""
                                                                         style="min-height:45.2px;background-color:#F0F0F0"
-                                                                        required>
+                                                                        >
 
                                                                         <option value="1"
                                                                             {{ $dieta->tipo_diabetes == '1' ? 'selected' : '' }}>
@@ -405,7 +416,7 @@
                                                                     <select class="form-control" name="imc"
                                                                         class="form-control"
                                                                         id=""style="min-height:45.2px;background-color:#F0F0F0"
-                                                                        required>
+                                                                        >
                                                                         <option value="1"
                                                                             {{ $dieta->imc == '1' ? 'selected' : '' }}>
                                                                             Bajo peso</option>
@@ -429,7 +440,7 @@
                                                                     class="col-sm-4 col-form-label"><strong>Observaciones:</strong></label>
                                                                 <div class="col-sm-8">
                                                                     <textarea name="observaciones"cols="30" rows="5" class="form-control" id="exampleInputUsername2"
-                                                                        required>{{ $dieta->observaciones }}
+                                                                        >{{ $dieta->observaciones }}
                             </textarea>
                                                                 </div>
                                                             </div>

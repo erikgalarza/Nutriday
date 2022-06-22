@@ -39,6 +39,7 @@
                             <input style="border-radius:10px" name="peso" type="number"
                                  class="form-control" placeholder="Ingrese el peso en kilos"
                                 id="peso">
+                                <p class="text-danger font-weight-bold">{{$errors->first('peso')}}</p>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -100,8 +101,9 @@
                             <textarea cols="30" rows="10" style="border-radius:10px" name="observaciones"type="text"
                                  class="form-control"
                                 id="observaciones">
-                                <p class="text-danger font-weight-bold">{{$errors->first('observaciones')}}</p>
+                                
                             </textarea>
+                            <p class="text-danger font-weight-bold">{{$errors->first('observaciones')}}</p>
                         </div>
                     </div>
 

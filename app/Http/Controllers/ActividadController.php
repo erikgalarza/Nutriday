@@ -6,14 +6,13 @@ use App\Models\Imagen;
 use App\Models\Actividad;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreActividadRequest;
+use App\Http\Requests\StoreAsignacionActividad;
 use App\Http\Requests\UpdateActividadRequest;
 use App\Models\Paciente;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ActividadController extends Controller
 {
-
-
     public function pacientes()
     {
         $pacientes = Paciente::all();
@@ -28,7 +27,7 @@ class ActividadController extends Controller
         return view('admin.actividades.pacientes',compact('pacientes','duraciones'));
     }
 
-    public function guardarAsignacion(Request $request)
+    public function guardarAsignacion(StoreAsignacionActividad $request)
     {
 // dd($request);
         $paciente = Paciente::find($request->paciente_id);
@@ -108,10 +107,17 @@ class ActividadController extends Controller
             "prioridad"=>$request->prioridad
         ]);
 
-        $file = $request->imagen;
-        $elemento= Cloudinary::upload($file->getRealPath(),['folder'=>'actividad']);
-        $public_id = $elemento->getPublicId();
-        $url = $elemento->getSecurePath();
+        $public_id = $actividad->imagen->public_id;
+        $url=$actividad->imagen->url;
+
+        if($request->hasFile('imagen'))
+        {
+            $file = $request->imagen;
+            $elemento= Cloudinary::upload($file->getRealPath(),['folder'=>'actividad']);
+            $public_id = $elemento->getPublicId();
+            $url = $elemento->getSecurePath();
+        }
+
   if(is_null($actividad->imagen)){
         $actividad->imagen()->create([
             'url'=>$url,

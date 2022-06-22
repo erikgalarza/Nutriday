@@ -19,17 +19,7 @@
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos nutricionista</h3>
             </div>
 
-            @if(count($errors)>0)
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>
-                        {{$error}}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+           
 
 
             <div class="card-body">
@@ -44,6 +34,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px"  name="nombre" type="text" class="form-control" id="exampleInputUsername2"
                                 placeholder="Ingrese el nombre">
+                                   <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
                         </div>
                     </div>
                     <div class="form-group row ">
@@ -52,6 +43,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px" name="apellido" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el apellido">
+                                   <p class="text-danger font-weight-bold">{{$errors->first('apellido')}}</p>
                         </div>
                     </div>
                     <div class="form-group row ">
@@ -60,6 +52,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px" name="cedula" type="text" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese la cédula">
+                                <p class="text-danger font-weight-bold">{{$errors->first('cedula')}}</p>
                         </div>
                     </div>
                     <div class="form-group row ">
@@ -71,6 +64,7 @@
                                 <option value="1">Masculino</option>
                                 <option value="2">Femenino</option>
                             </select>
+                            <p class="text-danger font-weight-bold">{{$errors->first('sexo')}}</p>
                         </div>
                     </div>
                     <div class="form-group row ">
@@ -79,6 +73,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px"  name="especialidad" type="text" class="form-control" id="exampleInputUsername2"
                                 placeholder="Escriba la especialidad">
+                                <p class="text-danger font-weight-bold">{{$errors->first('especialidad')}}</p>
                         </div>
                     </div>
 
@@ -88,6 +83,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px" name="telefono" type="text" class="form-control" id="exampleInputMobile"
                                 placeholder="Ingrese el teléfono">
+                                <p class="text-danger font-weight-bold">{{$errors->first('telefono')}}</p>
                         </div>
                     </div>
                     <div class="form-group row ">
@@ -96,6 +92,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px" name="correo" type="email" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el correo electrónico">
+                                <p class="text-danger font-weight-bold">{{$errors->first('correo')}}</p>
                         </div>
                     </div>
                     <div class="form-group row ">
@@ -104,6 +101,7 @@
                         <div class=" col-xl-9">
                             <input style="border-radius:10px;background-color:#F0F0F0" name="password" type="password" class="form-control"
                                 id="exampleInputPassword2" placeholder="Ingrese la contraseña">
+                                <p class="text-danger font-weight-bold">{{$errors->first('password')}}</p>
                         </div>
                     </div>
 

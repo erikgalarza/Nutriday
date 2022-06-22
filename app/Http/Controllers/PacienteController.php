@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreDatosAntropometricoRequest;
 use App\Models\User;
 use App\Models\Paciente;
 use App\Models\EstadoAnimo;
@@ -115,7 +117,7 @@ class PacienteController extends Controller
         return view('admin.paciente.datosAntropometricos',compact('paciente'));
     }
 
-    public function guardarDatosAntropometricos(Request $request)
+    public function guardarDatosAntropometricos(StoreDatosAntropometricoRequest $request)
     {
         // dd($request);
         $paciente = Paciente::find($request->id_paciente);

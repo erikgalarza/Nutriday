@@ -32,15 +32,14 @@
                                 class="forms-sample">
                                 @csrf
                                 <div class="container" style="max-width:596px">
-
                                     @if (isset($paciente))
                                         <input type="hidden" name="paciente" value="{{ $paciente }}">
                                     @endif
 
                                     <div class="form-group row no-gutters ">
                                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
-                                            class="col-xl-4   col-form-label ">Nombre de la dieta:</label>
-                                        <div class="col-xl-8  ">
+                                            class="col-xl-4 col-form-label">Nombre de la dieta:</label>
+                                        <div class="col-xl-8">
                                             <input name="nombre" type="text" class="form-control"
                                                 id="exampleInputUsername2" placeholder="Ingrese el nombre de la dietas">
                                                 <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
@@ -130,8 +129,8 @@
                                             <button type="submit" class="btn btn-success mb-2 col-sm-12 col-md-6">Agregar
                                                 alimentos
                                             </button>
-                                            <a class="btn btn-light mb-2 col-sm-12 col-md-5"
-                                                href="{{ route('dieta.index') }}">Cancelar</a>
+                                            {{-- <a class="btn btn-light mb-2 col-sm-12 col-md-5"
+                                                href="{{ route('dieta.index') }}">Cancelar</a> --}}
                                         </div>
                                     </div>
 
@@ -155,9 +154,9 @@
                             </div>
                             <div class="modal-body">
 
-                                <form method="POST">
-                                    @csrf
-
+                                {{-- <form method="POST">
+                                    @csrf --}}
+<h2>hola</h2>
                                     <div class="form-group row no-gutters">
                                         <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Sexo</label>
                                         <div class="col-sm-8">
@@ -191,7 +190,7 @@
                                 <button type="submit" class="btn btn-success">Guardar cambios</button>
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
                             </div>
-                            </form>
+                            {{-- </form> --}}
                         </div>
                     </div>
                 </div>

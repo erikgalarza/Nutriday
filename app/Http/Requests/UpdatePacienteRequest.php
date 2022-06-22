@@ -27,11 +27,11 @@ class UpdatePacienteRequest extends FormRequest
         return [
             "name"=>"required|string|min:3|max:30",
             "apellido"=>"required|string|min:3|max:30",
-            "tipo_diabetes"=>"required|numeric|size:1",
+            // "tipo_diabetes"=>"required|numeric|size:1",
             "telefono"=>"required|string|min:10|max:10",
             "sexo"=>"required|string",
             "cedula"=>["required", new Cedula()],
-            "edad"=>"required|numeric",
+            // "edad"=>"required|numeric",
             "email"=>"required|email:rfc,dns",
             // "password"=>"string|min:8|max:40"
         ];

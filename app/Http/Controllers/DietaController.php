@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDietaAsignada;
+use App\Http\Requests\StoreDietaFlash;
 use Carbon\Carbon;
 use App\Models\Dia;
 use App\Models\Admin;
@@ -255,9 +257,6 @@ class DietaController extends Controller
     }
 
     public function crearDietaFlash(Request $request){
-
-        // $imc = $request->imc;
-        // dd($imc);
         $paciente_id = $request->paciente_id;
         $paciente = Paciente::find($paciente_id);
         $datoAntropometrico = $paciente->dato_antropometrico()->latest()->first();
@@ -265,7 +264,7 @@ class DietaController extends Controller
         return view('admin.dieta.create',compact('imc','paciente'));
     }
 
-    public function guardarDietaAsignada(Request $request)
+    public function guardarDietaAsignada(StoreDietaAsignada $request)
     {
 
         // $dieta = Dieta::find($request->dieta_id);
@@ -300,6 +299,26 @@ class DietaController extends Controller
 
     public function store(Request $request)
     {
+        
+        // $campos = [
+        //     "nombre"=>"required|string|min:3|max:30",
+        //     "tipo_diabetes"=>"required|integer",
+        //     "fecha_fin"=>"required|date",
+        //     "observaciones"=>"nullable|string|max:500",
+        // ];
+
+        // $mensaje = [
+        //     'required' => ':attribute es requerido',
+        //     'nombre.max' => 'El nombre no debe sobrepasar los 30 caracteres',
+        //     'descripcion.max' => 'La descripcion no debe sobrepasar los 256 caracteres',
+        //     'imagen.required' => 'La imagen es requerida',
+        //     'imagen.mimes' => 'La imagen debe ser jpg, png o jpeg',
+        //     'imagen.max' => 'La imagen es muy pesada',
+        //     'descripcion.required' => 'La descripción es requerida',
+        // ];
+
+        // $this->validate($request, $campos);
+        // dd("hola");
         // $pacienteNuevo = json_decode($request->paciente);
         // $paciente = collect($pacienteNuevo);
         // dd($request);

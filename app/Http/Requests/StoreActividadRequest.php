@@ -25,7 +25,7 @@ class StoreActividadRequest extends FormRequest
     {
         return [
             "nombre"=>"required|unique:actividads,nombre",
-            "descripcion"=>"string|max:500",
+            "descripcion"=>"nullable|string|max:500",
         ];
     }
 }

@@ -12,7 +12,7 @@
         </nav>
     </div>
     @foreach ($admins as $admin)
-
+    <input type="hidden" name="id" id="" value="{{$admin->administradores->id}}">
             {{-- <form method="POST" id="formularioEditarPerfil" action="{{route('admin.updateCuenta')}}" style="display:hidden;">
                 @csrf
                 <input name="password" type="hidden" class="form-control my-3" placeholder="Nueva contraseña"
@@ -35,25 +35,15 @@
                     <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Mi perfil</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('administrador.update', $admin->administradores->id) }}"
+                    <form method="POST" action="{{ route('admin.updateCuenta') }}"
                         enctype="multipart/form-data">
                         @csrf
-                        {{ method_field('PATCH') }}
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-xl-5 mb-4 mb-xl-0 row justify-content-center align-items-center">
                                         <img class="img-thumbnail imaagen" style="max-width:350px;max-height:350px" src="{{ asset('img/icons/Administrador.png') }}">
                                 </div>
                                 <div class="col-xl-7">
-                                    {{-- <input name="password2" type="password" class="form-control my-3"
-                                        placeholder="Nueva contraseña" id="password2">
-                                    <input name="confirm-password2" class="form-control my-3" type="password"
-                                        placeholder="Confirmar nueva contraseña" class="form-control" id="newpassword2">
-
-                                    <input name="password" type="hidden" class="form-control my-3"
-                                        placeholder="Nueva contraseña" id="password">
-                                    <input name="confirm-password" class="form-control my-3" type="hidden"
-                                        placeholder="Confirmar nueva contraseña" class="form-control" id="newpassword"> --}}
 
                                     <div class="container" style="max-width: 420px ">
 
@@ -130,7 +120,7 @@
                         <div class="mt-5" style="display:flex; justify-content:center; margin-bottom:10px;">
                             <button type="submit" class="btn btn-success mr-2"><i class="fa-solid fa-floppy-disk mr-2"></i>Guardar cambios</button>
                             {{-- <a onclick="enviarFormulario();" class="btn btn-success mr-2">Guardar cambios</a> --}}
-                            <a class="btn btn-light" href="{{route('administrador.dashboard')}}">Cancelar</a>
+                            <a class="btn btn-light" href="{{route('admin.cuenta')}}">Cancelar</a>
 
                         </div>
                     </div>

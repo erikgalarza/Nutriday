@@ -73,7 +73,8 @@ class AdminController extends Controller
 
     public function updateCuenta(Request $request)
     {
-            $administrador = Admin::find($id);
+            $id = $request->id;
+            $administrador = Admin::find(Auth::id());
             $user_id = $administrador->user->id;
             $user = User::find($user_id);
 
@@ -86,7 +87,6 @@ class AdminController extends Controller
                 "password"=>$pass
             ]);
 
-
             $administrador->update([
                 "nombre"=>$request->nombre,
                 "cedula"=>$request->cedula,
@@ -94,8 +94,8 @@ class AdminController extends Controller
 
             ]);
 
-
-       return back();
+            $admins = User::role('Administrador')->get();
+       return view('admin.cuenta.cuenta',compact('administrador','admins'));
     }
 
     public function miCuenta(){

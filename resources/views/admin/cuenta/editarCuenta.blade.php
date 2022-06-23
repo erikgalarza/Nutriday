@@ -1,8 +1,8 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
-            Editar datos de administración
+            Editar perfil
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -11,52 +11,157 @@
             </ol>
         </nav>
     </div>
+    @foreach ($admins as $admin)
 
-    <div class="row">
-
-        <div class="col-md-12 grid-margin stretch-card">
-            <form method="POST" id="formularioEditarPerfil" action="{{route('admin.updateCuenta')}}" style="display:hidden;">
+            {{-- <form method="POST" id="formularioEditarPerfil" action="{{route('admin.updateCuenta')}}" style="display:hidden;">
                 @csrf
                 <input name="password" type="hidden" class="form-control my-3" placeholder="Nueva contraseña"
                 id="password">
                 <input name="confirm-password" class="form-control my-3" type="hidden"
                 placeholder="Confirmar nueva contraseña" class="form-control" id="newpassword">
-            </form>
-            
-            <div class="card" style="display:flex; flex-wrap:wrap; flex-direction:row; justify-content:center; align-items:center;">
-                <div class="imagencard" style="margin:10px 10px;">
-
-                    <img style="max-width:300px;" src="{{ asset('img/icons/Administrador.png') }}">
+            </form> --}}
+            <style>
+                @media(max-width:1200px){
+                    .imaagen{
+                        min-width:410px !important;
+                        max-width:410px !important;
+                        min-height: 400px !important;
+                        max-height: 400px !important;
+                    }
+                }
+            </style>
+            <div class="card">
+                <div class=" mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
+                    <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Mi perfil</h3>
                 </div>
-                <div class="infopaciente" >
-                    <h5 style="padding-bottom:10px;">Email:{{ $administrador->user->email }}</h5>
-                    <input name="password2" type="password" class="form-control my-3" placeholder="Nueva contraseña"
-                    id="password2">
-                    <input name="confirm-password2" class="form-control my-3" type="password"
-                    placeholder="Confirmar nueva contraseña" class="form-control" id="newpassword2">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('administrador.update', $admin->administradores->id) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        {{ method_field('PATCH') }}
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-5 mb-4 mb-xl-0 row justify-content-center align-items-center">
+                                        <img class="img-thumbnail imaagen" style="max-width:350px;max-height:350px" src="{{ asset('img/icons/Administrador.png') }}">
+                                </div>
+                                <div class="col-xl-7">
+                                    {{-- <input name="password2" type="password" class="form-control my-3"
+                                        placeholder="Nueva contraseña" id="password2">
+                                    <input name="confirm-password2" class="form-control my-3" type="password"
+                                        placeholder="Confirmar nueva contraseña" class="form-control" id="newpassword2">
 
-                    <div style="display:flex; justify-content:center; margin-bottom:10px;">
-                        <a onclick="enviarFormulario();" class="btn btn-success">Guardar cambios</a>
+                                    <input name="password" type="hidden" class="form-control my-3"
+                                        placeholder="Nueva contraseña" id="password">
+                                    <input name="confirm-password" class="form-control my-3" type="hidden"
+                                        placeholder="Confirmar nueva contraseña" class="form-control" id="newpassword"> --}}
+
+                                    <div class="container" style="max-width: 420px ">
+
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left">Nombre:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px" name="nombre" type="text"
+                                                value="{{ $admin->administradores->nombre }}" class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left">Cédula:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px" name="cedula" type="number"
+                                                value="{{ $admin->administradores->cedula }}" class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left">Teléfono:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px" name="telefono" type="tel"
+                                                value="{{ $admin->administradores->telefono }}" class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left">Email:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px" name="email" type="email"
+                                                value="{{ $admin->email }}" class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left ">Contraseña:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px;background-color:#F0F0F0" name="password"
+                                                type="text" placeholder="Dejar en blanco si no va a cambiar" class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div>
+                                    {{-- <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:11px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left ">Confirmar Contraseña:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px;background-color:#F0F0F0" name="password"
+                                                type="text" placeholder="Dejar en blanco si no va a cambiar" class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div> --}}
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
+                                            class="col-sm-4 col-form-label text-left">Nueva imagen:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px;background-color:#F0F0F0;max-height:45.2px"
+                                                name="imagen" type="file" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5" style="display:flex; justify-content:center; margin-bottom:10px;">
+                            <button type="submit" class="btn btn-success mr-2"><i class="fa-solid fa-floppy-disk mr-2"></i>Guardar cambios</button>
+                            {{-- <a onclick="enviarFormulario();" class="btn btn-success mr-2">Guardar cambios</a> --}}
+                            <a class="btn btn-light" href="{{route('administrador.dashboard')}}">Cancelar</a>
+
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-        {{-- </form> --}}
-        </div>
-    </div>
+
+
+    @endforeach
+
+
+
+
+
+
+
+
+
+    {{-- </form> --}}
+
 
     <script>
-function enviarFormulario() 
-{
-    var form = document.getElementById('formularioEditarPerfil');
+        function enviarFormulario() {
+            var form = document.getElementById('formularioEditarPerfil');
 
-    password = document.getElementById('password2').value;
-    newpassword = document.getElementById('newpassword2').value;
+            password = document.getElementById('password2').value;
+            newpassword = document.getElementById('newpassword2').value;
 
-    password = document.getElementById('password').value = password;
-    newpassword = document.getElementById('newpassword').value = newpassword;
+            password = document.getElementById('password').value = password;
+            newpassword = document.getElementById('newpassword').value = newpassword;
 
-    form.submit();
-}
+            form.submit();
+        }
     </script>
-    
 @endsection

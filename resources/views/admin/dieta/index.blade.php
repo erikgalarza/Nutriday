@@ -598,6 +598,7 @@
             dietaid = null;
 
         function opcion(key) {
+         let diaSeleccionado =  document.getElementById('selectorDia'+key).value;
             // console.log('valor de dieta:'+dietaid)
             // console.log('valor de paciente:'+pacienteid)
             
@@ -607,10 +608,13 @@
                     data: {
                         dieta_id: dietaid,
                         paciente_id: pacienteid,
-                        diaSeleccionado:key
+                        diaSeleccionado:diaSeleccionado
                     }
                 }).done(function(res){
+
                     console.log(res);
+                    // let arreglo = JSON.parse(res)
+                    // console.log(arreglo)
                     var contenedor1 = document.getElementById('alimentosDesayuno'+key);
                     var contenedor2 = document.getElementById('alimentosColacion1'+key);
                     var contenedor3 = document.getElementById('alimentosAlmuerzo'+key);
@@ -621,45 +625,55 @@
                     contenedor1.innerHTML='';  contenedor2.innerHTML='';  contenedor3.innerHTML=''; contenedor4.innerHTML='';
                     contenedor5.innerHTML='';  contenedor6.innerHTML='';
 
-                    for(let i = 0; i<res.length; i++)
-                     {
-                        if(res[i].horario=="Desayuno")
+                    
+                    for(let i =0 ; i<res.length ; i++)
+                    {
+                        let comida = res[i]
+
+                        cant = Object.keys(comida);
+                        long = cant.length
+                        for(let j= 0; j<long-2; j++)
                         {
-                            let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                        
+                            if(i==0)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
                             <div><h5 >${res[i].cantidad}</h5></div>`
                             $(contenedor1).append(contenido)
                         }
-                        if(res[i].horario=="Colacion de la mañana")
+                        if(i==1)
                         {
-                            let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
                             <div><h5 >${res[i].cantidad}</h5></div>`
                             $(contenedor2).append(contenido)
                         }
-                        if(res[i].horario=="Almuerzo")
+                        if(i==2)
                         {
-                            let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
                             <div><h5 >${res[i].cantidad}</h5></div>`
                             $(contenedor3).append(contenido)
                         }
-                        if(res[i].horario=="Colación de la tarde")
+                        if(i==3)
                         {
-                            let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
                             <div><h5 >${res[i].cantidad}</h5></div>`
                             $(contenedor4).append(contenido)
                         }
-                          if(res[i].horario=="Merienda")
+                        if(i==4)
                         {
-                            let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
                             <div><h5 >${res[i].cantidad}</h5></div>`
                             $(contenedor5).append(contenido)
                         }
-                        if(res[i].horario=="Cena")
+                        if(i==5)
                         {
-                            let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
                             <div><h5 >${res[i].cantidad}</h5></div>`
                             $(contenedor6).append(contenido)
                         }
-                     }
+                        }
+
+                    }
                  
                 })
         }

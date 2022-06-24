@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dieta extends Model
 {
-    use HasFactory;
+    // use HasFactory;
     public $fillable = 
     [
         "id",
@@ -17,7 +17,6 @@ class Dieta extends Model
         "imc",
         "estado",
         "observaciones"
-        // "user_id"
     ];
 
     public function alimentos()
@@ -34,6 +33,17 @@ class Dieta extends Model
     {
         return $this->belongsToMany(Dia::class);
     }
+
+    // public function dieta_acd()
+    // {
+    //     return $this->belongsToMany(Dieta_acd::class,'dieta_acds');
+    // }
+
+     // =========================== dieta_alimento_comida_dia
+     public function acds()
+     {
+         return $this->belongsToMany(AlimentoComidaDia::class,'dieta_acds','dieta_id','acd_id')->withTimestamps();
+     }
 
     
 

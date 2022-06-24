@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('alimento_id');
             $table->unsignedBigInteger('comida_id');
-            $table->unsignedBigInteger('dia_id');          
+            $table->unsignedBigInteger('dia_id');   
+            $table->integer('cantidad')->default(1);       
             $table->foreign('alimento_id')->references('id')->on('alimentos');
             $table->foreign('comida_id')->references('id')->on('comidas');
             $table->foreign('dia_id')->references('id')->on('dias');

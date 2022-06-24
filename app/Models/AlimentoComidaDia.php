@@ -13,10 +13,12 @@ class AlimentoComidaDia extends Pivot
         'alimento_id',
         'comida_id',
         'dia_id',
+        'cantidad'
     ];
 
-    public function dieta_acd()
+// ============== dieta_acd
+    public function dieta()
     {
-        return $this->belongsToMany(Dieta_acd::class,'dieta_adc');
+        return $this->belongsToMany(Dieta::class,'dietas','acd_id','dieta_id')->withTimestamps();
     }
 }

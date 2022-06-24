@@ -6,7 +6,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Dietas por paciente</li>
             </ol>
         </nav>
@@ -21,7 +21,7 @@
 }
 </style>
 <div class="card ">
-    <div class="mb-3" style="background-color:#4b6ac3">
+    <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
         <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
             Paciente {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
     </div>

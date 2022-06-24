@@ -15,7 +15,7 @@
 
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class=" mb-3" style="background-color:#4b6ac3 ">
+            <div class=" mb-4" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">Datos antropométricos para  {{$paciente->nombre}} {{$paciente->apellido}}</h3>
 
         </div>
@@ -100,9 +100,7 @@
                         <div class="col-xl-8 ">
                             <textarea cols="30" rows="10" style="border-radius:10px" name="observaciones"type="text"
                                  class="form-control"
-                                id="observaciones">
-                                
-                            </textarea>
+                                id="observaciones"></textarea>
                             <p class="text-danger font-weight-bold">{{$errors->first('observaciones')}}</p>
                         </div>
                     </div>

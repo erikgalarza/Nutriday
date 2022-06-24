@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Unidades de medida
         </h3>
@@ -13,7 +13,7 @@
     </div>
     <div class="card">
         <div class="mb-3" style="background-color:#4b6ac3">
-            <h3 class="card-title titulosa text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Unidades de medida</h3>
+            <h3 class="card-title titulosa text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">Unidades de medida</h3>
             </div>
 
             @if(count($errors)>0)
@@ -28,7 +28,7 @@
             </div>
             @endif
 
-            
+
         <div class="card-body">
             <div class="container" >
                 <div class="row justify-content-center">
@@ -44,7 +44,7 @@
 
             <div class="col-12 justify-content-center row mt-3">
                 <div class="table-responsive text-left w-50">
-                        <table id="order-listing" class="table">
+                        <table id="order-listing" class="table mb-3">
                             <thead>
                                 <tr>
                                     <th>N°</th>

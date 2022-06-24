@@ -1,21 +1,20 @@
-
 @extends('admin.dashboard')
 @section('contenido')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Ver dietas
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Dietas</li>
             </ol>
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">
+        <div class=" mb-3" style="background-color:#4b6ac3 ">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Dietas predefinidas</h3>
         </div>
         <div class="card-body">
@@ -26,7 +25,6 @@
                             <thead>
                                 <tr>
                                     <th>N°</th>
-
                                     <th>Nombre dieta</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -265,10 +263,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
-            <h3 class="card-title text-center mb-5 mt-5 text-white"style="text-transform: uppercase; font-weight:bold">
-                Dietas Asignadas</h3>
+
+    <!-- =============== tabla dietas asignadas a pacientes ========================================== -->
+    <div class="card mt-4">
+        <div class=" mb-3" style="background-color: #4eba74">
+            <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+                Dietas Asignadas a pacientes</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -281,8 +284,9 @@
                                     <th>Nombre dieta</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
-                                    <th>Paciente</th>
                                     <th>Alimentos</th>
+                                    <th>Paciente</th>
+                                    <th>Fecha asignación</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -309,8 +313,10 @@
                                                             <div class="card-body">
                                                                 <h4 class="card-title">Dieta semanal</h4>
                                                                 <p class="card-description">Paciente: </p>
-                                                                <select class="form-control" onchange="opcion({{$key}});" id="selectorDia{{$key}}">
-                                                                    <option  disabled>Seleccione un día</option>
+                                                                <select class="form-control"
+                                                                    onchange="opcion({{ $key }});"
+                                                                    id="selectorDia{{ $key }}">
+                                                                    <option disabled>Seleccione un día</option>
                                                                     <option value="1">Lunes</option>
                                                                     <option value="2">Martes</option>
                                                                     <option value="3">Miercoles</option>
@@ -319,65 +325,92 @@
                                                                     <option value="6">Sabado</option>
                                                                     <option value="7">Domingo</option>
                                                                 </select>
-                                                                <div class="container my-2" style=" height:600px; display:flex; flex-wrap:wrap; flex-direction:row;" id="container{{$key}}">
-                                                                    <div class="desayuno w-100 text-center text-center" id="desayuno{{$key}}">
+                                                                <div class="container my-2"
+                                                                    style=" height:600px; display:flex; flex-wrap:wrap; flex-direction:row;"
+                                                                    id="container{{ $key }}">
+                                                                    <div class="desayuno w-100 text-center text-center"
+                                                                        id="desayuno{{ $key }}">
                                                                         <h5 class="textoDesayuno">Desayuno</h5>
-                                                                        <div class="cabecera" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                                        <div class="cabecera"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
                                                                             <h5>Alimento</h5>
                                                                             <h5>Cantidad</h5>
                                                                         </div>
-                                                                        <div class="alimentosDesayuno" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center" id="alimentosDesayuno{{$key}}">
+                                                                        <div class="alimentosDesayuno"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                                            id="alimentosDesayuno{{ $key }}">
                                                                         </div>
                                                                     </div>
-                                                                    
-                                                                    <div class="colacion1 w-100 text-center text-center" id="colacion1{{$key}}">
+
+                                                                    <div class="colacion1 w-100 text-center text-center"
+                                                                        id="colacion1{{ $key }}">
                                                                         <h5 class="textoColacion1">Colación mañanera</h5>
-                                                                        <div class="cabecera" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                                        <div class="cabecera"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
                                                                             <h5>Alimento</h5>
                                                                             <h5>Cantidad</h5>
                                                                         </div>
-                                                                        <div class="alimentosColacion1" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center" id="alimentosColacion1{{$key}}">
+                                                                        <div class="alimentosColacion1"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                                            id="alimentosColacion1{{ $key }}">
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="almuerzo w-100 text-center text-center" id="almuerzo{{$key}}">
+                                                                    <div class="almuerzo w-100 text-center text-center"
+                                                                        id="almuerzo{{ $key }}">
                                                                         <h5 class="textoAlmuerzo">Almuerzo</h5>
-                                                                        <div class="cabecera" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                                        <div class="cabecera"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
                                                                             <h5>Alimento</h5>
                                                                             <h5>Cantidad</h5>
                                                                         </div>
-                                                                        <div class="alimentosAlmuerzo" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center" id="alimentosAlmuerzo{{$key}}">
+                                                                        <div class="alimentosAlmuerzo"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                                            id="alimentosAlmuerzo{{ $key }}">
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="colacion2 w-100 text-center text-center" id="colacion2{{$key}}">
-                                                                        <h5 class="textoColacion2">Colación de la tarde</h5>
-                                                                        <div class="cabecera" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                                    <div class="colacion2 w-100 text-center text-center"
+                                                                        id="colacion2{{ $key }}">
+                                                                        <h5 class="textoColacion2">Colación de la tarde
+                                                                        </h5>
+                                                                        <div class="cabecera"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
                                                                             <h5>Alimento</h5>
                                                                             <h5>Cantidad</h5>
                                                                         </div>
-                                                                        <div class="alimentosColacion2" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center" id="alimentosColacion2{{$key}}">
+                                                                        <div class="alimentosColacion2"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                                            id="alimentosColacion2{{ $key }}">
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="merienda w-100 text-center text-center" id="merienda{{$key}}">
+                                                                    <div class="merienda w-100 text-center text-center"
+                                                                        id="merienda{{ $key }}">
                                                                         <h5 class="textoMerienda">Merienda</h5>
-                                                                        <div class="cabecera" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                                        <div class="cabecera"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
                                                                             <h5>Alimento</h5>
                                                                             <h5>Cantidad</h5>
                                                                         </div>
-                                                                        <div class="alimentosMerienda" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center" id="alimentosMerienda{{$key}}">
+                                                                        <div class="alimentosMerienda"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                                            id="alimentosMerienda{{ $key }}">
                                                                         </div>
                                                                     </div>
 
-                                                                    
-                                                                    <div class="cena w-100 text-center text-center" id="cena{{$key}}">
+
+                                                                    <div class="cena w-100 text-center text-center"
+                                                                        id="cena{{ $key }}">
                                                                         <h5 class="textoCena">Cena</h5>
-                                                                        <div class="cabecera" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                                        <div class="cabecera"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
                                                                             <h5>Alimento</h5>
                                                                             <h5>Cantidad</h5>
                                                                         </div>
-                                                                        <div class="alimentosCena" style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center" id="alimentosCena{{$key}}">
+                                                                        <div class="alimentosCena"
+                                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                                            id="alimentosCena{{ $key }}">
                                                                         </div>
                                                                     </div>
 
@@ -409,9 +442,6 @@
                                 <td>{{ $dieta['imc'] }} (Obeso)</td>
                             @endif
                             <td>
-                                {{ $paciente->nombre }}
-                            </td>
-                            <td>
                                 <a title="Agregar alimentos a la dieta"
                                     href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
                                     class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
@@ -422,10 +452,14 @@
                                         class="fa-solid fa-utensils"></i></a>
                             </td>
                             <td>
+                                <a href="{{route('paciente.historial')}}">{{ $paciente->nombre }} {{ $paciente->aepllido }}</a>
+                            </td>
+                            <td>{{ $dieta->created_at }}</td>
+                            <td>
 
                                 <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{ $dieta->id }}"
                                     class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
-                              
+
 
                                 <form method="post" id="deletecategoria"
                                     action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
@@ -583,6 +617,8 @@
             </div>
         </div>
     </div>
+
+
     {{-- {{ $dietas->links() }} --}}
     </div>
     </div>
@@ -601,6 +637,7 @@
          let diaSeleccionado =  document.getElementById('selectorDia'+key).value;
             // console.log('valor de dieta:'+dietaid)
             // console.log('valor de paciente:'+pacienteid)
+<<<<<<< HEAD
             
                 $.ajax({
                     url: "{{ route('dieta.traerAlimentos') }}",
@@ -676,6 +713,67 @@
                     }
                  
                 })
+=======
+
+            $.ajax({
+                url: "{{ route('dieta.traerAlimentos') }}",
+                dataType: "json",
+                data: {
+                    dieta_id: dietaid,
+                    paciente_id: pacienteid,
+                    diaSeleccionado: key
+                }
+            }).done(function(res) {
+                console.log(res);
+                var contenedor1 = document.getElementById('alimentosDesayuno' + key);
+                var contenedor2 = document.getElementById('alimentosColacion1' + key);
+                var contenedor3 = document.getElementById('alimentosAlmuerzo' + key);
+                var contenedor4 = document.getElementById('alimentosColacion2' + key);
+                var contenedor5 = document.getElementById('alimentosMerienda' + key);
+                var contenedor6 = document.getElementById('alimentosCena' + key);
+
+                contenedor1.innerHTML = '';
+                contenedor2.innerHTML = '';
+                contenedor3.innerHTML = '';
+                contenedor4.innerHTML = '';
+                contenedor5.innerHTML = '';
+                contenedor6.innerHTML = '';
+
+                for (let i = 0; i < res.length; i++) {
+                    if (res[i].horario == "Desayuno") {
+                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                        $(contenedor1).append(contenido)
+                    }
+                    if (res[i].horario == "Colacion de la mañana") {
+                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                        $(contenedor2).append(contenido)
+                    }
+                    if (res[i].horario == "Almuerzo") {
+                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                        $(contenedor3).append(contenido)
+                    }
+                    if (res[i].horario == "Colación de la tarde") {
+                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                        $(contenedor4).append(contenido)
+                    }
+                    if (res[i].horario == "Merienda") {
+                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                        $(contenedor5).append(contenido)
+                    }
+                    if (res[i].horario == "Cena") {
+                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                        $(contenedor6).append(contenido)
+                    }
+                }
+
+            })
+>>>>>>> alvaro
         }
 
         function obtenerIdPaciente(idpaciente) {

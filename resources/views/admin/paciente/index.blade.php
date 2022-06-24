@@ -12,7 +12,7 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-4" style="background-color:#4b6ac3 ">
+        <div class=" mb-4" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Datos Pacientes</h3>
         </div>

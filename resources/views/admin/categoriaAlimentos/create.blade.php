@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-<div class="page-header">
+<div class="page-header mb-2">
     <h3 class="page-title">
        Agregar categoría
     </h3>
@@ -15,8 +15,8 @@
 
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            <div class="mb-3 px-3" style="background-color:#4b6ac3">
-                <h3 class="card-title titulosa text-center mb-5 mt-5 text-white" style="text-transform: uppercase; font-weight:bold">Datos de la categoría</h3>
+            <div class="mb-3 px-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                <h3 class="card-title titulosa text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">Datos de la categoría</h3>
                 </div>
             <div class="card-body">
                 <div class="col-12 row justify-content-center px-0 m-0">
@@ -29,9 +29,9 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4 col-12 col-form-label text-xl-right">Nombre de la categoría:</label>
                         <div class="col-xl-8 col-12">
-                            <input style="border-radius:10px;"  name="nombre" type="text" class="form-control" id="exampleInputUsername2" placeholder="Ingrese el nombre">
+                            <input style="border-radius:10px;"  name="nombre" type="text" class="form-control" id="exampleInputUsername2" placeholder="Ingrese el nombre...Ejm: Frutas">
                             <p class="text-danger font-weight-bold">{{$errors->first('nombre')}}</p>
-                            
+
                         </div>
                     </div>
                     <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">

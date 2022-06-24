@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Crear dieta
         </h3>
@@ -15,13 +15,13 @@
 
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class=" mb-5" style="background-color:#4b6ac3 ">
+                <div class=" mb-4" style="background-color:#4b6ac3 ">
                     @if (isset($paciente))
-                        <h3 class="card-title text-center mb-5 mt-5 text-white"
+                        <h3 class="card-title text-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente
                             {{ $paciente->nombre }}</h3>
                     @else
-                        <h3 class="card-title text-center mb-5 mt-5 text-white"
+                        <h3 class="card-title text-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Datos para la dieta del paciente</h3>
                     @endif
                 </div>
@@ -129,8 +129,8 @@
                                             <button type="submit" class="btn btn-success mb-2 col-sm-12 col-md-6">Agregar
                                                 alimentos
                                             </button>
-                                            {{-- <a class="btn btn-light mb-2 col-sm-12 col-md-5"
-                                                href="{{ route('dieta.index') }}">Cancelar</a> --}}
+                                            <a class="btn btn-light mb-2 col-sm-12 col-md-5"
+                                                href="{{ route('dieta.index') }}">Cancelar</a>
                                         </div>
                                     </div>
 

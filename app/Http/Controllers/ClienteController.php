@@ -12,6 +12,7 @@ use App\Models\DatosAntropometrico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Models\Alimento;
 
 class ClienteController extends Controller
 {
@@ -47,13 +48,8 @@ class ClienteController extends Controller
         // dd("dfdfa");
        $dieta =  Dieta::find($dieta_id);
        
-       $dias = $dieta->dias()->get();
-       dd($dias);
-    //    dd($dias[0]->comidas()->get());
-    //    foreach($dias[0]->comidas()->get() as $horario)
-    //    {
-    //    }
-
+       $combinaciones = $dieta->acds()->get();
+  
        $alimentosLunes = collect();
        $alimentosMartes = collect();
        $alimentosMiercoles = collect();
@@ -63,88 +59,378 @@ class ClienteController extends Controller
        $alimentosSabado = collect();
        $alimentosDomingo = collect();
 
-    foreach($dias as $key => $dia)
-    {
-        // dd($dia);
-        if($key == 0)//lunes
-        {
-            $alimentosLunes = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',1)->get() as $alimento){
-                    dd($horario->alimentos()->where('dia_id',1)->get());
-                    $cantidad = $horario->alimentos()->where('dia_id',1)->get(['cantidad']); 
+
+       foreach($combinaciones as $combinacion)
+       {
+               if($combinacion->dia_id == 1 && $combinacion->comida_id==1)// lunes desayuno
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
                    
+                   $alimento->setAttribute('horario', 'desayuno');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosLunes->push($alimento);
+                //    $alimentosLunes->put('horario','desayuno');
+               }
+               if($combinacion->dia_id == 1 && $combinacion->comida_id==2)
+               {
+                
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion1');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosLunes->push($alimento);
+               }
+               if($combinacion->dia_id == 1 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosLunes->push($alimento);
+               }
+               if($combinacion->dia_id == 1 && $combinacion->comida_id==4)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion2');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosLunes->push($alimento);
+               }
+               if($combinacion->dia_id == 1 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosLunes->push($alimento); 
+               }
+               if($combinacion->dia_id == 1 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'cena');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosLunes->push($alimento); 
+               }
 
-            $alimentosLunes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
 
-        if($key == 1)//martes
-        {
-            $alimentosMartes = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',2)->get() as $alimento){
-                    $cantidad = $horario->alimentos()->where('dia_id',2)->get(['cantidad']); 
-            $alimentosMartes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
-        if($key == 2)//miercoles
-        {
-            $alimentosMiercoles = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',3)->get() as $alimento){
-                    $cantidad = $horario->alimentos()->where('dia_id',3)->get(['cantidad']); 
-            $alimentosMiercoles->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
-        if($key == 3)//jueves
-        {
-            $alimentosJueves = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',4)->get() as $alimento){
-                    $cantidad = $horario->alimentos()->where('dia_id',4)->get(['cantidad']); 
-            $alimentosJueves->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
+               // ========================= MARTES ================ //
+           
+         
+               if($combinacion->dia_id == 2 && $combinacion->comida_id==1)
+               {
+                   // dd($combinacion->alimento_id);
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'desayuno');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMartes->push($alimento); 
+               }
 
-        if($key == 4)//viernes
-        {
-            $alimentosViernes = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',5)->get() as $alimento){
-                    $cantidad = $horario->alimentos()->where('dia_id',5)->get(['cantidad']); 
-            $alimentosViernes->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
+               if($combinacion->dia_id == 2 && $combinacion->comida_id==2)
+               {
+                   
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion1');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMartes->push($alimento);
+               }
+               if($combinacion->dia_id == 2 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMartes->push($alimento);
+               }
+               if($combinacion->dia_id == 2 && $combinacion->comida_id==4)
+               {
+                $alimento = Alimento::find($combinacion->alimento_id);
+                $alimento->setAttribute('horario', 'colacion2');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                $alimentosMartes->push($alimento);
+               }
+               if($combinacion->dia_id == 2 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMartes->push($alimento);
+               }
+               if($combinacion->dia_id == 2 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'cena');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMartes->push($alimento); 
+               }
 
-        if($key == 5)//sabado
-        {
-            $alimentosSabado = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',6)->get() as $alimento){
-                    $cantidad = $horario->alimentos()->where('dia_id',6)->get(['cantidad']); 
-            $alimentosSabado->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
+               // ==================== MIERCOLES ======================0= //
+          
+               if($combinacion->dia_id == 3 && $combinacion->comida_id==1)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'desayuno');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMiercoles->push($alimento); 
+               }
+               if($combinacion->dia_id == 3 && $combinacion->comida_id==2)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion1');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMiercoles->push($alimento); 
+               }
+               if($combinacion->dia_id == 3 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMiercoles->push($alimento); 
+               }
+               if($combinacion->dia_id == 3 && $combinacion->comida_id==4)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion2');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMiercoles->push($alimento);
+                     
+               }
+               if($combinacion->dia_id == 3 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMiercoles->push($alimento); 
+               }
+               if($combinacion->dia_id == 3 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'cena');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosMiercoles->push($alimento); 
+               }
+           
+           // ==================== JUEVES ======================0= //
 
-        if($key == 6)//domingo
-        {
-            $alimentosDomingo = collect();
-            foreach($dia->comidas()->get() as $horario){
-                foreach($horario->alimentos()->where('dia_id',7)->get() as $alimento){
-                    $cantidad = $horario->alimentos()->where('dia_id',7)->get(['cantidad']); 
-            $alimentosDomingo->push(['alimento'=>$alimento,'cantidad'=>$cantidad[0]->cantidad,'horario'=>$horario->nombre,'imagen'=>$alimento->imagen->url]);
-                }
-            }
-        }
+               if($combinacion->dia_id == 4 && $combinacion->comida_id==1)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'desayuno');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosJueves->push($alimento); 
+               }
+               if($combinacion->dia_id == 4 && $combinacion->comida_id==2)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion1');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosJueves->push($alimento); 
+               }
+               if($combinacion->dia_id == 4 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosJueves->push($alimento);
+               }
+               if($combinacion->dia_id == 4 && $combinacion->comida_id==4)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion2');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosJueves->push($alimento);
+               }
+               if($combinacion->dia_id == 4 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosJueves->push($alimento); 
+               }
+               if($combinacion->dia_id == 4 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'cena');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosJueves->push($alimento); 
+               }
+           
+ // ==================== VIERNES ======================0= //
+           
+               if($combinacion->dia_id == 5 && $combinacion->comida_id==1)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'desayuno');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosViernes->push($alimento); 
+               }
+               if($combinacion->dia_id == 5 && $combinacion->comida_id==2)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion1');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosViernes->push($alimento);
+               }
+               if($combinacion->dia_id == 5 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosViernes->push($alimento); 
+               }
+               if($combinacion->dia_id == 5 && $combinacion->comida_id==4)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion2');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosViernes->push($alimento);
+               }
+               if($combinacion->dia_id == 5 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosViernes->push($alimento);
+               }
+               if($combinacion->dia_id == 5 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+
+                   $alimento->setAttribute('horario', 'cena');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosViernes->push($alimento);
+               }
+           
+ // ==================== SABADO ======================0= //
+
+               if($combinacion->dia_id == 6 && $combinacion->comida_id==1)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+
+                   $alimento->setAttribute('horario', 'desayuno');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosSabado->push($alimento); 
+               }
+               if($combinacion->dia_id == 6 && $combinacion->comida_id==2)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+
+                   $alimento->setAttribute('horario', 'colacion1');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosSabado->push($alimento); 
+               }
+               if($combinacion->dia_id == 6 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosSabado->push($alimento); 
+               }
+               if($combinacion->dia_id == 6 && $combinacion->comida_id==4)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion2');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosSabado->push($alimento);
+               }
+               if($combinacion->dia_id == 6 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosSabado->push($alimento);
+               }
+               if($combinacion->dia_id == 6 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'cena');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosSabado->push($alimento);
+               }
+           
+ // ==================== DOMINGO ======================0= //
+
         
-    }
+               if($combinacion->dia_id == 7 && $combinacion->comida_id==1)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'desayuno');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosDomingo->push($alimento); 
+               }
+               if($combinacion->dia_id == 7 && $combinacion->comida_id==2)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion1');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosDomingo->push($alimento); 
+               }
+               if($combinacion->dia_id == 7 && $combinacion->comida_id==3)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'almuerzo');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosDomingo->push($alimento);
+               }
+               if($combinacion->dia_id == 7 && $combinacion->comida_id==4)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'colacion2');
+                $alimento->setAttribute('imagen', $alimento->imagen->url);
+                $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosDomingo->push($alimento);
+               }
+               if($combinacion->dia_id == 7 && $combinacion->comida_id==5)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'merienda');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosDomingo->push($alimento); 
+               }
+               if($combinacion->dia_id == 7 && $combinacion->comida_id==6)
+               {
+                   $alimento = Alimento::find($combinacion->alimento_id);
+                   $alimento->setAttribute('horario', 'cena');
+                   $alimento->setAttribute('imagen', $alimento->imagen->url);
+                   $alimento->setAttribute('cantidad', $combinacion->cantidad);
+                   $alimentosDomingo->push($alimento);
+               }  
+            } 
+
 // dd($alimentosLunes,$alimentosMartes,$alimentosMiercoles,$alimentosJueves,$alimentosViernes, $alimentosSabado, $alimentosDomingo);
 
         return view('client.dietas.detalleDieta',compact('dieta','alimentosLunes','alimentosMartes','alimentosMiercoles','alimentosJueves','alimentosViernes','alimentosSabado','alimentosDomingo'));

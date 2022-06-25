@@ -312,11 +312,11 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <h4 class="card-title">Dieta semanal</h4>
-                                                                <p class="card-description">Paciente: </p>
+                                                                <p class="card-description">Paciente: {{$paciente->nombre}}{{$paciente->apellido }} </p>
                                                                 <select class="form-control"
                                                                     onchange="opcion({{ $key }});"
                                                                     id="selectorDia{{ $key }}">
-                                                                    <option disabled>Seleccione un día</option>
+                                                                    <option selected disabled>Seleccione un día</option>
                                                                     <option value="1">Lunes</option>
                                                                     <option value="2">Martes</option>
                                                                     <option value="3">Miercoles</option>
@@ -452,7 +452,7 @@
                                         class="fa-solid fa-utensils"></i></a>
                             </td>
                             <td>
-                                <a href="{{route('paciente.historial')}}">{{ $paciente->nombre }} {{ $paciente->aepllido }}</a>
+                                <a href="">{{ $paciente->nombre }} {{ $paciente->apellido }}</a>
                             </td>
                             <td>{{ $dieta->created_at }}</td>
                             <td>
@@ -635,9 +635,6 @@
 
         function opcion(key) {
          let diaSeleccionado =  document.getElementById('selectorDia'+key).value;
-            // console.log('valor de dieta:'+dietaid)
-            // console.log('valor de paciente:'+pacienteid)
-<<<<<<< HEAD
             
                 $.ajax({
                     url: "{{ route('dieta.traerAlimentos') }}",
@@ -713,67 +710,7 @@
                     }
                  
                 })
-=======
 
-            $.ajax({
-                url: "{{ route('dieta.traerAlimentos') }}",
-                dataType: "json",
-                data: {
-                    dieta_id: dietaid,
-                    paciente_id: pacienteid,
-                    diaSeleccionado: key
-                }
-            }).done(function(res) {
-                console.log(res);
-                var contenedor1 = document.getElementById('alimentosDesayuno' + key);
-                var contenedor2 = document.getElementById('alimentosColacion1' + key);
-                var contenedor3 = document.getElementById('alimentosAlmuerzo' + key);
-                var contenedor4 = document.getElementById('alimentosColacion2' + key);
-                var contenedor5 = document.getElementById('alimentosMerienda' + key);
-                var contenedor6 = document.getElementById('alimentosCena' + key);
-
-                contenedor1.innerHTML = '';
-                contenedor2.innerHTML = '';
-                contenedor3.innerHTML = '';
-                contenedor4.innerHTML = '';
-                contenedor5.innerHTML = '';
-                contenedor6.innerHTML = '';
-
-                for (let i = 0; i < res.length; i++) {
-                    if (res[i].horario == "Desayuno") {
-                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
-                            <div><h5 >${res[i].cantidad}</h5></div>`
-                        $(contenedor1).append(contenido)
-                    }
-                    if (res[i].horario == "Colacion de la mañana") {
-                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
-                            <div><h5 >${res[i].cantidad}</h5></div>`
-                        $(contenedor2).append(contenido)
-                    }
-                    if (res[i].horario == "Almuerzo") {
-                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
-                            <div><h5 >${res[i].cantidad}</h5></div>`
-                        $(contenedor3).append(contenido)
-                    }
-                    if (res[i].horario == "Colación de la tarde") {
-                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
-                            <div><h5 >${res[i].cantidad}</h5></div>`
-                        $(contenedor4).append(contenido)
-                    }
-                    if (res[i].horario == "Merienda") {
-                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
-                            <div><h5 >${res[i].cantidad}</h5></div>`
-                        $(contenedor5).append(contenido)
-                    }
-                    if (res[i].horario == "Cena") {
-                        let contenido = `<div><img style="max-width:50px;"  src='${res[i].alimento.imagen.url}'></div>
-                            <div><h5 >${res[i].cantidad}</h5></div>`
-                        $(contenedor6).append(contenido)
-                    }
-                }
-
-            })
->>>>>>> alvaro
         }
 
         function obtenerIdPaciente(idpaciente) {

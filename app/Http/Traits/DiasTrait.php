@@ -12,7 +12,20 @@ trait DiasTrait
         // dd($lunes);
         foreach($lunes as $alimento)
         {
-            if($alimento->horario==0){//desayuno
+            if($alimento->horario==="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                
+                // $dca_id = $alimento->comidas()->attach($desayuno->id, ['dia_id'=>$diaLunes->id]);//
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+
+            if($alimento->horario===0){//desayuno
                 $desayuno = Comida::find(1);
                 
                 // $dca_id = $alimento->comidas()->attach($desayuno->id, ['dia_id'=>$diaLunes->id]);//
@@ -34,7 +47,26 @@ trait DiasTrait
                     "acd_id" => $dca->id
                 ]);
             }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
+                  $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+
             if($alimento->horario==2){
+                $almuerzo = Comida::find(3);
+               $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
+                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+               Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+            if($alimento->horario=="almuerzo"){
                 $almuerzo = Comida::find(3);
                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
                  $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -52,7 +84,25 @@ trait DiasTrait
                    "acd_id" => $dca->id
                ]);
             }
+            if($alimento->horario=="colacion2"){
+                $colacionTarde = Comida::find(4);
+               $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
+                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+               Dieta_acd::create([
+                   "dieta_id"=>$dieta->id,
+                   "acd_id" => $dca->id
+               ]);
+            }
             if($alimento->horario==4){//merienda
+                $merienda = Comida::find(5);
+               $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
+                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+               Dieta_acd::create([
+                   "dieta_id"=>$dieta->id,
+                   "acd_id" => $dca->id
+               ]);
+            }
+            if($alimento->horario=="merienda"){//merienda
                 $merienda = Comida::find(5);
                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
                  $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -63,6 +113,15 @@ trait DiasTrait
             }
 
             if($alimento->horario==5){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
+                  $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaLunes->id,'cantidad'=>$alimento->cantidad]);
                   $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -91,8 +150,32 @@ trait DiasTrait
                     "acd_id" => $dca->id
                 ]);
             }
+            if($alimento->horario=="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                //RELACION COMIDA_DIA
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
 
             if($alimento->horario==7){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                //RELACION COMIDA_DIA
+                   $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
                 $colacionManana = Comida::find(2);
                 //RELACION COMIDA_DIA
                    $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
@@ -116,6 +199,19 @@ trait DiasTrait
                     "acd_id" => $dca->id
                 ]);
             }
+            if($alimento->horario=="almuerzo"){//almuerzo
+                $almuerzo = Comida::find(3);
+                //RELACION COMIDA_DIA
+                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+
             if($alimento->horario==9){//colacion de la tarde
                 $colacionTarde = Comida::find(4);
                 $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
@@ -127,6 +223,18 @@ trait DiasTrait
                     "acd_id" => $dca->id
                 ]);
             }
+            if($alimento->horario=="colacion2"){//colacion de la tarde
+                $colacionTarde = Comida::find(4);
+                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+
             if($alimento->horario==10){//merienda
                 $merienda = Comida::find(5);
                 $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
@@ -139,7 +247,31 @@ trait DiasTrait
                     "acd_id" => $dca->id
                 ]);
             }
+            if($alimento->horario=="merienda"){//merienda
+                $merienda = Comida::find(5);
+                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+
             if($alimento->horario==11){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
+                // dd($dca);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+                // dd($dca->id);
+                Dieta_acd::create([
+                    "dieta_id"=>$dieta->id,
+                    "acd_id" => $dca->id
+                ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaMartes->id,'cantidad'=>$alimento->cantidad]);
                 // dd($dca);
@@ -168,6 +300,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==13){//colacion de la mañana
                 $colacionManana = Comida::find(2);
                 $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
@@ -177,6 +319,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==14){//almuerzo
                 $almuerzo = Comida::find(3);
                 $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
@@ -186,6 +338,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="almuerzo"){//almuerzo
+                $almuerzo = Comida::find(3);
+                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==15){//colacion de la tarde
                 $colacionTarde = Comida::find(4);
                 $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
@@ -195,6 +357,17 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            
+            if($alimento->horario=="colacion2"){//colacion de la tarde
+                $colacionTarde = Comida::find(4);
+                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+        
             if($alimento->horario==16){//merienda
                 $merienda = Comida::find(5);
                 $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
@@ -204,7 +377,28 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            
+            if($alimento->horario=="merienda"){//merienda
+                $merienda = Comida::find(5);
+                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
+
             if($alimento->horario==17){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaMiercoles->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -231,6 +425,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==19){//colacion de la mañana
                 $colacionManana = Comida::find(2);
                 $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
@@ -240,7 +444,26 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==20){//almuerzo
+                $almuerzo = Comida::find(3);
+                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="almuerzo"){//almuerzo
                 $almuerzo = Comida::find(3);
                 $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -258,6 +481,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion2"){//colacion de la tarde
+                $colacionTarde = Comida::find(4);
+                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==22){//merienda
                 $merienda = Comida::find(5);
                 $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
@@ -267,7 +500,26 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="merienda"){//merienda
+                $merienda = Comida::find(5);
+                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==23){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaJueves->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -294,6 +546,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==25){//colacion de la mañana
                 $colacionManana = Comida::find(2);
                 $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
@@ -303,7 +565,26 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+        
             if($alimento->horario==26){//almuerzo
+                $almuerzo = Comida::find(3);
+                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="almuerzo"){//almuerzo
                 $almuerzo = Comida::find(3);
                 $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -321,6 +602,15 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion2"){//colacion de la tarde
+                $colacionTarde = Comida::find(4);
+                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
             if($alimento->horario==28){//merienda
                 $merienda = Comida::find(5);
                 $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
@@ -330,7 +620,26 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="merienda"){//merienda
+                $merienda = Comida::find(5);
+                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==29){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaViernes->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -357,6 +666,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==31){//colacion de la mañana
                 $colacionManana = Comida::find(2);
                 $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
@@ -366,6 +685,17 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            
+
             if($alimento->horario==32){//almuerzo
                 $almuerzo = Comida::find(3);
                 $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
@@ -375,6 +705,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="almuerzo"){//almuerzo
+                $almuerzo = Comida::find(3);
+                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==33){//colacion de la tarde
                 $colacionTarde = Comida::find(4);
                 $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
@@ -384,6 +724,16 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="colacion2"){//colacion de la tarde
+                $colacionTarde = Comida::find(4);
+                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+
             if($alimento->horario==34){//merienda
                 $merienda = Comida::find(5);
                 $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
@@ -393,7 +743,25 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="merienda"){//merienda
+                $merienda = Comida::find(5);
+                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
             if($alimento->horario==35){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaSabado->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -420,7 +788,25 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="desayuno"){//desayuno
+                $desayuno = Comida::find(1);
+                $desayuno->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
             if($alimento->horario==37){//colacion de la mañana
+                $colacionManana = Comida::find(2);
+                $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="colacion1"){//colacion de la mañana
                 $colacionManana = Comida::find(2);
                 $colacionManana->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -438,7 +824,25 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="almuerzo"){//almuerzo
+                $almuerzo = Comida::find(3);
+                $almuerzo->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
             if($alimento->horario==39){//colacion de la tarde
+                $colacionTarde = Comida::find(4);
+                $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="colacion2"){//colacion de la tarde
                 $colacionTarde = Comida::find(4);
                 $colacionTarde->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
@@ -456,7 +860,25 @@ trait DiasTrait
                   "acd_id" => $dca->id
               ]);
             }
+            if($alimento->horario=="merienda"){//merienda
+                $merienda = Comida::find(5);
+                $merienda->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
             if($alimento->horario==41){//cena
+                $cena = Comida::find(6);
+                $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
+                $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();
+              Dieta_acd::create([
+                  "dieta_id"=>$dieta->id,
+                  "acd_id" => $dca->id
+              ]);
+            }
+            if($alimento->horario=="cena"){//cena
                 $cena = Comida::find(6);
                 $cena->alimentos()->attach($alimento->id,['dia_id'=>$diaDomingo->id,'cantidad'=>$alimento->cantidad]);
                 $dca = AlimentoComidaDia::orderBy('id','DESC')->take(1)->first();

@@ -14,10 +14,8 @@ return new class extends Migration
             $table->unsignedBigInteger('paciente_id');
             $table->unsignedBigInteger('user_id')->nullable();
            //falta campo fecha de asignacion de la dieta al paciente
-
            $table->timestamp('created_at')->nullable();
            $table->timestamp('updated_at')->nullable();
-           
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('dieta_id')->references('id')->on('dietas')->onDelete('cascade')->onUpdate('cascade');
             // $table->timestamps();

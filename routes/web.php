@@ -119,17 +119,20 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::post('/paciente/datos-antropometricos',[PacienteController::class,'guardarDatosAntropometricos'])->name('paciente.guardarDatosAntropometricos');
     Route::post('/paciente/actualizar',[PacienteController::class,'actualizarPaciente'])->name('paciente.actualizar');
     Route::get('/paciente/estados/{paciente_id}',[PacienteController::class,'estadosPaciente'])->name('paciente.estadosPaciente');
+
+    //Ruta agregada 25/06/2022
+    Route::get('/dieta/editar/{dieta_id}',[DietaController::class,'editarAlimentosDieta'])->name('dieta.editarAlimentosDieta');
+  
 });
 
 
 //--------------------- RUTAS CON AJAX 2 ---------------------//
     Route::get('/alimento/datos',[AlimentoController::class,'datosAlimento'])->name('alimento.datosAlimento');
-     //RUTA CON AJAX PARA GUARDAR LA DIETA CON LOS ALIMENTOS Y DEMAS
-     Route::get('/guardarDietaAsignada',[DietaController::class,'guardarDieta'])->name('dieta.guardarDieta');
+    Route::get('/guardarDietaAsignada',[DietaController::class,'guardarDieta'])->name('dieta.guardarDieta');
     Route::get('/alimento/datos/guardar',[AlimentoController::class,'datosDietaGuardar'])->name('alimento.datosDietaGuardar');
-    // Route::cambios
     Route::get('/dieta/alimentos',[DietaController::class,'traerAlimentos'])->name('dieta.traerAlimentos');
-
+    Route::get('/dieta/cargar-alimentos',[DietaController::class,'cargarAlimentos'])->name('dieta.cargarAlimentosDieta');
+    Route::get('/dieta/nueva',[DietaController::class,'guardarDietaNueva'])->name('dieta.guardarDietaNueva');
 
 // ============================= RUTAS PARA CLIENTES ============================ //
 Route::group(['middleware'=>'paciente'], function () {

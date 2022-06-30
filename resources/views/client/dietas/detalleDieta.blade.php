@@ -229,9 +229,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        //         document.addEventListener('DOMContentLoaded', e => {
-        //             dibujar();
-        // });
 
             function iterar(dia,id)
             {
@@ -250,7 +247,7 @@
                         {
                     if(dia[i].horario==='desayuno' && id == j)
                     {   
-                        console.log(dia[i].nombre)
+                        
                         let todo = `<tr>
                             <td></td>
                             <td><img src="${dia[i].imagen.url}"></td>
@@ -269,7 +266,7 @@
                     {
                     if(dia[i].horario==='colacion1' && id == j)
                     {   
-                        console.log(dia[i].nombre)
+                        
                         let todo = `<tr>
                             <td></td>
                             <td><img src="${dia[i].imagen.url}"></td>
@@ -287,7 +284,7 @@
                     {
                     if(dia[i].horario==='almuerzo' && id == j)
                     {   
-                        console.log(dia[i].nombre)
+                        
                         let todo = `<tr>
                             <td></td>
                             <td><img src="${dia[i].imagen.url}"></td>
@@ -305,7 +302,7 @@
                     {
                     if(dia[i].horario==='colacion2' && id == j)
                     {   
-                        console.log(dia[i].nombre)
+                        
                         let todo = `<tr>
                             <td></td>
                             <td><img src="${dia[i].imagen.url}"></td>
@@ -323,7 +320,7 @@
                     {
                     if(dia[i].horario==='merienda' && id == j)
                     {   
-                        console.log(dia[i].nombre)
+                        
                         let todo = `<tr>
                             <td></td>
                             <td><img src="${dia[i].imagen.url}"></td>
@@ -340,7 +337,6 @@
                     {
                     if(dia[i].horario==='cena' && id == j)
                     {   
-                        console.log(dia[i].nombre)
                         let todo = `<tr>
                             <td></td>
                             <td><img src="${dia[i].imagen.url}"></td>
@@ -358,7 +354,6 @@
 
         function dibujar(id)
         {
-            console.log('valor de id: ',id)
             var lunes = document.getElementById('lunes').value;lunes = JSON.parse(lunes);
             var martes = document.getElementById('martes').value;martes = JSON.parse(martes);
             var miercoles = document.getElementById('miercoles').value;miercoles = JSON.parse(miercoles);

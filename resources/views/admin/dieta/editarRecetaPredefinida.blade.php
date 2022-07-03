@@ -16,7 +16,7 @@
     <div class="page-header mb-2" style="display:flex; text-align:center; justify-content:center; align-items:center;">
         <div>
             <h3 class="page-title">
-                Crear dieta
+                Editar dieta predefinida
             </h3>
         </div>
         @if (isset($paciente))

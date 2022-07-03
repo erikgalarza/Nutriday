@@ -122,6 +122,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
 
     //Ruta agregada 25/06/2022
     Route::get('/dieta/editar/{dieta_id}',[DietaController::class,'editarAlimentosDieta'])->name('dieta.editarAlimentosDieta');
+    Route::get('/dieta-predefinida/editar/{dieta_id}',[DietaController::class,'editarAlimentosDietaPredefinida'])->name('dieta.editarAlimentosDietaPredefinida');
   
 });
 
@@ -133,6 +134,8 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/dieta/alimentos',[DietaController::class,'traerAlimentos'])->name('dieta.traerAlimentos');
     Route::get('/dieta/cargar-alimentos',[DietaController::class,'cargarAlimentos'])->name('dieta.cargarAlimentosDieta');
     Route::get('/dieta/nueva',[DietaController::class,'guardarDietaNueva'])->name('dieta.guardarDietaNueva');
+    Route::post('/dieta/crear',[DietaController::class,'crearDieta'])->name('dieta.crearDieta');
+    Route::get('/dieta-predefinida/alimentos',[DietaController::class,'traerAlimentosDietaPredefinida'])->name('dieta.traerAlimentosDietaPredefinida');
 
 // ============================= RUTAS PARA CLIENTES ============================ //
 Route::group(['middleware'=>'paciente'], function () {

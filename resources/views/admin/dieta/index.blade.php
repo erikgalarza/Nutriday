@@ -58,10 +58,11 @@
 
                                         <td>
                                             <a title="Agregar alimentos a la dieta"
-                                                href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
+                                                href="{{ route('dieta.editarAlimentosDietaPredefinida', $dieta->id) }}"
                                                 class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
 
-                                            <a class="btn btn-outline-primary mb-1" title="Ver alimentos"><i
+                                            <a onclick="obtenerIdDieta({{ $dieta->id }});"
+                                                data-toggle="modal" data-target="#exampleModal{{$dieta->id}}" class="btn btn-outline-primary mb-1" title="Ver alimentos"><i
                                                     class="fa-solid fa-utensils"></i></a>
                                         </td>
                                         <td>
@@ -257,6 +258,140 @@
                                         </div>
                                     </div>
                     </div>
+
+
+                    <div class="modal fade" id="exampleModal{{ $dieta->id }}" tabindex="-1"
+                        role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #4b6ac3">
+                                    <h5
+                                        class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;  id="ModalLabel">
+                                        Alimentos de la dieta</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span style="color:white;font-size:30px"
+                                            aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body py-3 px-0">
+                                    <div class="container">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Dieta semanal</h4>
+                                              
+                                                <select class="form-control"
+                                                    onchange="opcionDietaPredefinida({{ $key }});"
+                                                    id="selectorDiaTop{{ $key }}">
+                                                    <option selected disabled>Seleccione un día</option>
+                                                    <option value="1">Lunes</option>
+                                                    <option value="2">Martes</option>
+                                                    <option value="3">Miercoles</option>
+                                                    <option value="4">Jueves</option>
+                                                    <option value="5">Viernes</option>
+                                                    <option value="6">Sabado</option>
+                                                    <option value="7">Domingo</option>
+                                                </select>
+                                                <div class="container my-2"
+                                                    style=" height:600px; display:flex; flex-wrap:wrap; flex-direction:row;"
+                                                    id="container{{ $key }}">
+                                                    <div class="desayuno w-100 text-center text-center"
+                                                        id="desayuno{{ $key }}">
+                                                        <h5 class="textoDesayuno">Desayuno</h5>
+                                                        <div class="cabecera"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                            <h5>Alimento</h5>
+                                                            <h5>Cantidad</h5>
+                                                        </div>
+                                                        <div class="alimentosDesayuno"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                            id="alimentosDesayuno{{ $key }}">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="colacion1 w-100 text-center text-center"
+                                                        id="colacion1{{ $key }}">
+                                                        <h5 class="textoColacion1">Colación mañanera</h5>
+                                                        <div class="cabecera"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                            <h5>Alimento</h5>
+                                                            <h5>Cantidad</h5>
+                                                        </div>
+                                                        <div class="alimentosColacion1"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                            id="alimentosColacion1{{ $key }}">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="almuerzo w-100 text-center text-center"
+                                                        id="almuerzo{{ $key }}">
+                                                        <h5 class="textoAlmuerzo">Almuerzo</h5>
+                                                        <div class="cabecera"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                            <h5>Alimento</h5>
+                                                            <h5>Cantidad</h5>
+                                                        </div>
+                                                        <div class="alimentosAlmuerzo"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                            id="alimentosAlmuerzo{{ $key }}">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="colacion2 w-100 text-center text-center"
+                                                        id="colacion2{{ $key }}">
+                                                        <h5 class="textoColacion2">Colación de la tarde
+                                                        </h5>
+                                                        <div class="cabecera"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                            <h5>Alimento</h5>
+                                                            <h5>Cantidad</h5>
+                                                        </div>
+                                                        <div class="alimentosColacion2"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                            id="alimentosColacion2{{ $key }}">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="merienda w-100 text-center text-center"
+                                                        id="merienda{{ $key }}">
+                                                        <h5 class="textoMerienda">Merienda</h5>
+                                                        <div class="cabecera"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                            <h5>Alimento</h5>
+                                                            <h5>Cantidad</h5>
+                                                        </div>
+                                                        <div class="alimentosMerienda"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                            id="alimentosMerienda{{ $key }}">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="cena w-100 text-center text-center"
+                                                        id="cena{{ $key }}">
+                                                        <h5 class="textoCena">Cena</h5>
+                                                        <div class="cabecera"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center;">
+                                                            <h5>Alimento</h5>
+                                                            <h5>Cantidad</h5>
+                                                        </div>
+                                                        <div class="alimentosCena"
+                                                            style="display:flex; flex-direction:row; justify-content:space-evenly; align-items:center"
+                                                            id="alimentosCena{{ $key }}">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     @endforeach
                     </tbody>
                     </table>
@@ -633,6 +768,85 @@
         var pacienteid = null,
             dietaid = null;
 
+            function opcionDietaPredefinida(key) {
+         let diaSeleccionado =  document.getElementById('selectorDiaTop'+key).value;
+            
+                $.ajax({
+                    url: "{{ route('dieta.traerAlimentosDietaPredefinida') }}",
+                    dataType: "json",
+                    data: {
+                        dieta_id: dietaid,
+                        diaSeleccionado:diaSeleccionado
+                    }
+                }).done(function(res){
+
+                    console.log(res);
+                    // let arreglo = JSON.parse(res)
+                    // console.log(arreglo)
+                    var contenedor1 = document.getElementById('alimentosDesayuno'+key);
+                    var contenedor2 = document.getElementById('alimentosColacion1'+key);
+                    var contenedor3 = document.getElementById('alimentosAlmuerzo'+key);
+                    var contenedor4 = document.getElementById('alimentosColacion2'+key);
+                    var contenedor5 = document.getElementById('alimentosMerienda'+key);
+                    var contenedor6 = document.getElementById('alimentosCena'+key);
+
+                    contenedor1.innerHTML='';  contenedor2.innerHTML='';  contenedor3.innerHTML=''; contenedor4.innerHTML='';
+                    contenedor5.innerHTML='';  contenedor6.innerHTML='';
+
+                    
+                    for(let i =0 ; i<res.length ; i++)
+                    {
+                        let comida = res[i]
+
+                        cant = Object.keys(comida);
+                        long = cant.length
+                        for(let j= 0; j<long-2; j++)
+                        {
+                        
+                            if(i==0)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                            $(contenedor1).append(contenido)
+                        }
+                        if(i==1)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                            $(contenedor2).append(contenido)
+                        }
+                        if(i==2)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                            $(contenedor3).append(contenido)
+                        }
+                        if(i==3)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                            $(contenedor4).append(contenido)
+                        }
+                        if(i==4)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                            $(contenedor5).append(contenido)
+                        }
+                        if(i==5)
+                        {
+                            let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
+                            <div><h5 >${res[i].cantidad}</h5></div>`
+                            $(contenedor6).append(contenido)
+                        }
+                        }
+
+                    }
+                 
+                })
+
+        }
+
         function opcion(key) {
          let diaSeleccionado =  document.getElementById('selectorDia'+key).value;
             
@@ -719,8 +933,10 @@
 
         function obtenerIdDieta(iddieta) {
             dietaid = iddieta;
-            console.log('valor de dietaid:' + dietaid + ' valor de pacienteid:' + pacienteid);
+           
 
         }
+
+
     </script>
 @endsection

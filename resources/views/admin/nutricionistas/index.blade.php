@@ -216,16 +216,11 @@
                                                                     </div>
                                                                 </div>
                                                         </div>
-                                                        <div
-                                                            class="modal-footer mt-2 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
-                                                            <div
-                                                                class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around p-0">
+                                                        <div class="modal-footer mt-3 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
 
-                                                                <button type="submit"
-                                                                    class="btn btn-success mb-2 col-12 col-5">Guardar</button>
-                                                                <button type="button"
-                                                                    class="btn btn-light mb-2 col-12 col-5"
-                                                                    data-dismiss="modal">Cancelar</button>
+                                                              <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                                                              <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>
                                                             </div>
                                                         </div>
                                                         </form>

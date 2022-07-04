@@ -187,13 +187,13 @@
                                 <div class="col-12 row justify-content-center">
                                     <div class=" col-12 row justify-content-center"
                                         style="border-bottom:1px solid;max-width:345px">
-                                        <div class="col-6 col-lg-12 col-xl-6  p-0 ">
+                                        <div class="col-6  col-xl-6  p-0 ">
                                             <label class="col-form-label" style="font-size:16px;font-weight:bold">
-                                                Fecha creación:</label>
+                                                Nombre dieta:</label>
                                         </div>
-                                        <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
+                                        <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
                                             <label class="col-form-label"
-                                                style=";font-size:16px">{{ $dieta->created_at }}
+                                                style=";font-size:16px">{{ $dieta->nombre }}
                                             </label>
                                         </div>
                                     </div>
@@ -215,10 +215,6 @@
                                 </style>
                                 <div class="container mt-3 contenedor contenedor2" style="">
                                     <div class="col-lg-12 col-10 text-left ml-4 p-0">
-                                        <div class="form-group row mb-1">
-                                            <label class="col-5 text-left"><strong>Nombre dieta:</strong></label>
-                                            <label class="col-7">{{ $dieta->nombre }}</label>
-                                        </div>
                                         <div class="form-group row mb-1">
                                             <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
                                             @if ($dieta->tipo_diabetes == 3)
@@ -244,6 +240,10 @@
                                                 <label class="col-7">(Obeso)</label>
                                             @endif
                                         </div>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
+                                            <label class="col-7">{{ $dieta->created_at }}</label>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -256,9 +256,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group row mb-1">
-                                    <label class="col-6 text-left"> <strong>Observaciones:</strong></label>
+                                    <label class="col-12 col-xl-4 text-left"> <strong>Observaciones:</strong></label>
                                     <label
-                                        class="col-6">{{ $dieta->observaciones }}
+                                        class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
                                     </label>
                                 </div>
                             </div>
@@ -372,16 +372,15 @@
                                                                 </label>
                                                                 <div class="container_buscador_desayuno container">
                                                                     <div class="row justify-content-center">
-                                                                        <div class=" col-8 row w-100">
-                                                                            <button class="" disabled
-                                                                                style="background-color:white;border-radius:5px">
-                                                                                <i
-                                                                                    class="fa-solid fa-magnifying-glass"></i>
-                                                                            </button>
+                                                                        <a class="btn" disabled
+                                                                        style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
+                                                                        <i class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
+                                                                        </a>
+                                                                        <div class=" col-8  ">
                                                                             <select
                                                                                 id="alimentoSeleccionado{{ $k }}"
                                                                                 onchange="seleccionarAlimento({{ $k }});"
-                                                                                class="w-75 js-example-basic-multiple  selectDesayuno alimentoSeleccionado buscador col-10 ddd">
+                                                                                class=" js-example-basic-multiple  ">
                                                                                 <option selected disabled>Ingrese el nombre
                                                                                     de un alimento o seleccione...Ejm:
                                                                                     manzana</option>

@@ -261,7 +261,7 @@
                             </style>
                             <div class="container mt-3 contenedor contenedor2" style="">
                                 <div class="col-lg-12 col-10 text-left ml-4 p-0">
-                                    <div class="form-group row mb-1">
+                                    <div class="form-group row mb-1 mb-1">
                                         <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
                                         @if ($dieta->tipo_diabetes == 3)
                                             <label class="col-7">Tipo Gestacional</label>
@@ -271,11 +271,11 @@
                                         @endif
 
                                     </div>
-                                    <div class="form-group row mb-1">
+                                    <div class="form-group row mb-1 mb-1">
                                         <label class="col-5 text-left"> <strong>IMC:</strong></label>
                                             <label class="col-7">{{$dieta->imc}}</label>
                                     </div>
-                                    <div class="form-group row mb-1">
+                                    <div class="form-group row mb-1 mb-1">
                                         <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
                                         <label class="col-7">{{ $dieta->created_at }}</label>
                                     </div>
@@ -290,10 +290,10 @@
                 <div class="col-lg-6 grid-margin stretch-card ">
                     <div class="card">
                         <div class="card-body">
-                            <div class="form-group row mb-1">
+                            <div class="form-group row mb-1 mb-1">
                                 <label class="col-12 col-xl-4 text-left" style="font-size:14px;font-weight:bold">Observaciones:</label>
                                 <label
-                                    class="col-12 col-xl-8">{{ $dieta->observaciones }}
+                                    class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
                                 </label>
                             </div>
                         </div>
@@ -354,17 +354,17 @@
                                 </div>
 
                                 <div class="modal-body py-2 px-0">
-                                    <div class="col-12 row m-0 justify-content-center">
+                                    <div class="col-12 row m-0 mt-3 justify-content-center">
                                         <div class="col-sm-10 col-11 text-left">
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>Nombre:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="nombre" class="form-control">
+                                                    <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre de la dieta">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Fecha
                                                         de fin:</strong></label>
                                                 <div class="col-sm-8">
@@ -372,11 +372,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Tipo
                                                         de diabetes:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <select name="tipo_diabetes" class="form-control">
+                                                    <select name="tipo_diabetes" class="form-control" style="background-color:#F0F0F0">
                                                         <option selected disabled>Seleccione un tipo</option>
                                                         <option value="1">Tipo 1</option>
                                                         <option value="2">Tipo 2</option>
@@ -385,11 +385,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>IMC:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <select name="imc" class="form-control">
+                                                    <select name="imc" class="form-control" style="background-color:#F0F0F0">
                                                         <option selected disabled>Seleccione una opción</option>
                                                         <option value="1">Bajo peso</option>
                                                         <option value="2">Normal</option>
@@ -399,11 +399,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>Observaciones:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <textarea class="form-control" name="observaciones"></textarea>
+                                                    <textarea class="form-control" name="observaciones" rows="5" placeholder="Dejar en blanco si no existen observaciones"></textarea>
                                                 </div>
                                             </div>
 
@@ -493,7 +493,7 @@
                                                 data-parent="#accordion-{{ $j }}">
                                                 <div class="card-body pt-2">
 
-                                                    <p>VALOR DE K: {{ $k }}</p>
+                                                    {{-- <p>VALOR DE K: {{ $k }}</p> --}}
                                                     <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
                                                     <div>
                                                         <div>
@@ -509,8 +509,7 @@
                                                                     <div class="row justify-content-center">
                                                                                 <a class="btn" disabled
                                                                                 style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
-                                                                                <i
-                                                                                    class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
+                                                                                <i class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
                                                                     </a>
                                                                         <div class=" col-8">
                                                                             <select

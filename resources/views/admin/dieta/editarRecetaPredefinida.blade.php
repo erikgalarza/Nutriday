@@ -366,7 +366,7 @@
                                 <div class="modal-body py-2 px-0">
                                     <div class="col-12 row m-0 justify-content-center">
                                         <div class="col-sm-10 col-11 text-left">
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1">
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>Nombre:</strong></label>
                                                 <div class="col-sm-8">
@@ -374,7 +374,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Fecha
                                                         de fin:</strong></label>
                                                 <div class="col-sm-8">
@@ -382,7 +382,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Tipo
                                                         de diabetes:</strong></label>
                                                 <div class="col-sm-8">
@@ -395,7 +395,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>IMC:</strong></label>
                                                 <div class="col-sm-8">
@@ -409,7 +409,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row ">
+                                            <div class="form-group row mb-1 ">
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>Observaciones:</strong></label>
                                                 <div class="col-sm-8">
@@ -1028,7 +1028,7 @@
                 console.log('content:', alimentosDomingo)
             }
 
-            sumarResultados(); //total bottom  
+            sumarResultados(); //total bottom
         }
 
         function seleccionarCantidad(id, alimento_id, select_id) {
@@ -1167,7 +1167,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1219,7 +1219,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)   
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1271,7 +1271,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1323,7 +1323,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1375,7 +1375,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)     
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1428,7 +1428,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)   
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1539,7 +1539,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)    
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } // fin contAliRepetido
@@ -1593,7 +1593,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)   
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contalimrepet
@@ -1646,7 +1646,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)    
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contAlimentoRep
@@ -1700,7 +1700,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)  
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1754,7 +1754,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contAlimentoRepetido
@@ -1807,7 +1807,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)  
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contAlimentoRepetido
@@ -1878,7 +1878,7 @@
                             <td>${alimento.nombre}</td>
                             <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
                             <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
-                        
+
                             </tr>`);
                             console.log(tbody)
                             contadorfila++;

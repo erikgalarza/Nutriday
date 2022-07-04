@@ -20812,6 +20812,7 @@ code {
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"] {
   background: #392C70;
   color: #ffffff;
+  border-radius:8px
 }
 
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"]:before {
@@ -24681,13 +24682,13 @@ dl li {
 }
 
 .prioridad-baja{
-  background: #82E0AA;  
+  background: #82E0AA;
 }
 .prioridad-media{
-  background: #F5A623;  
+  background: #F5A623;
 }
 .prioridad-alta{
-  background: #F1948A;  
+  background: #F1948A;
 }
 
 @media (max-width: 767px) {
@@ -25079,11 +25080,19 @@ dl li {
 }
 
 .nav-pills-success .nav-link {
-  color: #04B76B;
+  color: #4b6ac3;
+  border:1px solid #4b6ac3 !important;
 }
 
+.nav-pills-success .nav-link:hover{
+    transition-property: transform;
+    transition: transform 400ms;
+    transform: scale(1.1);
+}
 .nav-pills-success .nav-link.active {
-  background: #04B76B;
+  background: #4b6ac3;
+  border:1px solid #4b6ac3 !important;
+  transform: scale(1.12);
 }
 
 .nav-pills-info .nav-link {

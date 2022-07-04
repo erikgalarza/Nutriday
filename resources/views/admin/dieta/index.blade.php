@@ -174,7 +174,7 @@
                                                                     <div class="col-sm-8">
                                                                         <textarea name="observaciones"cols="30" rows="5" value="{{ $dieta->observaciones }}"
                                                                             class="form-control" id="exampleInputUsername2" required>
-                            </textarea>
+                                                                        </textarea>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -241,7 +241,7 @@
                                                                     class="col-sm-4"><strong>Observaciones:</strong></label>
                                                                 @if (isset($dieta->observaciones))
                                                                     <label
-                                                                        class="col-sm-8">{{ $dieta->observaciones }}</label>
+                                                                        class="col-sm-8 text-justify">{{ $dieta->observaciones }}</label>
                                                                 @else
                                                                     <label class="col-sm-8">Sin observaciones</label>
                                                                 @endif
@@ -279,7 +279,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Dieta semanal</h4>
-                                              
+
                                                 <select class="form-control"
                                                     onchange="opcionDietaPredefinida({{ $key }});"
                                                     id="selectorDiaTop{{ $key }}">
@@ -728,7 +728,7 @@
                                                 <div class="form-group row mb-2">
                                                     <label class="col-sm-4"><strong>Observaciones:</strong></label>
                                                     @if (isset($dieta->observaciones))
-                                                        <label class="col-sm-8">{{ $dieta->observaciones }}</label>
+                                                        <label class="col-sm-8 text-justify">{{ $dieta->observaciones }}</label>
                                                     @else
                                                         <label class="col-sm-8">Sin observaciones</label>
                                                     @endif
@@ -770,7 +770,7 @@
 
             function opcionDietaPredefinida(key) {
          let diaSeleccionado =  document.getElementById('selectorDiaTop'+key).value;
-            
+
                 $.ajax({
                     url: "{{ route('dieta.traerAlimentosDietaPredefinida') }}",
                     dataType: "json",
@@ -793,7 +793,7 @@
                     contenedor1.innerHTML='';  contenedor2.innerHTML='';  contenedor3.innerHTML=''; contenedor4.innerHTML='';
                     contenedor5.innerHTML='';  contenedor6.innerHTML='';
 
-                    
+
                     for(let i =0 ; i<res.length ; i++)
                     {
                         let comida = res[i]
@@ -802,7 +802,7 @@
                         long = cant.length
                         for(let j= 0; j<long-2; j++)
                         {
-                        
+
                             if(i==0)
                         {
                             let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
@@ -842,14 +842,14 @@
                         }
 
                     }
-                 
+
                 })
 
         }
 
         function opcion(key) {
          let diaSeleccionado =  document.getElementById('selectorDia'+key).value;
-            
+
                 $.ajax({
                     url: "{{ route('dieta.traerAlimentos') }}",
                     dataType: "json",
@@ -873,7 +873,7 @@
                     contenedor1.innerHTML='';  contenedor2.innerHTML='';  contenedor3.innerHTML=''; contenedor4.innerHTML='';
                     contenedor5.innerHTML='';  contenedor6.innerHTML='';
 
-                    
+
                     for(let i =0 ; i<res.length ; i++)
                     {
                         let comida = res[i]
@@ -882,7 +882,7 @@
                         long = cant.length
                         for(let j= 0; j<long-2; j++)
                         {
-                        
+
                             if(i==0)
                         {
                             let contenido = `<div><img style="max-width:50px;"  src='${res[i][j].imagen.url}'></div>
@@ -922,7 +922,7 @@
                         }
 
                     }
-                 
+
                 })
 
         }
@@ -933,7 +933,7 @@
 
         function obtenerIdDieta(iddieta) {
             dietaid = iddieta;
-           
+
 
         }
 

@@ -507,16 +507,16 @@
                                                                 </label>
                                                                 <div class="container_buscador_desayuno container">
                                                                     <div class="row justify-content-center">
-                                                                        <div class=" col-7 ">
-                                                                            {{-- <button class="" disabled
-                                                                                style="background-color:white;border-radius:5px">
+                                                                                <a class="btn" disabled
+                                                                                style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
                                                                                 <i
-                                                                                    class="fa-solid fa-magnifying-glass"></i>
-                                                                            </button> --}}
+                                                                                    class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
+                                                                    </a>
+                                                                        <div class=" col-8">
                                                                             <select
                                                                                 id="alimentoSeleccionado{{ $k }}"
                                                                                 onchange="agregarAlimento({{ $k }});"
-                                                                                class="w-75 js-example-basic-multiple col-12">
+                                                                                class=" js-example-basic-multiple ">
                                                                                 <option selected disabled>Ingrese el nombre
                                                                                     de un alimento o seleccione...Ejm:
                                                                                     manzana</option>

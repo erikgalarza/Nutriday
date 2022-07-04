@@ -6,7 +6,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pacientes</li>
             </ol>
         </nav>
@@ -90,6 +90,7 @@
                                     <th>Nombre</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
+                                    <th>Nutricionista</th>
                                     <th>Actividades asignadas</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -122,6 +123,7 @@
                                             @else
                                             <td>0</td>
                                             @endif
+                                            <td>Erik Galarza</td>
 
                                         <td style="text-align:center;">
                                             @if(count($paciente->actividades)>0)

@@ -6,7 +6,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('administrador.dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('administrador.dashboard') }}">Inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Datos antropométricos</li>
             </ol>
         </nav>
@@ -91,6 +91,7 @@
                                     <th>Paciente</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
+                                    <th>Nutricionista</th>
                                     <th>Agregar</th>
                                 </tr>
                             </thead>
@@ -120,7 +121,7 @@
                                             @else
                                                 <td>No existe IMC</td>
                                             @endif
-
+                                            <td>Erik Galarza</td>
                                             <td>
                                                 <a title="Agregar datos antropométricos al paciente" class="btn btn-warning"
                                                     href="{{ route('da.datosByPaciente', $paciente->id) }}"><i

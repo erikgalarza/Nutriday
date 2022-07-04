@@ -6,7 +6,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pacientes</li>
             </ol>
         </nav>
@@ -89,6 +89,7 @@
                                     <th>Nombre</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
+                                    <th>Nutricionista</th>
                                     <th>Dieta asignada</th>
                                     <th>Asignar</th>
                                 </tr>
@@ -120,6 +121,7 @@
                                             @else
                                             <td>No existe IMC</td>
                                             @endif
+                                            <td>Erik Galarza</td>
 
                                             @if (count($paciente->dietas) > 0)
                                                 <td>

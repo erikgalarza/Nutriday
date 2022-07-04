@@ -2,12 +2,11 @@
 @section('contenido')
     <div class="page-header mb-2">
         <h3 class="page-title">
-            Dashboard
+            Inicio
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('administrador.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item"><a href="{{ route('administrador.dashboard') }}">Inicio</a></li>
             </ol>
         </nav>
     </div>

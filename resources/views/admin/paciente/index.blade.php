@@ -42,6 +42,7 @@
                                     <th>Cédula</th>
                                     <th>Tipo diabetes</th>
                                     <th>Seguimiento</th>
+                                    <th>Nutricionista</th>
                                     {{-- <th>Dato antropométrico</th> --}}
                                     <th>Estado</th>
                                     <th>Acciones</th>
@@ -87,6 +88,10 @@
 
 
                                         </td>
+                                        <td>
+                                            Erik Galarza
+                                        </td>
+
                                         {{-- <td>
                                             <a title="Agregar datos antropométricos"
                                                 href="{{ route('admin.agregarDatosAntropometricos', $paciente->id) }}"

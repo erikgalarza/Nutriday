@@ -6,7 +6,7 @@
     </h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Inicio</a></li>
             <li class="breadcrumb-item active" aria-current="page">Datos antropométricos</li>
         </ol>
     </nav>

@@ -138,7 +138,8 @@
                                     <th>IMC</th>
                                     <th>Grasa corporal</th>
                                     <th>Masa muscular</th>
-                                    <th>Fecha de visita</th>
+                                    <th>Fecha visita</th>
+                                    <th>Nutricionista</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -151,6 +152,7 @@
                                         <td>{{ $dato->grasa_corporal}}</td>
                                         <td>{{ $dato->masa_muscular}}</td>
                                         <td>{{ $dato->created_at }}</td>
+                                        <td>Erik Galarza</td>
                                         <td>
                                         </td>
                                     </tr>
@@ -195,9 +197,11 @@
                                 <th>N°</th>
                                 <th>Nombre</th>
                                 <th>Tipo de diabetes</th>
-                                <th>Fecha de fin</th>
                                 <th>IMC</th>
+                                <th>Fecha asignación</th>
+                                <th>Fecha de fin</th>
                                 <th>Nutricionista</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -206,9 +210,10 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{ $dieta->nombre }}</td>
                                     <td>{{ $dieta->tipo_diabetes }}</td>
-                                    <td>{{ $dieta->fecha_fin }}</td>
                                     <td>{{ $dieta->imc }}</td>
-                                    <td>Jose</td>
+                                    <td>2022-07-03</td>
+                                    <td>{{ $dieta->fecha_fin }}2022-08-03</td>
+                                    <td>Erik Galarza</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -235,7 +240,9 @@
                                         <th>Nombre</th>
                                         <th>Duración</th>
                                         <th>Imagen</th>
-                                        <th>Fecha de asignación</th>
+                                        <th>Fecha asignación</th>
+                                        <th>Nutricionista</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -246,7 +253,7 @@
                                             <td>{{ $duraciones[$key]->duracion }}</td>
                                             <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
                                             <td>{{ $dato->created_at }}</td>
-
+                                            <td>Erik Galarza</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

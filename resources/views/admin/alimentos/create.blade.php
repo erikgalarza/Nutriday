@@ -24,173 +24,121 @@
             </ol>
         </nav>
     </div>
+
+
+
+
     @if (isset($paciente))
+        <style>
+            @media (max-width:992px) {
+                .consulta {
+                    order: 2;
+                }
+            }
+        </style>
         <div class="col-md-12 grid-margin stretch-card">
-            <style>
-                .ocultar
-                {
-                    display:none;
-                }
 
-                @media(max-width:1199px) {
-                    .container2 {
-                        max-width: 420px;
-                    }
-                }
-
-                @media(min-width:1199px) {
-                    .container3 {
-                        max-width: 420px;
-                    }
-
-                }
-
-                @media(min-width:1200px) {
-                    .container4 {
-                        min-width: 810px;
-                        max-width: 1140px;
-                    }
-                }
-
-                @media(min-width:1200px){
-                    .consulta{
-                       border-right:1px dashed;
-                    }
-
-                }
-                @media(max-width:1199px){
-                    .consulta{
-                        border-top: 1px dashed;
-                        order:2;
-                    }
-                    .blanco{
-                        background-color: white;
-                    }
-                }
-
-
-                .btn-outline-primary:hover {
-                    color: white !important;
-                }
-
-                .btn-outline-info:hover {
-                    color: white !important;
-                }
-
-            </style>
-
-            <div class="card">
-                <div class=" mb-2" style="background-color:#4b6ac3;border-radius: 5px 5px 0 0">
+            <div class="card ">
+                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
                     <h3
                         class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                        Dieta para {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
+                        Paciente {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
                 </div>
-                <div class="card-body">
-                    <div class="container container2 container3 container4">
-                        <div class="row justify-content-center mb-3 ml-0" style="border:1px dashed; border-radius:10px">
-                            <div class="col-12 form-group text-center mb-1 row justify-content-center p-0 m-0"
-                                style="border-bottom:1px dashed;background-color:#F0F0F0;border-radius:10px 10px 0 0">
-                                <div class="col-xl-6 row justify-content-center consulta blanco">
-                                    <div class="col-xl-5 col-6  no-gutters p-0 text-center ">
-                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Última
-                                            consulta:</label>
-                                    </div>
-                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
-                                        @if ($loop->last)
-                                            <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
-                                                <label class="col-form-label"
-                                                    style="font-size:14px">{{ $data->created_at }}
-                                                </label>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                                <div class="col-xl-6 row justify-content-center" style="border-radius:10px 10px 0 0 ">
-                                    <div class="col-xl-4 col-5  no-gutters p-0 text-center">
-                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha fin dieta:</label>
-                                    </div>
-                                            <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
-                                                <label class="col-form-label"
-                                                    style="font-size:14px">{{ $dieta->created_at }}
-                                                </label>
-                                            </div>
-                                </div>
-                            </div>
+                <div class="row px-4" style="margin-top:10px;">
 
-                            <div class="col-12 ">
-                                <div class="row justify-content-center align-items-center px-0 mt-xl-2">
-                                    <div class="col-9 col-xl-12 row pr-0 pl-sm-4 p-0 pl-xl-0 justify-content-center">
-                                        <div class="form-group  col-xl-2 row text-xl-center text-left mb-1 ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Edad:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->edad }}</label>
-                                        </div>
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Tipo
-                                                    diabetes:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->tipo_diabetes }}</label>
+                    <div class="col-lg-6 grid-margin stretch-card consulta ">
+                        <div class="card m">
+                            <div class="card-body text-center py-2 row justify-content-lg-center">
+
+                                <div class="col-12 row justify-content-center">
+                                    <div class=" col-12 row justify-content-center"
+                                        style="border-bottom:1px solid;max-width:345px">
+                                        <div class="col-6 col-lg-12 col-xl-6  p-0 ">
+                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                                Última consulta:</label>
                                         </div>
                                         @foreach ($paciente->dato_antropometrico as $kp => $data)
                                             @if ($loop->last)
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Peso:
-                                                        </strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->peso }}</label>
-                                                </div>
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Grasa
-                                                            corporal: </strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->grasa_corporal }}
-                                                        (%)
+                                                <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
+                                                    <label class="col-form-label"
+                                                        style=";font-size:16px">{{ $data->created_at }}
                                                     </label>
                                                 </div>
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Masa muscular:
-                                                        </strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->masa_muscular }}
-                                                        (%)</label>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <style>
+                                    @media (max-width:992px) {
+                                        .contenedor {
+                                            max-width: 360px !important;
+                                            padding-left: 2rem !important;
+                                        }
+                                    }
+
+                                    @media (min-width:992px) {
+                                        .contenedor2 {
+                                            max-width: 290px !important;
+                                            padding-left: 0rem !important;
+                                        }
+                                    }
+                                </style>
+                                <div class="container mt-3 contenedor contenedor2" style="">
+                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                            <label class="col-7">{{ $paciente->tipo_diabetes }}</label>
+                                        </div>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"> <strong>Edad:</strong></label>
+                                            <label class="col-7">{{ $paciente->edad }}</label>
+                                        </div>
+
+                                        @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                            @if ($loop->last)
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Altura:</strong></label>
+                                                    <label class="col-7">{{ $data->altura }} (m)</label>
                                                 </div>
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Peso:</strong></label>
+                                                    <label class="col-7">{{ $data->peso }} (kg)</label>
+                                                </div>
+
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Grasa corporal:</strong>
+                                                    </label>
+                                                    <label class="col-7">{{ $data->grasa_corporal }} (%)</label>
+                                                </div>
+
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Masa muscular:</strong></label>
+                                                    <label class="col-7">{{ $data->masa_muscular }} (%) </label>
+                                                </div>
+
                                                 @if ($data->imc <= 18.4)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Bajo peso)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Bajo peso)</label>
                                                     </div>
                                                 @endif
-
                                                 @if ($data->imc >= 18.5 && $data->imc <= 24.9)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Normal)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Normal)</label>
                                                     </div>
                                                 @endif
-
                                                 @if ($data->imc >= 25 && $data->imc <= 29.9)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Sobrepeso)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Sobrepeso)</label>
                                                     </div>
                                                 @endif
 
                                                 @if ($data->imc >= 30)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Obeso)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Obeso)</label>
                                                     </div>
                                                 @endif
                                             @endif
@@ -200,123 +148,138 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="col-lg-6 grid-margin stretch-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <img src="http://localhost:8000/img/icons/scale.png">
+                                    Peso (Kg)
+                                </h4>
+
+                                <canvas id="sales-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mb-1 pb-3  text-center">
+                    <a onclick="guardarDieta();" class="btn btn-warning "><i class="fa-solid fa-floppy-disk mr-2"></i>
+                        Guardar dieta</a>
                 </div>
             </div>
         </div>
     @else
         <div class="col-md-12 grid-margin stretch-card">
 
-            <style>
-                @media(max-width:1199px) {
-                    .container2 {
-                        max-width: 420px;
-                    }
-                }
-
-                @media(min-width:1199px) {
-                    .container3 {
-                        max-width: 420px;
-                    }
-
-                }
-
-                @media(min-width:1200px) {
-                    .container4 {
-                        min-width: 810px;
-                        max-width: 1140px;
-                    }
-                }
-
-                .btn-outline-primary:hover {
-                    color: white !important;
-                }
-
-                .btn-outline-info:hover {
-                    color: white !important;
-                }
-            </style>
-
-            <div class="card">
-                <div class=" mb-2" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+            <div class="card ">
+                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
                     <h3
                         class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                         Datos de dieta predifinida</h3>
                 </div>
-                <div class="card-body">
-                    <div class="container container2 container3 container4">
-                        <div class="row justify-content-center mb-3 ml-0">
-                            <div class="col-12 form-group text-center mb-1 row justify-content-center"
-                                >
-                                <div class="col-xl-8 row justify-content-center">
-                                    <div class="col-xl-3 col-5  no-gutters p-0 text-center ">
-                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha
-                                            creación:</label>
+                <div class="row px-4" style="margin-top:10px;">
+
+                    <div class="col-lg-6 grid-margin stretch-card consulta ">
+                        <div class="card ">
+                            <div class="card-body text-center py-2 row justify-content-lg-center">
+
+                                <div class="col-12 row justify-content-center">
+                                    <div class=" col-12 row justify-content-center"
+                                        style="border-bottom:1px solid;max-width:345px">
+                                        <div class="col-6 col-lg-12 col-xl-6  p-0 ">
+                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                                Fecha creación:</label>
+                                        </div>
+                                        <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
+                                            <label class="col-form-label"
+                                                style=";font-size:16px">{{ $dieta->created_at }}
+                                            </label>
+                                        </div>
                                     </div>
-                                            <div class=" col-xl-4 col-6 no-gutters p-0 text-center ">
-                                                <label class="col-form-label"
-                                                    style="font-size:14px">{{ $dieta->created_at}}
-                                                </label>
-                                            </div>
                                 </div>
-                            </div>
+                                <style>
+                                    @media (max-width:992px) {
+                                        .contenedor {
+                                            max-width: 360px !important;
+                                            padding-left: 2rem !important;
+                                        }
+                                    }
 
-                            <div class="col-12 ">
-                                <div class="row justify-content-center align-items-center px-2 mt-xl-2">
-                                    <div class="col-9 col-xl-12 row pr-0 pl-4 pl-xl-2 justify-content-center">
-                                        <div class="form-group  col-xl-2 row text-xl-center text-left mb-1 ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Nombre dieta:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $dieta->nombre }}</label>
+                                    @media (min-width:992px) {
+                                        .contenedor2 {
+                                            max-width: 290px !important;
+                                            padding-left: 0rem !important;
+                                        }
+                                    }
+                                </style>
+                                <div class="container mt-3 contenedor contenedor2" style="">
+                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Nombre dieta:</strong></label>
+                                            <label class="col-7">{{ $dieta->nombre }}</label>
                                         </div>
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Tipo
-                                                    diabetes:</strong></label>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                            @if ($dieta->tipo_diabetes == 3)
+                                                <label class="col-7">Tipo Gestacional</label>
+                                            @else
+                                                <label
+                                                    class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
+                                            @endif
 
-                                                    @if ($dieta->tipo_diabetes == 3)
-                                                    <label class="col-xl-12 col-5 col-form-label p-1 mb-1">Tipo Gestacional</label>
-                                                    @else
-                                                    <label class="col-xl-12 col-5 col-form-label p-1 mb-1">Tipo {{ number_format($dieta->tipo_diabetes, 0) }}</label>
-                                                    @endif
                                         </div>
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:
-                                                        </strong></label>
-                                                        @if ($imc == '1')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Bajo peso)</label>
-                                                        @endif
-                                                        @if ($imc == '2')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Normal)</label>
-                                                        @endif
-                                                        @if ($imc == '3')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Sobrepeso)</label>
-                                                        @endif
-                                                        @if ($imc == '4')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Obeso)</label>
-                                                        @endif
-                                                </div>
-                                                <div class="form-group col-xl-4 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1 text-xl-center"><strong>Observaciones:</strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1 text-center">{{ $dieta->observaciones }}
-                                                    </label>
-                                                </div>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"> <strong>IMC:</strong></label>
+                                            @if ($dieta->imc == '1')
+                                                <label class="col-7">(Bajo peso)</label>
+                                            @endif
+                                            @if ($dieta->imc == '2')
+                                                <label class="col-7">(Normal)</label>
+                                            @endif
+                                            @if ($dieta->imc == '3')
+                                                <label class="col-7">(Sobrepeso)</label>
+                                            @endif
+                                            @if ($dieta->imc == '4')
+                                                <label class="col-7">(Obeso)</label>
+                                            @endif
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="col-lg-6 grid-margin stretch-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group row mb-1">
+                                    <label class="col-6 text-left"> <strong>Observaciones:</strong></label>
+                                    <label
+                                        class="col-6">{{ $dieta->observaciones }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mb-1 pb-3  text-center">
+                    <a onclick="guardarDieta();" class="btn btn-warning "><i class="fa-solid fa-floppy-disk mr-2"></i>
+                        Guardar dieta</a>
                 </div>
             </div>
         </div>
-
     @endif
     <style>
-        .ddd:hover{
-            border:1px solid #4b6ac3 !important;
+        .ddd:hover {
+            border: 1px solid #4b6ac3 !important;
         }
+
         .buscador {
-        border-radius: 0px 10px 0 10px !important ;
-        background-color: #F0F0F0 !important;
+            border-radius: 0px 10px 0 10px !important;
+            background-color: #F0F0F0 !important;
         }
     </style>
 
@@ -330,7 +293,6 @@
                         margin-right: 0;
                     }
                 </style>
-                <a onclick="guardarDieta();" class="btn btn-outline-success">Guardar dieta</a>
                 <ul class="nav nav-pills nav-pills-success text-center row justify-content-center align-items-center mt-2"
                     id="pills-tab" role="tablist" style="border:none;font-weight: bold">
                     @php
@@ -339,9 +301,11 @@
 
                     @for ($i = 0; $i <= 6; $i++)
                         <li class="nav-item my-2 text-center navi" style="min-width:123.5px;font-weight:bold">
-                            <a class="nav-link {{ $i == 0 ? 'active' : '' }}" style=";border:1px solid #04B76B" id="pills-dia{{ $i }}-tab"
-                                data-toggle="pill" href="#pills-dia{{ $i }}" role="tab"
-                                aria-controls="pills-dia{{ $i }}" aria-selected="true">{{ $dias[$i] }}</a>
+                            <a class="nav-link {{ $i == 0 ? 'active' : '' }}" style=";border:1px solid #04B76B"
+                                id="pills-dia{{ $i }}-tab" data-toggle="pill"
+                                href="#pills-dia{{ $i }}" role="tab"
+                                aria-controls="pills-dia{{ $i }}"
+                                aria-selected="true">{{ $dias[$i] }}</a>
                         </li>
                     @endfor
 
@@ -352,7 +316,7 @@
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
                 @endphp
                 <div class="card mt-2" style="border:none">
-                    <div class="tab-content py-0 px-5" id="pills-tabContent" style="border:none;" >
+                    <div class="tab-content py-0 px-5" id="pills-tabContent" style="border:none;">
                         @php
                             $a = -6;
                             $sum = 0;
@@ -377,45 +341,55 @@
                                             $id = $id + 2;
                                             $id2 = $id + 1;
                                         @endphp
-                                {{-- CREACION DE ACORDIONES EMPIEZA AQUI --}}
+                                        {{-- CREACION DE ACORDIONES EMPIEZA AQUI --}}
                                         <div class="card "style="background-color:white;color:black">
-                                            <div class="card-header" role="tab" id="heading-{{ $k }}" style="border:1px solid #55558a;border-radius:10px">
+                                            <div class="card-header" role="tab" id="heading-{{ $k }}"
+                                                style="border:1px solid #55558a;border-radius:10px">
                                                 <h6 class="mb-0">
-                                                    <a onclick="" data-toggle="collapse" class="collapsed" style="font-weight: bold"
-                                                        href="#collapse-{{ $k }}"
+                                                    <a onclick="" data-toggle="collapse" class="collapsed"
+                                                        style="font-weight: bold" href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
-                                                        aria-controls="collapse-{{ $k }}"><i class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
+                                                        aria-controls="collapse-{{ $k }}"><i
+                                                            class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
                                                     </a>
                                                 </h6>
                                             </div>
-                                            <div id="collapse-{{ $k }}"
-                                                class="collapse" role="tabpanel"
+                                            <div id="collapse-{{ $k }}" class="collapse" role="tabpanel"
                                                 aria-labelledby="heading-{{ $k }}"
                                                 data-parent="#accordion-{{ $j }}">
-                                                <div class="card-body pt-2" >
+                                                <div class="card-body pt-2">
 
                                                     <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
                                                     <div>
                                                         <div>
                                                             <div class="container_buscador">
 
-                                                                <label class="col-12 text-left"><button class="ml-3 py-0 px-2" disabled  title="No se puede ingresar dos veces el mismo alimento" style="border-radius:10px; border:1px solid grey"><i class="fas fa-info"></i></button>
+                                                                <label class="col-12 text-left"><button
+                                                                        class="ml-3 py-0 px-2" disabled
+                                                                        title="No se puede ingresar dos veces el mismo alimento"
+                                                                        style="border-radius:10px; border:1px solid grey"><i
+                                                                            class="fas fa-info"></i></button>
                                                                 </label>
                                                                 <div class="container_buscador_desayuno container">
                                                                     <div class="row justify-content-center">
                                                                         <div class=" col-8 row w-100">
-                                                                       <button class="" disabled style="background-color:white;border-radius:5px">
-                                                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                                                       </button>
-                                                                            <select id="alimentoSeleccionado{{ $k }}"
-                                                                        onchange="seleccionarAlimento({{ $k }});"
-                                                                        class="w-75 js-example-basic-multiple  selectDesayuno alimentoSeleccionado buscador col-10 ddd" >
-                                                                        <option selected disabled>Ingrese el nombre de un alimento o seleccione...Ejm: manzana</option>
-                                                                        @foreach ($alimentos as $alimento)
-                                                                            <option value="{{ $alimento->id }}">
-                                                                                {{ $alimento->nombre }}</option>
-                                                                        @endforeach
-                                                                    </select>
+                                                                            <button class="" disabled
+                                                                                style="background-color:white;border-radius:5px">
+                                                                                <i
+                                                                                    class="fa-solid fa-magnifying-glass"></i>
+                                                                            </button>
+                                                                            <select
+                                                                                id="alimentoSeleccionado{{ $k }}"
+                                                                                onchange="seleccionarAlimento({{ $k }});"
+                                                                                class="w-75 js-example-basic-multiple  selectDesayuno alimentoSeleccionado buscador col-10 ddd">
+                                                                                <option selected disabled>Ingrese el nombre
+                                                                                    de un alimento o seleccione...Ejm:
+                                                                                    manzana</option>
+                                                                                @foreach ($alimentos as $alimento)
+                                                                                    <option value="{{ $alimento->id }}">
+                                                                                        {{ $alimento->nombre }}</option>
+                                                                                @endforeach
+                                                                            </select>
                                                                         </div>
                                                                     </div>
 
@@ -547,28 +521,37 @@
                                             <div class="cuadro_informacion"
                                                 style="display:flex; flex-wrap:wrap; justify-content:space-evenly; align-items:center; flex-direction:row; margin-top:5px;; padding:10px 10px; text-align:center; min-height: 30px; min-width: 100px;">
                                                 <div>
-                                                <p style="border-bottom:1px solid;font-size:14px;font-weight:bold;text-transform:uppercase">TOTAL {{ $dias[$j] }}</p>
+                                                    <p
+                                                        style="border-bottom:1px solid;font-size:14px;font-weight:bold;text-transform:uppercase">
+                                                        TOTAL {{ $dias[$j] }}</p>
                                                 </div>
                                                 <div>
-                                                    <p style="margin-right:10px;font-size:14px;font-weight:bold;text-transform:uppercase">Carbohidratos:<i
-                                                            style="font-weight:400;font-size:14px;font-style:normal;" class="ml-4"
+                                                    <p
+                                                        style="margin-right:10px;font-size:14px;font-weight:bold;text-transform:uppercase">
+                                                        Carbohidratos:<i
+                                                            style="font-weight:400;font-size:14px;font-style:normal;"
+                                                            class="ml-4"
                                                             id="carbohidratosTotal{{ $j }}">0</i></p>
                                                 </div>
                                                 <div>
-                                                    <p><strong style="margin-right:10px;font-size:14px;text-transform:uppercase">Grasas:</strong><i
-                                                            style="font-weight:400;font-size:14px;font-style:normal;" class="ml-4"
-                                                            id="grasasTotal{{ $j }}">0</i></p>
+                                                    <p><strong
+                                                            style="margin-right:10px;font-size:14px;text-transform:uppercase">Grasas:</strong><i
+                                                            style="font-weight:400;font-size:14px;font-style:normal;"
+                                                            class="ml-4" id="grasasTotal{{ $j }}">0</i></p>
                                                 </div>
                                                 <div>
                                                     <p><strong
                                                             style="margin-right:10px;font-size:14px;text-transform:uppercase">Proteinas:</strong><i
-                                                            style="font-weight:400;font-size:14px;font-style:normal;" class="ml-4"
-                                                            id="proteinasTotal{{ $j }}">0</i></p>
+                                                            style="font-weight:400;font-size:14px;font-style:normal;"
+                                                            class="ml-4" id="proteinasTotal{{ $j }}">0</i>
+                                                    </p>
                                                 </div>
                                                 <div>
-                                                    <p><strong style="margin-right:10px;font-size:14px;text-transform:uppercase">Kcal:</strong><i
-                                                            style="font-weight:400;font-size:14px;font-style:normal;" class="ml-4 mr-1"
-                                                            id="kcalTotal{{ $j }}">0</i>  /1500</p>
+                                                    <p><strong
+                                                            style="margin-right:10px;font-size:14px;text-transform:uppercase">Kcal:</strong><i
+                                                            style="font-weight:400;font-size:14px;font-style:normal;"
+                                                            class="ml-4 mr-1" id="kcalTotal{{ $j }}">0</i>
+                                                        /1500</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -600,9 +583,7 @@
 
 
     <script>
-
-        function esconder()
-        {
+        function esconder() {
 
         }
 
@@ -636,7 +617,7 @@
                 url: "{{ route('dieta.guardarDieta') }}",
                 dataType: "json",
                 data: {
-                    semana:JSON.stringify(semana),
+                    semana: JSON.stringify(semana),
                     dieta_id: dieta_id,
                     paciente_id: paciente_id,
                     user_id: user_id
@@ -681,7 +662,7 @@
                     })
                 };
                 if (id == 1) {
-                    Object.assign(data,{
+                    Object.assign(data, {
                         horario: 1
                     })
                 };
@@ -728,8 +709,8 @@
                         horario: 9
                     })
                 };
-                if (id == 10){
-                    Object.assign(data,{
+                if (id == 10) {
+                    Object.assign(data, {
                         horario: 10
                     })
                 };
@@ -919,7 +900,7 @@
                 var totalesProteina = 0;
                 var totalesValorCalorico = 0;
                 for (let j = 0; j < dia.length; j++) { // los alimentos por comida
-                    if (i == dia[j].horario){
+                    if (i == dia[j].horario) {
                         var todo = `<tr>
   <input type="hidden" name="alimento_id[]" value="${dia[j].id}">
   <input type="hidden" name="alimento" id="alimento_id${j}" value="${dia[j].id}">
@@ -1200,8 +1181,7 @@
             }
         }
 
-        function quitarConfirmacion(id)
-        {
+        function quitarConfirmacion(id) {
             let dia = document.getElementById('pills-dia' + id + '-tab');
             dia.style = "background-color:#5DADE2;color:white;";
         }

@@ -30,8 +30,8 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Alimento</li>
+                <li class="breadcrumb-item"><a href="{{route('dieta.index')}}">Dietas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Alimentos</li>
             </ol>
         </nav>
     </div>
@@ -215,112 +215,106 @@
             </div>
         </div>
     @else
-        <div class="col-md-12 grid-margin stretch-card">
+    <div class="col-md-12 grid-margin stretch-card">
 
-            <style>
-                @media(max-width:1199px) {
-                    .container2 {
-                        max-width: 420px;
-                    }
-                }
+        <div class="card ">
+            <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                <h3
+                    class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+                    Datos de dieta</h3>
+            </div>
+            <div class="row px-4" style="margin-top:10px;">
 
-                @media(min-width:1199px) {
-                    .container3 {
-                        max-width: 420px;
-                    }
+                <div class="col-lg-6 grid-margin stretch-card consulta ">
+                    <div class="card ">
+                        <div class="card-body text-center py-2 row justify-content-lg-center">
 
-                }
-
-                @media(min-width:1200px) {
-                    .container4 {
-                        min-width: 810px;
-                        max-width: 1140px;
-                    }
-                }
-
-                .btn-outline-primary:hover {
-                    color: white !important;
-                }
-
-                .btn-outline-info:hover {
-                    color: white !important;
-                }
-            </style>
-
-            <div class="card">
-                <div class=" mb-2" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
-                    <h3
-                        class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                        Datos de dieta predifinida</h3>
-                </div>
-                <div class="card-body">
-                    <div class="container container2 container3 container4">
-                        <div class="row justify-content-center mb-3 ml-0">
-                            <div class="col-12 form-group text-center mb-1 row justify-content-center">
-                                <div class="col-xl-8 row justify-content-center">
-                                    <div class="col-xl-3 col-5  no-gutters p-0 text-center ">
-                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha
-                                            creación:{{ $dieta->created_at }}</label>
+                            <div class="col-12 row justify-content-center">
+                                <div class=" col-12 row justify-content-center"
+                                    style="border-bottom:1px solid;max-width:345px">
+                                    <div class="col-6  col-xl-6  p-0 ">
+                                        <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                            Nombre dieta:</label>
                                     </div>
-                                    <div class=" col-xl-4 col-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label" style="font-size:14px">
+                                    <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
+                                        <label class="col-form-label"
+                                            style=";font-size:16px">{{ $dieta->nombre}}
                                         </label>
                                     </div>
                                 </div>
                             </div>
+                            <style>
+                                @media (max-width:992px) {
+                                    .contenedor {
+                                        max-width: 360px !important;
 
-                            <div class="col-12 ">
-                                <div class="row justify-content-center align-items-center px-2 mt-xl-2">
-                                    <div class="col-9 col-xl-12 row pr-0 pl-4 pl-xl-2 justify-content-center">
-                                        <div class="form-group  col-xl-2 row text-xl-center text-left mb-1 ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Nombre
-                                                    dieta:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $dieta->nombre }}</label>
-                                        </div>
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Tipo
-                                                    diabetes:</strong></label>
+                                    }
+                                }
 
-                                            @if ($dieta->tipo_diabetes == 3)
-                                                <label class="col-xl-12 col-5 col-form-label p-1 mb-1">Tipo
-                                                    Gestacional</label>
-                                            @else
-                                                <label class="col-xl-12 col-5 col-form-label p-1 mb-1">Tipo
-                                                    {{ number_format($dieta->tipo_diabetes, 0) }}</label>
-                                            @endif
-                                        </div>
-                                        {{-- <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:
-                                                        </strong></label>
-                                                        @if ($imc == '1')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Bajo peso)</label>
-                                                        @endif
-                                                        @if ($imc == '2')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Normal)</label>
-                                                        @endif
-                                                        @if ($imc == '3')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Sobrepeso)</label>
-                                                        @endif
-                                                        @if ($imc == '4')
-                                                        <label class="col-xl-12 col-5 col-form-label p-1 mb-1">(Obeso)</label>
-                                                        @endif
-                                                </div> --}}
-                                        <div class="form-group col-xl-4 row text-xl-center text-left mb-1  ">
+                                @media (min-width:992px) {
+                                    .contenedor2 {
+                                        min-width: 276px !important;
+                                        max-width: 300px !important;
+                                        padding-left: 0rem !important;
+                                    }
+                                }
+                            </style>
+                            <div class="container mt-3 contenedor contenedor2" style="">
+                                <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                    <div class="form-group row mb-1">
+                                        <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                        @if ($dieta->tipo_diabetes == 3)
+                                            <label class="col-7">Tipo Gestacional</label>
+                                        @else
                                             <label
-                                                class="col-xl-12 col-6 col-form-label p-1 text-xl-center"><strong>Observaciones:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1 text-center">{{ $dieta->observaciones }}
-                                            </label>
-                                        </div>
+                                                class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
+                                        @endif
+
                                     </div>
+                                    <div class="form-group row mb-1">
+                                        <label class="col-5 text-left"> <strong>IMC:</strong></label>
+                                            <label class="col-7">{{$dieta->imc}}</label>
+                                    </div>
+                                    <div class="form-group row mb-1">
+                                        <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
+                                        <label class="col-7">{{ $dieta->created_at }}</label>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                <div class="col-lg-6 grid-margin stretch-card ">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row mb-1">
+                                <label class="col-12 col-xl-4 text-left" style="font-size:14px;font-weight:bold">Observaciones:</label>
+                                <label
+                                    class="col-12 col-xl-8">{{ $dieta->observaciones }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .botono{
+
+                }
+                .botono:hover{
+                    filter: brightness(90%)
+                }
+            </style>
+            <div class="container mb-1 pb-3  text-center">
+                <a onclick="guardarCambios()" class="btn btn-success mb-2 mb-sm-0"><i class="fa-solid fa-floppy-disk mr-2"></i>Guardar cambios</a>
+                <a data-toggle="modal" data-target="#exampleModal{{ $dieta->id }}"class="btn btn-warning mb-2 mb-sm-0 " ><i class="fa-solid fa-share-from-square mr-2"></i>Guardar como nueva dieta</a>
+
             </div>
         </div>
+    </div>
     @endif
     <style>
         .ddd:hover {
@@ -343,10 +337,6 @@
                         margin-right: 0;
                     }
                 </style>
-                <a data-toggle="modal" data-target="#exampleModal{{ $dieta->id }}"
-                    class="btn btn-outline-success">Guardar nueva dieta</a>
-                <a onclick="guardarCambios()" class="btn btn-outline-info">Guardar cambios</a>
-
                 <div class="modal fade" id="exampleModal{{ $dieta->id }}" tabindex="-1" role="dialog"
                     aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -517,16 +507,16 @@
                                                                 </label>
                                                                 <div class="container_buscador_desayuno container">
                                                                     <div class="row justify-content-center">
-                                                                        <div class=" col-8 row w-100">
-                                                                            <button class="" disabled
+                                                                        <div class=" col-7 ">
+                                                                            {{-- <button class="" disabled
                                                                                 style="background-color:white;border-radius:5px">
                                                                                 <i
                                                                                     class="fa-solid fa-magnifying-glass"></i>
-                                                                            </button>
+                                                                            </button> --}}
                                                                             <select
                                                                                 id="alimentoSeleccionado{{ $k }}"
                                                                                 onchange="agregarAlimento({{ $k }});"
-                                                                                class="w-75 js-example-basic-multiple col-10">
+                                                                                class="w-75 js-example-basic-multiple col-12">
                                                                                 <option selected disabled>Ingrese el nombre
                                                                                     de un alimento o seleccione...Ejm:
                                                                                     manzana</option>
@@ -1028,7 +1018,7 @@
                 console.log('content:', alimentosDomingo)
             }
 
-            sumarResultados(); //total bottom  
+            sumarResultados(); //total bottom
         }
 
         function seleccionarCantidad(id, alimento_id, select_id) {
@@ -1167,7 +1157,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1219,7 +1209,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)   
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1271,7 +1261,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1323,7 +1313,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1375,7 +1365,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)     
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1428,7 +1418,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)   
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1539,7 +1529,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)    
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } // fin contAliRepetido
@@ -1593,7 +1583,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)   
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contalimrepet
@@ -1646,7 +1636,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)    
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contAlimentoRep
@@ -1700,7 +1690,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)  
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         }
@@ -1754,7 +1744,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes) 
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contAlimentoRepetido
@@ -1807,7 +1797,7 @@
                                 }
 
                                 sumarResultados();
-                                //  console.log(alimentosLunes)  
+                                //  console.log(alimentosLunes)
                                 contAlimentoRepetido = false;
                             }
                         } //fin contAlimentoRepetido
@@ -1878,7 +1868,7 @@
                             <td>${alimento.nombre}</td>
                             <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
                             <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
-                        
+
                             </tr>`);
                             console.log(tbody)
                             contadorfila++;

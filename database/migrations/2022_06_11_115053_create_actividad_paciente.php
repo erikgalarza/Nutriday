@@ -18,7 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('paciente_id');// 1
             $table->unsignedBigInteger('actividad_id');// 1
             $table->text('duracion');
-          
+
+            $table->unsignedBigInteger('user_id');// 1          
+            // $table->foreign('user_id')->references('id')->on('users');
+
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('actividad_id')->references('id')->on('actividads')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->useCurrent();

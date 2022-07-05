@@ -14,6 +14,7 @@ class DatosAntropometrico extends Model
         "peso",
         "imc",
         "paciente_id",
+        "user_id",
         "grasa_corporal",
         "masa_muscular",
         "observaciones"

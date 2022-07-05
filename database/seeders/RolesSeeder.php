@@ -65,6 +65,7 @@ class RolesSeeder extends Seeder
             "imc"=>20,
             "grasa_corporal"=>80,
             "masa_muscular"=>72,
+            "user_id"=>$user2->id,
             "paciente_id"=>$paciente->id
         ]);
     }

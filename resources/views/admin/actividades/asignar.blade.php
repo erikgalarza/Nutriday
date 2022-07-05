@@ -158,7 +158,8 @@
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
-                    <input type="hidden" value="{{ $actividades }}" id="actividades">
+                    <input type="hidden" name="idResponsable" value="{{$idResponsable}}" id="idResponsable">
+                    <input type="hidden" value="{{$actividadesReales}}" id="actividades">
 
 
 
@@ -187,7 +188,7 @@
                             @endforeach
 
                     @endif
-                        @if (count($actividades) > 0)
+                        @if (count($actividadesReales) > 0)
                                     <div class="opciones col-12 py-2 my-1"
                                         style="display:flex; position:sticky;
                                     bottom: 0px; justify-content:center; align-items:center;">
@@ -228,20 +229,31 @@
                                 <th style="">N°</th>
                                 <th style="">Nombre de la actividad</th>
                                 {{-- <th style="">Prioridad</th> --}}
-                                <th style="">Duración</th>
                                 <th style="">Imagen</th>
+                                <th style="">Duración</th>
+                                <th>Nutricionista</th>
                                 <th style="">Fecha de asignación</th>
+                               
                                 <th style="">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($actividades as $key => $actividad)
+                            @foreach ($actividades as $key => $actividad)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $actividad->nombre }}</td>
+                                <td><img src="{{ $actividad->imagen->url }}"></td>
                                 <td>{{ $actividad->duracion}}</td>
-                                <td>{{ $actividad->imagen->url }}</td>
-                                <td>{{ $actividad->created_at }}</td> --}}
+                                <td>{{$actividad->responsable}}</td>
+                                <td>{{ $actividad->created_at }}</td>
+                                <td>
+                                   
+                                    
+                                    <a href="{{route('actividad.eliminarActividadAsignada',[$actividad->id,$paciente->id])}}" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                             
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -382,5 +394,33 @@
         //         contenedor.parentNode.removeChild(contenedor)
         //     }
         // })
+
+        
+    function eliminarActividad(actividad) {
+        var form = document.getElementById('eliminarActividad' + actividad.id);
+        swal({
+            title: "Estas seguro que quieres eliminar la actividad " + actividad.nombre + " ?",
+            text: "Al confirmar, la actividad será eliminada permanentemente!",
+            icon: "warning",
+            buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+            ],
+            dangerMode: true,
+        }).then(function(isConfirm) {
+            if (isConfirm) {
+
+                form.submit(); // <--- submit form programmatically
+
+            }
+        })
+
+    }
+
+
     </script>
+
+
+
+
 @endsection

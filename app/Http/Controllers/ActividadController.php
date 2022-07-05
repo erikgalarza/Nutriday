@@ -9,10 +9,19 @@ use App\Http\Requests\StoreActividadRequest;
 use App\Http\Requests\StoreAsignacionActividad;
 use App\Http\Requests\UpdateActividadRequest;
 use App\Models\Paciente;
+use App\Models\User;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Auth;
 
 class ActividadController extends Controller
 {
+
+    public function eliminarActividadAsignada($actividad_id,$paciente_id)
+    {
+        $actividad = Actividad::find($actividad_id);
+        $actividad->paciente()->detach($paciente_id);
+        return back();
+    }
 
     public function buscarPacientes(Request $request)
     {
@@ -22,7 +31,7 @@ class ActividadController extends Controller
         for($i = 0 ; $i<strlen($nombre_completo) ;$i++) 
         {
             if($nombre_completo[$i]==" ")
-                $apellido = substr($nombre_completo,$i+1);
+            $apellido = substr($nombre_completo,$i+1);
         }
         if($apellido!='')
             $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get(); 
@@ -31,12 +40,10 @@ class ActividadController extends Controller
 
     return view('admin.actividades.pacientes',compact('pacientes'));
     }
-   
 
     public function pacientes()
     {
         $pacientes = Paciente::all();
-
         // $duraciones=collect();
         foreach($pacientes as $paciente)
         {
@@ -50,25 +57,43 @@ class ActividadController extends Controller
     public function guardarAsignacion(StoreAsignacionActividad $request)
     {
 // dd($request);
+        $idResponsable = $request->idResponsable;
         $paciente = Paciente::find($request->paciente_id);
         foreach($request->actividad_id as $key => $actividad){
             $actividadBuscada = Actividad::find($actividad);
             $actividadBuscada->update([
                 "prioridad"=>$request->prioridad_id[$key]
             ]);
-            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key]]);
+            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key],'user_id'=>Auth::id()]);
         }
         return redirect()->route('actividad.pacientes');
     }
 
     public function asignar($paciente_id)
     {
-
         $paciente = Paciente::find($paciente_id);
+        $actividadesReales = Actividad::all();
+        // $collect = collect();
         $datos = $paciente->dato_antropometrico()->get();
-        $actividades = Actividad::all();
+        $actividades = $paciente->actividades()->get();
+        // dd($actividades);
+        foreach ($actividades as $key => $actividad){
+            $duracion = $paciente->actividades()->get(['duracion']);
+            $user_id = $paciente->actividades()->get(['user_id']);
+            // dd($user_id[$key]->user_id);
+            $user = User::find($user_id[$key]->user_id);
+            if($user->nutricionistas!=null){
+            $responsable = $user->nutricionistas->nombre;
+            }else{$responsable = $user->administradores->nombre;}
+            // dd($duracion);
+            $actividad->setAttribute('duracion',$duracion[$key]->duracion);
+            $actividad->setAttribute('responsable',$responsable);
+        }
 
-        return view('admin.actividades.asignar',compact('paciente','actividades','datos'));
+        // dd($actividades);
+        $idResponsable = Auth::id();
+
+        return view('admin.actividades.asignar',compact('paciente','actividades','actividadesReales','datos','idResponsable'));
     }
 
     public function index()

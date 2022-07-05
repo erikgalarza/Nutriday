@@ -8,6 +8,7 @@ use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Models\Nutricionista;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -18,9 +19,20 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request);
+        $hashPassword = Hash::make($request->password);
+        // dd($hashPassword);
         //validacion
         $user = User::where('email',$request->email)->first();
-            Auth::login($user);
+       $password = $user->password;
+       dd($password, $hashPassword);
+       if($user!=null)
+       {
+        
+        Auth::login($user);
+        if(Auth::check())
+        {
+            
             if(Auth()->user()->hasRole('Administrador')){
                 return redirect()->route('administrador.dashboard');
             }
@@ -30,6 +42,19 @@ class LoginController extends Controller
             if(Auth()->user()->hasRole('Paciente')){
                 return redirect()->route('cliente.dashboard');
             }
+        }else{
+           
+            return redirect()->route('home');
+        }
+       }else{
+        return redirect()->route('home');
+       }
+            
+            // if(Auth::check()){
+         
+        // }else{
+        //     
+        // }
             
      
     }

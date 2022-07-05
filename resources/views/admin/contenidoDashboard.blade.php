@@ -181,6 +181,7 @@
     @endif
 @endif
 
+@if(auth()->user()->hasRole('Administrador'))
     <div class="card sombra mt-4">
         <div class=" mb-2" style="background-color:#7c7ce4;border-radius:5px 5px 0 0">
             <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
@@ -219,7 +220,7 @@
            @endif
             </div>
     </div>
-
+@endif
     @if(isset($nutricionistas))
         @if (count($nutricionistas) > 0)
             <div class="card mt-4">

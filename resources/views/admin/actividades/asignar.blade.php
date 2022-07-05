@@ -251,11 +251,26 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+    integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <script>
         var i = 1;
-
+        function eliminarFila(id)
+        {
+            // alert(id)
+            $('#lbl'+id).remove();
+            $('#btnEliminar'+id).remove();
+            $('#selectPrioridad'+id).remove();
+            $('#selectActividad'+id).remove();
+            $('#contenedorDuracion'+id).remove();
+        }
+       
         //  contenedor.className+="mx-2 my-2"
         function agregar() {
 
@@ -268,27 +283,33 @@
 
             let selectActividad = document.createElement("select");
             selectActividad.className += ` form-control js-example-basic-multiple col-md-3 my-2 mr-2`;
+            selectActividad.id = "selectActividad"+i
 
             let selectPrioridad = document.createElement("select");
+            selectPrioridad.id = "selectPrioridad"+i
             selectPrioridad.className += ` form-control js-example-basic-multiple col-md-3 my-2 mr-2`;
 
             selectActividad.name = "actividad_id[]";
             selectPrioridad.name = "prioridad_id[]";
 
             var div = document.createElement("div");//div que contiene a duracion
-
+            div.id = "contenedorDuracion"+i
             var label = document.createElement("label");
-            var a = document.createElement("a");
+            // var a = document.createElement("a");
+            // a.id = "btnEliminar"+i
+            // a.addEventListener("onclick",eliminarFila(i))
 
-            //creacion del boton de eliminar
-            a.className += "btn col-md-2 my-2 ml-2 btn-danger btnEliminar";
-            a.style = "max-height:38px;"
-            let texto = document.createTextNode("Eliminar");
-            a.appendChild(texto);
+            // //creacion del boton de eliminar
+            // a.className += "btn col-md-2 my-2 ml-2 btn-danger btnEliminar";
+            // a.style = "max-height:38px;"
+            // let texto = document.createTextNode("Eliminar");
+            // a.appendChild(texto);
+            var a = `<a class="btn col-md-2 my-2 ml-2 btn-danger btnEliminar" id="btnEliminar${i}" onclick="eliminarFila(${i})">Eliminar</a>`
             //fin boton eliminar
 
             //edicion del indice de filas
             label.className += "text-left col-md-1";
+            label.id="lbl"+i;
             let indice = document.createTextNode(i);
             label.appendChild(indice)
             //fin edicion indice filas
@@ -331,7 +352,7 @@
             contenedor.appendChild(selectActividad)
             contenedor.appendChild(selectPrioridad)
             contenedor.append(div)
-            contenedor.append(a);
+            $(contenedor).append(a);
 
             console.log(contenedor)
 

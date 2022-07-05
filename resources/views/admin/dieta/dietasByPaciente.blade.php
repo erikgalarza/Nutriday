@@ -180,7 +180,7 @@
                                 <th>Tipo diabetes</th>
                                 <th>IMC</th>
                                 <th>Alimentos</th>
-                                <th>Fecha asignación</th>
+                                <th>Fecha Inicio/Fin</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -196,7 +196,7 @@
                                     <td>{{ $dieta->nombre }}</td>
                                     <td>{{ $dieta->tipo_diabetes }}</td>
 
-                                    @if ($dieta->imc == '1')
+                                    {{-- @if ($dieta->imc == '1')
                                         <td>(Bajo peso)</td>
                                     @endif
                                     @if ($dieta->imc == '2')
@@ -207,7 +207,8 @@
                                     @endif
                                     @if ($dieta->imc == '4')
                                         <td>(Obeso)</td>
-                                    @endif
+                                    @endif --}}
+                                    <td>{{$dieta->imc}}</td>
 
                                     <td>
                                         <a title="Agregar alimentos a la dieta"
@@ -217,11 +218,13 @@
                                             href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
                                                 class="fa-solid fa-utensils"></i></a>
                                     </td>
-                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
-                                        @if ($loop->last)
-                                            <td>{{ $data->created_at }}</td>
-                                        @endif
-                                    @endforeach
+                                 
+                                           <td>
+                                            {{date('Y-m-d',strtotime($fechasFinAsignacion[$key]))}} /  
+                                            {{date('Y-m-d',strtotime($fechasFinDieta[$key]))}}
+                                            
+                                        </td> 
+                                    
                                     <td>
                                         <label for="" class="badge badge-success">Activa</label>
                                     </td>

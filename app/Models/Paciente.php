@@ -47,6 +47,7 @@ class Paciente extends Authenticatable
 
     public function dietas()
     {
+      
         return $this->belongsToMany(Dieta::class);
     }
 

@@ -21,6 +21,10 @@ return new class extends Migration
             $table->longText('observaciones')->nullable();
             $table->decimal('grasa_corporal')->nullable();
             $table->decimal('masa_muscular')->nullable();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade')->onUpdate('cascade');
            

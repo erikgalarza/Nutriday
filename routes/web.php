@@ -85,6 +85,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/actividades/asignar/{paciente_id}',[ActividadController::class,'asignar'])->name('actividad.asignar');
     Route::post('/actividades/asignar',[ActividadController::class,'guardarAsignacion'])->name('actividad.guardarAsignacion');
     Route::get('/actividades/pacientes',[ActividadController::class,'pacientes'])->name('actividad.pacientes');
+    Route::get('eliminar/{actividad_id}/{paciente_id}',[ActividadController::class,'eliminarActividadAsignada'])->name('actividad.eliminarActividadAsignada');
 
 
     Route::get('/alimento-agregar',[AlimentoController::class,'agregarAlimento'])->name('alimento.addAlimento');

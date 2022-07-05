@@ -8,6 +8,7 @@ use App\Models\DatosAntropometrico;
 use App\Http\Requests\StoreDatosAntropometricoRequest;
 use App\Http\Requests\UpdateDatosAntropometricoRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Auth;
 
 class DatosAntropometricoController extends Controller
 {
@@ -59,12 +60,14 @@ class DatosAntropometricoController extends Controller
    
     public function store(StoreDatosAntropometricoRequest $request)
     {
+        dd(Auth::id());
        $datosAntropometrico =  DatosAntropometrico::create([
             "altura"=>$request->altura,
             "peso"=>$request->peso,
             "imc"=>$request->imc,
             "masa_muscular"=>$request->masa_muscular,
             "grasa_corporal"=>$request->grasa_corporal,
+            "user_id"=>Auth::id(),
             "paciente_id"=>$request->paciente_id,
             "observaciones"=>$request->observaciones
         ]);

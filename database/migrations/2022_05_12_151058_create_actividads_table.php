@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('nombre');
             $table->integer('prioridad')->default(1);
             $table->longText('descripcion')->nullable();
+           
+
             $table->timestamps();
         });
     }

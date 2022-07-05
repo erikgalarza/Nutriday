@@ -1967,8 +1967,22 @@ use AlimentosDieta;
         $paciente = Paciente::find($paciente_id);
         $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
+        $fechasFinDieta = collect();
+        $fechasFinAsignacion = collect();
+        foreach ($dietas as $key => $dieta)
+        {
+            $fechas_fin = $paciente->dietas()->get(['fecha_fin']);
+            $fechas_asignacion = $paciente->dietas()->get(['fecha_asignacion']);
+
+            $fecha_fin = $fechas_fin[$key]->fecha_fin;
+            $fecha_asignacion = $fechas_asignacion[$key]->fecha_asignacion;
+
+            $fechasFinDieta->push($fecha_fin);
+            $fechasFinAsignacion->push($fecha_asignacion);
+        }
+
         $dietasDisponibles = Dieta::all();
-        return view('admin.dieta.dietasByPaciente',compact('paciente','dietas','dietasDisponibles','datos'));
+        return view('admin.dieta.dietasByPaciente',compact('paciente','fechasFinDieta','fechasFinAsignacion','dietas','dietasDisponibles','datos'));
     }
 
     public function buscarPacientes(Request $request)
@@ -2053,7 +2067,7 @@ use AlimentosDieta;
         // $dieta = Dieta::find($request->dieta_id);
         $paciente = Paciente::find($request->paciente_id);
         $dieta = Dieta::find($request->dieta_id);
-        $dieta->pacientes()->attach($paciente->id, ['created_at'=>$request->fecha_fin]);
+        $dieta->pacientes()->attach($paciente->id, ['fecha_fin'=>$request->fecha_fin,'fecha_asignacion'=>Carbon::now(),'user_id'=>Auth::id()]);
         // $dieta->update([
         //     "fecha_fin"=>$request->fecha_fin
         // ]);
@@ -2082,7 +2096,7 @@ use AlimentosDieta;
 
     public function store(Request $request)
     {
-        
+        // dd($request);
         // $campos = [
         //     "nombre"=>"required|string|min:3|max:30",
         //     "tipo_diabetes"=>"required|integer",
@@ -2122,10 +2136,11 @@ use AlimentosDieta;
             $paciente = collect($pacienteNuevo);
             $paciente = Paciente::find($paciente['id']);
             $datos = $paciente->dato_antropometrico()->get();
-
-            $dieta->pacientes()->attach($paciente['id'],["created_at"=>$fecha]);
+            // dd($paciente);
+            $dieta->pacientes()->attach($paciente['id'],["fecha_asignacion"=>Carbon::now(),"fecha_fin"=>$fecha,'user_id'=>Auth::id()]);
             $pac =  Paciente::find($paciente['id']);
             $dieta = $pac->dietas()->latest()->first();//ultima dieta
+            // dd($dieta);
             $dieta->update(["estado"=>"activa"]);
             $dietas = $pac->dietas()->get();
             $longitudDietas = count($dietas);

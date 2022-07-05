@@ -138,6 +138,7 @@
                                     <th>IMC</th>
                                     <th>Grasa corporal</th>
                                     <th>Masa muscular</th>
+                                    <th>Responsable</th>
                                     <th>Fecha de visita</th>
                                 </tr>
                             </thead>
@@ -150,6 +151,7 @@
                                         <td>{{ $dato->imc }}</td>
                                         <td>{{ $dato->grasa_corporal}}</td>
                                         <td>{{ $dato->masa_muscular}}</td>
+                                        <td>{{$responsablesAntro[$key]}}</td>
                                         <td>{{ $dato->created_at }}</td>
                                         <td>
                                         </td>
@@ -194,9 +196,11 @@
                             <tr>
                                 <th>N°</th>
                                 <th>Nombre</th>
-                                <th>Tipo de diabetes</th>
-                                <th>Fecha de fin</th>
                                 <th>IMC</th>
+                                <th>Tipo de diabetes</th>
+                                <th>Fecha de asignación</th>
+                                <th>Fecha de fin</th>
+                                
                                 <th>Nutricionista</th>
                             </tr>
                         </thead>
@@ -205,10 +209,11 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{ $dieta->nombre }}</td>
-                                    <td>{{ $dieta->tipo_diabetes }}</td>
-                                    <td>{{ $dieta->fecha_fin }}</td>
                                     <td>{{ $dieta->imc }}</td>
-                                    <td>Jose</td>
+                                    <td>{{ $dieta->tipo_diabetes }}</td>
+                                    <td>{{ $fechasFinAsignacion[$key]}}</td>
+                                    <td>{{ $fechasFinDieta[$key]}}</td>
+                                    <td>{{$responsablesDieta[$key]}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
 {
@@ -42,10 +43,45 @@ class PacienteController extends Controller
         $paciente = Paciente::find($paciente_id);
         $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
+        // dd($dietas);
         $actividades = $paciente->actividades()->get();
         $duraciones =  $paciente->actividades()->get(['duracion']);
+        // $user_id = $paciente->dato_antropometrico()->get(['user_id']);
+
+        $responsablesAntro = collect();
+        foreach ($datos as $dato)
+        {
+            $user = User::find($dato->user_id);
+            if($user->nutricionistas){$nombre=$user->nutricionistas->nombre.' '.$user->nutricionistas->apellido;}
+            else{$nombre=$user->administradores->nombre;}
+            $responsablesAntro->push($nombre);
+        }
+
+        $responsablesDieta = collect();
+        $fechasFinDieta = collect();
+        $fechasFinAsignacion = collect();
+        foreach ($dietas as $key => $dieta)
+        {
+            $user_ids = $paciente->dietas()->get(['user_id']);
+            $fechas_fin = $paciente->dietas()->get(['fecha_fin']);
+            $fechas_asignacion = $paciente->dietas()->get(['fecha_asignacion']);
+
+            $user_id = $user_ids[$key]->user_id;
+            $fecha_fin = $fechas_fin[$key]->fecha_fin;
+            $fecha_asignacion = $fechas_asignacion[$key]->fecha_asignacion;
+
+            $user = User::find($user_id);
+            if($user->nutricionistas){$nombre=$user->nutricionistas->nombre.' '.$user->nutricionistas->apellido;}
+            else{$nombre=$user->administradores->nombre;}
+            $responsablesDieta->push($nombre);
+            $fechasFinDieta->push($fecha_fin);
+            $fechasFinAsignacion->push($fecha_asignacion);
+        }
+
+        // dd($fechasFinDieta,$fechasFinAsignacion);
+
         $estados = $paciente->estados_animo()->get();
-        return view('admin.paciente.progreso',compact('datos','dietas','actividades','duraciones','estados','paciente'));
+        return view('admin.paciente.progreso',compact('datos','dietas','actividades','responsablesAntro','responsablesDieta','fechasFinDieta','fechasFinAsignacion','duraciones','estados','paciente'));
     }
 
 
@@ -127,6 +163,7 @@ class PacienteController extends Controller
             "altura"=>$request->altura,
             "peso"=>$request->peso,
             "imc"=>$request->imc,
+            "user_id"=>Auth::id(),
             "masa_muscular"=>$request->masa_muscular,
             "grasa_corporal"=>$request->grasa_corporal,
             "paciente_id"=>$request->id_paciente,

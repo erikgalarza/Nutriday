@@ -1,441 +1,909 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-	@include('layouts.head')
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<body class="alternative-font-4 loading-overlay-showing" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 100}">
-		<div class="loading-overlay">
-			<div class="bounce-loader">
-				<div class="bounce1"></div>
-				<div class="bounce2"></div>
-				<div class="bounce3"></div>
-			</div>
-		</div>
+  <title>NUTRIDAY  </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-		<div class="body">
+  <!-- Favicons -->
+  <link href="{{asset('img/manzana.png')}}" rel="icon">
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-			@include('layouts.header')
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
-			<div role="main" class="main">
-				<section class="section section-concept section-no-border section-dark section-angled section-angled-reverse pt-5 m-0" id="section-concept" style="background-size: cover; background-position: center; animation-duration: 750ms; animation-delay: 300ms; animation-fill-mode: forwards;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/bg1.jpg">
-					<div class="section-angled-layer-bottom bg-light" style="padding: 8rem 0;"></div>
-					<div class="container pt-5 mt-5">
-						<div class="row align-items-center pt-3">
-							<div class="col-lg-5 mb-5">
-								<h5 class="text-primary font-weight-bold mb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-duration="750">BIENVENIDO A</h5>
-								<h1 class="font-weight-bold text-12 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" style="color:#0088cc;" data-appear-animation-duration="750">COLPOMED<span class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600" data-appear-animation-duration="800"><span class="d-inline-block text-primary highlighted-word highlighted-word-rotate highlighted-word-animation-1 alternative-font-3 font-weight-bold text-1 ml-2">EC</span></span></h1>
-								<p class="custom-font-size-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750" style="color:#0088cc !important;">Colpomed es un Centro Hospital del dia que brinda servicios de salud y laboratorio clinico. <a href="#intro"  style="color:#0088cc;" data-hash data-hash-offset="120" class="text-color-light font-weight-semibold text-1 d-block"></a></p>
-								<a class="video-open lightbox d-block   appear-animation text-color-primary" href="#popup-content-1" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100" data-appear-animation-duration="750" data-plugin-options="{'type':'inline'}"><div class="video-open-icon"></div>Video comercial</a>
-
-								<div id="popup-content-1" class="dialog dialog-lg zoom-anim-dialog rounded p-3 mfp-hide mfp-close-out">
-									<div style="max-height: 500px; max-width:auto;"  class="embed-responsive embed-responsive-4by3">
-										<video width="10%" height="10%" autoplay muted loop controls>
-										  	<source src="{{asset('img/logos/colpomedPrincipal.mp4')}}" type="video/mp4">
-										</video>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 offset-lg-1 mb-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1200" data-appear-animation-duration="750">
-								<div class="border-width-10 border-color-light clearfix border border-radius">
-									<img style="width:100%;" src="{{asset('img/logos/fondoPrincipal.jpg')}}">
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-6 col-xl-5 custom-header-bar py-4 pr-5 appear-animation z-index-2" data-appear-animation="maskRight" data-appear-animation-delay="1200" data-appear-animation-duration="750">
-								<div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1500">
-									<div class="star-rating-wrap d-flex align-items-center justify-content-center position-relative text-dark text-5 py-2 mb-2">
-										<i class="fas fa-star"></i><i class="fas fa-star ml-1"></i><i class="fas fa-star ml-1"></i><i class="fas fa-star ml-1"></i><i class="fas fa-star ml-1"></i>
-									</div>
-
-									<h4 class="position-relative text-center font-weight-bold text-7 line-height-2 mb-0">VALORACIÓN DE OPINIONES</h4>
-
-									<p class="position-relative text-center font-weight-normal mb-1">* Mejorando vidas desde 2015</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section id="intro" class="section section-no-border section-angled bg-light pt-0 pb-5 m-0">
-					<div class="section-angled-layer-bottom section-angled-layer-increase-angle bg-color-light-scale-1" style="padding: 21rem 0;"></div>
-					{{-- <div class="container pb-5" style="min-height: 1000px;">
-						<div class="row mb-5 pb-lg-3 counters">
-							<div class="col-lg-10 text-center offset-lg-1">
-								<h2 class="font-weight-bold text-9 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-duration="750" data-plugin-options="{'accY': -200}">The Perfect Template for<br>Beginners or Professionals</h2>
-								<p class="sub-title text-primary text-4 font-weight-semibold positive-ls-2 mt-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750">YOUR WEBSITE TO <span class="highlighted-word highlighted-word-animation-1 highlighted-word-animation-1-2 highlighted-word-animation-1 highlighted-word-animation-1-no-rotate alternative-font-4 font-weight-semibold line-height-2 pb-2">A NEW LEVEL</span></p>
-								<p class="text-1rem text-color-default negative-ls-05 pt-3 pb-4 mb-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-appear-animation-duration="750">Porto is simply a better choice for your new website design. The template is several years among the most popular in the world, being constantly improved and following the trends of design and best practices of code. Your search for the best solution is over, get your own copy and join tens of thousands of happy customers.</p>
-							</div>
-							<div class="col-sm-6 col-lg-4 offset-lg-2 counter mb-5 mb-md-0">
-								<div class="appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="750" data-appear-animation-duration="750">
-									<h3 class="font-weight-extra-bold text-14 line-height-1 mb-2" data-to="80" data-append="+">0</h3>
-									<label class="font-weight-semibold negative-ls-1 text-color-dark mb-0">Included Demos</label>
-									<p class="text-color-grey font-weight-semibold pb-1 mb-2">600+ HTML FILES</p>
-									<p class="mb-0"><a href="#demos" data-hash data-hash-offset="120" class="text-color-primary d-flex align-items-center justify-content-center text-4 font-weight-semibold text-decoration-none">VIEW DEMOS <i class="fas fa-long-arrow-alt-right ml-2 text-4 mb-0"></i></a></p>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-4 counter divider-left-border">
-								<div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="750" data-appear-animation-duration="750">
-									<h3 class="font-weight-extra-bold text-14 line-height-1 mb-2" data-to="35" data-append="K+">0</h3>
-									<label class="font-weight-semibold negative-ls-1 text-color-dark mb-0">Websites Using Porto HTML</label>
-									<p class="text-color-grey font-weight-semibold pb-1 mb-2">100K+ IN ALL VERSIONS</p>
-									<p class="mb-0"><a href="https://themeforest.net/item/porto-responsive-html5-template/4106987" class="text-color-primary d-flex align-items-center justify-content-center text-4 font-weight-semibold text-decoration-none" target="_blank">BUILD WEBSITE <i class="fas fa-long-arrow-alt-right ml-2 text-4 mb-0"></i></a></p>
-								</div>
-							</div>
-						</div>
-						<div class="intro row align-items-center justify-content-center justify-content-md-start">
-							<div class="col-3 pr-0 pl-3 z-index-2">
-								<img src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/intro2.jpg" class="img-fluid border border-width-10 border-color-light box-shadow-3 rounded d-none d-md-block appear-animation" alt="Screenshot 2" data-appear-animation="fadeInUp" data-appear-animation-delay="600">
-								<div class="position-absolute d-none d-md-flex align-items-end appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="900" style="bottom: -60px; right: -90px;">
-									<span class="arrow hlt" style="margin-right: -70px;"></span>
-									<strong class="text-color-dark mb-4 pb-3">modern designs!</strong>
-								</div>
-							</div>
-							<div class="col-11 col-md-9 pl-0 pr-5 pb-5 pb-md-0 mb-5 mb-md-0">
-								<div class="intro2 pt-5 pt-md-0 mt-5 mt-lg-0 appear-animation pr-5" data-appear-animation="fadeInUp" data-appear-animation-delay="400"><img src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/intro1.jpg" class="img-fluid box-shadow-3 position-relative z-index-1 rounded" alt="Screenshot 1" style="left: -110px;"></div>
-								<div class="intro3 z-index-3 position-absolute appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="800" style="top: 20%; right: 4%;">
-									<img src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/intro3.jpg" class="img-fluid border border-width-10 border-color-light box-shadow-3 rounded" alt="Screenshot 3">
-									<div class="position-absolute d-none d-md-flex align-items-end appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100" style="bottom: -135px; right: -20px;">
-										<strong class="text-color-dark mb-3">a lot of demos!</strong>
-										<span class="arrow hru"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> --}}
-				</section>
-
-				<section class="section section-no-border section-angled section-dark pb-0 m-0" style="background-repeat: no-repeat; background-color: #0169fe !important;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/landing/reason_bg.png">
-					<div class="section-angled-layer-top section-angled-layer-increase-angle bg-color-light-scale-1" style="padding: 4rem 0;"></div>
-					<div class="spacer py-md-4 my-md-5"></div>
-					<div class="container pt-5 mt-5">
-                        <div class="row justify-content-center pt-lg-4" style="font-weight: 500px">
-                            <p style="font-size: 30px">Galería de Imágenes</p>
-                        </div>
-                        <div class="row justify-content-center mt-md-5 mb-4 pt-lg-4">
-
-							<div class="col-lg-11">
-								<div class="row justify-content-center">
-									<div class="col-10 col-sm-6 col-lg-4 image-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">
-										<img class="img-fluid" alt="Speed Performance" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/instalacion1.png')}}">
-
-									</div>
-									<div class="col-10 col-sm-6 col-lg-4 image-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
-										<img class="img-fluid" alt="Speed Performance" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/instalacion2.png')}}">
-
-									</div>
-									<div class="col-10 col-sm-6 col-lg-4 image-box appear-animation my-4" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750">
-										<img class="img-fluid" alt="Speed Performance" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/instalacion4.jpg')}}">
-
-									</div>
-									<div class="col-10 col-sm-6 col-lg-4 image-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300" data-appear-animation-duration="750">
-										<img class="img-fluid" alt="Speed Performance" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/instalacion3.png')}}">
-
-									</div>
-									<div  class="col-10 col-sm-6 col-lg-4 image-box appear-animation mb-5" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300" data-appear-animation-duration="750">
-										<img class="img-fluid" alt="Speed Performance" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/instalacion5.png')}}">
-
-									</div>
+  <!-- Vendor CSS Files -->
+  <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+  <!-- Template Main CSS File -->
+  <link href="{{asset('css/style.css')}}" rel="stylesheet">
+  <!-- =======================================================
+    * Template Name: Day - v4.7.0
+    * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
 
-				{{-- <section class="section section-no-border section-angled bg-color-light-scale-1 m-0">
-					<div class="section-angled-layer-top section-angled-layer-increase-angle" style="padding: 5rem 0; background-color: #0169fe;"></div>
-					<div class="container py-5 my-5">
-						<div class="row align-items-center text-center my-5">
-							<div class="col-md-6">
-								<h2 class="font-weight-bold text-9 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">Introducing Porto Admin</h2>
-								<p class="font-weight-semibold text-primary text-4 fonts-weight-semibold positive-ls-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">ADMIN WITH SAME LOOK FEEL AS THE FRONT-END</p>
-								<p class="pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">Porto Admin integration give you a package of new features to add in the front-end template, such as advanced tables, advanced forms, etc... Also allows you to create the back-end of your site using the same design.</p>
-								<a href="https://themeforest.net/item/porto-admin-responsive-html5-template/8539472" class="btn btn-modern btn-gradient btn-rounded btn-px-5 py-3 text-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750" target="_blank">VIEW PORTO ADMIN</a>
-								<p class="appear-animation text-3" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200">* Porto Admin <strong class="text-dark">is not included</strong> in the front-end and is available for $24.</p>
-							</div>
-							<div class="col-md-6 py-5">
-								<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500">
-									<img class="porto-lz"src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_dots2.png" alt="" width="149" height="142" style="position: absolute; top: -60px; right: -8%;">
-								</div>
-								<div class="appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="0" data-appear-animation-duration="750">
-									<div class="strong-shadow rounded strong-shadow-top-right">
-										<img src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_admin.jpg" class="img-fluid border border-width-10 border-color-light rounded box-shadow-3" alt="Porto Admin" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section> --}}
+<body>
 
-				{{-- <section class="section border-0 section-dark section-angled section-angled-reverse section-funnel m-0 position-relative overflow-visible" style="background-image: url(img/lazy.png); background-size: 100%; background-position: top; background-repeat: no-repeat;" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_performance_bg.png">
-					<div class="section-angled-layer-top section-angled-layer-increase-angle" style="padding: 5rem 0; background-color: #22252a;"></div>
-					<svg version="1.1" viewBox="500 200 600 900" width="1920" height="100%" xmlns="http://www.w3.org/2000/svg" class="background-svg-style-1" style="top: 120px;">
-						<defs>
-							<filter id="shadow" x="-300%" y="-300%" width="600%" height="600%">
-							<feDropShadow dx="0" dy="0" stdDeviation="10 10" flood-color="#08c" radius="10" flood-opacity="1" />
-							</filter>
-						</defs>
-						<path id="svg_17" d="m1644.875212,897.875106l-1684.875221,-0.374889l1.25,-446.250108c-1.25,0.372765 496.124925,24.124892 496.124925,24.124892c0,0 255.000064,-106.250026 253.875257,-106.624912c1.124807,0.374885 129.874839,-2.125116 128.750031,-2.500001c1.124808,0.374885 112.374836,-32.125123 111.250027,-32.500008c1.124809,0.374885 144.874844,21.62489 144.874844,21.62489c0,0 128.750032,-73.750018 127.625222,-74.124903c1.124811,0.374884 133.624844,9.124887 133.624844,9.124887c0,0 108.750027,35.000009 108.750027,35.000009c0,0 178.750045,-125.000031 177.625231,-125.374915" opacity="0.5" stroke-opacity="null" stroke-width="0" stroke="#191b1e" fill="#191b1e" fill-opacity="0.4"/>
-						<path id="svg_6" d="m1663.83437,909.61168l-1704.94553,-0.72172l1.11111,-486.66724l648.88966,30.00004l105.55568,-41.11116l126.66682,1.11111l122.22236,-34.44449l126.66682,14.44447c0.49906,0.72171 126.05477,-64.83392 126.05477,-64.83392c0,0 128.88904,4.44445 128.38998,3.72273c0.49906,0.72172 118.27698,28.49953 118.27698,28.49953c0,0 173.33353,-108.88902 172.83447,-109.61073" stroke-opacity="null" stroke-width="0" stroke="#1a1b1f" fill="#1a1b1f" fill-opacity="0.4"/>
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="250" stroke="#000" ry="3.5" rx="3.5" id="svg_9" cy="453.023736" cx="609.150561" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="2000" stroke="#FFF" r="20" id="svg_9" cy="453.023736" cx="609.150561" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 101.5% 50.4%;" />
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">colpomed2019@gmail.com </a>
+        <i class="bi bi-phone-fill phone-icon"></i> +(03) 2961078
+      </div>
+      <div class="social-links d-none d-md-block">
+        <a href="https://www.facebook.com/Colpomed" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/colpomed/?hl=es" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg" class="twitter"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/ximena-coronel-a82538140?originalSubdomain=ec" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500" stroke="#000" ry="3.5" rx="3.5" id="svg_10" cy="411.595173" cx="715.341014" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="250" stroke="#FFF" r="20" id="svg_9" cy="411.595173" cx="715.341014" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 119.2% 45.7%;" />
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="750" stroke="#000" ry="3.5" rx="3.5" id="svg_11" cy="412.071364" cx="841.05527" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="2000" stroke="#FFF" r="20" id="svg_9" cy="412.071364" cx="841.05527" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 140.1% 45.7%;" />
+      <h1 class="logo"><a href="index.html">NUTRIDAY <span style="font-size: 15px;color:#919191">by COLPOMED</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="{{asset('img/logo.png')}}" alt="" class="img-fluid"></a>-->
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1000" stroke="#000" ry="3.5" rx="3.5" id="svg_12" cy="378.261847" cx="964.388575" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="250" stroke="#FFF" r="20" id="svg_9" cy="378.261847" cx="964.388575" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 160.7% 42%;" />
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="#about">Nosotros</a></li>
+          <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
+          <!-- <li><a class="nav-link scrollto " href="#portfolio">Galería</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#pricing">Información</a></li> -->
+          <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li> -->
+          <li><a class="nav-link scrollto" href="#contact">Contáctanos</a></li>
+          <li><a class="nav-link scrollto" href="{{route('login')}}">Inicia Sesión</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1250" stroke="#000" ry="3.5" rx="3.5" id="svg_13" cy="391.595177" cx="1090.102832" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="2000" stroke="#FFF" r="20" id="svg_9" cy="391.595177" cx="1090.102832" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 181.6% 43.5%;" />
+    </div>
+  </header><!-- End Header -->
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1500" stroke="#000" ry="3.5" rx="3.5" id="svg_14" cy="327.706436" cx="1216.769206" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="250" stroke="#FFF" r="20" id="svg_9" cy="327.706436" cx="1216.769206" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 202.8% 36.4%;" />
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      <h1>BIENVENIDOS</h1>
+      <h2>App para gestión de planes nutricionales</h2>
+      <a href="#about" class="btn-get-started scrollto">Más información</a>
+    </div>
+  </section><!-- End Hero -->
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1750" stroke="#000" ry="3.5" rx="3.5" id="svg_15" cy="332.150871" cx="1346.213343" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="2000" stroke="#FFF" r="20" id="svg_9" cy="332.150871" cx="1346.213343" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 224.3% 36.9%;" />
+  <main id="main">
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="2000" stroke="#000" ry="3.5" rx="3.5" id="svg_16" cy="358.26192" cx="1463.43529" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="250" stroke="#FFF" r="20" id="svg_9" cy="358.26192" cx="1463.43529" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 243.8% 39.8%;" />
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
 
-						<ellipse class="dots appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="2250" stroke="#000" ry="3.5" rx="3.5" id="svg_7" cy="278.817661" cx="1589.546107" stroke-opacity="null" stroke-width="0" fill="#fff"/>
-						<circle class="appear-animation" data-appear-animation="dotPulse" data-appear-animation-delay="2000" stroke="#FFF" r="20" id="svg_9" cy="278.817661" cx="1589.546107" stroke-opacity="null" stroke-width="0.2" fill="none" style="transform-origin: 264.6% 30.9%;" />
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <img src="{{asset('img/colpomed_about.jpg')}}" class="img-fluid" style="border-radius:5px"
+              alt="Foto Gerencia Colpomed">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h3>Sobre Nosotros.</h3>
+            <p class="fst-italic" style="text-align:justify">
+              Somos un Centro Hospitalario de Especialidades Médicas ubicado en la ciudad de Riobamba con amplio
+              reconocimiento y experiencia en la práctica de Ginecología, Obstetricia, Patología Cervical y Colposcopia.
+            </p>
+            <br>
+            <ul>
+              <li><i class="bi bi-check-circle"></i>Educación alimentaria y nutricional.</li>
+              <li><i class="bi bi-check-circle"></i>Tratamientos para la incontinencia urinaria.</li>
+              <li><i class="bi bi-check-circle"></i>Diagnóstico y prevención del cáncer uterino.</li>
+              <li><i class="bi bi-check-circle"></i>Diagnóstico, control y prevención de enfermedades agudas y crónicas
+              </li>
+            </ul>
+            <br>
+            <p style="text-align:justify">
+              Nos identificamos como referentes en el manejo de la Patología del Cuello Uterino con una experiencia de
+              25 años en el centro del país.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up">
+            <div class="box h-100">
+              <span>01</span>
+              <h4>Laboratorio</h4>
+              <p style="text-align: justify">Contamos con un área de pre analítica para recepción y toma de muestras, un
+                área para analítica de inmunología, test hormonales y marcadores tumorales, pruebas de Biología
+                molecular, Bioquímica Clínica, Serología y Hematología, Uroanálisis, Coproanálisis, Bacteriología con
+                cámara aislada para siembra y preparación de cultivos.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="150">
+            <div class="box h-100">
+              <span>02</span>
+              <h4>Centro de infusiones de vitamina C</h4>
+              <p style="text-align: justify">En Colpomed, brindamos una experiencia médica diferente, cálida y
+                agradable; con un servicio de terapias naturales que se disponen en el Centro de Medicina Funcional.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="box h-100">
+              <span>03</span>
+              <h4>Farmacia</h4>
+              <p style="text-align: justify">Proporcionamos el servicio de Farmacia Interna a todos los usuarios de
+                Consulta externa en Medicina General y de Especialidades.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row d-flex align-items-center">
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <img src="{{asset('img/clients/logosaliados.png')}}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <img src="{{asset('img/clients/logosaliados2.png')}}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <img src="{{asset('img/clients/logosaliados.png')}}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <img src="{{asset('img/clients/logosaliados2.png')}}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <img src="{{asset('img/clients/logosaliados.png')}}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <img src="{{asset('img/clients/logosaliados2.png')}}" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Servicios</span>
+          <h2>Servicios</h2>
+          <p>En Colpomed podrás encontrar todo lo que necesitas para tu salud y cuidado personal.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-pulse bx-flashing'></i></div>
+              <h4><a href="">Medicina Interna</a></h4>
+              <p>El especialista en Medicina Interna, brinda atención integral al paciente, enfocándose en la
+                prevención, estudio, diagnóstico, tratamiento y rehabilitación de las enfermedades crónicas propias del
+                adulto.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up"
+            data-aos-delay="150">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-plus-medical bx-tada'></i></div>
+              <h4><a href="">Medicina General</a></h4>
+              <p>Consulta externa de Medicina general con cuidados en atención primaria de salud para niños, mujeres y
+                hombres con énfasis en la prevención y fomento de la salud.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up"
+            data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-clinic bx-burst'></i></div>
+              <h4><a href="">Pediatría Clínica y Neonatologia</a></h4>
+              <p>Especialistas en Pediatría y Neonatología, atendemos a niños menores y mayores dentro de un ambiente
+                adecuado y con la calidez que el servicio lo requiere.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="450">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-heart-circle bx-spin'></i></div>
+              <h4 style="min-height: 57.6px;"><a href="">Ginecología y Obstetricia</a></h4>
+              <p>Nos identificamos como referentes en el manejo de la Patología del Cuello Uterino, con una experiencia
+                de 25 años en el ejercicio de esa área de la Ginecología en el centro del país.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-food-menu bx-fade-up'></i></div>
+              <h4 style="min-height: 57.6px;"><a href="">Nutrición y Dietética</a></h4>
+              <p>Contamos con profesionales especializados en Nutrición y Dietética, que mediante el trabajo
+                interdisciplinario hacen del proceso de cuidado nutricional, parte del manejo integral del paciente
+                ambulatorio y hospitalizado. </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bxs-flask bx-tada'></i></div>
+              <h4><a href="">Laboratorio clínico automatizado</a></h4>
+              <p>El Laboratorio Clínico de Colpomed, está equipado con tecnología moderna y equipos automatizados de la
+                casa Roche, con respaldo técnico y de mantenimiento permanente de equipos</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>Instalaciones</h3>
+          <p> Laboratorio Clínico de COLPOMED. Equipos automatizados con la mejor tecnología de Laboratorios ROCHE. Por
+            ello destacamos como laboratorio clínico inmunológico especializado.</p>
+          <buttom title="Video promocional" class="cta-btn btn" data-toggle="modal" data-target="#exampleModal">Aqui va
+            un modal</buttom>
+        </div>
+      </div>
+
+    </section><!-- End Cta Section -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-					</svg>
-					<img class="img-fluid position-absolute d-none d-lg-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300" data-appear-animation-duration="750" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_notebook.png" alt="Performance on Laptop" style="display: block; top: -170px; left: 90px;">
-					<div class="container text-center py-5 mb-5">
-						<div class="row justify-content-center pb-md-5 mb-md-5">
-							<div class="col-md-7 offset-lg-5 pb-md-5 mb-md-5">
-								<h2 class="font-weight-bold text-9 appear-animation mb-3" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">Top Performance</h2>
-								<p class="custom-text-color-1 color-inherit mb-4 pb-lg-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750">Porto has high performance base, all structure are focusing on performance as main point. Porto speed optimization is super fast compared to other templates.</p>
-							</div>
-						</div>
-						<div class="row align-items-center pb-md-5 mb-md-5">
-							<div class="col-12 col-md-7 text-center mt-5">
-								<h2 class="font-weight-bold text-7 text-md-6 text-lg-9 pt-5 pt-md-4 mt-5 mb-lg-3 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">Works Perfectly on <span class="highlighted-word highlighted-word-animation-1 highlighted-word-animation-1-no-rotate alternative-font-4 font-weight-bold"> Any </span> Device!</h2>
-								<p class="custom-text-color-1 color-inherit appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750">We believe you will face lots of traffic from mobile device users not only from desktop or laptop users. Porto is the best solution for you, works fine on any screen resolutions and mobile devices. Try Porto and see how it works!</p>
-							</div>
-							<div class="col-5 d-none d-md-block">
-								<div class="text-right mr-3 mr-lg-5 ml-auto mb-4 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="600" data-appear-animation-duration="750" style="max-width: 244px;" data-plugin-options="{'accY': -100}">
-									<img class="img-fluid" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_iphone.png" width="244" height="228" alt="Performance on Mobile">
-								</div>
-								<img class="img-fluid appear-animation z-index-1 position-relative" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="800" data-appear-animation-duration="750" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_ipad.png" width="437" height="241" alt="Performance on Tablet" style="margin-bottom: -10%">
-							</div>
-						</div>
-					</div>
-					<div class="section-funnel-layer-bottom">
-						<div class="section-funnel-layer bg-light"></div>
-						<div class="section-funnel-layer bg-light"></div>
-					</div>
-				</section> --}}
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Galería de imágenes</span>
+          <h2>Galería de imágenes</h2>
+          <p> </p>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">Todas</li>
+              <li data-filter=".filter-instalaciones">Instalaciones</li>
+              <li data-filter=".filter-consultorio">Consultorio</li>
+              <li data-filter=".filter-otros">Noticias</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-instalaciones">
+            <img src="{{asset('img/portfolio/instalaciones.png')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Laboratorio</h4>
+              <p>Instalaciones</p>
+              <a href="{{asset('img/portfolio/instalaciones.png')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Laboratio de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-otros">
+            <img src="{{asset('img/portfolio/otros.png')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Noticias</h4>
+              <p>COLPOMED</p>
+              <a href="{{asset('img/portfolio/otros.png')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Noticias"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-instalaciones">
+            <img src="{{asset('img/portfolio/laboratorio.jpg')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Laboratorio Clínico</h4>
+              <p>Instalaciones</p>
+              <a href="{{asset('img/portfolio/laboratorio.jpg')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Laboratorio médico de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-consultorio">
+            <img src="{{asset('img/portfolio/consultorio.PNG')}}" class="img-fluid w-100" alt="">
+            <div class="portfolio-info">
+              <h4>Consultorio médico</h4>
+              <p>Consultorios</p>
+              <a href="{{asset('img/portfolio/consultorio.PNG')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Consultorio médico de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-otros">
+            <img src="{{asset('img/portfolio/otros2.png')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Noticias</h4>
+              <p>COLPOMED</p>
+              <a href="{{asset('img/portfolio/otros2.png')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Noticias"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-otros">
+            <img src="{{asset('img/portfolio/otros4.jpg')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Noticias</h4>
+              <p>COLPOMED</p>
+              <a href="{{asset('img/portfolio/otros4.jpg')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Noticias"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-instalaciones">
+            <img src="{{asset('img/portfolio/Enfermeria.PNG')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Enfermería</h4>
+              <p>Instalaciones</p>
+              <a href="{{asset('img/portfolio/Enfermeria.PNG')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Enfermería de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-instalaciones">
+            <img src="{{asset('img/portfolio/edificio.jpg')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Edificio COLPOMED</h4>
+              <p>Instalaciones</p>
+              <a href="{{asset('img/portfolio/edificio.jpg')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Edificio de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 portfolio-item filter-otros">
+            <img src="{{asset('img/portfolio/otros5.jpg')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Noticias</h4>
+              <p>COLPOMED</p>
+              <a href="{{asset('img/portfolio/otros5.jpg')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Noticias"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-instalaciones">
+            <img src="{{asset('img/portfolio/instalaciones2.PNG')}}" class="img-fluid w-100 h-100" alt="">
+            <div class="portfolio-info">
+              <h4>Laboratorio</h4>
+              <p>Instalaciones</p>
+              <a href="{{asset('img/portfolio/instalaciones2.PNG')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Laboratio de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-consultorio">
+            <img src="{{asset('img/portfolio/consultorio3.PNG')}}" class="img-fluid w-100" alt="">
+            <div class="portfolio-info">
+              <h4>Sala de espera</h4>
+              <p>Consultorios</p>
+              <a href="{{asset('img/portfolio/consultorio3.PNG')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Sala de espera de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-consultorio">
+            <img src="{{asset('img/portfolio/vitaminac.jpg')}}" class="img-fluid w-100" alt="">
+            <div class="portfolio-info">
+              <h4>Centro de Medicina Funcional.</h4>
+              <p>Consultorios</p>
+              <a href="{{asset('img/portfolio/vitaminac.jpg')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Centro de Medicina Funcional antidegenerativa, antioxidativa, y sueroterapias biorreguladoras y de infusiones de Megadosis de Vitamina C."><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-consultorio">
+            <img src="{{asset('img/portfolio/instalaciones3.PNG')}}" class="img-fluid w-100" alt="">
+            <div class="portfolio-info">
+              <h4>Consultorio médico infantil</h4>
+              <p>Consultorios</p>
+              <a href="{{asset('img/portfolio/instalaciones3.PNG')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Consultorio médico infantil de COLPOMED"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-otros">
+            <img src="{{asset('img/portfolio/otros3.png')}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Noticias</h4>
+              <p>COLPOMED</p>
+              <a href="{{asset('img/portfolio/otros3.png')}}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link" title="Noticias"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Razones para elegirnos</span>
+          <h2>Razones para elegirnos</h2>
+          <p>En COLPOMED tienes los mejores servicios para tener el cuidado de tú salud</p>
+        </div>
+
+        <div class="row">
+        <style>
+          .enviar:hover{
+            filter: brightness(1.4);
+          }
+                    
+        </style>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+            <div class="box h-100">
+              <h4><i class='bx bx-first-aid bx-fade-down'></i></h4>
+              <h3>Servicio Integral</h3>
+              <div class="container px-0 px-lg-5 ">
+                <p style="text-align:justify;">En Colpomed todos nuestros servicios integrados se complementan para
+                  brindarle a nuestros clientes una experiencia médica diferente, cálida y agradable.</p>
+              </div>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy enviar ">Leer más</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
+            <div class="box featured h-100">
+              <h4><i class='bx bx-clinic bx-fade-up'></i></h4>
+              <h3>Instalaciones</h3>
+              <div class="container px-0 px-lg-5 ">
+                <p style="text-align:justify;">
+                  Nuestro sello distintivo marca su diferencia en el mercado al ser un Centro Médico que cuenta con
+                  instalaciones modernas, confortables, con normativas de seguridad y diseño estructural en construcción
+                  antisísmica.
+                </p>
+              </div>
+
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Leer más</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+            <div class="box h-100">
+              <h4><i class='bx bx-user-voice bx-fade-down'></i></h4>
+              <h3>Profesionalismo</h3>
+              <div class="container px-0 px-lg-5 ">
+
+                <p style="text-align:justify;">
+                  Nuestro actuar se basa en el respeto, la integridad y ética profesional, nuestro compromiso es
+                  brindarle una atención con calidad.
+                </p>
+              </div>
+
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy enviar">Leer más</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+    <style>
 
 
 
-				{{-- <section class="section section-angled section-angled-reverse border-0 m-0 bg-dark section-dark" style="background-size: 100%; background-position: top;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/bg_inicio4.jpg">
-					<div class="section-angled-layer-top section-angled-layer-increase-angle bg-light" style="padding: 4rem 0;"></div>
-					<div class="container py-5 mt-5">
-						<div class="row align-items-center mt-4 pt-2">
-							<div class="col-lg-6 pr-lg-5 position-relative text-center mb-5 mb-lg-0">
-								<img alt="Porto Headers" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_headers.png" class="img-fluid appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300" />
-							</div>
-							<div class="col-lg-5 text-center px-lg-0">
-								<h5 class="text-primary font-weight-semibold positive-ls-2 text-4 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750">ADVANCED USABILITY-FOCUSED </h5>
-								<h2 class="font-weight-bold text-9 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">Headers and Menus</h2>
-								<p class="custom-text-color-1 color-inherit appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">Porto comes with several headers and menus options for you to use on your website. We have created several options always focused on the best user experience to improve your business.</p>
-								<p class="custom-text-color-1 color-inherit pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750">Select any of the options we have giver you or create your own.</p>
-								<div class="d-flex align-items-center justify-content-center">
-									<i class="fa fa-check text-color-primary bg-light rounded-circle p-2 mr-3 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1600" data-appear-animation-duration="750"></i>
-									<p class="mb-0 line-height-5 ls-0 text-color-light font-weight-semibold appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1300" data-appear-animation-duration="750">Menus, Nav Icons, Search Icons, Mini Cart,<br>Account Items, Search and much more...</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section> --}}
+    </style>
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
 
-				<section class="section section-funnel border-0 bg-light m-0" style="background-size: 100%; background-repeat: no-repeat; background-position: top;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/landing/half_circle.png">
-					{{-- <div class="container text-center pb-5 mt-3 mb-5">
-						<h2 class="font-weight-bold text-9 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250">Layouts</h2>
-						<h5 class="text-primary font-weight-semibold positive-ls-2 text-4 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">GIANT LIBRARY OF VARIATIONS</h5>
-						<p class="text-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="550">Giant variety of layouts to create your site with unlimited possibilities.</p>
-						<div class="row flex-column flex-lg-row justify-content-center align-items-center my-5">
-							<div class="col-8 col-md-5 col-lg-3 image-box mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">
-								<div class="image mb-3">
-									<img alt="Layouts" width="195" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_layouts1.png" class="position-relative z-index-3 mr-auto" style="width: 67.47%; left: -51px;">
-									<img alt="Layouts" width="174" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_layouts3.png" class="position-relative z-index-1 ml-auto" style="width: 60.2%; margin-top: -32%; right: -50px;">
-									<img alt="Layouts" width="174" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_layouts3.png" class="position-relative z-index-2 mx-auto" style="width: 60.2%; margin-top: -13%;">
-								</div>
-								<h4 class="text-dark font-weight-bold pt-2 mb-1">Layouts</h4>
-								<p class="fs-md text-3 px-lg-4">Max Width 1200px, 1170px, 1024px,<br> full width, etc...</p>
-							</div>
-							<div class="col-8 col-md-5 col-lg-3 image-box mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
-								<div class="image mb-3">
-									<img alt="Sidebars" width="172" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sidebars1.png" class="position-relative z-index-1 ml-auto" style="right: -33px;">
-									<img alt="Sidebars" width="172" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sidebars2.png" class="position-relative z-index-2" style="left: -19px; margin-top: -32%;">
-									<img alt="Sidebars" width="172" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sidebars3.png" class="position-relative z-index-3 ml-auto" style="right: -20px; margin-top: -13%;">
-								</div>
-								<h4 class="text-dark font-weight-bold pt-2 mb-1">Sidebars</h4>
-								<p class="fs-md text-3 px-lg-4">Sidebar can be set to be on left, right, both or even disabled.</p>
-							</div>
-							<div class="col-8 col-md-5 col-lg-3 image-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750">
-								<div class="image mb-3">
-									<img alt="Sliders" width="142" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sliders1.png" class="position-relative z-index-1" style="left: -31px;">
-									<img alt="Sliders" width="142" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sliders2.png" class="position-relative z-index-2 ml-auto" style="right: -60px; margin-top: -31%">
-									<img alt="Sliders" width="142" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sliders3.png" class="position-relative z-index-3 ml-auto" style="margin-right: 15%; margin-top: -41%;">
-									<img alt="Sliders" width="142" height="161" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/porto_sliders4.png" class="position-relative z-index-4" style="left: -50px; margin-top: -35.67%;">
-								</div>
-								<h4 class="text-dark font-weight-bold pt-2 mb-1">Sliders</h4>
-								<p class="fs-md text-3 px-lg-4">You can set several different types of sliders, boxed, full, grid, etc..</p>
-							</div>
-						</div>
-					</div> --}}
-					<div class="section-funnel-layer-bottom">
-						<div class="section-funnel-layer bg-color-light-scale-1"></div>
-						<div class="section-funnel-layer bg-color-light-scale-1"></div>
-					</div>
-				</section>
+        <div class="section-title">
+          <span>Equipo de trabajo</span>
+          <h2>Equipo de trabajo</h2>
+          <p>Conoce a todo el personal profesional de COLPOMED</p>
+        </div>
 
-				<section class="section section-funnel position-relative z-index-3 border-0 pt-0 m-0">
-					<div class="container pb-5 mb-5">
-						<h2 class="fotn-weight-extra-bold mb-3 text-center">
-							<span class="font-weight-bold text-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">Razones para elegirnos</span>
-						</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_1.jpg')}}" alt="">
+              <h4>DRA. CECILIA XIMENA CORONEL VILLACRES</h4>
+              <span>GERENTE COLPOMED </span>
+              <p>
+                ESPECIALIDAD GINECOLOGÍA Y OBSTETRICIA.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/ximena-coronel-a82538140?originalSubdomain=ec"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_2.png')}}" alt="">
+              <h4>DR. IVÁN ENRIQUE NARANJO LOGROÑO</h4>
+              <span>DIRECTOR MÉDICO</span>
+              <p>
+                ESPECIALIDAD GINECOLOGÍA Y OBSTETRICIA.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/ivan-naranjo-61753a140/?originalSubdomain=ec"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_3.png')}}" alt="">
+              <h4>DR. JUAN PABLO HARO ROMERO </h4>
+              <span>MÉDICO COLPOMED</span>
+              <p>
+                ESPECIALIDAD MEDICINA INTERNA​.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_4.jpeg')}}" alt="">
+              <h4>DRA. DIANA CAROLINA DAVILA CRUZ</h4>
+              <span>MÉDICO COLPOMED</span>
+              <p>
+                ESPECIALIDAD MEDICINA INTERNA.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
 
-						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="850" data-appear-animation-duration="850">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_5.png')}}" alt="">
+              <h4>DR. ANTHONY ALFONSO NARANJO CORONEL</h4>
+              <span>MÉDICO COLPOMED</span>
+              <p>
+                ESPECIALIDAD MÉDICO CIRUJANO
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/anthony-naranjo-7a102b126/?originalSubdomain=ec
+                "><i class="bi bi-linkedin"></i></a>
 
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_9.jpeg')}}" alt="">
+              <h4>DRA. CRISTINA VALERIA CALDERÓN VALLEJO.</h4>
+              <span>MÉDICO COLPOMED</span>
+              <p>
+                ESPECIALIDAD NUTRICIONISTA DIETISTA.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_8.png')}}" alt="">
+              <h4>JENNY DEL CARMEN CHAVEZ</h4>
+              <span>EQUIPO COLPOMED</span>
+              <p>
+                BIOQUÍMICA FARMACÉUTICA.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_6.png')}}" alt="">
+              <h4>LIC. ESTEFANIA NICOLE ZABALA ESCOBAR</h4>
+              <span>EQUIPO COLPOMED</span>
+              <p>
+                LICENCIADA EN CIENCIAS DE LA SALUD EN LABORATORIO CLÍNICO HISTOPATOLÓGICO.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
 
-							<div class="owl-carousel carousel-center-active-item-2 nav-style-4 mb-4 pb-3" data-plugin-options="{'items': 1, 'loop': true, 'nav': true, 'dots': false}">
-								<div>
-									<div class="d-flex flex-column flex-md-row justify-content-between mb-4">
-										<div class="author">
-											<h4 class="text-5 mb-0">SERVICIO INTEGRAL</h4>
-										</div>
-
-									</div>
-									<p class="mb-0">En Colpomed todos nuestros servicios integrados se complementan para brindarle a nuestros clientes una experiencia médica diferente, cálida y agradable</p>
-								</div>
-								<div>
-									<div class="d-flex flex-column flex-md-row justify-content-between mb-4">
-										<div class="author">
-											<h4 class="text-5 mb-0">Instalaciones</h4>
-										</div>
-									</div>
-									<p class="mb-0">
-										Nuestro sello distintivo marca su diferencia en el mercado al ser un Centro Médico que cuenta con instalaciones modernas, confortables, con normativas de seguridad y diseño estructural en construcción antisísmica.					</p>
-								</div>
-								<div>
-									<div class="d-flex flex-column flex-md-row justify-content-between mb-4">
-										<div class="author">
-											<h4 class="text-5 mb-0">Profesionalismo</h4>
-										</div>
-									</div>
-									<p class="mb-0">
-										Nuestro actuar se basa en el respeto, la integridad y ética profesional, nuestro compromiso es brindarle una atención con calidad.
-
-									</p>
-
-							</div>
-						</div>
-
-					</div>
-					<div class="section-funnel-layer-bottom">
-						<div class="section-funnel-layer bg-light"></div>
-						<div class="section-funnel-layer bg-light"></div>
-					</div>
-				</section>
-
-				<section id="support" class="section section-angled bg-light border-0 m-0 position-relative z-index-3 pt-0">
-					<div class="container pb-5 mb-5">
-						<div class="row align-items-center mb-5">
-							<div class="col-lg-6 pr-xl-5 mb-5 mb-lg-0">
-								<h2 class="font-weight-bold text-9 mb-1">¿Qué pruebas diagnósticas realizamos para la COVID-19?</h2>
-
-
-								<div class="d-flex align-items-center border border-top-0 border-right-0 border-left-0 pb-4 mb-4">
-									<i class="fa fa-check text-color-primary bg-light rounded-circle box-shadow-4 p-2 mr-3"></i>
-									<p class="mb-0" style="text-align:justify;"><b class="text-color-dark">PCR</b> <br> PCR (Reacción en Cadena de la Polimerasa) para detección SARS-CoV-2 en muestras nasofaríngeas y orofaríngeas. El resultado de la prueba PCR, es positivo o negativo, e indica si en el momento actual la persona está infectada por COVID-19.</p>
-								</div>
-								<div class="d-flex align-items-center border border-top-0 border-right-0 border-left-0 pb-4 mb-4">
-									<i class="fa fa-check text-color-primary bg-light rounded-circle box-shadow-4 p-2 mr-3"></i>
-									<p class="mb-0" style="text-align:justify;"><b class="text-color-dark">QUIMIOLUMINISCENCIA (CLIA) </b><br>Los ensayos por CLIA parten del mismo fundamento técnico que los ensayos por ELISA con la diferencia de que en los CLIA la enzima que se acopla al anticuerpo cataliza una reacción quimioluminiscente con la emisión de fotones, midiéndose la producción de luz.</p>
-								</div>
-
-							</div>
-							<div class="col-lg-4 offset-lg-2">
-								<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500">
-									<img class="img-fluid" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/covid2.jpg')}}" alt="" style="position: absolute; bottom: -2%; left: -43%; transform: rotate(90deg)">
-								</div>
-								<img alt="Porto Support" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/landing/support_login.jpg" class="img-fluid border border-width-10 border-color-light rounded box-shadow-3 ml-5 appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="200" style="width: 590px; max-width: none;">
-								<img alt="Porto Documentation" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="{{asset('img/logos/covid1.jpg')}}" class="img-fluid  rounded box-shadow-3 position-absolute appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="700" style="left: -100px; bottom: 50px;">
-							</div>
-						</div>
-					</div>
-					<div class="section-angled-layer-bottom section-angled-layer-increase-angle" style="padding: 4rem 0; background: #222529;"></div>
-				</section>
-
-				<section class="section bg-dark section-dark border-0 m-0">
-					<div class="container">
-						<div class="text-center mb-5">
-							<h5 class="font-weight-semibold positive-ls-2 text-4 text-primary mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750">Disponemos de gran cantidad de opciones</h5>
-							<h2 class="font-weight-bold text-9 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">Servicios activos de COLPOMED</h2>
-							<p class="custom-text-color-1 color-inherit appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="850" data-appear-animation-duration="750">Contamos con una Unidad de Patología Cervical  y  Video Colposcopia – Vulvoscopia- Vaginoscopia – Androscopia para el diagnóstico y tratamiento de la patología genital y de las  lesiones del cuello uterino y  vacunatorio para la  prevención del  cáncer cervical; Unidad de Ginecología Estética y Regenerativa con tecnología de avanzada y tratamiento ambulatorio con  Radiofrecuencia Fraccionada Microablativa FRAXX  para el tensado y rejuvenecimiento vaginal, incontinencia urinaria y síndrome urogenital de la menopausia..</p>
-						</div>
-						<div class="row pb-5" style="display:flex; justify-content:space-evenly">
-							<div class="d-flex col-sm-6 col-lg-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">
-								<div class=" justify-content-center align-items-center text-center bg-color-dark-scale-2 rounded p-5">
-									<i class="icon-bg icon-feature-1 mt-4"></i>
-									<h4 class="text-4 mb-2">LABORATORIO</h4>
-									<p class="custom-text-color-1 text-3 color-inherit mb-0">Contamos con un área de pre analítica para recepción y toma de muestras, un área para analítica de inmunología, test hormonales y marcadores tumorales, pruebas de Biología molecular, Bioquímica Clínica, Serología y Hematología, Uroanálisis, Coproanálisis, Bacteriología con cámara aislada para siembra y preparación de cultivos.</p>
-								</div>
-							</div>
-							<div class="d-flex text-center col-sm-6 col-lg-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750">
-								<div class=" align-item-center bg-color-dark-scale-2 rounded p-5">
-									<i class="icon-bg icon-feature-2 mt-4"></i>
-									<h4 class="text-4 mb-2">CENTRO DE INFUSIONES DE VITAMINA C</h4>
-									<p class="custom-text-color-1 text-3 color-inherit mb-0">En Colpomed, brindamos una experiencia médica diferente, cálida y agradable; con un servicio de terapias naturales que se disponen en el Centro de Medicina Funcional.</p>
-								</div>
-							</div>
-							<div class="d-flex text-center col-sm-6 col-lg-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">
-								<div class="bg-color-dark-scale-2 rounded p-5">
-									<i class="icon-bg icon-feature-3 mt-4"></i>
-									<h4 class="text-4 mb-2">FARMACIA</h4>
-									<p class="custom-text-color-1 text-3 color-inherit mb-0">Proporcionamos el servicio de Farmacia Interna a todos los usuarios de Consulta externa en Medicina General y de Especialidades.</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</section>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member w-100">
+              <img src="{{asset('img/team/colpomed_10.jpeg')}}" alt="">
+              <h4>ING. STEPHANY JOHANA CAZCO ENRIQUEZ</h4>
+              <span>EQUIPO COLPOMED</span>
+              <p>
+                INGENIERA COMERCIAL.
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/Colpomed"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/colpomed/?hl=es"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCVdJTSJolVtqvFXgwBCkOOg"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
 
 
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <style>
+      @media(min-width:1200px){
+        .media{
+          padding-left: 0 !important;
+        }
+        .mediaa{
+          padding-right: 0 !important;
+        }
+      }
+      @media(max-width:1200px){
+        .media{
+          padding: 0 !important;
+        }
+        .mediaa{
+          padding: 0 !important;
+        }
+      }
+    </style>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Contáctanos</span>
+          <h2>Contáctanos</h2>
+        </div>
+        <div class="container mb-3">
+          <div class="row justify-content-center">
+          <div class="col-xl-6 col-12 mb-3 mb-xl-0 media">
+            <div class="p-4 info-box" style="border:1px solid #f9f9f905;border-radius:5px;text-align: left;">
+              <p class="text-center mb-4" style="color:#777777 !important;"> <strong>LABORATORIO CLÍNICO/INMUNOLÓGICO:</strong> </p>
+              <ul class="text-left">
+                <li class="text-left">
+                  <strong style="color:#777777 !important;">Lunes a Viernes: </strong> 07:00 am - 13:00 pm y 15:00 pm - 18:00pm
+
+                </li>
+                <li class="text-left">
+                  <strong style="color:#777777 !important;">Sábado:</strong> 08:00 am - 11:00 am
+
+                </li>
+              </ul>
+            </div>
+            </div>
+            <div class="col-xl-6 col-12 mediaa" style="padding-right: 0 !important;">
+              <div class="p-4 info-box" style="border:1px solid #f9f9f9;border-radius:5px;text-align: left;">
+                <p class="text-center mb-4" style="color:#777777 !important;"> <strong>CONSULTAS MÉDICAS </strong> </p>
+              <ul class="">
+                <li>
+                  <strong style="color:#777777 !important;">Lunes a Viernes:</strong> 08:00 am - 12:30 pm  y 15:00 pm - 18:30 pm
+  
+                </li>
+                <li>
+                  <strong style="color:#777777 !important;">Sábado:</strong> 08:00 am – 11:00 am  
+  
+                </li>
+              </ul>
+            </div>
+            </div>
+
+          </div>
+        </div>
 
 
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Nuestra Dirección</h3>
+              <p>Junín 26-18 y García Moreno. Riobamba, Ecuador</p>
+            </div>
+          </div>
 
-				<section class="section bg-color-dark-scale-2 border-0 m-0 py-4">
-					<div class="container">
-						<div class="row">
-							<div class="col">
-								<ul class="list list-unstyled list-inline d-flex align-items-center justify-content-center flex-column flex-lg-row mb-0">
-									<li class="list-inline-item custom-text-color-1 color-inherit mb-lg-0 text-2 pr-2">Porto Versions:</li>
-									<li class="list-inline-item mb-lg-0"><a href="https://themeforest.net/item/porto-admin-responsive-html5-template/8539472?s_rank=2" class="btn btn-dark btn-modern btn-rounded btn-px-4 py-3 border-0" target="_blank">ADMIN HTML</a></li>
-									<li class="list-inline-item mb-lg-0"><a href="https://themeforest.net/item/porto-ecommerce-shop-template/22685562" class="btn btn-dark btn-modern btn-rounded btn-px-4 py-3 border-0" target="_blank">SHOP HTML</a></li>
-									<li class="list-inline-item mb-lg-0"><a href="https://themeforest.net/item/porto-responsive-wordpress-ecommerce-theme/9207399" class="btn btn-dark btn-modern btn-rounded btn-px-4 py-3 border-0" target="_blank">WORDPRESS</a></li>
-									<li class="list-inline-item mb-lg-0"><a href="https://themeforest.net/item/porto-ultimate-responsive-magento-theme/9725864" class="btn btn-dark btn-modern btn-rounded btn-px-4 py-3 border-0" target="_blank">MAGENTO</a></li>
-									<li class="list-inline-item mb-lg-0"><a href="https://themeforest.net/item/porto-ultimate-responsive-shopify-theme/19162959" class="btn btn-dark btn-modern btn-rounded btn-px-4 py-3 border-0" target="_blank">SHOPIFY</a></li>
-									<li class="list-inline-item mb-lg-0"><a href="https://themeforest.net/item/porto-responsive-drupal-7-theme/5219986" class="btn btn-dark btn-modern btn-rounded btn-px-4 py-3 border-0" target="_blank">DRUPAL</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-			@include('layouts.footer')
-		</div>
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email</h3>
+              <p>colpomed2019@gmail.com</p>
+            </div>
+          </div>
 
-		@include('layouts.scripts')
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Número de Contacto</h3>
+              <p>+ (03) 2961078</p>
+            </div>
+          </div>
 
-	</body>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+
+          <div class="col-lg-6 ">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.0317728733839!2d-78.64978167077182!3d-1.6683132593875993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d3a96b3c5f864f%3A0x49511b39ce2ab632!2sCOLPOMED%20-%20Centro%20Ginecol%C3%B3gico%20-%20Hospital%20del%20D%C3%ADa!5e0!3m2!1ses!2sec!4v1656179238280!5m2!1ses!2sec"
+              width="600" height="450" style="border:0; width: 100%; height: 384px;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="{{route('home.contactar')}}" method="POST" role="form" class="php-email-form">
+				@csrf
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="nombres" class="form-control" id="nombre" placeholder="Ingresa tu nombre"
+                    required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="correo" id="email" placeholder="Ingresa tu email"
+                    required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="asunto" id="subject" placeholder="Asunto" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="mensaje" rows="6" placeholder="Escribe tu mensaje"
+                  required></textarea>
+              </div>
+              {{-- <style>
+                .enviar:hover{
+                  filter: brightness(1.4);
+                }
+              </style> --}}
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center enviar"><button type="submit">Enviar mensaje</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>NUTRIDAY</span></strong>. Todos los Derechos Reservados
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+        Por <a href="https://www.facebook.com/Colpomed/">COLPOMED</a>
+      </div>
+    </div>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+
+  <script src="{{asset('vendor/aos/aos.js')}}"></script>
+  <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{asset('vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
+
+  <!-- Template Main JS File -->
+
+  <script src="{{asset('js/main.js')}}"></script>
+
+  <!-- END PLUGINS NEEDED FOR THE IMPORTANT MESSAGE MODAL POPUP -->
+</body>
+
 </html>

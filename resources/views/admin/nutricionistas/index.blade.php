@@ -52,19 +52,27 @@
                                         <td>{{ $nutricionista->nutricionistas->especialidad }}</td>
                                         <td>{{ $nutricionista->email }}</td>
                                         <td>
+                                            @if($nutricionista->nutricionistas->estado=="activo")
                                             <a onclick="eliminarNutri({{ $nutricionista }});"
                                                 class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
+                                                @else
+                                                <a onclick="document.getElementById('deletenutri'+{{$nutricionista->nutricionistas->id}}).submit();"
+                                                class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
+                                                @endif
                                             <!-- Arreglar estado de nutricionistas con un botón -->
                                         </td>
                                         <td>
                                             <a title="Ver más" style="max-width: 50px" data-toggle="modal"
                                                 data-target="#exampleModal-3{{ $nutricionista->id }}"
                                                 class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+
                                             <a title="Editar nutricionista" class="btn btn-outline-warning mb-1"
                                                 data-toggle="modal"
                                                 data-target="#exampleModal-2{{ $nutricionista->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
+                                            
+                                            @if ($nutricionista->nutricionistas->estado == 'activo')
                                             <form method="post" id="deletenutri{{ $nutricionista->id }}"
                                                 action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
                                                 class="d-inline">
@@ -74,6 +82,17 @@
                                                     onclick="eliminarNutri({{ $nutricionista }});" type="submit"
                                                     class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
                                             </form>
+                                            @else
+                                            <form method="post" id="deletenutri{{ $nutricionista->nutricionistas->id }}"
+                                                action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
+                                                class="d-inline">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <a onclick="document.getElementById('deletenutri'+{{$nutricionista->nutricionistas->id}}).submit();"  title="Activar" style="min-width: 50px"
+                                                     type="submit"
+                                                    class="btn btn-outline-danger mb-1"><i class="fas fa-share"></i></a>
+                                            </form>
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -366,7 +385,7 @@
         function eliminarNutri(nutricionista) {
             var form = document.getElementById('deletenutri' + nutricionista.id);
             swal({
-                title: "Estas seguro que quieres al nutricionista " + nutricionista.nutricionistas.nombre + " " +
+                title: "Estas seguro que quieres eliminar al nutricionista " + nutricionista.nutricionistas.nombre + " " +
                     nutricionista.nutricionistas.apellido + " ?",
                 text: "Al confirmar, el nutricionista será eliminado permanentemente!",
                 icon: "warning",

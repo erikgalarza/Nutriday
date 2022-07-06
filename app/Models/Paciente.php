@@ -9,8 +9,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Paciente extends Authenticatable
 {
-    use HasFactory , HasRoles;
-
+ 
+    use HasFactory , HasRoles ;
     protected $guard_name = 'web';
 
     public $fillable=[
@@ -22,6 +22,7 @@ class Paciente extends Authenticatable
         "cedula",
         "edad",
         "user_id",
+        "responsable_id",
         "estado"
     ];
 

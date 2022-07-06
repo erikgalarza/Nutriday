@@ -142,12 +142,14 @@
         </div>
     </div>
     <div class="container mb-2 pb-3  text-center">
+
         <a title="Asignar una dieta predefinida a {{ $paciente->nombre }}" data-toggle="modal"
-            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-success"><i
+            data-target="#exampleModal-as" class="btn btn-success"><i
                 class="fas fa-share mr-2"></i> Asignar dieta </a>
+
         <a title="Crear una dieta personalizada a {{ $paciente->nombre }}"
             onclick="event.preventDefault();document.getElementById('formCrearDieta').submit();"
-            class="btn btn-warning"><i class="fas fa-plus mr-2"></i> Crear dieta </a>
+            class="btn btn-warning"><i class="fas fa-plus mr-2"></i>Crear dieta </a>
         <form id="formCrearDieta" method="POST" action="{{ route('dieta.crearDietaFlash') }}">
             @csrf
             <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
@@ -251,7 +253,7 @@
 
 
 
-                                <div class="modal fade" id="exampleModal-4{{ $paciente->id }}" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-as" tabindex="-1"
                                     role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -274,7 +276,7 @@
                                                         <form method="POST"
                                                             action="{{ route('dieta.guardarDietaAsignada') }}">
                                                             @csrf
-                                                            <input type="hidden" name="paciente_id"
+                                                            <input type="hidden" name="paciente_id"2
                                                                 value="{{ $paciente->id }}">
 
                                                             <div class="form-group row mb-1" style="">

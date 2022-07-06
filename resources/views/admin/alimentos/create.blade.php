@@ -582,9 +582,9 @@
 
 
     <script>
-        function esconder() {
+        // function esconder() {
 
-        }
+        // }
 
         var lunes = [],
             martes = [],
@@ -594,6 +594,7 @@
             sabado = [],
             domingo = []; // dentro de este estaron los alimentos del dia lunes
         function guardarDieta() {
+            console.log('dkfaldf')
             // console.log('content lunes:',lunes)
             // console.log('content martes:',martes)
             var semana = {};
@@ -608,7 +609,7 @@
                 domingo
             }
             const dieta_id = document.getElementById('dieta_id').value;
-            const paciente_id = document.getElementById('paciente_id').value;
+            const paciente_id = document.getElementById('paciente_id') ? document.getElementById('paciente_id').value : null;
             const user_id = document.getElementById('user_id').value;
             // alert(paciente_id);
             console.log('semana:', semana)

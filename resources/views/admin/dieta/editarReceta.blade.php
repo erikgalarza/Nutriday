@@ -927,7 +927,7 @@
 
             console.log('colacion2:' + colacion2.length + '- ' + arregloCantidades.length)
             if (colacion2.length === arregloCantidades.length && id == c4) {
-                let totalCb1 = 0,
+                let totalCb = 0,
                     totalGrasa = 0,
                     totalPro = 0,
                     totalKcal = 0;
@@ -2710,6 +2710,7 @@
 
         }
 
+        var estadoDias = [false, false, false, false, false, false, false]
         function sumarResultados() {
             let arrayDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
             for (let dia = 0; dia < 7; dia++) {
@@ -2761,16 +2762,13 @@
                 }
 
                 let valorKcal = Number(document.getElementById('kcalTotal' + dia).textContent);
-                if (valorKcal > 1500) {
+                if (valorKcal > 1500 && estadoDias[dia]==false) {
+                    estadoDias[dia]=true;
                     swal({
                         title: "Atención",
                         text: "El total del día " + arrayDias[dia] +
                             " de los alimentos agregados a sobrepasado las 1500 Kcal",
                         icon: "info",
-                        // buttons: [
-                        //     'No, cancelar',
-                        //     'Si, aceptar'
-                        // ],
                     })
                 }
             }

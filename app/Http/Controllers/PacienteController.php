@@ -12,6 +12,8 @@ use App\Models\DatosAntropometrico;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
+use App\Models\Admin;
+use App\Models\Nutricionista;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,8 +30,23 @@ class PacienteController extends Controller
         // $pesos = DB::table('datos_antropometricos')->select('peso')->latest()->get();
         // dd($alturas,$sexos,$pesos,$imcs);
         $pacientes = Paciente::all();
+        $responsables = collect();
+        foreach($pacientes as $key => $paciente)
+        {
+            $user = User::find($paciente->responsable_id);
+           $nutri =  $user->nutricionistas()->first();
 
-        return view('admin.paciente.index',compact('pacientes'));
+            if($nutri){$nombre = $nutri->nombre.' '.$nutri->apellido;}else{
+                $admin = $user->admin()->first();
+                // dd($admin);
+                $nombre = $admin->nombre;
+            }
+       
+           $responsables->push($nombre);
+        }
+        // dd($responsables);
+
+        return view('admin.paciente.index',compact('pacientes','responsables'));
     }
 
     public function estadosPaciente($paciente_id){
@@ -78,8 +95,6 @@ class PacienteController extends Controller
             $fechasFinAsignacion->push($fecha_asignacion);
         }
 
-        // dd($fechasFinDieta,$fechasFinAsignacion);
-
         $estados = $paciente->estados_animo()->get();
         return view('admin.paciente.progreso',compact('datos','dietas','actividades','responsablesAntro','responsablesDieta','fechasFinDieta','fechasFinAsignacion','duraciones','estados','paciente'));
     }
@@ -118,7 +133,7 @@ class PacienteController extends Controller
             $pass = Hash::make($request->password);
 
         $paciente->update([
-            "name"=>$request->name,
+            "nombre"=>$request->name,
             "apellido"=>$request->apellido,
             "email"=>$request->email,
             "cedula"=>$request->cedula,

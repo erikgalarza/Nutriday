@@ -168,8 +168,9 @@
                                                                     <label for="exampleInputUsername2"
                                                                         class="col-sm-4 col-form-label"><strong>Observaciones:</strong></label>
                                                                     <div class="col-sm-8">
-                                                                        <textarea name="observaciones"cols="30" rows="5" value="{{ $dieta->observaciones }}"
+                                                                        <textarea name="observaciones"cols="30" rows="5" 
                                                                             class="form-control" id="exampleInputUsername2" required>
+                                                                            {{ $dieta->observaciones }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>

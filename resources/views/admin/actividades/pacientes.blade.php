@@ -119,11 +119,18 @@
 
                                        <input type="hidden" name="imc" id="imcAux{{$paciente->id}}" value="{{$data->imc}}">
                                         @endif
+                                     
                                             @endforeach
                                             @else
                                             <td>0</td>
                                             @endif
-                                            <td>{{$responsable}}</td>
+                                            <td>
+                                                @if(isset($responsable))
+                                                {{$responsable}}
+                                                @else
+                                                Sin responsable
+                                                @endif
+                                            </td>
 
                                         <td style="text-align:center;">
                                             @if(count($paciente->actividades)>0)

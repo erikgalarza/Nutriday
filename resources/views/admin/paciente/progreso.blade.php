@@ -128,8 +128,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 text-center justify-content-center row">
-                    <div class="table-responsive w-75">
-                        <table id="order-listing" class="table">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table mb-4">
                             <thead>
                                 <tr>
                                     <th>N°</th>
@@ -138,8 +138,8 @@
                                     <th>IMC</th>
                                     <th>Grasa corporal</th>
                                     <th>Masa muscular</th>
-                                    <th>Responsable</th>
-                                    <th>Fecha de visita</th>
+                                    <th>Fecha consulta</th>
+                                    <th>Nutricionista</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -151,9 +151,8 @@
                                         <td>{{ $dato->imc }}</td>
                                         <td>{{ $dato->grasa_corporal}}</td>
                                         <td>{{ $dato->masa_muscular}}</td>
-                                        <td>{{$responsablesAntro[$key]}}</td>
                                         <td>{{ $dato->created_at }}</td>
-                                        <td>Erik Galarza</td>
+                                        <td>{{$responsablesAntro[$key]}}</td>
                                         <td>
                                         </td>
                                     </tr>
@@ -191,16 +190,16 @@
 
              <div class="row">
             <div class="col-12 text-center justify-content-center row" >
-                <div class="table-responsive w-75">
+                <div class="table-responsive">
                     <table id="order-listing" class="table mb-5">
                         <thead>
                             <tr>
                                 <th>N°</th>
                                 <th>Nombre</th>
                                 <th>IMC</th>
-                                <th>Tipo de diabetes</th>
-                                <th>Fecha de asignación</th>
-                                <th>Fecha de fin</th>
+                                <th>Tipo diabetes</th>
+                                <th>Fecha asignación</th>
+                                <th>Fecha fin</th>
                                 <th>Nutricionista</th>
 
                             </tr>
@@ -233,7 +232,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 text-center justify-content-center row">
-                        <div class="table-responsive w-75">
+                        <div class="table-responsive ">
                             <table id="order-listing" class="table mb-4">
                                 <thead>
                                     <tr>
@@ -254,7 +253,7 @@
                                             <td>{{ $duraciones[$key]->duracion }}</td>
                                             <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
                                             <td>{{ $dato->created_at }}</td>
-                                            <td>Erik Galarza</td>
+                                            <td>{{$responsablesAntro[$key]}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

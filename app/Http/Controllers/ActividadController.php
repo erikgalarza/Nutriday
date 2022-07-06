@@ -25,18 +25,18 @@ class ActividadController extends Controller
 
     public function buscarPacientes(Request $request)
     {
-      
+
         $nombre_completo = $request->get('paciente');
         $apellido = '';
-        for($i = 0 ; $i<strlen($nombre_completo) ;$i++) 
+        for($i = 0 ; $i<strlen($nombre_completo) ;$i++)
         {
             if($nombre_completo[$i]==" ")
             $apellido = substr($nombre_completo,$i+1);
         }
         if($apellido!='')
-            $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get(); 
+            $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get();
         else
-            $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->get(); 
+            $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->get();
 
     return view('admin.actividades.pacientes',compact('pacientes'));
     }
@@ -45,13 +45,17 @@ class ActividadController extends Controller
     {
         $pacientes = Paciente::all();
         // $duraciones=collect();
-        foreach($pacientes as $paciente)
+        foreach($pacientes as $key => $paciente)
         {
            $duraciones = $paciente->actividades()->get(['duracion']);
-        //    dd($duracion);
+           $user_id = $paciente->actividades()->get(['user_id']);
+            $user = User::find($user_id[$key]->user_id);
+            if($user->nutricionistas!=null){
+            $responsable = $user->nutricionistas->nombre;
+            }else{$responsable = $user->administradores->nombre;}
         }
 
-        return view('admin.actividades.pacientes',compact('pacientes','duraciones'));
+        return view('admin.actividades.pacientes',compact('pacientes','duraciones','responsable'));
     }
 
     public function guardarAsignacion(StoreAsignacionActividad $request)
@@ -142,7 +146,7 @@ class ActividadController extends Controller
 
 
 
-    
+
     public function update(UpdateActividadRequest $request, $id)
     {
         $actividad = Actividad::find($id);

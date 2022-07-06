@@ -5800,7 +5800,7 @@ a.editable-click.editable-disabled:hover {
     flex-direction: column;
     position: absolute;
     left: -100000px;
-    min-width: 600px;
+    min-width: auto;
     z-index: 1051
 }
 

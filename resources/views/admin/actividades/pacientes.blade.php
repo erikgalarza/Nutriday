@@ -123,7 +123,7 @@
                                             @else
                                             <td>0</td>
                                             @endif
-                                            <td>Erik Galarza</td>
+                                            <td>{{$responsable}}</td>
 
                                         <td style="text-align:center;">
                                             @if(count($paciente->actividades)>0)

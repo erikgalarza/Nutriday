@@ -47,15 +47,25 @@ class ActividadController extends Controller
         // $duraciones=collect();
         foreach($pacientes as $key => $paciente)
         {
+         
            $duraciones = $paciente->actividades()->get(['duracion']);
+       
            $user_id = $paciente->actividades()->get(['user_id']);
-            $user = User::find($user_id[$key]->user_id);
-            if($user->nutricionistas!=null){
-            $responsable = $user->nutricionistas->nombre;
-            }else{$responsable = $user->administradores->nombre;}
+           
+           if(count($user_id)>0){
+              $user = User::find($user_id[$key]->user_id);
+              if($user->nutricionistas!=null){
+                $responsable = $user->nutricionistas->nombre;
+                }else{$responsable = $user->administradores->nombre;}
+                
+                return view('admin.actividades.pacientes',compact('pacientes','duraciones','responsable'));
+            }
+            
+     
+         
         }
 
-        return view('admin.actividades.pacientes',compact('pacientes','duraciones','responsable'));
+        return view('admin.actividades.pacientes',compact('pacientes','duraciones'));
     }
 
     public function guardarAsignacion(StoreAsignacionActividad $request)

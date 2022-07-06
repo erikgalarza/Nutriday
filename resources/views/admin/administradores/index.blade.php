@@ -61,7 +61,14 @@
                     <td>
 
 
+                      
+                       
+
+                            @if($admin->administradores->estado=="activo")
                         <a onclick="eliminarAdmin({{$admin}});" class=" btn btn-rounded {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
+                        @else 
+                        <a onclick="document.getElementById('deleteadmin'+{{$admin->id}}).submit();" class=" btn btn-rounded {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
+                        @endif
 
                         <!-- Arreglar el estado de los administradores como un boton -->
                     </td>
@@ -69,14 +76,26 @@
                         <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{ $admin->id }}"class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
 
                         <a title="Editar administrador"  class="btn btn-outline-warning mb-1" data-toggle="modal" data-target="#exampleModal-2{{$admin->id}}"><i class="fas fa-edit"></i></a>
-
+                        @if ($admin->administradores->estado == 'activo')
                         <form method="post" id="deleteadmin{{$admin->id}}" action="{{route('administrador.destroy',$admin->id)}}" class="d-inline">
                             @csrf
                             {{method_field('DELETE')}}
                       <a title="Eliminar administrador" onclick="eliminarAdmin({{$admin}});" type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
                         </form>
+                        @else 
+                        <form method="post" id="deleteadmin{{$admin->id}}" action="{{route('administrador.destroy',$admin->id)}}" class="d-inline">
+                            @csrf
+                            {{method_field('DELETE')}}
+                      <a title="Eliminar administrador" onclick="document.getElementById('deleteadmin'+{{$admin->id}}).submit();" type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-share"></i></a>
+                        </form>
+
+                        @endif
                     </td>
                 </tr>
+
+
+             
+               
 
 
                 <div class="modal fade" id="exampleModal-3{{ $admin->id }}" tabindex="-1"

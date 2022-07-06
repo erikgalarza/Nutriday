@@ -168,8 +168,9 @@
                                                                     <label for="exampleInputUsername2"
                                                                         class="col-sm-4 col-form-label"><strong>Observaciones:</strong></label>
                                                                     <div class="col-sm-8">
-                                                                        <textarea name="observaciones"cols="30" rows="5" value="{{ $dieta->observaciones }}"
+                                                                        <textarea name="observaciones"cols="30" rows="5" 
                                                                             class="form-control" id="exampleInputUsername2" required>
+                                                                            {{ $dieta->observaciones }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -714,6 +715,7 @@
                                             <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    <div></div>
                                     <div class="modal-body py-3 px-0">
                                         <div class="col-12 row m-0 justify-content-center">
                                             <div class="col-sm-12 pl-3 col-11 text-left justify-content-center">

@@ -89,7 +89,7 @@
 
                                         </td>
                                         <td>
-                                            Erik Galarza
+                                           {{$responsables[$key]}}
                                         </td>
 
                                         {{-- <td>
@@ -120,14 +120,14 @@
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $paciente->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
-                                            {{-- @if ($paciente->estado == 'activo')
-                                                <a title="Eliminar paciente"
-                                                    href="{{ route('paciente.eliminar', $paciente->id) }}"
+                                            @if ($paciente->estado == 'activo')
+                                                <a title="Eliminar paciente" onclick="eliminarPaciente({{ $paciente }});"
+                                                    
                                                     class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
                                             @else
                                                 <a href="{{ route('paciente.eliminar', $paciente->id) }}" title="Activar"
                                                     class="btn btn-outline-danger"><i class="fas fa-reply"></i></a>
-                                            @endif --}}
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -489,4 +489,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function eliminarPaciente(paciente) {
+         
+            swal({
+                title: "Estas seguro que quieres eliminar al paciente " + paciente.nombre + "?",
+                text: "Al confirmar, el paciente será eliminado permanentemente!",
+                icon: "warning",
+                buttons: [
+                    'No, cancelar!',
+                    'Si, estoy seguro!'
+                ],
+                dangerMode: true,
+            }).then(function(isConfirm) {
+                if (isConfirm) {
+                   window.location.href="/dashboard/paciente/eliminar/"+paciente.id
+                }
+            })
+
+        }
+    </script>
+
+
 @endsection

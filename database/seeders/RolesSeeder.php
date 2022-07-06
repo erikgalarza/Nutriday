@@ -56,6 +56,8 @@ class RolesSeeder extends Seeder
             "cedula"=>"1234567890",
             "sexo"=>1,
             "telefono"=>"0988703030",
+            "user_id"=>$user3->id,
+            "responsable_id"=>$user2->id,
             "tipo_diabetes"=>1,
             "edad"=>23
         ]);

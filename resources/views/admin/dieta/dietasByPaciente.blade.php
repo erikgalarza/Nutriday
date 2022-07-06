@@ -218,13 +218,13 @@
                                             href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
                                                 class="fa-solid fa-utensils"></i></a>
                                     </td>
-                                 
+
                                            <td>
-                                            {{date('Y-m-d',strtotime($fechasFinAsignacion[$key]))}} /  
+                                            {{date('Y-m-d',strtotime($fechasFinAsignacion[$key]))}} /
                                             {{date('Y-m-d',strtotime($fechasFinDieta[$key]))}}
-                                            
-                                        </td> 
-                                    
+
+                                        </td>
+
                                     <td>
                                         <label for="" class="badge badge-success">Activa</label>
                                     </td>
@@ -529,6 +529,10 @@
 
 
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                         </div>
 

@@ -7,12 +7,12 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Melody Admin</title>
+  <title>NUTRIDAY</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('vendor2/iconfonts/font-awesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor2/css/vendor.bundle.base.css')}}">
   <link rel="stylesheet" href="{{asset('vendor2/css/vendor.bundle.addons.css')}}">
-  
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -55,7 +55,7 @@
                         <i class="fa fa-lock "></i>
                       </span>
                     </div>
-                    <input type="password" name="password" style="border-radius:0 8px 8px 0 !important;" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Contraseña">                        
+                    <input type="password" name="password" style="border-radius:0 8px 8px 0 !important;" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Contraseña">
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -84,7 +84,7 @@
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row">
-            <p class="font-weight-medium text-center flex-grow align-self-end ">Copyright &copy; 2022  All rights reserved.</p>
+            <p class="font-weight-medium text-center flex-grow align-self-end ">Copyright &copy; {{date('Y')}} All rights reserved.</p>
           </div>
         </div>
       </div>

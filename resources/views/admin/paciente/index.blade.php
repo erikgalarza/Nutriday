@@ -122,11 +122,11 @@
 
                                             @if ($paciente->estado == 'activo')
                                                 <a title="Eliminar paciente" onclick="eliminarPaciente({{ $paciente }});"
-                                                    
+
                                                     class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
                                             @else
                                                 <a href="{{ route('paciente.eliminar', $paciente->id) }}" title="Activar"
-                                                    class="btn btn-outline-danger"><i class="fas fa-reply"></i></a>
+                                                    class="btn btn-outline-success mb-1"><i class="fas fa-reply"></i></a>
                                             @endif
                                         </td>
                                     </tr>
@@ -317,7 +317,7 @@
                                                                     <label class="col-12 text-center"> <strong>Datos
                                                                             personales</strong> </label>
                                                                     <div class="pt-4 pb-3 pr-3 pl-3 pt-md-4 pb-md-1 pr-md-0 pl-md-3"
-                                                                        style="border:1px dashed;min-height: 205px">
+                                                                        style="border:1px dashed;min-height: 205px;border-radius:5px">
                                                                         <div class="form-group row mb-1">
                                                                             <label class="col-5 text-left"> <strong>
                                                                                     Nombre:</strong></label>
@@ -370,7 +370,7 @@
                                                                             <label class="col-5 text-left"><strong>Activo
                                                                                     desde:</strong></label>
                                                                             <label
-                                                                                class="col-7">{{ $paciente->user->created_at }}</label>
+                                                                                class="col-7">{{ date('Y-m-d',strtotime($paciente->user->created_at)) }}</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -383,7 +383,7 @@
                                                                     <label class="col-12 text-center"> <strong> Último dato
                                                                             antropométrico</strong></label>
                                                                     <div class="pb-3 pt-4 pr-3 pl-3 pt-md-3 pl-md-3 pr-md-0 pb-md-0"
-                                                                        style="border:1px dashed;min-height: 205px">
+                                                                        style="border:1px dashed;min-height: 205px;border-radius:5px">
                                                                         @foreach ($paciente->dato_antropometrico as $kp => $data)
                                                                             @if ($loop->last)
                                                                                 <div class="form-group row mb-1">
@@ -444,7 +444,7 @@
                                                                                     <label class="col-6 col-md-5 "><strong>Fecha
                                                                                             consulta:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ $data->created_at }}</label>
+                                                                                        class="col-6 col-md-7">{{ date('Y-m-d',strtotime($data->created_at))}}</label>
                                                                                 </div>
                                                                                 <div class="form-group row mb-1">
                                                                                     <label
@@ -492,7 +492,7 @@
 
     <script>
         function eliminarPaciente(paciente) {
-         
+
             swal({
                 title: "Estas seguro que quieres eliminar al paciente " + paciente.nombre + "?",
                 text: "Al confirmar, el paciente será eliminado permanentemente!",

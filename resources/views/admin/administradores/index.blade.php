@@ -61,12 +61,12 @@
                     <td>
 
 
-                      
-                       
+
+
 
                             @if($admin->administradores->estado=="activo")
                         <a onclick="eliminarAdmin({{$admin}});" class=" btn btn-rounded {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
-                        @else 
+                        @else
                         <a onclick="document.getElementById('deleteadmin'+{{$admin->id}}).submit();" class=" btn btn-rounded {{$admin->administradores->estado=="activo" ? 'btn-success':'btn-danger'}}">{{$admin->administradores->estado}}</a>
                         @endif
 
@@ -82,11 +82,11 @@
                             {{method_field('DELETE')}}
                       <a title="Eliminar administrador" onclick="eliminarAdmin({{$admin}});" type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
                         </form>
-                        @else 
+                        @else
                         <form method="post" id="deleteadmin{{$admin->id}}" action="{{route('administrador.destroy',$admin->id)}}" class="d-inline">
                             @csrf
                             {{method_field('DELETE')}}
-                      <a title="Eliminar administrador" onclick="document.getElementById('deleteadmin'+{{$admin->id}}).submit();" type="submit" class="btn btn-outline-danger mb-1"><i class="fas fa-share"></i></a>
+                      <a title="Activar administrador" onclick="document.getElementById('deleteadmin'+{{$admin->id}}).submit();" type="submit" class="btn btn-outline-success mb-1"><i class="fas fa-share"></i></a>
                         </form>
 
                         @endif
@@ -94,8 +94,8 @@
                 </tr>
 
 
-             
-               
+
+
 
 
                 <div class="modal fade" id="exampleModal-3{{ $admin->id }}" tabindex="-1"
@@ -147,7 +147,7 @@
                                 </div>
                                 <div class="form-group row mb-2">
                                     <label class="col-sm-5"><strong>Activo desde:</strong></label>
-                                    <label class="col-sm-7">{{$admin->administradores->created_at}}</label>
+                                    <label class="col-sm-7">{{date('Y-m-d',strtotime($admin->administradores->created_at))}}</label>
                                 </div>
 
                             </div>

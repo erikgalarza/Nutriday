@@ -40,7 +40,7 @@
                                     @foreach ($paciente->dato_antropometrico as $kp => $data)
                                         @if ($loop->last)
                                             <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
-                                                <label class="col-form-label" style=";font-size:16px">{{ $data->created_at }}
+                                                <label class="col-form-label" style=";font-size:16px">{{ date('Y-m-d',strtotime($data->created_at))}}
                                                 </label>
                                             </div>
                                         @endif
@@ -142,14 +142,12 @@
         </div>
     </div>
     <div class="container mb-2 pb-3  text-center">
-
         <a title="Asignar una dieta predefinida a {{ $paciente->nombre }}" data-toggle="modal"
-            data-target="#exampleModal-as" class="btn btn-success"><i
+            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-success"><i
                 class="fas fa-share mr-2"></i> Asignar dieta </a>
-
         <a title="Crear una dieta personalizada a {{ $paciente->nombre }}"
             onclick="event.preventDefault();document.getElementById('formCrearDieta').submit();"
-            class="btn btn-warning"><i class="fas fa-plus mr-2"></i>Crear dieta </a>
+            class="btn btn-warning"><i class="fas fa-plus mr-2"></i> Crear dieta </a>
         <form id="formCrearDieta" method="POST" action="{{ route('dieta.crearDietaFlash') }}">
             @csrf
             <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
@@ -182,7 +180,7 @@
                                 <th>Tipo diabetes</th>
                                 <th>IMC</th>
                                 <th>Alimentos</th>
-                                <th>Fecha Inicio/Fin</th>
+                                <th>Fecha Inicio / Fin</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -194,10 +192,8 @@
 
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-
                                     <td>{{ $dieta->nombre }}</td>
                                     <td>{{ $dieta->tipo_diabetes }}</td>
-
                                     {{-- @if ($dieta->imc == '1')
                                         <td>(Bajo peso)</td>
                                     @endif
@@ -228,7 +224,7 @@
                                         </td>
 
                                     <td>
-                                        <label for="" class="badge badge-success">Activa</label>
+                                        <label for="" class="badge badge-pill badge-success">Activa</label>
                                     </td>
                                     <td>
 
@@ -253,7 +249,7 @@
 
 
 
-                                <div class="modal fade" id="exampleModal-as" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-4{{ $paciente->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -276,7 +272,7 @@
                                                         <form method="POST"
                                                             action="{{ route('dieta.guardarDietaAsignada') }}">
                                                             @csrf
-                                                            <input type="hidden" name="paciente_id"2
+                                                            <input type="hidden" name="paciente_id"
                                                                 value="{{ $paciente->id }}">
 
                                                             <div class="form-group row mb-1" style="">
@@ -286,7 +282,7 @@
                                                                 @foreach ($paciente->dato_antropometrico as $kp => $data)
                                                                     @if ($loop->last)
                                                                         <label class="col-sm-7 col-form-label">
-                                                                            {{ $data->created_at }}</label>
+                                                                            {{ date('Y-m-d',strtotime($data->created_at)) }}</label>
                                                                     @endif
                                                                 @endforeach
                                                             </div>
@@ -511,7 +507,7 @@
                                                         <div class="form-group row mb-2">
                                                             <label class="col-sm-4"><strong>Fecha
                                                                     creación:</strong></label>
-                                                            <label class="col-sm-8">{{ $dieta->created_at }}</label>
+                                                            <label class="col-sm-8">{{ date('Y-m-d',strtotime($dieta->created_at)) }}</label>
                                                         </div>
                                                         @foreach ($paciente->dato_antropometrico as $kp => $data)
                                                             @if ($loop->last)
@@ -519,7 +515,7 @@
                                                                     <label class="col-sm-4"><strong>Fecha
                                                                             asignación:</strong></label>
                                                                     <label
-                                                                        class="col-sm-8">{{ $data->created_at }}</label>
+                                                                        class="col-sm-8">{{ date('Y-m-d',strtotime($data->created_at))}}</label>
                                                                 </div>
                                                             @endif
                                                         @endforeach
@@ -532,8 +528,6 @@
 
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
 
                                         </div>

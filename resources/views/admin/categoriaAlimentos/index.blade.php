@@ -81,7 +81,7 @@
 
                                                     <div class="form-group row mb-2 mt-3">
                                                         <label class="col-sm-4 col-form-label" ><strong>Fecha creción:</strong></label>
-                                                        <label class="col-sm-8 col-form-label" >{{$categoria->created_at}}</label>
+                                                        <label class="col-sm-8 col-form-label" >{{date('Y-m-d',strtotime($categoria->created_at))}}</label>
                                                 </div>
                                                     <div class="form-group row ">
                                                             <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Nombre:</strong></label>

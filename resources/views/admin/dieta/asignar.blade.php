@@ -196,7 +196,7 @@
                                                                     @foreach ($paciente->dato_antropometrico as $kp => $data)
                                                                         @if ($loop->last)
                                                                             <label class="col-sm-7 col-form-label">
-                                                                                {{ $data->created_at }}</label>
+                                                                                {{ date('Y-m-d',strtotime($data->created_at)) }}</label>
                                                                         @endif
                                                                     @endforeach
 
@@ -391,7 +391,7 @@
                                                                     @foreach ($paciente->dato_antropometrico as $kp => $data)
                                                                         @if ($loop->last)
                                                                             <label class="col-sm-7 col-form-label">
-                                                                                {{ $data->created_at }}</label>
+                                                                                {{ date('Y-m-d',strtotime($data->created_at))}}</label>
                                                                         @endif
                                                                     @endforeach
 

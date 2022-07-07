@@ -110,7 +110,7 @@
                                         @if ($loop->last)
                                             <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
                                                 <label class="col-form-label"
-                                                    style="font-size:14px">{{ $data->created_at }}
+                                                    style="font-size:14px">{{ date('Y-m-d',strtotime($data->created_at))}}
                                                 </label>
                                             </div>
                                         @endif
@@ -119,10 +119,10 @@
                                 <div class="col-xl-6 row justify-content-center" style="border-radius:10px 10px 0 0 ">
                                     <div class="col-xl-4 col-5  no-gutters p-0 text-center">
                                         <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha fin
-                                            dieta:{{ $dieta->fecha_fin }}</label>
+                                            dieta:{{date('Y-m-d',strtotime($dieta->fecha_fin)) }}</label>
                                     </div>
                                     <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label" style="font-size:14px">{{ $dieta->created_at }}
+                                        <label class="col-form-label" style="font-size:14px">{{ date('Y-m-d',strtotime($dieta->created_at))}}
                                         </label>
                                     </div>
                                 </div>
@@ -260,7 +260,7 @@
                                 <div class="col-xl-8 row justify-content-center">
                                     <div class="col-xl-3 col-5  no-gutters p-0 text-center ">
                                         <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha
-                                            creación:{{ $dieta->created_at }}</label>
+                                            creación:{{ date('Y-m-d',strtotime($dieta->created_at))}}</label>
                                     </div>
                                     <div class=" col-xl-4 col-6 no-gutters p-0 text-center ">
                                         <label class="col-form-label" style="font-size:14px">

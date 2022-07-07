@@ -89,12 +89,19 @@
                                                 <div class="modal-body py-2 px-0">
                                                     <div class="col-12 row  m-0 mt-3  justify-content-center">
                                                         <div class="col-sm-10 col-11 text-left">
-
                                                             <div class="form-group row mb-2">
                                                                 <label
-                                                                    class="col-form-label col-sm-3"><strong>Titulo:</strong>
+                                                                    class="col-form-label col-sm-4"><strong>Fecha creación:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
+                                                                    <label class="col-form-label"> {{  date('Y-m-d',strtotime($video_receta->created_at))}} </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-2">
+                                                                <label
+                                                                    class="col-form-label col-sm-4"><strong>Titulo:</strong>
+                                                                </label>
+                                                                <div class="col-sm-8">
                                                                     <input style="border-radius:10px" type="text"
                                                                         class="form-control" name="titulo"
                                                                         value="{{ $video_receta->titulo }}"
@@ -103,9 +110,9 @@
                                                             </div>
                                                             <div class="form-group row mb-2">
                                                                 <label
-                                                                    class="col-form-label col-sm-3"><strong>Categoría:</strong>
+                                                                    class="col-form-label col-sm-4"><strong>Categoría:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
                                                                     <select
                                                                         style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
                                                                         class="form-control" name="categoria">
@@ -122,9 +129,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row mb-2">
-                                                                <label class="col-form-label col-sm-3"><strong>URL:</strong>
+                                                                <label class="col-form-label col-sm-4"><strong>URL:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
                                                                     <input style="border-radius:10px" type="text"
                                                                         class="form-control" name="url"
                                                                         value="{{ $video_receta->url }}" id="">
@@ -132,9 +139,9 @@
                                                             </div>
                                                             <div class="form-group row mb-2">
                                                                 <label
-                                                                    class="col-form-label col-sm-3"><strong>Descripción:</strong>
+                                                                    class="col-form-label col-sm-4"><strong>Descripción:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
                                                                     <textarea style="border-radius:10px" rows="5" class="form-control" name="descripcion">{{ $video_receta->descripcion }}</textarea>
                                                                 </div>
                                                             </div>
@@ -219,12 +226,19 @@
                                                 <div class="modal-body py-2 px-0">
                                                     <div class="col-12 row  m-0 mt-3  justify-content-center">
                                                         <div class="col-sm-10 col-11 text-left">
-
                                                             <div class="form-group row mb-2">
                                                                 <label
-                                                                    class="col-form-label col-sm-3"><strong>Titulo:</strong>
+                                                                    class="col-form-label col-sm-4"><strong>Fecha creación:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
+                                                                    <label class="col-form-label"> {{  date('Y-m-d',strtotime($video_ejercicio->created_at))}} </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-2">
+                                                                <label
+                                                                    class="col-form-label col-sm-4"><strong>Titulo:</strong>
+                                                                </label>
+                                                                <div class="col-sm-8">
                                                                     <input style="border-radius:10px" type="text"
                                                                         class="form-control" name="titulo"
                                                                         value="{{ $video_ejercicio->titulo }}"
@@ -233,9 +247,9 @@
                                                             </div>
                                                             <div class="form-group row mb-2">
                                                                 <label
-                                                                    class="col-form-label col-sm-3"><strong>Categoría:</strong>
+                                                                    class="col-form-label col-sm-4"><strong>Categoría:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
                                                                     <select
                                                                         style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
                                                                         class="form-control" name="categoria">
@@ -252,9 +266,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row mb-2">
-                                                                <label class="col-form-label col-sm-3"><strong>URL:</strong>
+                                                                <label class="col-form-label col-sm-4"><strong>URL:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
                                                                     <input style="border-radius:10px" type="text"
                                                                         class="form-control" name="url"
                                                                         value="{{ $video_ejercicio->url }}" id="">
@@ -262,9 +276,9 @@
                                                             </div>
                                                             <div class="form-group row mb-2">
                                                                 <label
-                                                                    class="col-form-label col-sm-3"><strong>Descripción:</strong>
+                                                                    class="col-form-label col-sm-4"><strong>Descripción:</strong>
                                                                 </label>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-sm-8">
                                                                     <textarea style="border-radius:10px" rows="5" class="form-control" name="descripcion">{{ $video_ejercicio->descripcion }}</textarea>
                                                                 </div>
                                                             </div>
@@ -294,7 +308,7 @@
             <div class="card mt-4">
                 <div class=" mb-3" style="background-color:#7c7ce4 ">
                     <h3 class="card-title text-center mb-4 mt-4 text-white"
-                        style="text-transform: uppercase; font-weight:bold">Motivacion</h3>
+                        style="text-transform: uppercase; font-weight:bold">Motivación</h3>
                 </div>
                 <div class="card-body">
                     <div style="display:flex; justify-content:space-evenly; flex-wrap:wrap;">
@@ -349,9 +363,17 @@
 
                                                         <div class="form-group row mb-2">
                                                             <label
-                                                                class="col-form-label col-sm-3"><strong>Titulo:</strong>
+                                                                class="col-form-label col-sm-4"><strong>Fecha creación:</strong>
                                                             </label>
-                                                            <div class="col-sm-9">
+                                                            <div class="col-sm-8">
+                                                                <label class="col-form-label"> {{  date('Y-m-d',strtotime($video_motivacion->created_at))}} </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row mb-2">
+                                                            <label
+                                                                class="col-form-label col-sm-4"><strong>Titulo:</strong>
+                                                            </label>
+                                                            <div class="col-sm-8">
                                                                 <input style="border-radius:10px" type="text"
                                                                     class="form-control" name="titulo"
                                                                     value="{{ $video_motivacion->titulo }}"
@@ -360,9 +382,9 @@
                                                         </div>
                                                         <div class="form-group row mb-2">
                                                             <label
-                                                                class="col-form-label col-sm-3"><strong>Categoría:</strong>
+                                                                class="col-form-label col-sm-4"><strong>Categoría:</strong>
                                                             </label>
-                                                            <div class="col-sm-9">
+                                                            <div class="col-sm-8">
                                                                 <select
                                                                     style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
                                                                     class="form-control" name="categoria">
@@ -379,9 +401,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-form-label col-sm-3"><strong>URL:</strong>
+                                                            <label class="col-form-label col-sm-4"><strong>URL:</strong>
                                                             </label>
-                                                            <div class="col-sm-9">
+                                                            <div class="col-sm-8">
                                                                 <input style="border-radius:10px" type="text"
                                                                     class="form-control" name="url"
                                                                     value="{{ $video_motivacion->url }}" id="">
@@ -389,9 +411,9 @@
                                                         </div>
                                                         <div class="form-group row mb-2">
                                                             <label
-                                                                class="col-form-label col-sm-3"><strong>Descripción:</strong>
+                                                                class="col-form-label col-sm-4"><strong>Descripción:</strong>
                                                             </label>
-                                                            <div class="col-sm-9">
+                                                            <div class="col-sm-8">
                                                                 <textarea style="border-radius:10px" rows="5" class="form-control" name="descripcion">{{ $video_motivacion->descripcion }}</textarea>
                                                             </div>
                                                         </div>

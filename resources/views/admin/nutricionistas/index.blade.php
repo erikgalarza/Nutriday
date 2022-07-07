@@ -71,7 +71,7 @@
                                                 data-target="#exampleModal-2{{ $nutricionista->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
-                                            
+
                                             @if ($nutricionista->nutricionistas->estado == 'activo')
                                             <form method="post" id="deletenutri{{ $nutricionista->id }}"
                                                 action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
@@ -88,9 +88,7 @@
                                                 class="d-inline">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                                <a onclick="document.getElementById('deletenutri'+{{$nutricionista->nutricionistas->id}}).submit();"  title="Activar" style="min-width: 50px"
-                                                     type="submit"
-                                                    class="btn btn-outline-danger mb-1"><i class="fas fa-share"></i></a>
+                                                <a onclick="document.getElementById('deletenutri'+{{$nutricionista->nutricionistas->id}}).submit();"  title="Activar nutricionista" style="min-width: 50px" type="submit" class="btn btn-outline-success mb-1"><i class="fas fa-share"></i></a>
                                             </form>
                                             @endif
                                         </td>
@@ -341,7 +339,7 @@
                                                                         <label class="col-5   text-left "><strong>Activo
                                                                                 desde:</strong></label>
                                                                         <label
-                                                                            class="col-7  text-left ">{{ $nutricionista->created_at }}</label>
+                                                                            class="col-7  text-left ">{{ date('Y-m-d',strtotime($nutricionista->created_at)) }}</label>
                                                                     </div>
                                                                 </div>
                                                             </div>

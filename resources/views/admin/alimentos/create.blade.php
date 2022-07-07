@@ -61,7 +61,7 @@
                                             @if ($loop->last)
                                                 <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
                                                     <label class="col-form-label"
-                                                        style=";font-size:16px">{{ $data->created_at }}
+                                                        style=";font-size:16px">{{ date('Y-m-d',strtotime($data->created_at)) }}
                                                     </label>
                                                 </div>
                                             @endif
@@ -242,7 +242,7 @@
                                         </div>
                                         <div class="form-group row mb-1">
                                             <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
-                                            <label class="col-7">{{ $dieta->created_at }}</label>
+                                            <label class="col-7">{{ date('Y-m-d',strtotime($dieta->created_at)) }}</label>
                                         </div>
 
                                     </div>
@@ -316,7 +316,7 @@
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
                 @endphp
                 <div class="card mt-2" style="border:none">
-                    <div class="tab-content py-0 px-5" id="pills-tabContent" style="border:none;">
+                    <div class="tab-content py-0 px-lg-5 px-0" id="pills-tabContent" style="border:none;">
                         @php
                             $a = -6;
                             $sum = 0;
@@ -362,21 +362,20 @@
                                                     <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
                                                     <div>
                                                         <div>
-                                                            <div class="container_buscador">
-
+                                                            <div class="container">
                                                                 <label class="col-12 text-left"><button
                                                                         class="ml-3 py-0 px-2" disabled
                                                                         title="No se puede ingresar dos veces el mismo alimento"
                                                                         style="border-radius:10px; border:1px solid grey"><i
                                                                             class="fas fa-info"></i></button>
                                                                 </label>
-                                                                <div class="container_buscador_desayuno container">
-                                                                    <div class="row justify-content-center">
+                                                                <div class="container_buscador_desayuno ">
+                                                                    <div class="row justify-content-center col-12">
                                                                         <a class="btn" disabled
-                                                                        style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
+                                                                        style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef;cursor:auto;">
                                                                         <i class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
                                                                         </a>
-                                                                        <div class=" col-8  ">
+                                                                        <div class=" col-8 ">
                                                                             <select
                                                                                 id="alimentoSeleccionado{{ $k }}"
                                                                                 onchange="seleccionarAlimento({{ $k }});"
@@ -391,24 +390,39 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-
-
-
-
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div
-                                                        style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:30px;">
+                                                    <style>
+                                                        @media (max-width:720px){
+                                                            .alimentosss{
+                                                                max-width: 350px !important;
+                                                                overflow-x: scroll !important;
+                                                            }
+                                                        }
+                                                        @media (max-width:879px){
+                                                            .linea{
+                                                                min-width: 350px !important;
+                                                            }
+
+                                                        }
+                                                        @media (min-width:879px){
+                                                            .linea{
+                                                                min-width: auto !important;
+                                                            }
+
+                                                        }
+                                                    </style>
+                                                    <div style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:30px;">
                                                         <div>
-                                                            <div class="table-responsive">
-                                                                <form method="POST" id="tablaAlimentos">
-                                                                    @csrf
-                                                                    <input type="hidden" id="alimento_id_eliminar"
-                                                                        name="alimento_id_eliminar">
-                                                                    <input type="hidden" id="dieta_id" name="dieta_id"
-                                                                        value="{{ $dieta->id }}">
+                                                            <div class="table-responsive alimentosss">
+                                                            <form method="POST" id="tablaAlimentos">
+                                                                @csrf
+                                                                <input type="hidden" id="alimento_id_eliminar"
+                                                                name="alimento_id_eliminar">
+                                                                <input type="hidden" id="dieta_id" name="dieta_id"
+                                                                value="{{ $dieta->id }}">
                                                                     <table id="table" class="table table-striped">
                                                                         <thead>
                                                                             <tr>
@@ -442,14 +456,14 @@
                                                             </div>
                                                         </div>
 
-                                                        <div>
-                                                            <div class="table-responsive">
 
-                                                                <div class="container mt-5 px-5 py-4"
-                                                                    style="border:1px #000 solid; border-radius:10px;">
-                                                                    <div class="Titulo text-center mb-3"
+                                                            <div class="  ml-4" >
+                                                                <div class=" mt-5 linea position-relative" style="border:1px #000 solid; border-radius:10px;">
+                                                                    <a style="top: 5px; left: 250px;" title="Aquí se encuentra la sumatoria de la información nutricional de los alimentos agregados a la tabla de la comida seleccionada" class=" position-absolute btn btn-primary btn-rounded p-0 m-0 col-1" disabled>  <i class="fas fa-info" style="font-size:12px"></i></a>
+                                                                <div class="row justify-content-center px-5 py-4 ">
+                                                                    <div class="Titulo text-center col-12  mb-3"
                                                                         style="font-weight:700; font-size:14px;">
-                                                                        <h5>TOTALES</h5>
+                                                                        <h5><u>TOTALES</u></h5>
                                                                     </div>
                                                                     <div
                                                                         style="display:flex; flex-direction:row; flex-wrap:wrap;">
@@ -489,7 +503,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                            </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1123,7 +1138,7 @@
                     if (resultado == false) {
                         notificacion(resultado, 'Lunes');
                     } else {
-                        dia.style = "background-color:#04B76B;color:white;";
+                        dia.style = "background-color:#04B76B;color:white !important;";
                     };
                     break;
                 case 1:

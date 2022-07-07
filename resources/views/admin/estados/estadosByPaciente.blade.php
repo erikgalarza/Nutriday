@@ -35,7 +35,7 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{ $estado->nombre }}</td>
                                         <td>{{$estado->descripcion}}</td>
-                                        <td>{{ $estado->created_at }}</td>
+                                        <td>{{ date('Y-m-d',strtotime($estado->created_at)) }}</td>
 
                                     </tr>
                                 @endforeach

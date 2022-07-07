@@ -165,7 +165,7 @@
                                                                 </div>
                                                                 <div class="form-group row mb-2 no-gutters ">
                                                                     <label class="col-5 text-left"><strong>Creado:</strong></label>
-                                                                    <label class="col-7 text-left">{{ $alimento->created_at }}</label>
+                                                                    <label class="col-7 text-left">{{ date('Y-m-d',strtotime($alimento->created_at)) }}</label>
                                                                 </div>
                                                             </div>
 

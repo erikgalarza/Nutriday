@@ -52,7 +52,7 @@
                                         @foreach ($paciente->dato_antropometrico as $kp => $data)
                                             @if ($loop->last)
                                                 <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
-                                                    <label class="col-form-label" style=";font-size:16px">{{ $data->created_at }}
+                                                    <label class="col-form-label" style=";font-size:16px">{{ date('Y-m-d',strtotime($data->created_at)) }}
                                                     </label>
                                                 </div>
                                             @endif
@@ -200,7 +200,7 @@
                                             data-target="#exampleModal-5{{ $dato->id }}"
                                             class="btn btn-outline-primary"><i class="fa-solid fa-eye"></i></a>
                                     </td>
-                                    <td>{{ $dato->created_at }}</td>
+                                    <td>{{ date('Y-m-d',strtotime($dato->created_at)) }}</td>
                                 </tr>
 
                                 <div class="modal fade" id="exampleModal-4{{ $dato->id }}" tabindex="-1"

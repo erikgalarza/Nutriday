@@ -100,15 +100,21 @@
                                                     <div class="col-12 row m-0 justify-content-center">
                                                         <div class="col-sm-10 col-11 text-left">
 
+                                                            <div class="form-group row mb-2">
+                                                                <label class="col-sm-4 col-form-label text-left" for="recipient-name"><strong>Fecha creación:</strong></label>
+                                                                <div class="col-sm-8">
+                                                                    <label class="col-form-label">{{ date('Y-m-d',strtotime($medida->created_at))}}</label>
+                                                                </div>
+                                                            </div>
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-sm-3 col-form-label text-left" for="recipient-name"><strong>Medida:</strong></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="col-sm-4 col-form-label text-left" for="recipient-name"><strong>Medida:</strong></label>
+                                                            <div class="col-sm-8">
                                                                 <input  type="text" name="medida" class="form-control" value="{{$medida->medida}}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-sm-3 col-form-label text-left" for="recipient-name"><strong>Abreviatura:</strong></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="col-sm-4 col-form-label text-left" for="recipient-name"><strong>Abreviatura:</strong></label>
+                                                            <div class="col-sm-8">
                                                                 <input  type="text" name="abreviatura" class="form-control" value="{{$medida->abreviatura}}">
                                                             </div>
                                                         </div>

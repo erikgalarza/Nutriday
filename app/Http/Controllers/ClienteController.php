@@ -273,7 +273,7 @@ class ClienteController extends Controller
                    $alimentosJueves->push($alimento); 
                }
            
- // ==================== VIERNES ======================0= //
+            // ==================== VIERNES ======================0= //
            
                if($combinacion->dia_id == 5 && $combinacion->comida_id==1)
                {
@@ -325,7 +325,7 @@ class ClienteController extends Controller
                    $alimentosViernes->push($alimento);
                }
            
- // ==================== SABADO ======================0= //
+            // ==================== SABADO ======================0= //
 
                if($combinacion->dia_id == 6 && $combinacion->comida_id==1)
                {
@@ -378,7 +378,7 @@ class ClienteController extends Controller
                    $alimentosSabado->push($alimento);
                }
            
- // ==================== DOMINGO ======================0= //
+            // ==================== DOMINGO ======================0= //
 
         
                if($combinacion->dia_id == 7 && $combinacion->comida_id==1)
@@ -478,8 +478,11 @@ class ClienteController extends Controller
     {
         $user = User::find(Auth::id());
         $paciente = Paciente::where('user_id',$user->id)->first();
-        $datos = DatosAntropometrico::where('paciente_id',$paciente->id)->get(); 
-        return view('client.principal',compact('paciente','datos'));
+        // dd($paciente);
+        $datos = DatosAntropometrico::where('paciente_id',$paciente->id)->get();
+         
+        $dieta = $paciente->dietas()->latest()->first();
+        return view('client.principal',compact('paciente','datos','dieta'));
     }
 
     public function dashboard(){

@@ -1,5 +1,12 @@
 @extends('client.dashboard')
 @section('contenido')
+
+{{-- <style>
+    .btnAlimentos
+    {
+        cursor:pointer;
+    }
+</style> --}}
     <div class="page-header mb-2">
         <h3 class="page-title">
             Inicio
@@ -10,61 +17,169 @@
             </ol>
         </nav>
     </div>
+    <input type="hidden" id="dieta_id" value="{{$dieta->id}}">
+    <input type="hidden" id="paciente_id" value="{{$paciente->id}}">
+
+    @php
+    $nombreDia=["LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO","DOMINGO"];
+    @endphp
+
+      {{-- MODAL DE VER ALIMENTOS POR DIA --}}
+    @for($i = 0; $i<7;$i++)
+     
+    <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" role="dialog"
+        aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #4b6ac3">
+                    <h5 class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;"
+                        id="ModalLabel">
+                        Alimentos de la dieta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body py-3 px-0">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Día: {{$nombreDia[$i]}}</h4>
+                                <div class="container my-2 p-0"
+                                    style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row;"
+                                    id="container{{$i}}">
+
+                                    <div class="desayuno w-100 text-center mt-3" id="desayuno{{$i}}">
+                                        <div class="row justify-content-center align-items-center">
+                                            <h5 class="textoDesayuno col-12 text-left" style="color:#828383">DESAYUNO</h5>
+                                        </div>
+                                        <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                        <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                            <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                            <h5 class="col-2 m-0 ">Peso</h5>
+                                            <h5 class="col-3 m-0">Imagen</h5>
+                                            <h5 class="col-3 m-0">Porción</h5>
+                                        </div>
+                                        <div class="col-12 my-2" style="border-top:1px solid"></div>
+                                        <div class="alimentosDesayuno col-12 w-100"id="alimentosDesayuno{{$i}}"></div>
+                                    </div>
+                                    </div>
+
+
+                                    <div class="colacion1 w-100 text-center mt-3" id="colacion1{{ $i }}">
+                                        <div class="row justify-content-center align-items-center">
+                                            <h5 class="textoDesayuno col-12 text-left" style="color:#828383">COLACIÓN DE LA MAÑANA</h5>
+                                        </div>
+                                        <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                        <div class="cabecera mt-2 col-12 text-center row no-gutters  align-items-center justify-content-center">
+                                            <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                            <h5 class="col-2 m-0 ">Peso</h5>
+                                            <h5 class="col-3 m-0">Imagen</h5>
+                                            <h5 class="col-3 m-0 ">Porción</h5>
+                                        </div>
+                                        <div class="col-12 my-2" style="border-top:1px solid"></div>
+                                        <div class="alimentosColacion1 col-12 w-100"id="alimentosColacion1{{ $i }}"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="almuerzo w-100 text-center mt-3" id="almuerzo{{ $i }}">
+                                        <div class="row justify-content-center align-items-center">
+                                            <h5 class="textoDesayuno col-12 text-left" style="color:#828383">ALMUERZO</h5>
+                                        </div>
+                                        <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                        <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                            <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                            <h5 class="col-2 m-0 ">Peso</h5>
+                                            <h5 class="col-3 m-0">Imagen</h5>
+                                            <h5 class="col-3 m-0">Porción</h5>
+                                        </div>
+                                        <div class="col-12 my-2" style="border-top:1px solid"></div>
+                                        <div class="alimentosAlmuerzo col-12 w-100"id="alimentosAlmuerzo{{ $i }}"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="colacion2 w-100 text-center mt-3" id="colacion2{{ $i }}">
+                                        <div class="row justify-content-center align-items-center">
+                                            <h5 class="textoDesayuno col-12 text-left" style="color:#828383">COLACIÓN DE LA TARDE</h5>
+                                        </div>
+                                        <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                        <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                            <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                            <h5 class="col-2 m-0 ">Peso</h5>
+                                            <h5 class="col-3 m-0">Imagen</h5>
+                                            <h5 class="col-3 m-0">Porción</h5>
+                                        </div>
+                                        <div class="col-12 my-2" style="border-top:1px solid"></div>
+
+                                        <div class="alimentosColacion2 col-12 w-100"id="alimentosColacion2{{ $i }}"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="merienda w-100 text-center mt-3" id="merienda{{ $i }}">
+                                        <div class="row justify-content-center align-items-center">
+                                            <h5 class="textoDesayuno col-12 text-left" style="color:#828383">MERIENDA</h5>
+                                        </div>
+                                        <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                        <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                            <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                            <h5 class="col-2 m-0 ">Peso</h5>
+                                            <h5 class="col-3 m-0">Imagen</h5>
+                                            <h5 class="col-3 m-0">Porción</h5>
+                                        </div>
+                                        <div class="col-12 my-2" style="border-top:1px solid"></div>
+
+                                        <div class="alimentosMerienda col-12 w-100"id="alimentosMerienda{{ $i }}"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cena w-100 text-center mt-3" id="cena{{ $i }}">
+                                        <div class="row justify-content-center align-items-center">
+                                            <h5 class="textoDesayuno col-12 text-left" style="color:#828383">CENA</h5>
+                                        </div>
+                                        <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                        <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                            <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                            <h5 class="col-2 m-0 ">Peso</h5>
+                                            <h5 class="col-3 m-0">Imagen</h5>
+                                            <h5 class="col-3 m-0">Porción</h5>
+                                        </div>
+                                        <div class="col-12 my-2" style="border-top:1px solid"></div>
+
+                                        <div class="alimentosCena col-12 w-100"id="alimentosCena{{ $i }}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endfor
+
+   
+        
+      
 
     <div class="card">
         <div class="col-12 p-0">
             <div class="card card-statistics">
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        @for($i=0 ; $i<7; $i++)
                         <div class="statistics-item text-center" style="max-width: 120px">
                             <p>
                                 <i class="fa-regular fa-calendar-minus"></i>
                             </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Lunes</h2>
-                            <label class="badge badge-outline-success badge-pill mt-3">Ver detalles</label>
+                            <h2 class="" style="font-size:18px;text-transform:uppercase">{{$nombreDia[$i]}}</h2>
+                            <a data-toggle="modal"
+                            data-target="#exampleModal{{$i}}" onclick="cargarAlimentos({{$i}});"  class="btnAlimentos">
+                                <label class="badge badge-outline-success badge-pill mt-3">Ver detalles</label>
+                            </a>
                         </div>
-                        <div class="statistics-item text-center" style="max-width: 120px">
-                            <p>
-                                <i class="fa-regular fa-calendar-minus"></i>
-                            </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Martes</h2>
-                            <label class="badge badge-outline-danger badge-pill mt-3">Ver detalles</label>
-                        </div>
-                        <div class="statistics-item text-center " style="max-width: 120px">
-                            <p>
-                                <i class="fa-regular fa-calendar-minus"></i>
-                            </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Miércoles</h2>
-                            <label class="badge badge-outline-success badge-pill mt-3">Ver detalles</label>
-                        </div>
-                        <div class="statistics-item text-center" style="max-width: 120px">
-                            <p>
-                                <i class="fa-regular fa-calendar-minus"></i>
-                            </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Jueves</h2>
-                            <label class="badge badge-outline-success badge-pill mt-3">Ver detalles</label>
-                        </div>
-                        <div class="statistics-item text-center" style="max-width: 120px">
-                            <p>
-                                <i class="fa-regular fa-calendar-minus"></i>
-                            </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Viernes</h2>
-                            <label class="badge badge-outline-success badge-pill mt-3">Ver detalles</label>
-                        </div>
-                        <div class="statistics-item text-center" style="max-width: 120px">
-                            <p>
-                                <i class="fa-regular fa-calendar-minus"></i>
-                            </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Sábado</h2>
-                            <label class="badge badge-outline-danger badge-pill mt-3">Ver detalles</label>
-                        </div>
-                        <div class="statistics-item text-center" style="max-width: 120px">
-                            <p>
-                                <i class="fa-regular fa-calendar-minus"></i>
-                            </p>
-                            <h2 class="" style="font-size:18px;text-transform:uppercase">Domingo</h2>
-                            <label class="badge badge-outline-success badge-pill mt-3">Ver detalles</label>
-                        </div>
+                      @endfor
 
                     </div>
                 </div>
@@ -251,4 +366,83 @@
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('administracion/js/historialPersonal.js') }}"></script>
+
+    <script>
+         function cargarAlimentos(dia_id) {
+            let dietaid = document.getElementById('dieta_id').value;
+            let pacienteid = document.getElementById('paciente_id').value;
+            $.ajax({
+                url: "{{ route('dieta.traerAlimentos') }}",
+                dataType: "json",
+                data: {
+                    dieta_id: dietaid,
+                    paciente_id: pacienteid,
+                    diaSeleccionado: dia_id+1
+                }
+            }).done(function(res) {
+
+                console.log(res);
+                // let arreglo = JSON.parse(res)
+                // console.log(arreglo)
+                var contenedor1 = document.getElementById('alimentosDesayuno' + dia_id);
+                var contenedor2 = document.getElementById('alimentosColacion1' + dia_id);
+                var contenedor3 = document.getElementById('alimentosAlmuerzo' + dia_id);
+                var contenedor4 = document.getElementById('alimentosColacion2' + dia_id);
+                var contenedor5 = document.getElementById('alimentosMerienda' + dia_id);
+                var contenedor6 = document.getElementById('alimentosCena' + dia_id);
+
+                contenedor1.innerHTML = '';
+                contenedor2.innerHTML = '';
+                contenedor3.innerHTML = '';
+                contenedor4.innerHTML = '';
+                contenedor5.innerHTML = '';
+                contenedor6.innerHTML = '';
+
+                for (let i = 0; i < res.length; i++) {
+                    let comida = res[i]
+
+                    cant = Object.keys(comida);
+                    long = cant.length
+                    for (let j = 0; j < long - 2; j++) {
+
+                        if (i == 0) {
+                            let contenido =
+                                `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor1).append(contenido)
+                        }
+                        if (i == 1) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor2).append(contenido)
+                        }
+                        if (i == 2) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor3).append(contenido)
+                        }
+                        if (i == 3) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor4).append(contenido)
+                        }
+                        if (i == 4) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor5).append(contenido)
+                        }
+                        if (i == 5) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor6).append(contenido)
+                        }
+                    }
+
+                }
+
+            })
+
+        }
+    
+    </script>
+
 @endsection

@@ -12,10 +12,12 @@ use App\Models\DatosAntropometrico;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
+use App\Mail\EnvioCredenciales;
 use App\Models\Admin;
 use App\Models\Nutricionista;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PacienteController extends Controller
 {
@@ -161,10 +163,12 @@ class PacienteController extends Controller
             "tipo_diabetes"=>$request->tipo_diabetes,
             "edad"=>$request->edad,
             "sexo"=>$request->sexo,
-            "user_id"=>$user->id
+            "user_id"=>$user->id,
+            "responsable_id"=>Auth::id()
         ]);
         $paciente->assignRole('Paciente');
         $id_paciente = $paciente->id;
+        Mail::to( $email = $user->email)->send(new EnvioCredenciales($paciente->nombre, $user->email,$user->password));//se envian las credenciales al correo del cliente que se registro
         return view('admin.paciente.datosAntropometricos',compact('paciente'));
     }
 

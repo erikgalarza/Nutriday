@@ -1,5 +1,6 @@
 @extends('admin.dashboard')
 @section('contenido')
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style>
     .ocultar
     {
@@ -73,7 +74,6 @@
                                                     class="fas fa-edit "></i></a>
 
                                             <a onclick="eliminarAlimento({{$alimento}});" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i>  </a>
-
                                                     </td>
                                     </tr>
                                     <form id="deletealimento{{$alimento->id}}" method="POST" action="{{route('alimento.destroy',$alimento->id)}}">
@@ -87,7 +87,6 @@
                                             .dialogoss {
                                                 min-width: 700px !important;
                                             }
-
                                         }
                                     </style>
                                     {{-- MODAL DE DATOS ALIMENTO --}}
@@ -118,6 +117,7 @@
                                                         style="height: 80%"
                                                             src="{{ $alimento->imagen->url }}">
                                                     @else
+                                                    {{-- <h2>no hay img</h2> --}}
                                                         <img class="img-thumbnail p-0 "
 
                                                             src="{{ asset('img/icons/dieta48.png') }}">
@@ -218,10 +218,16 @@
                                                         <div class="form-group row mb-1">
                                                             <label class="col-md-4 col-form-label"><strong>Categoría:</strong></label>
                                                             <div class="col-md-8">
-                                                                <select class="form-control" style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px" name="categoria" id="exampleInputUsername2">
-                                                                    <option value="" selected="" disabled="">Seleccione una categoría</option>
+                                                                {{-- <option value="1"
+                                                                {{ $paciente->sexo == "1" ? 'selected' : '' }}>
+                                                                Femenino</option> --}}
+
+                                                                <select class="form-control" style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px" name="categoria_id" id="exampleInputUsername2">
+                                                                    <option selected disabled>Seleccione una categoría</option>
                                                                     @foreach($categorias as $categoria)
-                                                                    <option value="{{$categoria->id}}" {{ old('categoria', $alimento->categoria_id) == $categoria->id ? 'selected' : '' }} >{{$categoria->nombre}}</option>
+                                                                     <option value="{{$categoria->id}}"
+                                                                {{ $alimento->categoria_id === $categoria->id ? 'selected' : ''}} >{{$categoria->nombre}}
+                                                                </option>
                                                                  @endforeach
                                                                 </select>
                                                             </div>
@@ -232,7 +238,7 @@
                                                                </label>
                                                                <div class=" col-md-8 d-flex"                           style="justify-content:space-between">
                                                                    <input  style="border-radius:10px; width:32%;max-height:45.2px" type="number" name="peso" class="form-control" value="{{ $alimento->peso}}">
-                                                                   <select class="form-control" style="border-radius:10px;background-color:#F0F0F0; width:60%;min-height:45.2px" name="unidad" id="unidad">
+                                                                   <select class="form-control" style="border-radius:10px;background-color:#F0F0F0; width:60%;min-height:45.2px" name="medida_id" id="unidad">
                                                                     <option value="" selected="" disabled="">Seleccione una medida</option>
                                                                    @foreach($medidas as $medida)
      <option value="{{$medida->id}}"  {{ old('unidad', $alimento->medida_id) == $medida->id ? 'selected' : '' }}>{{$medida->medida}}</option>
@@ -293,11 +299,11 @@
                                                             </div>
                                                             <div class="text-center">
                                                                 @if (isset($alimento->imagen->url))
-                                                                    <img id="imagen" class="ocultar img-thumbnail"
+                                                                    <img class="ocultar img-thumbnail imagenAlimento"
                                                                     style="width:95%;heigth:80%"
                                                                         src="{{ $alimento->imagen->url }}">
                                                                 @else
-                                                                    <img id="imagen" class="ocultar img-thumbnail"
+                                                                    <img class="ocultar img-thumbnail"
                                                                         style="width:95%;heigth:80%"
                                                                         src="{{ asset('img/icons/dieta48.png') }}">
                                                                 @endif
@@ -332,28 +338,46 @@
             </div>
         </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    var imagen = document.getElementById('imagen');
-    var estado = false;
+   
+     var state = true;
     function showImage()
     {
-        if(estado)
+        var imagenes = document.querySelectorAll('.imagenAlimento');
+        if(state)
         {
-            imagen.className+=" ocultar";
-            estado = false;
+            console.log('is true')
+            imagenes.forEach(item=>{
+                console.log(item)
+            $('img.imagenAlimento').show('slow');
+            })
+            state=false;
         }
-        else
-        {
-            imagen.classList.remove('ocultar');
-            estado = true;
-        }
-
+        imagenes.forEach(item=>{
+            $('img.imagenAlimento').hide();
+            state = true;
+            })
+      
+        // console.log(imagenid)
+        // if(estado)
+        // {
+        //     imagen.className+=" ocultar";
+        //     estado = false;
+        // }
+        // else
+        // {
+        //     imagen.classList.remove('ocultar');
+        //     estado = true;
+        // }
     }
 
-</script>
-
-    <script>
-        function eliminarAlimento(alimento) {
+    function eliminarAlimento(alimento) {
             var form = document.getElementById('deletealimento' + alimento.id);
             swal({
                 title: "Estas seguro que quieres eliminar el alimento " + alimento.nombre + " ?",
@@ -373,5 +397,6 @@
             })
 
         }
-    </script>
+</script>
+
 @endsection

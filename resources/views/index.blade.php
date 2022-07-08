@@ -95,8 +95,15 @@
             </ul>
           </li> -->
                     <li><a class="nav-link scrollto" href="#contact">Contáctanos</a></li>
+                    @if(!Auth::check())
                     <li><a class="nav-link scrollto" href="{{ route('login') }}">Inicia Sesión</a></li>
+                    @endif
+                   @if(Auth::check() && ( auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Nutricionista') ))
                     <li><a class="nav-link scrollto" href="{{ route('administrador.dashboard') }}"><i class="fa-solid fa-circle-user" style="font-size: 20px"></i></a></li>
+                    @endif
+                    @if(Auth::check() && auth()->user()->hasRole('Paciente'))
+                    <li><a class="nav-link scrollto" href="{{ route('cliente.dashboard') }}"><i class="fa-solid fa-circle-user" style="font-size: 20px"></i></a></li>
+                    @endif
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

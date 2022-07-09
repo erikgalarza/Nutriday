@@ -23,7 +23,7 @@
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$nutricionista->nombre}}</h4>
+                                    <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$nutricionista->nombre}} {{$nutricionista->apellido}}</h4>
                                     <div style="width:100%;height:auto">
                                         @if(isset($nutricionista->imagen->url))
                                         <img src="{{$nutricionista->imagen->url}}"alt="Foto del admin">
@@ -56,8 +56,23 @@
                                                 <label class="col-7">{{$nutricionista->cedula}}
                                                    </label>
 
-                                            </div>
 
+
+                                            </div>
+                                            <div class="form-group row mb-1">
+                                                <label class="col-5 text-left"><strong>Sexo:</strong></label>
+                                                @if (  $nutricionista->sexo ==  1 )
+                                                    <label class="col-7">Masculino</label>
+                                                @else
+                                                    <label class="col-7">Femenino</label>
+                                                @endif
+                                            </div>
+                                            <div class="form-group row mb-1">
+                                                <label
+                                                    class="col-5 text-left"><strong>Especialidad:</strong></label>
+                                                <label
+                                                    class="col-7">{{$nutricionista->especialidad}}</label>
+                                            </div>
                                             <div class="form-group row mb-1">
                                                 <label
                                                     class="col-5 text-left"><strong>Teléfono:</strong>

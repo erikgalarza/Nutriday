@@ -1,6 +1,6 @@
 @extends('client.dashboard')
 @section('contenido')
-    <div class="page-header">
+    <div class="page-header mb-2">
         <h3 class="page-title">
             Mis dietas
         </h3>
@@ -12,11 +12,12 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-2" style="background-color:#4b6ac3 ">
+        <div class=" mb-2" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Dietas asignadas</h3>
         </div>
-        <div class="card-body">
+        @if (count($dietas)>0)
+                  <div class="card-body">
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -141,6 +142,18 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="card-body">
+            <div class="container-fluid row justify-content-center p-0 m-0">
+                <div class="container bg-danger row align-items-center justify-content-center" style="max-width:600px;border-radius:8px;min-height:50px">
+                    <div class="row justify-content-center ">
+                    <label class="text-center text-white"> <strong> No hay dietas asignadas !  </strong> </label>
+                </div>
+            </div>
+        </div>
+        </div>
+        @endif
+
     </div>
 
 

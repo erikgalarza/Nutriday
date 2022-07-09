@@ -209,11 +209,11 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item nav-profile">
-                        <div class="nav-link">
+                        <div class="nav-link mb-3" style="border-top: 1px dashed;border-bottom:1px dashed">
                             <div class="profile-image">
                                 {{-- <img src="{{$paciente->imagen->url}}" alt="profile" /> --}}
                             </div>
-                            <div class="profile-name">
+                            <div class="profile-name" >
                                 <p class="name">
 
                                     Bienvenido

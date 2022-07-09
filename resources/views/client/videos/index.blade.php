@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('administracion/css/galeriaVideos.css') }}">
 
     <body>
-        <div class="page-header">
+        <div class="page-header mb-2">
             <h3 class="page-title">
                 Videos
             </h3>
@@ -21,7 +21,7 @@
             <div class="col-md-12 ">
 
                 <div class="card">
-                    <div class=" mb-3" style="background-color:#4b6ac3 ">
+                    <div class=" mb-3" style="background-color:#4b6ac3 ;border-radius:5px 5px 0 0 ">
                         <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Recetas</h3>
                     </div>
@@ -29,9 +29,9 @@
                         <div class="text-center"
                             style="display:flex; justify-content:space-center; flex-wrap:wrap;text-align:center;justify-content:center;align-items:center">
                             @foreach ($videos_receta as $video_receta)
-                               
+
                                 <div class="card opciones text-center mx-3 my-3" style="width: 22rem;">
-                                   
+
                                     <iframe style="height:15rem" class="card-img-top p-2"
                                         src="https://youtube.com/embed/{{ $video_receta->url }}"
                                         title="YouTube video player" frameborder="0"
@@ -40,9 +40,9 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><strong>{{ $video_receta->titulo }}</strong></h5>
                                         <p class="card-text">{{ $video_receta->descripcion }}.</p>
-                                     
-                                      
-                                      
+
+
+
                                     </div>
                                 </div>
                             @endforeach
@@ -50,8 +50,8 @@
                     </div>
                 </div>
 
-                <div class="card mt-5">
-                    <div class=" mb-3" style="background-color:#4eba74 ">
+                <div class="card mt-3">
+                    <div class=" mb-3" style="background-color:#4eba74 ;border-radius:5px 5px 0 0 ">
                         <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Ejercicios</h3>
                     </div>
@@ -60,7 +60,7 @@
                             @foreach ($videos_ejercicio as $video_ejercicio)
                                 <div class="container_video" style="background-color:rgb(91, 250, 152);">
                                     <div class="opciones" style="display:flex; justify-content:flex-end;">
-                                      
+
                                     </div>
                                     <h5 class="my-1 text-center" style="text-transform: uppercase">
                                         {{ $video_ejercicio->titulo }}</h5>
@@ -76,18 +76,18 @@
                 </div>
 
 
-                <div class="card mt-5">
-                    <div class=" mb-3" style="background-color:#7c7ce4 ">
+                <div class="card mt-3">
+                    <div class=" mb-3" style="background-color:#7c7ce4;border-radius:5px 5px 0 0 ">
                         <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Motivacion</h3>
                     </div>
                     <div class="card-body">
                         <div style="display:flex; justify-content:space-evenly; flex-wrap:wrap;">
                             @foreach ($videos_motivacion as $video_motivacion)
-                                <div class="container_video" style="background-color:rgb(91, 250, 152);">
+                                <div class="container_video" style="background-color:rgb(91, 250, 152)">
                                     <div class="opciones" style="display:flex; justify-content:flex-end;">
-                                      
-                                     
+
+
                                     </div>
                                     <h5 class="my-1 text-center" style="text-transform: uppercase">
                                         {{ $video_motivacion->titulo }}</h5>

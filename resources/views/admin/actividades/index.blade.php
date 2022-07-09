@@ -299,5 +299,28 @@
             }
 
         }
+
+
+        function eliminarActividad(actividad) {
+            var form = document.getElementById('deleteactividad' +actividad.id);
+            swal({
+            title: "Estas seguro que quieres la actividad " + actividad.nombre + " ?",
+            text: "Al confirmar, la actividad será eliminada permanentemente!",
+            icon: "warning",
+            buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+            ],
+            dangerMode: true,
+            }).then(function(isConfirm) {
+            if (isConfirm) {
+                form.submit(); // <--- submit form programmatically
+            }
+        })
+
+    }
+
     </script>
+
+    
 @endsection

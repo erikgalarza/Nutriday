@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mb-2">
+                                {{-- <div class="form-group row mb-2">
                                     <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
                                         class="col-sm-4 col-form-label text-left">Email:</label>
                                     <div class="col-sm-8">
@@ -117,7 +117,7 @@
                                             value="{{ $nutricionista->user->email }}" class="form-control"
                                             id="exampleInputUsername2">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group row mb-2">
                                     <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"

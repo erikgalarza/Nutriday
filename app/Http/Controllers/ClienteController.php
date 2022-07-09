@@ -519,10 +519,11 @@ class ClienteController extends Controller
        $paciente->update([
         "nombre"=>$request->nombre,
         "apellido"=>$request->apellido,
-        "edad"=>$request->edad,
+        // "edad"=>$request->edad,
+        "sexo"=>$request->sexo,
         "cedula"=>$request->cedula,
         "telefono"=>$request->telefono,
-        "tipo_diabetes"=>$request->tipo_diabetes,
+        // "tipo_diabetes"=>$request->tipo_diabetes,
        ]);
 
        if (request()->hasFile('imagen')) {

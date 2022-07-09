@@ -140,6 +140,7 @@ class PacienteController extends Controller
             "email"=>$request->email,
             "cedula"=>$request->cedula,
             "telefono"=>$request->telefono,
+            // "edad"=>$request->edad,
             "sexo"=>$request->sexo,
             "password"=>$pass,
             // "tipo_diabetes"=>$request->tipo_diabetes,

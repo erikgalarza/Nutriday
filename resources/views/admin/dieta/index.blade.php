@@ -71,14 +71,14 @@
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $dieta->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
-                                            <form method="post" id="deletecategoria"
+                                            <form method="post" id="deletedietapredefinida{{$key}}"
                                                 action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                                <button title="Eliminar dieta"
-                                                    onclick="if(!confirm('Está seguro que desea eliminar la dieta?'))return false;"
+                                                <a title="Eliminar dieta predefinida"
+                                                onclick="obtenerKeyDP({{$key}}); eliminarDietaPredefinida({{$dieta}})"
                                                     type="submit" class="btn btn-outline-danger mb-1"><i
-                                                        class="fas fa-trash"></i></button>
+                                                        class="fas fa-trash"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -580,7 +580,7 @@
                                         </div>
                                     </div>
                     </div>
-                    @foreach ($paciente->dietas()->get() as $dieta)
+                    @foreach ($paciente->dietas()->get() as $key => $dieta)
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
@@ -633,16 +633,28 @@
                                 <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{ $dieta->id }}"
                                     class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
 
-
-                                <form method="post" id="deletecategoria"
+                                    @if($dieta->estado=="activa")
+                                <form method="post" id="deletedietaasignada{{$key}}"
                                     action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
                                     @csrf
                                     {{ method_field('DELETE') }}
-                                    <button title="Eliminar dieta"
-                                        onclick="if(!confirm('Está seguro que desea eliminar la dieta?'))return false;"
-                                        type="submit" class="btn btn-outline-danger mb-1"><i
-                                            class="fas fa-trash"></i></button>
+                                    <a title="Eliminar dieta asignada"
+                                        onclick="obtenerKeyDA({{$key}}); eliminarDietaAsignada({{$dieta}})"
+                                        class="btn btn-outline-danger mb-1"><i
+                                            class="fas fa-trash"></i></a>
                                 </form>
+                                @else
+                                <form method="post" id="deletedietaasignada{{$key}}"
+                                action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <a title="Activar"
+                                    onclick="obtenerKeyActivarDP({{$key}});"
+                                    class="btn btn-outline-danger mb-1"><i
+                                        class="fas fa-share"></i></a>
+                            </form>
+
+                                @endif
                             </td>
                         </tr>
 
@@ -800,7 +812,74 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+   
     <script>
+
+       
+        function obtenerKeyActivarDP(key)
+        {
+            document.getElementById('deletedietaasignada'+key).submit();
+
+        }
+
+
+        var k = null;
+        function obtenerKeyDP(key)
+        {
+            k = key;
+            
+        }
+
+        function eliminarDietaPredefinida(dieta) {
+            var form = document.getElementById('deletedietapredefinida' +k);
+            swal({
+            title: "Estas seguro que quieres la dieta " + dieta.nombre + " ?",
+            text: "Al confirmar, la dieta será eliminada permanentemente!",
+            icon: "warning",
+            buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+            ],
+            dangerMode: true,
+            }).then(function(isConfirm) {
+            if (isConfirm) {
+                form.submit(); // <--- submit form programmatically
+            }
+        })
+
+    }
+
+
+        var k2 = null;
+        function obtenerKeyDA(key)
+        {
+            k2 = key;
+            
+        }
+
+
+
+        function eliminarDietaAsignada(dieta) {
+            var form = document.getElementById('deletedietaasignada' +k2);
+            swal({
+            title: "Estas seguro que quieres la dieta " + dieta.nombre + " ?",
+            text: "Al confirmar, la dieta será eliminada permanentemente!",
+            icon: "warning",
+            buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+            ],
+            dangerMode: true,
+            }).then(function(isConfirm) {
+            if (isConfirm) {
+                form.submit(); // <--- submit form programmatically
+            }
+        })
+
+    }
+ 
+      
         var pacienteid = null,
             dietaid = null;
 

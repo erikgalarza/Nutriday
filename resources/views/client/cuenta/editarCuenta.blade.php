@@ -76,6 +76,33 @@
                                                 id="exampleInputUsername2">
                                         </div>
                                     </div>
+
+                                    {{-- <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;"
+                                            for="exampleInputUsername2"
+                                            class="col-sm-4 text-left col-form-label">Edad:</label>
+                                        <div class="col-sm-8">
+                                            <input style="border-radius:10px" name="edad"
+                                                type="number" min="5" max="110"
+                                                value="{{ $paciente->edad}}"
+                                                class="form-control"
+                                                id="exampleInputUsername2">
+                                        </div>
+                                    </div> --}}
+{{-- 
+                                    <div class="form-group row mb-2">
+                                        <label style="font-weight:bold;font-size:12px;"
+                                            for="exampleInputUsername2"
+                                            class="col-sm-4 text-left col-form-label">Tipo diabetes:</label>
+                                        <div class="col-sm-8">
+                                            <select name="tipo_diabetes" class="form-control">
+                                                <option value="1" {{$paciente->tipo_diabetes == "1" ? 'selected' : ''}}>Tipo 1</option>
+                                                <option value="2" {{$paciente->tipo_diabetes == "2" ? 'selected' : ''}}>Tipo 2</option>
+                                                <option value="3" {{$paciente->tipo_diabetes == "3" ? 'selected' : ''}}>Tipo 3</option>
+                                            </select>
+                                        </div>
+                                    </div> --}}
+
                                     <div class="form-group row mb-2">
                                         <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
                                             class="col-sm-4 col-form-label text-left">Sexo:</label>
@@ -101,7 +128,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mb-2">
+                                    {{-- <div class="form-group row mb-2">
                                         <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"
                                             class="col-sm-4 col-form-label text-left">Email:</label>
                                         <div class="col-sm-8">
@@ -109,7 +136,7 @@
                                                 value="{{ $paciente->user->email }}" class="form-control"
                                                 id="exampleInputUsername2">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group row mb-2">
                                         <label style="font-weight:bold;font-size:12px;" for="exampleInputUsername2"

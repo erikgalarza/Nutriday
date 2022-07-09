@@ -11008,8 +11008,8 @@ fieldset:disabled a {
 
 .btn-primary, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary, .wizard > .actions a {
   color: #fff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .btn-primary:hover, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:hover, .wizard > .actions a:hover {
@@ -11024,8 +11024,8 @@ fieldset:disabled a {
 
 .btn-primary.disabled, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .disabled.btn-primary, .wizard > .actions a.disabled, .btn-primary:disabled, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:disabled, .wizard > .actions a:disabled {
   color: #fff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:not(:disabled):not(.disabled):active, .wizard > .actions a:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:not(:disabled):not(.disabled).active, .wizard > .actions a:not(:disabled):not(.disabled).active,
@@ -11351,8 +11351,8 @@ fieldset:disabled a {
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -14072,7 +14072,7 @@ input[type="button"].btn-block {
 
 .badge-primary {
   color: #fff;
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
 }
 
 .badge-primary[href]:hover, .badge-primary[href]:focus {
@@ -19738,7 +19738,7 @@ address p {
 }
 
 .blockquote-primary {
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .blockquote-primary .blockquote-footer {
@@ -21116,8 +21116,8 @@ code {
 
 .alert-fill-primary {
   color: #ffffff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .alert-fill-primary hr {
@@ -21644,8 +21644,8 @@ code {
 
 .btn-inverse-primary:hover {
   color: #ffffff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .btn-inverse-primary.focus, .btn-inverse-primary:focus {
@@ -21660,8 +21660,8 @@ code {
 .btn-inverse-primary.active, .btn-inverse-primary:active,
 .show > .btn-inverse-primary.dropdown-toggle {
   color: #ffffff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .btn-primary:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a), .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a), .wizard > .actions a:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a) {
@@ -21674,7 +21674,7 @@ code {
 
 .btn-primary:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a):focus, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a):focus, .wizard > .actions a:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a):focus, .btn-primary:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a):active, .navbar.default-layout-navbar.navbar-primary .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a):active, .wizard > .actions a:not(.btn-light):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .btn-primary):not(.navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .wizard > .actions a):not(.wizard > .actions .navbar.default-layout-navbar.navbar-light .navbar-menu-wrapper .navbar-nav .nav-item .nav-link a):active {
   background: #392C70;
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
@@ -22121,7 +22121,7 @@ code {
 /* inverse breadcrumb */
 .bg-inverse-primary {
   background: #6f5cbf;
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .bg-inverse-primary .breadcrumb-item {
@@ -23370,7 +23370,7 @@ select.border-dark.tt-hint {
   height: 15px;
   animation: small 2s infinite ease;
   box-shadow: 0px 2px rgba(0, 0, 0, 0.3);
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
 }
 
 .s:nth-child(1) {
@@ -23399,7 +23399,7 @@ select.border-dark.tt-hint {
   border-radius: 15px;
   box-shadow: 0px 0px 10px #392C70, 0px 0px 20px #392C70, 0px 0px 30px #392C70, 0px 0px 50px #392C70, 0px 0px 60px #392C70;
   z-index: 1;
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
   animation: bigball 1s infinite linear;
 }
 
@@ -23453,18 +23453,18 @@ select.border-dark.tt-hint {
   }
   10% {
     transform: scale(1.3);
-    background-  color:#4b6ac3 !important;
+    background-color:#4b6ac3 !important;
   }
   15% {
     transform: scale(1);
   }
   25% {
     transform: scale(1);
-    background-  color:#4b6ac3 !important;
+    background-color:#4b6ac3 !important;
   }
   100% {
     transform: scale(1);
-    background-  color:#4b6ac3 !important;
+    background-color:#4b6ac3 !important;
   }
 }
 
@@ -23776,7 +23776,7 @@ select.border-dark.tt-hint {
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
   margin: 35px 5px;
   opacity: 0;
 }
@@ -24104,7 +24104,7 @@ dl li {
 .jsgrid .jsgrid-pager .jsgrid-pager-page a, .jsgrid .jsgrid-pager .page-item:focus .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:focus a, .jsgrid .jsgrid-pager .jsgrid-pager-page:focus a, .pagination .page-item:active .page-link, .jsgrid .jsgrid-pager .page-item:active .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:active .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-page:active .page-link, .pagination .page-item:active .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item:active .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:active a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:active a, .pagination .page-item:active
 .jsgrid .jsgrid-pager .jsgrid-pager-page a, .jsgrid .jsgrid-pager .page-item:active .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:active a, .jsgrid .jsgrid-pager .jsgrid-pager-page:active a {
   background: #392C70;
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
   color: #ffffff;
 }
 
@@ -24230,7 +24230,7 @@ dl li {
 .jsgrid .jsgrid-pager .jsgrid-pager-page a,
 .jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-primary .page-item.active a, .pagination-primary .jsgrid .jsgrid-pager .active.jsgrid-pager-page a, .jsgrid .jsgrid-pager .pagination-primary .active.jsgrid-pager-page a {
   background: #392C70;
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .pagination-primary .page-item .page-link:hover, .pagination-primary .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-link:hover, .jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-nav-button .page-link:hover, .pagination-primary
@@ -24238,7 +24238,7 @@ dl li {
 .jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-page .page-link:hover, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .pagination-primary .page-item a:hover, .pagination-primary .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a:hover, .jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-nav-button a:hover,
 .jsgrid .jsgrid-pager .jsgrid-pager-page .pagination-primary .page-item a:hover, .pagination-primary .jsgrid .jsgrid-pager .jsgrid-pager-page a:hover, .jsgrid .jsgrid-pager .pagination-primary .jsgrid-pager-page a:hover {
   background: #423382;
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
   color: #ffffff;
 }
 
@@ -24480,19 +24480,19 @@ dl li {
 }
 
 .popover-primary.bs-popover-top .arrow:before, .popover-primary.bs-popover-auto[x-placement^="top"] .arrow:before, .popover-primary.bs-popover-top .arrow:after, .popover-primary.bs-popover-auto[x-placement^="top"] .arrow:after {
-  border-top-  color:#4b6ac3 !important;
+  border-top-color:#4b6ac3 !important;
 }
 
 .popover-primary.bs-popover-right .arrow:before, .popover-primary.bs-popover-auto[x-placement^="right"] .arrow:before, .popover-primary.bs-popover-right .arrow:after, .popover-primary.bs-popover-auto[x-placement^="right"] .arrow:after {
-  border-right-  color:#4b6ac3 !important;
+  border-right-color:#4b6ac3 !important;
 }
 
 .popover-primary.bs-popover-bottom .arrow:before, .popover-primary.bs-popover-auto[x-placement^="bottom"] .arrow:before, .popover-primary.bs-popover-bottom .arrow:after, .popover-primary.bs-popover-auto[x-placement^="bottom"] .arrow:after {
-  border-bottom-  color:#4b6ac3 !important;
+  border-bottom-color:#4b6ac3 !important;
 }
 
 .popover-primary.bs-popover-left .arrow:before, .popover-primary.bs-popover-auto[x-placement^="left"] .arrow:before, .popover-primary.bs-popover-left .arrow:after, .popover-primary.bs-popover-auto[x-placement^="left"] .arrow:after {
-  border-left-  color:#4b6ac3 !important;
+  border-left-color:#4b6ac3 !important;
 }
 
 .popover-secondary {
@@ -25475,19 +25475,19 @@ dl li {
 }
 
 .tooltip-primary.bs-tooltip-top .arrow::before, .tooltip-primary.bs-tooltip-auto[x-placement^="top"] .arrow::before {
-  border-top-  color:#4b6ac3 !important;
+  border-top-color:#4b6ac3 !important;
 }
 
 .tooltip-primary.bs-tooltip-right .arrow::before, .tooltip-primary.bs-tooltip-auto[x-placement^="right"] .arrow::before {
-  border-right-  color:#4b6ac3 !important;
+  border-right-color:#4b6ac3 !important;
 }
 
 .tooltip-primary.bs-tooltip-bottom .arrow::before, .tooltip-primary.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
-  border-bottom-  color:#4b6ac3 !important;
+  border-bottom-color:#4b6ac3 !important;
 }
 
 .tooltip-primary.bs-tooltip-left .arrow::before, .tooltip-primary.bs-tooltip-auto[x-placement^="left"] .arrow::before {
-  border-left-  color:#4b6ac3 !important;
+  border-left-color:#4b6ac3 !important;
 }
 
 .tooltip-secondary .tooltip-inner {
@@ -27507,7 +27507,7 @@ body.avgrund-active {
 }
 
 .fc-external-events .fc-event:nth-child(1) {
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
 }
 
 .fc-external-events .fc-event:nth-child(2) {
@@ -28139,7 +28139,7 @@ body.avgrund-active {
 .br-theme-bars-reversed .br-widget a.br-active,
 .br-theme-bars-horizontal .br-widget a.br-selected,
 .br-theme-bars-horizontal .br-widget a.br-active {
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
 }
 
 .br-theme-bars-square .br-widget a {
@@ -28148,7 +28148,7 @@ body.avgrund-active {
 }
 
 .br-theme-bars-square .br-widget a.br-selected, .br-theme-bars-square .br-widget a.br-active {
-  border-  color:#4b6ac3 !important;
+  border-color:#4b6ac3 !important;
     color:#4b6ac3 !important;
 }
 
@@ -28459,12 +28459,12 @@ div.tagsinput span.tag a {
 .tt-suggestion:hover {
   cursor: pointer;
   color: #ffffff;
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
 }
 
 .tt-suggestion .tt-cursor {
   color: #ffffff;
-  background-  color:#4b6ac3 !important;
+  background-color:#4b6ac3 !important;
 }
 
 .tt-suggestion p {

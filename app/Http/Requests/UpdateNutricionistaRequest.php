@@ -28,7 +28,7 @@ class UpdateNutricionistaRequest extends FormRequest
             "nombre"=>"required|string|min:3|max:30",
             "apellido"=>"required|string|min:3|max:30",
             "cedula"=>["required", new Cedula()],
-            "sexo"=>"required|numeric|size:1",
+            "sexo"=>"required|numeric",
             "telefono"=>"required|string|min:10|max:10",
             "especialidad"=>"required|string|max:40",
             "correo"=>"required|email:rfc,dns",

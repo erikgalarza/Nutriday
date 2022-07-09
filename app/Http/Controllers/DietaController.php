@@ -2188,7 +2188,21 @@ use AlimentosDieta;
 
     public function destroy($id)
     {
-      Dieta::destroy($id);
+        $dieta = Dieta::find($id);
+        // dd($nutri);
+        if($dieta->estado=="activa")
+        {
+            $dieta->update([
+                "estado"=>"inactiva"
+            ]);
+        }else{
+            $dieta->update([
+                "estado"=>"activa"
+            ]);
+        }
         return back();
+
+    //   Dieta::destroy($id);
+    //     return back();
     }
 }

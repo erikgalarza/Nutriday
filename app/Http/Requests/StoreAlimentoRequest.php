@@ -30,8 +30,8 @@ class StoreAlimentoRequest extends FormRequest
             "carbohidrato"=>"required|numeric|between:0,1000",
             "proteina"=>"required|numeric|between:0,1000",
             "grasa"=>"required|numeric|between:0,1000",
-            "categoria"=>"required|integer|unique:alimentos,categoria_id",
-            "medida"=>"required|integer|unique:alimentos,medida_id",
+            "categoria"=>"required",
+            "medida"=>"required",
         ];
     }
 }

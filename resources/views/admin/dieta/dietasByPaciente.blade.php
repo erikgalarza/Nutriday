@@ -143,7 +143,7 @@
     </div>
     <div class="container mb-2 pb-3  text-center">
         <a title="Asignar una dieta predefinida a {{ $paciente->nombre }}" data-toggle="modal"
-            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-success"><i
+            data-target="#exampleModal-4" class="btn btn-success"><i
                 class="fas fa-share mr-2"></i> Asignar dieta </a>
         <a title="Crear una dieta personalizada a {{ $paciente->nombre }}"
             onclick="event.preventDefault();document.getElementById('formCrearDieta').submit();"
@@ -175,7 +175,6 @@
                         <thead>
                             <tr>
                                 <th>N°</th>
-
                                 <th>Nombre dieta</th>
                                 <th>Tipo diabetes</th>
                                 <th>IMC</th>
@@ -187,27 +186,11 @@
                         </thead>
                         <tbody>
                             @foreach ($dietas as $key => $dieta)
-                                {{-- <p>{{$dieta->pacientes}}</p> --}}
-                                {{-- @if ($dieta->pacientes()->get() != null) --}}
-
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $dieta->nombre }}</td>
                                     <td>{{ $dieta->tipo_diabetes }}</td>
-                                    {{-- @if ($dieta->imc == '1')
-                                        <td>(Bajo peso)</td>
-                                    @endif
-                                    @if ($dieta->imc == '2')
-                                        <td>(Normal)</td>
-                                    @endif
-                                    @if ($dieta->imc == '3')
-                                        <td>(Sobrepeso)</td>
-                                    @endif
-                                    @if ($dieta->imc == '4')
-                                        <td>(Obeso)</td>
-                                    @endif --}}
                                     <td>{{$dieta->imc}}</td>
-
                                     <td>
                                         <a title="Agregar alimentos a la dieta"
                                             href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
@@ -216,131 +199,54 @@
                                             href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
                                                 class="fa-solid fa-utensils"></i></a>
                                     </td>
-
                                            <td>
                                             {{date('Y-m-d',strtotime($fechasFinAsignacion[$key]))}} /
                                             {{date('Y-m-d',strtotime($fechasFinDieta[$key]))}}
-
                                         </td>
-
                                     <td>
-                                        <label for="" class="badge badge-pill badge-success">Activa</label>
+                                        @if($dieta->estado=='activa')
+                                        <label for="" class="badge badge-pill badge-success">{{$dieta->estado}}</label>
+                                        @endif
+                                        @if($dieta->estado=='inactiva')
+                                        <label for="" class="badge badge-pill badge-danger">{{$dieta->estado}}</label>
+                                        @endif
                                     </td>
                                     <td>
-
                                         <a title="Ver más" data-toggle="modal" style="max-width: 50px"
-                                            data-target="#exampleModal-3{{ $dieta->id }}"
+                                            data-target="#exampleModal-3{{$key}}"
                                             class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
                                         <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1"
-                                            data-toggle="modal" data-target="#exampleModal-2{{ $dieta->id }}"><i
+                                            data-toggle="modal" data-target="#exampleModal-2{{$key}}"><i
                                                 class="fas fa-edit"></i></a>
 
-                                        <form method="post" id="deletecategoria" style="min-width: 50px"
-                                            action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
-                                            @csrf
-                                            {{ method_field('DELETE') }}
-                                            <button title="Eliminar dieta" style="min-width: 50px"
-                                                onclick="if(!confirm('Está seguro que desea eliminar la dieta?'))return false;"
-                                                type="submit" class="btn btn-outline-danger mb-1"><i
-                                                    class="fas fa-trash"></i></button>
-                                        </form>
+                                              
+                                                @if($dieta->estado=='inactiva')
+                                                <form method="post" id="deletedieta{{$key}}" style="min-width: 50px"
+                                                action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <a title="Activar" style="min-width: 50px"
+                                                onclick="document.getElementById('deletedieta'+{{$key}}).submit();"  
+                                                    type="submit" class="btn btn-outline-danger mb-1"><i
+                                                        class="fas fa-share"></i></a>
+                                                    </form>
+                                        @else
+                                        <form method="post" id="deletedieta{{$key}}" style="min-width: 50px"
+                                        action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <a title="Eliminar dieta" style="min-width: 50px"
+                                        onclick="obtenerKey({{$key}});eliminarDieta({{$dieta}})"  
+                                            type="submit" class="btn btn-outline-danger mb-1"><i
+                                                class="fas fa-trash"></i></a>
+                                    </form>
+                                        @endif
+
                                     </td>
                                 </tr>
+                                <input type="hidden" id="key{{$key}}" value="{{$key}}">
 
-
-
-                                <div class="modal fade" id="exampleModal-4{{ $paciente->id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="background-color:#4b6ac3">
-                                                <h5 class="modal-title text-center text-white"
-                                                    style="text-transform: uppercase; font-weight:bold; font-size:16px"
-                                                    id="ModalLabel">Asignar dieta a
-                                                    {{ $paciente->nombre }} {{ $paciente->apellido }}</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span style="color:white;font-size:30px"
-                                                        aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body py-3 px-0">
-
-                                                <div class="col-12 row m-0 justify-content-center">
-                                                    <div class="col-sm-10 col-11 text-left justify-content-center">
-
-                                                        <form method="POST"
-                                                            action="{{ route('dieta.guardarDietaAsignada') }}">
-                                                            @csrf
-                                                            <input type="hidden" name="paciente_id"
-                                                                value="{{ $paciente->id }}">
-
-                                                            <div class="form-group row mb-1" style="">
-                                                                <label class="col-sm-5 col-form-label"><strong>Fecha
-                                                                        Consulta:</strong></label>
-
-                                                                @foreach ($paciente->dato_antropometrico as $kp => $data)
-                                                                    @if ($loop->last)
-                                                                        <label class="col-sm-7 col-form-label">
-                                                                            {{ date('Y-m-d',strtotime($data->created_at)) }}</label>
-                                                                    @endif
-                                                                @endforeach
-                                                            </div>
-                                                            <div class="form-group row mb-2">
-                                                                <label class="col-sm-5 col-form-label"><strong>Dietas
-                                                                        disponibles:</strong>
-                                                                </label>
-                                                                <div class="col-sm-7">
-                                                                    <select
-                                                                        style="border-radius: 10px;background-color:#F0F0F0;min-height:45.2px"
-                                                                        class="form-control" name="dieta_id">
-                                                                        <option value="" disabled selected>
-                                                                            Seleccione una
-                                                                            dieta</option>
-                                                                        @foreach ($dietasDisponibles as $dieta)
-                                                                            <option value="{{ $dieta->id }}">
-                                                                                {{ $dieta->nombre }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row mb-2" style="">
-                                                                <label class="col-sm-5 col-form-label"><strong>Fecha
-                                                                        fin:</strong>
-                                                                </label>
-                                                                <div class="col-sm-7">
-                                                                    <input style="border-radius: 10px" type="date"
-                                                                        class="form-control" name="fecha_fin">
-                                                                </div>
-                                                            </div>
-
-
-                                                    </div>
-                                                    <div
-                                                        class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
-                                                        <div
-                                                            class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
-
-                                                            <button type="submit"
-                                                                class="btn btn-success mb-2 col-12 col-sm-5">Asignar</button>
-                                                            <button type="button"
-                                                                class="btn btn-light mb-2 col-12 col-sm-5"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                        </div>
-                                                    </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="modal fade" id="exampleModal-2{{ $dieta->id }}" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-2{{ $key }}" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -417,9 +323,6 @@
                                                                         <option value="4"
                                                                             {{ $dieta->imc == '4' ? 'selected' : '' }}>
                                                                             Obeso</option>
-                                                                        {{-- <option value="5"
-    {{ old('categoria_id', $producto->categoria_id) == $categoria->id ? 'selected' : '' }}> --}}
-                                                                        {{-- {{ $categoria->nombre }}</option> --}}
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -429,7 +332,7 @@
                                                                 <div class="col-sm-8">
                                                                     <textarea name="observaciones"cols="30" rows="5" class="form-control" id="exampleInputUsername2"
                                                                         >{{ $dieta->observaciones }}
-                            </textarea>
+                                                                    </textarea>
                                                                 </div>
                                                             </div>
                                                             <br>
@@ -453,10 +356,7 @@
                                     </div>
                                 </div>
 
-
-
-
-                                <div class="modal fade" id="exampleModal-3{{ $dieta->id }}" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-3{{ $key }}" tabindex="-1"
                                     role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -523,6 +423,9 @@
                                                 </div>
 
 
+                                                
+                               
+
 
 
 
@@ -534,18 +437,127 @@
 
                                     </div>
                                 </div>
+                
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                @endforeach
-                </tbody>
-                </table>
-
-
             </div>
-
-
         </div>
     </div>
 
-    {{-- {{ $dietas->links() }} --}}
-    {{-- {{ $dietas->links() }} --}}
+    
+
+    <div class="modal fade" id="exampleModal-4" tabindex="-1"
+        role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#4b6ac3">
+                    <h5 class="modal-title text-center text-white"
+                        style="text-transform: uppercase; font-weight:bold; font-size:16px"
+                        id="ModalLabel">Asignar dieta a
+                        {{ $paciente->nombre }} {{ $paciente->apellido }}</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span style="color:white;font-size:30px"
+                            aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body py-3 px-0">
+
+                    <div class="col-12 row m-0 justify-content-center">
+                        <div class="col-sm-10 col-11 text-left justify-content-center">
+
+                            <form method="POST"
+                                action="{{ route('dieta.guardarDietaAsignada') }}">
+                                @csrf
+                                <input type="hidden" name="paciente_id"
+                                    value="{{ $paciente->id }}">
+
+                                <div class="form-group row mb-1" style="">
+                                    <label class="col-sm-5 col-form-label"><strong>Fecha
+                                            Consulta:</strong></label>
+
+                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                        @if ($loop->last)
+                                            <label class="col-sm-7 col-form-label">
+                                                {{ date('Y-m-d',strtotime($data->created_at)) }}</label>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="form-group row mb-2">
+                                    <label class="col-sm-5 col-form-label"><strong>Dietas
+                                            disponibles:</strong>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <select
+                                            style="border-radius: 10px;background-color:#F0F0F0;min-height:45.2px"
+                                            class="form-control" name="dieta_id">
+                                            <option value="" disabled selected>
+                                                Seleccione una
+                                                dieta</option>
+                                            @foreach ($dietasDisponibles as $dieta)
+                                                <option value="{{ $dieta->id }}">
+                                                    {{ $dieta->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-2" style="">
+                                    <label class="col-sm-5 col-form-label"><strong>Fecha
+                                            fin:</strong>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <input style="border-radius: 10px" type="date"
+                                            class="form-control" name="fecha_fin">
+                                    </div>
+                                </div>
+                        </div>
+                        <div
+                            class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                            <div
+                                class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+
+                                <button type="submit"
+                                    class="btn btn-success mb-2 col-12 col-sm-5">Asignar</button>
+                                <button type="button"
+                                    class="btn btn-light mb-2 col-12 col-sm-5"
+                                    data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var k = null;
+        function obtenerKey(key)
+        {
+            k = key;
+            
+        }
+
+  function eliminarDieta(dieta) {
+        var form = document.getElementById('deletedieta' +k);
+        swal({
+            title: "Estas seguro que quieres la dieta " + dieta.nombre + " ?",
+            text: "Al confirmar, la dieta será eliminada permanentemente!",
+            icon: "warning",
+            buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+            ],
+            dangerMode: true,
+        }).then(function(isConfirm) {
+            if (isConfirm) {
+                form.submit(); // <--- submit form programmatically
+            }
+        })
+
+    }
+    </script>
 @endsection

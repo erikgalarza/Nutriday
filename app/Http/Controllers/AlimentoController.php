@@ -252,6 +252,8 @@ class AlimentoController extends Controller
         "carbohidrato"=>$request->carbohidrato,
         "proteina"=>$request->proteina,
         "grasa"=>$request->grasa,
+        "categoria_id"=>$request->categoria_id,
+        "medida_id"=>$request->medida_id
       ]);
 
    

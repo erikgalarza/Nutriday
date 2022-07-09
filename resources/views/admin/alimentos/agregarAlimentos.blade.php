@@ -36,9 +36,9 @@
                                             <select class="form-control"
                                                 style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px"
                                                 name="categoria" id="exampleInputUsername2">
-                                                <option selected disabled>Seleccione una categoría</option>
+                                                <option  disabled>Seleccione una categoría</option>
                                                 @foreach ($categorias as $categoria)
-                                                    <option value="{{old('categoria') == $categoria->id ? 'selected' :'' }}">{{ $categoria->nombre }}</option>
+                                                    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                                                 @endforeach
                                             </select>
                                             <p class="text-danger font-weight-bold">{{$errors->first('categoria')}}</p>
@@ -69,9 +69,9 @@
                                             <select class="form-control"
                                                 style="border-radius:10px;background-color:#F0F0F0;min-height:45.2px; margin-left:2rem"
                                                 name="medida" id="unidad">
-                                                <option value="" selected disabled>Seleccione una medida</option>
+                                                <option  disabled>Seleccione una medida</option>
                                                 @foreach ($medidas as $medida)
-                                                    <option value="{{old('medida') == $medida->id ? 'selected' :''}}">{{ $medida->medida }}</option>
+                                                    <option value="{{$medida->id}}">{{ $medida->medida }}</option>
                                                 @endforeach
                                             </select>
                                             <p class="text-danger font-weight-bold">{{$errors->first('medida')}}</p>

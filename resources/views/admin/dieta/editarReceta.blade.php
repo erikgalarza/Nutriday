@@ -30,7 +30,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dieta.index')}}">Dietas</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dieta.index') }}">Dietas</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Alimentos</li>
             </ol>
         </nav>
@@ -110,7 +110,7 @@
                                         @if ($loop->last)
                                             <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
                                                 <label class="col-form-label"
-                                                    style="font-size:14px">{{ date('Y-m-d',strtotime($data->created_at))}}
+                                                    style="font-size:14px">{{ date('Y-m-d', strtotime($data->created_at)) }}
                                                 </label>
                                             </div>
                                         @endif
@@ -119,10 +119,11 @@
                                 <div class="col-xl-6 row justify-content-center" style="border-radius:10px 10px 0 0 ">
                                     <div class="col-xl-4 col-5  no-gutters p-0 text-center">
                                         <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha fin
-                                            dieta:{{ date('Y-m-d',strtotime($dieta->fecha_fin)) }}</label>
+                                            dieta:{{ date('Y-m-d', strtotime($dieta->fecha_fin)) }}</label>
                                     </div>
                                     <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label" style="font-size:14px">{{ date('Y-m-d',strtotime($dieta->created_at)) }}
+                                        <label class="col-form-label"
+                                            style="font-size:14px">{{ date('Y-m-d', strtotime($dieta->created_at)) }}
                                         </label>
                                     </div>
                                 </div>
@@ -215,106 +216,108 @@
             </div>
         </div>
     @else
-    <div class="col-md-12 grid-margin stretch-card">
+        <div class="col-md-12 grid-margin stretch-card">
 
-        <div class="card ">
-            <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
-                <h3
-                    class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                    Datos de dieta</h3>
-            </div>
-            <div class="row px-4" style="margin-top:10px;">
+            <div class="card ">
+                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                    <h3
+                        class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+                        Datos de dieta</h3>
+                </div>
+                <div class="row px-4" style="margin-top:10px;">
 
-                <div class="col-lg-6 grid-margin stretch-card consulta ">
-                    <div class="card ">
-                        <div class="card-body text-center py-2 row justify-content-lg-center">
+                    <div class="col-lg-6 grid-margin stretch-card consulta ">
+                        <div class="card ">
+                            <div class="card-body text-center py-2 row justify-content-lg-center">
 
-                            <div class="col-12 row justify-content-center">
-                                <div class=" col-12 row justify-content-center"
-                                    style="border-bottom:1px solid;max-width:345px">
-                                    <div class="col-6  col-xl-6  p-0 ">
-                                        <label class="col-form-label" style="font-size:16px;font-weight:bold">
-                                            Nombre dieta:</label>
-                                    </div>
-                                    <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label"
-                                            style=";font-size:16px">{{ $dieta->nombre}}
-                                        </label>
+                                <div class="col-12 row justify-content-center">
+                                    <div class=" col-12 row justify-content-center"
+                                        style="border-bottom:1px solid;max-width:345px">
+                                        <div class="col-6  col-xl-6  p-0 ">
+                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                                Nombre dieta:</label>
+                                        </div>
+                                        <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
+                                            <label class="col-form-label" style=";font-size:16px">{{ $dieta->nombre }}
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <style>
-                                @media (max-width:992px) {
-                                    .contenedor {
-                                        max-width: 360px !important;
+                                <style>
+                                    @media (max-width:992px) {
+                                        .contenedor {
+                                            max-width: 360px !important;
 
+                                        }
                                     }
-                                }
 
-                                @media (min-width:992px) {
-                                    .contenedor2 {
-                                        min-width: 276px !important;
-                                        max-width: 300px !important;
-                                        padding-left: 0rem !important;
+                                    @media (min-width:992px) {
+                                        .contenedor2 {
+                                            min-width: 276px !important;
+                                            max-width: 300px !important;
+                                            padding-left: 0rem !important;
+                                        }
                                     }
-                                }
-                            </style>
-                            <div class="container mt-3 contenedor contenedor2" style="">
-                                <div class="col-lg-12 col-10 text-left ml-4 p-0">
-                                    <div class="form-group row mb-1 mb-1">
-                                        <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
-                                        @if ($dieta->tipo_diabetes == 3)
-                                            <label class="col-7">Tipo Gestacional</label>
-                                        @else
+                                </style>
+                                <div class="container mt-3 contenedor contenedor2" style="">
+                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                        <div class="form-group row mb-1 mb-1">
+                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                            @if ($dieta->tipo_diabetes == 3)
+                                                <label class="col-7">Tipo Gestacional</label>
+                                            @else
+                                                <label
+                                                    class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
+                                            @endif
+
+                                        </div>
+                                        <div class="form-group row mb-1 mb-1">
+                                            <label class="col-5 text-left"> <strong>IMC:</strong></label>
+                                            <label class="col-7">{{ $dieta->imc }}</label>
+                                        </div>
+                                        <div class="form-group row mb-1 mb-1">
+                                            <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
                                             <label
-                                                class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
-                                        @endif
+                                                class="col-7">{{ date('Y-m-d', strtotime($dieta->created_at)) }}</label>
+                                        </div>
 
                                     </div>
-                                    <div class="form-group row mb-1 mb-1">
-                                        <label class="col-5 text-left"> <strong>IMC:</strong></label>
-                                            <label class="col-7">{{$dieta->imc}}</label>
-                                    </div>
-                                    <div class="form-group row mb-1 mb-1">
-                                        <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
-                                        <label class="col-7">{{ date('Y-m-d',strtotime($dieta->created_at))}}</label>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+
+                    <div class="col-lg-6 grid-margin stretch-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group row mb-1 mb-1">
+                                    <label class="col-12 col-xl-4 text-left"
+                                        style="font-size:14px;font-weight:bold">Observaciones:</label>
+                                    <label class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <style>
+                    .botono {}
 
+                    .botono:hover {
+                        filter: brightness(90%)
+                    }
+                </style>
+                <div class="container mb-1 pb-3  text-center">
+                    <a onclick="guardarCambios()" class="btn btn-success mb-2 mb-sm-0"><i
+                            class="fa-solid fa-floppy-disk mr-2"></i>Guardar cambios</a>
+                    <a data-toggle="modal"
+                        data-target="#exampleModal{{ $dieta->id }}"class="btn btn-warning mb-2 mb-sm-0 "><i
+                            class="fa-solid fa-share-from-square mr-2"></i>Guardar como nueva dieta</a>
 
-                <div class="col-lg-6 grid-margin stretch-card ">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group row mb-1 mb-1">
-                                <label class="col-12 col-xl-4 text-left" style="font-size:14px;font-weight:bold">Observaciones:</label>
-                                <label
-                                    class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <style>
-                .botono{
-
-                }
-                .botono:hover{
-                    filter: brightness(90%)
-                }
-            </style>
-            <div class="container mb-1 pb-3  text-center">
-                <a onclick="guardarCambios()" class="btn btn-success mb-2 mb-sm-0"><i class="fa-solid fa-floppy-disk mr-2"></i>Guardar cambios</a>
-                <a data-toggle="modal" data-target="#exampleModal{{ $dieta->id }}"class="btn btn-warning mb-2 mb-sm-0 " ><i class="fa-solid fa-share-from-square mr-2"></i>Guardar como nueva dieta</a>
-
             </div>
         </div>
-    </div>
     @endif
     <style>
         .ddd:hover {
@@ -360,7 +363,8 @@
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>Nombre:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre de la dieta">
+                                                    <input type="text" name="nombre" class="form-control"
+                                                        placeholder="Ingrese el nombre de la dieta">
                                                 </div>
                                             </div>
 
@@ -376,7 +380,8 @@
                                                 <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Tipo
                                                         de diabetes:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <select name="tipo_diabetes" class="form-control" style="background-color:#F0F0F0">
+                                                    <select name="tipo_diabetes" class="form-control"
+                                                        style="background-color:#F0F0F0">
                                                         <option selected disabled>Seleccione un tipo</option>
                                                         <option value="1">Tipo 1</option>
                                                         <option value="2">Tipo 2</option>
@@ -389,7 +394,8 @@
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>IMC:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <select name="imc" class="form-control" style="background-color:#F0F0F0">
+                                                    <select name="imc" class="form-control"
+                                                        style="background-color:#F0F0F0">
                                                         <option selected disabled>Seleccione una opción</option>
                                                         <option value="1">Bajo peso</option>
                                                         <option value="2">Normal</option>
@@ -403,7 +409,8 @@
                                                 <label class="col-sm-4 col-form-label"
                                                     for="recipient-name"><strong>Observaciones:</strong></label>
                                                 <div class="col-sm-8">
-                                                    <textarea class="form-control" name="observaciones" rows="5" placeholder="Dejar en blanco si no existen observaciones"></textarea>
+                                                    <textarea class="form-control" name="observaciones" rows="5"
+                                                        placeholder="Dejar en blanco si no existen observaciones"></textarea>
                                                 </div>
                                             </div>
 
@@ -430,25 +437,40 @@
                     li.navi:last-child {
                         margin-right: 0;
                     }
+
+                    @media (min-width: 1208px) and (max-width:1348px) {
+                        .containere {
+                            max-width: 848px;
+                        }
+                    }
+
+                    @media (min-width: 814px) and (max-width:991px) {
+                        .containere {
+                            max-width: 848px;
+                        }
+                    }
                 </style>
-                <ul class="nav nav-pills nav-pills-success text-center row justify-content-center align-items-center mt-2"
-                    id="pills-tab" role="tablist" style="border:none;font-weight: bold">
-                    @php
-                        $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
-                    @endphp
+                <div class="container-fluid">
+                    <div class="row justify-content-center align-items-center">
+                        <ul class="nav nav-pills containere nav-pills-success text-center row justify-content-center align-items-center mt-2"
+                            id="pills-tab" role="tablist" style="border:none;font-weight: bold">
+                            @php
+                                $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
+                            @endphp
 
-                    @for ($i = 0; $i <= 6; $i++)
-                        <li class="nav-item my-2 text-center navi" style="min-width:123.5px;font-weight:bold">
-                            <a class="nav-link {{ $i == 0 ? 'active' : '' }}" style=";border:1px solid #04B76B"
-                                id="pills-dia{{ $i }}-tab" data-toggle="pill"
-                                href="#pills-dia{{ $i }}" role="tab"
-                                aria-controls="pills-dia{{ $i }}"
-                                aria-selected="true">{{ $dias[$i] }}</a>
-                        </li>
-                    @endfor
+                            @for ($i = 0; $i <= 6; $i++)
+                                <li class="nav-item my-2 text-center navi" style="min-width:123.5px;font-weight:bold">
+                                    <a class="nav-link {{ $i == 0 ? 'active' : '' }}" style=";border:1px solid #04B76B"
+                                        id="pills-dia{{ $i }}-tab" data-toggle="pill"
+                                        href="#pills-dia{{ $i }}" role="tab"
+                                        aria-controls="pills-dia{{ $i }}"
+                                        aria-selected="true">{{ $dias[$i] }}</a>
+                                </li>
+                            @endfor
+                        </ul>
+                    </div>
+                </div>
 
-
-                </ul>
 
                 @php
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
@@ -511,10 +533,11 @@
                                                                 </label>
                                                                 <div class="container_buscador_desayuno ">
                                                                     <div class="row justify-content-center col-12">
-                                                                                <a class="btn" disabled
-                                                                                style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
-                                                                                <i class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
-                                                                    </a>
+                                                                        <a class="btn" disabled
+                                                                            style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
+                                                                            <i class="fa-solid fa-magnifying-glass"
+                                                                                style="color:#6d6d6d"></i>
+                                                                        </a>
                                                                         <div class=" col-8">
                                                                             <select
                                                                                 id="alimentoSeleccionado{{ $k }}"
@@ -540,27 +563,30 @@
                                                     </div>
 
                                                     <style>
-                                                        @media (max-width:720px){
-                                                            .alimentosss{
+                                                        @media (max-width:720px) {
+                                                            .alimentosss {
                                                                 max-width: 350px !important;
                                                                 overflow-x: scroll !important;
                                                             }
                                                         }
-                                                        @media (max-width:879px){
-                                                            .linea{
+
+                                                        @media (max-width:879px) {
+                                                            .linea {
                                                                 min-width: 350px !important;
                                                             }
 
                                                         }
-                                                        @media (min-width:879px){
-                                                            .linea{
+
+                                                        @media (min-width:879px) {
+                                                            .linea {
                                                                 min-width: auto !important;
                                                             }
 
                                                         }
                                                     </style>
 
-                                                    <div style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:30px;">
+                                                    <div
+                                                        style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:30px;">
                                                         <div>
                                                             <div class="table-responsive alimentosss">
                                                                 <form method="POST" id="tablaAlimentos">
@@ -606,13 +632,20 @@
 
 
                                                         <div class="  ml-4">
-                                                            <div class=" mt-5 linea position-relative" style="border:1px #000 solid; border-radius:10px;">
-                                                                <a style="top: 5px; left: 250px;" title="Aquí se encuentra la sumatoria de la información nutricional de los alimentos agregados a la tabla de la comida seleccionada" class=" position-absolute btn btn-primary btn-rounded p-0 m-0 col-1" disabled> <i class="fas fa-info" style="font-size:12px"></i></a>
+                                                            <div class=" mt-5 linea position-relative"
+                                                                style="border:1px #000 solid; border-radius:10px;">
+                                                                <a style="top: 5px; left: 250px;"
+                                                                    title="Aquí se encuentra la sumatoria de la información nutricional de los alimentos agregados a la tabla de la comida seleccionada"
+                                                                    class=" position-absolute btn btn-primary btn-rounded p-0 m-0 col-1"
+                                                                    disabled> <i class="fas fa-info"
+                                                                        style="font-size:12px"></i></a>
                                                                 <div class="row justify-content-center px-5 py-4 ">
-                                                                    <div class="Titulo text-center col-12  mb-3" style="font-weight:700; font-size:14px;">
-                                                                          <h5><u>TOTALES</u></h5>
+                                                                    <div class="Titulo text-center col-12  mb-3"
+                                                                        style="font-weight:700; font-size:14px;">
+                                                                        <h5><u>TOTALES</u></h5>
                                                                     </div>
-                                                                    <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+                                                                    <div
+                                                                        style="display:flex; flex-direction:row; flex-wrap:wrap;">
                                                                         <div class="Info">
                                                                             <div class="item">
                                                                                 <strong>Carbohidrato:</strong>
@@ -629,16 +662,20 @@
                                                                         </div>
                                                                         <div class="valores ml-3">
                                                                             <div class="val">
-                                                                                <strong id="totalCarbohidrato{{ $k }}">0</strong>
+                                                                                <strong
+                                                                                    id="totalCarbohidrato{{ $k }}">0</strong>
                                                                             </div>
                                                                             <div class="val">
-                                                                                <strong id="totalGrasa{{ $k }}">0</strong>
+                                                                                <strong
+                                                                                    id="totalGrasa{{ $k }}">0</strong>
                                                                             </div>
                                                                             <div class="val">
-                                                                                <strong id="totalProteina{{ $k }}">0</strong>
+                                                                                <strong
+                                                                                    id="totalProteina{{ $k }}">0</strong>
                                                                             </div>
                                                                             <div class="val">
-                                                                                <strong id="totalKcal{{ $k }}">0</strong>
+                                                                                <strong
+                                                                                    id="totalKcal{{ $k }}">0</strong>
                                                                             </div>
                                                                         </div>
 
@@ -2730,6 +2767,7 @@
         }
 
         var estadoDias = [false, false, false, false, false, false, false]
+
         function sumarResultados() {
             let arrayDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
             for (let dia = 0; dia < 7; dia++) {
@@ -2781,8 +2819,8 @@
                 }
 
                 let valorKcal = Number(document.getElementById('kcalTotal' + dia).textContent);
-                if (valorKcal > 1500 && estadoDias[dia]==false) {
-                    estadoDias[dia]=true;
+                if (valorKcal > 1500 && estadoDias[dia] == false) {
+                    estadoDias[dia] = true;
                     swal({
                         title: "Atención",
                         text: "El total del día " + arrayDias[dia] +

@@ -436,8 +436,22 @@
                         </form>
                     </div>
                 </div>
+                <style>
 
-                <ul class="nav nav-pills nav-pills-success text-center row justify-content-center align-items-center mt-2"
+                    @media (min-width: 1208px) and (max-width:1348px){
+                        .containere{
+                            max-width: 848px;
+                        }
+                    }
+                    @media (min-width: 814px) and (max-width:991px){
+                        .containere{
+                            max-width: 848px;
+                        }
+                    }
+                </style>
+                <div class=" container-fluid">
+                    <div class=" row justify-content-center align-items-center">
+                <ul class="nav nav-pills containere nav-pills-success text-center row justify-content-center align-items-center mt-2"
                     id="pills-tab" role="tablist" style="border:none;font-weight: bold">
                     @php
                         $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
@@ -452,9 +466,9 @@
                                 aria-selected="true">{{ $dias[$i] }}</a>
                         </li>
                     @endfor
-
-
                 </ul>
+            </div>
+        </div>
 
                 @php
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];

@@ -292,25 +292,41 @@
                     li.navi:last-child {
                         margin-right: 0;
                     }
+
+
+                    @media (min-width: 1208px) and (max-width:1348px){
+                        .containere{
+                            max-width: 848px;
+                        }
+                    }
+                    @media (min-width: 814px) and (max-width:991px){
+                        .containere{
+                            max-width: 848px;
+                        }
+                    }
                 </style>
-                <ul class="nav nav-pills nav-pills-success text-center row justify-content-center align-items-center mt-2"
-                    id="pills-tab" role="tablist" style="border:none;font-weight: bold">
-                    @php
-                        $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
-                    @endphp
+                <div class="container-fluid">
+                    <div class="row justify-content-center align-items-center">
+                            <ul class="nav nav-pills containere nav-pills-success text-center row justify-content-center align-items-center mt-2"
+                            id="pills-tab" role="tablist" style="border:none;font-weight: bold">
+                            @php
+                                $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
+                            @endphp
 
-                    @for ($i = 0; $i <= 6; $i++)
-                        <li class="nav-item my-2 text-center navi" style="min-width:123.5px;font-weight:bold">
-                            <a class="nav-link {{ $i == 0 ? 'active' : '' }}" style=";border:1px solid #04B76B"
-                                id="pills-dia{{ $i }}-tab" data-toggle="pill"
-                                href="#pills-dia{{ $i }}" role="tab"
-                                aria-controls="pills-dia{{ $i }}"
-                                aria-selected="true">{{ $dias[$i] }}</a>
-                        </li>
-                    @endfor
+                            @for ($i = 0; $i <= 6; $i++)
+                                <li class="nav-item my-2 text-center navi" style="min-width:123.5px;font-weight:bold">
+                                    <a class="nav-link {{ $i == 0 ? 'active' : '' }}" style=";border:1px solid #04B76B"
+                                        id="pills-dia{{ $i }}-tab" data-toggle="pill"
+                                        href="#pills-dia{{ $i }}" role="tab"
+                                        aria-controls="pills-dia{{ $i }}"
+                                        aria-selected="true">{{ $dias[$i] }}</a>
+                                </li>
+                            @endfor
+                        </ul>
 
+                    </div>
+                </div>
 
-                </ul>
 
                 @php
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];

@@ -11327,16 +11327,16 @@ fieldset:disabled a {
 }
 
 .btn-outline-primary {
-    color:#4b6ac3 !important;
+    color:#392C70 !important;
   background-color: transparent;
   background-image: none;
-  border-  color:#4b6ac3 !important;
+  border-color:#392C70 !important;
 }
 
 .btn-outline-primary:hover {
-  color: #fff;
-  background-  color:#4b6ac3 !important;
-  border-  color:#4b6ac3 !important;
+  color: #fff !important;
+  background-color:#392C70 !important;
+  border-color:#392C70 !important;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -11433,16 +11433,16 @@ fieldset:disabled a {
 }
 
 .btn-outline-info {
-  color: #0B94F7;
+  color: #4b6ac3 !important;
   background-color: transparent;
   background-image: none;
-  border-color: #0B94F7;
+  border-color: #4b6ac3;
 }
 
 .btn-outline-info:hover {
-  color: #fff;
-  background-color: #0B94F7;
-  border-color: #0B94F7;
+  color: #fff !important;
+  background-color: #4b6ac3 !important;
+  border-color:#4b6ac3;
 }
 
 .btn-outline-info:focus, .btn-outline-info.focus {
@@ -11450,15 +11450,15 @@ fieldset:disabled a {
 }
 
 .btn-outline-info.disabled, .btn-outline-info:disabled {
-  color: #0B94F7;
+  color: #4b6ac3;
   background-color: transparent;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active,
 .show > .btn-outline-info.dropdown-toggle {
   color: #fff;
-  background-color: #0B94F7;
-  border-color: #0B94F7;
+  background-color: #4b6ac3 !important;
+  border-color: #4b6ac3;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus,
@@ -11467,14 +11467,14 @@ fieldset:disabled a {
 }
 
 .btn-outline-warning {
-  color: #F5A623;
+  color: #F5A623 !important;
   background-color: transparent;
   background-image: none;
   border-color: #F5A623;
 }
 
 .btn-outline-warning:hover {
-  color: #212529;
+  color: #fff !important;
   background-color: #F5A623;
   border-color: #F5A623;
 }
@@ -11501,14 +11501,14 @@ fieldset:disabled a {
 }
 
 .btn-outline-danger {
-  color: #FF5E6D;
+  color: #FF5E6D !important;
   background-color: transparent;
   background-image: none;
   border-color: #FF5E6D;
 }
 
 .btn-outline-danger:hover {
-  color: #fff;
+  color: #fff !important;
   background-color: #FF5E6D;
   border-color: #FF5E6D;
 }
@@ -20817,7 +20817,7 @@ code {
 
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"] {
   background: #392C70;
-  color: #ffffff;
+  color: #ffffff !important;
   border-radius:8px
 }
 

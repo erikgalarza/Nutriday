@@ -209,28 +209,46 @@
             }
         }
 
-        .bb{
-                justify-content: center;
+        .bb {
+            justify-content: center;
+
+        }
+
+        @media  (min-width:790px) and (max-width: 1247px){
+            .bb {
+                max-width: 769px;
             }
-        @media (min-width:1483px){
-            .bb{
+            .do{
+                width:135px;
+            }
+        }
+
+        @media (max-width:590px) {
+            .do {
+                width: 40%;
+            }
+
+            .do:last-child {
+                width: 83%
+            }
+        }
+
+
+
+        @media (min-width:1248px) {
+            .bb {
                 justify-content: space-between;
             }
-            .navi:first-of-type{
-            margin-right: 8px !important;
-            margin-left: 0px !important;
-        }
-        .navi:last-of-type{
-            margin-left: 8px !important;
-            margin-right: 0px !important;
-        }
-        .do{
-            transition-property: transform;
-            transition: transform 300ms;
-        }
-        .do:hover{
-            transform: translate(0,-20px);
-        }
+
+            .do {
+                transition-property: transform;
+                transition: transform 300ms;
+                flex-grow: 1
+            }
+
+            .do:hover {
+                transform: translate(0, -20px);
+            }
 
         }
     </style>
@@ -238,7 +256,8 @@
     <div class="card " style="padding: 0;background-color: #f2f2f2;border:none">
         <div class="col-12 p-0" style="padding: 0;background-color: #f2f2f2;border:none">
             <div class="card card-statistics" style="padding: 0;background-color: #f2f2f2;border:none">
-                <div class="card-body " style="padding: 0;background-color: #f2f2f2;border:none">
+                <div class="card-body row justify-content-center align-items-center"
+                    style="padding: 0;background-color: #f2f2f2;border:none">
                     {{-- <div class="d-flex flex-column flex-md-row align-items-center justify-content-between container3 w-100 no-gutters p-0 m-0" style="background: #f2f2f2;"> --}}
                     {{-- @for ($i = 0; $i < 7; $i++)
                         <div class="statistics-item text-center divi" >
@@ -255,14 +274,17 @@
                     <ul class="nav nav-pills nav-pills-success text-center row bb align-items-center mt-2 w-100 p-0 m-0"
                         id="pills-tab" role="tablist" style="border:none;font-weight: bold">
                         @for ($i = 0; $i < 7; $i++)
-                            <li class="nav-item my-1 mx-2 text-center navi do" style="min-width:100px;font-weight:bold;border:2px outset #b7c3e7
+                            <li class="nav-item my-1 mx-2 text-center navi do"
+                                style="font-weight:bold;border:2px outset #b7c3e7
                             ;border-radius:5px;background-color:#4b6ac3">
                                 <p class="my-2">
                                     <i class="fa-regular fa-calendar-minus"></i>
                                 </p>
-                                <h2 class="mb-1 mt-3" style="font-size:16px;text-transform:uppercase">{{ $nombreDia[$i] }}
+                                <h2 class="mb-1 mt-3" style="font-size:16px;text-transform:uppercase">
+                                    {{ $nombreDia[$i] }}
                                 </h2>
-                                <a class="nav-link btnAlimentos" data-toggle="modal" style="border:none !important"
+                                <a class="nav-link btnAlimentos" data-toggle="modal"
+                                    style="border:none !important;padding:0 10px"
                                     data-target="#exampleModal{{ $i }}"
                                     onclick="cargarAlimentos({{ $i }});">
                                     <label class="badge badge-warning badge-pill mt-2" style="cursor: pointer">Ver
@@ -281,7 +303,8 @@
     <div class="card mt-3" style="border-radius:5px">
         <div class=" mb-2" style="background-color:#4eba74;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                <i class="fa-solid fa-chart-line mr-3"></i>Seguimiento del progreso</h3>
+                <i class="fa-solid fa-chart-line mr-3"></i>Seguimiento del progreso
+            </h3>
         </div>
         <div class="card-body">
             <div class="row">

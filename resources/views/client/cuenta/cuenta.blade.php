@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body text-center pb-3">
                     <h4 class="card-title mb-5" style="text-transform: uppercase; font-weight:bold;font-size: 14px" >Datos Paciente</h4>
-                    <div class="container" style="max-width: 300px">
+                    <div class="container" style="max-width: 325px">
                     <div class="col-md-12 col-10 text-left ml-4 p-0">
                             <div class="form-group row mb-1">
                                 <label class="col-5 text-left"> <strong>

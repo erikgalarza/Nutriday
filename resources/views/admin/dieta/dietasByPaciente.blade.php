@@ -135,7 +135,7 @@
                         <img src="http://localhost:8000/img/icons/scale.png">
                         Peso (Kg)
                     </h4>
-
+                    <input type="hidden" id="datosAntropometricos" value="{{$datos}}"> 
                     <canvas id="sales-chart"></canvas>
                 </div>
             </div>
@@ -507,9 +507,10 @@
                                     <label class="col-sm-5 col-form-label"><strong>Fecha
                                             fin:</strong>
                                     </label>
+                                   
                                     <div class="col-sm-7">
                                         <input style="border-radius: 10px" type="date"
-                                            class="form-control" name="fecha_fin">
+                                            class="form-control" min="{{date('Y-m-d')}}" name="fecha_fin">
                                     </div>
                                 </div>
                         </div>
@@ -532,6 +533,14 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+    integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ asset('administracion/js/historialPaciente.js') }}"></script>
 
     <script>
         var k = null;

@@ -74,11 +74,7 @@ class ActividadController extends Controller
         $idResponsable = $request->idResponsable;
         $paciente = Paciente::find($request->paciente_id);
         foreach($request->actividad_id as $key => $actividad){
-            $actividadBuscada = Actividad::find($actividad);
-            $actividadBuscada->update([
-                "prioridad"=>$request->prioridad_id[$key]
-            ]);
-            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key],'user_id'=>Auth::id()]);
+            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key],'user_id'=>Auth::id()],['prioridad'=>$request->prioridad_id[$key]]);
         }
         return redirect()->route('actividad.pacientes');
     }
@@ -134,7 +130,6 @@ class ActividadController extends Controller
         $actividad = Actividad::create([
             "nombre"=>$request->nombre,
             "descripcion"=>$request->descripcion,
-            // "prioridad"=>$request->prioridad
         ]);
 
         if ($request->hasFile('imagen')) {
@@ -171,6 +166,7 @@ class ActividadController extends Controller
 
         if($request->hasFile('imagen'))
         {
+           
             $file = $request->imagen;
             $elemento= Cloudinary::upload($file->getRealPath(),['folder'=>'actividad']);
             $public_id = $elemento->getPublicId();

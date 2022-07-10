@@ -24,6 +24,7 @@ class PacienteController extends Controller
 
     public function index()
     {
+        
         // $lastRecordDate = DatosAntropometrico::all()->sortByDesc('created_at')->take(1)->toArray();
         // dd($lastRecordDate);
         // $imcs = DB::table('datos_antropometricos')->select('imc')->latest()->get();
@@ -39,7 +40,7 @@ class PacienteController extends Controller
            $nutri =  $user->nutricionistas()->first();
 
             if($nutri){$nombre = $nutri->nombre.' '.$nutri->apellido;}else{
-                $admin = $user->admin()->first();
+                $admin = $user->administradores()->first();
                 // dd($admin);
                 $nombre = $admin->nombre;
             }
@@ -150,10 +151,9 @@ class PacienteController extends Controller
 
     public function store(StorePacienteRequest $request)
     {
-        $hashpass = Hash::make($request->password);
         $user = User::create([
             "email"=>$request->email,
-            "password"=>$hashpass,
+            "password"=>$request->cedula,
         ]);
 
         $paciente = Paciente::create([
@@ -169,7 +169,7 @@ class PacienteController extends Controller
         ]);
         $paciente->assignRole('Paciente');
         $id_paciente = $paciente->id;
-        Mail::to( $email = $user->email)->send(new EnvioCredenciales($paciente->nombre, $user->email,$user->password));//se envian las credenciales al correo del cliente que se registro
+       // Mail::to( $email = $user->email)->send(new EnvioCredenciales($paciente->nombre, $user->email,$user->password));//se envian las credenciales al correo del cliente que se registro
         return view('admin.paciente.datosAntropometricos',compact('paciente'));
     }
 

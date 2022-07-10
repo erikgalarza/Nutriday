@@ -478,11 +478,32 @@ class ClienteController extends Controller
     {
         $user = User::find(Auth::id());
         $paciente = Paciente::where('user_id',$user->id)->first();
-        // dd($paciente);
+        $actividadesAlta = $paciente->actividades()->get();
+        $prioridades = collect();
+        $duraciones = collect();
+        foreach($actividadesAlta as $key => $actividad)
+        {
+
+            // $actividad
+            $pri = $actividad->paciente()->get(['prioridad']);
+
+            $prioridad = $pri[0]->prioridad;
+            $prioridades->push($prioridad);
+
+            $dur = $actividad->paciente()->get(['duracion']);
+            
+            $duracion = $dur[0]->duracion;
+            
+            $duraciones->push($duracion);
+            // print_r($key);
+           
+        }
+        // dd("dlfkad");
+//    dd($prioridades, $duraciones);
         $datos = DatosAntropometrico::where('paciente_id',$paciente->id)->get();
-         
+        //  dd($actividadesAlta[0]->paciente()->get());
         $dieta = $paciente->dietas()->latest()->first();
-        return view('client.principal',compact('paciente','datos','dieta'));
+        return view('client.principal',compact('paciente','datos','dieta','actividadesAlta','prioridades','duraciones'));
     }
 
     public function dashboard(){

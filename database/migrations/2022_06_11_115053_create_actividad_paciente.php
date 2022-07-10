@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('paciente_id');// 1
             $table->unsignedBigInteger('actividad_id');// 1
             $table->text('duracion');
+            $table->integer('prioridad')->default(1);
 
             $table->unsignedBigInteger('user_id');// 1          
             // $table->foreign('user_id')->references('id')->on('users');

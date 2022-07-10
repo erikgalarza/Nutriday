@@ -364,17 +364,6 @@
             state = true;
             })
       
-        // console.log(imagenid)
-        // if(estado)
-        // {
-        //     imagen.className+=" ocultar";
-        //     estado = false;
-        // }
-        // else
-        // {
-        //     imagen.classList.remove('ocultar');
-        //     estado = true;
-        // }
     }
 
     function eliminarAlimento(alimento) {

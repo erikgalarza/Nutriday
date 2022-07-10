@@ -16,6 +16,8 @@
             </ol>
         </nav>
     </div>
+ 
+
     @if (isset($dieta))
         <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
     @endif
@@ -335,46 +337,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $nombrePrioridad = ['Alta','Media','Baja'];
+                        $colorPrioridad = ['danger','warning','success'];
+                        @endphp
+                        @foreach($actividadesAlta as $key => $actividad)
                         <tr>
-                            <td>1</td>
+                            <td>{{$key+1}}</td>
                             <td class="py-1">
-                                <img src="images/faces/face1.jpg" alt=" Imagen actividad" class="img-sm rounded-circle">
+                                <img src="{{$actividad->imagen->url}}" alt=" Imagen actividad" class="img-sm rounded-circle">
                             </td>
                             <td>
-                                Correr
+                                {{$actividad->nombre}}
                             </td>
-                            <td>30 min</td>
+                            <td>{{$duraciones[$key]}} min</td>
                             <td>
-                                <label class="badge badge-danger badge-pill">Alta</label>
+                                <label class="badge badge-{{$colorPrioridad[$prioridades[$key]-1]}} badge-pill">{{$nombrePrioridad[$prioridades[$key]-1]}}</label>
                             </td>
                         </tr>
-                        <tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="py-1">
-                                <img src="images/faces/face1.jpg" alt="Imagen actividad" class="img-sm rounded-circle">
-                            </td>
-                            <td>
-                                nadar
-                            </td>
-                            <td>40 min</td>
-                            <td>
-                                <label class="badge badge-danger badge-pill">Alta</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="py-1">
-                                <img src="images/faces/face1.jpg" alt=" Imagen actividad" class="img-sm rounded-circle">
-                            </td>
-                            <td>
-                                Correr
-                            </td>
-                            <td>30 min</td>
-                            <td>
-                                <label class="badge badge-danger badge-pill">Alta</label>
-                            </td>
-                        </tr>
+                      @endforeach                   
+                      
                     </tbody>
                 </table>
             </div>
@@ -456,7 +438,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('administracion/js/historialPersonal.js') }}"></script>
+    <script src="{{ asset('administracion/js/historialPaciente.js') }}"></script>
 
     <script>
         function cargarAlimentos(dia_id) {

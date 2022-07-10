@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string('cedula',10);//longitud definida en 10 caracteres
+            $table->string('cedula',10)->unique();//longitud definida en 10 caracteres
             $table->string('nombre');
             $table->integer('edad');
             $table->string('sexo');

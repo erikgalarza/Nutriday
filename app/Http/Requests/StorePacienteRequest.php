@@ -30,10 +30,10 @@ class StorePacienteRequest extends FormRequest
             "tipo_diabetes"=>"required|integer",
             "telefono"=>"required|string|min:10|max:10",
             "sexo"=>"required|string",
-            "cedula"=>["required", new Cedula()],
+            "cedula"=>["required", new Cedula(),'unique:pacientes,cedula'],
             "edad"=>"required|numeric",
             "email"=>"required|email:rfc,dns|unique:users,email",
-            "password"=>"required|string|min:8|max:40"
+            // "password"=>"required|string|min:8|max:40"
         ];
     }
 }

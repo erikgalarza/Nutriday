@@ -1,9 +1,18 @@
 @extends('admin.dashboard')
 @section('contenido')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <link rel="stylesheet" href="{{ asset('administracion/css/asignarAlimentosDieta.css') }}">
-    <link rel="stylesheet" href="dias.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{ asset('administracion/css/asignarAlimentosDieta.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="dias.css"> --}}
 
+    <style>
+        .swal-modal .swal-text {
+            text-align: center;
+        }
+
+        .swal-footer {
+            text-align: center;
+        }
+    </style>
     <div class="page-header mb-2" style="display:flex; text-align:center; justify-content:center; align-items:center;">
         <div>
             <h3 class="page-title">
@@ -16,129 +25,183 @@
 
         {{-- para saber quien esta emitiendo la dieta --}}
         <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+        {{-- para obtener el contenido de la dieta en js --}}
+        {{-- <input type="hidden" name="semana" id="semana" value="{{ $semana }}"> --}}
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Alimento</li>
+                <li class="breadcrumb-item"><a href="{{route('dieta.index')}}">Dietas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Alimentos</li>
             </ol>
         </nav>
     </div>
-
-
-
-
     @if (isset($paciente))
-        <style>
-            @media (max-width:992px) {
-                .consulta {
-                    order: 2;
-                }
-            }
-        </style>
         <div class="col-md-12 grid-margin stretch-card">
+            <style>
+                .ocultar {
+                    display: none;
+                }
 
-            <div class="card ">
-                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                @media(max-width:1199px) {
+                    .container2 {
+                        max-width: 420px;
+                    }
+                }
+
+                @media(min-width:1199px) {
+                    .container3 {
+                        max-width: 420px;
+                    }
+
+                }
+
+                @media(min-width:1200px) {
+                    .container4 {
+                        min-width: 810px;
+                        max-width: 1140px;
+                    }
+                }
+
+                @media(min-width:1200px) {
+                    .consulta {
+                        border-right: 1px dashed;
+                    }
+
+                }
+
+                @media(max-width:1199px) {
+                    .consulta {
+                        border-top: 1px dashed;
+                        order: 2;
+                    }
+
+                    .blanco {
+                        background-color: white;
+                    }
+                }
+
+
+                .btn-outline-primary:hover {
+                    color: white !important;
+                }
+
+                .btn-outline-info:hover {
+                    color: white !important;
+                }
+            </style>
+
+            <div class="card">
+                <div class=" mb-2" style="background-color:#4b6ac3;border-radius: 5px 5px 0 0">
                     <h3
                         class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                        Paciente {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
+                        Dieta para {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
                 </div>
-                <div class="row px-4" style="margin-top:10px;">
-
-                    <div class="col-lg-6 grid-margin stretch-card consulta ">
-                        <div class="card m">
-                            <div class="card-body text-center py-2 row justify-content-lg-center">
-
-                                <div class="col-12 row justify-content-center">
-                                    <div class=" col-12 row justify-content-center"
-                                        style="border-bottom:1px solid;max-width:345px">
-                                        <div class="col-6 col-lg-12 col-xl-6  p-0 ">
-                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
-                                                Última consulta:</label>
-                                        </div>
-                                        @foreach ($paciente->dato_antropometrico as $kp => $data)
-                                            @if ($loop->last)
-                                                <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
-                                                    <label class="col-form-label"
-                                                        style=";font-size:16px">{{ date('Y-m-d',strtotime($data->created_at)) }}
-                                                    </label>
-                                                </div>
-                                            @endif
-                                        @endforeach
+                <div class="card-body">
+                    <div class="container container2 container3 container4">
+                        <div class="row justify-content-center mb-3 ml-0" style="border:1px dashed; border-radius:10px">
+                            <div class="col-12 form-group text-center mb-1 row justify-content-center p-0 m-0"
+                                style="border-bottom:1px dashed;background-color:#F0F0F0;border-radius:10px 10px 0 0">
+                                <div class="col-xl-6 row justify-content-center consulta blanco">
+                                    <div class="col-xl-5 col-6  no-gutters p-0 text-center ">
+                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Última
+                                            consulta:</label>
+                                    </div>
+                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                        @if ($loop->last)
+                                            <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
+                                                <label class="col-form-label"
+                                                    style="font-size:14px">{{ date('Y-m-d',strtotime($data->created_at))}}
+                                                </label>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="col-xl-6 row justify-content-center" style="border-radius:10px 10px 0 0 ">
+                                    <div class="col-xl-4 col-5  no-gutters p-0 text-center">
+                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha fin
+                                            dieta:{{ date('Y-m-d',strtotime($dieta->fecha_fin)) }}</label>
+                                    </div>
+                                    <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
+                                        <label class="col-form-label" style="font-size:14px">{{ date('Y-m-d',strtotime($dieta->created_at)) }}
+                                        </label>
                                     </div>
                                 </div>
-                                <style>
-                                    @media (max-width:992px) {
-                                        .contenedor {
-                                            max-width: 360px !important;
-                                            padding-left: 2rem !important;
-                                        }
-                                    }
+                            </div>
 
-                                    @media (min-width:992px) {
-                                        .contenedor2 {
-                                            max-width: 290px !important;
-                                            padding-left: 0rem !important;
-                                        }
-                                    }
-                                </style>
-                                <div class="container mt-3 contenedor contenedor2" style="">
-                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
-                                        <div class="form-group row mb-1">
-                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
-                                            <label class="col-7">{{ $paciente->tipo_diabetes }}</label>
+                            <div class="col-12 ">
+                                <div class="row justify-content-center align-items-center px-0 mt-xl-2">
+                                    <div class="col-9 col-xl-12 row pr-0 pl-sm-4 p-0 pl-xl-0 justify-content-center">
+                                        <div class="form-group  col-xl-2 row text-xl-center text-left mb-1 ">
+                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Edad:</strong></label>
+                                            <label
+                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->edad }}</label>
                                         </div>
-                                        <div class="form-group row mb-1">
-                                            <label class="col-5 text-left"> <strong>Edad:</strong></label>
-                                            <label class="col-7">{{ $paciente->edad }}</label>
+                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
+                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Tipo
+                                                    diabetes:</strong></label>
+                                            <label
+                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->tipo_diabetes }}</label>
                                         </div>
-
                                         @foreach ($paciente->dato_antropometrico as $kp => $data)
                                             @if ($loop->last)
-                                                <div class="form-group row mb-1">
-                                                    <label class="col-5 text-left"><strong>Altura:</strong></label>
-                                                    <label class="col-7">{{ $data->altura }} (m)</label>
+                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
+                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Peso:
+                                                        </strong></label>
+                                                    <label
+                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->peso }}</label>
                                                 </div>
-                                                <div class="form-group row mb-1">
-                                                    <label class="col-5 text-left"><strong>Peso:</strong></label>
-                                                    <label class="col-7">{{ $data->peso }} (kg)</label>
-                                                </div>
-
-                                                <div class="form-group row mb-1">
-                                                    <label class="col-5 text-left"><strong>Grasa corporal:</strong>
+                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
+                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Grasa
+                                                            corporal: </strong></label>
+                                                    <label
+                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->grasa_corporal }}
+                                                        (%)
                                                     </label>
-                                                    <label class="col-7">{{ $data->grasa_corporal }} (%)</label>
                                                 </div>
-
-                                                <div class="form-group row mb-1">
-                                                    <label class="col-5 text-left"><strong>Masa muscular:</strong></label>
-                                                    <label class="col-7">{{ $data->masa_muscular }} (%) </label>
+                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
+                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Masa muscular:
+                                                        </strong></label>
+                                                    <label
+                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->masa_muscular }}
+                                                        (%)</label>
                                                 </div>
-
                                                 @if ($data->imc <= 18.4)
-                                                    <div class="form-group row mb-1">
-                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
-                                                        <label class="col-7">{{ $data->imc }} (Bajo peso)</label>
+                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
+                                                        <label
+                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
+                                                        <label
+                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
+                                                            (Bajo peso)</label>
                                                     </div>
                                                 @endif
+
                                                 @if ($data->imc >= 18.5 && $data->imc <= 24.9)
-                                                    <div class="form-group row mb-1">
-                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
-                                                        <label class="col-7">{{ $data->imc }} (Normal)</label>
+                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
+                                                        <label
+                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
+                                                        <label
+                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
+                                                            (Normal)</label>
                                                     </div>
                                                 @endif
+
                                                 @if ($data->imc >= 25 && $data->imc <= 29.9)
-                                                    <div class="form-group row mb-1">
-                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
-                                                        <label class="col-7">{{ $data->imc }} (Sobrepeso)</label>
+                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
+                                                        <label
+                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
+                                                        <label
+                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
+                                                            (Sobrepeso)</label>
                                                     </div>
                                                 @endif
 
                                                 @if ($data->imc >= 30)
-                                                    <div class="form-group row mb-1">
-                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
-                                                        <label class="col-7">{{ $data->imc }} (Obeso)</label>
+                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
+                                                        <label
+                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
+                                                        <label
+                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
+                                                            (Obeso)</label>
                                                     </div>
                                                 @endif
                                             @endif
@@ -148,129 +211,110 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="col-lg-6 grid-margin stretch-card ">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <img src="http://localhost:8000/img/icons/scale.png">
-                                    Peso (Kg)
-                                </h4>
-
-                                <canvas id="sales-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container mb-1 pb-3  text-center">
-                    <a onclick="guardarDieta();" class="btn btn-warning "><i class="fa-solid fa-floppy-disk mr-2"></i>
-                        Guardar dieta</a>
                 </div>
             </div>
         </div>
     @else
-        <div class="col-md-12 grid-margin stretch-card">
+    <div class="col-md-12 grid-margin stretch-card">
 
-            <div class="card ">
-                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
-                    <h3
-                        class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                        Datos de dieta predifinida</h3>
-                </div>
-                <div class="row px-4" style="margin-top:10px;">
+        <div class="card ">
+            <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                <h3
+                    class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+                    Datos de dieta</h3>
+            </div>
+            <div class="row px-4" style="margin-top:10px;">
 
-                    <div class="col-lg-6 grid-margin stretch-card consulta ">
-                        <div class="card ">
-                            <div class="card-body text-center py-2 row justify-content-lg-center">
+                <div class="col-lg-6 grid-margin stretch-card consulta ">
+                    <div class="card ">
+                        <div class="card-body text-center py-2 row justify-content-lg-center">
 
-                                <div class="col-12 row justify-content-center">
-                                    <div class=" col-12 row justify-content-center"
-                                        style="border-bottom:1px solid;max-width:345px">
-                                        <div class="col-6  col-xl-6  p-0 ">
-                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
-                                                Nombre dieta:</label>
-                                        </div>
-                                        <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
-                                            <label class="col-form-label"
-                                                style=";font-size:16px">{{ $dieta->nombre }}
-                                            </label>
-                                        </div>
+                            <div class="col-12 row justify-content-center">
+                                <div class=" col-12 row justify-content-center"
+                                    style="border-bottom:1px solid;max-width:345px">
+                                    <div class="col-6  col-xl-6  p-0 ">
+                                        <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                            Nombre dieta:</label>
                                     </div>
-                                </div>
-                                <style>
-                                    @media (max-width:992px) {
-                                        .contenedor {
-                                            max-width: 360px !important;
-                                            padding-left: 2rem !important;
-                                        }
-                                    }
-
-                                    @media (min-width:992px) {
-                                        .contenedor2 {
-                                            max-width: 290px !important;
-                                            padding-left: 0rem !important;
-                                        }
-                                    }
-                                </style>
-                                <div class="container mt-3 contenedor contenedor2" style="">
-                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
-                                        <div class="form-group row mb-1">
-                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
-                                            @if ($dieta->tipo_diabetes == 3)
-                                                <label class="col-7">Tipo Gestacional</label>
-                                            @else
-                                                <label
-                                                    class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
-                                            @endif
-
-                                        </div>
-                                        <div class="form-group row mb-1">
-                                            <label class="col-5 text-left"> <strong>IMC:</strong></label>
-                                            @if ($dieta->imc == '1')
-                                                <label class="col-7">(Bajo peso)</label>
-                                            @endif
-                                            @if ($dieta->imc == '2')
-                                                <label class="col-7">(Normal)</label>
-                                            @endif
-                                            @if ($dieta->imc == '3')
-                                                <label class="col-7">(Sobrepeso)</label>
-                                            @endif
-                                            @if ($dieta->imc == '4')
-                                                <label class="col-7">(Obeso)</label>
-                                            @endif
-                                        </div>
-                                        <div class="form-group row mb-1">
-                                            <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
-                                            <label class="col-7">{{ date('Y-m-d',strtotime($dieta->created_at)) }}</label>
-                                        </div>
-
+                                    <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
+                                        <label class="col-form-label"
+                                            style=";font-size:16px">{{ $dieta->nombre}}
+                                        </label>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            <style>
+                                @media (max-width:992px) {
+                                    .contenedor {
+                                        max-width: 360px !important;
 
+                                    }
+                                }
 
-                    <div class="col-lg-6 grid-margin stretch-card ">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group row mb-1">
-                                    <label class="col-12 col-xl-4 text-left"> <strong>Observaciones:</strong></label>
-                                    <label
-                                        class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
-                                    </label>
+                                @media (min-width:992px) {
+                                    .contenedor2 {
+                                        min-width: 276px !important;
+                                        max-width: 300px !important;
+                                        padding-left: 0rem !important;
+                                    }
+                                }
+                            </style>
+                            <div class="container mt-3 contenedor contenedor2" style="">
+                                <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                    <div class="form-group row mb-1 mb-1">
+                                        <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                        @if ($dieta->tipo_diabetes == 3)
+                                            <label class="col-7">Tipo Gestacional</label>
+                                        @else
+                                            <label
+                                                class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
+                                        @endif
+
+                                    </div>
+                                    <div class="form-group row mb-1 mb-1">
+                                        <label class="col-5 text-left"> <strong>IMC:</strong></label>
+                                            <label class="col-7">{{$dieta->imc}}</label>
+                                    </div>
+                                    <div class="form-group row mb-1 mb-1">
+                                        <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
+                                        <label class="col-7">{{ date('Y-m-d',strtotime($dieta->created_at))}}</label>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container mb-1 pb-3  text-center">
-                    <a onclick="guardarDieta();" class="btn btn-warning "><i class="fa-solid fa-floppy-disk mr-2"></i>
-                        Guardar dieta</a>
+
+
+                <div class="col-lg-6 grid-margin stretch-card ">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row mb-1 mb-1">
+                                <label class="col-12 col-xl-4 text-left" style="font-size:14px;font-weight:bold">Observaciones:</label>
+                                <label
+                                    class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <style>
+                .botono{
+
+                }
+                .botono:hover{
+                    filter: brightness(90%)
+                }
+            </style>
+            <div class="container mb-1 pb-3  text-center">
+                <a onclick="guardarCambios()" class="btn btn-success mb-2 mb-sm-0"><i class="fa-solid fa-floppy-disk mr-2"></i>Guardar cambios</a>
+                <a data-toggle="modal" data-target="#exampleModal{{ $dieta->id }}"class="btn btn-warning mb-2 mb-sm-0 " ><i class="fa-solid fa-share-from-square mr-2"></i>Guardar como nueva dieta</a>
+
+            </div>
         </div>
+    </div>
     @endif
     <style>
         .ddd:hover {
@@ -288,6 +332,100 @@
         <div class="card">
             <div class="card-body">
 
+                <style>
+                    li.navi:last-child {
+                        margin-right: 0;
+                    }
+                </style>
+                <div class="modal fade" id="exampleModal{{ $dieta->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form method="POST" id="crearDieta" action="{{ route('dieta.crearDieta') }}">
+
+                            @csrf
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color:#4b6ac3">
+                                    <h5 class="modal-title text-lg-center text-white"
+                                        style="text-transform: uppercase; font-weight:bold; font-size:16px"
+                                        id="ModalLabel">Datos de la dieta</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body py-2 px-0">
+                                    <div class="col-12 row m-0 mt-3 justify-content-center">
+                                        <div class="col-sm-10 col-11 text-left">
+                                            <div class="form-group row mb-1 ">
+                                                <label class="col-sm-4 col-form-label"
+                                                    for="recipient-name"><strong>Nombre:</strong></label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre de la dieta">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-1 ">
+                                                <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Fecha
+                                                        de fin:</strong></label>
+                                                <div class="col-sm-8">
+                                                    <input type="date" name="fecha_fin" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-1 ">
+                                                <label class="col-sm-4 col-form-label" for="recipient-name"><strong>Tipo
+                                                        de diabetes:</strong></label>
+                                                <div class="col-sm-8">
+                                                    <select name="tipo_diabetes" class="form-control" style="background-color:#F0F0F0">
+                                                        <option selected disabled>Seleccione un tipo</option>
+                                                        <option value="1">Tipo 1</option>
+                                                        <option value="2">Tipo 2</option>
+                                                        <option value="3">Gestacional</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-1 ">
+                                                <label class="col-sm-4 col-form-label"
+                                                    for="recipient-name"><strong>IMC:</strong></label>
+                                                <div class="col-sm-8">
+                                                    <select name="imc" class="form-control" style="background-color:#F0F0F0">
+                                                        <option selected disabled>Seleccione una opción</option>
+                                                        <option value="1">Bajo peso</option>
+                                                        <option value="2">Normal</option>
+                                                        <option value="3">Sobrepeso</option>
+                                                        <option value="4">Obeso</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mb-1 ">
+                                                <label class="col-sm-4 col-form-label"
+                                                    for="recipient-name"><strong>Observaciones:</strong></label>
+                                                <div class="col-sm-8">
+                                                    <textarea class="form-control" name="observaciones" rows="5" placeholder="Dejar en blanco si no existen observaciones"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="semanaNueva" id="semana1">
+
+                                        </div>
+                                        <div
+                                            class="modal-footer mt-4 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+                                                <a onclick="crearDieta();"
+                                                    class="btn btn-success mb-2 col-12 col-sm-5">Guardar</a>
+                                                <button type="button" class="btn btn-light mb-2 col-12 col-sm-5"
+                                                    data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <style>
                     li.navi:last-child {
                         margin-right: 0;
@@ -359,10 +497,12 @@
                                                 data-parent="#accordion-{{ $j }}">
                                                 <div class="card-body pt-2">
 
+                                                    {{-- <p>VALOR DE K: {{ $k }}</p> --}}
                                                     <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
                                                     <div>
                                                         <div>
                                                             <div class="container">
+
                                                                 <label class="col-12 text-left"><button
                                                                         class="ml-3 py-0 px-2" disabled
                                                                         title="No se puede ingresar dos veces el mismo alimento"
@@ -371,15 +511,15 @@
                                                                 </label>
                                                                 <div class="container_buscador_desayuno ">
                                                                     <div class="row justify-content-center col-12">
-                                                                        <a class="btn" disabled
-                                                                        style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef;cursor:auto;">
-                                                                        <i class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
-                                                                        </a>
-                                                                        <div class=" col-8 ">
+                                                                                <a class="btn" disabled
+                                                                                style="background-color:white;border-radius:5px;margin-right:-14px;border-top:1px solid #e0e0ef;border-bottom:1px solid #e0e0ef;border-left:1px solid #e0e0ef">
+                                                                                <i class="fa-solid fa-magnifying-glass" style="color:#6d6d6d"></i>
+                                                                    </a>
+                                                                        <div class=" col-8">
                                                                             <select
                                                                                 id="alimentoSeleccionado{{ $k }}"
-                                                                                onchange="seleccionarAlimento({{ $k }});"
-                                                                                class=" js-example-basic-multiple  ">
+                                                                                onchange="agregarAlimento({{ $k }});"
+                                                                                class=" js-example-basic-multiple ">
                                                                                 <option selected disabled>Ingrese el nombre
                                                                                     de un alimento o seleccione...Ejm:
                                                                                     manzana</option>
@@ -390,10 +530,15 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
+
+
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <style>
                                                         @media (max-width:720px){
                                                             .alimentosss{
@@ -414,15 +559,16 @@
 
                                                         }
                                                     </style>
+
                                                     <div style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:30px;">
                                                         <div>
                                                             <div class="table-responsive alimentosss">
-                                                            <form method="POST" id="tablaAlimentos">
-                                                                @csrf
-                                                                <input type="hidden" id="alimento_id_eliminar"
-                                                                name="alimento_id_eliminar">
-                                                                <input type="hidden" id="dieta_id" name="dieta_id"
-                                                                value="{{ $dieta->id }}">
+                                                                <form method="POST" id="tablaAlimentos">
+                                                                    @csrf
+                                                                    <input type="hidden" id="alimento_id_eliminar"
+                                                                        name="alimento_id_eliminar">
+                                                                    <input type="hidden" id="dieta_id" name="dieta_id"
+                                                                        value="{{ $dieta->id }}">
                                                                     <table id="table" class="table table-striped">
                                                                         <thead>
                                                                             <tr>
@@ -449,7 +595,9 @@
                                                                                     Acciones</th>
                                                                             </tr>
                                                                         </thead>
-                                                                        <tbody id="tbody{{ $id }}">
+
+                                                                        <tbody id="tbody{{ $k }}">
+
                                                                         </tbody>
                                                                     </table>
                                                                 </form>
@@ -457,16 +605,14 @@
                                                         </div>
 
 
-                                                            <div class="  ml-4" >
-                                                                <div class=" mt-5 linea position-relative" style="border:1px #000 solid; border-radius:10px;">
-                                                                    <a style="top: 5px; left: 250px;" title="Aquí se encuentra la sumatoria de la información nutricional de los alimentos agregados a la tabla de la comida seleccionada" class=" position-absolute btn btn-primary btn-rounded p-0 m-0 col-1" disabled>  <i class="fas fa-info" style="font-size:12px"></i></a>
+                                                        <div class="  ml-4">
+                                                            <div class=" mt-5 linea position-relative" style="border:1px #000 solid; border-radius:10px;">
+                                                                <a style="top: 5px; left: 250px;" title="Aquí se encuentra la sumatoria de la información nutricional de los alimentos agregados a la tabla de la comida seleccionada" class=" position-absolute btn btn-primary btn-rounded p-0 m-0 col-1" disabled> <i class="fas fa-info" style="font-size:12px"></i></a>
                                                                 <div class="row justify-content-center px-5 py-4 ">
-                                                                    <div class="Titulo text-center col-12  mb-3"
-                                                                        style="font-weight:700; font-size:14px;">
-                                                                        <h5><u>TOTALES</u></h5>
+                                                                    <div class="Titulo text-center col-12  mb-3" style="font-weight:700; font-size:14px;">
+                                                                          <h5><u>TOTALES</u></h5>
                                                                     </div>
-                                                                    <div
-                                                                        style="display:flex; flex-direction:row; flex-wrap:wrap;">
+                                                                    <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
                                                                         <div class="Info">
                                                                             <div class="item">
                                                                                 <strong>Carbohidrato:</strong>
@@ -483,28 +629,23 @@
                                                                         </div>
                                                                         <div class="valores ml-3">
                                                                             <div class="val">
-                                                                                <strong
-                                                                                    id="totalCarbohidrato{{ $k }}">0</strong>
+                                                                                <strong id="totalCarbohidrato{{ $k }}">0</strong>
                                                                             </div>
                                                                             <div class="val">
-                                                                                <strong
-                                                                                    id="totalGrasa{{ $k }}">0</strong>
+                                                                                <strong id="totalGrasa{{ $k }}">0</strong>
                                                                             </div>
                                                                             <div class="val">
-                                                                                <strong
-                                                                                    id="totalProteina{{ $k }}">0</strong>
+                                                                                <strong id="totalProteina{{ $k }}">0</strong>
                                                                             </div>
                                                                             <div class="val">
-                                                                                <strong
-                                                                                    id="totalKcal{{ $k }}">0</strong>
+                                                                                <strong id="totalKcal{{ $k }}">0</strong>
                                                                             </div>
                                                                         </div>
 
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            </div>
-
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -564,18 +705,16 @@
                                                     <p><strong
                                                             style="margin-right:10px;font-size:14px;text-transform:uppercase">Kcal:</strong><i
                                                             style="font-weight:400;font-size:14px;font-style:normal;"
-                                                            class="ml-4 mr-1" id="kcalTotal{{ $j }}">0</i>
-                                                        /1500</p>
+                                                            class="ml-4 mr-1"
+                                                            id="kcalTotal{{ $j }}">0</i>/1500</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="botones" style="display:flex; justify-content:space-evenly;">
-                                            <a onclick="confirmarDia({{ $j }});"
-                                                class="btn btn-outline-success mx-2" title="Guardar selección"><i
-                                                    class="fas fa-check"></i></a>
-                                            <a onclick="quitarConfirmacion({{ $j }});"
-                                                class="btn btn-outline-warning" title="Cambiar selección"><i
-                                                    class="fas fa-edit"></i></a>
+                                            <a onclick="" class="btn btn-outline-success mx-2"
+                                                title="Guardar selección"><i class="fas fa-check"></i></a>
+                                            <a onclick="" class="btn btn-outline-warning"
+                                                title="Cambiar selección"><i class="fas fa-edit"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -597,45 +736,64 @@
 
 
     <script>
-        // function esconder() {
+        var alimentosLunes = [],
+            alimentosMartes = [],
+            alimentosMiercoles = [],
+            alimentosJueves = [],
+            alimentosViernes = [],
+            alimentosSabado = [];
+        alimentosDomingo = [];
+        var nombreMedidas = [" (gr)", " (lb)", " (kg)", " (ml)", " (lt)"]
+        var nombreComidas = ['desayuno', 'colacion1', 'almuerzo', 'colacion2', 'merienda', 'cena']
+        var fila = 0;
+        var semana = {};
 
-        // }
+        document.body.onload = function() {
+            var dieta_id = document.getElementById('dieta_id').value
+            // var semana = JSON.parse(document.getElementById('semana').value);
+            console.log(semana)
+            cargarDias(semana)
+        }
 
-        var lunes = [],
-            martes = [],
-            miercoles = [],
-            jueves = [],
-            viernes = [],
-            sabado = [],
-            domingo = []; // dentro de este estaron los alimentos del dia lunes
-        function guardarDieta() {
-            console.log('dkfaldf')
-            // console.log('content lunes:',lunes)
-            // console.log('content martes:',martes)
-            var semana = {};
+        function crearDieta() {
+            semana = {
+                alimentosLunes,
+                alimentosMartes,
+                alimentosMiercoles,
+                alimentosJueves,
+                alimentosViernes,
+                alimentosSabado,
+                alimentosDomingo
+            }
+            document.getElementById('semana1').value = JSON.stringify(semana);
+            let form = document.getElementById('crearDieta')
+            form.submit();
+        }
+
+        function guardarCambios() {
+
 
             semana = {
-                lunes,
-                martes,
-                miercoles,
-                jueves,
-                viernes,
-                sabado,
-                domingo
+                alimentosLunes,
+                alimentosMartes,
+                alimentosMiercoles,
+                alimentosJueves,
+                alimentosViernes,
+                alimentosSabado,
+                alimentosDomingo
             }
+
             const dieta_id = document.getElementById('dieta_id').value;
-            const paciente_id = document.getElementById('paciente_id') ? document.getElementById('paciente_id').value : null;
-            const user_id = document.getElementById('user_id').value;
-            // alert(paciente_id);
+            // const paciente_id = document.getElementById('paciente_id').value;
+            // const user_id = document.getElementById('user_id').value;
+
             console.log('semana:', semana)
             $.ajax({
-                url: "{{ route('dieta.guardarDieta') }}",
+                url: "{{ route('dieta.guardarDietaNueva') }}",
                 dataType: "json",
                 data: {
                     semana: JSON.stringify(semana),
-                    dieta_id: dieta_id,
-                    paciente_id: paciente_id,
-                    user_id: user_id
+                    dieta_id: dieta_id
                 }
             }).done(function(res) {
                 if (res == true)
@@ -643,14 +801,1039 @@
             })
         }
 
-        async function getDataAlimento(idalimento) {
+        function alimentoRepetido(alimento, id, dia, idDia) //alimento y idacordion
+        {
+            console.log('id recibido:', id)
+            let respuesta = true;
+            let nombreComidas = ['desayuno', 'colacion1', 'almuerzo', 'colacion2', 'merienda', 'cena']
+
+            let cant = Object.keys(dia);
+            let long = cant.length;
+
+            let alimentos = [];
+
+            for (let i = 0; i < long; i++) {
+                if (dia[i].horario === nombreComidas[id] && alimento.id === dia[i].id) {
+                    swal({
+                        title: "Atención",
+                        text: "El alimento " + alimento.nombre + " ya se encuentra agregado en " + nombreComidas[
+                            id],
+                        icon: "info",
+                        // buttons: [
+                        //     'No, cancelar',
+                        //     'Si, aceptar'
+                        // ],
+                    })
+                    respuesta = false;
+                }
+            }
+
+
+            return respuesta;
+        }
+
+        function iterarCalculoCantidad(dia, id, c1, c2, c3, c4, c5, c6) {
+
+            let cant = Object.keys(dia);
+            let long = cant.length;
+            let arregloCantidades = []
+
+            let tbody = document.querySelectorAll('#tbody' + id + '>tr>td')
+            for (let x = 0; x < tbody.length; x++) {
+                if (x == 0 || x % 5 == 0) {
+                    let select = tbody[x].childNodes[1].value;
+                    arregloCantidades.push(select)
+                }
+            }
+
+            let desayunos = [],
+                colacion1 = [],
+                almuerzos = [],
+                colacion2 = [],
+                meriendas = [],
+                cenas = []
+            let alimentos = [],
+                desayuno2 = [];
+
+            for (let j = 0; j < long; j++) //contenido de lunes, tiene los alimentos
+            {
+                if (dia[j].horario === "desayuno") {
+                    desayunos.push(dia[j])
+                    // cont++;
+                }
+
+                if (dia[j].horario === "colacion1") {
+                    colacion1.push(dia[j])
+                }
+                if (dia[j].horario === "almuerzo") {
+                    almuerzos.push(dia[j])
+                }
+                if (dia[j].horario === "colacion2") {
+                    colacion2.push(dia[j])
+                }
+                if (dia[j].horario === "merienda") {
+                    meriendas.push(dia[j])
+                }
+                if (dia[j].horario === "cena") {
+                    cenas.push(dia[j])
+                }
+            }
+
+            if (desayunos.length === arregloCantidades.length && id == c1) {
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalPro = 0,
+                    totalKcal = 0;
+                for (let a = 0; a < arregloCantidades.length; a++) {
+                    totalCb = Number(totalCb) + Number(desayunos[a].carbohidrato) * arregloCantidades[a];
+                    totalGrasa = Number(totalGrasa) + Number(desayunos[a].grasa) * arregloCantidades[a];
+                    totalPro = Number(totalPro) + Number(desayunos[a].proteina) * arregloCantidades[a];
+                    totalKcal = Number(totalKcal) + Number(desayunos[a].valor_calorico) * arregloCantidades[a];
+
+                    desayunos[a].cantidad = arregloCantidades[a];
+                }
+
+                document.getElementById('totalCarbohidrato' + id).textContent = totalCb;
+                document.getElementById('totalGrasa' + id).textContent = totalGrasa;
+                document.getElementById('totalProteina' + id).textContent = totalPro;
+                document.getElementById('totalKcal' + id).textContent = totalKcal;
+            }
+
+
+
+
+            if (colacion1.length === arregloCantidades.length && id == c2) {
+
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalPro = 0,
+                    totalKcal = 0;
+                for (let a = 0; a < arregloCantidades.length; a++) {
+                    totalCb = Number(totalCb) + Number(colacion1[a].carbohidrato) * arregloCantidades[a];
+                    totalGrasa = Number(totalGrasa) + Number(colacion1[a].grasa) * arregloCantidades[a];
+                    totalPro = Number(totalPro) + Number(colacion1[a].proteina) * arregloCantidades[a];
+                    totalKcal = Number(totalKcal) + Number(colacion1[a].valor_calorico) * arregloCantidades[a];
+                    colacion1[a].cantidad = arregloCantidades[a];
+                }
+                document.getElementById('totalCarbohidrato' + id).textContent = totalCb;
+                document.getElementById('totalGrasa' + id).textContent = totalGrasa;
+                document.getElementById('totalProteina' + id).textContent = totalPro;
+                document.getElementById('totalKcal' + id).textContent = totalKcal;
+
+
+            }
+
+            if (almuerzos.length === arregloCantidades.length && id == c3) {
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalPro = 0,
+                    totalKcal = 0;
+                for (let a = 0; a < arregloCantidades.length; a++) {
+
+                    totalCb = Number(totalCb) + Number(almuerzos[a].carbohidrato) * arregloCantidades[a];
+                    totalGrasa = Number(totalGrasa) + Number(almuerzos[a].grasa) * arregloCantidades[a];
+                    totalPro = Number(totalPro) + Number(almuerzos[a].proteina) * arregloCantidades[a];
+                    totalKcal = Number(totalKcal) + Number(almuerzos[a].valor_calorico) * arregloCantidades[a];
+                    almuerzos[a].cantidad = arregloCantidades[a];
+                }
+                document.getElementById('totalCarbohidrato' + id).textContent = totalCb;
+                document.getElementById('totalGrasa' + id).textContent = totalGrasa;
+                document.getElementById('totalProteina' + id).textContent = totalPro;
+                document.getElementById('totalKcal' + id).textContent = totalKcal;
+            }
+
+            // colacion 2
+
+            console.log('colacion2:' + colacion2.length + '- ' + arregloCantidades.length)
+            if (colacion2.length === arregloCantidades.length && id == c4) {
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalPro = 0,
+                    totalKcal = 0;
+                for (let a = 0; a < arregloCantidades.length; a++) {
+                    totalCb = Number(totalCb) + Number(colacion2[a].carbohidrato) * arregloCantidades[a];
+                    totalGrasa = Number(totalGrasa) + Number(colacion2[a].grasa) * arregloCantidades[a];
+                    totalPro = Number(totalPro) + Number(colacion2[a].proteina) * arregloCantidades[a];
+                    totalKcal = Number(totalKcal) + Number(colacion2[a].valor_calorico) * arregloCantidades[a];
+                    colacion2[a].cantidad = arregloCantidades[a];
+                }
+                document.getElementById('totalCarbohidrato' + id).textContent = totalCb;
+                document.getElementById('totalGrasa' + id).textContent = totalGrasa;
+                document.getElementById('totalProteina' + id).textContent = totalPro;
+                document.getElementById('totalKcal' + id).textContent = totalKcal;
+
+            }
+
+            if (meriendas.length === arregloCantidades.length && id == c5) {
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalPro = 0,
+                    totalKcal = 0;
+                for (let a = 0; a < arregloCantidades.length; a++) {
+
+                    totalCb = Number(totalCb) + Number(meriendas[a].carbohidrato) * arregloCantidades[a];
+                    totalGrasa = Number(totalGrasa) + Number(meriendas[a].grasa) * arregloCantidades[a];
+                    totalPro = Number(totalPro) + Number(meriendas[a].proteina) * arregloCantidades[a];
+                    totalKcal = Number(totalKcal) + Number(meriendas[a].valor_calorico) * arregloCantidades[a];
+                    meriendas[a].cantidad = arregloCantidades[a];
+                }
+                document.getElementById('totalCarbohidrato' + id).textContent = totalCb;
+                document.getElementById('totalGrasa' + id).textContent = totalGrasa;
+                document.getElementById('totalProteina' + id).textContent = totalPro;
+                document.getElementById('totalKcal' + id).textContent = totalKcal;
+            }
+
+            console.log('cenas:' + cenas.length + '- ' + arregloCantidades.length)
+            if (cenas.length === arregloCantidades.length && id == c6) {
+
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalPro = 0,
+                    totalKcal = 0;
+                for (let a = 0; a < arregloCantidades.length; a++) {
+                    totalCb = Number(totalCb) + Number(cenas[a].carbohidrato) * arregloCantidades[a];
+                    totalGrasa = Number(totalGrasa) + Number(cenas[a].grasa) * arregloCantidades[a];
+                    totalPro = Number(totalPro) + Number(cenas[a].proteina) * arregloCantidades[a];
+                    totalKcal = Number(totalKcal) + Number(cenas[a].valor_calorico) * arregloCantidades[a];
+                    cenas[a].cantidad = arregloCantidades[a];
+                }
+                document.getElementById('totalCarbohidrato' + id).textContent = totalCb;
+                document.getElementById('totalGrasa' + id).textContent = totalGrasa;
+                document.getElementById('totalProteina' + id).textContent = totalPro;
+                document.getElementById('totalKcal' + id).textContent = totalKcal;
+
+            }
+
+            let arr = []
+            // let lunesFalso = Object.assign(desayunos,colacion1,almuerzos,colacion2,meriendas,cenas)
+            let diaFalso = arr.concat(desayunos, colacion1, almuerzos, colacion2, meriendas, cenas)
+            if (id >= 0 && id < 6) {
+                alimentosLunes = diaFalso;
+                console.log('content:', alimentosLunes)
+            }
+            if (id >= 6 && id < 12) {
+                alimentosMartes = diaFalso;
+                console.log('content:', alimentosMartes)
+            }
+            if (id >= 12 && id < 18) {
+                alimentosMiercoles = diaFalso;
+                console.log('content:', alimentosMiercoles)
+            }
+            if (id >= 18 && id < 24) {
+                alimentosJueves = diaFalso;
+                console.log('content:', alimentosJueves)
+            }
+            if (id >= 24 && id < 30) {
+                alimentosViernes = diaFalso;
+                console.log('content:', alimentosViernes)
+            }
+            if (id >= 30 && id < 36) {
+                alimentosSabado = diaFalso;
+                console.log('content:', alimentosSabado)
+            }
+            if (id >= 36 && id < 42) {
+                alimentosDomingo = diaFalso;
+                console.log('content:', alimentosDomingo)
+            }
+
+            sumarResultados(); //total bottom
+        }
+
+        function seleccionarCantidad(id, alimento_id, select_id) {
+            var cantidad = document.getElementById('selectCantidad' + select_id).value;
+
+            if (id >= 0 && id < 6) // lunes
+            {
+                iterarCalculoCantidad(alimentosLunes, id, 0, 1, 2, 3, 4, 5);
+            }
+
+            if (id >= 6 && id < 12) {
+
+                iterarCalculoCantidad(alimentosMartes, id, 6, 7, 8, 9, 10, 11);
+            }
+
+            if (id >= 12 && id < 18) {
+                iterarCalculoCantidad(alimentosMiercoles, id, 12, 13, 14, 15, 16, 17);
+            }
+
+            if (id >= 18 && id < 24) {
+                iterarCalculoCantidad(alimentosJueves, id, 18, 19, 20, 21, 22, 23);
+            }
+
+            if (id >= 24 && id < 30) {
+                iterarCalculoCantidad(alimentosViernes, id, 24, 25, 26, 27, 28, 29);
+            }
+
+            if (id >= 30 && id < 36) {
+                iterarCalculoCantidad(alimentosSabado, id, 30, 31, 32, 33, 34, 35);
+            }
+
+            if (id >= 36 && id < 42) {
+                iterarCalculoCantidad(alimentosDomingo, id, 36, 37, 38, 39, 40, 41);
+            }
+        }
+
+
+        function eliminarAlimento(id, fila, alimento_id) {
+            $('#fila' + fila).remove();
+
+            // CARGA DE ALIMENTOS DEL DIA LUNES
+            if (id >= 0 && id < 6) {
+                let cant = Object.keys(alimentosLunes);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                console.log('long:', long)
+                for (let j = 0; j < long; j++) //contenido de lunes, tiene los alimentos
+                {
+                    for (let c = 0; c < 6; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosLunes[j]?.id === alimento_id && alimentosLunes[j]?.horario ===
+                                nombreComidas[c]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosLunes[j].carbohidrato,
+                                    grasa = alimentosLunes[j].grasa,
+                                    proteina = alimentosLunes[j].proteina;
+                                let kcal = alimentosLunes[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosLunes[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosLunes[j].cantidad;
+                                antPro = antPro - proteina * alimentosLunes[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosLunes[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosLunes[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosLunes[x] !== undefined)
+                                        auxDia.push(alimentosLunes[x]);
+                                }
+                                alimentosLunes = {
+                                    ...auxDia
+                                }
+                                console.log(alimentosLunes)
+                                sumarResultados();
+                                contAlimentoRepetido = false;
+                            }
+                        } //fin contAlimentoRepetido
+                    }
+                }
+            }
+
+            //  CARGA DE ALIMENTOS DEL DIA MARTES
+            if (id >= 6 && id < 12) {
+                let cant = Object.keys(alimentosMartes);
+                let long = cant.length;
+
+
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 6; c < 12; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosMartes[j]?.id === alimento_id && alimentosMartes[j]?.horario ===
+                                nombreComidas[c - 6]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosMartes[j].carbohidrato,
+                                    grasa = alimentosMartes[j].grasa,
+                                    proteina = alimentosMartes[j].proteina;
+                                let kcal = alimentosMartes[j].valor_calorico
+
+                                antCB = antCB - carb;
+                                antGrasa = antGrasa - grasa;
+                                antPro = antPro - proteina;
+                                antKcal = antKcal - kcal;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosMartes[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosMartes[x] !== undefined)
+                                        auxDia.push(alimentosMartes[x]);
+                                }
+                                alimentosMartes = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // CARGA DE ALIMENTOS DEL DIA MIERCOLES
+            if (id >= 12 && id < 18) {
+                let cant = Object.keys(alimentosMiercoles);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 12; c < 18; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosMiercoles[j]?.id === alimento_id && alimentosMiercoles[j]?.horario ===
+                                nombreComidas[c - 12]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosMiercoles[j].carbohidrato,
+                                    grasa = alimentosMiercoles[j].grasa,
+                                    proteina = alimentosMiercoles[j].proteina;
+                                let kcal = alimentosMiercoles[j].valor_calorico
+
+                                antCB = antCB - carb;
+                                antGrasa = antGrasa - grasa;
+                                antPro = antPro - proteina;
+                                antKcal = antKcal - kcal;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosMiercoles[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosMiercoles[x] !== undefined)
+                                        auxDia.push(alimentosMiercoles[x]);
+                                }
+                                alimentosMiercoles = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // CARGA DE ALIMENTOS DEL DIA JUEVES
+            if (id >= 18 && id < 24) {
+                let cant = Object.keys(alimentosJueves);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 18; c < 24; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosJueves[j]?.id === alimento_id && alimentosJueves[j]?.horario ===
+                                nombreComidas[c - 18]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosJueves[j].carbohidrato,
+                                    grasa = alimentosJueves[j].grasa,
+                                    proteina = alimentosJueves[j].proteina;
+                                let kcal = alimentosJueves[j].valor_calorico
+
+                                antCB = antCB - carb;
+                                antGrasa = antGrasa - grasa;
+                                antPro = antPro - proteina;
+                                antKcal = antKcal - kcal;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosJueves[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosJueves[x] !== undefined)
+                                        auxDia.push(alimentosJueves[x]);
+                                }
+                                alimentosJueves = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // CARGA DE ALIMENTOS DEL DIA VIERNES
+            if (id >= 24 && id < 30) {
+                let cant = Object.keys(alimentosViernes);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 24; c < 30; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosViernes[j]?.id === alimento_id && alimentosViernes[j]?.horario ===
+                                nombreComidas[c - 24]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosViernes[j].carbohidrato,
+                                    grasa = alimentosViernes[j].grasa,
+                                    proteina = alimentosViernes[j].proteina;
+                                let kcal = alimentosViernes[j].valor_calorico
+
+                                antCB = antCB - carb;
+                                antGrasa = antGrasa - grasa;
+                                antPro = antPro - proteina;
+                                antKcal = antKcal - kcal;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosViernes[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosViernes[x] !== undefined)
+                                        auxDia.push(alimentosViernes[x]);
+                                }
+                                alimentosViernes = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // CARGA DE ALIMENTOS DEL DIA SABADO
+            if (id >= 30 && id < 36) {
+                let cant = Object.keys(alimentosSabado);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 30; c < 36; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosSabado[j]?.id === alimento_id && alimentosSabado[j]?.horario ===
+                                nombreComidas[c - 30]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosSabado[j].carbohidrato,
+                                    grasa = alimentosSabado[j].grasa,
+                                    proteina = alimentosSabado[j].proteina;
+                                let kcal = alimentosSabado[j].valor_calorico
+
+                                antCB = antCB - carb;
+                                antGrasa = antGrasa - grasa;
+                                antPro = antPro - proteina;
+                                antKcal = antKcal - kcal;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosSabado[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosSabado[x] !== undefined)
+                                        auxDia.push(alimentosSabado[x]);
+                                }
+                                alimentosSabado = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // CARGA DE ALIMENTOS DEL DIA DOMINGO
+            if (id >= 36 && id < 42) {
+                let cant = Object.keys(alimentosDomingo);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 36; c < 42; c++) {
+                        if (contAlimentoRepetido) {
+
+                            if (id === c && alimentosDomingo[j]?.id === alimento_id && alimentosDomingo[j]?.horario ===
+                                nombreComidas[c - 36]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosDomingo[j].carbohidrato,
+                                    grasa = alimentosDomingo[j].grasa,
+                                    proteina = alimentosDomingo[j].proteina;
+                                let kcal = alimentosDomingo[j].valor_calorico
+
+                                antCB = antCB - carb;
+                                antGrasa = antGrasa - grasa;
+                                antPro = antPro - proteina;
+                                antKcal = antKcal - kcal;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosDomingo[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosDomingo[x] !== undefined)
+                                        auxDia.push(alimentosDomingo[x]);
+                                }
+                                alimentosDomingo = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function eliminarAlimentoAdded(id, fila, alimento_id) {
+            console.log('valor de id:' + id + ' valor de fila:' + fila + ' valor de aliid:' + alimento_id);
+            $('#filaAdd' + fila).remove();
+
+            // CARGA DE ALIMENTOS DEL DIA LUNES
+            if (id >= 0 && id < 6) {
+                let cant = Object.keys(alimentosLunes);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                console.log('long:', long)
+                for (let j = 0; j < long; j++) //contenido de lunes, tiene los alimentos
+                {
+                    for (let c = 0; c < 6; c++) {
+                        if (contAlimentoRepetido) {
+                            if (id === c && alimentosLunes[j]?.id === alimento_id && alimentosLunes[j]?.horario ===
+                                nombreComidas[c]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosLunes[j].carbohidrato,
+                                    grasa = alimentosLunes[j].grasa,
+                                    proteina = alimentosLunes[j].proteina;
+                                let kcal = alimentosLunes[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosLunes[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosLunes[j].cantidad;
+                                antPro = antPro - proteina * alimentosLunes[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosLunes[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosLunes[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosLunes[x] !== undefined)
+                                        auxDia.push(alimentosLunes[x]);
+                                }
+                                alimentosLunes = {
+                                    ...auxDia
+                                }
+                                console.log(alimentosLunes)
+                                sumarResultados();
+                                contAlimentoRepetido = false;
+                            }
+                        } //fin contAlimentoRepetido
+                    }
+                }
+            }
+
+            // CARGA DE ALIMENTOS DEL DIA MARTES
+            if (id >= 6 && id < 12) {
+                let cant = Object.keys(alimentosMartes);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de martes, tiene los alimentos
+                {
+                    for (let c = 6; c < 12; c++) {
+
+                        if (contAlimentoRepetido) // para que no tome en cuenta a otro alimento que esta dentro de la dieta
+                        {
+                            if (id === c && alimentosMartes[j]?.id === alimento_id && alimentosMartes[j]?.horario ===
+                                nombreComidas[c - 6]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosMartes[j].carbohidrato,
+                                    grasa = alimentosMartes[j].grasa,
+                                    proteina = alimentosMartes[j].proteina;
+                                let kcal = alimentosMartes[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosMartes[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosMartes[j].cantidad;
+                                antPro = antPro - proteina * alimentosMartes[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosMartes[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosMartes[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosMartes[x] !== undefined)
+                                        auxDia.push(alimentosMartes[x]);
+                                }
+                                alimentosMartes = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        } // fin contAliRepetido
+                    }
+                }
+            }
+
+            //  // CARGA DE ALIMENTOS DEL DIA MIERCOLES
+            if (id >= 12 && id < 18) {
+                let cant = Object.keys(alimentosMiercoles);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de miercoles, tiene los alimentos
+                {
+                    for (let c = 12; c < 18; c++) {
+
+                        if (contAlimentoRepetido) // para que no tome en cuenta a otro alimento que esta dentro de la dieta
+                        {
+                            if (id === c && alimentosMiercoles[j]?.id === alimento_id && alimentosMiercoles[j]?.horario ===
+                                nombreComidas[c - 12]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosMiercoles[j].carbohidrato,
+                                    grasa = alimentosMiercoles[j].grasa,
+                                    proteina = alimentosMiercoles[j].proteina;
+                                let kcal = alimentosMiercoles[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosMiercoles[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosMiercoles[j].cantidad;
+                                antPro = antPro - proteina * alimentosMiercoles[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosMiercoles[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosMiercoles[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosMiercoles[x] !== undefined)
+                                        auxDia.push(alimentosMiercoles[x]);
+                                }
+                                alimentosMiercoles = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        } //fin contalimrepet
+                    }
+                }
+            }
+
+            //    // CARGA DE ALIMENTOS DEL DIA JUEVES
+            if (id >= 18 && id < 24) {
+                let cant = Object.keys(alimentosJueves);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de miercoles, tiene los alimentos
+                {
+                    for (let c = 18; c < 24; c++) {
+                        if (contAlimentoRepetido) // para que no tome en cuenta a otro alimento que esta dentro de la dieta
+                        {
+                            if (id === c && alimentosJueves[j]?.id === alimento_id && alimentosJueves[j]?.horario ===
+                                nombreComidas[c - 18]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosJueves[j].carbohidrato,
+                                    grasa = alimentosJueves[j].grasa,
+                                    proteina = alimentosJueves[j].proteina;
+                                let kcal = alimentosJueves[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosJueves[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosJueves[j].cantidad;
+                                antPro = antPro - proteina * alimentosJueves[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosJueves[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosJueves[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosJueves[x] !== undefined)
+                                        auxDia.push(alimentosJueves[x]);
+                                }
+                                alimentosJueves = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        } //fin contAlimentoRep
+                    }
+                }
+            }
+
+            //     // CARGA DE ALIMENTOS DEL DIA VIERNES
+            if (id >= 24 && id < 30) {
+                let cant = Object.keys(alimentosViernes);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de miercoles, tiene los alimentos
+                {
+                    for (let c = 24; c < 30; c++) {
+
+                        if (contAlimentoRepetido) // para que no tome en cuenta a otro alimento que esta dentro de la dieta
+                        {
+                            if (id === c && alimentosViernes[j]?.id === alimento_id && alimentosViernes[j]?.horario ===
+                                nombreComidas[c - 24]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosViernes[j].carbohidrato,
+                                    grasa = alimentosViernes[j].grasa,
+                                    proteina = alimentosViernes[j].proteina;
+                                let kcal = alimentosViernes[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosViernes[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosViernes[j].cantidad;
+                                antPro = antPro - proteina * alimentosViernes[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosViernes[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosViernes[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosViernes[x] !== undefined)
+                                        auxDia.push(alimentosViernes[x]);
+                                }
+                                alimentosViernes = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //    // CARGA DE ALIMENTOS DEL DIA SABADO
+            if (id >= 30 && id < 36) {
+                let cant = Object.keys(alimentosSabado);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de sabado, tiene los alimentos
+                {
+                    for (let c = 30; c < 36; c++) {
+
+                        if (contAlimentoRepetido) // para que no tome en cuenta a otro alimento que esta dentro de la dieta
+                        {
+                            if (id === c && alimentosSabado[j]?.id === alimento_id && alimentosSabado[j]?.horario ===
+                                nombreComidas[c - 30]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosSabado[j].carbohidrato,
+                                    grasa = alimentosSabado[j].grasa,
+                                    proteina = alimentosSabado[j].proteina;
+                                let kcal = alimentosSabado[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosSabado[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosSabado[j].cantidad;
+                                antPro = antPro - proteina * alimentosSabado[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosSabado[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosSabado[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosSabado[x] !== undefined)
+                                        auxDia.push(alimentosSabado[x]);
+                                }
+                                alimentosSabado = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        } //fin contAlimentoRepetido
+                    }
+                }
+            }
+
+            //    // CARGA DE ALIMENTOS DEL DIA DOMINGO
+            if (id >= 36 && id < 42) {
+                let cant = Object.keys(alimentosDomingo);
+                let long = cant.length;
+                let contAlimentoRepetido = true;
+
+                for (let j = 0; j < long; j++) //contenido de sabado, tiene los alimentos
+                {
+                    for (let c = 36; c < 42; c++) {
+                        if (contAlimentoRepetido) // para que no tome en cuenta a otro alimento que esta dentro de la dieta
+                        {
+                            if (id === c && alimentosDomingo[j]?.id === alimento_id && alimentosDomingo[j]?.horario ===
+                                nombreComidas[c - 36]) {
+
+                                let antCB = Number(document.getElementById('totalCarbohidrato' + id).textContent)
+                                let antGrasa = Number(document.getElementById('totalGrasa' + id).textContent)
+                                let antPro = Number(document.getElementById('totalProteina' + id).textContent)
+                                let antKcal = Number(document.getElementById('totalKcal' + id).textContent)
+
+                                let carb = alimentosDomingo[j].carbohidrato,
+                                    grasa = alimentosDomingo[j].grasa,
+                                    proteina = alimentosDomingo[j].proteina;
+                                let kcal = alimentosDomingo[j].valor_calorico
+
+                                antCB = antCB - carb * alimentosDomingo[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosDomingo[j].cantidad;
+                                antPro = antPro - proteina * alimentosDomingo[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosDomingo[j].cantidad;
+
+                                document.getElementById('totalCarbohidrato' + id).textContent = antCB;
+                                document.getElementById('totalGrasa' + id).textContent = antGrasa;
+                                document.getElementById('totalProteina' + id).textContent = antPro;
+                                document.getElementById('totalKcal' + id).textContent = antKcal;
+
+                                delete alimentosDomingo[j]
+                                let auxDia = []
+                                for (let x = 0; x < long; x++) {
+                                    if (alimentosDomingo[x] !== undefined)
+                                        auxDia.push(alimentosDomingo[x]);
+                                }
+                                alimentosDomingo = {
+                                    ...auxDia
+                                }
+
+                                sumarResultados();
+                                //  console.log(alimentosLunes)
+                                contAlimentoRepetido = false;
+                            }
+                        } //fin contAlimentoRepetido
+                    }
+                }
+            }
+
+        }
+
+
+        async function getDataAlimento(alimento_id) {
             let result;
             try {
                 result = await $.ajax({
                     url: "{{ route('alimento.datosAlimento') }}",
                     dataType: "json",
                     data: {
-                        alimento_id: idalimento
+                        alimento_id: alimento_id
                     }
                 })
                 return result
@@ -659,616 +1842,956 @@
             }
         }
 
-        async function seleccionarAlimento(id) {
-            var alimentoid = document.getElementById('alimentoSeleccionado' + id).value;
-            var data = await getDataAlimento(alimentoid);
-            almacenador(id, data);
-            actualizarTablaTotales(id);
-        }
+        async function agregarAlimento(id) {
+            // por parametro viene el id del acordion y con el getElementById obtenemos el valor del elemento seleccionado
+            let alimento_id = document.getElementById('alimentoSeleccionado' + id).value;
 
-        function almacenador(id, data) {
-            Object.assign(data, {
-                cantidad: 1
-            }) // la cantidad de alimento para la dieta, min 1
-            if (id >= 0 && id <= 5) { //lunes
-                if (id == 0) {
-                    Object.assign(data, {
-                        horario: 0
-                    })
-                };
-                if (id == 1) {
-                    Object.assign(data, {
-                        horario: 1
-                    })
-                };
-                if (id == 2) {
-                    Object.assign(data, {
-                        horario: 2
-                    })
-                };
-                if (id == 3) {
-                    Object.assign(data, {
-                        horario: 3
-                    })
-                };
-                if (id == 4) {
-                    Object.assign(data, {
-                        horario: 4
-                    })
-                };
-                if (id == 5) {
-                    Object.assign(data, {
-                        horario: 5
-                    })
-                };
-                lunes.push(data);
-            }
-            if (id >= 6 && id <= 11) { //martes
-                if (id == 6) {
-                    Object.assign(data, {
-                        horario: 6
-                    })
-                };
-                if (id == 7) {
-                    Object.assign(data, {
-                        horario: 7
-                    })
-                };
-                if (id == 8) {
-                    Object.assign(data, {
-                        horario: 8
-                    })
-                };
-                if (id == 9) {
-                    Object.assign(data, {
-                        horario: 9
-                    })
-                };
-                if (id == 10) {
-                    Object.assign(data, {
-                        horario: 10
-                    })
-                };
-                if (id == 11) {
-                    Object.assign(data, {
-                        horario: 11
-                    })
-                };
-                martes.push(data);
-            }
-            if (id >= 12 && id <= 17) { //miercoles
-                if (id == 12) {
-                    Object.assign(data, {
-                        horario: 12
-                    })
-                };
-                if (id == 13) {
-                    Object.assign(data, {
-                        horario: 13
-                    })
-                };
-                if (id == 14) {
-                    Object.assign(data, {
-                        horario: 14
-                    })
-                };
-                if (id == 15) {
-                    Object.assign(data, {
-                        horario: 15
-                    })
-                };
-                if (id == 16) {
-                    Object.assign(data, {
-                        horario: 16
-                    })
-                };
-                if (id == 17) {
-                    Object.assign(data, {
-                        horario: 17
-                    })
-                };
-                miercoles.push(data);
-            }
-            if (id >= 18 && id <= 23) { //jueves
-                if (id == 18) {
-                    Object.assign(data, {
-                        horario: 18
-                    })
-                };
-                if (id == 19) {
-                    Object.assign(data, {
-                        horario: 19
-                    })
-                };
-                if (id == 20) {
-                    Object.assign(data, {
-                        horario: 20
-                    })
-                };
-                if (id == 21) {
-                    Object.assign(data, {
-                        horario: 21
-                    })
-                };
-                if (id == 22) {
-                    Object.assign(data, {
-                        horario: 22
-                    })
-                };
-                if (id == 23) {
-                    Object.assign(data, {
-                        horario: 23
-                    })
-                };
-                jueves.push(data);
-            }
-            if (id >= 24 && id <= 29) { //viernes
-                if (id == 24) {
-                    Object.assign(data, {
-                        horario: 24
-                    })
-                };
-                if (id == 25) {
-                    Object.assign(data, {
-                        horario: 25
-                    })
-                };
-                if (id == 26) {
-                    Object.assign(data, {
-                        horario: 26
-                    })
-                };
-                if (id == 27) {
-                    Object.assign(data, {
-                        horario: 27
-                    })
-                };
-                if (id == 28) {
-                    Object.assign(data, {
-                        horario: 28
-                    })
-                };
-                if (id == 29) {
-                    Object.assign(data, {
-                        horario: 29
-                    })
-                };
-                viernes.push(data);
-            }
-            if (id >= 30 && id <= 35) { //sabado
-                if (id == 30) {
-                    Object.assign(data, {
-                        horario: 30
-                    })
-                };
-                if (id == 31) {
-                    Object.assign(data, {
-                        horario: 31
-                    })
-                };
-                if (id == 32) {
-                    Object.assign(data, {
-                        horario: 32
-                    })
-                };
-                if (id == 33) {
-                    Object.assign(data, {
-                        horario: 33
-                    })
-                };
-                if (id == 34) {
-                    Object.assign(data, {
-                        horario: 34
-                    })
-                };
-                if (id == 35) {
-                    Object.assign(data, {
-                        horario: 35
-                    })
-                };
-                sabado.push(data);
-            }
-            if (id >= 36 && id <= 41) { //domingo
-                if (id == 36) {
-                    Object.assign(data, {
-                        horario: 36
-                    })
-                };
-                if (id == 37) {
-                    Object.assign(data, {
-                        horario: 37
-                    })
-                };
-                if (id == 38) {
-                    Object.assign(data, {
-                        horario: 38
-                    })
-                };
-                if (id == 39) {
-                    Object.assign(data, {
-                        horario: 39
-                    })
-                };
-                if (id == 40) {
-                    Object.assign(data, {
-                        horario: 40
-                    })
-                };
-                if (id == 41) {
-                    Object.assign(data, {
-                        horario: 41
-                    })
-                };
-                domingo.push(data);
-            }
-            draw(lunes, martes, miercoles, jueves, viernes, sabado, domingo);
-        }
+            let alimento = await getDataAlimento(alimento_id);
 
-        function iterar(vi, vf, dia) {
-            for (let i = vi; i <= vf; i++) { //representa el id del acordion  de 0 a 5 lunes
-                let m = 2;
-                let id = m * i;
-                var tbody1 = document.getElementById('tbody' + id);
-                tbody1.innerHTML = ''
-                var totalesCarbohidrato = 0;
-                var totalesGrasa = 0;
-                var totalesProteina = 0;
-                var totalesValorCalorico = 0;
-                for (let j = 0; j < dia.length; j++) { // los alimentos por comida
-                    if (i == dia[j].horario) {
-                        var todo = `<tr>
-  <input type="hidden" name="alimento_id[]" value="${dia[j].id}">
-  <input type="hidden" name="alimento" id="alimento_id${j}" value="${dia[j].id}">
-  <td><select name="selectCantidad[]" onchange="selectAlimento(${i},${dia[j].id});"  id="selectCantidad"  class="form-control selectCantidad${i}">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-</select></td>`;
-                        todo += `<td><img src="${dia[j][0]}"></td>`;
-                        todo += '<td>' + dia[j].nombre + '</td>';
-                        todo += '<td>' + dia[j].peso + '</td>';
-                        todo +=
-                            `<td><a onclick="eliminarAlimento(${i},${j});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td></tr>`;
-                        $(tbody1).append(todo);
-                        // SUMA DE LOS DATOS DISPONIBLES EN EL ARREGLO
-                        totalesCarbohidrato += Number(dia[j].carbohidrato);
-                        totalesGrasa += Number(dia[j].grasa);
-                        totalesProteina += Number(dia[j].proteina);
-                        totalesValorCalorico += Number(dia[j].valor_calorico);
-                    }
-                }
-                document.getElementById('totalCarbohidrato' + i).textContent = totalesCarbohidrato;
-                document.getElementById('totalGrasa' + i).textContent = totalesGrasa;
-                document.getElementById('totalProteina' + i).textContent = totalesProteina;
-                document.getElementById('totalKcal' + i).textContent = totalesValorCalorico;
-            }
-        }
 
-        function draw(lunes, martes, miercoles, jueves, viernes, sabado, domingo) {
-            iterar(0, 5, lunes); //lunes
-            iterar(6, 11, martes); //martes
-            iterar(12, 17, miercoles); //miercoles
-            iterar(18, 23, jueves); //jueves
-            iterar(24, 29, viernes); //viernes
-            iterar(30, 35, sabado); //sabado
-            iterar(36, 41, domingo); //domingo
-        }
+            if (id >= 0 && id < 6) // lunes
+            {
+                if (alimentoRepetido(alimento, id, alimentosLunes, 0)) {
+                    for (let i = 0; i < 6; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosLunes);
+                            let long = cant.length
 
-        function validarDia(vi, vf) {
-            let cont = 0;
-            console.log('vi:', vi);
-            console.log('vf:', vf)
-            for (let i = vi; i <= vf; i++) {
-                document.querySelectorAll('.selectCantidad' + i).forEach(function() {
-                    cont++;
-                });
-            }
-            console.log('valor del cont:', cont)
-            if (cont < 6) {
-                return false
-            } else
-                return true;
-
-        }
-
-        function actualizarTablaEstadisticas(acordionid, dia) {
-            var cantidades = []
-            console.log('acordion recibido: ' + acordionid);
-
-            let totalCarbohidrato = 0,
-                totalGrasa = 0,
-                totalProteina = 0,
-                totalKcal = 0;
-            document.querySelectorAll('.selectCantidad' + acordionid).forEach(function(select) {
-                cantidades.push(select.value);
-            });
-            console.log('cantidades:', cantidades)
-            console.log('comida:', dia)
-            var array = []
-            for (let i = 0; i < dia.length; i++) {
-                if (dia[i].horario == acordionid) {
-                    array.push(dia[i])
-
-                }
-            }
-
-            for (let i = 0; i < array.length; i++) {
-                if (array[i].horario == acordionid) {
-                    console.log('SII')
-                    array[i].cantidad = cantidades[i];
-                    totalCarbohidrato += array[i].carbohidrato * cantidades[i];
-                    totalGrasa += array[i].grasa * cantidades[i];
-                    totalProteina += array[i].proteina * cantidades[i];
-                    totalKcal += array[i].valor_calorico * cantidades[i];
-                }
-            }
-            document.getElementById('totalCarbohidrato' + acordionid).textContent = totalCarbohidrato;
-            document.getElementById('totalGrasa' + acordionid).textContent = totalGrasa;
-            document.getElementById('totalProteina' + acordionid).textContent = totalProteina;
-            document.getElementById('totalKcal' + acordionid).textContent = totalKcal;
-        }
-
-        function selectAlimento(acordionid,
-            alimentoid) // aqui se determina a que tabla de estadisticas se va actualizar los valores
-        {
-            if (acordionid >= 0 && acordionid <= 5) {
-                actualizarTablaEstadisticas(acordionid, lunes);
-            }
-            if (acordionid >= 6 && acordionid <= 11) {
-                actualizarTablaEstadisticas(acordionid, martes);
-            }
-            if (acordionid >= 12 && acordionid <= 17) {
-                actualizarTablaEstadisticas(acordionid, miercoles);
-            }
-            if (acordionid >= 18 && acordionid <= 23) {
-                actualizarTablaEstadisticas(acordionid, jueves);
-            }
-            if (acordionid >= 24 && acordionid <= 29) {
-                actualizarTablaEstadisticas(acordionid, viernes);
-            }
-            if (acordionid >= 30 && acordionid <= 35) {
-                actualizarTablaEstadisticas(acordionid, sabado);
-            }
-            if (acordionid >= 36 && acordionid <= 41) {
-                actualizarTablaEstadisticas(acordionid, domingo);
-            }
-        }
-
-        function eliminarAlimento(idAcordion, idAlimento) {
-            let alimento_id = document.getElementById('alimento_id' + idAlimento).value;
-            swal({
-                title: "¿Desea retirar el alimento de la lista?",
-                text: "Al aceptar, el alimento será elimado de la lista alimentos para la dieta",
-                icon: "warning",
-                buttons: [
-                    'No, cancelar',
-                    'Si, aceptar'
-                ],
-                dangerMode: true,
-            }).then(function(isConfirm) {
-                if (isConfirm) {
-                    buscarAlimentoyEliminar(idAcordion, alimento_id);
-                } else {
-                    swal("Cancelado", "El alimento no ha sido retirado de la lista", "info");
-                }
-            });
-        }
-
-        function buscarAlimentoyEliminar(acordion_id, alimento_id) {
-            if (acordion_id >= 0 && acordion_id <= 5) { //lunes
-                for (let i = 0; i < lunes.length; i++) {
-                    if (lunes[i].id == alimento_id && lunes[i].horario == acordion_id) {
-                        lunes.splice(i, 1);
-                    }
-                }
-            }
-            if (acordion_id >= 6 && acordion_id <= 11) { //lunes
-                for (let i = 0; i < martes.length; i++) {
-                    if (martes[i].id == alimento_id) {
-                        martes.splice(i, 1);
-                    }
-                }
-            }
-            if (acordion_id >= 12 && acordion_id <= 17) { //lunes
-                for (let i = 0; i < miercoles.length; i++) {
-                    if (miercoles[i].id == alimento_id) {
-                        miercoles.splice(i, 1);
-                    }
-                }
-            }
-            if (acordion_id >= 18 && acordion_id <= 23) { //lunes
-                for (let i = 0; i < jueves.length; i++) {
-                    if (jueves[i].id == alimento_id) {
-                        jueves.splice(i, 1);
-                    }
-                }
-            }
-            if (acordion_id >= 24 && acordion_id <= 29) { //lunes
-                for (let i = 0; i < viernes.length; i++) {
-                    if (viernes[i].id == alimento_id) {
-                        viernes.splice(i, 1);
-                    }
-                }
-            }
-            if (acordion_id >= 30 && acordion_id <= 35) { //lunes
-                for (let i = 0; i < sabado.length; i++) {
-                    if (sabado[i].id == alimento_id) {
-                        sabado.splice(i, 1);
-                    }
-                }
-            }
-            if (acordion_id >= 36 && acordion_id <= 41) { //lunes
-                for (let i = 0; i < domingo.length; i++) {
-                    if (domingo[i].id == alimento_id) {
-                        domingo.splice(i, 1);
-                    }
-                }
-            }
-            draw(lunes, martes, miercoles, jueves, viernes, sabado, domingo);
-        }
-
-        function notificacion(resultado, dia) {
-            if (resultado == true) {
-                let dia = document.getElementById('pills-dia' + id + '-tab');
-                dia.style = "background-color:#04B76B;color:white;";
-            } else {
-                dia.style = "background-color:#5DADE2;color:white;";
-                swal({
-                    title: "Aún faltan horarios de comida por completar del " + dia,
-                    text: "Cada horario de comida debe tener al menos 1 alimento",
-                    icon: "info",
-                })
-            }
-        }
-
-        function confirmarDia(id) {
-            let resultado;
-            let dia = document.getElementById('pills-dia' + id + '-tab');
-            console.log('id recibido', id)
-            switch (id) {
-                case 0: //lunes
-                    resultado = validarDia(0, 5);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Lunes');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white !important;";
-                    };
-                    break;
-                case 1:
-                    resultado = validarDia(6, 11);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Martes');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white;";
-                    };
-                    break;
-                case 2:
-                    resultado = validarDia(12, 17);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Miercoles');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white;";
-                    };
-                    break;
-                case 3:
-                    resultado = validarDia(18, 23);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Jueves');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white;";
-                    };
-                    break;
-
-                case 4:
-                    resultado = validarDia(24, 29);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Viernes');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white;";
-                    };
-                    break;
-
-                case 5:
-                    resultado = validarDia(30, 35);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Sabado');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white;";
-                    };
-                    break;
-
-                case 6: //domingo
-                    resultado = validarDia(36, 41);
-                    if (resultado == false) {
-                        notificacion(resultado, 'Domingo');
-                    } else {
-                        dia.style = "background-color:#04B76B;color:white;";
-                    };
-                    break;
-
-            }
-        }
-
-        function quitarConfirmacion(id) {
-            let dia = document.getElementById('pills-dia' + id + '-tab');
-            dia.style = "background-color:#5DADE2;color:white;";
-        }
-
-        function eliminarByIdComida(dia_id, acordion_id, alimento_id) {
-            var dias = Object.values(semana);
-            console.log('Dias en eliminarByIdCmida:', dias);
-            for (let i = 0; i < dias.length; i++) {
-                if (i == dia_id) {
-                    var comidas = Object.values(dias[i]);
-
-                    for (let j = 0; j < comidas.length; j++) { // desayuno, colacion , almuerzo , colacion, merienda, cena
-                        if (j == acordion_id) { // comida_id -> desayuno
-                            console.log('ALIMENTOS DEL DESAYUNO DEL DIA LUNES');
-                            var alimentos = Object.values(comidas[j]);
-                            console.log('alimentos 479: ', alimentos)
-                            for (let k = 0; k < alimentos.length; k++) {
-                                if (alimentos[k].id == alimento_id) {
-                                    alimentos.splice(k, 1); // de la posicion i elimina 1
-
-                                    var alimentosRestantes = alimentos;
-                                    console.log('alimentos restantes: ', alimentosRestantes)
-                                    comidas[acordion_id] = Object.values(alimentosRestantes);
-                                    console.log('comidas nuevas:', comidas);
-                                    dias[dia_id] = Object.values(comidas);
-                                    console.log('array dia nuevo:', dias);
-                                    semana = Object.values(dias);
-                                    semanaOficial = Object.values(dias);
-                                    // desayunoLunes = [];
-                                    // lunes = [];
-                                    // var sem = [dias];
-                                    // console.log('semana1 : ', semana1)
-
-                                    console.log('semana Actual: ', semana);
-                                    console.log('semana Oficial:', semanaOficial)
-                                    // semana = semana1;
-                                    // console.log('SEMANA DESPUES DE ELIMINAR: ', semana);
-                                    dibujar();
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i];
+                                    alimento.cantidad = 1;
+                                    alimentosLunes[j + 1] = alimento;
                                 }
+                            }
+
+                            console.log(alimentosLunes)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+
+                            </tr>`);
+                            console.log(tbody)
+                            contadorfila++;
+
+                            let totalCb = 0;
+                            let totalGrasa = 0
+                            let totalPro = 0
+                            let totalKcal = 0
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                            fila++;
+                            contadorfila++;
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+
+            if (id >= 6 && id < 12) // martes
+            {
+                if (alimentoRepetido(alimento, id - 6, alimentosMartes, 1)) {
+                    for (let i = 6; i < 12; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosMartes);
+                            let long = cant.length
+
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i - 6];
+                                    alimento.cantidad = 1;
+                                    alimentosMartes[j + 1] = alimento;
+                                }
+                            }
+                            console.log(alimentosMartes)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`);
+
+                            //    console.log(tbody)
+                            contadorfila++;
+                            let totalCb = 0;
+                            let totalGrasa = 0;
+                            let totalPro = 0;
+                            let totalKcal = 0;
+
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                            fila++;
+                            contadorfila++;
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+
+            if (id >= 12 && id < 18) // miercoles
+            {
+                if (alimentoRepetido(alimento, id - 12, alimentosMiercoles, 2)) {
+                    for (let i = 12; i < 18; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosMiercoles);
+                            let long = cant.length
+
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i - 12];
+                                    alimento.cantidad = 1;
+                                    alimentosMiercoles[j + 1] = alimento;
+                                }
+                            }
+                            console.log(alimentosMiercoles)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`);
+                            console.log(tbody)
+                            contadorfila++;
+
+                            let totalCb = 0;
+                            let totalGrasa = 0
+                            let totalPro = 0
+                            let totalKcal = 0
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                            fila++;
+                            contadorfila++;
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+
+            if (id >= 18 && id < 24) // jueves
+            {
+                if (alimentoRepetido(alimento, id - 18, alimentosJueves, 3)) {
+                    for (let i = 18; i < 24; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosJueves);
+                            let long = cant.length
+
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i - 18];
+                                    alimento.cantidad = 1;
+                                    alimentosJueves[j + 1] = alimento;
+                                }
+                            }
+                            console.log(alimentosJueves)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`);
+                            console.log(tbody)
+
+                            let totalCb = 0;
+                            let totalGrasa = 0
+                            let totalPro = 0
+                            let totalKcal = 0
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                            fila++;
+                            contadorfila++;
+
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+
+            if (id >= 24 && id < 30) // viernes
+            {
+                if (alimentoRepetido(alimento, id - 24, alimentosViernes, 4)) {
+                    for (let i = 24; i < 30; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosViernes);
+                            let long = cant.length
+
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i - 24];
+                                    alimento.cantidad = 1;
+                                    alimentosViernes[j + 1] = alimento;
+                                }
+                            }
+                            console.log(alimentosViernes)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`);
+                            console.log(tbody)
+
+                            let totalCb = 0;
+                            let totalGrasa = 0
+                            let totalPro = 0
+                            let totalKcal = 0
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+                            fila++;
+                            contadorfila++;
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+
+            if (id >= 30 && id < 36) // sabado
+            {
+                if (alimentoRepetido(alimento, id - 30, alimentosSabado, 5)) {
+                    for (let i = 30; i < 36; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosSabado);
+                            let long = cant.length
+
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i - 30];
+                                    alimento.cantidad = 1;
+                                    alimentosSabado[j + 1] = alimento;
+                                }
+                            }
+                            console.log(alimentosSabado)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`);
+                            console.log(tbody)
+
+                            let totalCb = 0;
+                            let totalGrasa = 0
+                            let totalPro = 0
+                            let totalKcal = 0
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+                            fila++;
+                            contadorfila++;
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+
+            if (id >= 36 && id < 42) // domingo
+            {
+                if (alimentoRepetido(alimento, id - 36, alimentosDomingo, 6)) {
+                    for (let i = 36; i < 42; i++) {
+                        if (id == i) {
+                            let cant = Object.keys(alimentosDomingo);
+                            let long = cant.length
+
+                            for (let j = 0; j < long; j++) {
+                                if (j == long - 1) {
+                                    alimento.horario = nombreComidas[i - 36];
+                                    alimento.cantidad = 1;
+                                    alimentosDomingo[j + 1] = alimento;
+                                }
+                            }
+                            console.log(alimentosDomingo)
+                            let tbody = document.getElementById('tbody' + id)
+                            $(tbody).append(`<tr id="fila${contadorfila}">
+                        <td>
+                            <select onchange="seleccionarCantidad(${i},${lunes[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                            </td>
+                            <td><img src="${alimento.imagen.url}"></td>
+                            <td>${alimento.nombre}</td>
+                            <td>${alimento.peso} ${nombreMedidas[alimento.medida_id-1]}</td>
+                            <td><a onclick="eliminarAlimento(${id},${contadorfila},${alimento.id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`);
+                            console.log(tbody)
+                            contadorfila++;
+
+                            let totalCb = 0;
+                            let totalGrasa = 0
+                            let totalPro = 0
+                            let totalKcal = 0
+                            // ACTUALIZAMOS EL TOTAL DE LA TABLA DERECHA CON LOS VALORES DEL NUEVO ALIMENTO
+                            totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent) + Number(
+                                alimento.carbohidrato);
+                            totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent) + Number(
+                                alimento.grasa);
+                            totalPro += Number(document.getElementById('totalProteina' + i).textContent) + Number(
+                                alimento.proteina);
+                            totalKcal += Number(document.getElementById('totalKcal' + i).textContent) + Number(alimento
+                                .valor_calorico);
+                            // PASAMOS EL VALOR A LA VISTA
+                            document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                            document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                            document.getElementById('totalProteina' + i).textContent = totalPro;
+                            document.getElementById('totalKcal' + i).textContent = totalKcal;
+                            fila++;
+
+                        }
+                    }
+                    sumarResultados();
+                }
+            }
+        }
+
+        var contadorfila = 0;
+        var selectsId = 0;
+
+        function cargarDias(semana) {
+
+            var lunes = semana[0],
+                martes = semana[1],
+                miercoles = semana[2],
+                jueves = semana[3],
+                viernes = semana[4],
+                sabado = semana[5],
+                domingo = semana[6]
+
+            alimentosLunes = Object.assign({}, lunes);
+            alimentosMartes = Object.assign({}, martes);
+            alimentosMiercoles = Object.assign({}, miercoles);
+            alimentosJueves = Object.assign({}, jueves);
+            alimentosViernes = Object.assign({}, viernes);
+            alimentosSabado = Object.assign({}, sabado);
+            alimentosDomingo = Object.assign({}, domingo);
+
+            console.log('alimentos lunes:', alimentosLunes);
+
+
+            for (let i = 0; i < 42; i++) // id de los body
+            {
+                // CARGA DE ALIMENTOS DEL DIA LUNES
+                if (i >= 0 && i < 6) {
+                    let tbodyLunes = document.getElementById('tbody' + i);
+                    tbodyLunes.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+                    // let totCarbo=0,totGrasa=0,totPro=0,totKcal=0;
+
+                    for (let j = 0; j < lunes.length; j++) //contenido de lunes, tiene los alimentos
+                    {
+                        for (let c = 0; c < 6; c++) {
+                            if (i == c && lunes[j].horario === nombreComidas[c]) {
+                                let cantidad = lunes[j].cantidad;
+                                totalCb += Number(lunes[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(lunes[j].grasa) * cantidad;
+                                totalPro += Number(lunes[j].proteina) * cantidad;
+                                totalKcal += Number(lunes[j].valor_calorico) * cantidad;
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                        <td>
+                        <select onchange="seleccionarCantidad(${c},${lunes[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1" ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                        <td><img src="${lunes[j].imagen.url}"></td>
+                        <td>${lunes[j].nombre}</td>
+                        <td>${lunes[j].peso}${nombreMedidas[lunes[j].medida_id - 1]}</td>
+                        <td><a onclick="eliminarAlimento(${i},${contadorfila},${lunes[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>`
+                                $(tbodyLunes).append(contenido)
+                                contadorfila++;
+                                selectsId++;
                             }
                         }
                     }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                }
+                // CARGA DE ALIMENTOS DEL DIA MARTES
+                if (i >= 6 && i < 12) {
+                    let tbodyMartes = document.getElementById('tbody' + i);
+                    tbodyMartes.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+
+                    for (let j = 0; j < martes.length; j++) //contenido de martes
+                    {
+                        for (let c = 6; c < 12; c++) //martes
+                        {
+                            if (i == c && martes[j].horario === nombreComidas[c - 6]) {
+
+                                let cantidad = martes[j].cantidad;
+                                totalCb += Number(martes[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(martes[j].grasa) * cantidad;
+                                totalPro += Number(martes[j].proteina) * cantidad;
+                                totalKcal += Number(martes[j].valor_calorico) * cantidad;
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                            <td>
+                        <select onchange="seleccionarCantidad(${c},${martes[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1"  ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                            <td><img src="${martes[j].imagen.url}"></td>
+                            <td>${martes[j].nombre}</td>
+                            <td>${martes[j].peso}${nombreMedidas[martes[j].medida_id - 1]}</td>
+                            <td><a onclick="eliminarAlimento(${i},${contadorfila},${martes[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>`
+                                $(tbodyMartes).append(contenido)
+                                contadorfila++;
+                                selectsId++;
+                            }
+                        }
+                    }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+                }
+
+                // CARGA DE ALIMENTOS DEL DIA MIERCOLES
+                if (i >= 12 && i < 18) {
+                    let tbodyMiercoles = document.getElementById('tbody' + i);
+                    tbodyMiercoles.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+
+                    for (let j = 0; j < miercoles.length; j++) //contenido de miercoles
+                    {
+                        for (let c = 12; c < 18; c++) {
+                            if (i == c && miercoles[j].horario === nombreComidas[c - 12]) {
+                                let cantidad = miercoles[j].cantidad;
+                                totalCb += Number(miercoles[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(miercoles[j].grasa) * cantidad;
+                                totalPro += Number(miercoles[j].proteina) * cantidad;
+                                totalKcal += Number(miercoles[j].valor_calorico) * cantidad;
+
+
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                            <td>
+                        <select onchange="seleccionarCantidad(${c},${miercoles[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1"  ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                            <td><img src="${miercoles[j].imagen.url}"></td>
+                            <td>${miercoles[j].nombre}</td>
+                            <td>${miercoles[j].peso}${nombreMedidas[miercoles[j].medida_id - 1]}</td>
+                            <td><a onclick="eliminarAlimento(${i},${contadorfila},${miercoles[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>`
+                                $(tbodyMiercoles).append(contenido)
+                                contadorfila++;
+                                selectsId++;
+                            }
+                        }
+                    }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                }
+
+                // CARGA DE ALIMENTOS DEL DIA JUEVES
+                if (i >= 18 && i < 24) {
+                    let tbodyJueves = document.getElementById('tbody' + i);
+                    tbodyJueves.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+
+                    for (let j = 0; j < jueves.length; j++) //contenido de jueves
+                    {
+                        for (let c = 18; c < 24; c++) {
+                            if (i == c && jueves[j].horario === nombreComidas[c - 18]) {
+                                let cantidad = jueves[j].cantidad;
+                                totalCb += Number(jueves[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(jueves[j].grasa) * cantidad;
+                                totalPro += Number(jueves[j].proteina) * cantidad;
+                                totalKcal += Number(jueves[j].valor_calorico) * cantidad;
+
+
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                            <td>
+                        <select onchange="seleccionarCantidad(${c},${jueves[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1"  ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                            <td><img src="${jueves[j].imagen.url}"></td>
+                            <td>${jueves[j].nombre}</td>
+                            <td>${jueves[j].peso}${nombreMedidas[jueves[j].medida_id - 1]}</td>
+                            <td><a onclick="eliminarAlimento(${i},${contadorfila},${jueves[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>`
+                                $(tbodyJueves).append(contenido)
+                                contadorfila++;
+                                selectsId++;
+                            }
+                        }
+                    }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                }
+
+
+                // CARGA DE ALIMENTOS DEL DIA VIERNES
+                if (i >= 24 && i < 30) {
+                    let tbodyViernes = document.getElementById('tbody' + i);
+                    tbodyViernes.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+
+                    for (let j = 0; j < viernes.length; j++) //contenido de viernes
+                    {
+                        for (let c = 24; c < 30; c++) {
+                            if (i == c && viernes[j].horario === nombreComidas[c - 24]) {
+                                let cantidad = viernes[j].cantidad;
+                                totalCb += Number(viernes[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(viernes[j].grasa) * cantidad;
+                                totalPro += Number(viernes[j].proteina) * cantidad;
+                                totalKcal += Number(viernes[j].valor_calorico) * cantidad;
+
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                            <td>
+                        <select onchange="seleccionarCantidad(${c},${viernes[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1"  ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                            <td><img src="${viernes[j].imagen.url}"></td>
+                            <td>${viernes[j].nombre}</td>
+                            <td> ${viernes[j].peso} ${nombreMedidas[viernes[j].medida_id - 1]}</</td>
+                            <td><a onclick="eliminarAlimento(${i},${contadorfila},${viernes[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>`
+                                $(tbodyViernes).append(contenido)
+                                contadorfila++;
+                                selectsId++;
+                            }
+                        }
+                    }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                }
+
+                // CARGA DE ALIMENTOS DEL DIA SABADO
+                if (i >= 30 && i < 36) {
+                    let tbodySabado = document.getElementById('tbody' + i);
+                    tbodySabado.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+
+                    for (let j = 0; j < sabado.length; j++) //contenido de sabado
+                    {
+                        for (let c = 30; c < 36; c++) {
+                            if (i == c && sabado[j].horario === nombreComidas[c - 30]) {
+                                let cantidad = sabado[j].cantidad;
+                                totalCb += Number(sabado[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(sabado[j].grasa) * cantidad;
+                                totalPro += Number(sabado[j].proteina) * cantidad;
+                                totalKcal += Number(sabado[j].valor_calorico) * cantidad;
+
+
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                             <td>
+                        <select onchange="seleccionarCantidad(${c},${sabado[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1"  ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                            <td><img src="${sabado[j].imagen.url}"></td>
+                            <td>${sabado[j].nombre}</td>
+                            <td>${sabado[j].peso}${nombreMedidas[sabado[j].medida_id - 1]}</td>
+                            <td><a  onclick="eliminarAlimento(${i},${contadorfila},${sabado[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>`
+                                $(tbodySabado).append(contenido)
+                                contadorfila++;
+                                selectsId++;
+                            }
+                        }
+                    }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+
+                }
+
+                // CARGA DE ALIMENTOS DEL DIA DOMINGO
+                if (i >= 36 && i < 42) {
+                    let tbodyDomingo = document.getElementById('tbody' + i);
+                    tbodyDomingo.innerHTML = ''
+                    let totalCb = 0;
+                    let totalGrasa = 0
+                    let totalPro = 0
+                    let totalKcal = 0
+
+                    for (let j = 0; j < domingo.length; j++) //contenido de domingo
+                    {
+                        for (let c = 36; c < 42; c++) {
+                            if (i == c && domingo[j].horario === nombreComidas[c - 36]) {
+                                let cantidad = domingo[j].cantidad;
+                                totalCb += Number(domingo[j].carbohidrato) * cantidad;
+                                totalGrasa += Number(domingo[j].grasa) * cantidad;
+                                totalPro += Number(domingo[j].proteina) * cantidad;
+                                totalKcal += Number(domingo[j].valor_calorico) * cantidad;
+
+
+
+                                let contenido = `<tr id="fila${contadorfila}">
+                            <td>
+                        <select onchange="seleccionarCantidad(${c},${domingo[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                        <option value="1"  ${cantidad===1 ? 'selected':''}  >1</option>
+                        <option value="2" ${cantidad===2 ? 'selected':''}  >2</option>
+                        <option value="3" ${cantidad===3 ? 'selected':''}  >3</option>
+                        <option value="4" ${cantidad===4 ? 'selected':''}  >4</option>
+                        <option value="5" ${cantidad===5 ? 'selected':''}  >5</option>
+                        <option value="6" ${cantidad===6 ? 'selected':''}  >6</option>
+                        <option value="7" ${cantidad===7 ? 'selected':''}  >7</option>
+                        <option value="8" ${cantidad===8 ? 'selected':''}  >8</option>
+                        <option value="9" ${cantidad===9 ? 'selected':''}  >9</option>
+                        <option value="10" ${cantidad===10 ? 'selected':''}  >10</option>
+                        </select>
+                        </td>
+                            <td><img src="${domingo[j].imagen.url}"></td>
+                            <td>${domingo[j].nombre}</td>
+                            <td>${domingo[j].peso}${nombreMedidas[domingo[j].medida_id - 1]}</td>
+                            <td><a onclick="eliminarAlimento(${i},${contadorfila},${domingo[j].id});" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                            </tr>`
+                                $(tbodyDomingo).append(contenido)
+                                contadorfila++;
+                                selectsId++;
+                            }
+                        }
+                    }
+                    document.getElementById('totalCarbohidrato' + i).textContent = totalCb;
+                    document.getElementById('totalGrasa' + i).textContent = totalGrasa;
+                    document.getElementById('totalProteina' + i).textContent = totalPro;
+                    document.getElementById('totalKcal' + i).textContent = totalKcal;
+
                 }
             }
-            console.log('NUEVO CONTENIDO DE LA SEMANA')
-            console.log(dias);
-            console.log(semana);
+            sumarResultados();
+
+
         }
 
-        function actualizarTablaTotales(acordionid) {
-            var carbohidratoTotal = 0,
-                grasaTotal = 0,
-                proteinaTotal = 0,
-                kcalTotal = 0;
-            if (acordionid >= 0 && acordionid <= 5) {
-
-                for (let i = 0; i <= 5; i++) {
-                    let valorCarbohidratoTotal = document.getElementById('totalCarbohidrato' + i).textContent;
-                    let valorGrasaTotal = document.getElementById('totalGrasa' + i).textContent;
-                    let valorProteinaTotal = document.getElementById('totalProteina' + i).textContent;
-                    let valorKcalTotal = document.getElementById('totalKcal' + i).textContent;
-                    carbohidratoTotal = carbohidratoTotal + Number(valorCarbohidratoTotal);
-                    grasaTotal = grasaTotal + Number(valorGrasaTotal);
-                    proteinaTotal = proteinaTotal + Number(valorProteinaTotal);
-                    kcalTotal = kcalTotal + Number(valorKcalTotal);
+        var estadoDias = [false, false, false, false, false, false, false]
+        function sumarResultados() {
+            let arrayDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+            for (let dia = 0; dia < 7; dia++) {
+                let totalCb = 0,
+                    totalGrasa = 0,
+                    totalProteina = 0,
+                    totalKcal = 0;
+                let idInicio = 0,
+                    idFin = 0;
+                if (dia == 0) {
+                    idInicio = 0;
+                    idFin = 6;
                 }
-                document.getElementById('carbohidratosTotal0').textContent = carbohidratoTotal;
-                document.getElementById('grasasTotal0').textContent = grasaTotal;
-                document.getElementById('proteinasTotal0').textContent = proteinaTotal;
-                document.getElementById('kcalTotal0').textContent = kcalTotal + '/1500';
+                if (dia == 1) {
+                    idInicio = 6;
+                    idFin = 12;
+                }
+                if (dia == 2) {
+                    idInicio = 12;
+                    idFin = 18;
+                }
+                if (dia == 3) {
+                    idInicio = 18;
+                    idFin = 24;
+                }
+                if (dia == 4) {
+                    idInicio = 24;
+                    idFin = 30;
+                }
+                if (dia == 5) {
+                    idInicio = 30;
+                    idFin = 36;
+                }
+                if (dia == 6) {
+                    idInicio = 36;
+                    idFin = 42;
+                }
 
+                for (let i = idInicio; i < idFin; i++) {
+                    totalCb += Number(document.getElementById('totalCarbohidrato' + i).textContent);
+                    totalGrasa += Number(document.getElementById('totalGrasa' + i).textContent);
+                    totalProteina += Number(document.getElementById('totalProteina' + i).textContent);
+                    totalKcal += Number(document.getElementById('totalKcal' + i).textContent);
+
+                    document.getElementById('carbohidratosTotal' + dia).textContent = totalCb
+                    document.getElementById('grasasTotal' + dia).textContent = totalGrasa
+                    document.getElementById('proteinasTotal' + dia).textContent = totalProteina
+                    document.getElementById('kcalTotal' + dia).textContent = totalKcal
+                }
+
+                let valorKcal = Number(document.getElementById('kcalTotal' + dia).textContent);
+                if (valorKcal > 1500 && estadoDias[dia]==false) {
+                    estadoDias[dia]=true;
+                    swal({
+                        title: "Atención",
+                        text: "El total del día " + arrayDias[dia] +
+                            " de los alimentos agregados a sobrepasado las 1500 Kcal",
+                        icon: "info",
+                    })
+                }
             }
+
         }
     </script>
 @endsection

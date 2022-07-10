@@ -103,7 +103,7 @@
                                                     <div class="col-md-9  col-11 text-left">
 
                                                         <form method="POST"
-                                                            action="{{ route('actividad.update', $actividad->id) }}">
+                                                            action="{{ route('actividad.update', $actividad->id) }}" enctype="multipart/form-data">
                                                             @csrf
                                                             {{ method_field('PATCH') }}
 
@@ -172,13 +172,13 @@
                                                                     </div>
                                                                     <div class="text-center">
                                                                         @if (isset($actividad->imagen->url))
-                                                                            <img id="imagen"
-                                                                                class="ocultar img-thumbnail"
+                                                                            <img 
+                                                                                class="ocultar img-thumbnail imagenAlimento"
                                                                                 style="width:95%;heigth:80%"
                                                                                 src="{{ $actividad->imagen->url }}">
                                                                         @else
-                                                                            <img id="imagen"
-                                                                                class="ocultar img-thumbnail"
+                                                                            <img 
+                                                                                class="ocultar img-thumbnail imagenAlimento"
                                                                                 style="width:95%;heigth:80%"
                                                                                 src="{{ asset('img/icons/dieta48.png') }}">
                                                                         @endif
@@ -286,19 +286,25 @@
         </div>
     </div>
     <script>
-        var imagen = document.getElementById('imagen');
-        var estado = false;
-
-        function showImage() {
-            if (estado) {
-                imagen.className += " ocultar";
-                estado = false;
-            } else {
-                imagen.classList.remove('ocultar');
-                estado = true;
-            }
-
+        var state = true;
+    function showImage()
+    {
+        var imagenes = document.querySelectorAll('.imagenAlimento');
+        if(state)
+        {
+            console.log('is true')
+            imagenes.forEach(item=>{
+                console.log(item)
+            $('img.imagenAlimento').show('slow');
+            })
+            state=false;
         }
+        imagenes.forEach(item=>{
+            $('img.imagenAlimento').hide();
+            state = true;
+            })
+      
+    }
 
 
         function eliminarActividad(actividad) {

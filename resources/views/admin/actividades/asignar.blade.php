@@ -28,6 +28,9 @@
         }
     </style>
 
+<form method="POST" class="forms-sample" action="{{ route('actividad.guardarAsignacion') }}">
+    @csrf
+    
     <div class="card ">
         <div class="mb-2" style="background-color:#4b6ac3">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
@@ -48,7 +51,8 @@
                                 @foreach ($paciente->dato_antropometrico as $kp => $data)
                                     @if ($loop->last)
                                         <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
-                                            <label class="col-form-label" style=";font-size:16px">{{ date('Y-m-d',strtotime($data->created_at)) }}
+                                            <label class="col-form-label"
+                                                style=";font-size:16px">{{ date('Y-m-d', strtotime($data->created_at)) }}
                                             </label>
                                         </div>
                                     @endif
@@ -143,7 +147,9 @@
                             <h4 class="card-title col-6">
                                 <img src="http://localhost:8000/img/icons/scale.png">Peso (Kg)
                             </h4>
-                            <div class=" col-4 text-right"> <a title="Ver más" class="btn btn-outline-secondary p-2" data-toggle="modal" data-target="#exampleModal-35"><i class="fa fa-plus" aria-hidden="true"></i></a></div>
+                            <div class=" col-4 text-right"> <a title="Ver más" class="btn btn-outline-secondary p-2"
+                                    data-toggle="modal" data-target="#exampleModal-35"><i class="fa fa-plus"
+                                        aria-hidden="true"></i></a></div>
 
                         </div>
 
@@ -154,76 +160,71 @@
             </div>
         </div>
 
-        <form method="POST" class="forms-sample" action="{{ route('actividad.guardarAsignacion') }}"
-            enctype="multipart/form-data">
-            @csrf
+       
             <div class="  form-group text-center mt-2 mb-4">
-                <button type="submit" class="btn btn-success mr-2"><i class="fa-solid fa-floppy-disk mr-2"></i> Guardar actividades</button>
+                <button type="submit" class="btn btn-success mr-2"><i class="fa-solid fa-floppy-disk mr-2"></i> Guardar
+                    actividades</button>
                 <a href="{{ route('actividad.index') }}" class="btn btn-light">Cancelar</a>
-
             </div>
     </div>
 
     <div class="card mt-3 p-0">
         <div class="card-body p-0">
-                <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
-                <input type="hidden" name="idResponsable" value="{{ $idResponsable }}" id="idResponsable">
-                <input type="hidden" value="{{ $actividadesReales }}" id="actividades">
-
-
-
-                <div class="col-12 mx-0" style="border:1px solid #9a9b9b ;border-radius:7px  ">
-                    <div class="row justify-content-center p-3"
-                        style="border-bottom: 1px solid #9a9b9b;background-color:#dce7e7">
-                        <div class="row w-100  text-left" style="font-weight:bold">
-                            <label class="col-md-1 col-12 text-center text-md-left">N°</label>
-                            <label class="col-md-4 col-12  text-center">Nombre actividad</label>
-                            <label class="col-md-3 col-12  text-center">Prioridad</label>
-                            <label class="col-md-2 col-12   text-center text-md-right">Duración </label>
-                            <label class="col-md-2 col-12   text-center text-md-right">Acciones</label>
-                        </div>
-
+            <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
+            <input type="hidden" name="idResponsable" value="{{ $idResponsable }}" id="idResponsable">
+            <input type="hidden" value="{{ $actividadesReales }}" id="actividades">
+            <div class="col-12 mx-0" style="border:1px solid #9a9b9b ;border-radius:7px  ">
+                <div class="row justify-content-center p-3"
+                    style="border-bottom: 1px solid #9a9b9b;background-color:#dce7e7">
+                    <div class="row w-100  text-left" style="font-weight:bold">
+                        <label class="col-md-1 col-12 text-center text-md-left">N°</label>
+                        <label class="col-md-4 col-12  text-center">Nombre actividad</label>
+                        <label class="col-md-3 col-12  text-center">Prioridad</label>
+                        <label class="col-md-2 col-12   text-center text-md-right">Duración </label>
+                        <label class="col-md-2 col-12   text-center text-md-right">Acciones</label>
                     </div>
-
-                    <div id="contenedor" class=" col-12 mt-3"
-                        style="  display:flex; justify-content:space-between;  align-items:center; flex-wrap:wrap; flex-direction:row">
-                    </div>
-                    @if (count($errors) > 0)
-                        @foreach ($errors->all() as $error)
-                            <div class=" bg-danger m-1 p-0 row justify-content-center align-items-center"
-                                style="border-radius:5px" role="alert">
-                                <label class="col-form-label text-white"
-                                    style="font-size:14px;font-weight:bold;text-transform:uppercase">
-                                    {{ $error }} para la actividad</label>
-
-                            </div>
-                        @endforeach
-                    @endif
-                    @if (count($actividadesReales) > 0)
-                        <div class="opciones col-12 py-2 my-1"
-                            style="display:flex; position:sticky;
-                                    bottom: 0px; justify-content:center; align-items:center;">
-                            {{-- <label class="col-form-label">Agregar actividad</label> --}}
-                            <a id="agregar" onclick="agregar();" class="btn btn-warning my-4"><i
-                                    class="fas fa-plus mr-3"></i>Agregar actividad</a>
-                        </div>
-                    @else
-                        <div class="opciones col-12 py-2 my-1"
-                            style="display:flex; position:sticky;
-                                    bottom: 0px; justify-content:center; align-items:center;">
-                            <label class="badge badge-danger">No hay actividades para asignar</label>
-                        </div>
-                    @endif
 
                 </div>
+               
+                <div id="contenedor" class=" col-12 mt-3"
+                    style="  display:flex; justify-content:space-between;  align-items:center; flex-wrap:wrap; flex-direction:row">
+                </div>
+                <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
+            <input type="hidden" name="idResponsable" value="{{ $idResponsable }}" id="idResponsable">
+            <input type="hidden" value="{{ $actividadesReales }}" id="actividades">
+          
+                @if (count($errors) > 0)
+                    @foreach ($errors->all() as $error)
+                        <div class=" bg-danger m-1 p-0 row justify-content-center align-items-center"
+                            style="border-radius:5px" role="alert">
+                            <label class="col-form-label text-white"
+                                style="font-size:14px;font-weight:bold;text-transform:uppercase">
+                                {{ $error }} para la actividad</label>
+
+                        </div>
+                    @endforeach
+                @endif
+                @if (count($actividadesReales) > 0)
+                    <div class="opciones col-12 py-2 my-1"
+                        style="display:flex; position:sticky;
+                                    bottom: 0px; justify-content:center; align-items:center;">
+                        {{-- <label class="col-form-label">Agregar actividad</label> --}}
+                        <a id="agregar" onclick="agregar();" class="btn btn-warning my-4"><i
+                                class="fas fa-plus mr-3"></i>Agregar actividad</a>
+                    </div>
+                @else
+                    <div class="opciones col-12 py-2 my-1"
+                        style="display:flex; position:sticky;
+                                    bottom: 0px; justify-content:center; align-items:center;">
+                        <label class="badge badge-danger">No hay actividades para asignar</label>
+                    </div>
+                @endif
+
+            </div>
         </div>
-
-        </form>
-
-
-
     </div>
 
+</form>
 
     <div class="card mt-3">
         <div class="card-body">
@@ -251,7 +252,7 @@
                                     <td><img src="{{ $actividad->imagen->url }}"></td>
                                     <td>{{ $actividad->duracion }}</td>
                                     <td>{{ $actividad->responsable }}</td>
-                                    <td>{{date('Y-m-d',strtotime($actividad->created_at)) }}</td>
+                                    <td>{{ date('Y-m-d', strtotime($actividad->created_at)) }}</td>
                                     <td>
 
 
@@ -265,24 +266,23 @@
                     </table>
                 </div>
             </div>
-            <div class="modal fade"id="exampleModal-35" tabindex="-1" role="dialog"
-            aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg"role="document">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:#4b6ac3">
-                        <h5 class="modal-title text-lg-center text-white"
-                            style="text-transform: uppercase; font-weight:bold; font-size:16px" id="ModalLabel">Gráfica de peso
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body py-3 px-0" style="min-height:500px">
+            <div class="modal fade"id="exampleModal-35" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg"role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#4b6ac3">
+                            <h5 class="modal-title text-lg-center text-white"
+                                style="text-transform: uppercase; font-weight:bold; font-size:16px" id="ModalLabel">
+                                Gráfica de peso
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -300,7 +300,6 @@
         var i = 1;
 
         function eliminarFila(id) {
-            // alert(id)
             $('#lbl' + id).remove();
             $('#btnEliminar' + id).remove();
             $('#selectPrioridad' + id).remove();
@@ -308,7 +307,6 @@
             $('#contenedorDuracion' + id).remove();
         }
 
-        //  contenedor.className+="mx-2 my-2"
         function agregar() {
 
             var contenedor = document.getElementById("contenedor");
@@ -332,17 +330,10 @@
             var div = document.createElement("div"); //div que contiene a duracion
             div.id = "contenedorDuracion" + i
             var label = document.createElement("label");
-            // var a = document.createElement("a");
-            // a.id = "btnEliminar"+i
-            // a.addEventListener("onclick",eliminarFila(i))
 
             // //creacion del boton de eliminar
-            // a.className += "btn col-md-2 my-2 ml-2 btn-danger btnEliminar";
-            // a.style = "max-height:38px;"
-            // let texto = document.createTextNode("Eliminar");
-            // a.appendChild(texto);
             var a =
-                `<div class="col-md-1 my-2 ml-2 text-center"><a class="btn btn-danger btnEliminar" id="btnEliminar${i}" onclick="eliminarFila(${i})"><i class="fa-solid fa-xmark "></i></a></div>`
+                `<div class="col-md-1 my-2 ml-2 text-center" id="btnEliminar${i}"><a class="btn btn-danger btnEliminar"  onclick="eliminarFila(${i})"><i class="fa-solid fa-xmark "></i></a></div>`
             //fin boton eliminar
 
             //edicion del indice de filas
@@ -393,33 +384,8 @@
             $(contenedor).append(a);
 
             console.log(contenedor)
-
-
         }
 
-
-        // let agregar = document.getElementById('agregar');
-        // let contenido = document.getElementById('contenedor');
-        // agregar.addEventListener('click',e=>{
-        //     e.preventDefault();
-        //     let clonado = document.querySelector('.clonar');
-        //     let clon = clonado.cloneNode(true);
-
-        //     contenido.appendChild(clon).classList.remove('clonar');
-
-        //     let remover = contenido.lastChild.querySelectorAll('a.btnEliminar');
-        //     console.log(remover[0].classList)
-        //     remover[0].classList.remove('ocultar')
-        // });
-
-        // contenido.addEventListener('click',e=>{
-        //     e.preventDefault();
-        //     if(e.target.classList.contains('puntero'))
-        //     {
-        //         let contenedor = e.target.parentNode;
-        //         contenedor.parentNode.removeChild(contenedor)
-        //     }
-        // })
 
 
         function eliminarActividad(actividad) {

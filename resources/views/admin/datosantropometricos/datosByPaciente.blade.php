@@ -32,6 +32,8 @@
 
     <!-- ===================================================================================================================== -->
 
+    <input type="hidden" value="{{ $datos }}" id="datosAntropometricos">
+    {{-- <p>{{$datos}}</p> --}}
     <div class="card ">
         <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
@@ -147,7 +149,7 @@
                             <img src="http://localhost:8000/img/icons/scale.png">
                             Peso (Kg)
                         </h4>
-
+                        
                         <canvas id="sales-chart"></canvas>
                     </div>
                 </div>
@@ -312,5 +314,12 @@
             {{-- {{ $dietas->links() }} --}}
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('administracion/js/historialPaciente.js') }}"></script>
     {{-- {{ $dietas->links() }} --}}
 @endsection

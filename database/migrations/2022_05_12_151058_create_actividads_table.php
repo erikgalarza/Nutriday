@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('actividads', function (Blueprint $table) {
             $table->id();
             $table->text('nombre');
-            $table->integer('prioridad')->default(1);
             $table->longText('descripcion')->nullable();
            
 

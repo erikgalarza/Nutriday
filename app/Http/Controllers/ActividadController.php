@@ -70,11 +70,12 @@ class ActividadController extends Controller
 
     public function guardarAsignacion(StoreAsignacionActividad $request)
     {
-// dd($request);
+
         $idResponsable = $request->idResponsable;
         $paciente = Paciente::find($request->paciente_id);
         foreach($request->actividad_id as $key => $actividad){
-            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key],'user_id'=>Auth::id()],['prioridad'=>$request->prioridad_id[$key]]);
+            // print_r($request->prioridad_id[$key]);
+            $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key],'user_id'=>Auth::id(),'prioridad'=>$request->prioridad_id[$key]]);
         }
         return redirect()->route('actividad.pacientes');
     }

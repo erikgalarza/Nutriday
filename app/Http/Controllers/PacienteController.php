@@ -153,7 +153,7 @@ class PacienteController extends Controller
     {
         $user = User::create([
             "email"=>$request->email,
-            "password"=>$request->cedula,
+            "password"=>$request->password,
         ]);
 
         $paciente = Paciente::create([

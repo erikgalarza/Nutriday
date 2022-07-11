@@ -26,7 +26,9 @@ class ClienteController extends Controller
   
         $actividades = $paciente->actividades()->get();
         $duraciones = $paciente->actividades()->get(['duracion']);
-        return view('client.actividades.index',compact('actividades','duraciones'));
+        $prioridades = $paciente->actividades()->get(['prioridad']);
+        // dd($prioridades[5]->prioridad);
+        return view('client.actividades.index',compact('actividades','duraciones','prioridades'));
     }
 
     public function videos()
@@ -478,7 +480,7 @@ class ClienteController extends Controller
     {
         $user = User::find(Auth::id());
         $paciente = Paciente::where('user_id',$user->id)->first();
-        $actividadesAlta = $paciente->actividades()->get();
+        $actividadesAlta = $paciente->actividades()->where('prioridad',3)->get();
         $prioridades = collect();
         $duraciones = collect();
         foreach($actividadesAlta as $key => $actividad)

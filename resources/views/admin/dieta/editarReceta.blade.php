@@ -1191,10 +1191,10 @@
                                     proteina = alimentosMartes[j].proteina;
                                 let kcal = alimentosMartes[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carb * alimentosMartes[j].cantidad;
+                                antGrasa = antGrasa - grasa * alimentosMartes[j].cantidad;
+                                antPro = antPro - proteina * alimentosMartes[j].cantidad;
+                                antKcal = antKcal - kcal * alimentosMartes[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1243,10 +1243,10 @@
                                     proteina = alimentosMiercoles[j].proteina;
                                 let kcal = alimentosMiercoles[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carb* alimentosMiercoles[j].cantidad;
+                                antGrasa = antGrasa - grasa* alimentosMiercoles[j].cantidad;
+                                antPro = antPro - proteina* alimentosMiercoles[j].cantidad;
+                                antKcal = antKcal - kcal* alimentosMiercoles[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1295,10 +1295,10 @@
                                     proteina = alimentosJueves[j].proteina;
                                 let kcal = alimentosJueves[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carb* alimentosJueves[j].cantidad;
+                                antGrasa = antGrasa - grasa* alimentosJueves[j].cantidad;
+                                antPro = antPro - proteina* alimentosJueves[j].cantidad;
+                                antKcal = antKcal - kcal* alimentosJueves[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1347,10 +1347,10 @@
                                     proteina = alimentosViernes[j].proteina;
                                 let kcal = alimentosViernes[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carb* alimentosViernes[j].cantidad;
+                                antGrasa = antGrasa - grasa* alimentosViernes[j].cantidad;
+                                antPro = antPro - proteina* alimentosViernes[j].cantidad;
+                                antKcal = antKcal - kcal* alimentosViernes[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1399,10 +1399,10 @@
                                     proteina = alimentosSabado[j].proteina;
                                 let kcal = alimentosSabado[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carb* alimentosSabado[j].cantidad;
+                                antGrasa = antGrasa - grasa* alimentosSabado[j].cantidad;
+                                antPro = antPro - proteina* alimentosSabado[j].cantidad;
+                                antKcal = antKcal - kcal* alimentosSabado[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1452,10 +1452,10 @@
                                     proteina = alimentosDomingo[j].proteina;
                                 let kcal = alimentosDomingo[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carb* alimentosDomingo[j].cantidad;
+                                antGrasa = antGrasa - grasa* alimentosDomingo[j].cantidad;
+                                antPro = antPro - proteina* alimentosDomingo[j].cantidad;
+                                antKcal = antKcal - kcal* alimentosDomingo[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1971,7 +1971,7 @@
                                     alimentosMartes[j + 1] = alimento;
                                 }
                             }
-                            console.log(alimentosMartes)
+                            console.log('ali martes:',alimentosMartes)
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
@@ -2312,7 +2312,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${lunes[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

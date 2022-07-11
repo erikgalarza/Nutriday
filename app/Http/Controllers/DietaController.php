@@ -2026,13 +2026,13 @@ use AlimentosDieta;
         $paciente_id = $request->paciente_id;
         $user_id = $request->user_id;
 
-        $lunes = $semana->lunes;//tienes los alimentos del lunes
-        $martes = $semana->martes;//tienes los alimentos del lunes
-        $miercoles = $semana->miercoles;//tienes los alimentos del lunes
-        $jueves = $semana->jueves;//tienes los alimentos del lunes
-        $viernes = $semana->viernes;//tienes los alimentos del lunes
-        $sabado = $semana->sabado;//tienes los alimentos del lunes
-        $domingo = $semana->domingo;//tienes los alimentos del lunes
+        $lunes = $semana->alimentosLunes;//tienes los alimentos del lunes
+        $martes = $semana->alimentosMartes;//tienes los alimentos del lunes
+        $miercoles = $semana->alimentosMiercoles;//tienes los alimentos del lunes
+        $jueves = $semana->alimentosJueves;//tienes los alimentos del lunes
+        $viernes = $semana->alimentosViernes;//tienes los alimentos del lunes
+        $sabado = $semana->alimentosSabado;//tienes los alimentos del lunes
+        $domingo = $semana->alimentosDomingo;//tienes los alimentos del lunes
 
         $diaLunes = Dia::find(1);//lunes
         $diaMartes = Dia::find(2);//lunes

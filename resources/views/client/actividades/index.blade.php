@@ -33,15 +33,9 @@
 
                                     @foreach ($actividades as $key => $actividad)
                                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-                                        {{-- @if($actividad->proridad==1)
+                                      
+                                        @if($prioridades[$key]->prioridad==1)
                                         <figure  class="effect-text-in prioridad-baja">
-                                        @endif
-                                        @if($actividad->proridad==2)
-                                        <figure  class="effect-text-in prioridad-media">
-                                        @endif
-                                        @if($actividad->proridad==3) --}}
-                                        <figure  class="effect-text-in {{$actividad->prioridad==1 ? 'prioridad-baja' : ($actividad->prioridad ==2 ? 'prioridad-media' : 'prioridad-alta') }}">
-                                        {{-- @endif --}}
                                             <img src="{{$actividad->imagen->url}}" alt="image" />
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
@@ -50,6 +44,29 @@
                                                 </p>
                                             </figcaption>
                                         </figure>
+                                        @endif
+                                        @if($prioridades[$key]->prioridad==2)
+                                        <figure  class="effect-text-in prioridad-media">
+                                            <img src="{{$actividad->imagen->url}}" alt="image" />
+                                            <figcaption>
+                                                <h4>{{$actividad->nombre}}</h4>
+                                                <p>
+                                                    {{$actividad->descripcion}}
+                                                </p>
+                                            </figcaption>
+                                        </figure>
+                                        @endif
+                                        @if($prioridades[$key]->prioridad==3)
+                                        <figure  class="effect-text-in prioridad-alta">
+                                            <img src="{{$actividad->imagen->url}}" alt="image" />
+                                            <figcaption>
+                                                <h4>{{$actividad->nombre}}</h4>
+                                                <p>
+                                                    {{$actividad->descripcion}}
+                                                </p>
+                                            </figcaption>
+                                        </figure>
+                                        @endif
                                     </div>
                                     @endforeach
                                 </div>

@@ -865,7 +865,6 @@
             {
                 if (dia[j].horario === "desayuno") {
                     desayunos.push(dia[j])
-                    // cont++;
                 }
 
                 if (dia[j].horario === "colacion1") {
@@ -1160,10 +1159,10 @@
                                     proteina = alimentosMartes[j].proteina;
                                 let kcal = alimentosMartes[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carbalimentosMartes[j].cantidad;
+                                antGrasa = antGrasa - grasaalimentosMartes[j].cantidad;
+                                antPro = antPro - proteinaalimentosMartes[j].cantidad;
+                                antKcal = antKcal - kcalalimentosMartes[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1212,10 +1211,10 @@
                                     proteina = alimentosMiercoles[j].proteina;
                                 let kcal = alimentosMiercoles[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carbalimentosMiercoles[j].cantidad;
+                                antGrasa = antGrasa - grasaalimentosMiercoles[j].cantidad;
+                                antPro = antPro - proteinaalimentosMiercoles[j].cantidad;
+                                antKcal = antKcal - kcalalimentosMiercoles[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1264,10 +1263,10 @@
                                     proteina = alimentosJueves[j].proteina;
                                 let kcal = alimentosJueves[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carbalimentosJueves[j].cantidad;
+                                antGrasa = antGrasa - grasaalimentosJueves[j].cantidad;
+                                antPro = antPro - proteinaalimentosJueves[j].cantidad;
+                                antKcal = antKcal - kcalalimentosJueves[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1316,10 +1315,10 @@
                                     proteina = alimentosViernes[j].proteina;
                                 let kcal = alimentosViernes[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carbalimentosViernes[j].cantidad;
+                                antGrasa = antGrasa - grasaalimentosViernes[j].cantidad;
+                                antPro = antPro - proteinaalimentosViernes[j].cantidad;
+                                antKcal = antKcal - kcalalimentosViernes[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1368,10 +1367,10 @@
                                     proteina = alimentosSabado[j].proteina;
                                 let kcal = alimentosSabado[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carbalimentosSabado[j].cantidad;
+                                antGrasa = antGrasa - grasaalimentosSabado[j].cantidad;
+                                antPro = antPro - proteinaalimentosSabado[j].cantidad;
+                                antKcal = antKcal - kcalalimentosSabado[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -1421,10 +1420,10 @@
                                     proteina = alimentosDomingo[j].proteina;
                                 let kcal = alimentosDomingo[j].valor_calorico
 
-                                antCB = antCB - carb;
-                                antGrasa = antGrasa - grasa;
-                                antPro = antPro - proteina;
-                                antKcal = antKcal - kcal;
+                                antCB = antCB - carbalimentosDomingo[j].cantidad;
+                                antGrasa = antGrasa - grasaalimentosDomingo[j].cantidad;
+                                antPro = antPro - proteinaalimentosDomingo[j].cantidad;
+                                antKcal = antKcal - kcalalimentosDomingo[j].cantidad;
 
                                 document.getElementById('totalCarbohidrato' + id).textContent = antCB;
                                 document.getElementById('totalGrasa' + id).textContent = antGrasa;
@@ -2281,7 +2280,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${lunes[j].id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

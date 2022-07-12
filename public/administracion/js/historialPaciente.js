@@ -1,11 +1,14 @@
+
+
 (function($) {
     'use strict';
     $(function() {
-      
+
       if ($("#orders-chart").length) {
         const months = ["Ene", "Feb", "Mar","Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
         var datos = document.getElementById('datosAntropometricos').value
         datos = JSON.parse(datos);
+
         var fechas = [],imcs = [];
         datos.forEach(dato=>{
             let fecha = dato.created_at.substr(5,2);
@@ -15,7 +18,7 @@
             imcs.push(dato.imc)
         })
         var currentChartCanvas = $("#orders-chart").get(0).getContext("2d");
-       
+
         var currentChart = new Chart(currentChartCanvas, {
           type: 'bar',
           data: {
@@ -73,7 +76,7 @@
                 radius: 0
               }
             },
-            legendCallback: function(chart) { 
+            legendCallback: function(chart) {
               var text = [];
               text.push('<ul class="legend'+ chart.id +'">');
               for (var i = 0; i < chart.data.datasets.length; i++) {
@@ -95,10 +98,12 @@
           datos = JSON.parse(datos);
           var fechas = [], pesos=[], imcs = [];
           datos.forEach(dato=>{
-              fechas.push(dato.created_at)
+            let fecha = dato.created_at.split('T')[0]
+              fechas.push(fecha)
               pesos.push(dato.peso)
               imcs.push(dato.imc)
           })
+
                   var lineChartCanvas = $("#sales-chart").get(0).getContext("2d");
         var data = {
           labels: fechas,
@@ -109,7 +114,7 @@
               borderColor: [
                 '#392c70'
               ],
-              borderWidth: 3,
+              borderWidth: 1,
               fill: false
             },
           ]
@@ -121,7 +126,7 @@
                 drawBorder: false
               },
               ticks: {
-                stepSize: 200,
+                stepSize: 80,
                 fontColor: "#686868"
               }
             }],
@@ -147,6 +152,6 @@
           data: data,
           options: options
         });
-      }    
+      }
     });
   })(jQuery);

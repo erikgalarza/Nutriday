@@ -30,7 +30,7 @@
 
 <form method="POST" class="forms-sample" action="{{ route('actividad.guardarAsignacion') }}">
     @csrf
-    
+
     <div class="card ">
         <div class="mb-2" style="background-color:#4b6ac3">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
@@ -143,7 +143,7 @@
             <div class="col-lg-6 grid-margin stretch-card consulta">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row  justify-content-between">
+                        <div class="row  justify-content-between mb-2"  style="max-height: auto;">
                             <h4 class="card-title col-6">
                                 <img src="http://localhost:8000/img/icons/scale.png">Peso (Kg)
                             </h4>
@@ -152,15 +152,15 @@
                                         aria-hidden="true"></i></a></div>
 
                         </div>
-<input type="hidden" id="datosAntropometricos" value="{{$datos}}">
-                        <canvas id="sales-chart"></canvas>
+                        <input type="hidden" id="datosAntropometricos" value="{{$datos}}">
+                        <canvas id="sales-chart"  style="max-height: 200px;width:100%"></canvas>
 
                     </div>
                 </div>
             </div>
         </div>
 
-       
+
             <div class="  form-group text-center mt-2 mb-4">
                 <button type="submit" class="btn btn-success mr-2"><i class="fa-solid fa-floppy-disk mr-2"></i> Guardar
                     actividades</button>
@@ -185,14 +185,14 @@
                     </div>
 
                 </div>
-               
+
                 <div id="contenedor" class=" col-12 mt-3"
                     style="  display:flex; justify-content:space-between;  align-items:center; flex-wrap:wrap; flex-direction:row">
                 </div>
                 <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
             <input type="hidden" name="idResponsable" value="{{ $idResponsable }}" id="idResponsable">
             <input type="hidden" value="{{ $actividadesReales }}" id="actividades">
-          
+
                 @if (count($errors) > 0)
                     @foreach ($errors->all() as $error)
                         <div class=" bg-danger m-1 p-0 row justify-content-center align-items-center"

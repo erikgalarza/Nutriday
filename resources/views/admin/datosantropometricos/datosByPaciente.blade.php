@@ -67,6 +67,9 @@
                                     max-width: 360px !important;
                                     padding-left: 2rem !important;
                                 }
+                                .canvi{
+                                    min-height:350px;
+                                }
                             }
                             @media (min-width:992px){
                                 .contenedor2{
@@ -149,8 +152,8 @@
                             <img src="http://localhost:8000/img/icons/scale.png">
                             Peso (Kg)
                         </h4>
-                        
-                        <canvas id="sales-chart"></canvas>
+
+                        <canvas class="canvi" id="sales-chart" style="max-height: 180px;width:100%"></canvas>
                     </div>
                 </div>
             </div>

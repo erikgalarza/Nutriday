@@ -70,7 +70,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
                             class="col-xl-3  col-form-label">Edad:</label>
                         <div class="col-xl-9 ">
-                            <input style="border-radius:10px" name="edad" type="number" min="1" max="60" class="form-control" id="exampleInputEmail2" value="{{old('edad')}}"
+                            <input style="border-radius:10px" name="edad" type="number" min="1" max="80" class="form-control" id="exampleInputEmail2" value="{{old('edad')}}"
                                 placeholder="Ingrese la edad">
                         </div>
                     </div>
@@ -121,11 +121,11 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase;" for="exampleInputEmail2"
                             class="col-xl-3  col-form-label">Contraseña:</label>
                         <div class="col-xl-9 ">
-                            <input style="border-radius:10px" readonly="readonly" name="password" type="text" class="form-control" id="password" value="{{old('password')}}"
+                            <input style="border-radius:10px" readonly="readonly" name="password" type="password" class="form-control" id="password" value="{{old('password')}}"
                                 placeholder="Contraseña">
                         </div>
                     </div>
-                
+
 
                     <div class=" mt-5 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center ">
                         <div class="col-md-8 col-xl-5 p-0 justify-content-space-around">
@@ -148,7 +148,7 @@
 
 <script>
 
- 
+
     function leerCedula()
     {
           let cedula =  document.getElementById('cedula').value;

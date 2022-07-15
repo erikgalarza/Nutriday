@@ -153,7 +153,7 @@
                             Peso (Kg)
                         </h4>
 
-                        <canvas class="canvi" id="sales-chart" style="max-height: 180px;width:100%"></canvas>
+                        <canvas class="canvi" id="sales-chart" style="max-height: 180px !important;width:100%"></canvas>
                     </div>
                 </div>
             </div>

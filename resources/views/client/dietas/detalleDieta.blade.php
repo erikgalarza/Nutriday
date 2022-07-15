@@ -4,20 +4,20 @@
     <link rel="stylesheet" href="{{ asset('administracion/css/asignarAlimentosDieta.css') }}">
 
 
-    <div class="page-header" style="display:flex; text-align:center; justify-content:center; align-items:center;">
+    <div class="page-header mb-2" style="display:flex; text-align:center; justify-content:center; align-items:center;">
         <div>
             <h3 class="page-title">
-                Dietas {{ $dieta->id }}
+            {{ $dieta->nombre }}
             </h3>
         </div>
         @if(isset($paciente))
         <input type="hidden" id="paciente_id" value="{{$paciente['id']}}">
         @endif
 
-     
+
         <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
-      
-      
+
+
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -26,7 +26,7 @@
             </ol>
         </nav>
     </div>
-   
+
     <div class="col-md-12 grid-margin stretch-card">
 
         <div class="card">
@@ -100,9 +100,9 @@
                                                 data-parent="#accordion-{{ $j }}">
                                                 <div class="card-body pt-2" >
 
-                                                    
+
                                                     <div
-                                                        style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:30px;">
+                                                        style="display:flex; justify-content:space-around; flex-wrap:wrap; margin-top:10px;">
                                                         <div>
                                                             <div class="table-responsive">
                                                                <input type="hidden" value="{{$alimentosLunes}}" id="lunes">
@@ -113,12 +113,12 @@
                                                                <input type="hidden" value="{{$alimentosSabado}}" id="sabado">
                                                                <input type="hidden" value="{{$alimentosDomingo}}" id="domingo">
 
-                                                                    <table id="table" class="table table-striped">
+                                                                    <table id="table" class="table table-striped text-center">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th colspan="6" scope="col"
+                                                                                <th colspan="12" scope="col"
                                                                                     style="text-align:center;">
-                                                                                    ALIMENTOS
+                                                                                    ALIMENTOS <button class="ml-3" disabled  title="La información nutricional del alimento se encuentran en función del valor unitario, los datos se muestran por 1 porción del alimento" style="border-radius:10px; border:1px solid grey"><i class="fas fa-info pr-1"></i></button>
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
@@ -135,16 +135,31 @@
                                                                                 <th class="titulos_tabla_totales">
                                                                                     Peso
                                                                                 </th>
-                                                                                
+                                                                                <th class="titulos_tabla_totales">
+                                                                                    Categoría
+                                                                                </th>
+                                                                                <th class="titulos_tabla_totales">
+                                                                                    Proteínas
+                                                                                </th>
+                                                                                <th class="titulos_tabla_totales">
+                                                                                    Grasas
+                                                                                </th>
+                                                                                <th class="titulos_tabla_totales">
+                                                                                    Carbohidratos
+                                                                                </th>
+                                                                                <th class="titulos_tabla_totales">
+                                                                                    Valor Calórico
+                                                                                </th>
+
                                                                             </tr>
                                                                         </thead>
                                                                         <!-- 0 2 4 6 8 10 -->
-                                                                     
+
                                                                         <tbody id="tabla{{$id}}">
-                                                                          
+
                                                                         </tbody>
                                                                     </table>
-                                                                
+
                                                             </div>
                                                         </div>
 
@@ -155,7 +170,7 @@
                                     @endfor
 
 
-
+{{--
                                     <style>
                                         .resultado {
                                             margin: 50px 0px 0px -100px;
@@ -169,9 +184,9 @@
                                             position: fixed;
                                             z-index: 1;
                                         }
-                                    </style>
+                                    </style> --}}
 
-                                    <div class="resultado"
+                                    {{-- <div class="resultado"
                                         style="display:flex;  flex-wrap:wrap; justify-content:space-evenly; align-items:center">
                                         <div class="info_total" style="padding-top:10px; width:70%; text-align:center;">
 
@@ -211,7 +226,7 @@
                                                 class="btn btn-outline-warning" title="Cambiar selección"><i
                                                     class="fas fa-edit"></i></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         @endfor
@@ -232,7 +247,7 @@
 
             function iterar(dia,id)
             {
-                
+
                 console.log(dia)
                 console.log('valor de id:'+id);
                 var tbody = document.getElementById('tabla'+id);
@@ -246,18 +261,59 @@
                         for(let j = 0 ; j<72; j+=12)
                         {
                     if(dia[i].horario==='desayuno' && id == j)
-                    {   
-                        
+                    {
+                        if(dia[i].categoria_id === 1 ){
+                            dia[i].categoria_id = 'Platos preparados'
+
+                        } else if(dia[i].categoria_id === 2){
+                            dia[i].categoria_id = 'Granos'
+                        } else if(dia[i].categoria_id === 3 ){
+                            dia[i].categoria_id = 'Verduras'
+
+                        } else if(dia[i].categoria_id === 4 ){
+                            dia[i].categoria_id = 'Frutas'
+
+                        } else if(dia[i].categoria_id === 5 ){
+                            dia[i].categoria_id = 'Productos lácteos'
+
+                        } else if(dia[i].categoria_id === 6 ){
+                            dia[i].categoria_id = 'Proteínas'
+
+                        } else if(dia[i].categoria_id === 7 ){
+                            dia[i].categoria_id = 'Otros'
+                        }
+
+                        if(dia[i].medida_id === 1 ){
+                            dia[i].medida_id = 'gr'
+
+                        } else if(dia[i].medida_id === 2 ){
+                            dia[i].medida_id = 'lb'
+
+                        } else if(dia[i].medida_id === 3 ){
+                            dia[i].medida_id = 'kg'
+
+                        } else if(dia[i].medida_id === 4){
+                            dia[i].medida_id = 'ml'
+
+                        } else if(dia[i].medida_id === 5){
+                            dia[i].medida_id = 'lt'
+                        }
+
                         let todo = `<tr>
-                            <td></td>
+                            <td class="text-center">${dia[i].cantidad}</td>
                             <td><img src="${dia[i].imagen.url}"></td>
-                            <td>${dia[i].nombre}</td>
-                            <td>${dia[i].cantidad}</td>
+                            <td>${dia[i].nombre} </td>
+                            <td>${dia[i].peso} (${dia[i].medida_id}) </td>
+                            <td>${dia[i].categoria_id} </td>
+                            <td>${dia[i].proteina} (${dia[i].medida_id})</td>
+                            <td>${dia[i].grasa} (${dia[i].medida_id})</td>
+                            <td>${dia[i].carbohidrato} (${dia[i].medida_id})</td>
+                            <td>${dia[i].valor_calorico} (kcal)</td>
                             </tr>`
                             $(tbody).append(todo);
                     }
                 }
-                 
+
                     //================ FIN DESAYUNOS ====================0 //
 
                     // ================ COLACIONES 1 =================== //
@@ -265,13 +321,55 @@
                     for(let j = 2 ; j<=74 ; j+=12)
                     {
                     if(dia[i].horario==='colacion1' && id == j)
-                    {   
-                        
+                    {
+
+                        if(dia[i].categoria_id === 1 ){
+                            dia[i].categoria_id = 'Platos preparados'
+
+                        } else if(dia[i].categoria_id === 2){
+                            dia[i].categoria_id = 'Granos'
+                        } else if(dia[i].categoria_id === 3 ){
+                            dia[i].categoria_id = 'Verduras'
+
+                        } else if(dia[i].categoria_id === 4 ){
+                            dia[i].categoria_id = 'Frutas'
+
+                        } else if(dia[i].categoria_id === 5 ){
+                            dia[i].categoria_id = 'Productos lácteos'
+
+                        } else if(dia[i].categoria_id === 6 ){
+                            dia[i].categoria_id = 'Proteínas'
+
+                        } else if(dia[i].categoria_id === 7 ){
+                            dia[i].categoria_id = 'Otros'
+                        }
+
+                        if(dia[i].medida_id === 1 ){
+                            dia[i].medida_id = 'gr'
+
+                        } else if(dia[i].medida_id === 2 ){
+                            dia[i].medida_id = 'lb'
+
+                        } else if(dia[i].medida_id === 3 ){
+                            dia[i].medida_id = 'kg'
+
+                        } else if(dia[i].medida_id === 4){
+                            dia[i].medida_id = 'ml'
+
+                        } else if(dia[i].medida_id === 5){
+                            dia[i].medida_id = 'lt'
+                        }
+
                         let todo = `<tr>
-                            <td></td>
+                            <td class="text-center">${dia[i].cantidad}</td>
                             <td><img src="${dia[i].imagen.url}"></td>
-                            <td>${dia[i].nombre}</td>
-                            <td>${dia[i].cantidad}</td>
+                            <td>${dia[i].nombre} </td>
+                            <td>${dia[i].peso} (${dia[i].medida_id}) </td>
+                            <td>${dia[i].categoria_id} </td>
+                            <td>${dia[i].proteina} (${dia[i].medida_id})</td>
+                            <td>${dia[i].grasa} (${dia[i].medida_id})</td>
+                            <td>${dia[i].carbohidrato} (${dia[i].medida_id})</td>
+                            <td>${dia[i].valor_calorico} (kcal)</td>
                             </tr>`
                             $(tbody).append(todo);
                     }
@@ -283,13 +381,55 @@
                  for(let j = 4 ; j<=76 ; j+=12)
                     {
                     if(dia[i].horario==='almuerzo' && id == j)
-                    {   
-                        
+                    {
+
+                        if(dia[i].categoria_id === 1 ){
+                            dia[i].categoria_id = 'Platos preparados'
+
+                        } else if(dia[i].categoria_id === 2){
+                            dia[i].categoria_id = 'Granos'
+                        } else if(dia[i].categoria_id === 3 ){
+                            dia[i].categoria_id = 'Verduras'
+
+                        } else if(dia[i].categoria_id === 4 ){
+                            dia[i].categoria_id = 'Frutas'
+
+                        } else if(dia[i].categoria_id === 5 ){
+                            dia[i].categoria_id = 'Productos lácteos'
+
+                        } else if(dia[i].categoria_id === 6 ){
+                            dia[i].categoria_id = 'Proteínas'
+
+                        } else if(dia[i].categoria_id === 7 ){
+                            dia[i].categoria_id = 'Otros'
+                        }
+
+                        if(dia[i].medida_id === 1 ){
+                            dia[i].medida_id = 'gr'
+
+                        } else if(dia[i].medida_id === 2 ){
+                            dia[i].medida_id = 'lb'
+
+                        } else if(dia[i].medida_id === 3 ){
+                            dia[i].medida_id = 'kg'
+
+                        } else if(dia[i].medida_id === 4){
+                            dia[i].medida_id = 'ml'
+
+                        } else if(dia[i].medida_id === 5){
+                            dia[i].medida_id = 'lt'
+                        }
+
                         let todo = `<tr>
-                            <td></td>
+                            <td class="text-center">${dia[i].cantidad}</td>
                             <td><img src="${dia[i].imagen.url}"></td>
-                            <td>${dia[i].nombre}</td>
-                            <td>${dia[i].cantidad}</td>
+                            <td>${dia[i].nombre} </td>
+                            <td>${dia[i].peso} (${dia[i].medida_id}) </td>
+                            <td>${dia[i].categoria_id} </td>
+                            <td>${dia[i].proteina} (${dia[i].medida_id})</td>
+                            <td>${dia[i].grasa} (${dia[i].medida_id})</td>
+                            <td>${dia[i].carbohidrato} (${dia[i].medida_id})</td>
+                            <td>${dia[i].valor_calorico} (kcal)</td>
                             </tr>`
                             $(tbody).append(todo);
                     }
@@ -301,13 +441,55 @@
                  for(let j = 6 ; j<=78 ; j+=12)
                     {
                     if(dia[i].horario==='colacion2' && id == j)
-                    {   
-                        
+                    {
+
+                        if(dia[i].categoria_id === 1 ){
+                            dia[i].categoria_id = 'Platos preparados'
+
+                        } else if(dia[i].categoria_id === 2){
+                            dia[i].categoria_id = 'Granos'
+                        } else if(dia[i].categoria_id === 3 ){
+                            dia[i].categoria_id = 'Verduras'
+
+                        } else if(dia[i].categoria_id === 4 ){
+                            dia[i].categoria_id = 'Frutas'
+
+                        } else if(dia[i].categoria_id === 5 ){
+                            dia[i].categoria_id = 'Productos lácteos'
+
+                        } else if(dia[i].categoria_id === 6 ){
+                            dia[i].categoria_id = 'Proteínas'
+
+                        } else if(dia[i].categoria_id === 7 ){
+                            dia[i].categoria_id = 'Otros'
+                        }
+
+                        if(dia[i].medida_id === 1 ){
+                            dia[i].medida_id = 'gr'
+
+                        } else if(dia[i].medida_id === 2 ){
+                            dia[i].medida_id = 'lb'
+
+                        } else if(dia[i].medida_id === 3 ){
+                            dia[i].medida_id = 'kg'
+
+                        } else if(dia[i].medida_id === 4){
+                            dia[i].medida_id = 'ml'
+
+                        } else if(dia[i].medida_id === 5){
+                            dia[i].medida_id = 'lt'
+                        }
+
                         let todo = `<tr>
-                            <td></td>
+                            <td class="text-center">${dia[i].cantidad}</td>
                             <td><img src="${dia[i].imagen.url}"></td>
-                            <td>${dia[i].nombre}</td>
-                            <td>${dia[i].cantidad}</td>
+                            <td>${dia[i].nombre} </td>
+                            <td>${dia[i].peso} (${dia[i].medida_id}) </td>
+                            <td>${dia[i].categoria_id} </td>
+                            <td>${dia[i].proteina} (${dia[i].medida_id})</td>
+                            <td>${dia[i].grasa} (${dia[i].medida_id})</td>
+                            <td>${dia[i].carbohidrato} (${dia[i].medida_id})</td>
+                            <td>${dia[i].valor_calorico} (kcal)</td>
                             </tr>`
                             $(tbody).append(todo);
                     }
@@ -319,13 +501,55 @@
                  for(let j = 8 ; j<=80 ; j+=12)
                     {
                     if(dia[i].horario==='merienda' && id == j)
-                    {   
-                        
+                    {
+
+                        if(dia[i].categoria_id === 1 ){
+                            dia[i].categoria_id = 'Platos preparados'
+
+                        } else if(dia[i].categoria_id === 2){
+                            dia[i].categoria_id = 'Granos'
+                        } else if(dia[i].categoria_id === 3 ){
+                            dia[i].categoria_id = 'Verduras'
+
+                        } else if(dia[i].categoria_id === 4 ){
+                            dia[i].categoria_id = 'Frutas'
+
+                        } else if(dia[i].categoria_id === 5 ){
+                            dia[i].categoria_id = 'Productos lácteos'
+
+                        } else if(dia[i].categoria_id === 6 ){
+                            dia[i].categoria_id = 'Proteínas'
+
+                        } else if(dia[i].categoria_id === 7 ){
+                            dia[i].categoria_id = 'Otros'
+                        }
+
+                        if(dia[i].medida_id === 1 ){
+                            dia[i].medida_id = 'gr'
+
+                        } else if(dia[i].medida_id === 2 ){
+                            dia[i].medida_id = 'lb'
+
+                        } else if(dia[i].medida_id === 3 ){
+                            dia[i].medida_id = 'kg'
+
+                        } else if(dia[i].medida_id === 4){
+                            dia[i].medida_id = 'ml'
+
+                        } else if(dia[i].medida_id === 5){
+                            dia[i].medida_id = 'lt'
+                        }
+
                         let todo = `<tr>
-                            <td></td>
+                            <td class="text-center">${dia[i].cantidad}</td>
                             <td><img src="${dia[i].imagen.url}"></td>
-                            <td>${dia[i].nombre}</td>
-                            <td>${dia[i].cantidad}</td>
+                            <td>${dia[i].nombre} </td>
+                            <td>${dia[i].peso} (${dia[i].medida_id}) </td>
+                            <td>${dia[i].categoria_id} </td>
+                            <td>${dia[i].proteina} (${dia[i].medida_id})</td>
+                            <td>${dia[i].grasa} (${dia[i].medida_id})</td>
+                            <td>${dia[i].carbohidrato} (${dia[i].medida_id})</td>
+                            <td>${dia[i].valor_calorico} (kcal)</td>
                             </tr>`
                             $(tbody).append(todo);
                     }
@@ -336,20 +560,62 @@
                  for(let j = 10 ; j<=82 ; j+=12)
                     {
                     if(dia[i].horario==='cena' && id == j)
-                    {   
+                    {
+                        if(dia[i].categoria_id === 1 ){
+                            dia[i].categoria_id = 'Platos preparados'
+
+                        } else if(dia[i].categoria_id === 2){
+                            dia[i].categoria_id = 'Granos'
+                        } else if(dia[i].categoria_id === 3 ){
+                            dia[i].categoria_id = 'Verduras'
+
+                        } else if(dia[i].categoria_id === 4 ){
+                            dia[i].categoria_id = 'Frutas'
+
+                        } else if(dia[i].categoria_id === 5 ){
+                            dia[i].categoria_id = 'Productos lácteos'
+
+                        } else if(dia[i].categoria_id === 6 ){
+                            dia[i].categoria_id = 'Proteínas'
+
+                        } else if(dia[i].categoria_id === 7 ){
+                            dia[i].categoria_id = 'Otros'
+                        }
+
+                        if(dia[i].medida_id === 1 ){
+                            dia[i].medida_id = 'gr'
+
+                        } else if(dia[i].medida_id === 2 ){
+                            dia[i].medida_id = 'lb'
+
+                        } else if(dia[i].medida_id === 3 ){
+                            dia[i].medida_id = 'kg'
+
+                        } else if(dia[i].medida_id === 4){
+                            dia[i].medida_id = 'ml'
+
+                        } else if(dia[i].medida_id === 5){
+                            dia[i].medida_id = 'lt'
+                        }
+
                         let todo = `<tr>
-                            <td></td>
+                            <td class="text-center">${dia[i].cantidad}</td>
                             <td><img src="${dia[i].imagen.url}"></td>
-                            <td>${dia[i].nombre}</td>
-                            <td>${dia[i].cantidad}</td>
+                            <td>${dia[i].nombre} </td>
+                            <td>${dia[i].peso} (${dia[i].medida_id}) </td>
+                            <td>${dia[i].categoria_id} </td>
+                            <td>${dia[i].proteina} (${dia[i].medida_id})</td>
+                            <td>${dia[i].grasa} (${dia[i].medida_id})</td>
+                            <td>${dia[i].carbohidrato} (${dia[i].medida_id})</td>
+                            <td>${dia[i].valor_calorico} (kcal)</td>
                             </tr>`
                             $(tbody).append(todo);
                     }
                 }
                 // ================== FIN CENAS ===========//
-                  
+
                 }
-              
+
             }
 
         function dibujar(id)
@@ -361,7 +627,7 @@
             var viernes = document.getElementById('viernes').value;viernes = JSON.parse(viernes);
             var sabado = document.getElementById('sabado').value;sabado = JSON.parse(sabado);
             var domingo = document.getElementById('domingo').value;domingo = JSON.parse(domingo);
-            
+
             if(id>=0 && id<11){iterar(lunes,id);}
             if(id>=12 && id<23){iterar(martes,id);}
             if(id>=24 && id<35){iterar(miercoles,id);}
@@ -369,7 +635,7 @@
             if(id>=48 && id<59){iterar(viernes,id);}
             if(id>=60 && id<71){iterar(sabado,id);}
             if(id>=72 && id<83){iterar(domingo,id);}
-         
+
         }
     </script>
         @endsection

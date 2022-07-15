@@ -119,7 +119,7 @@
 
                                        <input type="hidden" name="imc" id="imcAux{{$paciente->id}}" value="{{$data->imc}}">
                                         @endif
-                                     
+
                                             @endforeach
                                             @else
                                             <td>0</td>
@@ -137,7 +137,7 @@
                                             <a data-toggle="modal"
                                             data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-outline-info" title="Ver actividades asignadas"><i class="fas fa-eye"></i></a>
                                             @else
-                                            No se han asignado actividades
+                                            <label style="color:#ff5e6d">No se han asignado actividades !</label>
                                             @endif
                                         </td>
                                         <td>
@@ -161,21 +161,27 @@
                                                     </button>
                                                 </div>
                                               <div class="modal-body text-center" style=" padding:1.5rem 3rem">
-                                                <div class="row mb-5 " style="border-bottom:1px solid">
+                                                <div class="row mb-4 mt-2 " style="border-bottom:1px solid">
                                                     <div class="text-left col-3 font-weight-bold mb-2" >Nombre</div>
                                                     <div class="text-left col-3 font-weight-bold mb-2" >Prioridad</div>
                                                     <div class="col-2  font-weight-bold mb-2"><i class="far fa-clock" title="Duración"></i></div>
                                                     <div class="col-4  font-weight-bold text-center mb-2">Imagen</div>
                                                 </div>
 
-                                                <div class="row">
+                                                <div class="row text-left">
                                                 @foreach($paciente->actividades as $key => $actividad)
 
-                                                <div class="col-3 mb-2 text-left">{{$actividad->nombre}}</div>
-                                                <div class="col-3 mb-2 text-center">{{$actividad->prioridad}}</div>
-                                                <div class="col-2 mb-2 text-center">{{$duraciones[$key]->duracion}}</div>
+                                                <div class="col-3 mb-2 "> <label class="col-form-label" >{{$actividad->nombre}}</label></div>
+                                                @if($prioridad[$key]->prioridad === 1 )
+                                                <div class="col-3 mb-2 "><label class="col-form-label"> Baja</label></div>
+                                                @elseif($prioridad[$key]->prioridad === 2 )
+                                                    <div class="col-3 mb-2 "> <label class="col-form-label">Media</label></div>
+                                                @else
+                                                <div class="col-3 mb-2 "> <label class="col-form-label">Alta</label></div>
+                                                @endif
+                                                <div class="col-2 mb-2 text-center"><label class="col-form-label">{{$duraciones[$key]->duracion}}</label></div>
 
-                                                <div class="col-4 mb-2"><img style="max-width:70px;border-radius:10px" src="{{$actividad->imagen->url}}"></div>
+                                                <div class="col-4 mb-2 text-center"><img style="min-width:70px; max-width:70px;min-height:50px;max-height:50px;border-radius:10px" src="{{$actividad->imagen->url}}"></div>
 
                                                      @endforeach
                                                     </div>

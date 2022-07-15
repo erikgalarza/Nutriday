@@ -52,7 +52,7 @@
                   drawBorder: false,
                 },
                 ticks: {
-                  stepSize: 250,
+                  stepSize: 25,
                   fontColor: "#686868"
                 }
               }],

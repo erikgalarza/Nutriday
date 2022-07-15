@@ -16,7 +16,7 @@
             </ol>
         </nav>
     </div>
- 
+
 
     @if (isset($dieta))
         <input type="hidden" id="dieta_id" value="{{ $dieta->id }}">
@@ -361,8 +361,8 @@
                     </thead>
                     <tbody>
                         @php
-                        $nombrePrioridad = ['Alta','Media','Baja'];
-                        $colorPrioridad = ['danger','warning','success'];
+                        $nombrePrioridad = ['Baja','Media','Alta'];
+                        $colorPrioridad = ['success','warning','danger'];
                         @endphp
                         @foreach($actividadesAlta as $key => $actividad)
                         <tr>
@@ -378,8 +378,8 @@
                                 <label class="badge badge-{{$colorPrioridad[$prioridades[$key]-1]}} badge-pill">{{$nombrePrioridad[$prioridades[$key]-1]}}</label>
                             </td>
                         </tr>
-                      @endforeach                   
-                      
+                      @endforeach
+
                     </tbody>
                 </table>
             </div>

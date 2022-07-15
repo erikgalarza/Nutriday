@@ -145,7 +145,7 @@
                     <div class="card-body">
                         <div class="row  justify-content-between mb-2"  style="max-height: auto;">
                             <h4 class="card-title col-6">
-                                <img src="http://localhost:8000/img/icons/scale.png">Peso (Kg)
+                                <img src="http://localhost:8000/img/icons/scale.png">   Peso (Kg)
                             </h4>
                             <div class=" col-4 text-right"> <a title="Ver más" class="btn btn-outline-secondary p-2"
                                     data-toggle="modal" data-target="#exampleModal-35"><i class="fa fa-plus"
@@ -153,7 +153,7 @@
 
                         </div>
                         <input type="hidden" id="datosAntropometricos" value="{{$datos}}">
-                        <canvas id="sales-chart"  style="max-height: 200px;width:100%"></canvas>
+                        <canvas id="sales-chart"  style="max-height: 180px;"></canvas>
 
                     </div>
                 </div>

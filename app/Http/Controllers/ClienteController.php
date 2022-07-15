@@ -16,14 +16,14 @@ use App\Models\Alimento;
 
 class ClienteController extends Controller
 {
-   
+
     public function misActividades()
     {
 
         $user_id = auth::id();
-        
+
         $paciente = Paciente::where('user_id',$user_id)->first();
-  
+
         $actividades = $paciente->actividades()->get();
         $duraciones = $paciente->actividades()->get(['duracion']);
         $prioridades = $paciente->actividades()->get(['prioridad']);
@@ -49,9 +49,9 @@ class ClienteController extends Controller
     {
         // dd("dfdfa");
        $dieta =  Dieta::find($dieta_id);
-       
+
        $combinaciones = $dieta->acds()->get();
-  
+
        $alimentosLunes = collect();
        $alimentosMartes = collect();
        $alimentosMiercoles = collect();
@@ -67,7 +67,7 @@ class ClienteController extends Controller
                if($combinacion->dia_id == 1 && $combinacion->comida_id==1)// lunes desayuno
                {
                    $alimento = Alimento::find($combinacion->alimento_id);
-                   
+
                    $alimento->setAttribute('horario', 'desayuno');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
@@ -76,7 +76,7 @@ class ClienteController extends Controller
                }
                if($combinacion->dia_id == 1 && $combinacion->comida_id==2)
                {
-                
+
                    $alimento = Alimento::find($combinacion->alimento_id);
                    $alimento->setAttribute('horario', 'colacion1');
                 $alimento->setAttribute('imagen', $alimento->imagen->url);
@@ -105,7 +105,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'merienda');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosLunes->push($alimento); 
+                   $alimentosLunes->push($alimento);
                }
                if($combinacion->dia_id == 1 && $combinacion->comida_id==6)
                {
@@ -113,13 +113,13 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'cena');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosLunes->push($alimento); 
+                   $alimentosLunes->push($alimento);
                }
 
 
                // ========================= MARTES ================ //
-           
-         
+
+
                if($combinacion->dia_id == 2 && $combinacion->comida_id==1)
                {
                    // dd($combinacion->alimento_id);
@@ -127,12 +127,12 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'desayuno');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMartes->push($alimento); 
+                   $alimentosMartes->push($alimento);
                }
 
                if($combinacion->dia_id == 2 && $combinacion->comida_id==2)
                {
-                   
+
                    $alimento = Alimento::find($combinacion->alimento_id);
                    $alimento->setAttribute('horario', 'colacion1');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
@@ -169,18 +169,18 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'cena');
                 $alimento->setAttribute('imagen', $alimento->imagen->url);
                 $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMartes->push($alimento); 
+                   $alimentosMartes->push($alimento);
                }
 
                // ==================== MIERCOLES ======================0= //
-          
+
                if($combinacion->dia_id == 3 && $combinacion->comida_id==1)
                {
                    $alimento = Alimento::find($combinacion->alimento_id);
                    $alimento->setAttribute('horario', 'desayuno');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMiercoles->push($alimento); 
+                   $alimentosMiercoles->push($alimento);
                }
                if($combinacion->dia_id == 3 && $combinacion->comida_id==2)
                {
@@ -188,7 +188,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'colacion1');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMiercoles->push($alimento); 
+                   $alimentosMiercoles->push($alimento);
                }
                if($combinacion->dia_id == 3 && $combinacion->comida_id==3)
                {
@@ -196,7 +196,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'almuerzo');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMiercoles->push($alimento); 
+                   $alimentosMiercoles->push($alimento);
                }
                if($combinacion->dia_id == 3 && $combinacion->comida_id==4)
                {
@@ -205,7 +205,7 @@ class ClienteController extends Controller
                 $alimento->setAttribute('imagen', $alimento->imagen->url);
                 $alimento->setAttribute('cantidad', $combinacion->cantidad);
                    $alimentosMiercoles->push($alimento);
-                     
+
                }
                if($combinacion->dia_id == 3 && $combinacion->comida_id==5)
                {
@@ -213,7 +213,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'merienda');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMiercoles->push($alimento); 
+                   $alimentosMiercoles->push($alimento);
                }
                if($combinacion->dia_id == 3 && $combinacion->comida_id==6)
                {
@@ -221,9 +221,9 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'cena');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosMiercoles->push($alimento); 
+                   $alimentosMiercoles->push($alimento);
                }
-           
+
            // ==================== JUEVES ======================0= //
 
                if($combinacion->dia_id == 4 && $combinacion->comida_id==1)
@@ -232,7 +232,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'desayuno');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosJueves->push($alimento); 
+                   $alimentosJueves->push($alimento);
                }
                if($combinacion->dia_id == 4 && $combinacion->comida_id==2)
                {
@@ -240,7 +240,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'colacion1');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosJueves->push($alimento); 
+                   $alimentosJueves->push($alimento);
                }
                if($combinacion->dia_id == 4 && $combinacion->comida_id==3)
                {
@@ -264,7 +264,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'merienda');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosJueves->push($alimento); 
+                   $alimentosJueves->push($alimento);
                }
                if($combinacion->dia_id == 4 && $combinacion->comida_id==6)
                {
@@ -272,18 +272,18 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'cena');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosJueves->push($alimento); 
+                   $alimentosJueves->push($alimento);
                }
-           
+
             // ==================== VIERNES ======================0= //
-           
+
                if($combinacion->dia_id == 5 && $combinacion->comida_id==1)
                {
                    $alimento = Alimento::find($combinacion->alimento_id);
                    $alimento->setAttribute('horario', 'desayuno');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosViernes->push($alimento); 
+                   $alimentosViernes->push($alimento);
                }
                if($combinacion->dia_id == 5 && $combinacion->comida_id==2)
                {
@@ -299,7 +299,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'almuerzo');
                 $alimento->setAttribute('imagen', $alimento->imagen->url);
                 $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosViernes->push($alimento); 
+                   $alimentosViernes->push($alimento);
                }
                if($combinacion->dia_id == 5 && $combinacion->comida_id==4)
                {
@@ -326,7 +326,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
                    $alimentosViernes->push($alimento);
                }
-           
+
             // ==================== SABADO ======================0= //
 
                if($combinacion->dia_id == 6 && $combinacion->comida_id==1)
@@ -336,7 +336,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'desayuno');
                 $alimento->setAttribute('imagen', $alimento->imagen->url);
                 $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosSabado->push($alimento); 
+                   $alimentosSabado->push($alimento);
                }
                if($combinacion->dia_id == 6 && $combinacion->comida_id==2)
                {
@@ -345,7 +345,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'colacion1');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosSabado->push($alimento); 
+                   $alimentosSabado->push($alimento);
                }
                if($combinacion->dia_id == 6 && $combinacion->comida_id==3)
                {
@@ -353,7 +353,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'almuerzo');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosSabado->push($alimento); 
+                   $alimentosSabado->push($alimento);
                }
                if($combinacion->dia_id == 6 && $combinacion->comida_id==4)
                {
@@ -379,17 +379,17 @@ class ClienteController extends Controller
                 $alimento->setAttribute('cantidad', $combinacion->cantidad);
                    $alimentosSabado->push($alimento);
                }
-           
+
             // ==================== DOMINGO ======================0= //
 
-        
+
                if($combinacion->dia_id == 7 && $combinacion->comida_id==1)
                {
                    $alimento = Alimento::find($combinacion->alimento_id);
                    $alimento->setAttribute('horario', 'desayuno');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosDomingo->push($alimento); 
+                   $alimentosDomingo->push($alimento);
                }
                if($combinacion->dia_id == 7 && $combinacion->comida_id==2)
                {
@@ -397,7 +397,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'colacion1');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosDomingo->push($alimento); 
+                   $alimentosDomingo->push($alimento);
                }
                if($combinacion->dia_id == 7 && $combinacion->comida_id==3)
                {
@@ -421,7 +421,7 @@ class ClienteController extends Controller
                    $alimento->setAttribute('horario', 'merienda');
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
-                   $alimentosDomingo->push($alimento); 
+                   $alimentosDomingo->push($alimento);
                }
                if($combinacion->dia_id == 7 && $combinacion->comida_id==6)
                {
@@ -430,8 +430,8 @@ class ClienteController extends Controller
                    $alimento->setAttribute('imagen', $alimento->imagen->url);
                    $alimento->setAttribute('cantidad', $combinacion->cantidad);
                    $alimentosDomingo->push($alimento);
-               }  
-            } 
+               }
+            }
 
 // dd($alimentosLunes,$alimentosMartes,$alimentosMiercoles,$alimentosJueves,$alimentosViernes, $alimentosSabado, $alimentosDomingo);
 
@@ -440,12 +440,12 @@ class ClienteController extends Controller
 
     public function index()
     {
-        
+
     }
 
     public function estadoAnimo()
     {
-        
+
         return view('client.animo.form');
     }
 
@@ -459,7 +459,7 @@ class ClienteController extends Controller
             "descripcion"=>$request->descripcion,
             "paciente_id"=>$paciente->id
         ]);
-     
+
         return redirect()->route('cliente.dashboard');
     }
 
@@ -469,10 +469,25 @@ class ClienteController extends Controller
         // $dietas = Dieta::where('user_id',$user->id)->get();
         // return 1;
         $paciente = Paciente::where('user_id',auth::id())->first();
-     
+
         $dietas = $paciente->dietas()->get();
-        // dd($dietas,$paciente);
-        return view('client.dietas.index',compact('dietas'));
+        $fechas_fin = $paciente->dietas()->get(['fecha_fin']);
+
+        $fechasFinDieta = collect();
+        $fechasFinAsignacion = collect();
+        foreach ($dietas as $key => $dieta)
+        {
+            $user_ids = $paciente->dietas()->get(['user_id']);
+
+            $fechas_fin = $paciente->dietas()->get(['fecha_fin']);
+            $fechas_asignacion = $paciente->dietas()->get(['fecha_asignacion']);
+            $fecha_fin = $fechas_fin[$key]->fecha_fin;
+            $fecha_asignacion = $fechas_asignacion[$key]->fecha_asignacion;
+            $fechasFinDieta->push($fecha_fin);
+            $fechasFinAsignacion->push($fecha_asignacion);
+        }
+        //dd($fechasFinDieta);
+        return view('client.dietas.index',compact('dietas','fechasFinDieta','fechasFinAsignacion'));
     }
 
 
@@ -493,12 +508,12 @@ class ClienteController extends Controller
             $prioridades->push($prioridad);
 
             $dur = $actividad->paciente()->get(['duracion']);
-            
+
             $duracion = $dur[0]->duracion;
-            
+
             $duraciones->push($duracion);
             // print_r($key);
-           
+
         }
         // dd("dlfkad");
 //    dd($prioridades, $duraciones);
@@ -515,7 +530,7 @@ class ClienteController extends Controller
     }
 
 
-    
+
     public function miCuenta()
     {
      $user = User::find(Auth::id());
@@ -570,39 +585,39 @@ class ClienteController extends Controller
     }
     }
        return back();
-        
+
     }
- 
+
     public function create()
     {
         //
     }
 
- 
+
     public function store(Request $request)
     {
         //
     }
 
-    
+
     public function show($id)
     {
         //
     }
 
- 
+
     public function edit($id)
     {
         //
     }
 
-   
+
     public function update(Request $request, $id)
     {
         //
     }
 
-   
+
     public function destroy($id)
     {
         //

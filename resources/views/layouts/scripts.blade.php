@@ -15,6 +15,8 @@
 <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script src="vendor/vide/jquery.vide.min.js"></script>
 <script src="vendor/vivus/vivus.min.js"></script>
+<script src="administracion/dashboard.js"></script>
+
 
 <!-- Theme Base, Components and Settings -->
 <script src="js/theme.js"></script>

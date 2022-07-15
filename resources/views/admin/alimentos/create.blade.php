@@ -36,172 +36,116 @@
         </nav>
     </div>
     @if (isset($paciente))
+        <style>
+            @media (max-width:992px) {
+                .consulta {
+                    order: 2;
+                }
+            }
+        </style>
         <div class="col-md-12 grid-margin stretch-card">
-            <style>
-                .ocultar {
-                    display: none;
-                }
 
-                @media(max-width:1199px) {
-                    .container2 {
-                        max-width: 420px;
-                    }
-                }
-
-                @media(min-width:1199px) {
-                    .container3 {
-                        max-width: 420px;
-                    }
-
-                }
-
-                @media(min-width:1200px) {
-                    .container4 {
-                        min-width: 810px;
-                        max-width: 1140px;
-                    }
-                }
-
-                @media(min-width:1200px) {
-                    .consulta {
-                        border-right: 1px dashed;
-                    }
-
-                }
-
-                @media(max-width:1199px) {
-                    .consulta {
-                        border-top: 1px dashed;
-                        order: 2;
-                    }
-
-                    .blanco {
-                        background-color: white;
-                    }
-                }
-
-
-                .btn-outline-primary:hover {
-                    color: white !important;
-                }
-
-                .btn-outline-info:hover {
-                    color: white !important;
-                }
-            </style>
-
-            <div class="card">
-                <div class=" mb-2" style="background-color:#4b6ac3;border-radius: 5px 5px 0 0">
+            <div class="card ">
+                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
                     <h3
                         class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                        Dieta para {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
+                        Paciente {{ $paciente->nombre }} {{ $paciente->apellido }}</h3>
                 </div>
-                <div class="card-body">
-                    <div class="container container2 container3 container4">
-                        <div class="row justify-content-center mb-3 ml-0" style="border:1px dashed; border-radius:10px">
-                            <div class="col-12 form-group text-center mb-1 row justify-content-center p-0 m-0"
-                                style="border-bottom:1px dashed;background-color:#F0F0F0;border-radius:10px 10px 0 0">
-                                <div class="col-xl-6 row justify-content-center consulta blanco">
-                                    <div class="col-xl-5 col-6  no-gutters p-0 text-center ">
-                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Última
-                                            consulta:</label>
-                                    </div>
-                                    @foreach ($paciente->dato_antropometrico as $kp => $data)
-                                        @if ($loop->last)
-                                            <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
-                                                <label class="col-form-label"
-                                                    style="font-size:14px">{{ date('Y-m-d',strtotime($data->created_at))}}
-                                                </label>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                                <div class="col-xl-6 row justify-content-center" style="border-radius:10px 10px 0 0 ">
-                                    <div class="col-xl-4 col-5  no-gutters p-0 text-center">
-                                        <label class=" col-form-label " style="font-size:14px;font-weight:bold">Fecha fin
-                                            dieta:{{ date('Y-m-d',strtotime($dieta->fecha_fin)) }}</label>
-                                    </div>
-                                    <div class=" col-xl-5 col-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label" style="font-size:14px">{{ date('Y-m-d',strtotime($dieta->created_at)) }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="row px-4" style="margin-top:10px;">
 
-                            <div class="col-12 ">
-                                <div class="row justify-content-center align-items-center px-0 mt-xl-2">
-                                    <div class="col-9 col-xl-12 row pr-0 pl-sm-4 p-0 pl-xl-0 justify-content-center">
-                                        <div class="form-group  col-xl-2 row text-xl-center text-left mb-1 ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Edad:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->edad }}</label>
-                                        </div>
-                                        <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                            <label class="col-xl-12 col-6 col-form-label p-1"><strong>Tipo
-                                                    diabetes:</strong></label>
-                                            <label
-                                                class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $paciente->tipo_diabetes }}</label>
+                    <div class="col-lg-6 grid-margin stretch-card consulta ">
+                        <div class="card m">
+                            <div class="card-body text-center py-2 row justify-content-lg-center">
+
+                                <div class="col-12 row justify-content-center">
+                                    <div class=" col-12 row justify-content-center"
+                                        style="border-bottom:1px solid;max-width:345px">
+                                        <div class="col-6 col-lg-12 col-xl-6  p-0 ">
+                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                                Última consulta:</label>
                                         </div>
                                         @foreach ($paciente->dato_antropometrico as $kp => $data)
                                             @if ($loop->last)
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Peso:
-                                                        </strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->peso }}</label>
-                                                </div>
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Grasa
-                                                            corporal: </strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->grasa_corporal }}
-                                                        (%)
+                                                <div class="col-6 col-lg-12 col-xl-6 no-gutters p-0 text-center ">
+                                                    <label class="col-form-label"
+                                                        style=";font-size:16px">{{ date('Y-m-d',strtotime($data->created_at)) }}
                                                     </label>
                                                 </div>
-                                                <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                    <label class="col-xl-12 col-6 col-form-label p-1"><strong>Masa muscular:
-                                                        </strong></label>
-                                                    <label
-                                                        class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->masa_muscular }}
-                                                        (%)</label>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <style>
+                                    @media (max-width:992px) {
+                                        .contenedor {
+                                            max-width: 360px !important;
+                                            padding-left: 2rem !important;
+                                        }
+                                    }
+
+                                    @media (min-width:992px) {
+                                        .contenedor2 {
+                                            max-width: 290px !important;
+                                            padding-left: 0rem !important;
+                                        }
+                                    }
+                                </style>
+                                <div class="container mt-3 contenedor contenedor2" style="">
+                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                            <label class="col-7">{{ $paciente->tipo_diabetes }}</label>
+                                        </div>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"> <strong>Edad:</strong></label>
+                                            <label class="col-7">{{ $paciente->edad }}</label>
+                                        </div>
+
+                                        @foreach ($paciente->dato_antropometrico as $kp => $data)
+                                            @if ($loop->last)
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Altura:</strong></label>
+                                                    <label class="col-7">{{ $data->altura }} (m)</label>
                                                 </div>
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Peso:</strong></label>
+                                                    <label class="col-7">{{ $data->peso }} (kg)</label>
+                                                </div>
+
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Grasa corporal:</strong>
+                                                    </label>
+                                                    <label class="col-7">{{ $data->grasa_corporal }} (%)</label>
+                                                </div>
+
+                                                <div class="form-group row mb-1">
+                                                    <label class="col-5 text-left"><strong>Masa muscular:</strong></label>
+                                                    <label class="col-7">{{ $data->masa_muscular }} (%) </label>
+                                                </div>
+
                                                 @if ($data->imc <= 18.4)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Bajo peso)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Bajo peso)</label>
                                                     </div>
                                                 @endif
-
                                                 @if ($data->imc >= 18.5 && $data->imc <= 24.9)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1  ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Normal)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Normal)</label>
                                                     </div>
                                                 @endif
-
                                                 @if ($data->imc >= 25 && $data->imc <= 29.9)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Sobrepeso)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Sobrepeso)</label>
                                                     </div>
                                                 @endif
 
                                                 @if ($data->imc >= 30)
-                                                    <div class="form-group col-xl-2 row text-xl-center text-left mb-1 ">
-                                                        <label
-                                                            class="col-xl-12 col-6 col-form-label p-1"><strong>IMC:</strong></label>
-                                                        <label
-                                                            class="col-xl-12 col-5 col-form-label p-1 mb-1">{{ $data->imc }}
-                                                            (Obeso)</label>
+                                                    <div class="form-group row mb-1">
+                                                        <label class="col-5 text-left"><strong>IMC:</strong></label>
+                                                        <label class="col-7">{{ $data->imc }} (Obeso)</label>
                                                     </div>
                                                 @endif
                                             @endif
@@ -211,109 +155,132 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="col-lg-6 grid-margin stretch-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <img src="http://localhost:8000/img/icons/scale.png">
+                                    Peso (Kg)
+                                </h4>
+
+                                <canvas id="sales-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mb-1 pb-3  text-center">
+                    <a onclick="guardarDieta();" class="btn btn-warning "><i class="fa-solid fa-floppy-disk mr-2"></i>
+                        Guardar dieta</a>
                 </div>
             </div>
         </div>
     @else
-    <div class="col-md-12 grid-margin stretch-card">
+        <div class="col-md-12 grid-margin stretch-card">
 
-        <div class="card ">
-            <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
-                <h3
-                    class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
-                    Datos de dieta</h3>
-            </div>
-            <div class="row px-4" style="margin-top:10px;">
+            <div class="card ">
+                <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
+                    <h3
+                        class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
+                        Datos de dieta predifinida</h3>
+                </div>
+                <div class="row px-4" style="margin-top:10px;">
 
-                <div class="col-lg-6 grid-margin stretch-card consulta ">
-                    <div class="card ">
-                        <div class="card-body text-center py-2 row justify-content-lg-center">
+                    <div class="col-lg-6 grid-margin stretch-card consulta ">
+                        <div class="card ">
+                            <div class="card-body text-center py-2 row justify-content-lg-center">
 
-                            <div class="col-12 row justify-content-center">
-                                <div class=" col-12 row justify-content-center"
-                                    style="border-bottom:1px solid;max-width:345px">
-                                    <div class="col-6  col-xl-6  p-0 ">
-                                        <label class="col-form-label" style="font-size:16px;font-weight:bold">
-                                            Nombre dieta:</label>
+                                <div class="col-12 row justify-content-center">
+                                    <div class=" col-12 row justify-content-center"
+                                        style="border-bottom:1px solid;max-width:345px">
+                                        <div class="col-6  col-xl-6  p-0 ">
+                                            <label class="col-form-label" style="font-size:16px;font-weight:bold">
+                                                Nombre dieta:</label>
+                                        </div>
+                                        <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
+                                            <label class="col-form-label"
+                                                style=";font-size:16px">{{ $dieta->nombre }}
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="col-6  col-xl-6 no-gutters p-0 text-center ">
-                                        <label class="col-form-label"
-                                            style=";font-size:16px">{{ $dieta->nombre}}
-                                        </label>
+                                </div>
+                                <style>
+                                    @media (max-width:992px) {
+                                        .contenedor {
+                                            max-width: 360px !important;
+                                            padding-left: 2rem !important;
+                                        }
+                                    }
+
+                                    @media (min-width:992px) {
+                                        .contenedor2 {
+                                            max-width: 290px !important;
+                                            padding-left: 0rem !important;
+                                        }
+                                    }
+                                </style>
+                                <div class="container mt-3 contenedor contenedor2" style="">
+                                    <div class="col-lg-12 col-10 text-left ml-4 p-0">
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
+                                            @if ($dieta->tipo_diabetes == 3)
+                                                <label class="col-7">Tipo Gestacional</label>
+                                            @else
+                                                <label
+                                                    class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
+                                            @endif
+
+                                        </div>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"> <strong>IMC:</strong></label>
+                                            @if ($dieta->imc == '1')
+                                                <label class="col-7">(Bajo peso)</label>
+                                            @endif
+                                            @if ($dieta->imc == '2')
+                                                <label class="col-7">(Normal)</label>
+                                            @endif
+                                            @if ($dieta->imc == '3')
+                                                <label class="col-7">(Sobrepeso)</label>
+                                            @endif
+                                            @if ($dieta->imc == '4')
+                                                <label class="col-7">(Obeso)</label>
+                                            @endif
+                                        </div>
+                                        <div class="form-group row mb-1">
+                                            <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
+                                            <label class="col-7">{{ date('Y-m-d',strtotime($dieta->created_at)) }}</label>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <style>
-                                @media (max-width:992px) {
-                                    .contenedor {
-                                        max-width: 360px !important;
+                        </div>
+                    </div>
 
-                                    }
-                                }
 
-                                @media (min-width:992px) {
-                                    .contenedor2 {
-                                        min-width: 276px !important;
-                                        max-width: 300px !important;
-                                        padding-left: 0rem !important;
-                                    }
-                                }
-                            </style>
-                            <div class="container mt-3 contenedor contenedor2" style="">
-                                <div class="col-lg-12 col-10 text-left ml-4 p-0">
-                                    <div class="form-group row mb-1 mb-1">
-                                        <label class="col-5 text-left"><strong>Tipo diabetes:</strong></label>
-                                        @if ($dieta->tipo_diabetes == 3)
-                                            <label class="col-7">Tipo Gestacional</label>
-                                        @else
-                                            <label
-                                                class="col-7">Tipo{{ number_format($dieta->tipo_diabetes, 0) }}</label>
-                                        @endif
-
-                                    </div>
-                                    <div class="form-group row mb-1 mb-1">
-                                        <label class="col-5 text-left"> <strong>IMC:</strong></label>
-                                            <label class="col-7">{{$dieta->imc}}</label>
-                                    </div>
-                                    <div class="form-group row mb-1 mb-1">
-                                        <label class="col-5 text-left"><strong>Fecha creación:</strong></label>
-                                        <label class="col-7">{{ date('Y-m-d',strtotime($dieta->created_at))}}</label>
-                                    </div>
-
+                    <div class="col-lg-6 grid-margin stretch-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group row mb-1">
+                                    <label class="col-12 col-xl-4 text-left"> <strong>Observaciones:</strong></label>
+                                    <label
+                                        class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col-lg-6 grid-margin stretch-card ">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group row mb-1 mb-1">
-                                <label class="col-12 col-xl-4 text-left" style="font-size:14px;font-weight:bold">Observaciones:</label>
-                                <label
-                                    class="col-12 col-xl-8 text-justify">{{ $dieta->observaciones }}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="container mb-1 pb-3  text-center">
+                    <a onclick="guardarDieta();" class="btn btn-warning "><i class="fa-solid fa-floppy-disk mr-2"></i>
+                        Guardar dieta</a>
                 </div>
-            </div>
-            <style>
-                .botono{
-
-                }
-                .botono:hover{
-                    filter: brightness(90%)
-                }
-            </style>
-            <div class="container mb-1 pb-3  text-center">
-                <a onclick="guardarDieta()" class="btn btn-success mb-2 mb-sm-0"><i class="fa-solid fa-floppy-disk mr-2"></i>Guardar dieta</a>
             </div>
         </div>
-    </div>
     @endif
+
+
     <style>
         .ddd:hover {
             border: 1px solid #4b6ac3 !important;
@@ -764,8 +731,8 @@
         var semana = {};
 
         document.body.onload = function() {
-        
-        
+
+
             var dieta_id = document.getElementById('dieta_id').value
             // var semana = JSON.parse(document.getElementById('semana').value);
             console.log(semana)
@@ -788,7 +755,7 @@
         }
 
         function guardarDieta() {
-          
+
           // console.log('content lunes:',lunes)
           // console.log('content martes:',martes)
           var semana = {};
@@ -1175,7 +1142,7 @@
                                 alimentosLunes =[
                                     ...auxDia
                                 ]
-                               
+
                                 sumarResultados();
                                 contAlimentoRepetido = false;
                             }
@@ -1898,7 +1865,7 @@
             }
         }
 
-        
+
         async function agregarAlimento(id) {
             // por parametro viene el id del acordion y con el getElementById obtenemos el valor del elemento seleccionado
             let alimento_id = document.getElementById('alimentoSeleccionado' + id).value;
@@ -1917,7 +1884,7 @@
                                     alimento.horario = nombreComidas[i];
                                     alimento.cantidad = 1;
                                     alimentosLunes.push(alimento);
-                               
+
                             //     }
                             // }
 
@@ -2052,7 +2019,7 @@
 
                             alimento.horario = nombreComidas[i-12];
                                     alimento.cantidad = 1;
-                               
+
                                     alimentosMiercoles.push(alimento);
                             console.log(alimentosMiercoles)
                             let tbody = document.getElementById('tbody' + id)
@@ -2117,7 +2084,7 @@
 
                             alimento.horario = nombreComidas[i-18];
                                     alimento.cantidad = 1;
-                               
+
                                     alimentosJueves.push(alimento);
 
                             console.log(alimentosJueves)
@@ -2183,7 +2150,7 @@
 
                             alimento.horario = nombreComidas[i-24];
                                     alimento.cantidad = 1;
-                               
+
                                     alimentosViernes.push(alimento);
 
                             console.log(alimentosViernes)
@@ -2246,7 +2213,7 @@
                             let long = cant.length
                                     alimento.horario = nombreComidas[i-30];
                                     alimento.cantidad = 1;
-                               
+
                                     alimentosSabado.push(alimento);
                             console.log(alimentosSabado)
                             let tbody = document.getElementById('tbody' + id)
@@ -2309,7 +2276,7 @@
 
                             alimento.horario = nombreComidas[i-36];
                                     alimento.cantidad = 1;
-                               
+
                                     alimentosDomingo.push(alimento);
                             console.log(alimentosDomingo)
                             let tbody = document.getElementById('tbody' + id)

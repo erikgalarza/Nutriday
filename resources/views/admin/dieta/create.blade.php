@@ -156,7 +156,7 @@
 
                                 {{-- <form method="POST">
                                     @csrf --}}
-<h2>hola</h2>
+
                                     <div class="form-group row no-gutters">
                                         <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Sexo</label>
                                         <div class="col-sm-8">

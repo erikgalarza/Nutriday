@@ -42,9 +42,9 @@
                                         <td>{{ $dieta->nombre }}</td>
                                         <td>{{ $dieta->tipo_diabetes }}</td>
                                         <td>{{ $dieta->imc }}</td>
-                                        <td>{{ $dieta->created_at }}</td>
-                                        <td>{{ $dieta->fecha_fin }}</td>
-                                        <td><label class="badge badge-success">Activa</label></td>
+                                        <td>{{ date('Y-m-d',strtotime($dieta->created_at)) }}</td>
+                                        <td> {{date('Y-m-d',strtotime($fechasFinDieta[$key]))}}</td>
+                                        <td><label class="badge badge-success badge-pill">Activa</label></td>
                                         <td>
                                             <a href="{{route('cliente.verDieta',$dieta->id)}}"
                                                 class="btn btn-outline-info"><i class="fas fa-eye"></i></a>

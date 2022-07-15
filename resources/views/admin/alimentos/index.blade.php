@@ -114,7 +114,7 @@
                                                         </div>
                                                         @if (isset($alimento->imagen->url))
                                                         <img class="img-thumbnail p-0"
-                                                        style="height: 80%"
+                                                        style="max-height: 80%"
                                                             src="{{ $alimento->imagen->url }}">
                                                     @else
                                                     {{-- <h2>no hay img</h2> --}}
@@ -345,7 +345,7 @@
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-   
+
      var state = true;
     function showImage()
     {
@@ -363,7 +363,7 @@
             $('img.imagenAlimento').hide();
             state = true;
             })
-      
+
     }
 
     function eliminarAlimento(alimento) {

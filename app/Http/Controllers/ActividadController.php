@@ -47,25 +47,25 @@ class ActividadController extends Controller
         // $duraciones=collect();
         foreach($pacientes as $key => $paciente)
         {
-         
+
            $duraciones = $paciente->actividades()->get(['duracion']);
-       
+           $prioridad = $paciente->actividades()->get(['prioridad']);
+
+
+
            $user_id = $paciente->actividades()->get(['user_id']);
-           
+
            if(count($user_id)>0){
               $user = User::find($user_id[$key]->user_id);
               if($user->nutricionistas!=null){
                 $responsable = $user->nutricionistas->nombre;
                 }else{$responsable = $user->administradores->nombre;}
-                
-                return view('admin.actividades.pacientes',compact('pacientes','duraciones','responsable'));
+
+                return view('admin.actividades.pacientes',compact('pacientes','duraciones','prioridad','responsable'));
             }
-            
-     
-         
         }
 
-        return view('admin.actividades.pacientes',compact('pacientes','duraciones'));
+        return view('admin.actividades.pacientes',compact('pacientes','prioridad','duraciones'));
     }
 
     public function guardarAsignacion(StoreAsignacionActividad $request)
@@ -167,7 +167,7 @@ class ActividadController extends Controller
 
         if($request->hasFile('imagen'))
         {
-           
+
             $file = $request->imagen;
             $elemento= Cloudinary::upload($file->getRealPath(),['folder'=>'actividad']);
             $public_id = $elemento->getPublicId();

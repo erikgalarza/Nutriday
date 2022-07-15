@@ -24,7 +24,7 @@ class PacienteController extends Controller
 
     public function index()
     {
-        
+
         // $lastRecordDate = DatosAntropometrico::all()->sortByDesc('created_at')->take(1)->toArray();
         // dd($lastRecordDate);
         // $imcs = DB::table('datos_antropometricos')->select('imc')->latest()->get();
@@ -44,7 +44,7 @@ class PacienteController extends Controller
                 // dd($admin);
                 $nombre = $admin->nombre;
             }
-       
+
            $responsables->push($nombre);
         }
         // dd($responsables);
@@ -131,19 +131,28 @@ class PacienteController extends Controller
     public function actualizarPaciente(UpdatePacienteRequest $request){
         // dd($request);
         $paciente = Paciente::find($request->idpaciente);
-        $pass=$paciente->password;
+
+        $user_id = $paciente->user->id;
+        $user = User::find($user_id);
+
+        $pass=$user->password;
         if($request->password)
             $pass = Hash::make($request->password);
+
+            $user->update([
+                "email"=>$request->email,
+                "password"=>$pass
+            ]);
 
         $paciente->update([
             "nombre"=>$request->name,
             "apellido"=>$request->apellido,
-            "email"=>$request->email,
+            // "email"=>$request->email,
             "cedula"=>$request->cedula,
             "telefono"=>$request->telefono,
             // "edad"=>$request->edad,
             "sexo"=>$request->sexo,
-            "password"=>$pass,
+            // "password"=>$pass,
             // "tipo_diabetes"=>$request->tipo_diabetes,
         ]);
         return back();

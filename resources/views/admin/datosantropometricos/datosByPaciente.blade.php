@@ -181,8 +181,7 @@
                                 <th>IMC</th>
                                 <th>Grasa corporal</th>
                                 <th>Masa muscular</th>
-                                <th>Datos bioquímicos</th>
-                                <th>Observaciones</th>
+                                <th>Datos bioquímicos / Observaciones</th>
                                 <th>Fecha consulta</th>
                             </tr>
                         </thead>
@@ -190,21 +189,38 @@
                             @foreach ($datos as $key => $dato)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $dato->altura }}</td>
-                                    <td>{{ $dato->peso }}</td>
-                                    <td>{{ $dato->imc }}</td>
+                                    <td>{{ $dato->altura }} (m)</td>
+                                    <td>{{ $dato->peso }} (kg)</td>
+                                    @if ($data->imc <= 18.4)
+                                    <td>{{ $data->imc }} (Bajo peso)</td>
+
+                                @endif
+                                @if ($data->imc >= 18.5 && $data->imc <= 24.9)
+                                <td>{{ $data->imc }} (Normal)</td>
+
+                                @endif
+                                @if ($data->imc >= 25 && $data->imc <= 29.9)
+                                <td>{{ $data->imc }} (Sobrepeso)</td>
+
+                                @endif
+
+                                @if ($data->imc >= 30)
+                                <td>{{ $data->imc }} (Obeso)</td>
+
+                                @endif
+
+
                                     <td>{{ $dato->grasa_corporal }}</td>
                                     <td>{{ $dato->masa_muscular }}</td>
                                     <td>
                                         <a title="Ver datos bioquimicos del paciente" data-toggle="modal"
                                             data-target="#exampleModal-4{{ $dato->id }}"
-                                            class="btn btn-outline-info"><i class="fa-solid fa-flask"></i></a>
-                                    </td>
-                                    <td>
-                                        <a title="Ver observaciones del paciente" data-toggle="modal"
+                                            class="btn btn-outline-info" style="min-width: 51.6px"><i class="fa-solid fa-flask"></i></a>
+                                            <a title="Ver observaciones del paciente" data-toggle="modal"
                                             data-target="#exampleModal-5{{ $dato->id }}"
                                             class="btn btn-outline-primary"><i class="fa-solid fa-eye"></i></a>
                                     </td>
+
                                     <td>{{ date('Y-m-d',strtotime($dato->created_at)) }}</td>
                                 </tr>
 

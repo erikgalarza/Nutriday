@@ -80,7 +80,7 @@
         @if(count($pacientes) >  0)
         <div class="card mt-3">
             <div class="card-body">
-                <div class="container w-75 ">
+                <div class="container ">
                     <div class="table-responsive">
                         <table id="order-listing" class="table text-center">
                             <thead>
@@ -132,7 +132,7 @@
                                                     @endforeach
                                                 </td>
                                             @else
-                                                <td>No tiene dietas asignadas</td>
+                                                <td style="color:#ff5e6d">No tiene dietas asignadas !</td>
                                             @endif
 
                                             <td>

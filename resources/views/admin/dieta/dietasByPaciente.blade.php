@@ -135,8 +135,8 @@
                         <img src="http://localhost:8000/img/icons/scale.png">
                         Peso (Kg)
                     </h4>
-                    <input type="hidden" id="datosAntropometricos" value="{{$datos}}"> 
-                    <canvas id="sales-chart"></canvas>
+                    <input type="hidden" id="datosAntropometricos" value="{{$datos}}">
+                    <canvas style="max-height: 180px" id="sales-chart"></canvas>
                 </div>
             </div>
         </div>
@@ -219,14 +219,14 @@
                                             data-toggle="modal" data-target="#exampleModal-2{{$key}}"><i
                                                 class="fas fa-edit"></i></a>
 
-                                              
+
                                                 @if($dieta->estado=='inactiva')
                                                 <form method="post" id="deletedieta{{$key}}" style="min-width: 50px"
                                                 action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <a title="Activar" style="min-width: 50px"
-                                                onclick="document.getElementById('deletedieta'+{{$key}}).submit();"  
+                                                onclick="document.getElementById('deletedieta'+{{$key}}).submit();"
                                                     type="submit" class="btn btn-outline-danger mb-1"><i
                                                         class="fas fa-share"></i></a>
                                                     </form>
@@ -236,7 +236,7 @@
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <a title="Eliminar dieta" style="min-width: 50px"
-                                        onclick="obtenerKey({{$key}});eliminarDieta({{$dieta}})"  
+                                        onclick="obtenerKey({{$key}});eliminarDieta({{$dieta}})"
                                             type="submit" class="btn btn-outline-danger mb-1"><i
                                                 class="fas fa-trash"></i></a>
                                     </form>
@@ -423,8 +423,8 @@
                                                 </div>
 
 
-                                                
-                               
+
+
 
 
 
@@ -437,7 +437,7 @@
 
                                     </div>
                                 </div>
-                
+
                             @endforeach
                         </tbody>
                     </table>
@@ -446,7 +446,7 @@
         </div>
     </div>
 
-    
+
 
     <div class="modal fade" id="exampleModal-4" tabindex="-1"
         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -507,7 +507,7 @@
                                     <label class="col-sm-5 col-form-label"><strong>Fecha
                                             fin:</strong>
                                     </label>
-                                   
+
                                     <div class="col-sm-7">
                                         <input style="border-radius: 10px" type="date"
                                             class="form-control" min="{{date('Y-m-d')}}" name="fecha_fin">
@@ -547,7 +547,7 @@
         function obtenerKey(key)
         {
             k = key;
-            
+
         }
 
   function eliminarDieta(dieta) {

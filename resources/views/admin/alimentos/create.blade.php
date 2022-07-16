@@ -433,6 +433,7 @@
 
                 @php
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
+                    $nameImgComida = ['caffee.png','colacion1.png','almuerzo.png','colacion2.png','merienda.png','cena.png'];
                 @endphp
                 <div class="card mt-2" style="border:none">
                     <div class="tab-content py-0 px-lg-3 px-0" id="pills-tabContent" style="border:none;">
@@ -461,6 +462,7 @@
                                             $id2 = $id + 1;
                                         @endphp
                                         {{-- CREACION DE ACORDIONES EMPIEZA AQUI --}}
+                                       
                                         <div class="card "style="background-color:white;color:black">
                                             <div class="card-header" role="tab" id="heading-{{ $k }}"
                                                 style="border:1px solid #55558a;border-radius:10px">
@@ -468,8 +470,8 @@
                                                     <a onclick="" data-toggle="collapse" class="collapsed"
                                                         style="font-weight: bold" href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
-                                                        aria-controls="collapse-{{ $k }}"><i
-                                                            class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
+                                                        aria-controls="collapse-{{ $k }}">
+                                                        <img src="{{asset('administracion/images/comidas/'.$nameImgComida[$cont].'')}}">{{ $comidas[$cont] }}
                                                     </a>
                                                 </h6>
                                             </div>

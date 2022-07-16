@@ -35,7 +35,7 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-5 mb-4 mb-xl-0 row justify-content-center align-items-center">
                                 @if(isset($paciente->imagen->url))
-                                <img class="img-thumbnail imaagen"
+                                <img class="img-thumbnail imaagen "
                                 src="{{$paciente->imagen->url}}">
                                 @else
                                 <img class="img-thumbnail imaagen"
@@ -89,7 +89,7 @@
                                                 id="exampleInputUsername2">
                                         </div>
                                     </div> --}}
-{{-- 
+{{--
                                     <div class="form-group row mb-2">
                                         <label style="font-weight:bold;font-size:12px;"
                                             for="exampleInputUsername2"

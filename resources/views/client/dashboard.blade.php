@@ -166,8 +166,8 @@
                     </li> --}}
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />
-                            {{-- <img src="{{$paciente->imagen->url}}" alt="profile" /> --}}
+                            {{-- <img class="" src="{{asset('img/hombre.png')}}" alt="profile" /> --}}
+                            <img src="{{$paciente->imagen->url}}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
@@ -213,8 +213,8 @@
                         <div class="nav-link mb-3" style="border-top: 1px dashed;border-bottom:1px dashed">
                             <div class="profile-image">
 
-                                <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />
-                                {{-- <img src="{{$paciente->imagen->url}}" alt="profile" /> --}}
+                                {{-- <img class="" src="{{asset('img/hombre.png')}}" alt="profile" /> --}}
+                                <img src="{{$paciente->imagen->url}}" alt="profile" />
                             </div>
                             <div class="profile-name" >
                                 <p class="name">

@@ -20816,7 +20816,7 @@ code {
 }
 
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"] {
-  background: #392C70;
+  background: #828282;
   color: #ffffff !important;
   border-radius:8px
 }

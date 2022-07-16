@@ -476,7 +476,7 @@
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
                 @endphp
                 <div class="card mt-2" style="border:none">
-                    <div class="tab-content py-0 px-lg-5 px-0" id="pills-tabContent" style="border:none;">
+                    <div class="tab-content py-0 px-lg-3 px-0" id="pills-tabContent" style="border:none;">
                         @php
                             $a = -6;
                             $sum = 0;

@@ -1,8 +1,13 @@
 @extends('client.dashboard')
 @section('contenido')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('administracion/css/asignarAlimentosDieta.css') }}">
+    <script src="https://kit.fontawesome.com/50e215d7ac.js" crossorigin="anonymous"></script>
 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 
     <div class="page-header mb-2" style="display:flex; text-align:center; justify-content:center; align-items:center;">
         <div>
@@ -41,6 +46,7 @@
                     id="pills-tab" role="tablist" style="border:none;font-weight: bold">
                     @php
                         $dias = ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO'];
+
                     @endphp
 
                     @for ($i = 0; $i <= 6; $i++)
@@ -56,9 +62,10 @@
 
                 @php
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
+                    $iconos = ['fa fa-cloud','fa fa-smog','fa fa-cloud-meatball','fa-solid fa-cloud-moon','fa-solid fa-cloud-moon-rain','fa-solid fa-cloud-sun'];
                 @endphp
                 <div class="card mt-2" style="border:none">
-                    <div class="tab-content py-0 px-5" id="pills-tabContent" style="border:none;" >
+                    <div class="tab-content py-0 px-3" id="pills-tabContent" style="border:none;" >
                         @php
                             $a = -6;
                             $sum = 0;
@@ -82,15 +89,17 @@
                                             $cont = $cont + 1;
                                             $id = $id + 2;
                                             $id2 = $id + 1;
+
                                         @endphp
                                 {{-- CREACION DE ACORDIONES EMPIEZA AQUI --}}
+
                                         <div class="card "style="background-color:white;color:black">
                                             <div class="card-header" role="tab" id="heading-{{ $k }}" style="border:1px solid #55558a;border-radius:10px">
                                                 <h6 class="mb-0">
                                                     <a  data-toggle="collapse" onclick="dibujar({{$id}})" class="collapsed" style="font-weight: bold"
                                                         href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
-                                                        aria-controls="collapse-{{ $k }}"><i class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
+                                                        aria-controls="collapse-{{ $k }}"><i class=" fa fa-sun mr-4"></i>{{ $comidas[$cont] }}
                                                     </a>
                                                 </h6>
                                             </div>

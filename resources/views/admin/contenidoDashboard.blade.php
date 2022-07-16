@@ -53,7 +53,7 @@
                     <div class="col-xl-9 col-sm-9   align-items-center">
                         <input type="search" name="paciente"
                             style="min-height:60px;border:1px solid #dce7e700;background-color:#dce7e7"
-                            class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andres Morales"
+                            class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andres Flores"
                             required>
                     </div>
                     <button title="Ingrese el nombre de un paciente para buscar" type="submit"

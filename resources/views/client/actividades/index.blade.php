@@ -29,40 +29,42 @@
                         @if(count($actividades)>0)
                         <div class="row">
                             <div class="col-12">
-                                <div class="row portfolio-grid">
+                                <div class="row portfolio-grid justify-content-center">
 
                                     @foreach ($actividades as $key => $actividad)
-                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-                                      
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-4">
+
                                         @if($prioridades[$key]->prioridad==1)
-                                        <figure  class="effect-text-in prioridad-baja">
+                                        <figure  class="effect-text-in prioridad-baja" style="height:100%;min-height:225px">
                                             <img src="{{$actividad->imagen->url}}" alt="image" />
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
                                                 <p>
-                                                    {{$actividad->descripcion}}
+                                                    {{$duraciones[$key]->duracion}} min al dia
+
                                                 </p>
                                             </figcaption>
                                         </figure>
                                         @endif
                                         @if($prioridades[$key]->prioridad==2)
-                                        <figure  class="effect-text-in prioridad-media">
+                                        <figure  class="effect-text-in prioridad-media"  style="height:100%;min-height:225px">
                                             <img src="{{$actividad->imagen->url}}" alt="image" />
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
                                                 <p>
-                                                    {{$actividad->descripcion}}
+                                                    {{$duraciones[$key]->duracion}} min al dia
                                                 </p>
                                             </figcaption>
                                         </figure>
                                         @endif
                                         @if($prioridades[$key]->prioridad==3)
-                                        <figure  class="effect-text-in prioridad-alta">
+                                        <figure  class="effect-text-in prioridad-alta"  style="height:100%;min-height:225px">
                                             <img src="{{$actividad->imagen->url}}" alt="image" />
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
                                                 <p>
-                                                    {{$actividad->descripcion}}
+                                                    {{$duraciones[$key]->duracion}} min al dia
+
                                                 </p>
                                             </figcaption>
                                         </figure>

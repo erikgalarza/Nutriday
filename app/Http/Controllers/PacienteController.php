@@ -196,7 +196,7 @@ class PacienteController extends Controller
             "masa_muscular"=>$request->masa_muscular,
             "grasa_corporal"=>$request->grasa_corporal,
             "paciente_id"=>$request->id_paciente,
-            "osbservaciones"=>$request->observaciones
+            "observaciones"=>$request->observaciones
         ]);
 
         if ($request->hasFile('imagen')) {

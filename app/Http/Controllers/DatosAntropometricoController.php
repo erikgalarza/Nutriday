@@ -24,6 +24,7 @@ class DatosAntropometricoController extends Controller
     {
         $paciente = Paciente::find($paciente_id);
         $datos = $paciente->dato_antropometrico()->get();
+        // dd($datos);
         return view('admin.datosantropometricos.datosByPaciente', compact('datos', 'paciente'));
     }
 
@@ -59,7 +60,8 @@ class DatosAntropometricoController extends Controller
 
    
     public function store(StoreDatosAntropometricoRequest $request)
-    {
+    {   
+        dd($request);
         dd(Auth::id());
        $datosAntropometrico =  DatosAntropometrico::create([
             "altura"=>$request->altura,

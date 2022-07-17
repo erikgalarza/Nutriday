@@ -284,8 +284,13 @@
                                                     <option value="7">Domingo</option>
                                                 </select>
                                                 <div class="container my-2 p-0"
-                                                    style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row;"
+                                                    style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row; display:none;"
                                                     id="container{{ $key }}">
+
+
+                                                    <div class="vacio w-100 text-center mt-3" id="vacio{{ $key }}">
+                                                    </div>
+
 
                                                     <div class="desayuno w-100 text-center mt-3" id="desayuno{{ $key }}">
                                                         <div class="row justify-content-center align-items-center">
@@ -467,8 +472,11 @@
                                                                     <option value="7">Domingo</option>
                                                                 </select>
                                                                 <div class="container my-2 p-0"
-                                                                style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row;"
-                                                                id="container{{ $key }}">
+                                                                style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row; display:none;"
+                                                                id="containerDA{{ $key }}">
+
+                                                                <div class="vacio w-100 text-center mt-3" id="vacioDA{{ $key }}">
+                                                                </div>
 
                                                                 <div class="desayuno w-100 text-center mt-3" id="desayuno{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
@@ -482,7 +490,8 @@
                                                                         <h5 class="col-3 m-0">Porción</h5>
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
-                                                                    <div class="alimentosDesayuno col-12 w-100"id="alimentosDesayuno{{ $key }}"></div>
+                                                                    <div class="alimentosDesayuno col-12 w-100"id="alimentosDesayunoDA{{ $key }}">
+                                                                    </div>
                                                                 </div>
                                                                 </div>
 
@@ -499,7 +508,7 @@
                                                                         <h5 class="col-3 m-0 ">Porción</h5>
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
-                                                                    <div class="alimentosColacion1 col-12 w-100"id="alimentosColacion1{{ $key }}"></div>
+                                                                    <div class="alimentosColacion1 col-12 w-100"id="alimentosColacion1DA{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
 
@@ -516,7 +525,7 @@
                                                                         <h5 class="col-3 m-0">Porción</h5>
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
-                                                                    <div class="alimentosAlmuerzo col-12 w-100"id="alimentosAlmuerzo{{ $key }}"></div>
+                                                                    <div class="alimentosAlmuerzo col-12 w-100"id="alimentosAlmuerzoDA{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
 
@@ -533,7 +542,7 @@
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
 
-                                                                    <div class="alimentosColacion2 col-12 w-100"id="alimentosColacion2{{ $key }}"></div>
+                                                                    <div class="alimentosColacion2 col-12 w-100"id="alimentosColacion2DA{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
 
@@ -550,7 +559,7 @@
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
 
-                                                                    <div class="alimentosMerienda col-12 w-100"id="alimentosMerienda{{ $key }}"></div>
+                                                                    <div class="alimentosMerienda col-12 w-100"id="alimentosMeriendaDA{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
 
@@ -567,7 +576,7 @@
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
 
-                                                                    <div class="alimentosCena col-12 w-100"id="alimentosCena{{ $key }}"></div>
+                                                                    <div class="alimentosCena col-12 w-100"id="alimentosCenaDA{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -653,7 +662,6 @@
                                     class="btn btn-outline-danger mb-1"><i
                                         class="fas fa-share"></i></a>
                             </form>
-
                                 @endif
                             </td>
                         </tr>
@@ -816,6 +824,7 @@
    
     <script>
 
+        var estadoVisibleModal1 = false, estadoVisibleModal2 = false;
        
         function obtenerKeyActivarDP(key)
         {
@@ -884,7 +893,12 @@
             dietaid = null;
 
         function opcionDietaPredefinida(key) {
+            
+            // estadoVisibleModal1 = true;
+
             let diaSeleccionado = document.getElementById('selectorDiaTop' + key).value;
+            container = document.getElementById('container'+key);
+            $(container).show();
 
             $.ajax({
                 url: "{{ route('dieta.traerAlimentosDietaPredefinida') }}",
@@ -898,6 +912,7 @@
                 console.log(res);
                 // let arreglo = JSON.parse(res)
                 // console.log(arreglo)
+                var contenedorDefault = document.getElementById('vacio'+key);
                 var contenedor1 = document.getElementById('alimentosDesayuno' + key);
                 var contenedor2 = document.getElementById('alimentosColacion1' + key);
                 var contenedor3 = document.getElementById('alimentosAlmuerzo' + key);
@@ -905,6 +920,7 @@
                 var contenedor5 = document.getElementById('alimentosMerienda' + key);
                 var contenedor6 = document.getElementById('alimentosCena' + key);
 
+                contenedorDefault.innerHTML = '';
                 contenedor1.innerHTML = '';
                 contenedor2.innerHTML = '';
                 contenedor3.innerHTML = '';
@@ -912,7 +928,7 @@
                 contenedor5.innerHTML = '';
                 contenedor6.innerHTML = '';
 
-
+               
                 for (let i = 0; i < res.length; i++) {
                     let comida = res[i]
 
@@ -961,6 +977,9 @@
 
         function opcion(key) {
             let diaSeleccionado = document.getElementById('selectorDia' + key).value;
+            
+            let container = document.getElementById('containerDA'+key);
+            $(container).show();
 
             $.ajax({
                 url: "{{ route('dieta.traerAlimentos') }}",
@@ -972,16 +991,18 @@
                 }
             }).done(function(res) {
 
-                console.log(res);
+                console.log('res es:',res);
                 // let arreglo = JSON.parse(res)
                 // console.log(arreglo)
-                var contenedor1 = document.getElementById('alimentosDesayuno' + key);
-                var contenedor2 = document.getElementById('alimentosColacion1' + key);
-                var contenedor3 = document.getElementById('alimentosAlmuerzo' + key);
-                var contenedor4 = document.getElementById('alimentosColacion2' + key);
-                var contenedor5 = document.getElementById('alimentosMerienda' + key);
-                var contenedor6 = document.getElementById('alimentosCena' + key);
+               
+                var contenedor1 = document.getElementById('alimentosDesayunoDA' + key);
+                var contenedor2 = document.getElementById('alimentosColacion1DA' + key);
+                var contenedor3 = document.getElementById('alimentosAlmuerzoDA' + key);
+                var contenedor4 = document.getElementById('alimentosColacion2DA' + key);
+                var contenedor5 = document.getElementById('alimentosMeriendaDA' + key);
+                var contenedor6 = document.getElementById('alimentosCenaDA' + key);
 
+       
                 contenedor1.innerHTML = '';
                 contenedor2.innerHTML = '';
                 contenedor3.innerHTML = '';
@@ -989,17 +1010,20 @@
                 contenedor5.innerHTML = '';
                 contenedor6.innerHTML = '';
 
+                
                 for (let i = 0; i < res.length; i++) {
                     let comida = res[i]
+                        console.log('ress');
 
                     cant = Object.keys(comida);
                     long = cant.length
                     for (let j = 0; j < long - 2; j++) {
-
+                        console.log('long-2');
                         if (i == 0) {
-                            let contenido =
-                                `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
-                            $(contenedor1).append(contenido)
+                            // console.log('lfkdfdlflkadlk')
+                                let contenido =
+                                    `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                                $(contenedor1).append(contenido)
                         }
                         if (i == 1) {
                             let contenido =
@@ -1027,10 +1051,11 @@
                             $(contenedor6).append(contenido)
                         }
                     }
-
                 }
+            
 
             })
+        
 
         }
 
@@ -1040,8 +1065,6 @@
 
         function obtenerIdDieta(iddieta) {
             dietaid = iddieta;
-
-
         }
     </script>
 @endsection

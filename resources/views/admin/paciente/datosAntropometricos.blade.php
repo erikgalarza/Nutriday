@@ -98,7 +98,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label">Observaciones:</label>
                         <div class="col-xl-8 ">
-                            <textarea cols="30" rows="10" style="border-radius:10px" name="observaciones"type="text"
+                            <textarea cols="30" rows="10" style="border-radius:10px" name="observaciones" type="text"
                                  class="form-control"
                                 id="observaciones"></textarea>
                             <p class="text-danger font-weight-bold">{{$errors->first('observaciones')}}</p>

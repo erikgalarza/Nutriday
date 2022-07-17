@@ -27,6 +27,28 @@ class PacienteController extends Controller
         return view('admin.paciente.create');
     }
 
+    public function verTodos()
+    {
+        $pacientes = Paciente::all();
+        $responsables = collect();
+        foreach($pacientes as $key => $paciente)
+        {
+            $user = User::find($paciente->responsable_id);
+           $nutri =  $user->nutricionistas()->first();
+
+            if($nutri){$nombre = $nutri->nombre.' '.$nutri->apellido;}else{
+                $admin = $user->administradores()->first();
+                // dd($admin);
+                $nombre = $admin->nombre;
+            }
+
+           $responsables->push($nombre);
+        }
+        // dd($responsables);
+
+        return view('admin.paciente.index',compact('pacientes','responsables'));
+    }
+
     public function index()
     {
 

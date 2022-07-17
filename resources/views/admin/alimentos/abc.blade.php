@@ -975,7 +975,6 @@
                 return false
             } else
                 return true;
-
         }
 
         function actualizarTablaEstadisticas(acordionid, dia) {

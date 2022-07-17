@@ -11,8 +11,8 @@
             </ol>
         </nav>
     </div>
-    @foreach ($admins as $admin)
-    <input type="hidden" name="id" id="" value="{{$admin->administradores->id}}">
+   
+    <input type="hidden" name="id" id="" value="{{$administrador->id}}">
             {{-- <form method="POST" id="formularioEditarPerfil" action="{{route('admin.updateCuenta')}}" style="display:hidden;">
                 @csrf
                 <input name="password" type="hidden" class="form-control my-3" placeholder="Nueva contraseña"
@@ -52,7 +52,7 @@
                                             class="col-sm-4 col-form-label text-left">Nombre:</label>
                                         <div class="col-sm-8">
                                             <input style="border-radius:10px" name="nombre" type="text"
-                                                value="{{ $admin->administradores->nombre }}" class="form-control"
+                                                value="{{ $administrador->nombre }}" class="form-control"
                                                 id="exampleInputUsername2">
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                                             class="col-sm-4 col-form-label text-left">Cédula:</label>
                                         <div class="col-sm-8">
                                             <input style="border-radius:10px" name="cedula" type="number"
-                                                value="{{ $admin->administradores->cedula }}" class="form-control"
+                                                value="{{ $administrador->cedula }}" class="form-control"
                                                 id="exampleInputUsername2">
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                             class="col-sm-4 col-form-label text-left">Teléfono:</label>
                                         <div class="col-sm-8">
                                             <input style="border-radius:10px" name="telefono" type="tel"
-                                                value="{{ $admin->administradores->telefono }}" class="form-control"
+                                                value="{{ $administrador->telefono }}" class="form-control"
                                                 id="exampleInputUsername2">
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
                                             class="col-sm-4 col-form-label text-left">Email:</label>
                                         <div class="col-sm-8">
                                             <input style="border-radius:10px" name="email" type="email"
-                                                value="{{ $admin->email }}" class="form-control"
+                                                value="{{ $administrador->user->email }}" class="form-control"
                                                 id="exampleInputUsername2">
                                         </div>
                                     </div>
@@ -126,9 +126,6 @@
                     </div>
                 </form>
             </div>
-
-
-    @endforeach
 
 
 

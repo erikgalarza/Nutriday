@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Auth;
 class ActividadController extends Controller
 {
 
+    public function verTodas()
+    {
+        $actividades = Actividad::all();
+        return view('admin.actividades.index',compact('actividades'));
+    }
+
     public function eliminarActividadAsignada($actividad_id,$paciente_id)
     {
         $actividad = Actividad::find($actividad_id);
@@ -121,6 +127,11 @@ class ActividadController extends Controller
     }
 
     public function create()
+    {
+        return view('admin.actividades.create');
+    }
+
+    public function agregarActividad()
     {
         return view('admin.actividades.create');
     }

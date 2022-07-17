@@ -45,12 +45,16 @@ Route::post('/login2',[LoginController::class,'login'])->name('login2');
 // ============================= RUTAS PARA ADMINISTRADORES ============================ //
 Route::group(['prefix' => 'admin', 'middleware'=>'admin'], function () {
 Route::resource('administrador',AdminController::class);
+Route::get('/crear-admin',[AdminController::class,'crearAdmin']);
 
 Route::resource('nutricionista',NutricionistaController::class);
+Route::get('/crear-nutricionista',[NutricionistaController::class,'crearNutri']);
+Route::get('/listar-nutricionistas',[NutricionistaController::class,'listado']);
+
 Route::get('/mi-perfil',[AdminController::class,'miCuenta'])->name('admin.cuenta');
 Route::get('/editar-perfil',[AdminController::class,'formCuenta'])->name('admin.editarCuenta');
 Route::post('/editar-perfil',[AdminController::class,'updateCuenta'])->name('admin.updateCuenta');
-Route::get('/listado',[AdminController::class,'listar'])->name('administrador.listar');
+Route::get('/adminslistados',[AdminController::class,'listar'])->name('administrador.listar');
 Route::get('/login-administrador',[LoginController::class,'loginAdmin'])->name('login.administrador');
 Route::post('/registrar',[RegController::class,'registrarAdmin'])->name('administrador.registrar');
 // Route::post('/guardar',[AdminController::class,'store'])->name('administracion.store');
@@ -75,21 +79,44 @@ Route::group(['prefix' => 'nutricionista', 'middleware'=>'nutri'], function () {
 
 // ================================= RUTAS PARA ADMINS Y NUTRICIONISTAS ===================== //
 Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
-    Route::get('/',[AdminController::class,'dashboard'])->name('administrador.dashboard');
+    Route::get('/colpomed/',[AdminController::class,'dashboard'])->name('administrador.dashboard');
     Route::resource('alimento',AlimentoController::class);
+<<<<<<< HEAD
     Route::resource('paciente',PacienteController::class);
 
         Route::resource('dieta',DietaController::class);
+=======
+    Route::resource('paciente',PacienteController::class)->except('create');
+    
+    Route::resource('dieta',DietaController::class);
+
+    Route::get('/crearDieta',[DietaController::class,'create']);
+
+    Route::get('/listadosdietas',[DietaController::class,'verTodas']);
+
+>>>>>>> e265b7d5c981c55f448f87838a31512dcfd51c37
     Route::resource('video',VideoController::class);
+    Route::get('/agregarvideo',[VideoController::class,'create']);
+    Route::get('/listadosvideos',[VideoController::class,'verTodos']);
+
     Route::resource('actividad',ActividadController::class);
+
+    Route::get('/listadosactividades',[ActividadController::class,'verTodas']);
+
+    Route::get('/agregaractividad',[ActividadController::class,'agregarActividad'])->name('actividad.add');
+
     Route::resource('categoriaAlimento',CategoriaAlimentoController::class);
     Route::resource('medidaAlimento', MedidaAlimentoController::class);
 
-    Route::get('/paciente/crear/paciente',[PacienteController::class,'crearPaciente'])->name('paciente.crearPaciente');
+    Route::get('/agregarpaciente',[PacienteController::class,'crearPaciente'])->name('paciente.crearPaciente');
+    Route::get('/pacienteslistados',[PacienteController::class,'verTodos']);
+
+
+    Route::get('/alimentoslistados',[AlimentoController::class,'verTodos']);
 
     Route::get('/actividades/asignar/{paciente_id}',[ActividadController::class,'asignar'])->name('actividad.asignar');
     Route::post('/actividades/asignar',[ActividadController::class,'guardarAsignacion'])->name('actividad.guardarAsignacion');
-    Route::get('/actividades/pacientes',[ActividadController::class,'pacientes'])->name('actividad.pacientes');
+    Route::get('/actividadesdepacientes',[ActividadController::class,'pacientes'])->name('actividad.pacientes');
     Route::get('eliminar/{actividad_id}/{paciente_id}',[ActividadController::class,'eliminarActividadAsignada'])->name('actividad.eliminarActividadAsignada');
 
 
@@ -102,7 +129,8 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/datos-antropometricos/agregar/{paciente_id}',[DatosAntropometricoController::class,'agregarDatosAntropometricos'])->name('admin.agregarDatosAntropometricos');
     Route::get('/dieta/eliminar/{id}',[DietaController::class,'eliminarDieta'])->name('dieta.eliminarDieta');
     // Route::get('/dieta/asignar',[DietaController::class,'asignarDieta'])->name('dieta.asignarDieta');
-    Route::get('/asignar-dieta',[DietaController::class,'asignarDieta'])->name('dieta.asignarDieta');
+    Route::get('/asignardieta',[DietaController::class,'asignarDieta'])->name('dieta.asignarDieta');
+
     Route::post('/dieta-asignada/guardar',[DietaController::class,'guardarDietaAsignada'])->name('dieta.guardarDietaAsignada');
 
     //rutas agregadas 16/06/2022

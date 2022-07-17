@@ -24,7 +24,9 @@
                     <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$paciente->nombre}} {{$paciente->apellido}}</h4>
                     <div style="width:100%;height:auto">
                         @if(isset($paciente->imagen->url))
-                        <img style="max-width:300px;max-height:200px" src="{{$paciente->imagen->url}}"alt="Foto del paciente">
+
+                        {{-- <img style="max-width:300px;max-height:200px" src="{{$paciente->imagen->url}}"alt="Foto del paciente"> --}}
+                        <img style="max-width:300px;max-height:200px" src="{{asset('img/hombre.png')}}" alt="profile" />
                         @else
                         <div class="imagencard">
                             <img style="max-width:300px;max-height:200px" src="{{ asset('img/icons/Administrador.png') }}">

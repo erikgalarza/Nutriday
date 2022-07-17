@@ -20818,9 +20818,17 @@ code {
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"] {
   background: #828282;
   color: #ffffff !important;
-  border-radius:8px
+  border-radius:8px;
 }
-
+.accordion.accordion-solid-header .card .card-header a[aria-expanded="true"] .imagg {
+    /* background: #828282;
+    color: #ffffff !important;
+    border-radius:8px;
+     */
+     -webkit-filter: grayscale(1%);
+     -webkit-filter: grayscale(1);
+     filter: grayscale(100%);
+  }
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"]:before {
   color: #ffffff;
 }

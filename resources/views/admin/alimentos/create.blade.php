@@ -462,7 +462,7 @@
                                             $id2 = $id + 1;
                                         @endphp
                                         {{-- CREACION DE ACORDIONES EMPIEZA AQUI --}}
-                                       
+
                                         <div class="card "style="background-color:white;color:black">
                                             <div class="card-header" role="tab" id="heading-{{ $k }}"
                                                 style="border:1px solid #55558a;border-radius:10px">
@@ -471,7 +471,7 @@
                                                         style="font-weight: bold" href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
                                                         aria-controls="collapse-{{ $k }}">
-                                                        <img src="{{asset('administracion/images/comidas/'.$nameImgComida[$cont].'')}}">{{ $comidas[$cont] }}
+                                                        <img class="imagg" src="{{asset('administracion/images/comidas/'.$nameImgComida[$cont].'')}}">{{ $comidas[$cont] }}
                                                     </a>
                                                 </h6>
                                             </div>

@@ -196,7 +196,9 @@
                                             href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
                                             class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
                                         <a title="Ver alimentos" class="btn btn-outline-primary mb-1"
-                                            href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
+                                        onclick="obtenerIdPaciente({{ $paciente->id }}); obtenerIdDieta({{ $dieta->id }});"
+                                        data-toggle="modal"
+                                        data-target="#exampleModal{{ $dieta->id }}"><i
                                                 class="fa-solid fa-utensils"></i></a>
                                     </td>
                                            <td>
@@ -244,6 +246,157 @@
 
                                     </td>
                                 </tr>
+
+
+                                <div class="modal fade" id="exampleModal{{ $dieta->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="ModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color: #4b6ac3">
+                                                <h5 class="modal-title text-lg-center text-white"style="text-transform: uppercase; font-weight:bold;"
+                                                    id="ModalLabel">
+                                                    Alimentos de la dieta</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body py-3 px-0">
+                                                <div class="container">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Dieta semanal</h4>
+            
+                                                            <select class="form-control"
+                                                                onchange="opcion({{ $key }});"
+                                                                id="selectorDia{{ $key }}">
+                                                                <option selected disabled>Seleccione un día</option>
+                                                                <option value="1">Lunes</option>
+                                                                <option value="2">Martes</option>
+                                                                <option value="3">Miercoles</option>
+                                                                <option value="4">Jueves</option>
+                                                                <option value="5">Viernes</option>
+                                                                <option value="6">Sabado</option>
+                                                                <option value="7">Domingo</option>
+                                                            </select>
+                                                            <div class="container my-2 p-0"
+                                                                style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row; display:none;"
+                                                                id="container{{ $key }}">
+            
+            
+                                                                <div class="vacio w-100 text-center mt-3" id="vacio{{ $key }}">
+                                                                </div>
+            
+            
+                                                                <div class="desayuno w-100 text-center mt-3" id="desayuno{{ $key }}">
+                                                                    <div class="row justify-content-center align-items-center">
+                                                                        <h5 class="textoDesayuno col-12 text-left" style="color:#828383">DESAYUNO</h5>
+                                                                    </div>
+                                                                    <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                                                    <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                                                        <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                                                        <h5 class="col-2 m-0 ">Peso</h5>
+                                                                        <h5 class="col-3 m-0">Imagen</h5>
+                                                                        <h5 class="col-3 m-0">Porción</h5>
+                                                                    </div>
+                                                                    <div class="col-12 my-2" style="border-top:1px solid"></div>
+                                                                    <div class="alimentosDesayuno col-12 w-100"id="alimentosDesayuno{{ $key }}"></div>
+                                                                </div>
+                                                                </div>
+            
+            
+                                                                <div class="colacion1 w-100 text-center mt-3" id="colacion1{{ $key }}">
+                                                                    <div class="row justify-content-center align-items-center">
+                                                                        <h5 class="textoDesayuno col-12 text-left" style="color:#828383">COLACIÓN DE LA MAÑANA</h5>
+                                                                    </div>
+                                                                    <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                                                    <div class="cabecera mt-2 col-12 text-center row no-gutters  align-items-center justify-content-center">
+                                                                        <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                                                        <h5 class="col-2 m-0 ">Peso</h5>
+                                                                        <h5 class="col-3 m-0">Imagen</h5>
+                                                                        <h5 class="col-3 m-0 ">Porción</h5>
+                                                                    </div>
+                                                                    <div class="col-12 my-2" style="border-top:1px solid"></div>
+                                                                    <div class="alimentosColacion1 col-12 w-100"id="alimentosColacion1{{ $key }}"></div>
+                                                                    </div>
+                                                                </div>
+            
+            
+                                                                <div class="almuerzo w-100 text-center mt-3" id="almuerzo{{ $key }}">
+                                                                    <div class="row justify-content-center align-items-center">
+                                                                        <h5 class="textoDesayuno col-12 text-left" style="color:#828383">ALMUERZO</h5>
+                                                                    </div>
+                                                                    <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                                                    <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                                                        <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                                                        <h5 class="col-2 m-0 ">Peso</h5>
+                                                                        <h5 class="col-3 m-0">Imagen</h5>
+                                                                        <h5 class="col-3 m-0">Porción</h5>
+                                                                    </div>
+                                                                    <div class="col-12 my-2" style="border-top:1px solid"></div>
+                                                                    <div class="alimentosAlmuerzo col-12 w-100"id="alimentosAlmuerzo{{ $key }}"></div>
+                                                                    </div>
+                                                                </div>
+            
+                                                                <div class="colacion2 w-100 text-center mt-3" id="colacion2{{ $key }}">
+                                                                    <div class="row justify-content-center align-items-center">
+                                                                        <h5 class="textoDesayuno col-12 text-left" style="color:#828383">COLACIÓN DE LA TARDE</h5>
+                                                                    </div>
+                                                                    <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                                                    <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                                                        <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                                                        <h5 class="col-2 m-0 ">Peso</h5>
+                                                                        <h5 class="col-3 m-0">Imagen</h5>
+                                                                        <h5 class="col-3 m-0">Porción</h5>
+                                                                    </div>
+                                                                    <div class="col-12 my-2" style="border-top:1px solid"></div>
+            
+                                                                    <div class="alimentosColacion2 col-12 w-100"id="alimentosColacion2{{ $key }}"></div>
+                                                                    </div>
+                                                                </div>
+            
+                                                                <div class="merienda w-100 text-center mt-3" id="merienda{{ $key }}">
+                                                                    <div class="row justify-content-center align-items-center">
+                                                                        <h5 class="textoDesayuno col-12 text-left" style="color:#828383">MERIENDA</h5>
+                                                                    </div>
+                                                                    <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                                                    <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                                                        <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                                                        <h5 class="col-2 m-0 ">Peso</h5>
+                                                                        <h5 class="col-3 m-0">Imagen</h5>
+                                                                        <h5 class="col-3 m-0">Porción</h5>
+                                                                    </div>
+                                                                    <div class="col-12 my-2" style="border-top:1px solid"></div>
+            
+                                                                    <div class="alimentosMerienda col-12 w-100"id="alimentosMerienda{{ $key }}"></div>
+                                                                    </div>
+                                                                </div>
+            
+                                                                <div class="cena w-100 text-center mt-3" id="cena{{ $key }}">
+                                                                    <div class="row justify-content-center align-items-center">
+                                                                        <h5 class="textoDesayuno col-12 text-left" style="color:#828383">CENA</h5>
+                                                                    </div>
+                                                                    <div class="w-100 p-3 "style="border: 1px solid #828383; border-radius:5px">
+                                                                    <div class="cabecera mt-2 col-12 text-center no-gutters  row align-items-center justify-content-center">
+                                                                        <h5 class="col-4 m-0 text-left">Nombre</h5>
+                                                                        <h5 class="col-2 m-0 ">Peso</h5>
+                                                                        <h5 class="col-3 m-0">Imagen</h5>
+                                                                        <h5 class="col-3 m-0">Porción</h5>
+                                                                    </div>
+                                                                    <div class="col-12 my-2" style="border-top:1px solid"></div>
+            
+                                                                    <div class="alimentosCena col-12 w-100"id="alimentosCena{{ $key }}"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <input type="hidden" id="key{{$key}}" value="{{$key}}">
 
                                 <div class="modal fade" id="exampleModal-2{{ $key }}" tabindex="-1"
@@ -568,5 +721,99 @@
         })
 
     }
+    var pacienteid = null,
+            dietaid = null;
+
+    function obtenerIdPaciente(idpaciente) {
+            pacienteid = idpaciente;
+        }
+
+    function obtenerIdDieta(iddieta) {
+            dietaid = iddieta;
+        }
+
+        function opcion(key) {
+            let diaSeleccionado = document.getElementById('selectorDia' + key).value;
+            
+            let container = document.getElementById('container'+key);
+            $(container).show();
+
+            $.ajax({
+                url: "{{ route('dieta.traerAlimentos') }}",
+                dataType: "json",
+                data: {
+                    dieta_id: dietaid,
+                    paciente_id: pacienteid,
+                    diaSeleccionado: diaSeleccionado
+                }
+            }).done(function(res) {
+
+                console.log('res es:',res);
+                // let arreglo = JSON.parse(res)
+                // console.log(arreglo)
+               
+                var contenedor1 = document.getElementById('alimentosDesayuno' + key);
+                var contenedor2 = document.getElementById('alimentosColacion1' + key);
+                var contenedor3 = document.getElementById('alimentosAlmuerzo' + key);
+                var contenedor4 = document.getElementById('alimentosColacion2' + key);
+                var contenedor5 = document.getElementById('alimentosMerienda' + key);
+                var contenedor6 = document.getElementById('alimentosCena' + key);
+
+       
+                contenedor1.innerHTML = '';
+                contenedor2.innerHTML = '';
+                contenedor3.innerHTML = '';
+                contenedor4.innerHTML = '';
+                contenedor5.innerHTML = '';
+                contenedor6.innerHTML = '';
+
+                
+                for (let i = 0; i < res.length; i++) {
+                    let comida = res[i]
+                        console.log('ress');
+
+                    cant = Object.keys(comida);
+                    long = cant.length
+                    for (let j = 0; j < long - 2; j++) {
+                        console.log('long-2');
+                        if (i == 0) {
+                            // console.log('lfkdfdlflkadlk')
+                                let contenido =
+                                    `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                                $(contenedor1).append(contenido)
+                        }
+                        if (i == 1) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor2).append(contenido)
+                        }
+                        if (i == 2) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor3).append(contenido)
+                        }
+                        if (i == 3) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor4).append(contenido)
+                        }
+                        if (i == 4) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor5).append(contenido)
+                        }
+                        if (i == 5) {
+                            let contenido =
+                            `<div class="container text-center no-gutters p-0 m-0 "><div class="d-flex row justify-content-space-evenly align-items-center no-gutters"><label class="col-4 text-left">${res[i][j].nombre}</label><label class="col-2 ">${res[i][j].peso}</label> <div class="col-3" ><img  style="max-width:30px;max-heigth:30px;"  src='${res[i][j].imagen.url}'></div><label class="col-3">${res[i].cantidad}</label></div></div>`
+                            $(contenedor6).append(contenido)
+                        }
+                    }
+                }
+            
+
+            })
+        
+
+        }
     </script>
 @endsection

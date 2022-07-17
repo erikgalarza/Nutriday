@@ -2067,15 +2067,13 @@ use AlimentosDieta;
         // $dieta = Dieta::find($request->dieta_id);
         $paciente = Paciente::find($request->paciente_id);
         $dieta = Dieta::find($request->dieta_id);
+        $dieta->update([
+            "estado"=>"activa"
+        ]);
+        
         $dieta->pacientes()->attach($paciente->id, ['fecha_fin'=>$request->fecha_fin,'fecha_asignacion'=>Carbon::now(),'user_id'=>Auth::id()]);
-        // $dieta->update([
-        //     "fecha_fin"=>$request->fecha_fin
-        // ]);
-
 
         return back();
-        // $alimento->dietas()->attach($dieta->id);
-
     }
 
     public function asignarDieta()
@@ -2151,7 +2149,7 @@ use AlimentosDieta;
             }
             return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente','datos'));
         }
-
+        
         return view('admin.alimentos.create',compact('alimentos','dieta','imc'));
     }
 

@@ -13,7 +13,7 @@
     </div>
         <!-- <h4 class="card-title">Mi perfil</h4> -->
 
-                @foreach($admins as $admin)
+                {{-- @foreach($admins as $admin) --}}
 
                 <div class="card ">
                     <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0">
@@ -23,10 +23,10 @@
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$admin->administradores->nombre}}</h4>
+                                    <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$administrador->nombre}}</h4>
                                     <div style="width:100%;height:auto">
-                                        @if(isset($admin->imagen->url))
-                                        <img src="{{$admin->imagen->url}}"alt="Foto del admin">
+                                        @if(isset($administrador->imagen->url))
+                                        <img src="{{$administrador->imagen->url}}"alt="Foto del admin">
                                         @else
                                         <div class="imagencard">
                                             <img style="max-width:300px;max-height:200px" src="{{ asset('img/icons/Administrador.png') }}">
@@ -47,14 +47,14 @@
                                             <div class="form-group row mb-1">
                                                 <label class="col-5 text-left"> <strong>
                                                         Nombre:</strong></label>
-                                                <label class="col-7">{{ $admin->administradores->nombre }} </label>
+                                                <label class="col-7">{{ $administrador->nombre }} </label>
 
                                             </div>
                                             <div class="form-group row mb-1">
                                                 <label
                                                     class="col-5 text-left"><strong>Cédula:</strong></label>
                                                 <label class="col-7">
-                                                    {{ $admin->administradores->cedula }}</label>
+                                                    {{$administrador->cedula }}</label>
 
                                             </div>
 
@@ -63,20 +63,20 @@
                                                     class="col-5 text-left"><strong>Teléfono:</strong>
                                                 </label>
                                                 <label
-                                                    class="col-7">{{ $admin->administradores->telefono }}</label>
+                                                    class="col-7">{{ $administrador->telefono }}</label>
                                             </div>
 
                                             <div class="form-group row mb-1">
                                                 <label
                                                     class="col-5 text-left"><strong>Email:</strong></label>
                                                 <label
-                                                    class="col-7">{{ $admin->email }}</label>
+                                                    class="col-7">{{ $administrador->user->email }}</label>
                                             </div>
                                             <div class="form-group row mb-1">
                                                 <label
                                                     class="col-5 text-left"><strong>Activo desde:</strong></label>
                                                 <label
-                                                    class="col-7">{{ $admin->created_at }}</label>
+                                                    class="col-7">{{ $administrador->user->created_at }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
                 </div>
 
 
-                @endforeach
+                {{-- @endforeach --}}
 
 
 

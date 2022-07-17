@@ -13,6 +13,15 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class AlimentoController extends Controller
 {
+
+    public function verTodos()
+    {
+        $alimentos = Alimento::all();
+        $categorias = CategoriaAlimento::all();
+        $medidas = MedidaAlimento::all();
+        return view('admin.alimentos.index', compact('alimentos','categorias','medidas'));
+    }
+
     public function index()
     {
         $alimentos = Alimento::all();

@@ -253,7 +253,7 @@
                             <!-- botones de adentro del acordeón -->
                         <div class="collapse" id="page-layouts">
                             <ul class="nav flex-column sub-menu">
-                                <li  class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('administrador.create')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
+                                <li  class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('admin/crear-admin')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
                                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('administrador.listar')}}"> <i class="fa-solid fa-users-gear mr-3"></i>Ver todos</a></li>
                             </ul>
                         </div>
@@ -270,8 +270,8 @@
                         </a>
                         <div class="collapse" id="sidebar-layouts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('nutricionista.create')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('nutricionista.index')}}"> <i class="fa-solid fa-people-group mr-3"></i>Ver todos</a>
+                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('admin/crear-nutricionista')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('admin/listar-nutricionistas')}}"> <i class="fa-solid fa-people-group mr-3"></i>Ver todos</a>
                                 </li>
                             </ul>
                         </div>
@@ -292,8 +292,8 @@
                         </a>
                         <div class="collapse"  id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('paciente.create')}}"><i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('paciente.index')}}"><i class="fa-solid fa-people-group mr-3"></i>Ver todos</a></li>
+                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('/dashboard/agregarpaciente')}}"><i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/pacienteslistados')}}"><i class="fa-solid fa-people-group mr-3"></i>Ver todos</a></li>
                                 <li class="nav-item "> <a class="nav-link" href="{{route('da.asignarDatosAntropometricos')}}"><i class="fa-solid fa-hospital-user mr-3"></i>Dato antropométrico</a></li>
                             </ul>
                         </div>
@@ -312,7 +312,7 @@
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="{{route('alimento.addAlimento')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('alimento.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/alimentoslistados')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('categoriaAlimento.index')}}"><i class="fa-solid fa-file-circle-plus mr-3"></i>Categorías alimentos</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('medidaAlimento.index')}}"><i class="fa-solid fa-ruler mr-3"></i>Unidades de medida</a></li>
                             </ul>
@@ -331,8 +331,8 @@
                         <div class="collapse" id="ui-advanced">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('dieta.asignarDieta')}}"> <i class="fa-solid fa-chalkboard-user mr-3"> </i>Asignar dieta</a></li>
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('dieta.create')}}"> <i class="fa-regular fa-square-plus mr-3"> </i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('dieta.index')}}"> <i class="fa-solid fa-list mr-3"> </i>Ver todas</a>  </li>
+                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('dashboard/crearDieta')}}"> <i class="fa-regular fa-square-plus mr-3"> </i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/listadosdietas')}}"> <i class="fa-solid fa-list mr-3"> </i>Ver todas</a>  </li>
                             </ul>
                         </div>
                     </li>
@@ -350,9 +350,9 @@
                         </a>
                         <div class="collapse" id="charts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('actividad.create')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('actividad.add')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('actividad.pacientes')}}"><i class="fa-solid fa-chalkboard-user mr-3"></i>Asignar actividad</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('actividad.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/listadosactividades')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
                             </ul>
                         </div>
                     </li>
@@ -367,8 +367,8 @@
                         </a>
                         <div class="collapse" id="editors">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('video.create')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('video.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/agregarvideo')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/listadosvideos')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
 
                             </ul>
                         </div>

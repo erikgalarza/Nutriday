@@ -2016,6 +2016,29 @@ use AlimentosDieta;
        return view('admin.dieta.index',compact('dietas_predefinidas','pacientesc'));
     }
 
+    public function verTodas()
+    {
+        $dietas = Dieta::all();
+        $pacientes = Paciente::all();
+        // dd($dietas[0]->pacientes()->get());
+        $dietas_predefinidas = collect();
+        $dietas_asignadas = collect();
+        $pacientesc = collect();
+        foreach($pacientes as $paciente)
+        {
+           $pacientesc->push($paciente);
+        }
+        // dd($pacientesc[0]->dietas()->get());
+                foreach($dietas as $dieta)
+                {
+            if($dieta->imc>=1 && $dieta->imc<=4){
+                $dietas_predefinidas->push($dieta);
+            }else
+                $dietas_asignadas->push($dieta);
+        }
+       return view('admin.dieta.index',compact('dietas_predefinidas','pacientesc'));
+    }
+
     use DiasTrait;// trait: se usan para reutilizar metodos de una clase
     public function guardarDieta(Request $request)
     {

@@ -22,6 +22,15 @@ class VideoController extends Controller
         return view('admin.videos.index',compact('videos_receta','videos_motivacion','videos_ejercicio'));
     }
 
+    public function verTodos()
+    {
+        $videos_receta = Video::where('categoria','Recetas')->get();
+        $videos_ejercicio = Video::where('categoria','Ejercicios')->get();
+         $videos_motivacion = Video::where('categoria','Motivacion')->get();
+
+       return view('admin.videos.index',compact('videos_receta','videos_motivacion','videos_ejercicio'));
+    }
+
     
     public function create()
     {

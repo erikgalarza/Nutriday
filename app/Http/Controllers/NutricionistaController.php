@@ -23,6 +23,13 @@ class NutricionistaController extends Controller
         return view('admin.nutricionistas.index',compact('nutricionistas'));
     }
 
+    public function listado()
+    {
+        $nutricionistas = User::role('Nutricionista')->get();
+    
+        return view('admin.nutricionistas.index',compact('nutricionistas'));
+    }
+
     public function miCuenta(){
         $user = User::find(Auth::id());
         $nutricionista = Nutricionista::where('user_id',$user->id)->first();
@@ -100,6 +107,7 @@ class NutricionistaController extends Controller
             "email"=>$request->correo,
             "password"=>$hashpass,
         ]);
+        $user->assignRole('Nutricionista');
         $nutricionista = $user->nutricionistas()->create([
             "nombre"=>$request->nombre,
             "apellido"=>$request->apellido,
@@ -111,6 +119,7 @@ class NutricionistaController extends Controller
             "especialidad"=>$request->especialidad,
             "user_id"=>$user->id
         ]);
+        
 
 
         if ($request->hasFile('imagen')) {
@@ -120,16 +129,23 @@ class NutricionistaController extends Controller
             // dd($elemento);
             $public_id = $elemento->getPublicId();
             $url = $elemento->getSecurePath();
+
+            $nutricionista->imagen()->create([
+                "url" => $url,
+                "public_id" => $public_id
+            ]);
         }
 
-        $nutricionista->imagen()->create([
-            "url" => $url,
-            "public_id" => $public_id
-        ]);
+     
 
 
 
         return back();
+    }
+
+    public function crearNutri()
+    {
+        return view('admin.nutricionistas.create');
     }
 
     /**

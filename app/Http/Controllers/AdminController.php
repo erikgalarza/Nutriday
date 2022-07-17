@@ -71,9 +71,10 @@ class AdminController extends Controller
 
     public function formCuenta()
     {
-        $admins = User::role('Administrador')->get();
-        $administrador =Admin::find(Auth::id());
-        return view('admin.cuenta.editarCuenta',compact('administrador','admins'));
+      $user = User::find(Auth::id());
+      $administrador = $user->administradores()->first();
+   
+        return view('admin.cuenta.editarCuenta',compact('administrador'));
     }
 
     public function updateCuenta(Request $request)
@@ -105,10 +106,14 @@ class AdminController extends Controller
 
     public function miCuenta(){
         $administrador =Admin::find(Auth::id());
-        $admins = User::role('Administrador')->get();
+        $user = User::find(Auth::id());
+
+        $administrador = $user->administradores()->first();
+   
+        // $admins = User::role('Administrador')->get();
         // dd($administrador);
 
-        return view('admin.cuenta.cuenta',compact('administrador','admins'));
+        return view('admin.cuenta.cuenta',compact('administrador'));
     }
 
 

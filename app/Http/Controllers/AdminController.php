@@ -136,7 +136,11 @@ class AdminController extends Controller
         return view('admin.administradores.index',compact('admins'));
     }
 
+    public function creare()
+    {
 
+        return view('admin.administradores.create');
+    }
     public function create()
     {
 

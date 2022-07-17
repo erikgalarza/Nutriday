@@ -75,7 +75,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/',[AdminController::class,'dashboard'])->name('administrador.dashboard');
     Route::resource('alimento',AlimentoController::class);
     Route::resource('paciente',PacienteController::class);
- 
+    
         Route::resource('dieta',DietaController::class);
     Route::resource('video',VideoController::class);
     Route::resource('actividad',ActividadController::class);

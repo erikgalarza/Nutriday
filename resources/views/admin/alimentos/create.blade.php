@@ -1,3 +1,4 @@
+
 @extends('admin.dashboard')
 @section('contenido')
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
@@ -741,7 +742,25 @@
             // cargarDias(semana)
         }
 
+        function validarDia(vi, vf){
+            let cont = 0;
+            console.log('vi:', vi);
+            console.log('vf:', vf)
+            for (let i = vi; i <= vf; i++) {
+                document.querySelectorAll('.selectorCantidad' + i).forEach(function() {
+                    cont++;
+                });
+            }
+            console.log('valor del cont:', cont)
+            if (cont < 6) {
+                return false
+            } else
+                return true;
+        }
+
         function crearDieta() {
+        
+
             semana = {
                 alimentosLunes,
                 alimentosMartes,
@@ -754,12 +773,36 @@
             document.getElementById('semana1').value = JSON.stringify(semana);
             let form = document.getElementById('crearDieta')
             form.submit();
+
+      
+
         }
 
         function guardarDieta() {
+          
+            let contIncompleto = false;
+           let diasCompletos = [true, true, true, true, true, true, true]
+           let nombreDia = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
+           let diasFaltantes = '';
 
-          // console.log('content lunes:',lunes)
-          // console.log('content martes:',martes)
+               diasCompletos[0] = validarDia(0,5);
+               diasCompletos[1] = validarDia(6,11);
+               diasCompletos[2] = validarDia(12,17);
+               diasCompletos[3] = validarDia(18,23);
+               diasCompletos[4] = validarDia(24,29);
+               diasCompletos[5] = validarDia(30,35);
+               diasCompletos[6] = validarDia(36,41);
+
+                for(let c = 0 ; c<7; c++)
+                {
+                    if(diasCompletos[c]===false){contIncompleto=true;
+                    diasFaltantes=diasFaltantes+nombreDia[c]+' '
+                    }else{contIncompleto=false}
+                }
+
+                if(contIncompleto === false)
+            {
+        
           var semana = {};
 
           semana = {
@@ -789,6 +832,19 @@
               if (res == true)
                   window.location.href = "/dashboard/asignar-dieta";
           })
+
+        }else
+        {
+            swal({
+                        title: "Atención",
+                        text: "Aún le falta completar las comidas de "+diasFaltantes,
+                        icon: "info",
+                        // buttons: [
+                        //     'No, cancelar',
+                        //     'Si, aceptar'
+                        // ],
+                    })
+        }
       }
 
         function guardarCambios() {
@@ -1889,7 +1945,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -1956,7 +2012,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -2022,7 +2078,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -2088,7 +2144,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -2154,7 +2210,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -2216,7 +2272,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -2279,7 +2335,7 @@
                             let tbody = document.getElementById('tbody' + id)
                             $(tbody).append(`<tr id="fila${contadorfila}">
                         <td>
-                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control">
+                            <select onchange="seleccionarCantidad(${i},${alimento.id},${selectsId});" id="selectCantidad${selectsId}" class="form-control selectorCantidad${i}">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

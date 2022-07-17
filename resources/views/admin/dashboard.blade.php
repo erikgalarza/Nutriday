@@ -315,8 +315,6 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{route('alimento.index')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('categoriaAlimento.index')}}"><i class="fa-solid fa-file-circle-plus mr-3"></i>Categorías alimentos</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('medidaAlimento.index')}}"><i class="fa-solid fa-ruler mr-3"></i>Unidades de medida</a></li>
-
-
                             </ul>
                         </div>
                     </li>

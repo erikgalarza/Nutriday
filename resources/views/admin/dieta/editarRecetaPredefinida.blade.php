@@ -762,6 +762,31 @@
         }
 
         function crearDieta() {
+
+            
+            let contIncompleto = false;
+           let diasCompletos = [true, true, true, true, true, true, true]
+           let nombreDia = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
+           let diasFaltantes = '';
+
+               diasCompletos[0] = validarDia(0,5);
+               diasCompletos[1] = validarDia(6,11);
+               diasCompletos[2] = validarDia(12,17);
+               diasCompletos[3] = validarDia(18,23);
+               diasCompletos[4] = validarDia(24,29);
+               diasCompletos[5] = validarDia(30,35);
+               diasCompletos[6] = validarDia(36,41);
+
+                for(let c = 0 ; c<7; c++)
+                {
+                    if(diasCompletos[c]===false){contIncompleto=true;
+                    diasFaltantes=diasFaltantes+nombreDia[c]+' '
+                    }else{contIncompleto=false}
+                }
+
+                if(contIncompleto === false)
+            {
+
             semana = {
                 alimentosLunes,
                 alimentosMartes,
@@ -774,10 +799,44 @@
             document.getElementById('semana1').value = JSON.stringify(semana);
             let form = document.getElementById('crearDieta')
             form.submit();
+        }else
+        {
+            swal({
+                        title: "Atención",
+                        text: "Aún le falta completar las comidas de "+diasFaltantes,
+                        icon: "info",
+                        // buttons: [
+                        //     'No, cancelar',
+                        //     'Si, aceptar'
+                        // ],
+                    })
+        }
         }
 
         function guardarCambios() {
 
+            let contIncompleto = false;
+           let diasCompletos = [true, true, true, true, true, true, true]
+           let nombreDia = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
+           let diasFaltantes = '';
+
+               diasCompletos[0] = validarDia(0,5);
+               diasCompletos[1] = validarDia(6,11);
+               diasCompletos[2] = validarDia(12,17);
+               diasCompletos[3] = validarDia(18,23);
+               diasCompletos[4] = validarDia(24,29);
+               diasCompletos[5] = validarDia(30,35);
+               diasCompletos[6] = validarDia(36,41);
+
+                for(let c = 0 ; c<7; c++)
+                {
+                    if(diasCompletos[c]===false){contIncompleto=true;
+                    diasFaltantes=diasFaltantes+nombreDia[c]+' '
+                    }else{contIncompleto=false}
+                }
+
+                if(contIncompleto === false)
+            {
 
             semana = {
                 alimentosLunes,
@@ -805,6 +864,20 @@
                 if (res == true)
                     window.location.href = "/dashboard/asignar-dieta";
             })
+
+        }else
+        {
+            swal({
+                        title: "Atención",
+                        text: "Aún le falta completar las comidas de "+diasFaltantes,
+                        icon: "info",
+                        // buttons: [
+                        //     'No, cancelar',
+                        //     'Si, aceptar'
+                        // ],
+                    })
+        }
+
         }
 
         function alimentoRepetido(alimento, id, dia, idDia) //alimento y idacordion
@@ -2802,3 +2875,4 @@
         }
     </script>
 @endsection
+

@@ -361,8 +361,8 @@
                     </thead>
                     <tbody>
                         @php
-                        $nombrePrioridad = ['Alta','Media','Baja'];
-                        $colorPrioridad = ['danger','warning','success'];
+                        $nombrePrioridad = ['Baja','Media','Alta'];
+                        $colorPrioridad = ['success','warning','danger'];
                         @endphp
                         @foreach($actividadesAlta as $key => $actividad)
                         <tr>

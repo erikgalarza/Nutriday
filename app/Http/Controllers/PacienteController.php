@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Mail;
 class PacienteController extends Controller
 {
 
+    public function crearPaciente()
+    {
+        return view('admin.paciente.create');
+    }
+
     public function index()
     {
 

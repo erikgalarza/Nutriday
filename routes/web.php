@@ -35,8 +35,6 @@ Auth::routes();
 
 // ============================= RUTAS PUBLICAS ============================ //
 
-
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contactanos',[HomeController::class,'contactanos'])->name('home.contactanos');
 Route::get('/nosotros',[HomeController::class, 'nosotros'])->name('home.nosotros');
@@ -47,6 +45,7 @@ Route::post('/login2',[LoginController::class,'login'])->name('login2');
 // ============================= RUTAS PARA ADMINISTRADORES ============================ //
 Route::group(['prefix' => 'admin', 'middleware'=>'admin'], function () {
 Route::resource('administrador',AdminController::class);
+
 Route::resource('nutricionista',NutricionistaController::class);
 Route::get('/mi-perfil',[AdminController::class,'miCuenta'])->name('admin.cuenta');
 Route::get('/editar-perfil',[AdminController::class,'formCuenta'])->name('admin.editarCuenta');
@@ -76,11 +75,14 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/',[AdminController::class,'dashboard'])->name('administrador.dashboard');
     Route::resource('alimento',AlimentoController::class);
     Route::resource('paciente',PacienteController::class);
-    Route::resource('dieta',DietaController::class);
+ 
+        Route::resource('dieta',DietaController::class);
     Route::resource('video',VideoController::class);
     Route::resource('actividad',ActividadController::class);
     Route::resource('categoriaAlimento',CategoriaAlimentoController::class);
     Route::resource('medidaAlimento', MedidaAlimentoController::class);
+
+    Route::get('/paciente/crear/paciente',[PacienteController::class,'crearPaciente'])->name('paciente.crearPaciente');
 
     Route::get('/actividades/asignar/{paciente_id}',[ActividadController::class,'asignar'])->name('actividad.asignar');
     Route::post('/actividades/asignar',[ActividadController::class,'guardarAsignacion'])->name('actividad.guardarAsignacion');

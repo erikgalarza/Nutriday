@@ -47,11 +47,13 @@
                         </a>
                     </li> --}}
 
-                    {{-- <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                             data-toggle="dropdown">
                             <i class="fas fa-bell mx-0"></i>
-                            <span class="count">16</span>
+                            <span class="count">
+                                {{ auth()->user()->unreadNotifications->count() }}
+                            </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="notificationDropdown">
@@ -104,69 +106,17 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#"
-                            data-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-envelope mx-0"></i>
-                            <span class="count">25</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="messageDropdown">
-                            <div class="dropdown-item">
-                                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
-                                </p>
-                                <span class="badge badge-info badge-pill float-right">View all</span>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="{{ asset('administracion/images/faces/face4.jpg') }}" alt="image"
-                                        class="profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow">
-                                    <h6 class="preview-subject ellipsis font-weight-medium">David Grey
-                                        <span class="float-right font-weight-light small-text">1 Minutes ago</span>
-                                    </h6>
-                                    <p class="font-weight-light small-text">
-                                        The meeting is cancelled
-                                    </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="{{ asset('administracion/images/faces/face2.jpg') }}" alt="image"
-                                        class="profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow">
-                                    <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
-                                        <span class="float-right font-weight-light small-text">15 Minutes ago</span>
-                                    </h6>
-                                    <p class="font-weight-light small-text">
-                                        New product launch
-                                    </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="{{ asset('administracion/images/faces/face3.jpg') }}" alt="image"
-                                        class="profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow">
-                                    <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
-                                        <span class="float-right font-weight-light small-text">18 Minutes ago</span>
-                                    </h6>
-                                    <p class="font-weight-light small-text">
-                                        Upcoming board meeting
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li> --}}
+                   
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />
+
+                            @if(isset(auth()->user()->pacientes->imagen))
+                            <img class="" src="{{auth()->user()->pacientes->imagen->url}}" alt="perfil">
+                            @else
+                            <img class="" src="{{asset('img/hombre.png')}}" alt="perfil" />
+                            @endif
+
+                            
                             {{-- <img src="{{$paciente->imagen->url}}" alt="profile" /> --}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
@@ -202,8 +152,8 @@
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-
+               <div id="settings-trigger" class="bg-success"><a target="_blank" href="https://api.whatsapp.com/send?phone=593991438810&text=Bienvenido%20a%20COLPOMED,%20%C2%BF%20Deseas%20reservar%20una%20cita%20?"><i class="fab fa-whatsapp"></i></a></div>
+       
 
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
@@ -213,7 +163,11 @@
                         <div class="nav-link mb-3" style="border-top: 1px dashed;border-bottom:1px dashed">
                             <div class="profile-image">
 
-                                <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />
+                                @if(isset(auth()->user()->pacientes->imagen))
+                                <img class="" src="{{auth()->user()->pacientes->imagen->url}}" alt="perfil">
+                                @else
+                                <img class="" src="{{asset('img/hombre.png')}}" alt="perfil" />
+                                @endif
                                 {{-- <img src="{{$paciente->imagen->url}}" alt="profile" /> --}}
                             </div>
                             <div class="profile-name" >
@@ -292,6 +246,7 @@
             </div>
             <!-- main-panel ends -->
         </div>
+        
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->

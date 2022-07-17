@@ -90,6 +90,7 @@ class ActividadController extends Controller
         // dd($actividades);
         foreach ($actividades as $key => $actividad){
             $duracion = $paciente->actividades()->get(['duracion']);
+            $prioridad = $paciente->actividades()->get(['prioridad']);
             $user_id = $paciente->actividades()->get(['user_id']);
             // dd($user_id[$key]->user_id);
             $user = User::find($user_id[$key]->user_id);
@@ -98,6 +99,7 @@ class ActividadController extends Controller
             }else{$responsable = $user->administradores->nombre;}
             // dd($duracion);
             $actividad->setAttribute('duracion',$duracion[$key]->duracion);
+            $actividad->setAttribute('prioridad',$prioridad[$key]->prioridad);
             $actividad->setAttribute('responsable',$responsable);
         }
 

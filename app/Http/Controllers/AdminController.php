@@ -14,6 +14,11 @@ use App\Models\Paciente;
 class AdminController extends Controller
 {
 
+    public function crearAdmin()
+    {
+        return view('admin.administradores.create');
+    }
+
     // public function index()
     // {
     //     $admins = User::

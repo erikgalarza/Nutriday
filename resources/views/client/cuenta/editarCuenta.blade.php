@@ -34,9 +34,9 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-xl-5 mb-4 mb-xl-0 row justify-content-center align-items-center">
-                                @if(isset($paciente->imagen->url))
-                                {{-- <img class="img-thumbnail imaagen " src="{{$paciente->imagen->url}}"> --}}
-                                <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />
+                                @if(isset($paciente->imagen))
+                                <img class="img-thumbnail imaagen " src="{{$paciente->imagen->url}}">
+                                {{-- <img class="" src="{{asset('img/hombre.png')}}" alt="profile" /> --}}
                                 @else
                                 {{-- <img class="img-thumbnail imaagen"src="{{ asset('img/icons/Pacient.png') }}"> --}}
                                 <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />

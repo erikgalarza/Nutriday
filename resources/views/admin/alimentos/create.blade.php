@@ -921,9 +921,6 @@
                 document.getElementById('totalKcal' + id).textContent = totalKcal;
             }
 
-
-
-
             if (colacion1.length === arregloCantidades.length && id == c2) {
 
                 let totalCb = 0,
@@ -941,8 +938,6 @@
                 document.getElementById('totalGrasa' + id).textContent = totalGrasa;
                 document.getElementById('totalProteina' + id).textContent = totalPro;
                 document.getElementById('totalKcal' + id).textContent = totalKcal;
-
-
             }
 
             if (almuerzos.length === arregloCantidades.length && id == c3) {

@@ -495,7 +495,7 @@ class ClienteController extends Controller
     {
         $user = User::find(Auth::id());
         $paciente = Paciente::where('user_id',$user->id)->first();
-        $actividadesAlta = $paciente->actividades()->where('prioridad',1)->get();
+        $actividadesAlta = $paciente->actividades()->where('prioridad',3)->get();
         $prioridades = collect();
         $duraciones = collect();
         foreach($actividadesAlta as $key => $actividad)

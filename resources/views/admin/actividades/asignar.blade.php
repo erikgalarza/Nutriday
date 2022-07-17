@@ -238,6 +238,7 @@
                                 {{-- <th style="">Prioridad</th> --}}
                                 <th style="">Imagen</th>
                                 <th style="">Duración</th>
+                                <th>Prioridad</th>
                                 <th>Nutricionista</th>
                                 <th style="">Fecha asignación</th>
 
@@ -245,12 +246,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                             $nombrePrioridad = ['Baja','Media','Alta'];
+                             $colorPrioridad = ['success','warning','danger'];
+                            @endphp
                             @foreach ($actividades as $key => $actividad)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $actividad->nombre }}</td>
                                     <td><img src="{{ $actividad->imagen->url }}"></td>
                                     <td>{{ $actividad->duracion }}</td>
+                                    <td><label class="badge badge-{{$colorPrioridad[$actividad->prioridad-1]}} badge-pill">{{$nombrePrioridad[$actividad->prioridad-1]}}</label></td>
                                     <td>{{ $actividad->responsable }}</td>
                                     <td>{{ date('Y-m-d', strtotime($actividad->created_at)) }}</td>
                                     <td>
@@ -343,6 +349,13 @@
             label.appendChild(indice)
             //fin edicion indice filas
 
+            let optionDefault = document.createElement('option')
+            optionDefault.setAttribute("selected","selected");
+            optionDefault.setAttribute("disabled","disabled");
+            let optionTextoDefault = document.createTextNode('Seleccione una');
+            optionDefault.appendChild(optionTextoDefault);
+            selectActividad.appendChild(optionDefault)
+
             for (let j = 0; j < actividades.length; j++) {
                 //creamos las options para el selectActividad
                 let option = document.createElement("option");
@@ -352,9 +365,18 @@
                 selectActividad.appendChild(option);
                 //fin options para selectActividad
             }
+         
 
 
             const nombrePrioridad = ["Baja", "Media", "Alta"];
+
+            let optionDefault2 = document.createElement('option')
+            optionDefault2.setAttribute("selected","selected");
+            optionDefault2.setAttribute("disabled","disabled");
+            let optionTextoDefault2 = document.createTextNode('Seleccione una');
+            optionDefault2.appendChild(optionTextoDefault2);
+            selectPrioridad.appendChild(optionDefault2)
+
             for (let x = 0; x < 3; x++) {
                 //creamos las options para el selectPrioridad
                 let option = document.createElement("option");

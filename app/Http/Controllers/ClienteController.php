@@ -471,10 +471,23 @@ class ClienteController extends Controller
         $paciente = Paciente::where('user_id',auth::id())->first();
 
         $dietas = $paciente->dietas()->get();
+     
         $fechas_fin = $paciente->dietas()->get(['fecha_fin']);
 
         $fechasFinDieta = collect();
         $fechasFinAsignacion = collect();
+
+
+        $longitudDietas = count($dietas);
+        foreach($dietas as $key => $dieta){
+            if(($longitudDietas-2) == $key){
+                $dieta->update(["estado"=>"inactiva"]);//inactivamos la penultima dieta más reciente
+            }
+        }
+
+        // dd($dietas);
+
+       
         foreach ($dietas as $key => $dieta)
         {
             $user_ids = $paciente->dietas()->get(['user_id']);
@@ -486,6 +499,7 @@ class ClienteController extends Controller
             $fechasFinDieta->push($fecha_fin);
             $fechasFinAsignacion->push($fecha_asignacion);
         }
+        
         //dd($fechasFinDieta);
         return view('client.dietas.index',compact('dietas','fechasFinDieta','fechasFinAsignacion'));
     }

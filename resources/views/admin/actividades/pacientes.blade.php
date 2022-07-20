@@ -141,7 +141,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a title="Asignar actividad" href="{{route('actividad.asignar',$paciente->id)}}" class="btn btn-warning"><i
+                                            <a title="Asignar actividad" href="{{route('actividad.asignar',base64_encode($paciente->id))}}" class="btn btn-warning"><i
                                                     class="fas fa-plus"></i></a>
                                         </td>
                                     </form>

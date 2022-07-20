@@ -54,7 +54,7 @@
                                         @endif
                                         <td>
                                             <a title="Agregar alimentos a la dieta"
-                                                href="{{ route('dieta.editarAlimentosDietaPredefinida', $dieta->id) }}"
+                                                href="{{ route('dieta.editarAlimentosDietaPredefinida', base64_encode($dieta->id)) }}"
                                                 class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
                                             <a onclick="obtenerIdDieta({{ $dieta->id }});" data-toggle="modal"
                                                 data-target="#exampleModal{{ $dieta->id }}"
@@ -625,7 +625,7 @@
 
                             <td>
                                 <a title="Agregar alimentos a la dieta"
-                                    href="{{ route('dieta.editarAlimentosDieta', $dieta->id) }}"
+                                    href="{{ route('dieta.editarAlimentosDieta', base64_encode($dieta->id)) }}"
                                     class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
                                 <a onclick="obtenerIdPaciente({{ $paciente->id }});obtenerIdDieta({{ $dieta->id }});"
                                     data-toggle="modal" data-target="#exampleModal-4{{ $paciente->id }}"

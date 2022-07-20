@@ -124,7 +124,7 @@
                                             <td>Erik Galarza</td>
                                             <td>
                                                 <a title="Agregar datos antropométricos al paciente" class="btn btn-warning"
-                                                    href="{{ route('da.datosByPaciente', $paciente->id) }}"><i
+                                                    href="{{ route('da.datosByPaciente', base64_encode($paciente->id)) }}"><i
                                                         class="fa fa-plus" aria-hidden="true"></i></a>
 
 

@@ -28,6 +28,8 @@ class DietaController extends Controller
     public function editarAlimentosDietaPredefinida($dieta_id)
     {
         // $dieta_id = $
+        $dieta_id = base64_decode($dieta_id);
+        // dd($dieta_id);
         $dieta = Dieta::find($dieta_id);
         $alimentos = Alimento::all();
         $combinaciones = $dieta->acds()->get();
@@ -1236,6 +1238,10 @@ class DietaController extends Controller
     public function editarAlimentosDieta($dieta_id)
     {
         // $dieta_id = $
+        $dieta_id = base64_decode($dieta_id);
+
+        // dd($dieta_id);
+
         $dieta = Dieta::find($dieta_id);
         $alimentos = Alimento::all();
         $combinaciones = $dieta->acds()->get();

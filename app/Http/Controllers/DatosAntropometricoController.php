@@ -22,6 +22,8 @@ class DatosAntropometricoController extends Controller
     }
     public function datosByPaciente($paciente_id)
     {
+        $paciente_id = base64_decode($paciente_id);
+        
         $paciente = Paciente::find($paciente_id);
         $datos = $paciente->dato_antropometrico()->get();
         // dd($datos);

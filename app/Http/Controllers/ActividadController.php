@@ -88,6 +88,8 @@ class ActividadController extends Controller
 
     public function asignar($paciente_id)
     {
+        $paciente_id = base64_decode($paciente_id);
+        
         $paciente = Paciente::find($paciente_id);
         $actividadesReales = Actividad::all();
         // $collect = collect();

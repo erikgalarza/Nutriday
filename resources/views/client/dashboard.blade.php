@@ -152,7 +152,7 @@
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-               <div id="settings-trigger" class="bg-success"><a target="_blank" href="https://api.whatsapp.com/send?phone=593991438810&text=Bienvenido%20a%20COLPOMED,%20%C2%BF%20Deseas%20reservar%20una%20cita%20?"><i class="fab fa-whatsapp"></i></a></div>
+               <div id="settings-trigger" class="bg-success"><a target="_blank" href="https://api.whatsapp.com/send?phone=593991438810&text=Bienvenido%20a%20COLPOMED,%20%C2%BF%20Deseas%20reservar%20una%20cita%20?"><i style="color:white" class="fab fa-whatsapp"></i></a></div>
 
 
             <!-- partial -->

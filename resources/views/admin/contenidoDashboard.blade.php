@@ -262,37 +262,63 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a title="" class="btn btn-success" href=""><i
-                                                            class="fa fa-plus" aria-hidden="true"></i></a>
-                                                    <a title="" class="btn btn-info" href=""><i
-                                                            class="fa fa-plus" aria-hidden="true"></i></a>
-                                                    <a title="" class="btn btn-danger" href=""><i
-                                                            class="fa fa-plus" aria-hidden="true"></i></a>
+
+
+                                                            <a data-toggle="modal" data-target="#exampleModal{{ $nutricionista->id }}"
+                                                                class="btn btn-primary" title="Ver pacientes"><i
+                                                                    class="fa-solid fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         </form>
 
 
 
-                                        {{-- <div class="modal fade" id="exampleModal-2{{ $nutricionista->id }}" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal{{ $nutricionista->id }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background-color: #4b6ac3">
                                                         <h5 class="modal-title text-lg-center text-white"
                                                             style="text-transform: uppercase; font-weight:bold; font-size:16px"
-                                                            id="exampleModalLabel-2">Dieta asignada</h5>
+                                                            id="exampleModalLabel-2">Pacientes de {{$nutricionista->nombre}}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span style="color:white;font-size:30px"
                                                                 aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                    </div>
+                                                    <p class="text-center card-description mt-3 mb-1"><strong>Lista de todos los pacientes del nutricionista</strong></p>
+                                                    <div class="modal-body px-2">
+                                                        <div class="container-fluid">
+                                                            <div class="col-12 no-gutters m-0 p-0 row justify-content-center">
+                                                                <label class="text-left col-1"><strong>N°</strong></label>
+                                                                <label class="text-left col-4"><strong>Nombre</strong></label>
+                                                                <label class="text-center col-3"><strong>Cédula</strong></label>
+                                                                <label class="text-center col-2"><strong>Diabetes</strong></label>
+                                                                <label class="text-center col-2"><strong>Estado</strong></label>
+                                                                <div class="col-12 mb-4" style="border-bottom:1px solid"></div>
+                                                            </div>
+                                                            </div>
+                                                            @php
+                                                                $cont = 1;
+                                                            @endphp
+                                                            @foreach($paci as $key => $pac)
+                                                            <div class="container-fluid">
+                                                                <div class="col-12 no-gutters m-0 p-0 row justify-content-center">
+                                                                    <label class="text-left col-1">{{$cont}}</label>
+                                                                    <label class="text-left col-4">{{$pac->nombre}} {{$pac->apellido}}</label>
+                                                                    <label class="text-center col-3">{{$pac->cedula}}</label>
+                                                                    <label class="text-center col-2">Tipo {{$pac->tipo_diabetes}}</label>
+                                                                    <label class="text-center col-2">{{$pac->estado}}</label>
+                                                                </div>
+                                                            </div>
+                                                           @php
+                                                                $cont++
+                                                           @endphp
+                                                            @endforeach
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -304,18 +330,26 @@
         @endif
     @endif
 
-    <input type="hidden" id="posPac" value="{{$posPac}}">
-    <input type="hidden" id="negPac" value="{{$negPac}}">
-    <input type="hidden" id="posNut" value="{{$posNut}}">
-    <input type="hidden" id="negNut" value="{{$negNut}}">
-    
+  @if(isset($posPac))
+  <input type="hidden" id="posPac" value="{{$posPac}}">
+  @endif
+  @if(isset($negPac))
+  <input type="hidden" id="negPac" value="{{$negPac}}">
+  @endif
+  @if(isset($posNut))
+  <input type="hidden" id="posNut" value="{{$posNut}}">
+  @endif
+  @if(isset($negNut))
+  <input type="hidden" id="negNut" value="{{$negNut}}">
+  @endif
+
     <div class="row">
 
         <div class="col-md-6 grid-margin stretch-card mt-4">
             <div class="card ">
                 <div class="card-body d-flex flex-column">
                     <h4 class="card-title">
-                        <i class="fas fa-hart-pie"></i>
+                        <i class="fa-solid fa-user"></i>
                         Pacientes activos / inactivos
                     </h4>
                     <div class="flex-grow-1 d-flex flex-column justify-content-between">
@@ -357,10 +391,9 @@
             <div class="card">
               <div class="card-body d-flex flex-column">
                 <h4 class="card-title">
-                  <i class="fas fa-tachometer-alt"></i>
+                    <i class="fa-solid fa-user-doctor"></i>
                   Nutricionistas Activos / Inactivos
                 </h4>
-                <p class="card-description">Datos de nutricionistas</p>
                 <div class="flex-grow-1 d-flex flex-column justify-content-between"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
                   <canvas id="daily-sales-chart" class="mt-3 mb-3 mb-md-0 chartjs-render-monitor" width="425" height="211" style="display: block; height: 169px; width: 340px;"></canvas>
                   <div id="daily-sales-chart-legend" class="daily-sales-chart-legend pt-4 border-top row justify-content-center align-items-center"><ul class="legend3"><li><span class="legend-label" style="background-color:#04b76b"></span>Mail order sales</li><li><span class="legend-label" style="background-color:#ff5e6d"></span>Instore sales</li><li><span class="legend-label" style="background-color:#e9e8ef"></span>Download sales</li><li><span class="legend-label" style="background-color:#ff5e6d"></span>Sales return</li></ul></div>

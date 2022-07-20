@@ -20825,9 +20825,8 @@ code {
     color: #ffffff !important;
     border-radius:8px;
      */
-     -webkit-filter: grayscale(1%);
-     -webkit-filter: grayscale(1);
-     filter: grayscale(100%);
+
+     filter: invert(100%);
   }
 .accordion.accordion-solid-header .card .card-header a[aria-expanded="true"]:before {
   color: #ffffff;

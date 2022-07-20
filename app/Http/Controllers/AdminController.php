@@ -40,7 +40,31 @@ class AdminController extends Controller
             else
                 $pacientes = Paciente::where('nombre','like','%'.$nombre_completo.'%')->get();
 
-        return view('admin.contenidoDashboard',compact('pacientes'));
+
+        $pacientess = Paciente::all();
+        $nutricionistass = Nutricionista::all();
+        $posPac = 0;
+        $negPac =0;
+        $posNut = 0;
+        $negNut =0;
+        foreach($pacientess as $paciente)
+        {
+            if($paciente->estado=="activo")
+                $posPac = $posPac+1;
+            else
+                $negPac = $negPac+1;
+        }
+        foreach($nutricionistass as $nutricionista)
+        {
+            if($nutricionista->estado=="activo")
+                $posNut = $posNut+1;
+            else
+                $negNut = $negNut+1;
+        }
+        return view('admin.contenidoDashboard',compact('pacientes',"posPac",
+        "negPac",
+        "posNut",
+        "negNut"));
     }
 
 
@@ -59,7 +83,35 @@ class AdminController extends Controller
         else
             $nutricionistas = Nutricionista::where('nombre','like','%'.$nombre_completo.'%')->get();
 
-        return view('admin.contenidoDashboard',compact('nutricionistas'));
+
+            $pacientess = Paciente::all();
+            $paci = $pacientess->where('responsable_id',2);
+
+            $nutricionistass = Nutricionista::all();
+            $posPac = 0;
+            $negPac =0;
+            $posNut = 0;
+            $negNut =0;
+            foreach($pacientess as $paciente)
+            {
+                if($paciente->estado=="activo")
+                    $posPac = $posPac+1;
+                else
+                    $negPac = $negPac+1;
+            }
+            foreach($nutricionistass as $nutricionista)
+            {
+                if($nutricionista->estado=="activo")
+                    $posNut = $posNut+1;
+                else
+                    $negNut = $negNut+1;
+            }
+
+        return view('admin.contenidoDashboard',compact('nutricionistas','paci',"posPac",
+        "negPac",
+        "posNut",
+        "negNut"));
+
     }
 
 
@@ -73,7 +125,7 @@ class AdminController extends Controller
     {
       $user = User::find(Auth::id());
       $administrador = $user->administradores()->first();
-   
+
         return view('admin.cuenta.editarCuenta',compact('administrador'));
     }
 
@@ -109,7 +161,7 @@ class AdminController extends Controller
         $user = User::find(Auth::id());
 
         $administrador = $user->administradores()->first();
-   
+
         // $admins = User::role('Administrador')->get();
         // dd($administrador);
 
@@ -134,7 +186,6 @@ class AdminController extends Controller
                 $posPac = $posPac+1;
             else
                 $negPac = $negPac+1;
-
         }
         foreach($nutricionistas as $nutricionista)
         {
@@ -142,10 +193,9 @@ class AdminController extends Controller
                 $posNut = $posNut+1;
             else
                 $negNut = $negNut+1;
-
         }
 
-      
+
         // $pacientesConEstado;
         return view('admin.contenidoDashboard',compact("posPac",
         "negPac",

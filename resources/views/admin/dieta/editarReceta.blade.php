@@ -474,6 +474,8 @@
 
                 @php
                     $comidas = [' DESAYUNO', 'COLACIÓN DE LA MAÑANA', 'ALMUERZO', 'COLACIÓN DE LA TARDE', 'MERIENDA', 'CENA'];
+                    $nameImgComida = ['caffee.png','colacion1.png','almuerzo.png','colacion2.png','merienda.png','cena.png'];
+
                 @endphp
                 <div class="card mt-2" style="border:none">
                     <div class="tab-content py-0 px-lg-3 px-0" id="pills-tabContent" style="border:none;">
@@ -509,8 +511,8 @@
                                                     <a onclick="" data-toggle="collapse" class="collapsed"
                                                         style="font-weight: bold" href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
-                                                        aria-controls="collapse-{{ $k }}"><i
-                                                            class="fa-solid fa-sun mr-2"></i>{{ $comidas[$cont] }}
+                                                        aria-controls="collapse-{{ $k }}">
+                                                        <img class="imagg mb-2 mr-3" src="{{asset('administracion/images/comidas/'.$nameImgComida[$cont].'')}}"> <span   style="font-weight: bold" >{{ $comidas[$cont] }}</span>
                                                     </a>
                                                 </h6>
                                             </div>
@@ -816,7 +818,7 @@
 
                 if(contIncompleto === false)
             {
-            
+
             semana = {
                 alimentosLunes,
                 alimentosMartes,
@@ -842,7 +844,7 @@
                         // ],
                     })
         }
-        
+
         }
 
         function guardarCambios() {

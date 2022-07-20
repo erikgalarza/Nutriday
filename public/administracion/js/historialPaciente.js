@@ -163,10 +163,15 @@
         var pieChartCanvas = $("#sales-status-chart").get(0).getContext("2d");
         let posPac = document.getElementById('posPac').value;
         let negPac = document.getElementById('negPac').value;
-      
 
-       
+        let total = Number(posPac) + Number(negPac);
 
+
+        let labl = (posPac * 100) / total;
+        let labl2 = (negPac * 100) / total;
+        let labeles = [];
+        labeles.push(labl.toFixed(2));
+        labeles.push(labl2.toFixed(2));
         var pieChart = new Chart(pieChartCanvas, {
           type: 'pie',
           data: {
@@ -207,8 +212,8 @@
                 if (chart.data.labels[i]) {
                   text.push(chart.data.labels[i]);
                 }
-                
-                text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">'+ chart.data.datasets[0].data[i] + '%</label>');
+
+                text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">'+ labeles[i] + '%</label>');
                 text.push('</li>');
               }
               text.push('</ul>');
@@ -227,7 +232,7 @@
 
         let posNut = document.getElementById('posNut').value;
         let negNut = document.getElementById('negNut').value;
-     
+
         var dailySalesChartData = {
           datasets: [{
             data: [posNut, negNut],

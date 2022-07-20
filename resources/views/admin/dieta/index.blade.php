@@ -270,7 +270,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Dieta semanal</h4>
-
+                                                    <p class="card-description">Nombre de la dieta: <strong>{{ $dieta->nombre }}</strong></p>
                                                 <select class="form-control"
                                                     onchange="opcionDietaPredefinida({{ $key }});"
                                                     id="selectorDiaTop{{ $key }}">
@@ -456,8 +456,8 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <h4 class="card-title">Dieta semanal</h4>
-                                                                <p class="card-description">Paciente:
-                                                                    {{ $paciente->nombre }}{{ $paciente->apellido }}
+                                                                <p class="card-description">Dieta asignada a:
+                                                                    <strong>{{ $paciente->nombre }} {{ $paciente->apellido }}</strong>
                                                                 </p>
                                                                 <select class="form-control"
                                                                     onchange="opcion({{ $key }});"
@@ -638,7 +638,14 @@
                             </td>
                             <td>{{date('Y-m-d',strtotime($dieta->created_at)) }}</td>
                             <td>
-
+                                <style>
+                                    .bboo{
+                                        color:#04B76B !important;
+                                    }
+                                    .bboo:hover{
+                                        color:white !important;
+                                    }
+                                </style>
                                 <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{ $dieta->id }}"
                                     class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
 
@@ -659,8 +666,8 @@
                                 {{ method_field('DELETE') }}
                                 <a title="Activar"
                                     onclick="obtenerKeyActivarDP({{$key}});"
-                                    class="btn btn-outline-danger mb-1"><i
-                                        class="fas fa-share"></i></a>
+                                    class="btn btn-outline-success mb-1 bboo"><i
+                                        class="fas fa-share bbo"></i></a>
                             </form>
                                 @endif
                             </td>
@@ -809,7 +816,13 @@
             </div>
         </div>
     </div>
-
+    <style>
+        .swal-footer{
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
     {{-- {{ $dietas->links() }} --}}
     </div>
     </div>
@@ -820,12 +833,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   
-   
+
+
     <script>
 
         var estadoVisibleModal1 = false, estadoVisibleModal2 = false;
-       
+
         function obtenerKeyActivarDP(key)
         {
             document.getElementById('deletedietaasignada'+key).submit();
@@ -837,7 +850,7 @@
         function obtenerKeyDP(key)
         {
             k = key;
-            
+
         }
 
         function eliminarDietaPredefinida(dieta) {
@@ -864,7 +877,7 @@
         function obtenerKeyDA(key)
         {
             k2 = key;
-            
+
         }
 
 
@@ -872,8 +885,8 @@
         function eliminarDietaAsignada(dieta) {
             var form = document.getElementById('deletedietaasignada' +k2);
             swal({
-            title: "Estas seguro que quieres la dieta " + dieta.nombre + " ?",
-            text: "Al confirmar, la dieta será eliminada permanentemente!",
+            title: "Estas seguro que quieres eliminar la dieta " + dieta.nombre + " ?",
+            text: "Al confirmar, la dieta será eliminada  de la asignación del paciente permanentemente!",
             icon: "warning",
             buttons: [
                 'No, cancelar!',
@@ -887,13 +900,13 @@
         })
 
     }
- 
-      
+
+
         var pacienteid = null,
             dietaid = null;
 
         function opcionDietaPredefinida(key) {
-            
+
             // estadoVisibleModal1 = true;
 
             let diaSeleccionado = document.getElementById('selectorDiaTop' + key).value;
@@ -928,7 +941,7 @@
                 contenedor5.innerHTML = '';
                 contenedor6.innerHTML = '';
 
-               
+
                 for (let i = 0; i < res.length; i++) {
                     let comida = res[i]
 
@@ -977,7 +990,7 @@
 
         function opcion(key) {
             let diaSeleccionado = document.getElementById('selectorDia' + key).value;
-            
+
             let container = document.getElementById('containerDA'+key);
             $(container).show();
 
@@ -994,7 +1007,7 @@
                 console.log('res es:',res);
                 // let arreglo = JSON.parse(res)
                 // console.log(arreglo)
-               
+
                 var contenedor1 = document.getElementById('alimentosDesayunoDA' + key);
                 var contenedor2 = document.getElementById('alimentosColacion1DA' + key);
                 var contenedor3 = document.getElementById('alimentosAlmuerzoDA' + key);
@@ -1002,7 +1015,7 @@
                 var contenedor5 = document.getElementById('alimentosMeriendaDA' + key);
                 var contenedor6 = document.getElementById('alimentosCenaDA' + key);
 
-       
+
                 contenedor1.innerHTML = '';
                 contenedor2.innerHTML = '';
                 contenedor3.innerHTML = '';
@@ -1010,7 +1023,7 @@
                 contenedor5.innerHTML = '';
                 contenedor6.innerHTML = '';
 
-                
+
                 for (let i = 0; i < res.length; i++) {
                     let comida = res[i]
                         console.log('ress');
@@ -1052,10 +1065,10 @@
                         }
                     }
                 }
-            
+
 
             })
-        
+
 
         }
 

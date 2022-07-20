@@ -469,10 +469,10 @@
                                                 style="border:1px solid #55558a;border-radius:10px">
                                                 <h6 class="mb-0">
                                                     <a onclick="" data-toggle="collapse" class="collapsed"
-                                                        style="font-weight: bold" href="#collapse-{{ $k }}"
+                                                      href="#collapse-{{ $k }}"
                                                         aria-expanded="false"
                                                         aria-controls="collapse-{{ $k }}">
-                                                        <img class="imagg" src="{{asset('administracion/images/comidas/'.$nameImgComida[$cont].'')}}">{{ $comidas[$cont] }}
+                                                        <img class="imagg mb-2 mr-3" src="{{asset('administracion/images/comidas/'.$nameImgComida[$cont].'')}}"> <span   style="font-weight: bold" >{{ $comidas[$cont] }}</span>
                                                     </a>
                                                 </h6>
                                             </div>
@@ -759,7 +759,7 @@
         }
 
         function crearDieta() {
-        
+
 
             semana = {
                 alimentosLunes,
@@ -774,12 +774,12 @@
             let form = document.getElementById('crearDieta')
             form.submit();
 
-      
+
 
         }
 
         function guardarDieta() {
-          
+
             let contIncompleto = false;
            let diasCompletos = [true, true, true, true, true, true, true]
            let nombreDia = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
@@ -802,7 +802,7 @@
 
                 if(contIncompleto === false)
             {
-        
+
           var semana = {};
 
           semana = {

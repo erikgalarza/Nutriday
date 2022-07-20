@@ -17,8 +17,8 @@
         </li>
     </ul> --}}
     <ul class="navbar-nav navbar-nav-right">
-       
-      
+
+
         <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                 data-toggle="dropdown">
@@ -90,20 +90,20 @@
                 aria-labelledby="profileDropdown">
                 @if(auth()->user()->hasRole('Administrador'))
                 <a href="{{route('admin.cuenta')}}" class="dropdown-item">
-                    <i class="fas fa-cog text-primary"></i>
+                    <i class="fas fa-cog text-primary" style="color:#4b6ac3 !important"></i>
                     Mi perfil
                 </a>
                 @endif
                 @if(auth()->user()->hasRole('Nutricionista'))
                 <a href="{{route('nutricionista.cuenta')}}" class="dropdown-item">
-                    <i class="fas fa-cog text-primary"></i>
+                    <i class="fas fa-cog text-primary" style="color:#4b6ac3 !important"></i>
                     Mi perfil
                 </a>
                 @endif
                 <div class="dropdown-divider"></div>
                 <a onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" class="dropdown-item">
-                    <i class="fas fa-power-off text-primary"></i>
+                document.getElementById('logout-form').submit();" class="dropdown-item" >
+                    <i class="fas fa-power-off text-primary" style="color:#4b6ac3 !important"></i>
                     Cerrar sesión
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST"

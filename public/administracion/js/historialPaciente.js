@@ -152,6 +152,110 @@
           data: data,
           options: options
         });
+
+      }
+      if ($("#sales-status-chart").length) {
+        var pieChartCanvas = $("#sales-status-chart").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: [75, 25],
+              backgroundColor: [
+                '#04b76b',
+                '#ff5e6d',
+
+              ],
+              borderColor: [
+                '#04b76b',
+                '#ff5e6d',
+              ],
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+              'Pacientes activos',
+              'Pacientes inactivos',
+
+            ]
+          },
+          options: {
+            responsive: true,
+            animation: {
+              animateScale: true,
+              animateRotate: true
+            },
+            legend: {
+              display: false
+            },
+            legendCallback: function(chart) {
+              var text = [];
+              text.push('<ul class="legend'+ chart.id +'">');
+              for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+                text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '"></span>');
+                if (chart.data.labels[i]) {
+                  text.push(chart.data.labels[i]);
+                }
+                text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">'+ chart.data.datasets[0].data[i] + '%</label>');
+                text.push('</li>');
+              }
+              text.push('</ul>');
+              return text.join("");
+            }
+          }
+        });
+        document.getElementById('sales-status-chart-legend').innerHTML = pieChart.generateLegend();
+      }
+      if ($("#daily-sales-chart").length) {
+        var dailySalesChartData = {
+          datasets: [{
+            data: [90, 10],
+            backgroundColor: [
+              '#04b76b',
+              '#ff5e6d',
+
+            ],
+            borderWidth: 1
+          }],
+
+          // These labels appear in the legend and in the tooltips when hovering different arcs
+          labels: [
+            'Nutricionistas activos',
+            'Nutricionistas inactivos',
+          ]
+        };
+        var dailySalesChartOptions = {
+          responsive: true,
+          maintainAspectRatio: true,
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          },
+          legend: {
+            display: false
+          },
+          legendCallback: function(chart) {
+            var text = [];
+            text.push('<ul class="legend'+ chart.id +'">');
+            for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+              text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '"></span>');
+              if (chart.data.labels[i]) {
+                text.push(chart.data.labels[i]);
+              }
+              text.push('</li>');
+            }
+            text.push('</ul>');
+            return text.join("");
+          },
+          cutoutPercentage: 70
+        };
+        var dailySalesChartCanvas = $("#daily-sales-chart").get(0).getContext("2d");
+        var dailySalesChart = new Chart(dailySalesChartCanvas, {
+          type: 'doughnut',
+          data: dailySalesChartData,
+          options: dailySalesChartOptions
+        });
+        document.getElementById('daily-sales-chart-legend').innerHTML = dailySalesChart.generateLegend();
       }
     });
   })(jQuery);

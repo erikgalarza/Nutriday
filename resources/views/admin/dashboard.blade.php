@@ -254,10 +254,14 @@
                         <div class="collapse" id="page-layouts">
                             <ul class="nav flex-column sub-menu">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <li  class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('administrador.crear')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
 =======
                                 <li  class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('admin/crear-admin')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
 >>>>>>> e265b7d5c981c55f448f87838a31512dcfd51c37
+=======
+                                <li  class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('admin/crear-admin')}}"> <i class="fa-solid fa-user-plus mr-3"></i>Agregar</a></li>
+>>>>>>> alvaro
                                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('administrador.listar')}}"> <i class="fa-solid fa-users-gear mr-3"></i>Ver todos</a></li>
                             </ul>
                         </div>

@@ -82,19 +82,25 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/colpomed/',[AdminController::class,'dashboard'])->name('administrador.dashboard');
     Route::resource('alimento',AlimentoController::class);
 <<<<<<< HEAD
+<<<<<<< HEAD
     Route::resource('paciente',PacienteController::class);
 
         Route::resource('dieta',DietaController::class);
 =======
+=======
+>>>>>>> alvaro
     Route::resource('paciente',PacienteController::class)->except('create');
-    
+
     Route::resource('dieta',DietaController::class);
 
     Route::get('/crearDieta',[DietaController::class,'create']);
 
     Route::get('/listadosdietas',[DietaController::class,'verTodas']);
 
+<<<<<<< HEAD
 >>>>>>> e265b7d5c981c55f448f87838a31512dcfd51c37
+=======
+>>>>>>> alvaro
     Route::resource('video',VideoController::class);
     Route::get('/agregarvideo',[VideoController::class,'create']);
     Route::get('/listadosvideos',[VideoController::class,'verTodos']);

@@ -95,14 +95,19 @@
             </ul>
           </li> -->
                     <li><a class="nav-link scrollto" href="#contact">Contáctanos</a></li>
-                    @if(!Auth::check())
-                    <li><a class="nav-link scrollto" href="{{ route('login') }}">Inicia Sesión</a></li>
+                    @if (!Auth::check())
+                        <li><a class="nav-link scrollto" href="{{ route('login') }}">Inicia Sesión</a></li>
                     @endif
-                   @if(Auth::check() && ( auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Nutricionista') ))
-                    <li><a class="nav-link scrollto" href="{{ route('administrador.dashboard') }}"><i class="fa-solid fa-circle-user" style="font-size: 20px"></i></a></li>
+                    @if (Auth::check() &&
+                        (auth()->user()->hasRole('Administrador') ||
+                            auth()->user()->hasRole('Nutricionista')))
+                        <li><a class="nav-link scrollto" href="{{ route('administrador.dashboard') }}"><i
+                                    class="fa-solid fa-circle-user" style="font-size: 20px"></i></a></li>
                     @endif
-                    @if(Auth::check() && auth()->user()->hasRole('Paciente'))
-                    <li><a class="nav-link scrollto" href="{{ route('cliente.dashboard') }}"><i class="fa-solid fa-circle-user" style="font-size: 20px"></i></a></li>
+                    @if (Auth::check() &&
+                        auth()->user()->hasRole('Paciente'))
+                        <li><a class="nav-link scrollto" href="{{ route('cliente.dashboard') }}"><i
+                                    class="fa-solid fa-circle-user" style="font-size: 20px"></i></a></li>
                     @endif
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -128,8 +133,8 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-                        <img src="{{ asset('img/colpomed_about.jpg') }}" class="img-fluid" style="border-radius:5px"
-                            alt="Foto Gerencia Colpomed">
+                        <img src="{{ asset('img/colpomed_about.jpg') }}" class="img-fluid"
+                            style="border-radius:5px" alt="Foto Gerencia Colpomed">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
                         <h3>Sobre Nosotros.</h3>
@@ -316,7 +321,8 @@
                             <div class="icon"><i class='bx bxs-flask bx-tada'></i></div>
                             <h4><a href="">Laboratorio clínico automatizado</a></h4>
                             <p>El Laboratorio Clínico de Colpomed, está equipado con tecnología moderna y equipos
-                                automatizados de la casa Roche, con respaldo técnico y de mantenimiento permanente de equipos</p>
+                                automatizados de la casa Roche, con respaldo técnico y de mantenimiento permanente de
+                                equipos</p>
                         </div>
                     </div>
 
@@ -334,40 +340,42 @@
                     <p> Laboratorio Clínico de COLPOMED. Equipos automatizados con la mejor tecnología de Laboratorios
                         ROCHE. Por ello destacamos como laboratorio clínico inmunológico especializado.</p>
                     <a title="Video promocional" class="cta-btn btn" data-toggle="modal"
-                        data-target="#exampleModal-25">Aqui va
-                        un modal</a>
+                        data-target="#exampleModal-25">Ver detalles</a>
                 </div>
             </div>
 
 
             <div class="modal fade" id="exampleModal-25" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color:#4b6ac3">
                             <h5 class="modal-title text-white"
                                 style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">
-                                Editar dieta</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                Video promocional</h5>
+                            <button style="background-color:#4b6ac3;border:1px #4b6ac3" type="button" class="close"
+                                data-dismiss="modal" aria-label="Close">
                                 <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body py-2 px-0">
+                            <div class="container-fluid">
+                                <div class="row justify-content-center align-items-center">
+                                    <video src="{{ asset('img/video_idad.mp4') }}" width="auto" height="auto"
+                                        controls>
+                                        <source src="" type="video/mp4">
+                                    </video>
 
-
-                            <div
-                                class="modal-footer mt-2 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
-                                <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
-                                    <button type="submit"
-                                        class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
-                                    <button type="button" class="btn btn-light mb-2 col-12 col-sm-5"
-                                        data-dismiss="modal">Cancelar</button>
                                 </div>
+
                             </div>
+
                         </div>
 
                     </div>
                 </div>
+            </div>
+
 
         </section><!-- End Cta Section -->
 
@@ -397,13 +405,14 @@
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-instalaciones">
-                        <img src="{{ asset('img/portfolio/instalaciones.png') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('img/portfolio/instalaciones.png') }}" class="img-fluid"
+                            alt="">
                         <div class="portfolio-info">
                             <h4>Laboratorio</h4>
                             <p>Instalaciones</p>
-                            <a href="{{ asset('img/portfolio/instalaciones.png') }}" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Laboratio de COLPOMED"><i
-                                    class="bx bx-plus"></i></a>
+                            <a href="{{ asset('img/portfolio/instalaciones.png') }}"
+                                data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                title="Laboratio de COLPOMED"><i class="bx bx-plus"></i></a>
                         </div>
                     </div>
 
@@ -503,9 +512,9 @@
                         <div class="portfolio-info">
                             <h4>Laboratorio</h4>
                             <p>Instalaciones</p>
-                            <a href="{{ asset('img/portfolio/instalaciones2.PNG') }}" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link" title="Laboratio de COLPOMED"><i
-                                    class="bx bx-plus"></i></a>
+                            <a href="{{ asset('img/portfolio/instalaciones2.PNG') }}"
+                                data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                title="Laboratio de COLPOMED"><i class="bx bx-plus"></i></a>
                         </div>
                     </div>
 
@@ -540,8 +549,8 @@
                         <div class="portfolio-info">
                             <h4>Consultorio médico infantil</h4>
                             <p>Consultorios</p>
-                            <a href="{{ asset('img/portfolio/instalaciones3.PNG') }}" data-gallery="portfolioGallery"
-                                class="portfolio-lightbox preview-link"
+                            <a href="{{ asset('img/portfolio/instalaciones3.PNG') }}"
+                                data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
                                 title="Consultorio médico infantil de COLPOMED"><i class="bx bx-plus"></i></a>
                         </div>
                     </div>
@@ -589,7 +598,100 @@
                                 </p>
                             </div>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy enviar ">Leer más</a>
+                                <a title="Ver más" data-toggle="modal" data-target="#exampleModal-26"
+                                    class="btn-buy enviar" style="cursor:pointer">Leer
+                                    más</a>
+                                {{-- <a title="Video promocional" class="cta-btn btn" data-toggle="modal"
+                                    data-target="#exampleModal-26">Ver detalles</a> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModal-26" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color:#4b6ac3">
+                                    <h5 class="modal-title text-white"
+                                        style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">
+                                        Servicio Integral</h5>
+                                    <button style="background-color:#4b6ac3;border:1px #4b6ac3" type="button"
+                                        class="close" data-dismiss="modal" aria-label="Close">
+                                        <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body py-2 px-0">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-center align-items-center">
+                                            <br>
+                                            <p style="text-align: justify">
+                                                <br>
+                                                La atención integral es un enfoque en el que se atienden todas las
+                                                necesidades del paciente por completo, y no solo las necesidades médicas
+                                                y físicas. La atención integral, la cual involucra la colaboración de
+                                                muchos profesionales, es el enfoque estándar en todos los centros
+                                                médicos especializados en el tratamiento contra el cáncer en menores de
+                                                edad. Algunos de los aspectos clave de una atención integral bien
+                                                diseñada son:
+                                            </p>
+                                            <div class="pl-3">
+                                                <ul style="text-align: justify">
+                                                    <li>
+                                                        Uso de los más avanzados recursos en el diagnóstico y
+                                                        tratamiento,
+                                                        incluyendo la oportunidad de participar en estudios clínicos.
+                                                    </li>
+                                                    <li>
+                                                        Equipo de profesionales expertos en el tratamiento del cáncer
+                                                        infantil.
+                                                    </li>
+                                                    <li>
+                                                        Amplia gama de servicios para pacientes y familiares, incluyendo
+                                                        programas educativos, apoyo emocional, grupos de apoyo y
+                                                        programas
+                                                        sociales de apoyo (recursos y ver por los derechos del
+                                                        paciente), entre
+                                                        otros programas especiales para ayudar a mejorar la calidad de
+                                                        vida de
+                                                        los pacientes y sus familiares.
+                                                    </li>
+                                                    <li>
+                                                        Remisión a recursos que ayuden a cumplir con las necesidades
+                                                        básicas,
+                                                        como alimentación, un lugar dónde hospedarse durante el
+                                                        tratamiento y
+                                                        transporte.
+                                                    </li>
+                                                    <li>
+                                                        Programas educativos para el paciente y para los familiares con
+                                                        materiales actuales (contenido impreso, audio, DVD o programas
+                                                        de
+                                                        computadora).
+                                                    </li>
+                                                    <li>
+                                                        Programas escolares, incluyendo contacto con los maestros de
+                                                        planta,
+                                                        maestros que enseñan a estudiantes en el hogar o el hospital,
+                                                        así como
+                                                        apoyo con el regreso a la escuela.
+                                                    </li>
+                                                    <li>
+                                                        Coordinación de esfuerzos para ayudar al paciente a sobrellevar
+                                                        el
+                                                        tratamiento, las pruebas y procedimientos médicos.
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -609,7 +711,56 @@
                             </div>
 
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Leer más</a>
+                                <a data-toggle="modal" data-target="#exampleModal-27" class="btn-buy">Leer más</a>
+                                {{-- <a title="Video promocional" class="cta-btn btn" data-toggle="modal"
+                                    data-target="#exampleModal-26">Ver detalles</a> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModal-27" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color:#4b6ac3">
+                                    <h5 class="modal-title text-white"
+                                        style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">
+                                        Instalaciones</h5>
+                                    <button style="background-color:#4b6ac3;border:1px #4b6ac3" type="button"
+                                        class="close" data-dismiss="modal" aria-label="Close">
+                                        <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body py-2 px-0">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-center align-items-center">
+                                            <br>
+                                            <p style="text-align: justify">
+                                                <br>
+                                                Nuestro sello distintivo marca su diferencia en el mercado, al ser un
+                                                Centro Médico que cuenta con instalaciones modernas, confortables y con
+                                                normativas de seguridad y diseño estructural en construcción
+                                                antisísmica, con accesos diferenciados y pensado en proveer seguridad a
+                                                personas con capacidades especiales según normas de espacios de
+                                                circulación e ingresos; salida de emergencia y disposición de paneles
+                                                contra incendios, luces auxiliares de emergencia y señalética
+                                                recomendada en casos de desastres.
+                                            </p>
+                                            <br>
+                                            <div class="container-fluid mb-3">
+                                                <img class="w-100" style="border-radius: 5px"
+                                                    src="{{ asset('img/instalaciones-colpomed.jpg') }}"
+                                                    alt="Instalaciones colpomed">
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -628,10 +779,55 @@
                             </div>
 
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy enviar">Leer más</a>
+                                <a data-toggle="modal" data-target="#exampleModal-28" class="btn-buy enviar" >Leer más</a>
+                                 {{-- <a title="Video promocional" class="cta-btn btn" data-toggle="modal"
+                                    data-target="#exampleModal-26">Ver detalles</a> --}}
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="exampleModal-28" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color:#4b6ac3">
+                                    <h5 class="modal-title text-white"
+                                        style="text-transform: uppercase; font-weight:bold; font-size:16px"id="exampleModalLabel-2">
+                                        Profesionalismo</h5>
+                                    <button style="background-color:#4b6ac3;border:1px #4b6ac3" type="button"
+                                        class="close" data-dismiss="modal" aria-label="Close">
+                                        <span style="color:white;font-size:30px" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body py-2 px-0">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-center align-items-center">
+                                            <br>
+                                            <p style="text-align: justify">
+                                                <br>
+                                                Somos un Centro Hospitalario de Especialidades Médicas ubicado en la ciudad de Riobamba con amplio reconocimiento y experiencia en la práctica de Ginecología, Obstetricia, Patología Cervical y Colposcopia.
+
+                                                Nos identificamos como referentes en el manejo de la Patología del Cuello Uterino con una experiencia de 25 años en el centro del país.
+                                            </p>
+                                            <br>
+                                            <div class="container-fluid mb-3">
+                                                <img class="w-100 h-50" style="border-radius: 5px"
+                                                    src="{{ asset('img/profesion.jpg') }}"
+                                                    alt="Instalaciones colpomed">
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -977,7 +1173,8 @@
     <footer id="footer">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright {{ date('Y') }} <strong><span>NUTRIDAY</span></strong>. Todos los Derechos Reservados
+                &copy; Copyright {{ date('Y') }} <strong><span>NUTRIDAY</span></strong>. Todos los Derechos
+                Reservados
             </div>
             <div class="credits">Por <a href="https://www.facebook.com/Colpomed/"> COLPOMED</a>
             </div>
@@ -987,21 +1184,21 @@
                 class="bi bi-arrow-up-short"></i></a>
         <div id="preloader"></div>
     </footer>
-        <!-- Vendor JS Files -->
-        <script src="https://kit.fontawesome.com/50e215d7ac.js" crossorigin="anonymous"></script>
-        <script src="{{ asset('vendor/aos/aos.js') }}"></script>
-        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
-        <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
-        <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
+    <!-- Vendor JS Files -->
+    <script src="https://kit.fontawesome.com/50e215d7ac.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
 
-            @include('layouts.scripts')
-        <!-- Template Main JS File -->
+    @include('layouts.scripts')
+    <!-- Template Main JS File -->
 
-        <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
-        <!-- END PLUGINS NEEDED FOR THE IMPORTANT MESSAGE MODAL POPUP -->
+    <!-- END PLUGINS NEEDED FOR THE IMPORTANT MESSAGE MODAL POPUP -->
 </body>
 
 </html>

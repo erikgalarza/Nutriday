@@ -8,11 +8,11 @@
 </style> --}}
     <div class="page-header mb-2">
         <h3 class="page-title">
-            Inicio
+             INICIO
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
             </ol>
         </nav>
     </div>
@@ -249,7 +249,7 @@
             }
 
             .do:hover {
-                transform: translate(0, -20px);
+                transform: translate(0, -10px);
             }
 
         }
@@ -259,7 +259,12 @@
         <div class="col-12 p-0" style="padding: 0;background-color: #f2f2f2;border:none">
             <div class="card card-statistics" style="padding: 0;background-color: #f2f2f2;border:none">
                 <div class="card-body row justify-content-center align-items-center"
-                    style="padding: 0;background-color: #f2f2f2;border:none">
+                style="padding: 0;background-color: #f2f2f2;border:none">
+                <div class="text-left w-100 mx-2">
+                    <p class="m-0 mb-1 p-0 " style="text-transform: uppercase;color:#828383; font-weight:bold">Última dieta asignada</p>
+
+                </div>
+                    <div class="container-fluid mx-2" style="border-top:1px dashed #828383"></div>
                     {{-- <div class="d-flex flex-column flex-md-row align-items-center justify-content-between container3 w-100 no-gutters p-0 m-0" style="background: #f2f2f2;"> --}}
                     {{-- @for ($i = 0; $i < 7; $i++)
                         <div class="statistics-item text-center divi" >
@@ -285,12 +290,12 @@
                                 <h2 class="mb-1 mt-3" style="font-size:16px;text-transform:uppercase">
                                     {{ $nombreDia[$i] }}
                                 </h2>
-                                <a class="nav-link btnAlimentos" data-toggle="modal"
+                                <a class="nav-link btnAlimentos mb-2" data-toggle="modal"
                                     style="border:none !important;padding:0 10px"
                                     data-target="#exampleModal{{ $i }}"
                                     onclick="cargarAlimentos({{ $i }});">
                                     <label class="badge badge-warning badge-pill mt-2" style="cursor: pointer">Ver
-                                        detalles</label>
+                                        alimentos</label>
                                 </a>
                             </li>
                         @endfor

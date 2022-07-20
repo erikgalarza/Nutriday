@@ -83,7 +83,7 @@
                                         <i class="fas fa-wrench mx-0"></i>
                                     </div>
                                 </div>
-                                <div class="preview-item-content">
+                                <div class="preview-item-content text-info">
                                     <h6 class="preview-subject font-weight-medium">Configuración</h6>
                                     <p class="font-weight-light small-text">
                                         Mi perfil
@@ -106,7 +106,7 @@
                             </a>
                         </div>
                     </li>
-                   
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
 
@@ -116,20 +116,20 @@
                             <img class="" src="{{asset('img/hombre.png')}}" alt="perfil" />
                             @endif
 
-                            
+
                             {{-- <img src="{{$paciente->imagen->url}}" alt="profile" /> --}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="{{route('cliente.cuenta')}}">
-                                <i class="fas fa-cog text-primary"></i>
+                            <a class="dropdown-item" href="{{route('cliente.cuenta')}}"  style="color:black !important">
+                                <i class="fas fa-cog text-info"  style="color:#4b6ac3 !important"></i>
                                 Mi perfil
                             </a>
 
                             <div class="dropdown-divider"></div>
                             <a onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" class="dropdown-item">
-                                <i class="fas fa-power-off text-primary"></i>
+                            document.getElementById('logout-form').submit();"  style="color:black !important" class="dropdown-item">
+                                <i class="fas fa-power-off text-info"  style="color:#4b6ac3 !important"></i>
                                 Cerrar sesión
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -153,7 +153,7 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
                <div id="settings-trigger" class="bg-success"><a target="_blank" href="https://api.whatsapp.com/send?phone=593991438810&text=Bienvenido%20a%20COLPOMED,%20%C2%BF%20Deseas%20reservar%20una%20cita%20?"><i class="fab fa-whatsapp"></i></a></div>
-       
+
 
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
@@ -246,7 +246,7 @@
             </div>
             <!-- main-panel ends -->
         </div>
-        
+
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->

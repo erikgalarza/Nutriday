@@ -154,13 +154,24 @@
         });
 
       }
+
+
+
+
+
       if ($("#sales-status-chart").length) {
         var pieChartCanvas = $("#sales-status-chart").get(0).getContext("2d");
+        let posPac = document.getElementById('posPac').value;
+        let negPac = document.getElementById('negPac').value;
+      
+
+       
+
         var pieChart = new Chart(pieChartCanvas, {
           type: 'pie',
           data: {
             datasets: [{
-              data: [75, 25],
+              data: [posPac, negPac],
               backgroundColor: [
                 '#04b76b',
                 '#ff5e6d',
@@ -196,6 +207,7 @@
                 if (chart.data.labels[i]) {
                   text.push(chart.data.labels[i]);
                 }
+                
                 text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">'+ chart.data.datasets[0].data[i] + '%</label>');
                 text.push('</li>');
               }
@@ -206,10 +218,19 @@
         });
         document.getElementById('sales-status-chart-legend').innerHTML = pieChart.generateLegend();
       }
+
+
+
+
+
       if ($("#daily-sales-chart").length) {
+
+        let posNut = document.getElementById('posNut').value;
+        let negNut = document.getElementById('negNut').value;
+     
         var dailySalesChartData = {
           datasets: [{
-            data: [90, 10],
+            data: [posNut, negNut],
             backgroundColor: [
               '#04b76b',
               '#ff5e6d',

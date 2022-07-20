@@ -122,7 +122,35 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.contenidoDashboard');
+        $pacientes = Paciente::all();
+        $nutricionistas = Nutricionista::all();
+        $posPac = 0;
+        $negPac =0;
+        $posNut = 0;
+        $negNut =0;
+        foreach($pacientes as $paciente)
+        {
+            if($paciente->estado=="activo")
+                $posPac = $posPac+1;
+            else
+                $negPac = $negPac+1;
+
+        }
+        foreach($nutricionistas as $nutricionista)
+        {
+            if($nutricionista->estado=="activo")
+                $posNut = $posNut+1;
+            else
+                $negNut = $negNut+1;
+
+        }
+
+      
+        // $pacientesConEstado;
+        return view('admin.contenidoDashboard',compact("posPac",
+        "negPac",
+        "posNut",
+        "negNut"));
     }
 
 

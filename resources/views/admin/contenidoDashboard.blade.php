@@ -304,13 +304,18 @@
         @endif
     @endif
 
+    <input type="hidden" id="posPac" value="{{$posPac}}">
+    <input type="hidden" id="negPac" value="{{$negPac}}">
+    <input type="hidden" id="posNut" value="{{$posNut}}">
+    <input type="hidden" id="negNut" value="{{$negNut}}">
+    
     <div class="row">
 
         <div class="col-md-6 grid-margin stretch-card mt-4">
             <div class="card ">
                 <div class="card-body d-flex flex-column">
                     <h4 class="card-title">
-                        <i class="hart-pie"></i>
+                        <i class="fas fa-hart-pie"></i>
                         Pacientes activos / inactivos
                     </h4>
                     <div class="flex-grow-1 d-flex flex-column justify-content-between">

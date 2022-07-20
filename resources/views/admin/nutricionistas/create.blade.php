@@ -18,6 +18,17 @@
             <div class=" mb-4" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
                 <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos nutricionista</h3>
             </div>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
 
 
@@ -81,7 +92,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputMobile"
                             class=" col-xl-3 col-form-label">Teléfono:</label>
                         <div class=" col-xl-9">
-                            <input style="border-radius:10px" name="telefono" type="text" class="form-control" id="exampleInputMobile"
+                            <input style="border-radius:10px" name="telefono" type="tel" class="form-control" id="exampleInputMobile"
                                 placeholder="Ingrese el teléfono">
                                 <p class="text-danger font-weight-bold">{{$errors->first('telefono')}}</p>
                         </div>

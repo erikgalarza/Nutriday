@@ -20,6 +20,8 @@ class RegController extends Controller
             "email"=>$request->email,
             "password"=>$pass,
         ]);
+  
+
         $admin = $user->administradores()->create([
             "nombre"=>$request->nombre,
             "cedula"=>$request->cedula,

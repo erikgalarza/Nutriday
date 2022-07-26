@@ -29,7 +29,7 @@
                         <img style="max-width:300px;max-height:200px" src="{{$paciente->imagen->url}}" alt="profile" />
                         @else
                         <div class="imagencard">
-                            <img style="max-width:300px;max-height:200px" src="{{ asset('img/icons/Administrador.png') }}">
+                            <img style="max-width:300px;max-height:200px" src="{{ asset('img/hombre.png') }}">
                         </div>
                         @endif
                     </div>

@@ -24,9 +24,9 @@
                             <div class="card">
                                 <div class="card-body text-center">
                                     <h4 class="card-title text-center" style="text-transform: uppercase; font-weight:bold;font-size: 14px">{{$administrador->nombre}}</h4>
-                                    <div style="width:100%;height:auto">
+                                    <div >
                                         @if(isset($administrador->imagen->url))
-                                        <img src="{{$administrador->imagen->url}}"alt="Foto del admin">
+                                        <img style="max-width:300px;max-height:200px" src="{{$administrador->imagen->url}}"alt="Foto del admin">
                                         @else
                                         <div class="imagencard">
                                             <img style="max-width:300px;max-height:200px" src="{{ asset('img/icons/Administrador.png') }}">

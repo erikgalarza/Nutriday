@@ -34,12 +34,15 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-xl-5 mb-4 mb-xl-0 row justify-content-center align-items-center">
+                                <div class="col-12 row justify-content-center no-gutters" style="margin-top:-35px">
+                                <p class="mt-lg-5 mt-xl-0" style="text-transform: uppercase;font-weight:bold">{{$paciente->nombre}} {{$paciente->apellido}}</p>
+                                </div>
                                 @if(isset($paciente->imagen))
                                 <img class="img-thumbnail imaagen"style="max-width:400px;max-height:400px" src="{{$paciente->imagen->url}}">
                                 {{-- <img class="" src="{{asset('img/hombre.png')}}" alt="profile" /> --}}
                                 @else
                                 {{-- <img class="img-thumbnail imaagen"src="{{ asset('img/icons/Pacient.png') }}"> --}}
-                                <img class="" src="{{asset('img/hombre.png')}}" alt="profile" />
+                                <img style="max-width:400px;max-height:400px"src="{{asset('img/hombre.png')}}" alt="profile" />
                                 @endif
                             </div>
 

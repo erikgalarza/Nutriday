@@ -216,7 +216,7 @@
 
         }
 
-        @media  (min-width:790px) and (max-width: 1247px){
+        @media  (min-width:790px) and (max-width: 1302px){
             .bb {
                 max-width: 769px;
             }
@@ -237,7 +237,7 @@
 
 
 
-        @media (min-width:1248px) {
+        @media (min-width:1303px) {
             .bb {
                 justify-content: space-between;
             }

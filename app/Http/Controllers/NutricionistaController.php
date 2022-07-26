@@ -26,7 +26,7 @@ class NutricionistaController extends Controller
     public function listado()
     {
         $nutricionistas = User::role('Nutricionista')->get();
-    
+
         return view('admin.nutricionistas.index',compact('nutricionistas'));
     }
 
@@ -101,11 +101,11 @@ class NutricionistaController extends Controller
 
     public function store(StoreNutricionistaRequest $request)
     {
-     
+
         $hashpass = Hash::make($request->password);
         $user = User::create([
             "email"=>$request->correo,
-            "password"=>$hashpass,
+            "password"=>$request->password,
         ]);
         $user->assignRole('Nutricionista');
         $nutricionista = $user->nutricionistas()->create([
@@ -119,7 +119,7 @@ class NutricionistaController extends Controller
             "especialidad"=>$request->especialidad,
             "user_id"=>$user->id
         ]);
-        
+
 
 
         if ($request->hasFile('imagen')) {
@@ -136,7 +136,7 @@ class NutricionistaController extends Controller
             ]);
         }
 
-     
+
 
 
 
@@ -173,7 +173,7 @@ class NutricionistaController extends Controller
 
     public function update(UpdateNutricionistaRequest $request, $id)
     {
-        
+
         $user = User::find($id);
         $nutricionista = $user->nutricionistas()->first();
         $pass=$user->password;

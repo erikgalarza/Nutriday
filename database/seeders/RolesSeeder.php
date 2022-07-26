@@ -31,7 +31,8 @@ class RolesSeeder extends Seeder
 
         $user2 = User::create([
             "email"=>"alvaro@gmail.com",
-            "password"=>'$2y$10$Ztoy.56ZbM.7kfG60rosJuERbO4I5HDnBceACPNs7SVgADd9Xw62m'
+            "password"=>'alvarotupapi'
+                        //$2y$10$1dmuiBvlIiqepV.IeXnniOVoDW2BxrF/spY/tWVqIrZIKSdAFdeE6
         ]);
         $user2->assignRole('Nutricionista');
         $nutri = $user2->nutricionistas()->create([

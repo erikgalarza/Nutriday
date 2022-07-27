@@ -159,7 +159,7 @@
             </div>
         </div>
         <div class="container text-center py-2 mb-3">
-            <a href="{{ route('admin.agregarDatosAntropometricos', $paciente->id) }}" class="btn btn-warning"><i
+            <a href="{{ route('admin.agregarDatosAntropometricos', base64_encode($paciente->id)) }}" class="btn btn-warning"><i
                     class="fas fa-plus mr-2"></i> Agregar datos antropométricos </a>
         </div>
     </div>

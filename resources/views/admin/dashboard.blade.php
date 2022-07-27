@@ -316,7 +316,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="{{route('alimento.addAlimento')}}"><i class="fa-regular fa-square-plus mr-3"></i>Agregar</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/alimentoslistados')}}"><i class="fa-solid fa-list mr-3"></i>Ver todos</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('categoriaAlimento.index')}}"><i class="fa-solid fa-file-circle-plus mr-3"></i>Categorías alimentos</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('medidaAlimento.index')}}"><i class="fa-solid fa-ruler mr-3"></i>Unidades de medida</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('medidaAlimento.index')}}"><i class="fa-solid fa-ruler mr-3"></i>Unidades medida</a></li>
                             </ul>
                         </div>
                     </li>
@@ -332,8 +332,8 @@
                         </a>
                         <div class="collapse" id="ui-advanced">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('dieta.asignarDieta')}}"> <i class="fa-solid fa-chalkboard-user mr-3"> </i>Asignar dieta</a></li>
                                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{url('dashboard/crearDieta')}}"> <i class="fa-regular fa-square-plus mr-3"> </i>Agregar</a></li>
+                                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('dieta.asignarDieta')}}"> <i class="fa-solid fa-chalkboard-user mr-3"> </i>Asignar dieta</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{url('dashboard/listadosdietas')}}"> <i class="fa-solid fa-list mr-3"> </i>Ver todas</a>  </li>
                             </ul>
                         </div>

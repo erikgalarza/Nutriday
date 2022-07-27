@@ -51,7 +51,7 @@
                                         allowfullscreen></iframe>
                                     <div class="card-body">
                                         <h5 class="card-title"><strong>{{ $video_receta->titulo }}</strong></h5>
-                                        <p class="card-text">{{ $video_receta->descripcion }}.</p>
+                                        <p class="card-text" style="text-align: justify">{{ $video_receta->descripcion }}.</p>
                                         {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                                         <a class="btn btn-warning" data-toggle="modal"
                                             data-target="#exampleModal{{ $video_receta->id }}"
@@ -188,7 +188,7 @@
                                     allowfullscreen></iframe>
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>{{ $video_ejercicio->titulo }}</strong></h5>
-                                    <p class="card-text">{{ $video_ejercicio->descripcion }}.</p>
+                                    <p class="card-text" style="text-align: justify">{{ $video_ejercicio->descripcion }}.</p>
                                     {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                                     <a class="btn btn-warning" data-toggle="modal"
                                         data-target="#exampleModal2{{ $video_ejercicio->id }}"
@@ -322,7 +322,7 @@
                                 allowfullscreen></iframe>
                             <div class="card-body">
                                 <h5 class="card-title"><strong>{{ $video_motivacion->titulo }}</strong></h5>
-                                <p class="card-text">{{ $video_motivacion->descripcion }}.</p>
+                                <p class="card-text" style="text-align: justify">{{ $video_motivacion->descripcion }}.</p>
                                 {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                                 <a class="btn btn-warning" data-toggle="modal"
                                     data-target="#exampleModal3{{ $video_motivacion->id }}"

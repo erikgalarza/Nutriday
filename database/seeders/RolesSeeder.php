@@ -31,14 +31,14 @@ class RolesSeeder extends Seeder
 
         $user2 = User::create([
             "email"=>"alvaro@gmail.com",
-            "password"=>'alvarotupapi'
+            "password"=>'$2y$10$Ztoy.56ZbM.7kfG60rosJuERbO4I5HDnBceACPNs7SVgADd9Xw62m'
                         //$2y$10$1dmuiBvlIiqepV.IeXnniOVoDW2BxrF/spY/tWVqIrZIKSdAFdeE6
         ]);
         $user2->assignRole('Nutricionista');
         $nutri = $user2->nutricionistas()->create([
             "nombre"=>"Alvaro",
             "apellido"=>"Salazar",
-            "cedula"=>"1234567890",
+            "cedula"=>"1600154817",
             "sexo"=>1,
             "especialidad"=>"Terapeuta",
             "telefono"=>"0988703030",
@@ -53,12 +53,12 @@ class RolesSeeder extends Seeder
         $user3->assignRole('Paciente');
         $paciente = $user3->pacientes()->create([
             "nombre"=>"Andres",
-            "apellido"=>"Morales",
-            "cedula"=>"1234567890",
+            "apellido"=>"Flores",
+            "cedula"=>"1600526485",
             "sexo"=>1,
             "telefono"=>"0988703030",
             "user_id"=>$user3->id,
-            "responsable_id"=>$user2->id,
+            "responsable_id"=>$nutri->id,
             "tipo_diabetes"=>1,
             "edad"=>23
         ]);

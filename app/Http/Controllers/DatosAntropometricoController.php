@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DatosAntropometricoController extends Controller
 {
-    
+
 
     public function asignarDatosAntropometricos()
     {
@@ -23,15 +23,15 @@ class DatosAntropometricoController extends Controller
         {
             if(isset($paciente->dato_antropometrico))
             {
-                
+
                 $responsable_id = $paciente->responsable_id;
                 $responsable = Nutricionista::find($responsable_id);
                 $responsables->push($responsable);
             }
 
-      
+
         }
-        
+
 
         // dd($pacientes);
         return view('admin.datosantropometricos.asignar',compact('pacientes','responsables'));
@@ -50,10 +50,10 @@ class DatosAntropometricoController extends Controller
     }
 
     public function buscarPacientes(Request $request)
-    {   
+    {
         $nombre = $request->get('paciente');
         $pacientes = Paciente::where('nombre','like','%'.$nombre.'%')->get();
-     
+
 
         return  view('admin.datosantropometricos.asignar',compact('pacientes'));
     }
@@ -66,7 +66,8 @@ class DatosAntropometricoController extends Controller
 
     public function agregarDatosAntropometricos($paciente_id)
     {
-        $paciente = Paciente::find($paciente_id);
+        $pacientei = base64_decode($paciente_id);
+        $paciente = Paciente::find($pacientei);
     //    dd($datosantropometricos);
         return view('admin.paciente.datosAntropometricos',compact('paciente'));
     }
@@ -81,9 +82,9 @@ class DatosAntropometricoController extends Controller
         //
     }
 
-   
+
     public function store(StoreDatosAntropometricoRequest $request)
-    {   
+    {
         dd($request);
         dd(Auth::id());
        $datosAntropometrico =  DatosAntropometrico::create([
@@ -110,7 +111,7 @@ class DatosAntropometricoController extends Controller
             ]);
         }
 
-        
+
         return back();
     }
 

@@ -1971,7 +1971,7 @@ use AlimentosDieta;
     public function dietasByPaciente($paciente_id)
     {
         $paciente = Paciente::find(base64_decode($paciente_id));
-        
+
         $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
         $fechasFinDieta = collect();
@@ -2004,13 +2004,13 @@ use AlimentosDieta;
        {
            if(isset($paciente->dato_antropometrico))
            {
-               
+
                $responsable_id = $paciente->responsable_id;
                $responsable = Nutricionista::find($responsable_id);
                $responsables->push($responsable);
            }
 
-     
+
        }
         return view('admin.dieta.asignar',compact('pacientes','dietas','responsables'));
     }
@@ -2115,7 +2115,7 @@ use AlimentosDieta;
         $dieta->update([
             "estado"=>"activa"
         ]);
-        
+
         $dieta->pacientes()->attach($paciente->id, ['fecha_fin'=>$request->fecha_fin,'fecha_asignacion'=>Carbon::now(),'user_id'=>Auth::id()]);
 
         return back();
@@ -2131,13 +2131,13 @@ use AlimentosDieta;
         {
             if(isset($paciente->dato_antropometrico))
             {
-                
+
                 $responsable_id = $paciente->responsable_id;
                 $responsable = Nutricionista::find($responsable_id);
                 $responsables->push($responsable);
             }
 
-      
+
         }
 
         return view('admin.dieta.asignar',compact('pacientes','dietas','responsables'));
@@ -2207,7 +2207,7 @@ use AlimentosDieta;
             }
             return view('admin.alimentos.create',compact('alimentos','dieta','imc','paciente','datos'));
         }
-        
+
         return view('admin.alimentos.create',compact('alimentos','dieta','imc'));
     }
 

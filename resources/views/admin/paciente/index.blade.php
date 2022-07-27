@@ -48,6 +48,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
+
                             <tbody>
 
                                 @foreach ($pacientes as $key => $paciente)
@@ -82,7 +83,7 @@
                                         </style>
                                         <td>
                                             <a title="Progreso de paciente"
-                                                href="{{ route('paciente.historial', $paciente->id) }}"
+                                                href="{{ route('paciente.historial', base64_encode($paciente->id)) }}"
                                                 class="btn btn-outline-dark mb-1  color1"><i
                                                     class="fas fa-chart-line"></i></a>
 

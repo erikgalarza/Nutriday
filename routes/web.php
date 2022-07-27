@@ -59,7 +59,7 @@ Route::get('/login-administrador',[LoginController::class,'loginAdmin'])->name('
 Route::post('/registrar',[RegController::class,'registrarAdmin'])->name('administrador.registrar');
 // Route::post('/guardar',[AdminController::class,'store'])->name('administracion.store');
 // Route::get('/listado/pacientes',[AdminController::class,'listarPacientes'])->name('administrador.indexPaciente');
-Route::get('/buscar/nutricionistas',[AdminController::class,'buscarNutricionistas'])->name('admin.buscarNutricionistas');
+Route::get('/buscar/pornutricionistas',[AdminController::class,'buscarNutricionistas'])->name('admin.buscarNutricionistas');
 Route::get('/crear/administrador',[AdminController::class,'creare'])->name('administrador.crear');
 
 });
@@ -144,7 +144,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/datos-antropometricos/paciente/{paciente_id}',[DatosAntropometricoController::class,'datosByPaciente'])->name('da.datosByPaciente');
 
     //rutas agregadas 22/06/2022
-    Route::get('/buscar/pacientes',[AdminController::class,'buscarPacientes'])->name('admin.buscarPacientes');
+    Route::get('/buscar/porpaciente',[AdminController::class,'buscarPacientes'])->name('admin.buscarPacientes');
     Route::get('/asignar-actividad/paciente',[ActividadController::class,'buscarPacientes'])->name('actividad.buscarPacientes');
 
 

@@ -78,21 +78,31 @@ class AdminController extends Controller
                 $apellido = substr($nombre_completo,$i+1);
         }
 
+        
         if($apellido!='')
             $nutricionistas = Nutricionista::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get();
         else
             $nutricionistas = Nutricionista::where('nombre','like','%'.$nombre_completo.'%')->get();
 
 
-            $pacientess = Paciente::all();
-            $paci = $pacientess->where('responsable_id',2);
+            // $pacientess = Paciente::all();
+            // $paci = $pacientess->where('responsable_id',2);
+            $paci = collect();
+            foreach($nutricionistas as $key => $nutricionista)
+            {
+                $paciente = Paciente::where('responsable_id',$nutricionista->user->id)->first();
+                // dd($paciente);
+                $paci->push($paciente);
+            }
+            
 
             $nutricionistass = Nutricionista::all();
             $posPac = 0;
             $negPac =0;
             $posNut = 0;
             $negNut =0;
-            foreach($pacientess as $paciente)
+
+            foreach($paci as $paciente)
             {
                 if($paciente->estado=="activo")
                     $posPac = $posPac+1;

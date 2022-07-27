@@ -36,7 +36,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label ">Peso (Kg):</label>
                         <div class="col-xl-8 ">
-                            <input style="border-radius:10px" name="peso" type="number"
+                            <input style="border-radius:10px" name="peso" step="0.1" type="number"
                                  class="form-control" placeholder="Ingrese el peso en kilos"
                                 id="peso">
                                 <p class="text-danger font-weight-bold">{{$errors->first('peso')}}</p>
@@ -46,7 +46,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label">Altura (Mts):</label>
                         <div class="col-xl-8 ">
-                            <input style="border-radius:10px" name="altura" step="0.05" type="number" placeholder="Ingrese la altura en metros"                             class="form-control" id="altura">
+                            <input style="border-radius:10px" name="altura" step="0.1" type="number" placeholder="Ingrese la altura en metros"                             class="form-control" id="altura">
                             <p class="text-danger font-weight-bold">{{$errors->first('altura')}}</p>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label ">Grasa corporal (%):</label>
                         <div class="col-xl-8 ">
-                            <input style="border-radius:10px" name="grasa_corporal" step="0.01" type="number" placeholder="Ingrese la grasa corporal"
+                            <input style="border-radius:10px" name="grasa_corporal" step="0.1" type="number" placeholder="Ingresar datos entre 2 y 40"
                                  class="form-control"
                                 id="grasa_corporal">
                                 <p class="text-danger font-weight-bold">{{$errors->first('grasa_corporal')}}</p>
@@ -77,7 +77,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label">Masa muscular (%):</label>
                         <div class="col-xl-8 ">
-                            <input style="border-radius:10px" name="masa_muscular" step="0.01" type="number" placeholder="Ingrese la masa muscular"
+                            <input style="border-radius:10px" name="masa_muscular" step="0.1" type="number" placeholder="Ingresar datos entre 20 y 70"
                                  class="form-control"
                                 id="masa_muscular">
                                 <p class="text-danger font-weight-bold">{{$errors->first('masa_muscular')}}</p>
@@ -110,7 +110,7 @@
                         <div class="col-md-8 p-0 col-xl-6 justify-content-space-around">
                             <button type="submit" class="btn btn-success mb-2 col-sm-12 col-md-5">Guardar
                             </button>
-                            <a class="btn btn-light mb-2 col-sm-12 col-md-5"  href="{{ route('da.datosByPaciente', $paciente->id) }}">Cancelar</a>
+                            <a class="btn btn-light mb-2 col-sm-12 col-md-5"  href="{{ route('da.datosByPaciente', base64_encode($paciente->id)) }}">Cancelar</a>
                         </div>
                     </div>
 

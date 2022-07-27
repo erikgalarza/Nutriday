@@ -239,7 +239,7 @@ class PacienteController extends Controller
             ]);
         }
 
-        return redirect()->route('da.datosByPaciente',$paciente->id);
+        return redirect()->route('da.datosByPaciente',base64_encode($paciente->id));
     }
 
 

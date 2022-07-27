@@ -137,7 +137,7 @@
                                                 <td>
                                                     <a title="Agregar datos antropométricos al paciente"
                                                         class="btn btn-warning"
-                                                        href="{{ route('da.datosByPaciente', $paciente->id) }}"><i
+                                                        href="{{ route('da.datosByPaciente', base64_encode($paciente->id)) }}"><i
                                                             class="fa-solid fa-hospital-user" aria-hidden="true"></i></a>
                                                     <a title="Agregar dieta al paciente" class="btn btn-primary"
                                                         href="{{ route('dieta.dietasByPaciente', $paciente->id) }}"><i

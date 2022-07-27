@@ -52,13 +52,13 @@
                                         <td>{{ $nutricionista->nutricionistas->especialidad }}</td>
                                         <td>{{ $nutricionista->email }}</td>
                                         <td>
-                                            @if($nutricionista->nutricionistas->estado=="activo")
-                                            <a onclick="eliminarNutri({{ $nutricionista }});"
-                                                class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
-                                                @else
-                                                <a onclick="document.getElementById('deletenutri'+{{$nutricionista->nutricionistas->id}}).submit();"
-                                                class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
-                                                @endif
+                                            @if ($nutricionista->nutricionistas->estado == 'activo')
+                                                <a onclick="eliminarNutri({{ $nutricionista }});"
+                                                    class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
+                                            @else
+                                                <a onclick="document.getElementById('deletenutri'+{{ $nutricionista->nutricionistas->id }}).submit();"
+                                                    class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
+                                            @endif
                                             <!-- Arreglar estado de nutricionistas con un botón -->
                                         </td>
                                         <td>
@@ -73,23 +73,27 @@
 
 
                                             @if ($nutricionista->nutricionistas->estado == 'activo')
-                                            <form method="post" id="deletenutri{{ $nutricionista->id }}"
-                                                action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
-                                                class="d-inline">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <a title="Eliminar nutricionista" style="min-width: 50px"
-                                                    onclick="eliminarNutri({{ $nutricionista }});" type="submit"
-                                                    class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
-                                            </form>
+                                                <form method="post" id="deletenutri{{ $nutricionista->id }}"
+                                                    action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    {{ method_field('DELETE') }}
+                                                    <a title="Eliminar nutricionista" style="min-width: 50px"
+                                                        onclick="eliminarNutri({{ $nutricionista }});" type="submit"
+                                                        class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
+                                                </form>
                                             @else
-                                            <form method="post" id="deletenutri{{ $nutricionista->nutricionistas->id }}"
-                                                action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
-                                                class="d-inline">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <a onclick="document.getElementById('deletenutri'+{{$nutricionista->nutricionistas->id}}).submit();"  title="Activar nutricionista" style="min-width: 50px" type="submit" class="btn btn-outline-success mb-1"><i class="fas fa-share"></i></a>
-                                            </form>
+                                                <form method="post"
+                                                    id="deletenutri{{ $nutricionista->nutricionistas->id }}"
+                                                    action="{{ route('nutricionista.destroy', $nutricionista->id) }}"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    {{ method_field('DELETE') }}
+                                                    <a onclick="document.getElementById('deletenutri'+{{ $nutricionista->nutricionistas->id }}).submit();"
+                                                        title="Activar nutricionista" style="min-width: 50px" type="submit"
+                                                        class="btn btn-outline-success mb-1"><i
+                                                            class="fas fa-share"></i></a>
+                                                </form>
                                             @endif
                                         </td>
                                     </tr>
@@ -140,7 +144,8 @@
                                                                         <input style="border-radius:10px" name="apellido"
                                                                             type="text"
                                                                             value="{{ $nutricionista->nutricionistas->apellido }}"
-                                                                            class="form-control" id="exampleInputUsername2">
+                                                                            class="form-control"
+                                                                            id="exampleInputUsername2">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mb-2 no-gutters"
@@ -233,11 +238,16 @@
                                                                     </div>
                                                                 </div>
                                                         </div>
-                                                        <div class="modal-footer mt-3 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
-                                                            <div class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
+                                                        <div
+                                                            class="modal-footer mt-3 mb-0 mr-0 ml-0 p-0 form-group text-center col-12 row justify-content-center">
+                                                            <div
+                                                                class="col-sm-6 col-11 mt-3 col-xl-7 justify-content-space-around">
 
-                                                              <button type="submit" class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
-                                                              <button type="button" class="btn btn-light mb-2 col-12 col-sm-5" data-dismiss="modal">Cancelar</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-success mb-2 col-12 col-sm-5">Guardar</button>
+                                                                <button type="button"
+                                                                    class="btn btn-light mb-2 col-12 col-sm-5"
+                                                                    data-dismiss="modal">Cancelar</button>
                                                             </div>
                                                         </div>
                                                         </form>
@@ -249,7 +259,6 @@
                                     </div>
 
                                     <style>
-
                                         @media (min-width:768px) {
                                             .dialogoss {
                                                 min-width: 600px !important;
@@ -277,76 +286,78 @@
 
                                                     <div class="col-12 row m-0 mb-sm-4 mb-3 justify-content-center">
 
-                                                        <div class=" row col-12 col-md-11 p-md-0 text-left justify-content-center">
+                                                        <div
+                                                            class=" row col-12 col-md-11 p-md-0 text-left justify-content-center">
 
                                                             <div class="col-11 col-md-5 text-center">
                                                                 @if (isset($nutricionista->imagen->url))
-                                                                    <img class="img-thumbnail p-0"  style="height: 100%"
+                                                                    <img class="img-thumbnail p-0" style="height: 100%"
                                                                         src="{{ $nutricionista->imagen->url }}">
                                                                 @else
-                                                                    <img class="img-thumbnail p-0"  style="height: 100%"
+                                                                    <img class="img-thumbnail p-0" style="height: 100%"
                                                                         src="{{ asset('img/mujer.png') }}">
                                                                 @endif
                                                             </div>
 
-                                                        <div class="col-12 col-md-7 text-center mt-4 mt-md-0">
-                                                            <div class="container ">
-                                                                <div class="row justify-content-center pl-2 pl-sm-4 pl-md-0 ">
-                                                            <div class="col-8 col-md-12 ">
-                                                                    <div class="form-group row mb-1 ">
-                                                                        <label
-                                                                            class="col-5  text-left "><strong>Nombre:</strong></label>
-                                                                        <label
-                                                                            class="col-7  text-left ">{{ $nutricionista->nutricionistas->nombre }}
-                                                                            {{ $nutricionista->nutricionistas->apellido }}</label>
+                                                            <div class="col-12 col-md-7 text-center mt-4 mt-md-0">
+                                                                <div class="container ">
+                                                                    <div
+                                                                        class="row justify-content-center pl-2 pl-sm-4 pl-md-0 ">
+                                                                        <div class="col-8 col-md-12 ">
+                                                                            <div class="form-group row mb-1 ">
+                                                                                <label
+                                                                                    class="col-5  text-left "><strong>Nombre:</strong></label>
+                                                                                <label
+                                                                                    class="col-7  text-left ">{{ $nutricionista->nutricionistas->nombre }}
+                                                                                    {{ $nutricionista->nutricionistas->apellido }}</label>
 
-                                                                    </div>
-                                                                    <div class="form-group row mb-1">
-                                                                        <label
-                                                                            class="col-5  text-left "><strong>Cedula:</strong></label>
-                                                                        <label class="col-7  text-left ">
-                                                                            {{ $nutricionista->nutricionistas->cedula }}</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-1">
+                                                                                <label
+                                                                                    class="col-5  text-left "><strong>Cedula:</strong></label>
+                                                                                <label class="col-7  text-left ">
+                                                                                    {{ $nutricionista->nutricionistas->cedula }}</label>
 
-                                                                    </div>
-                                                                    <div class="form-group row mb-1">
-                                                                        <label
-                                                                            class="col-5  text-left "><strong>Sexo:</strong></label>
-                                                                        <label class="col-7  text-left ">
-                                                                            {{ $nutricionista->nutricionistas->sexo == 1 ? 'Masculino' : 'Femenino' }}</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-1">
+                                                                                <label
+                                                                                    class="col-5  text-left "><strong>Sexo:</strong></label>
+                                                                                <label class="col-7  text-left ">
+                                                                                    {{ $nutricionista->nutricionistas->sexo == 1 ? 'Masculino' : 'Femenino' }}</label>
 
-                                                                    </div>
-                                                                    <div class="form-group row mb-1">
-                                                                        <label
-                                                                            class="col-5  text-left  "><strong>Teléfono:</strong></label>
-                                                                        <label
-                                                                            class="col-7  text-left  ">{{ $nutricionista->nutricionistas->telefono }}</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-1">
+                                                                                <label
+                                                                                    class="col-5  text-left  "><strong>Teléfono:</strong></label>
+                                                                                <label
+                                                                                    class="col-7  text-left  ">{{ $nutricionista->nutricionistas->telefono }}</label>
 
-                                                                    </div>
-                                                                    <div class="form-group row mb-1">
-                                                                        <label
-                                                                            class="col-5  text-left  "><strong>Correo:</strong></label>
-                                                                        <label
-                                                                            class="col-7  text-left  ">{{ $nutricionista->email }}</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-1">
+                                                                                <label
+                                                                                    class="col-5  text-left  "><strong>Correo:</strong></label>
+                                                                                <label
+                                                                                    class="col-7  text-left  ">{{ $nutricionista->email }}</label>
 
+                                                                            </div>
+                                                                            <div class="form-group row mb-1">
+                                                                                <label
+                                                                                    class="col-5  text-left "><strong>Especialidad:</strong></label>
+                                                                                <label
+                                                                                    class="col-7   text-left ">{{ $nutricionista->nutricionistas->especialidad }}</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-1">
+                                                                                <label class="col-5   text-left "><strong>Activo
+                                                                                        desde:</strong></label>
+                                                                                <label
+                                                                                    class="col-7  text-left ">{{ date('Y-m-d', strtotime($nutricionista->created_at)) }}</label>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group row mb-1">
-                                                                        <label
-                                                                            class="col-5  text-left "><strong>Especialidad:</strong></label>
-                                                                        <label
-                                                                            class="col-7   text-left ">{{ $nutricionista->nutricionistas->especialidad }}</label>
-                                                                    </div>
-                                                                    <div class="form-group row mb-1">
-                                                                        <label class="col-5   text-left "><strong>Activo
-                                                                                desde:</strong></label>
-                                                                        <label
-                                                                            class="col-7  text-left ">{{ date('Y-m-d',strtotime($nutricionista->created_at)) }}</label>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
-
-                                                            </div>
                                                         </div>
-                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -383,7 +394,8 @@
         function eliminarNutri(nutricionista) {
             var form = document.getElementById('deletenutri' + nutricionista.id);
             swal({
-                title: "Estas seguro que quieres eliminar al nutricionista " + nutricionista.nutricionistas.nombre + " " +
+                title: "Estas seguro que quieres eliminar al nutricionista " + nutricionista.nutricionistas.nombre +
+                    " " +
                     nutricionista.nutricionistas.apellido + " ?",
                 text: "Al confirmar, el nutricionista será eliminado permanentemente!",
                 icon: "warning",

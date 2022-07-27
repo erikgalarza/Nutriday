@@ -140,10 +140,10 @@
                                                         href="{{ route('da.datosByPaciente', base64_encode($paciente->id)) }}"><i
                                                             class="fa-solid fa-hospital-user" aria-hidden="true"></i></a>
                                                     <a title="Agregar dieta al paciente" class="btn btn-primary"
-                                                        href="{{ route('dieta.dietasByPaciente', $paciente->id) }}"><i
+                                                        href="{{ route('dieta.dietasByPaciente', base64_encode($paciente->id)) }}"><i
                                                             class="fa-solid fa-clipboard-list" aria-hidden="true"></i></a>
                                                     <a title="Agregar actividades al paciente" class="btn btn-info"
-                                                        href="{{ route('actividad.asignar', $paciente->id) }}"><i
+                                                        href="{{ route('actividad.asignar', base64_encode($paciente->id)) }}"><i
                                                             class="fa-solid fa-dumbbell" aria-hidden="true"></i></a>
 
                                                 </td>
@@ -238,7 +238,7 @@
                                         <th>Especialidad</th>
                                         <th>Correo</th>
                                         <th>Estado</th>
-                                        <th>Opciones</th>
+                                        <th>Pacientes</th>
                                     </tr>
                                 </thead>
                                 <tbody>

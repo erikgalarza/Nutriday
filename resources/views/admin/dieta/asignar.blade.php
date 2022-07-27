@@ -121,7 +121,7 @@
                                             @else
                                             <td>No existe IMC</td>
                                             @endif
-                                            <td>Erik Galarza</td>
+                                            <td>{{$responsables[$key]->nombre}} {{$responsables[$key]->apellido}}</td>
 
                                             @if (count($paciente->dietas) > 0)
                                                 <td>
@@ -137,7 +137,7 @@
 
                                             <td>
                                                 <a class="btn btn-warning"
-                                                    href="{{ route('dieta.dietasByPaciente', $paciente->id) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                                    href="{{ route('dieta.dietasByPaciente', base64_encode($paciente->id)) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                     </form>

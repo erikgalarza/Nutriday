@@ -121,7 +121,7 @@
                                             @else
                                                 <td>No existe IMC</td>
                                             @endif
-                                            <td>Erik Galarza</td>
+                                            <td>{{$responsables[$key]->nombre}} {{$responsables[$key]->apellido}}</td>
                                             <td>
                                                 <a title="Agregar datos antropométricos al paciente" class="btn btn-warning"
                                                     href="{{ route('da.datosByPaciente', base64_encode($paciente->id)) }}"><i

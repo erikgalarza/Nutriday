@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DatosAntropometrico;
 use App\Http\Requests\StoreDatosAntropometricoRequest;
 use App\Http\Requests\UpdateDatosAntropometricoRequest;
+use App\Models\Nutricionista;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +18,23 @@ class DatosAntropometricoController extends Controller
     public function asignarDatosAntropometricos()
     {
         $pacientes = Paciente::all();
+        $responsables = collect();
+        foreach($pacientes as $key => $paciente)
+        {
+            if(isset($paciente->dato_antropometrico))
+            {
+                
+                $responsable_id = $paciente->responsable_id;
+                $responsable = Nutricionista::find($responsable_id);
+                $responsables->push($responsable);
+            }
+
+      
+        }
+        
+
         // dd($pacientes);
-        return view('admin.datosantropometricos.asignar',compact('pacientes'));
+        return view('admin.datosantropometricos.asignar',compact('pacientes','responsables'));
     }
     public function datosByPaciente($paciente_id)
     {
@@ -37,6 +53,8 @@ class DatosAntropometricoController extends Controller
     {   
         $nombre = $request->get('paciente');
         $pacientes = Paciente::where('nombre','like','%'.$nombre.'%')->get();
+     
+
         return  view('admin.datosantropometricos.asignar',compact('pacientes'));
     }
 

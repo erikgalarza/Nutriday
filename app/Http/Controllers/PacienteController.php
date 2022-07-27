@@ -87,7 +87,8 @@ class PacienteController extends Controller
     }
 
     public function historialPaciente($paciente_id){
-        $paciente = Paciente::find($paciente_id);
+        $id = base64_decode($paciente_id);
+        $paciente = Paciente::find($id);
         $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
         // dd($dietas);

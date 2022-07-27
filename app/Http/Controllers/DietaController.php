@@ -1970,11 +1970,13 @@ use AlimentosDieta;
 
     public function dietasByPaciente($paciente_id)
     {
-        $paciente = Paciente::find($paciente_id);
+        $paciente = Paciente::find(base64_decode($paciente_id));
+        
         $datos = $paciente->dato_antropometrico()->get();
         $dietas = $paciente->dietas()->get();
         $fechasFinDieta = collect();
         $fechasFinAsignacion = collect();
+
         foreach ($dietas as $key => $dieta)
         {
             $fechas_fin = $paciente->dietas()->get(['fecha_fin']);
@@ -1988,6 +1990,7 @@ use AlimentosDieta;
         }
 
         $dietasDisponibles = Dieta::all();
+
         return view('admin.dieta.dietasByPaciente',compact('paciente','fechasFinDieta','fechasFinAsignacion','dietas','dietasDisponibles','datos'));
     }
 
@@ -1996,7 +1999,20 @@ use AlimentosDieta;
         $nombre = $request->get('paciente');
         $pacientes = Paciente::where('nombre','like','%'.$nombre.'%')->get();
        $dietas = Dieta::all();
-        return view('admin.dieta.asignar',compact('pacientes','dietas'));
+       $responsables = collect();
+       foreach($pacientes as $key => $paciente)
+       {
+           if(isset($paciente->dato_antropometrico))
+           {
+               
+               $responsable_id = $paciente->responsable_id;
+               $responsable = Nutricionista::find($responsable_id);
+               $responsables->push($responsable);
+           }
+
+     
+       }
+        return view('admin.dieta.asignar',compact('pacientes','dietas','responsables'));
     }
 
     public function index()
@@ -2110,8 +2126,21 @@ use AlimentosDieta;
         $pacientes = Paciente::all();
 
         $dietas = Dieta::all();
+        $responsables = collect();
+        foreach($pacientes as $key => $paciente)
+        {
+            if(isset($paciente->dato_antropometrico))
+            {
+                
+                $responsable_id = $paciente->responsable_id;
+                $responsable = Nutricionista::find($responsable_id);
+                $responsables->push($responsable);
+            }
 
-        return view('admin.dieta.asignar',compact('pacientes','dietas'));
+      
+        }
+
+        return view('admin.dieta.asignar',compact('pacientes','dietas','responsables'));
     }
 
     public function create()

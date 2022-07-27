@@ -61,7 +61,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
                             class=" col-xl-3 col-form-label">Cédula:</label>
                         <div class=" col-xl-9">
-                            <input style="border-radius:10px" name="cedula" type="text" class="form-control" id="exampleInputEmail2"
+                            <input style="border-radius:10px" onchange="leerCedula();" name="cedula" type="text" class="form-control" id="cedula"
                                 placeholder="Ingrese la cédula">
                                 <p class="text-danger font-weight-bold">{{$errors->first('cedula')}}</p>
                         </div>
@@ -101,7 +101,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputEmail2"
                             class=" col-xl-3 col-form-label">Email:</label>
                         <div class=" col-xl-9">
-                            <input style="border-radius:10px" name="correo" type="email" class="form-control" id="exampleInputEmail2"
+                            <input style="border-radius:10px" name="email" type="email" class="form-control" id="exampleInputEmail2"
                                 placeholder="Ingrese el correo electrónico">
                                 <p class="text-danger font-weight-bold">{{$errors->first('correo')}}</p>
                         </div>
@@ -111,7 +111,7 @@
                             class=" col-xl-3 col-form-label">Contraseña:</label>
                         <div class=" col-xl-9">
                             <input style="border-radius:10px;background-color:#F0F0F0" name="password" type="password" class="form-control"
-                                id="exampleInputPassword2" placeholder="Ingrese la contraseña">
+                                id="password" placeholder="Ingrese la contraseña">
                                 <p class="text-danger font-weight-bold">{{$errors->first('password')}}</p>
                         </div>
                     </div>
@@ -144,4 +144,12 @@
 
 
 </div>
+
+<script>
+     function leerCedula()
+    {
+          let cedula =  document.getElementById('cedula').value;
+          document.getElementById('password').value = cedula;
+    }
+</script>
 @endsection

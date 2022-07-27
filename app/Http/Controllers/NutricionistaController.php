@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Nutricionista;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreNutricionistaRequest;
 use App\Http\Requests\UpdateNutricionistaRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
+// use Illuminate\Support\Facades\Auth;
 
 class NutricionistaController extends Controller
 {
@@ -98,14 +101,14 @@ class NutricionistaController extends Controller
         return view('admin.nutricionistas.create');
     }
 
-
+  
     public function store(StoreNutricionistaRequest $request)
     {
-     
-        $hashpass = Hash::make($request->password);
+    //  dd($request);
+        // $hashpass = Hash::make($request->password);
         $user = User::create([
-            "email"=>$request->correo,
-            "password"=>$hashpass,
+            "email"=>$request->email,
+            "password"=>$request->cedula,
         ]);
         $user->assignRole('Nutricionista');
         $nutricionista = $user->nutricionistas()->create([
@@ -114,11 +117,13 @@ class NutricionistaController extends Controller
             "cedula"=>$request->cedula,
             "sexo"=>$request->sexo,
             "telefono"=>$request->telefono,
-            "correo"=>$request->correo,
+            // "correo"=>$request->email,
 
             "especialidad"=>$request->especialidad,
             "user_id"=>$user->id
         ]);
+
+       
         
 
 
@@ -141,6 +146,20 @@ class NutricionistaController extends Controller
 
 
         return back();
+    }
+
+
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //
     }
 
     public function crearNutri()

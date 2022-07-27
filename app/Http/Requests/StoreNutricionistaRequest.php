@@ -31,7 +31,7 @@ class StoreNutricionistaRequest extends FormRequest
             "sexo"=>"required|string|max:1|min:1",//
             "telefono"=>"required|string|min:10|max:10",
             "especialidad"=>"required|string|max:40",
-            "correo"=>"required|email:rfc,dns|unique:users,email",
+            "email"=>"required|email:rfc,dns|unique:users,email",
             "password"=>"required|string|min:8|max:40"
         ];
     }

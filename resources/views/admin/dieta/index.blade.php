@@ -421,7 +421,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table id="order-listing" class="table text-center">
+                        <table id="order-listing2" class="table text-center">
                             <thead>
                                 <tr>
                                     <th>N°</th>

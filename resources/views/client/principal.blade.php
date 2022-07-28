@@ -380,7 +380,7 @@
                             </td>
                             <td>{{$duraciones[$key]}} min</td>
                             <td>
-                                <label class="badge badge-{{$colorPrioridad[$prioridades[$key]-1]}} badge-pill">{{$nombrePrioridad[$prioridades[$key]-1]}}</label>
+                                <label class="py-2 px-3 badge badge-{{$colorPrioridad[$prioridades[$key]-1]}} badge-pill">{{$nombrePrioridad[$prioridades[$key]-1]}}</label>
                             </td>
                         </tr>
                       @endforeach

@@ -13,7 +13,7 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-3" style="background-color:#4b6ac3 ">
+        <div class=" mb-0" style="background-color:#4b6ac3 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Dietas predefinidas</h3>
         </div>
@@ -24,7 +24,7 @@
                         <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre dieta</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -35,7 +35,7 @@
                             <tbody>
                                 @foreach ($dietas_predefinidas as $key => $dieta)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td class="pl-0 text-left">{{ $key + 1 }}</td>
 
                                         <td>{{ $dieta->nombre }}</td>
                                         <td>{{ $dieta->tipo_diabetes }}</td>
@@ -55,19 +55,19 @@
                                         <td>
                                             <a title="Agregar alimentos a la dieta"
                                                 href="{{ route('dieta.editarAlimentosDietaPredefinida', base64_encode($dieta->id)) }}"
-                                                class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
+                                                class="btn btn-outline-success mb-1 p-2"><i class="fa fa-plus"></i></a>
                                             <a onclick="obtenerIdDieta({{ $dieta->id }});" data-toggle="modal"
                                                 data-target="#exampleModal{{ $dieta->id }}"
-                                                class="btn btn-outline-primary mb-1" title="Ver alimentos"><i
+                                                class="btn btn-outline-primary mb-1 p-2" title="Ver alimentos"><i
                                                     class="fa-solid fa-utensils"></i></a>
                                         </td>
                                         <td>
 
                                             <a title="Ver más" data-toggle="modal"
                                                 data-target="#exampleModal-3{{ $dieta->id }}"
-                                                class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                                                class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
 
-                                            <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1"
+                                            <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1 p-2"
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $dieta->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
@@ -77,7 +77,7 @@
                                                 {{ method_field('DELETE') }}
                                                 <a title="Eliminar dieta predefinida"
                                                 onclick="obtenerKeyDP({{$key}}); eliminarDietaPredefinida({{$dieta}})"
-                                                    type="submit" class="btn btn-outline-danger mb-1"><i
+                                                    type="submit" class="btn btn-outline-danger mb-1 p-2"><i
                                                         class="fas fa-trash"></i></a>
                                             </form>
                                         </td>
@@ -413,7 +413,7 @@
 
     <!-- =============== tabla dietas asignadas a pacientes ========================================== -->
     <div class="card mt-4">
-        <div class=" mb-3" style="background-color: #4eba74">
+        <div class=" mb-0" style="background-color: #4eba74">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Dietas Asignadas a pacientes</h3>
         </div>
@@ -424,7 +424,7 @@
                         <table id="order-listing2" class="table text-center">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre dieta</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -591,7 +591,7 @@
                     </div>
                     @foreach ($paciente->dietas()->get() as $key => $dieta)
                         <tr>
-                            <td>{{ $key + 1 }}</td>
+                            <td class="pl-0 text-left">{{ $key + 1 }}</td>
 
                             <td>{{ $dieta->nombre }}</td>
 
@@ -626,10 +626,10 @@
                             <td>
                                 <a title="Agregar alimentos a la dieta"
                                     href="{{ route('dieta.editarAlimentosDieta', base64_encode($dieta->id)) }}"
-                                    class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
+                                    class="btn btn-outline-success mb-1 p-2"><i class="fa fa-plus"></i></a>
                                 <a onclick="obtenerIdPaciente({{ $paciente->id }});obtenerIdDieta({{ $dieta->id }});"
                                     data-toggle="modal" data-target="#exampleModal-4{{ $paciente->id }}"
-                                    class="btn btn-outline-primary mb-1" title="Ver alimentos"
+                                    class="btn btn-outline-primary mb-1 p-2" title="Ver alimentos"
                                     href="{{ route('alimento.alimentosByDieta', $dieta->id) }}"><i
                                         class="fa-solid fa-utensils"></i></a>
                             </td>
@@ -647,7 +647,7 @@
                                     }
                                 </style>
                                 <a title="Ver más" data-toggle="modal" data-target="#exampleModal-3{{ $dieta->id }}"
-                                    class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                                    class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
 
                                     @if($dieta->estado=="activa")
                                 <form method="post" id="deletedietaasignada{{$key}}"
@@ -656,7 +656,7 @@
                                     {{ method_field('DELETE') }}
                                     <a title="Eliminar dieta asignada"
                                         onclick="obtenerKeyDA({{$key}}); eliminarDietaAsignada({{$dieta}})"
-                                        class="btn btn-outline-danger mb-1"><i
+                                        class="btn btn-outline-danger mb-1 p-2"><i
                                             class="fas fa-trash"></i></a>
                                 </form>
                                 @else
@@ -666,7 +666,7 @@
                                 {{ method_field('DELETE') }}
                                 <a title="Activar"
                                     onclick="obtenerKeyActivarDP({{$key}});"
-                                    class="btn btn-outline-success mb-1 bboo"><i
+                                    class="btn btn-outline-success mb-1 p-2 bboo"><i
                                         class="fas fa-share bbo"></i></a>
                             </form>
                                 @endif

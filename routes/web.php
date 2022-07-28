@@ -184,6 +184,7 @@ Route::group(['middleware'=>'paciente'], function () {
     Route::get('/estadodeanimo',[ClienteController::class,'estadoAnimo'])->name('cliente.estadoAnimo');
     Route::post('/estado-de-animo',[ClienteController::class,'guardarEstadoAnimo'])->name('cliente.guardarEstadoAnimo');
     Route::post('/login-paciente',[LoginController::class,'loginPaciente'])->name('login.paciente');
+    Route::get('/manual-usuario',[ClienteController::class,'manualUsuario'])->name('manual.usuario');
 
 
     Route::get('/videos',[ClienteController::class,'videos'])->name('cliente.videos');

@@ -233,7 +233,7 @@
                     <table id="order-listing" class="table  text-center" style="min-width: 791px">
                         <thead>
                             <tr>
-                                <th style="">N°</th>
+                                <th class="pl-0 text-left">N°</th>
                                 <th style="">Nombre actividad</th>
                                 {{-- <th style="">Prioridad</th> --}}
                                 <th style="">Imagen</th>
@@ -252,7 +252,7 @@
                             @endphp
                             @foreach ($actividades as $key => $actividad)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                     <td>{{ $actividad->nombre }}</td>
                                     <td><img src="{{ $actividad->imagen->url }}"></td>
                                     <td>{{ $actividad->duracion }}</td>
@@ -263,7 +263,7 @@
 
 
                                         <a href="{{ route('actividad.eliminarActividadAsignada', [$actividad->id, $paciente->id]) }}"
-                                            class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                            class="btn btn-outline-danger p-2"><i class="fas fa-trash"></i></a>
 
                                     </td>
                                 </tr>
@@ -365,7 +365,7 @@
                 selectActividad.appendChild(option);
                 //fin options para selectActividad
             }
-         
+
 
 
             const nombrePrioridad = ["Baja", "Media", "Alta"];

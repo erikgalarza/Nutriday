@@ -18,6 +18,7 @@ use App\Models\Nutricionista;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 class PacienteController extends Controller
 {
@@ -93,6 +94,7 @@ class PacienteController extends Controller
         $dietas = $paciente->dietas()->get();
         // dd($dietas);
         $actividades = $paciente->actividades()->get();
+
         $duraciones =  $paciente->actividades()->get(['duracion']);
         // $user_id = $paciente->dato_antropometrico()->get(['user_id']);
 
@@ -104,6 +106,15 @@ class PacienteController extends Controller
             else{$nombre=$user->administradores->nombre;}
             $responsablesAntro->push($nombre);
         }
+        // $responsableActi = collect();
+        // foreach($actividades as $actividad){
+
+        //     $user = User::find($actividad->user_id);
+        //     if($user->nutricionistas){$nombre=$user->nutricionistas->nombre.' '.$user->nutricionistas->apellido;}
+        //     else{$nombre=$user->administradores->nombre;}
+        //     $responsablesAntro->push($nombre);
+        // }
+
 
         $responsablesDieta = collect();
         $fechasFinDieta = collect();
@@ -128,6 +139,7 @@ class PacienteController extends Controller
 
         $estados = $paciente->estados_animo()->get();
         return view('admin.paciente.progreso',compact('datos','dietas','actividades','responsablesAntro','responsablesDieta','fechasFinDieta','fechasFinAsignacion','duraciones','estados','paciente'));
+
     }
 
 

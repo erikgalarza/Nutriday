@@ -114,7 +114,7 @@
         </li>
         <li class="nav-item nav-settings d-none d-lg-block">
             <a class="nav-link" href="#">
-                <i class="fas fa-ellipsis-h"></i>
+                <i class="fa-solid fa-question"></i>
             </a>
         </li>
     </ul>

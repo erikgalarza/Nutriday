@@ -85,7 +85,7 @@
                         <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -101,7 +101,7 @@
                                         @csrf
                                         <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
+                                            <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                             <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
 
                                             @if ($paciente->tipo_diabetes == 3)
@@ -136,7 +136,7 @@
                                             @endif
 
                                             <td>
-                                                <a class="btn btn-warning"
+                                                <a class="btn btn-warning p-2"
                                                     href="{{ route('dieta.dietasByPaciente', base64_encode($paciente->id)) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>

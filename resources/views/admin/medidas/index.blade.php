@@ -48,7 +48,7 @@
                     <table id="order-listing" class="table mb-3">
                         <thead>
                             <tr>
-                                <th>N°</th>
+                                <th class="pl-0 text-left">N°</th>
                                 <th>Medida</th>
                                 <th>Abreviatura</th>
                                 <th>Acciones</th>
@@ -58,7 +58,7 @@
 
                             @foreach ($medidas as $key => $medida)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                     <td>{{ $medida->medida }}</td>
                                     <td>({{ $medida->abreviatura }})</td>
 

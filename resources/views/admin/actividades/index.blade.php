@@ -42,7 +42,7 @@
                     <table id="order-listing" class="table">
                         <thead>
                             <tr>
-                                <th>N°</th>
+                                <th class="pl-0 text-left">N°</th>
                                 <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Acciones</th>
@@ -51,15 +51,15 @@
                         <tbody>
                             @foreach ($actividades as $key => $actividad)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                     <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
                                     <td>{{ $actividad->nombre }}</td>
 
                                     <td>
                                         <a title="Ver descripción" data-toggle="modal"
                                             data-target="#exampleModal-3{{ $actividad->id }}"
-                                            class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
-                                        <a class="btn btn-outline-warning" data-toggle="modal"
+                                            class="btn btn-outline-info p-2"><i class="fas fa-eye"></i></a>
+                                        <a class="btn btn-outline-warning p-2" data-toggle="modal"
                                             data-target="#exampleModal-2{{ $actividad->id }}"><i
                                                 class="fas fa-edit"></i></a>
 
@@ -68,7 +68,7 @@
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <a onclick="eliminarActividad({{ $actividad }});" type="submit"
-                                                class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                                class="btn btn-outline-danger p-2"><i class="fas fa-trash"></i></a>
                                         </form>
                                     </td>
                                 </tr>
@@ -172,12 +172,12 @@
                                                                     </div>
                                                                     <div class="text-center">
                                                                         @if (isset($actividad->imagen->url))
-                                                                            <img 
+                                                                            <img
                                                                                 class="ocultar img-thumbnail imagenAlimento"
                                                                                 style="width:95%;heigth:80%"
                                                                                 src="{{ $actividad->imagen->url }}">
                                                                         @else
-                                                                            <img 
+                                                                            <img
                                                                                 class="ocultar img-thumbnail imagenAlimento"
                                                                                 style="width:95%;heigth:80%"
                                                                                 src="{{ asset('img/icons/dieta48.png') }}">
@@ -303,7 +303,7 @@
             $('img.imagenAlimento').hide();
             state = true;
             })
-      
+
     }
 
 

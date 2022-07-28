@@ -4,14 +4,14 @@
     $('#order-listing').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
-        [5, 10, 15, "All"]
+        [5, 10, 15, "Todos"]
       ],
       "iDisplayLength": 10,
       "language": {
         search: ""
       }
     });
-    
+
     $('#order-listing').each(function() {
       var datatable = $(this);
       // SEARCH - Add the placeholder for Search and Turn this into in-line form control
@@ -33,14 +33,14 @@
     $('#order-listing2').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
-        [5, 10, 15, "All"]
+        [5, 10, 15, "Todos"]
       ],
       "iDisplayLength": 10,
       "language": {
         search: ""
       }
     });
-    
+
     $('#order-listing2').each(function() {
       var datatable = $(this);
       // SEARCH - Add the placeholder for Search and Turn this into in-line form control

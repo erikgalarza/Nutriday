@@ -6,7 +6,7 @@
         cursor:pointer;
     }
 </style> --}}
-    <div class="page-header mb-2">
+    <div class="page-header mt-0 mb-2">
         <h3 class="page-title">
              INICIO
         </h3>
@@ -284,7 +284,7 @@
                             <li class="nav-item my-1 mx-2 text-center navi do"
                                 style="font-weight:bold;border:2px outset #b7c3e7
                             ;border-radius:5px;background-color:#4b6ac3">
-                                <p class="my-2">
+                                <p class="my-2" style="font-size: 18px">
                                     <i class="fa-regular fa-calendar-minus"></i>
                                 </p>
                                 <h2 class="mb-1 mt-3" style="font-size:16px;text-transform:uppercase">

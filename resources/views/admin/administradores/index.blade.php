@@ -17,7 +17,7 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-5" style="background-color:#4b6ac3 ">
+        <div class=" mb-0" style="background-color:#4b6ac3 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos
                 administradores</h3>
         </div>
@@ -37,11 +37,11 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="table-responsive">
+                    <div class="table-responsive ">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                     <th>Estado</th>
@@ -51,26 +51,26 @@
                             <tbody>
                                 @foreach ($admins as $admin)
                                     <tr>
-                                        <td>{{ $admin->id }}</td>
+                                        <td class="pl-0 text-left">{{ $admin->id }}</td>
                                         <td>{{ $admin->administradores->nombre }}</td>
                                         <td>{{ $admin->email }}</td>
                                         <td>
                                             @if ($admin->administradores->estado == 'activo')
                                                 <a onclick="eliminarAdmin({{ $admin }});"
-                                                    class=" btn btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
+                                                    class=" btn py-2 px-3 btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
                                             @else
                                                 <a onclick="document.getElementById('deleteadmin'+{{ $admin->id }}).submit();"
-                                                    class=" btn btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
+                                                    class=" btn p-2 px-3  btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
                                             @endif
 
                                             <!-- Arreglar el estado de los administradores como un boton -->
                                         </td>
                                         <td>
                                             <a title="Ver más" data-toggle="modal"
-                                                data-target="#exampleModal-3{{ $admin->id }}"class="btn btn-outline-info mb-1"><i
+                                                data-target="#exampleModal-3{{ $admin->id }}"class="btn btn-outline-info mb-1 p-2"><i
                                                     class="fas fa-eye"></i></a>
 
-                                            <a title="Editar administrador" class="btn btn-outline-warning mb-1"
+                                            <a title="Editar administrador" class="btn btn-outline-warning mb-1  p-2"
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $admin->id }}"><i
                                                     class="fas fa-edit"></i></a>
                                             @if ($admin->administradores->estado == 'activo')
@@ -81,7 +81,7 @@
                                                     {{ method_field('DELETE') }}
                                                     <a title="Eliminar administrador"
                                                         onclick="eliminarAdmin({{ $admin }});" type="submit"
-                                                        class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
+                                                        class="btn btn-outline-danger mb-1  p-2"><i class="fas fa-trash"></i></a>
                                                 </form>
                                             @else
                                                 <form method="post" id="deleteadmin{{ $admin->id }}"
@@ -91,7 +91,7 @@
                                                     {{ method_field('DELETE') }}
                                                     <a title="Activar administrador"
                                                         onclick="document.getElementById('deleteadmin'+{{ $admin->id }}).submit();"
-                                                        type="submit" class="btn btn-outline-success mb-1"><i
+                                                        type="submit" class="btn btn-outline-success mb-1  p-2"><i
                                                             class="fas fa-share"></i></a>
                                                 </form>
                                             @endif
@@ -337,7 +337,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         var imagen = document.getElementById('imagen');
         var estado = false;

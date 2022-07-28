@@ -39,10 +39,7 @@
                                         allowfullscreen></iframe>
                                     <div class="card-body">
                                         <h5 class="card-title"><strong>{{ $video_receta->titulo }}</strong></h5>
-                                        <p class="card-text">{{ $video_receta->descripcion }}.</p>
-
-
-
+                                        <p class="card-text" style="text-align: justify">{{ $video_receta->descripcion }}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -58,25 +55,25 @@
                     <div class="card-body">
                         <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                             @foreach ($videos_ejercicio as $video_ejercicio)
-                                <div class="container_video" style="background-color:rgb(91, 250, 152);">
-                                    <div class="opciones" style="display:flex; justify-content:flex-end;">
+                            <div class="card opciones text-center mx-3 my-3" style="width: 22rem;">
 
-                                    </div>
-                                    <h5 class="my-1 text-center" style="text-transform: uppercase">
-                                        {{ $video_ejercicio->titulo }}</h5>
-                                    <iframe src="https://youtube.com/embed/{{ $video_ejercicio->url }}"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                <iframe style="height:15rem" class="card-img-top p-2"
+                                    src="https://youtube.com/embed/{{ $video_ejercicio->url }}"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ $video_ejercicio->titulo }}</strong></h5>
+                                    <p class="card-text" style="text-align: justify">{{ $video_ejercicio->descripcion }}</p>
                                 </div>
-
+                            </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
 
 
-                <div class="card mt-3">
+                <div class="card mt-3" >
                     <div class=" mb-3" style="background-color:#7c7ce4;border-radius:5px 5px 0 0 ">
                         <h3 class="card-title text-lg-center mb-4 mt-4 text-white"
                             style="text-transform: uppercase; font-weight:bold">Motivacion</h3>
@@ -84,18 +81,18 @@
                     <div class="card-body">
                         <div style="display:flex; justify-content:space-evenly; flex-wrap:wrap;">
                             @foreach ($videos_motivacion as $video_motivacion)
-                                <div class="container_video" style="background-color:rgb(91, 250, 152)">
-                                    <div class="opciones" style="display:flex; justify-content:flex-end;">
+                            <div class="card opciones text-center mx-3 my-3" style="width: 22rem;">
 
-
-                                    </div>
-                                    <h5 class="my-1 text-center" style="text-transform: uppercase">
-                                        {{ $video_motivacion->titulo }}</h5>
-                                    <iframe src="https://youtube.com/embed/{{ $video_motivacion->url }}"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                <iframe style="height:15rem" class="card-img-top p-2"
+                                    src="https://youtube.com/embed/{{ $video_motivacion->url }}"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ $video_motivacion->titulo }}</strong></h5>
+                                    <p class="card-text" style="text-align: justify">{{ $video_motivacion->descripcion }}</p>
                                 </div>
+                            </div>
                             @endforeach
                         </div>
                     </div>

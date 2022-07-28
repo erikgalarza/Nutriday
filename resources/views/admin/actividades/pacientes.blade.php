@@ -86,7 +86,7 @@
                         <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -103,7 +103,7 @@
                                    <input type="hidden" name="paciente" value="{{$paciente}}">
                                     <tr>
 
-                                        <td>{{$key+1}}</td>
+                                        <td class="pl-0 text-left">{{$key+1}}</td>
                                         <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
 
                                         @if ($paciente->tipo_diabetes == 3)
@@ -135,13 +135,13 @@
                                         <td style="text-align:center;">
                                             @if(count($paciente->actividades)>0)
                                             <a data-toggle="modal"
-                                            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-outline-info" title="Ver actividades asignadas"><i class="fas fa-eye"></i></a>
+                                            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-outline-info p-2" title="Ver actividades asignadas"><i class="fas fa-eye"></i></a>
                                             @else
                                             <label style="color:#ff5e6d">No se han asignado actividades !</label>
                                             @endif
                                         </td>
                                         <td>
-                                            <a title="Asignar actividad" href="{{route('actividad.asignar',base64_encode($paciente->id))}}" class="btn btn-warning"><i
+                                            <a title="Asignar actividad" href="{{route('actividad.asignar',base64_encode($paciente->id))}}" class="btn btn-warning p-2"><i
                                                     class="fas fa-plus"></i></a>
                                         </td>
                                     </form>

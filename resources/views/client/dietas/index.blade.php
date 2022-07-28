@@ -24,7 +24,7 @@
                         <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -38,16 +38,16 @@
 
                                 @foreach ($dietas as $key => $dieta)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td class="pl-0 text-left">{{ $key+1 }}</td>
                                         <td>{{ $dieta->nombre }}</td>
                                         <td>{{ $dieta->tipo_diabetes }}</td>
                                         <td>{{ $dieta->imc }}</td>
                                         <td>{{ date('Y-m-d',strtotime($dieta->created_at)) }}</td>
                                         <td> {{date('Y-m-d',strtotime($fechasFinDieta[$key]))}}</td>
-                                        <td><label class="badge badge-{{$dieta->estado=='inactiva'?'danger':'success'}} badge-pill">{{$dieta->estado}}</label></td>
+                                        <td><p class="px-3 py-2 badge badge-{{$dieta->estado=='inactiva'?'danger':'success'}} badge-pill">{{$dieta->estado}}</p></td>
                                         <td>
                                             <a href="{{route('cliente.verDieta',$dieta->id)}}"
-                                                class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
+                                                class="btn btn-outline-info p-2"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
 

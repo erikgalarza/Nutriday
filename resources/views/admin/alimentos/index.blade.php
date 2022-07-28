@@ -41,7 +41,7 @@
                         <table id="order-listing" class="table mb-3">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Imagen</th>
                                     <th>Peso</th>
@@ -53,7 +53,7 @@
 
                                 @foreach ($alimentos as $key => $alimento)
                                     <tr>
-                                        <td>{{$key+1}}</td>
+                                        <td class="pl-0 text-left">{{$key+1}}</td>
                                         <td>{{ $alimento->nombre }}</td>
                                         <td>
                                             @if ($alimento->imagen)
@@ -68,12 +68,12 @@
 
                                         <td>
                                             <a data-toggle="modal" data-target="#exampleModal-3{{ $alimento->id }}"
-                                                class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
-                                            <a class="btn btn-outline-warning mb-1" data-toggle="modal"
+                                                class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
+                                            <a class="btn btn-outline-warning mb-1 p-2" data-toggle="modal"
                                                 data-target="#exampleModal-2{{ $alimento->id }}"><i
                                                     class="fas fa-edit "></i></a>
 
-                                            <a onclick="eliminarAlimento({{$alimento}});" class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i>  </a>
+                                            <a onclick="eliminarAlimento({{$alimento}});" class="btn btn-outline-danger mb-1 p-2"><i class="fas fa-trash"></i>  </a>
                                                     </td>
                                     </tr>
                                     <form id="deletealimento{{$alimento->id}}" method="POST" action="{{route('alimento.destroy',$alimento->id)}}">

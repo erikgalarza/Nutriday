@@ -105,7 +105,7 @@
                                             <label style="font-weight:bold; font-size:12px; text-transform:uppercase"
                                                 class="col-xl-4  col-form-label">Fecha finalización dieta:</label>
                                             <div class="col-xl-8 ">
-                                                <input name="fecha_fin" type="date" class="form-control"
+                                                <input name="fecha_fin" min="{{date('Y-m-d')}}" type="date" class="form-control"
                                                     id="exampleInputUsername2">
                                                     <p class="text-danger font-weight-bold">{{$errors->first('fecha_finalizacion')}}</p>
                                             </div>

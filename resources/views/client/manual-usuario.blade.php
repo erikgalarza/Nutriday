@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +13,7 @@
 </head>
 {{-- @include('layouts.head') --}}
 
-<body>
+<body class="sidebar-icon-only">
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
@@ -138,8 +139,8 @@
                                         </form>
                         </div>
                     </li>
-                    <li class="nav-item nav-settings d-none d-lg-block">
-                        <a title="Manual de usuario" class="nav-link" href="{{route('manual.usuario')}}">
+                    <li class="nav-item  fa-questi nav-settings d-none d-lg-block">
+                        <a class="nav-link " href="{{route('manual.usuario')}}">
                             <i class="fa-solid fa-question"></i>
                         </a>
                     </li>
@@ -231,17 +232,14 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @yield('contenido')
+
+
+                    <embed src="{{asset('img/manual-usuario.pdf')}}" type="application/pdf" width="100%" height="100%" >
+
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-                <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © {{date('Y')}}.
-                            Todos los derechos reservados.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">NUTRIDAY<i class="far fa-heart text-danger"></i></span>
-                    </div>
-                </footer>
+
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
@@ -250,7 +248,15 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    <script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const boton = document.querySelector('.fa-questi')
 
+        boton.classList.add('bg-primary','text-white')
+
+
+    })
+    </script>
     <!-- plugins:js -->
     <script src="{{ asset('administracion/vendors/js/vendor.bundle.base.js') }}"></script>
     <script src="{{ asset('administracion/vendors/js/vendor.bundle.addons.js') }}"></script>

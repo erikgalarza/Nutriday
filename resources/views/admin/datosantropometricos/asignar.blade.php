@@ -87,7 +87,7 @@
                         <table id="order-listing" class="table text-center">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Paciente</th>
                                     <th>Tipo diabetes</th>
                                     <th>IMC</th>
@@ -102,7 +102,7 @@
                                         @csrf
                                         <input type="hidden" name="paciente" value="{{ $paciente }}">
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
+                                            <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                             <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
                                             @if ($paciente->tipo_diabetes == 3)
                                                 <td>Tipo gestacional</td>

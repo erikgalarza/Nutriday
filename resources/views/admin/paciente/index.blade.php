@@ -37,7 +37,7 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Cédula</th>
                                     <th>Tipo diabetes</th>
@@ -53,7 +53,7 @@
 
                                 @foreach ($pacientes as $key => $paciente)
                                     <tr>
-
+                                        <td class="pl-0 text-left"> {{$key + 1}}</td>
                                         <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
 
                                         <td>{{ $paciente->cedula }}</td>
@@ -84,7 +84,7 @@
                                         <td>
                                             <a title="Progreso de paciente"
                                                 href="{{ route('paciente.historial', base64_encode($paciente->id)) }}"
-                                                class="btn btn-outline-dark mb-1  color1"><i
+                                                class="btn btn-outline-dark mb-1  color1 p-2"><i
                                                     class="fas fa-chart-line"></i></a>
 
 
@@ -105,29 +105,29 @@
                                         </td> --}}
                                         <td>
                                             @if ($paciente->estado == 'activo')
-                                                <a title="Estado del paciente" class="btn btn-rounded btn-success"
+                                                <a title="Estado del paciente" class="btn py-2 px-3 btn-rounded btn-success"
                                                     href="{{ route('paciente.eliminar', $paciente->id) }}">{{ $paciente->estado }}</a>
                                             @else
-                                                <a class="btn btn-rounded btn-danger"
+                                                <a class="btn py-2 px-3 btn-rounded btn-danger"
                                                     href="{{ route('paciente.eliminar', $paciente->id) }}">{{ $paciente->estado }}</a>
                                             @endif
                                         </td>
                                         <td>
                                             <a title="Ver más" data-toggle="modal"
                                                 data-target="#exampleModal-3{{ $paciente->id }}"
-                                                class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                                                class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
 
-                                            <a title="Editar paciente" class="btn btn-outline-warning mb-1"
+                                            <a title="Editar paciente" class="btn btn-outline-warning mb-1 p-2"
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $paciente->id }}"><i
                                                     class="fas fa-edit"></i></a>
 
                                             @if ($paciente->estado == 'activo')
                                                 <a title="Eliminar paciente" onclick="eliminarPaciente({{ $paciente }});"
 
-                                                    class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
+                                                    class="btn btn-outline-danger mb-1 p-2"><i class="fas fa-trash"></i></a>
                                             @else
                                                 <a href="{{ route('paciente.eliminar', $paciente->id) }}" title="Activar"
-                                                    class="btn btn-outline-success mb-1"><i class="fas fa-reply"></i></a>
+                                                    class="btn btn-outline-success mb-1 p-2"><i class="fas fa-reply"></i></a>
                                             @endif
                                         </td>
                                     </tr>
@@ -191,7 +191,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                            
+
 
                                                                 <div class="form-group row mb-2">
                                                                     <label style="font-weight:bold;font-size:12px;"

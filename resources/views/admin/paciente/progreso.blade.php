@@ -134,12 +134,12 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 text-center justify-content-center row">
+                <div class="col-12 ">
                     <div class="table-responsive">
                         <table id="order-listing" class="table mb-4">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Altura</th>
                                     <th>Peso</th>
                                     <th>IMC</th>
@@ -152,7 +152,7 @@
                             <tbody>
                                 @foreach ($datos as $key => $dato)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                         <td>{{ $dato->altura }}</td>
                                         <td>{{ $dato->peso }}</td>
                                         <td>{{ $dato->imc }}</td>
@@ -200,7 +200,7 @@
                         <table id="order-listing" class="table mb-5 ">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre dieta</th>
                                     <th>IMC</th>
                                     <th>Tipo diabetes</th>
@@ -213,7 +213,7 @@
                             <tbody>
                                 @foreach ($dietas as $key => $dieta)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                         <td>{{ $dieta->nombre }}</td>
                                         <td>{{ $dieta->imc }}</td>
                                         <td>{{ $dieta->tipo_diabetes }}</td>
@@ -242,7 +242,7 @@
                         <table id="order-listing" class="table mb-4">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Duración</th>
                                     <th>Imagen</th>
@@ -254,14 +254,16 @@
                             <tbody>
                                 @foreach ($actividades as $key => $actividad)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+
+                                        <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                         <td>{{ $actividad->nombre }}</td>
                                         <td>{{ $duraciones[$key]->duracion }}</td>
                                         <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
                                         <td>{{ date('Y-m-d', strtotime($dato->created_at)) }}</td>
-                                        <td>{{ $responsablesAntro[$key] }}</td>
+                                        <td>{{ $responsablesAntro }}</td>             {{--  aqui el error asdjkfasdlñfkjasdlñfkjasdlfkjasdlfkjasdjlfkñasf--}}
                                     </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -282,7 +284,7 @@
                         <table id="order-listing" class="table mb-4">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Estado</th>
                                     <th>Descripción</th>
                                     <th>Fecha</th>
@@ -291,7 +293,7 @@
                             <tbody>
                                 @foreach ($estados as $key => $estado)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                         <td>{{ $estado->nombre }}</td>
                                         <td>{{ $estado->descripcion }}</td>
                                         <td>{{ date('Y-m-d', strtotime($estado->created_at)) }}</td>

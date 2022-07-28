@@ -174,7 +174,7 @@
                     <table id="order-listing" class="table text-center">
                         <thead>
                             <tr>
-                                <th>N°</th>
+                                <th class="pl-0 text-left">N°</th>
                                 <th>Nombre dieta</th>
                                 <th>Tipo diabetes</th>
                                 <th>IMC</th>
@@ -187,15 +187,15 @@
                         <tbody>
                             @foreach ($dietas as $key => $dieta)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                     <td>{{ $dieta->nombre }}</td>
                                     <td>{{ $dieta->tipo_diabetes }}</td>
                                     <td>{{$dieta->imc}}</td>
                                     <td>
                                         <a title="Agregar alimentos a la dieta"
                                             href="{{ route('alimento.addAlimentoDieta', $dieta->id) }}"
-                                            class="btn btn-outline-success mb-1"><i class="fa fa-plus"></i></a>
-                                        <a title="Ver alimentos" class="btn btn-outline-primary mb-1"
+                                            class="btn btn-outline-success mb-1 p-2"><i class="fa fa-plus"></i></a>
+                                        <a title="Ver alimentos" class="btn btn-outline-primary mb-1 p-2"
                                         onclick="obtenerIdPaciente({{ $paciente->id }}); obtenerIdDieta({{ $dieta->id }});"
                                         data-toggle="modal"
                                         data-target="#exampleModal{{ $dieta->id }}"><i
@@ -207,39 +207,39 @@
                                         </td>
                                     <td>
                                         @if($dieta->estado=='activa')
-                                        <label for="" class="badge badge-pill badge-success">{{$dieta->estado}}</label>
+                                        <label for="" class="badge py-2 px-4 badge-pill badge-success">{{$dieta->estado}}</label>
                                         @endif
                                         @if($dieta->estado=='inactiva')
-                                        <label for="" class="badge badge-pill badge-danger">{{$dieta->estado}}</label>
+                                        <label for="" class="badge py-2 px-3 badge-pill badge-danger">{{$dieta->estado}}</label>
                                         @endif
                                     </td>
                                     <td>
                                         <a title="Ver más" data-toggle="modal" style="max-width: 50px"
                                             data-target="#exampleModal-3{{$key}}"
-                                            class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
-                                        <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1"
+                                            class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
+                                        <a title="Editar datos de la dieta" class="btn btn-outline-warning mb-1 p-2"
                                             data-toggle="modal" data-target="#exampleModal-2{{$key}}"><i
                                                 class="fas fa-edit"></i></a>
 
 
                                                 @if($dieta->estado=='inactiva')
-                                                <form method="post" id="deletedieta{{$key}}" style="min-width: 50px"
+                                                <form method="post" id="deletedieta{{$key}}" style="max-width: 50px"
                                                 action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                                <a title="Activar" style="min-width: 50px"
+                                                <a title="Activar" style="max-width: 50px"
                                                 onclick="document.getElementById('deletedieta'+{{$key}}).submit();"
-                                                    type="submit" class="btn btn-outline-danger mb-1"><i
+                                                    type="submit" class="btn btn-outline-danger mb-1 p-2"><i
                                                         class="fas fa-share"></i></a>
                                                     </form>
                                         @else
-                                        <form method="post" id="deletedieta{{$key}}" style="min-width: 50px"
+                                        <form method="post" id="deletedieta{{$key}}" style="max-width: 50px"
                                         action="{{ route('dieta.destroy', $dieta->id) }}" class="d-inline">
                                         @csrf
                                         {{ method_field('DELETE') }}
-                                        <a title="Eliminar dieta" style="min-width: 50px"
+                                        <a title="Eliminar dieta" style="max-width: 50px"
                                         onclick="obtenerKey({{$key}});eliminarDieta({{$dieta}})"
-                                            type="submit" class="btn btn-outline-danger mb-1"><i
+                                            type="submit" class="btn btn-outline-danger mb-1 p-2"><i
                                                 class="fas fa-trash"></i></a>
                                     </form>
                                         @endif
@@ -265,7 +265,7 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Dieta semanal</h4>
-            
+
                                                             <select class="form-control"
                                                                 onchange="opcion({{ $key }});"
                                                                 id="selectorDia{{ $key }}">
@@ -281,12 +281,12 @@
                                                             <div class="container my-2 p-0"
                                                                 style=" min-height:600px; display:flex; flex-wrap:wrap; flex-direction:row; display:none;"
                                                                 id="container{{ $key }}">
-            
-            
+
+
                                                                 <div class="vacio w-100 text-center mt-3" id="vacio{{ $key }}">
                                                                 </div>
-            
-            
+
+
                                                                 <div class="desayuno w-100 text-center mt-3" id="desayuno{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
                                                                         <h5 class="textoDesayuno col-12 text-left" style="color:#828383">DESAYUNO</h5>
@@ -302,8 +302,8 @@
                                                                     <div class="alimentosDesayuno col-12 w-100"id="alimentosDesayuno{{ $key }}"></div>
                                                                 </div>
                                                                 </div>
-            
-            
+
+
                                                                 <div class="colacion1 w-100 text-center mt-3" id="colacion1{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
                                                                         <h5 class="textoDesayuno col-12 text-left" style="color:#828383">COLACIÓN DE LA MAÑANA</h5>
@@ -319,8 +319,8 @@
                                                                     <div class="alimentosColacion1 col-12 w-100"id="alimentosColacion1{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
-            
-            
+
+
                                                                 <div class="almuerzo w-100 text-center mt-3" id="almuerzo{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
                                                                         <h5 class="textoDesayuno col-12 text-left" style="color:#828383">ALMUERZO</h5>
@@ -336,7 +336,7 @@
                                                                     <div class="alimentosAlmuerzo col-12 w-100"id="alimentosAlmuerzo{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
-            
+
                                                                 <div class="colacion2 w-100 text-center mt-3" id="colacion2{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
                                                                         <h5 class="textoDesayuno col-12 text-left" style="color:#828383">COLACIÓN DE LA TARDE</h5>
@@ -349,11 +349,11 @@
                                                                         <h5 class="col-3 m-0">Porción</h5>
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
-            
+
                                                                     <div class="alimentosColacion2 col-12 w-100"id="alimentosColacion2{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
-            
+
                                                                 <div class="merienda w-100 text-center mt-3" id="merienda{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
                                                                         <h5 class="textoDesayuno col-12 text-left" style="color:#828383">MERIENDA</h5>
@@ -366,11 +366,11 @@
                                                                         <h5 class="col-3 m-0">Porción</h5>
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
-            
+
                                                                     <div class="alimentosMerienda col-12 w-100"id="alimentosMerienda{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
-            
+
                                                                 <div class="cena w-100 text-center mt-3" id="cena{{ $key }}">
                                                                     <div class="row justify-content-center align-items-center">
                                                                         <h5 class="textoDesayuno col-12 text-left" style="color:#828383">CENA</h5>
@@ -383,13 +383,13 @@
                                                                         <h5 class="col-3 m-0">Porción</h5>
                                                                     </div>
                                                                     <div class="col-12 my-2" style="border-top:1px solid"></div>
-            
+
                                                                     <div class="alimentosCena col-12 w-100"id="alimentosCena{{ $key }}"></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-            
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -734,7 +734,7 @@
 
         function opcion(key) {
             let diaSeleccionado = document.getElementById('selectorDia' + key).value;
-            
+
             let container = document.getElementById('container'+key);
             $(container).show();
 
@@ -751,7 +751,7 @@
                 console.log('res es:',res);
                 // let arreglo = JSON.parse(res)
                 // console.log(arreglo)
-               
+
                 var contenedor1 = document.getElementById('alimentosDesayuno' + key);
                 var contenedor2 = document.getElementById('alimentosColacion1' + key);
                 var contenedor3 = document.getElementById('alimentosAlmuerzo' + key);
@@ -759,7 +759,7 @@
                 var contenedor5 = document.getElementById('alimentosMerienda' + key);
                 var contenedor6 = document.getElementById('alimentosCena' + key);
 
-       
+
                 contenedor1.innerHTML = '';
                 contenedor2.innerHTML = '';
                 contenedor3.innerHTML = '';
@@ -767,7 +767,7 @@
                 contenedor5.innerHTML = '';
                 contenedor6.innerHTML = '';
 
-                
+
                 for (let i = 0; i < res.length; i++) {
                     let comida = res[i]
                         console.log('ress');
@@ -809,10 +809,10 @@
                         }
                     }
                 }
-            
+
 
             })
-        
+
 
         }
     </script>

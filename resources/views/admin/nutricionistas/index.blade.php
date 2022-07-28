@@ -12,7 +12,7 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-4" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
+        <div class=" mb-0" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos
                 Nutricionistas</h3>
         </div>
@@ -27,14 +27,14 @@
                 </ul>
             </div>
         @endif
-        <div class="card-body text-center">
+        <div class="card-body text-center" >
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive ">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Especialidad</th>
                                     <th>Correo</th>
@@ -45,7 +45,7 @@
                             <tbody>
                                 @foreach ($nutricionistas as $key => $nutricionista)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        <td class="pl-0 text-left">{{ $key + 1 }}</td>
 
                                         <td>{{ $nutricionista->nutricionistas->nombre }}
                                             {{ $nutricionista->nutricionistas->apellido }}</td>
@@ -54,19 +54,19 @@
                                         <td>
                                             @if ($nutricionista->nutricionistas->estado == 'activo')
                                                 <a onclick="eliminarNutri({{ $nutricionista }});"
-                                                    class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
+                                                    class="btn py-2 px-3 btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
                                             @else
                                                 <a onclick="document.getElementById('deletenutri'+{{ $nutricionista->nutricionistas->id }}).submit();"
-                                                    class="btn btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
+                                                    class="btn py-2 px-3 btn-rounded {{ $nutricionista->nutricionistas->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $nutricionista->nutricionistas->estado }}</a>
                                             @endif
                                             <!-- Arreglar estado de nutricionistas con un botón -->
                                         </td>
                                         <td>
                                             <a title="Ver más" style="max-width: 50px" data-toggle="modal"
                                                 data-target="#exampleModal-3{{ $nutricionista->id }}"
-                                                class="btn btn-outline-info mb-1"><i class="fas fa-eye"></i></a>
+                                                class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
 
-                                            <a title="Editar nutricionista" class="btn btn-outline-warning mb-1"
+                                            <a title="Editar nutricionista" style="max-width: 50px"  class="btn btn-outline-warning mb-1 p-2"
                                                 data-toggle="modal"
                                                 data-target="#exampleModal-2{{ $nutricionista->id }}"><i
                                                     class="fas fa-edit"></i></a>
@@ -78,9 +78,9 @@
                                                     class="d-inline">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
-                                                    <a title="Eliminar nutricionista" style="min-width: 50px"
+                                                    <a title="Eliminar nutricionista" style="max-width: 50px"
                                                         onclick="eliminarNutri({{ $nutricionista }});" type="submit"
-                                                        class="btn btn-outline-danger mb-1"><i class="fas fa-trash"></i></a>
+                                                        class="btn btn-outline-danger mb-1 p-2"><i class="fas fa-trash"></i></a>
                                                 </form>
                                             @else
                                                 <form method="post"
@@ -90,7 +90,7 @@
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <a onclick="document.getElementById('deletenutri'+{{ $nutricionista->nutricionistas->id }}).submit();"
-                                                        title="Activar nutricionista" style="min-width: 50px" type="submit"
+                                                        title="Activar nutricionista" style="max-width: 50px" type="submit"
                                                         class="btn btn-outline-success mb-1"><i
                                                             class="fas fa-share"></i></a>
                                                 </form>

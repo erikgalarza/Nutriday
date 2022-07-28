@@ -31,7 +31,7 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                    <th>N°</th>
+                                    <th class="pl-0 text-left">N°</th>
                                     <th>Nombre</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -40,7 +40,7 @@
 
                                 @foreach ($categorias as $key => $categoria)
                                     <tr>
-                                        <td>{{$key+1}}</td>
+                                        <td class="pl-0 text-left">{{$key+1}}</td>
                                         <td>{{ $categoria->nombre }}</td>
                                         <td>
                                             <a class="btn btn-outline-warning mb-1" data-toggle="modal"

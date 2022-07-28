@@ -345,7 +345,7 @@
     </div>
 
     <div class="card mt-3" style="border-radius:5px ">
-        <div class=" mb-2" style="background-color:#7c7ce4;border-radius:5px 5px 0 0 ">
+        <div class=" mb-0" style="background-color:#7c7ce4;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-3 mt-3 text-white"style="text-transform: uppercase; font-weight:bold"><i
                     class="fas fa-dumbbell"></i>
                 Actividades<button class=" ml-3 text-right" disabled

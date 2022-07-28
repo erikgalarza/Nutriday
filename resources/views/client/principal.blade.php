@@ -354,7 +354,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table text-center">
+                <table id="order-listing" class="table text-center">
                     <thead>
                         <tr>
                             <th class="pl-0 text-left"> N°</th>
@@ -466,6 +466,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
         integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{asset('administracion/js/data-table.js')}}"></script>
     <script src="{{ asset('administracion/js/historialPaciente.js') }}"></script>
 
     <script>

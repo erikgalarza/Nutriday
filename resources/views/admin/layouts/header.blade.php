@@ -113,9 +113,16 @@
             </div>
         </li>
         <li class="nav-item nav-settings d-none d-lg-block">
-            <a class="nav-link" href="#">
+            @if(auth()->user()->hasRole('Administrador'))
+            <a class="nav-link" href="#rutaadmin">
                 <i class="fa-solid fa-question"></i>
             </a>
+            @endif
+            @if(auth()->user()->hasRole('Nutricionista'))
+            <a class="nav-link" href="#rutanutri">
+                <i class="fa-solid fa-question"></i>
+            </a>
+            @endif
         </li>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"

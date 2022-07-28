@@ -24,7 +24,7 @@ class StoreAsignacionActividad extends FormRequest
     public function rules()
     {
         return [
-            "duracion.*"=>"required|integer",
+            "duracion.*"=>"required|string",
             "actividad_id.*"=>"required",
             "prioridad_id.*"=>"required",
         ];

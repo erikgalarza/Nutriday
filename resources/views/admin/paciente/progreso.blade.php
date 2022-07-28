@@ -160,8 +160,7 @@
                                         <td>{{ $dato->masa_muscular }}</td>
                                         <td>{{ date('Y-m-d', strtotime($dato->created_at)) }}</td>
                                         <td>{{ $responsablesAntro[$key] }}</td>
-                                        <td>
-                                        </td>
+                                      
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -172,19 +171,6 @@
 
             <input type="hidden" value="{{ $datos }}" id="datosAntropometricos">
             <input type="hidden" value="{{ $dietas }}" id="dietas">
-
-
-            {{-- <div class="row" style="margin-top:50px;">
-                <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
-                      <div class="card-body">
-                        <h4 class="card-title">IMC/Fecha de asignación</h4>
-                        <canvas id="barChart"></canvas>
-                      </div>
-                    </div>
-                  </div>
-
-            </div> --}}
         </div>
     </div>
 
@@ -197,7 +183,7 @@
             <div class="row">
                 <div class="col-12 text-center justify-content-center row">
                     <div class="table-responsive text-center">
-                        <table id="order-listing" class="table mb-5 ">
+                        <table id="order-listing2" class="table mb-5 ">
                             <thead>
                                 <tr>
                                     <th class="pl-0 text-left">N°</th>
@@ -239,7 +225,7 @@
             <div class="row">
                 <div class="col-12 text-center justify-content-center row">
                     <div class="table-responsive ">
-                        <table id="order-listing" class="table mb-4">
+                        <table id="order-listing3" class="table mb-4">
                             <thead>
                                 <tr>
                                     <th class="pl-0 text-left">N°</th>
@@ -260,7 +246,7 @@
                                         <td>{{ $duraciones[$key]->duracion }}</td>
                                         <td><img style="max-width:100px;" src="{{ $actividad->imagen->url }}"></td>
                                         <td>{{ date('Y-m-d', strtotime($dato->created_at)) }}</td>
-                                        <td>{{ $responsablesAntro }}</td>             {{--  aqui el error asdjkfasdlñfkjasdlñfkjasdlfkjasdlfkjasdjlfkñasf--}}
+                                        <td>{{ $responsablesActi[$key] }}</td>             {{--  aqui el error asdjkfasdlñfkjasdlñfkjasdlfkjasdlfkjasdjlfkñasf--}}
                                     </tr>
                                 @endforeach
 
@@ -281,7 +267,7 @@
             <div class="row">
                 <div class="col-12 text-center justify-content-center row">
                     <div class="table-responsive w-75">
-                        <table id="order-listing" class="table mb-4">
+                        <table id="order-listing4" class="table mb-4">
                             <thead>
                                 <tr>
                                     <th class="pl-0 text-left">N°</th>
@@ -320,4 +306,5 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('administracion/js/historialPaciente.js') }}"></script>
     <script src="{{ asset('administracion/js/dietasPaciente.js') }}"></script>
+    {{-- <script src="{{asset('administracion/js/data-table.js')}}"></script> --}}
 @endsection

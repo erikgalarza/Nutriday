@@ -95,6 +95,8 @@ class PacienteController extends Controller
         // dd($dietas);
         $actividades = $paciente->actividades()->get();
 
+        $user_ids = $paciente->actividades()->get(['user_id']);
+      
         $duraciones =  $paciente->actividades()->get(['duracion']);
         // $user_id = $paciente->dato_antropometrico()->get(['user_id']);
 
@@ -106,14 +108,31 @@ class PacienteController extends Controller
             else{$nombre=$user->administradores->nombre;}
             $responsablesAntro->push($nombre);
         }
-        // $responsableActi = collect();
-        // foreach($actividades as $actividad){
-
-        //     $user = User::find($actividad->user_id);
-        //     if($user->nutricionistas){$nombre=$user->nutricionistas->nombre.' '.$user->nutricionistas->apellido;}
-        //     else{$nombre=$user->administradores->nombre;}
-        //     $responsablesAntro->push($nombre);
-        // }
+        $responsablesActi = collect();
+       
+        foreach($user_ids as $user_id){
+            // dd($actividad);
+            // dd($actividades[]);
+            $user = User::find($user_id->user_id);
+            // dd($user);
+            if(isset($user->nutricionistas)){
+              
+                $nombreR=$user->nutricionistas->nombre.' '.$user->nutricionistas->apellido;
+             
+                $responsablesActi->push($nombreR);
+            }
+            else{
+             
+                if(isset($user->administradores)){
+                  
+                    $nombreR=$user->administradores->nombre;
+                    $responsablesActi->push($nombreR);
+                }
+                
+            }
+            
+        }
+        // dd($responsablesActi);
 
 
         $responsablesDieta = collect();
@@ -138,7 +157,7 @@ class PacienteController extends Controller
         }
 
         $estados = $paciente->estados_animo()->get();
-        return view('admin.paciente.progreso',compact('datos','dietas','actividades','responsablesAntro','responsablesDieta','fechasFinDieta','fechasFinAsignacion','duraciones','estados','paciente'));
+        return view('admin.paciente.progreso',compact('datos','dietas','actividades','responsablesAntro','responsablesActi','responsablesDieta','fechasFinDieta','fechasFinAsignacion','duraciones','estados','paciente'));
 
     }
 

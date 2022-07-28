@@ -830,7 +830,7 @@
               }
           }).done(function(res) {
               if (res == true)
-                  window.location.href = "/dashboard/asignar-dieta";
+                  window.location.href = "/dashboard/colpomed/asignar-dieta/paciente";
           })
 
         }else
@@ -874,7 +874,7 @@
                 }
             }).done(function(res) {
                 if (res == true)
-                    window.location.href = "/dashboard/asignar-dieta";
+                    window.location.href = "/dashboard/colpomed/asignar-dieta/paciente";
             })
         }
 

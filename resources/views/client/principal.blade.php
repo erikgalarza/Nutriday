@@ -357,7 +357,7 @@
                 <table class="table text-center">
                     <thead>
                         <tr>
-                            <th> N°</th>
+                            <th class="pl-0 text-left"> N°</th>
                             <th> Imagen</th>
                             <th> Nombre actividad </th>
                             <th> Duración </th>
@@ -371,7 +371,7 @@
                         @endphp
                         @foreach($actividadesAlta as $key => $actividad)
                         <tr>
-                            <td>{{$key+1}}</td>
+                            <td class="pl-0 text-left">{{$key+1}}</td>
                             <td class="py-1">
                                 <img src="{{$actividad->imagen->url}}" alt=" Imagen actividad" class="img-sm rounded-circle">
                             </td>

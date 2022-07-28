@@ -53,7 +53,7 @@
                         <div class="col-xl-9 col-sm-9   align-items-center">
                             <input type="search" name="paciente"
                                 style="min-height:60px;border:1px solid #dce7e700;background-color:#dce7e7"
-                                class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Erik Galarza"
+                                class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andre Flores"
                                 required>
                         </div>
                         <button title="Ingrese el nombre de un paciente para buscar" type="submit"
@@ -82,7 +82,7 @@
     @if (count($pacientes) > 0)
         <div class="card mt-3">
             <div class="card-body">
-                <div class="container w-75">
+                <div class="container">
                     <div class="table-responsive">
                         <table id="order-listing" class="table text-center">
                             <thead>
@@ -123,7 +123,7 @@
                                             @endif
                                             <td>{{$responsables[$key]->nombre}} {{$responsables[$key]->apellido}}</td>
                                             <td>
-                                                <a title="Agregar datos antropométricos al paciente" class="btn btn-warning"
+                                                <a title="Agregar datos antropométricos al paciente" class="btn btn-warning py-2 px-3"
                                                     href="{{ route('da.datosByPaciente', base64_encode($paciente->id)) }}"><i
                                                         class="fa fa-plus" aria-hidden="true"></i></a>
 

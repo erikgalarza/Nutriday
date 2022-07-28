@@ -67,7 +67,9 @@ class AdminController extends Controller
         "negNut"));
     }
 
-
+    public function manualAdmin(){
+        return view('admin.manual-admin');
+    }
     public function buscarNutricionistas(Request $request)
     {
         $nombre_completo = $request->get('nutricionista');
@@ -78,7 +80,7 @@ class AdminController extends Controller
                 $apellido = substr($nombre_completo,$i+1);
         }
 
-        
+
         if($apellido!='')
             $nutricionistas = Nutricionista::where('nombre','like','%'.$nombre_completo.'%')->orWhere('apellido','like','%'.$apellido.'%')->get();
         else
@@ -94,7 +96,7 @@ class AdminController extends Controller
                 // dd($paciente);
                 $paci->push($paciente);
             }
-            
+
 
             $nutricionistass = Nutricionista::all();
             $posPac = 0;

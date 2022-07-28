@@ -112,14 +112,14 @@
                             </form>
             </div>
         </li>
-        <li class="nav-item nav-settings d-none d-lg-block">
+        <li class="nav-item nav-settings d-none d-lg-block fa-questi">
             @if(auth()->user()->hasRole('Administrador'))
-            <a class="nav-link" href="#rutaadmin">
+            <a title="Manual de administrador" class="nav-link bb" href="{{route('manual.admin')}}">
                 <i class="fa-solid fa-question"></i>
             </a>
             @endif
             @if(auth()->user()->hasRole('Nutricionista'))
-            <a class="nav-link" href="#rutanutri">
+            <a title="Manual de nutricionista" class="nav-link bb" href="{{route('manual.nutri')}}">
                 <i class="fa-solid fa-question"></i>
             </a>
             @endif

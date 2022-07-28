@@ -12,13 +12,13 @@
         </nav>
     </div>
     <div class="card">
-        <div class="mb-3" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
+        <div class="mb-0" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title titulosa text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">Categorías de alimentos</h3>
             </div>
         <div class="card-body">
             <div class="container ">
             <div class="row justify-content-center">
-                    <div class="col-lg-8 col-10 d-flex justify-content-center p-2" style="border:1px dashed;border-radius:10px;background-color:#F0F0F0;flex-wrap:wrap" >
+                    <div class="col-lg-10 col-10 d-flex justify-content-center p-2" style="border:1px dashed;border-radius:10px;background-color:#F0F0F0;flex-wrap:wrap" >
                         <h5 class="mr-2 mr-sm-4 text-center  col-form-label">Agregar Categoría:</h5>
                         <div class=" mr-2 ml-2 align-items-center justify-content-center row">
                             <a class="btn btn-success" href="{{route('categoriaAlimento.create')}}"><i class="fas fa-plus mr-3"></i>Agregar </a>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-12 justify-content-center row mt-3">
-                    <div class="table-responsive text-center w-50">
+                    <div class="table-responsive text-center w-75">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>

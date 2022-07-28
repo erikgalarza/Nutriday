@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 @include('admin.layouts.head')
-<body>
+<body class="sidebar-icon-only">
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
             <div class=" navbar-brand-wrapper d-flex justify-content-center">
                 <a class="navbar-brand brand-logo" href="{{route('administrador.dashboard')}}"><img style="height:50px;width:100%;align-items:flex-start"
                         src="{{ asset('img/logos/nutridayTexto.png') }}" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="{{route('home')}}"><img
+                <a class="navbar-brand brand-logo-mini" href="{{route('administrador.dashboard')}}"><img
                         src="{{asset('img/logos/logoManzana.png')}}" alt="logo"></a>
             </div>
             {{-- <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -383,11 +383,30 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @yield('contenido')
+
+                    <embed src="{{asset('img/manual-admin.pdf')}}" type="application/pdf" width="100%" height="100%" >
+
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-              @include('admin.layouts.footer')
+
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const boton = document.querySelector('.fa-questi')
+
+        boton.classList.add('bg-warning','text-white')
+
+
+    })
+    </script>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
@@ -400,4 +419,3 @@
 
 
 </html>
-

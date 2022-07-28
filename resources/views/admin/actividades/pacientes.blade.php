@@ -53,7 +53,7 @@
                         <div class="col-xl-9 col-sm-9   align-items-center">
                             <input type="search" name="paciente"
                                 style="min-height:60px;border:1px solid #dce7e700;background-color:#dce7e7"
-                                class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andres Morales"
+                                class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andres Flores"
                                 required>
                         </div>
                         <button title="Ingrese el nombre de un paciente para buscar" type="submit"
@@ -135,13 +135,13 @@
                                         <td style="text-align:center;">
                                             @if(count($paciente->actividades)>0)
                                             <a data-toggle="modal"
-                                            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-outline-info p-2" title="Ver actividades asignadas"><i class="fas fa-eye"></i></a>
+                                            data-target="#exampleModal-4{{ $paciente->id }}" class="btn btn-outline-info py-2 px-3" title="Ver actividades asignadas"><i class="fas fa-eye"></i></a>
                                             @else
                                             <label style="color:#ff5e6d">No se han asignado actividades !</label>
                                             @endif
                                         </td>
                                         <td>
-                                            <a title="Asignar actividad" href="{{route('actividad.asignar',base64_encode($paciente->id))}}" class="btn btn-warning p-2"><i
+                                            <a title="Asignar actividad" href="{{route('actividad.asignar',base64_encode($paciente->id))}}" class="btn btn-warning py-2 px-3"><i
                                                     class="fas fa-plus"></i></a>
                                         </td>
                                     </form>

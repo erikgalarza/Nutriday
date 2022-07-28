@@ -52,7 +52,7 @@
                     <div class="col-xl-9 col-sm-9   align-items-center">
                         <input type="search" name="paciente"
                             style="min-height:60px;border:1px solid #dce7e700;background-color:#dce7e7"
-                            class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Erik Galarza"
+                            class="form-control ddd" placeholder="Escriba el nombre del paciente...Ejm: Andres Flores"
                             required>
                     </div>
                     <button title="Ingrese el nombre de un paciente para buscar" type="submit"
@@ -136,7 +136,7 @@
                                             @endif
 
                                             <td>
-                                                <a class="btn btn-warning p-2"
+                                                <a class="btn btn-warning py-2 px-3"
                                                     href="{{ route('dieta.dietasByPaciente', base64_encode($paciente->id)) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>

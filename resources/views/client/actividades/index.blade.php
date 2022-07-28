@@ -22,7 +22,9 @@
                 <div class="card">
                     <div class=" mb-3" style="background-color:#4b6ac3 ;border-radius:5px 5px 0 0 ">
                         <h3 class="card-title text-center mb-4 mt-4 text-white"
-                            style="text-transform: uppercase; font-weight:bold">Mis Actividades</h3>
+                            style="text-transform: uppercase; font-weight:bold">Mis Actividades <button class=" ml-3 text-right" disabled
+                    title="El color rojo representa las actividades con alta prioriodad, estas deben realizarse lo más pronto posible, el color amarillo representa las actividades que tienen una prioridad media, y el color verde representan las actividades de una priorida baja, pudiendo no realizarlas"
+                    style="border-radius:10px; border:1px solid rgb(93, 92, 92)"><i class="fas fa-info"></i></button> </h3>
                     </div>
 
                     <div class="card-body">
@@ -40,7 +42,7 @@
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
                                                 <p>
-                                                    {{$duraciones[$key]->duracion}} min al dia
+                                                    {{$duraciones[$key]->duracion}}
 
                                                 </p>
                                             </figcaption>
@@ -52,7 +54,7 @@
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
                                                 <p>
-                                                    {{$duraciones[$key]->duracion}} min al dia
+                                                    {{$duraciones[$key]->duracion}}
                                                 </p>
                                             </figcaption>
                                         </figure>
@@ -63,7 +65,7 @@
                                             <figcaption>
                                                 <h4>{{$actividad->nombre}}</h4>
                                                 <p>
-                                                    {{$duraciones[$key]->duracion}} min al dia
+                                                    {{$duraciones[$key]->duracion}}
 
                                                 </p>
                                             </figcaption>

@@ -147,9 +147,9 @@
                             <h4 class="card-title col-6">
                                 <img src="http://localhost:8000/img/icons/scale.png">   Peso (Kg)
                             </h4>
-                            <div class=" col-4 text-right"> <a title="Ver más" class="btn btn-outline-secondary p-2"
+                            {{-- <div class=" col-4 text-right"> <a title="Ver más" class="btn btn-outline-secondary p-2"
                                     data-toggle="modal" data-target="#exampleModal-35"><i class="fa fa-plus"
-                                        aria-hidden="true"></i></a></div>
+                                        aria-hidden="true"></i></a></div> --}}
 
                         </div>
                         <input type="hidden" id="datosAntropometricos" value="{{$datos}}">
@@ -256,14 +256,14 @@
                                     <td>{{ $actividad->nombre }}</td>
                                     <td><img src="{{ $actividad->imagen->url }}"></td>
                                     <td>{{ $actividad->duracion }}</td>
-                                    <td><label class="badge badge-{{$colorPrioridad[$actividad->prioridad-1]}} badge-pill">{{$nombrePrioridad[$actividad->prioridad-1]}}</label></td>
+                                    <td><label class="py-2 px-3 badge badge-{{$colorPrioridad[$actividad->prioridad-1]}} badge-pill">{{$nombrePrioridad[$actividad->prioridad-1]}}</label></td>
                                     <td>{{ $actividad->responsable }}</td>
                                     <td>{{ date('Y-m-d', strtotime($actividad->created_at)) }}</td>
                                     <td>
 
 
                                         <a href="{{ route('actividad.eliminarActividadAsignada', [$actividad->id, $paciente->id]) }}"
-                                            class="btn btn-outline-danger p-2"><i class="fas fa-trash"></i></a>
+                                            class="btn btn-outline-danger py-2 px-3"><i class="fas fa-trash"></i></a>
 
                                     </td>
                                 </tr>

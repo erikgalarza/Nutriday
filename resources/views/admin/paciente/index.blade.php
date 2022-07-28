@@ -6,27 +6,27 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('administrador.dashboard')}}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('administrador.dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Pacientes</li>
             </ol>
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-4" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
+        <div class=" mb-0" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Datos Pacientes</h3>
         </div>
 
-        @if(count($errors)>0)
-        <div class="alert alert-danger" role="alert">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>
-                    {{$error}}
-                </li>
-                @endforeach
-            </ul>
-        </div>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
 
@@ -53,7 +53,7 @@
 
                                 @foreach ($pacientes as $key => $paciente)
                                     <tr>
-                                        <td class="pl-0 text-left"> {{$key + 1}}</td>
+                                        <td class="pl-0 text-left"> {{ $key + 1 }}</td>
                                         <td>{{ $paciente->nombre }} {{ $paciente->apellido }}</td>
 
                                         <td>{{ $paciente->cedula }}</td>
@@ -80,17 +80,24 @@
                                             a.color2:hover {
                                                 color: white !important;
                                             }
+
+                                            @media (min-width:768px) {
+                                                .dialogoss {
+                                                    min-width: 700px !important;
+                                                }
+                                            }
                                         </style>
+
                                         <td>
                                             <a title="Progreso de paciente"
                                                 href="{{ route('paciente.historial', base64_encode($paciente->id)) }}"
-                                                class="btn btn-outline-dark mb-1  color1 p-2"><i
+                                                class="btn btn-outline-dark mb-1  color1 py-2 px-3"><i
                                                     class="fas fa-chart-line"></i></a>
 
 
                                         </td>
                                         <td>
-                                           {{$responsables[$key]}}
+                                            {{ $responsables[$key] }}
                                         </td>
 
                                         {{-- <td>
@@ -122,12 +129,13 @@
                                                     class="fas fa-edit"></i></a>
 
                                             @if ($paciente->estado == 'activo')
-                                                <a title="Eliminar paciente" onclick="eliminarPaciente({{ $paciente }});"
-
+                                                <a title="Eliminar paciente"
+                                                    onclick="eliminarPaciente({{ $paciente }});"
                                                     class="btn btn-outline-danger mb-1 p-2"><i class="fas fa-trash"></i></a>
                                             @else
                                                 <a href="{{ route('paciente.eliminar', $paciente->id) }}" title="Activar"
-                                                    class="btn btn-outline-success mb-1 p-2"><i class="fas fa-reply"></i></a>
+                                                    class="btn btn-outline-success mb-1 p-2"><i
+                                                        class="fas fa-reply"></i></a>
                                             @endif
                                         </td>
                                     </tr>
@@ -162,8 +170,7 @@
                                                                         class="col-sm-3 text-left col-form-label">Nombre:</label>
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="name"
-                                                                            type="text"
-                                                                            value="{{ $paciente->nombre }}"
+                                                                            type="text" value="{{ $paciente->nombre }}"
                                                                             class="form-control" id="exampleInputUsername2">
                                                                     </div>
                                                                 </div>
@@ -175,7 +182,8 @@
                                                                         <input style="border-radius:10px" name="apellido"
                                                                             type="text"
                                                                             value="{{ $paciente->apellido }}"
-                                                                            class="form-control" id="exampleInputUsername2">
+                                                                            class="form-control"
+                                                                            id="exampleInputUsername2">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mb-2">
@@ -205,10 +213,10 @@
                                                                             <option disabled>Seleccione una opción
                                                                             </option>
                                                                             <option value="1"
-                                                                                {{ $paciente->sexo == "1" ? 'selected' : '' }}>
+                                                                                {{ $paciente->sexo == '1' ? 'selected' : '' }}>
                                                                                 Femenino</option>
                                                                             <option value="2"
-                                                                                {{ $paciente->sexo == "2" ? 'selected' : '' }}>
+                                                                                {{ $paciente->sexo == '2' ? 'selected' : '' }}>
                                                                                 Masculino</option>
                                                                         </select>
                                                                     </div>
@@ -221,7 +229,7 @@
                                                                     <div class="col-sm-9">
                                                                         <input style="border-radius:10px" name="telefono"
                                                                             type="tel"
-                                                                            value="{{ $paciente->telefono}}"
+                                                                            value="{{ $paciente->telefono }}"
                                                                             class="form-control"
                                                                             id="exampleInputUsername2">
                                                                     </div>
@@ -276,18 +284,9 @@
 
                                     {{-- MODAL DE DATOS ANTROPOMETRICOS --}}
 
-                                    <style>
-                                        @media (min-width:768px) {
-                                            .dialogoss {
-                                                min-width: 700px !important;
-                                            }
-
-                                        }
-                                    </style>
-
                                     <div class="modal fade" id="exampleModal-3{{ $paciente->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog  dialogoss" !important;" role="document">
+                                        <div class="modal-dialog dialogoss" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color: #4b6ac3">
                                                     <h5 class="modal-title text-lg-center text-white"
@@ -314,7 +313,8 @@
                                                                 src="{{ asset('img/mujer.png') }}">
                                                         @endif
                                                     </div> --}}
-                                                            <div class="col-12 col-md-6 row mt-md-2 mt-2 justify-content-center">
+                                                            <div
+                                                                class="col-12 col-md-6 row mt-md-2 mt-2 justify-content-center">
                                                                 <div class="col-md-12 col-10">
 
                                                                     <label class="col-12 text-center"> <strong>Datos
@@ -324,8 +324,7 @@
                                                                         <div class="form-group row mb-1">
                                                                             <label class="col-5 text-left"> <strong>
                                                                                     Nombre:</strong></label>
-                                                                            <label
-                                                                                class="col-7">{{ $paciente->nombre }}
+                                                                            <label class="col-7">{{ $paciente->nombre }}
                                                                                 {{ $paciente->apellido }}</label>
 
                                                                         </div>
@@ -373,7 +372,7 @@
                                                                             <label class="col-5 text-left"><strong>Activo
                                                                                     desde:</strong></label>
                                                                             <label
-                                                                                class="col-7">{{ date('Y-m-d',strtotime($paciente->user->created_at)) }}</label>
+                                                                                class="col-7">{{ date('Y-m-d', strtotime($paciente->user->created_at)) }}</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -394,28 +393,32 @@
                                                                                         class="col-6 col-md-5"><strong>Altura:</strong>
                                                                                     </label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ $data->altura }} (m)</label>
+                                                                                        class="col-6 col-md-7">{{ $data->altura }}
+                                                                                        (m)</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
                                                                                     <label
                                                                                         class="col-6 col-md-5"><strong>Peso:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ $data->peso }} (kg)</label>
+                                                                                        class="col-6 col-md-7">{{ $data->peso }}
+                                                                                        (kg)</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
                                                                                     <label class="col-6 col-md-5"><strong>Grasa
                                                                                             corporal:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ number_format($data->grasa_corporal, 0) }} %</label>
+                                                                                        class="col-6 col-md-7">{{ number_format($data->grasa_corporal, 0) }}
+                                                                                        %</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
                                                                                     <label class="col-6 col-md-5"><strong>Masa
                                                                                             muscular:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ number_format($data->masa_muscular, 0) }} %</label>
+                                                                                        class="col-6 col-md-7">{{ number_format($data->masa_muscular, 0) }}
+                                                                                        %</label>
                                                                                 </div>
 
                                                                                 <div class="form-group row mb-1">
@@ -447,7 +450,7 @@
                                                                                     <label class="col-6 col-md-5 "><strong>Fecha
                                                                                             consulta:</strong></label>
                                                                                     <label
-                                                                                        class="col-6 col-md-7">{{ date('Y-m-d',strtotime($data->created_at))}}</label>
+                                                                                        class="col-6 col-md-7">{{ date('Y-m-d', strtotime($data->created_at)) }}</label>
                                                                                 </div>
                                                                                 <div class="form-group row mb-1">
                                                                                     <label
@@ -507,7 +510,7 @@
                 dangerMode: true,
             }).then(function(isConfirm) {
                 if (isConfirm) {
-                   window.location.href="/dashboard/paciente/eliminar/"+paciente.id
+                    window.location.href = "/dashboard/paciente/eliminar/" + paciente.id
                 }
             })
 

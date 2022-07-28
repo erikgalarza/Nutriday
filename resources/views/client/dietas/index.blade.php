@@ -47,7 +47,7 @@
                                         <td><p class="px-3 py-2 badge badge-{{$dieta->estado=='inactiva'?'danger':'success'}} badge-pill">{{$dieta->estado}}</p></td>
                                         <td>
                                             <a href="{{route('cliente.verDieta',$dieta->id)}}"
-                                                class="btn btn-outline-info p-2"><i class="fas fa-eye"></i></a>
+                                                class="btn btn-outline-info py-2 px-3"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
 

@@ -13,7 +13,7 @@
     </div>
 
     <div class="card ">
-        <div class="mb-3" style="background-color:#4b6ac3">
+        <div class="mb-0" style="background-color:#4b6ac3;border-radius:5px 5px 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Información personal</h3>
         </div>
@@ -95,7 +95,7 @@
     </div>
 
     <div class="card mt-4">
-        <div class="mb-3" style="background-color:#4eba74">
+        <div class="mb-0" style="background-color:#4eba74;border-radius:5px 5px 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Seguimiento de Progreso</h3>
         </div>
@@ -128,7 +128,7 @@
     </div>
 
     <div class="card mt-4">
-        <div class="mb-3" style="background-color:#7c7ce4">
+        <div class="mb-0" style="background-color:#7c7ce4;border-radius:5px 5px 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Historial antropométrico</h3>
         </div>
@@ -160,7 +160,7 @@
                                         <td>{{ $dato->masa_muscular }}</td>
                                         <td>{{ date('Y-m-d', strtotime($dato->created_at)) }}</td>
                                         <td>{{ $responsablesAntro[$key] }}</td>
-                                      
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -175,14 +175,14 @@
     </div>
 
     <div class="card mt-4 text-center">
-        <div class="mb-5" style="background-color:#4869c4">
+        <div class="mb-0" style="background-color:#4869c4;border-radius:5px 5px 0 0">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Dietas asignadas</h3>
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 text-center justify-content-center row">
-                    <div class="table-responsive text-center">
+                <div class="col-12 ">
+                    <div class="table-responsive">
                         <table id="order-listing2" class="table mb-5 ">
                             <thead>
                                 <tr>
@@ -217,13 +217,13 @@
     </div>
 
     <div class="card  mt-4 text-center">
-        <div class="mb-3" style="background-color:#4eba74">
+        <div class="mb-0" style="background-color:#4eba74;border-radius:5px 5px 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Actividades asignadas </h3>
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 text-center justify-content-center row">
+                <div class="col-12 ">
                     <div class="table-responsive ">
                         <table id="order-listing3" class="table mb-4">
                             <thead>
@@ -259,13 +259,13 @@
     </div>
 
     <div class="card  mt-4 text-center">
-        <div class="mb-3" style="background-color:#7c7ce4">
+        <div class="mb-0" style="background-color:#7c7ce4;border-radius:5px 5px 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">
                 Estados de ánimo</h3>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-12 text-center justify-content-center row">
+            <div class="container text-center">
+                <div class="row justify-content-center">
                     <div class="table-responsive w-75">
                         <table id="order-listing4" class="table mb-4">
                             <thead>
@@ -290,6 +290,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
 

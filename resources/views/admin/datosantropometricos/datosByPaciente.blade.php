@@ -175,7 +175,7 @@
                     <table id="order-listing" class="table text-center">
                         <thead>
                             <tr>
-                                <th>N°</th>
+                                <th class="pl-0 text-left">N°</th>
                                 <th>Altura</th>
                                 <th>Peso</th>
                                 <th>IMC</th>
@@ -188,7 +188,7 @@
                         <tbody>
                             @foreach ($datos as $key => $dato)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td class="pl-0 text-left">{{ $key + 1 }}</td>
                                     <td>{{ $dato->altura }} (m)</td>
                                     <td>{{ $dato->peso }} (kg)</td>
                                     @if ($data->imc <= 18.4)
@@ -215,10 +215,10 @@
                                     <td>
                                         <a title="Ver datos bioquimicos del paciente" data-toggle="modal"
                                             data-target="#exampleModal-4{{ $dato->id }}"
-                                            class="btn btn-outline-info" style="min-width: 51.6px"><i class="fa-solid fa-flask"></i></a>
+                                            class="btn btn-outline-info py-2 px-3" style="min-width: 51.6px"><i class="fa-solid fa-flask"></i></a>
                                             <a title="Ver observaciones del paciente" data-toggle="modal"
                                             data-target="#exampleModal-5{{ $dato->id }}"
-                                            class="btn btn-outline-primary"><i class="fa-solid fa-eye"></i></a>
+                                            class="btn btn-outline-primary py-2 px-3"><i class="fa-solid fa-eye"></i></a>
                                     </td>
 
                                     <td>{{ date('Y-m-d',strtotime($dato->created_at)) }}</td>

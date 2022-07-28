@@ -18,6 +18,7 @@ use App\Http\Controllers\NutricionistaController;
 use App\Http\Controllers\MedidaAlimentoController;
 use App\Http\Controllers\CategoriaAlimentoController;
 use App\Http\Controllers\DatosAntropometricoController;
+use App\Models\Nutricionista;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +113,8 @@ Route::group(['prefix' => 'dashboard','middleware'=>'admin_nutri'],function () {
     Route::get('/agregarpaciente',[PacienteController::class,'crearPaciente'])->name('paciente.crearPaciente');
     Route::get('/pacienteslistados',[PacienteController::class,'verTodos']);
 
+    Route::get('/manual-admin',[AdminController::class,'manualAdmin'])->name('manual.admin');
+    Route::get('/manual-nutri',[NutricionistaController::class,'manualNutri'])->name('manual.nutri');
 
     Route::get('/alimentoslistados',[AlimentoController::class,'verTodos']);
 

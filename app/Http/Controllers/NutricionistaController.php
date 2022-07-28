@@ -39,6 +39,10 @@ class NutricionistaController extends Controller
         return view('nutri.cuenta.cuenta',compact('nutricionista'));
     }
 
+    public function manualNutri(){
+        return view('admin.manual-nutri');
+    }
+
     public function formCuenta()
     {
         $user = User::find(Auth::id());

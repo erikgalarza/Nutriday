@@ -15,10 +15,17 @@
         .ocultar {
             display: none;
         }
+
+        @media (min-width:768px) {
+            .dialogoss {
+                min-width: 610px !important;
+            }
+
+        }
     </style>
 
     <div class="card text-center ">
-        <div class=" mb-3" style="background-color:#4b6ac3 ">
+        <div class=" mb-0" style="background-color:#4b6ac3 ">
             <h3 class="card-title text-lg-center mb-4 mt-4 text-white" style="text-transform: uppercase; font-weight:bold">
                 Actividades</h3>
         </div>
@@ -37,7 +44,7 @@
 
 
         <div class="card-body">
-            <div class="container w-75">
+            <div class="container ">
                 <div class="table-responsive">
                     <table id="order-listing" class="table">
                         <thead>
@@ -73,14 +80,6 @@
                                     </td>
                                 </tr>
 
-                                <style>
-                                    @media (min-width:768px) {
-                                        .dialogoss {
-                                            min-width: 610px !important;
-                                        }
-
-                                    }
-                                </style>
 
                                 <div class="modal fade" id="exampleModal-2{{ $actividad->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
@@ -103,7 +102,8 @@
                                                     <div class="col-md-9  col-11 text-left">
 
                                                         <form method="POST"
-                                                            action="{{ route('actividad.update', $actividad->id) }}" enctype="multipart/form-data">
+                                                            action="{{ route('actividad.update', $actividad->id) }}"
+                                                            enctype="multipart/form-data">
                                                             @csrf
                                                             {{ method_field('PATCH') }}
 
@@ -114,8 +114,7 @@
                                                                         class="col-md-4 col-form-label text-left">Nombre:</label>
                                                                     <div class="col-md-8">
                                                                         <input style="border-radius:10px" name="nombre"
-                                                                            type="text"
-                                                                            value="{{ $actividad->nombre }}"
+                                                                            type="text" value="{{ $actividad->nombre }}"
                                                                             class="form-control" id="exampleInputUsername2">
                                                                     </div>
                                                                 </div>
@@ -146,8 +145,8 @@
                                                                     <label for="exampleInputUsername2"
                                                                         class="col-md-4 col-form-label text-left">Descripción:</label>
                                                                     <div class="col-md-8">
-                                                                        <textarea style="border-radius:10px" rows="4" name="descripcion" type="text" class="form-control"
-                                                                            id="exampleInputUsername2">{{ $actividad->descripcion }}</textarea>
+                                                                        <textarea style="border-radius:10px;text-align:justify" rows="4" name="descripcion" type="text"
+                                                                            class="form-control" id="exampleInputUsername2">{{ $actividad->descripcion }}</textarea>
                                                                     </div>
                                                                 </div>
 
@@ -172,13 +171,11 @@
                                                                     </div>
                                                                     <div class="text-center">
                                                                         @if (isset($actividad->imagen->url))
-                                                                            <img
-                                                                                class="ocultar img-thumbnail imagenAlimento"
+                                                                            <img class="ocultar img-thumbnail imagenAlimento"
                                                                                 style="width:95%;heigth:80%"
                                                                                 src="{{ $actividad->imagen->url }}">
                                                                         @else
-                                                                            <img
-                                                                                class="ocultar img-thumbnail imagenAlimento"
+                                                                            <img class="ocultar img-thumbnail imagenAlimento"
                                                                                 style="width:95%;heigth:80%"
                                                                                 src="{{ asset('img/icons/dieta48.png') }}">
                                                                         @endif
@@ -265,7 +262,8 @@
                                                                                 class="col-6 col-md-5 text-left col-form-label px-0 "
                                                                                 style="text-transform: uppercase"><strong>Descripción:</strong></label>
                                                                             <label
-                                                                                class="col-6 col-md-7 text-left col-form-label ">{{ $actividad->descripcion }}</label>
+                                                                                class="col-6 col-md-7 text-left col-form-label"
+                                                                                style="text-align:justify">{{ $actividad->descripcion }}</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -287,45 +285,43 @@
     </div>
     <script>
         var state = true;
-    function showImage()
-    {
-        var imagenes = document.querySelectorAll('.imagenAlimento');
-        if(state)
-        {
-            console.log('is true')
-            imagenes.forEach(item=>{
-                console.log(item)
-            $('img.imagenAlimento').show('slow');
-            })
-            state=false;
-        }
-        imagenes.forEach(item=>{
-            $('img.imagenAlimento').hide();
-            state = true;
+
+        function showImage() {
+            var imagenes = document.querySelectorAll('.imagenAlimento');
+            if (state) {
+                console.log('is true')
+                imagenes.forEach(item => {
+                    console.log(item)
+                    $('img.imagenAlimento').show('slow');
+                })
+                state = false;
+            }
+            imagenes.forEach(item => {
+                $('img.imagenAlimento').hide();
+                state = true;
             })
 
-    }
+        }
 
 
         function eliminarActividad(actividad) {
-            var form = document.getElementById('deleteactividad' +actividad.id);
+            var form = document.getElementById('deleteactividad' + actividad.id);
             swal({
-            title: "Estas seguro que quieres la actividad " + actividad.nombre + " ?",
-            text: "Al confirmar, la actividad será eliminada permanentemente!",
-            icon: "warning",
-            buttons: [
-                'No, cancelar!',
-                'Si, estoy seguro!'
-            ],
-            dangerMode: true,
+                title: "Estas seguro que quieres la actividad " + actividad.nombre + " ?",
+                text: "Al confirmar, la actividad será eliminada permanentemente!",
+                icon: "warning",
+                buttons: [
+                    'No, cancelar!',
+                    'Si, estoy seguro!'
+                ],
+                dangerMode: true,
             }).then(function(isConfirm) {
-            if (isConfirm) {
-                form.submit(); // <--- submit form programmatically
-            }
-        })
+                if (isConfirm) {
+                    form.submit(); // <--- submit form programmatically
+                }
+            })
 
-    }
-
+        }
     </script>
 
 

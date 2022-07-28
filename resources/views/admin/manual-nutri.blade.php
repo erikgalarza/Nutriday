@@ -383,11 +383,30 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    @yield('contenido')
+
+                    <embed src="{{asset('img/manual-nutri.pdf')}}" type="application/pdf" width="100%" height="100%" >
+
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-              @include('admin.layouts.footer')
+
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const boton = document.querySelector('.fa-questi')
+
+        boton.classList.add('bg-warning','text-white')
+
+
+    })
+    </script>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
@@ -400,4 +419,3 @@
 
 
 </html>
-

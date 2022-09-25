@@ -4,6 +4,9 @@
         .ocultar {
             display: none;
         }
+        .noclick{
+            cursor:not-allowed;
+        }
     </style>
     <div class="page-header mb-2">
         <h3 class="page-title">
@@ -17,7 +20,7 @@
         </nav>
     </div>
     <div class="card">
-        <div class=" mb-0" style="background-color:#4b6ac3 ">
+        <div class=" mb-0" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos
                 administradores</h3>
         </div>
@@ -54,47 +57,68 @@
                                         <td class="pl-0 text-left">{{ $admin->id }}</td>
                                         <td>{{ $admin->administradores->nombre }}</td>
                                         <td>{{ $admin->email }}</td>
+                                        @if ($admin->id == 1 )
                                         <td>
-                                            @if ($admin->administradores->estado == 'activo')
-                                                <a onclick="eliminarAdmin({{ $admin }});"
-                                                    class=" btn py-2 px-3 btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
-                                            @else
-                                                <a onclick="document.getElementById('deleteadmin'+{{ $admin->id }}).submit();"
-                                                    class=" btn p-2 px-3  btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
+
+                                            <a style="cursor:not-allowed" class="btn btn-rounded py-2 px-3 btn-secondary text-white ">activo</a>
+                                        </td>
+                                        @else
+                                            <td>
+                                                @if ($admin->administradores->estado == 'activo')
+                                                    <a onclick="eliminarAdmin({{ $admin }});"
+                                                        class=" btn py-2 px-3 btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
+                                                @else
+                                                    <a onclick="document.getElementById('deleteadmin'+{{ $admin->id }}).submit();"
+                                                        class=" btn p-2 px-3  btn-rounded {{ $admin->administradores->estado == 'activo' ? 'btn-success' : 'btn-danger' }}">{{ $admin->administradores->estado }}</a>
+                                                @endif
+                                            </td>
+
                                             @endif
 
                                             <!-- Arreglar el estado de los administradores como un boton -->
-                                        </td>
                                         <td>
+                                            @if ($admin->id == 1)
                                             <a title="Ver más" data-toggle="modal"
-                                                data-target="#exampleModal-3{{ $admin->id }}"class="btn btn-outline-info mb-1 p-2"><i
-                                                    class="fas fa-eye"></i></a>
+                                                data-target="#exampleModal-3{{ $admin->id }}"class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
+                                            <a style="cursor:not-allowed" class="btn btn-outline-secondary mb-1 p-2 " disabled><i
+                                                class="fas fa-edit"></i></a>
+
+                                            <a style="cursor:not-allowed" class="btn btn-outline-secondary mb-1 p-2 " disabled><i
+                                                class="fas fa-trash"></i></a>
+                                            @else
+                                            <a title="Ver más" data-toggle="modal"
+                                                data-target="#exampleModal-3{{ $admin->id }}"class="btn btn-outline-info mb-1 p-2"><i class="fas fa-eye"></i></a>
 
                                             <a title="Editar administrador" class="btn btn-outline-warning mb-1  p-2"
                                                 data-toggle="modal" data-target="#exampleModal-2{{ $admin->id }}"><i
                                                     class="fas fa-edit"></i></a>
-                                            @if ($admin->administradores->estado == 'activo')
-                                                <form method="post" id="deleteadmin{{ $admin->id }}"
-                                                    action="{{ route('administrador.destroy', $admin->id) }}"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
-                                                    <a title="Eliminar administrador"
-                                                        onclick="eliminarAdmin({{ $admin }});" type="submit"
-                                                        class="btn btn-outline-danger mb-1  p-2"><i class="fas fa-trash"></i></a>
-                                                </form>
-                                            @else
-                                                <form method="post" id="deleteadmin{{ $admin->id }}"
-                                                    action="{{ route('administrador.destroy', $admin->id) }}"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
-                                                    <a title="Activar administrador"
-                                                        onclick="document.getElementById('deleteadmin'+{{ $admin->id }}).submit();"
-                                                        type="submit" class="btn btn-outline-success mb-1  p-2"><i
-                                                            class="fas fa-share"></i></a>
-                                                </form>
+
+                                                @if ($admin->administradores->estado == 'activo')
+                                                    <form method="post" id="deleteadmin{{ $admin->id }}"
+                                                        action="{{ route('administrador.destroy', $admin->id) }}"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <a title="Eliminar administrador"
+                                                            onclick="eliminarAdmin({{ $admin }});" type="submit"
+                                                            class="btn btn-outline-danger mb-1  p-2"><i
+                                                                class="fas fa-trash"></i></a>
+                                                    </form>
+                                                @else
+                                                    <form method="post" id="deleteadmin{{ $admin->id }}"
+                                                        action="{{ route('administrador.destroy', $admin->id) }}"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <a title="Activar administrador"
+                                                            onclick="document.getElementById('deleteadmin'+{{ $admin->id }}).submit();"
+                                                            type="submit" class="btn btn-outline-success mb-1  p-2"><i
+                                                                class="fas fa-share"></i></a>
+                                                    </form>
+                                                @endif
                                             @endif
+
+
                                         </td>
                                     </tr>
 

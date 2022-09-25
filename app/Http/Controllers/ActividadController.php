@@ -51,13 +51,13 @@ class ActividadController extends Controller
     {
         $pacientes = Paciente::all();
         // $duraciones=collect();
+         dd($pacientes[2]);
+
         foreach($pacientes as $key => $paciente)
         {
-
-           $duraciones = $paciente->actividades()->get(['duracion']);
+            $duraciones = $paciente->actividades()->get(['duracion']);
+            //dd($paciente->actividades()->get());
            $prioridad = $paciente->actividades()->get(['prioridad']);
-
-
 
            $user_id = $paciente->actividades()->get(['user_id']);
 
@@ -69,9 +69,9 @@ class ActividadController extends Controller
 
                 return view('admin.actividades.pacientes',compact('pacientes','duraciones','prioridad','responsable'));
             }
-        }
 
-        return view('admin.actividades.pacientes',compact('pacientes','prioridad','duraciones'));
+            return view('admin.actividades.pacientes',compact('pacientes','prioridad','duraciones'));
+        }
     }
 
     public function guardarAsignacion(StoreAsignacionActividad $request)
@@ -89,7 +89,7 @@ class ActividadController extends Controller
     public function asignar($paciente_id)
     {
         $paciente_id = base64_decode($paciente_id);
-        
+
         $paciente = Paciente::find($paciente_id);
         $actividadesReales = Actividad::all();
         // $collect = collect();

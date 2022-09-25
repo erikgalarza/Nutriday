@@ -46,7 +46,7 @@
                         <label style="font-weight:bold; font-size:12px; text-transform:uppercase" for="exampleInputUsername2"
                             class="col-xl-4  col-form-label">Altura (Mts):</label>
                         <div class="col-xl-8 ">
-                            <input style="border-radius:10px" name="altura" step="0.1" type="number" placeholder="Ingrese la altura en metros"                             class="form-control" id="altura">
+                            <input style="border-radius:10px" name="altura" step="0.01" type="number" placeholder="Ingrese la altura en metros"                             class="form-control" id="altura">
                             <p class="text-danger font-weight-bold">{{$errors->first('altura')}}</p>
                         </div>
                     </div>

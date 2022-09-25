@@ -11,6 +11,16 @@
             </ol>
         </nav>
     </div>
+
+    <style>
+        @media (min-width:768px) {
+            .dialogoss {
+                min-width: 600px !important;
+            }
+
+        }
+    </style>
+
     <div class="card">
         <div class=" mb-0" style="background-color:#4b6ac3;border-radius:5px 5px 0 0 ">
             <h3 class="card-title text-center mb-4 mt-4 text-white"style="text-transform: uppercase; font-weight:bold">Datos
@@ -91,7 +101,7 @@
                                                     {{ method_field('DELETE') }}
                                                     <a onclick="document.getElementById('deletenutri'+{{ $nutricionista->nutricionistas->id }}).submit();"
                                                         title="Activar nutricionista" style="max-width: 50px" type="submit"
-                                                        class="btn btn-outline-success mb-1"><i
+                                                        class="btn btn-outline-success mb-1 p-2"><i
                                                             class="fas fa-share"></i></a>
                                                 </form>
                                             @endif
@@ -257,15 +267,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <style>
-                                        @media (min-width:768px) {
-                                            .dialogoss {
-                                                min-width: 600px !important;
-                                            }
-
-                                        }
-                                    </style>
 
 
                                     <div class="modal fade" id="exampleModal-3{{ $nutricionista->id }}" tabindex="-1"

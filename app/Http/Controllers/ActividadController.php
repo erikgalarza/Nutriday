@@ -50,28 +50,44 @@ class ActividadController extends Controller
     public function pacientes()
     {
         $pacientes = Paciente::all();
-        // $duraciones=collect();
-         dd($pacientes[2]);
-
+        $actividades  = collect();
+         $duraciones=collect();
+         $prioridad=collect();
+        //  dd($pacientes[2]);
+        // dd($pacientes);
         foreach($pacientes as $key => $paciente)
         {
+            // print_r('paciente '.$key);
+            $prioridades = $paciente->actividades()->get(['prioridad']);//array de prioridades de las actividades correspondientes a ese paciente
             $duraciones = $paciente->actividades()->get(['duracion']);
-            //dd($paciente->actividades()->get());
-           $prioridad = $paciente->actividades()->get(['prioridad']);
 
-           $user_id = $paciente->actividades()->get(['user_id']);
-
-           if(count($user_id)>0){
-              $user = User::find($user_id[$key]->user_id);
-              if($user->nutricionistas!=null){
-                $responsable = $user->nutricionistas->nombre;
-                }else{$responsable = $user->administradores->nombre;}
-
-                return view('admin.actividades.pacientes',compact('pacientes','duraciones','prioridad','responsable'));
+            $acts = $paciente->actividades()->get();//actividades por paciente
+            foreach($acts as $keyAct => $act)//cada paciente tiene 1 o varias actividades por realizar
+            {
+                $prioridad = $prioridades[$keyAct];
+                $duracion = $duraciones[$keyAct];
+                $imagen = $act->imagen()->first();
+                $urlImagen = $imagen->url;
+                $act->setAttribute('prioridad',$prioridad->prioridad);
+                $act->setAttribute('duracion',$duracion->duracion);
+                $act->setAttribute('imagen',$urlImagen);
             }
-
-            return view('admin.actividades.pacientes',compact('pacientes','prioridad','duraciones'));
+            $actividades->push($acts);
+           $user_id = $paciente->actividades()->get(['user_id']);
         }
+        // dd($actividades);
+       
+        if(count($user_id)>0){
+            $user = User::find($user_id[0]->user_id);
+            if($user->nutricionistas!=null){
+              $responsable = $user->nutricionistas->nombre;
+              }else{$responsable = $user->administradores->nombre;}
+
+              return view('admin.actividades.pacientes',compact('pacientes','duraciones','prioridad','responsable','actividades'));
+          }
+
+          return view('admin.actividades.pacientes',compact('pacientes','prioridad','duraciones','actividades'));
+
     }
 
     public function guardarAsignacion(StoreAsignacionActividad $request)
@@ -79,6 +95,7 @@ class ActividadController extends Controller
 
         $idResponsable = $request->idResponsable;
         $paciente = Paciente::find($request->paciente_id);
+        // dd($paciente);
         foreach($request->actividad_id as $key => $actividad){
             // print_r($request->prioridad_id[$key]);
             $paciente->actividades()->attach($request->actividad_id[$key],['duracion'=>$request->duracion[$key],'user_id'=>Auth::id(),'prioridad'=>$request->prioridad_id[$key]]);

@@ -177,30 +177,31 @@
 
                                                 <div class="row text-left">
 
+                                                   
 
-                                                    @foreach ($paciente->actividades as $key => $actividad)
+                                                 {{--el key que tenemos en este foreach es del key de pacientes que esta arriba, no mover --}}
+                                                    @foreach ($actividades[$key] as $actividad)
+                                                        @if(isset($actividad))
+                                                            <div class="col-3 mb-2">
+                                                                <label class="col-form-label">{{$actividad->nombre}}</label>
+                                                            </div>
 
-                                                        <div class="col-3 mb-2 "> <label
-                                                                class="col-form-label">{{ $actividad->nombre }}</label>
-                                                        </div>
-                                                        @if ($prioridad[$key]->prioridad === 1)
-                                                            <div class="col-3 mb-2 "><label class="col-form-label">
-                                                                    Baja</label></div>
-                                                        @elseif($prioridad[$key]->prioridad === 2)
-                                                            <div class="col-3 mb-2 "> <label
-                                                                    class="col-form-label">Media</label></div>
-                                                        @else
-                                                            <div class="col-3 mb-2 "> <label
-                                                                    class="col-form-label">Alta</label></div>
+                                                            <div class="col-3 mb-2">
+                                                                <label class="col-form-label" class="col-form-label">{{$actividad->prioridad}}</label>
+                                                            </div> 
+
+                                                            <div class="col-2 mb-2">
+                                                                <label class="col-form-label" class="col-form-label">{{$actividad->duracion}}</label>
+                                                            </div> 
+
+                                                            <div class="col-4 mb-2 text-center">
+                                                                <img style="min-width:70px; max-width:70px;min-height:50px;max-height:50px;border-radius:10px;"
+                                                                src="{{$actividad->imagen}}">
+                                                            </div>
+
                                                         @endif
 
-                                                        <div class="col-2 mb-2 text-center"><label
-                                                                class="col-form-label">{{ $duraciones[$key]->duracion }}</label>
-                                                        </div>
-
-                                                        <div class="col-4 mb-2 text-center"><img
-                                                                style="min-width:70px; max-width:70px;min-height:50px;max-height:50px;border-radius:10px"
-                                                                src="{{ $actividad->imagen->url }}"></div>
+                                            
                                                     @endforeach
                                                 </div>
                                             </div>
